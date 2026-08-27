@@ -1515,3 +1515,626 @@ function durationlessKey(a: AtomicEffect): string {
     a.scale.toFixed(4),
   ].join('|');
 }
+
+/**
+ * The `effects.damageDebuff` slot for a caster SELF-PENALTY, atom-native.
+ * Mirrors `convert-powerset.cjs:6536` — the `aspect === 'strength'` branch's damage-attrib
+ * debuff arm, which writes `makeEffect()` and tags `toWho: 'Self'` when the template is
+ * self-targeting. Only the self arm is reproduced: a foe-facing `damageDebuff` is an enemy
+ * debuff the totals pass never reads (it gates on `isSelfDirectedEffect`), so admitting it
+ * here would credit the caster with a penalty aimed at something else.
+ *
+ * The converter assigns rather than accumulates, so a power whose penalty spans eight damage
+ * types (Bio Armor's Defensive Adaptation: −0.25 on each of Smashing…Toxic) collapses to ONE
+ * slot and the LAST atom wins. That collapse is reproduced deliberately — this is a
+ * behaviour-preserving port of the slot, not a repair of it. The per-type values are equal
+ * wherever the corpus exercises it, so the collapse costs nothing today; the discriminator
+ * it drops (`subType`) stays on the atoms for a reader that wants it.
+ *
+ * Returns `{scale, table}` with `scale` ABSOLUTE (matching `makeEffect`), or `undefined`.
+ * The caller supplies the sign — the totals pass multiplies by −100.
+ */
+export function selfDamageDebuffValue(
+  power: AtomSource,
+): { scale: number; table: string } | undefined {
+  let cur: { scale: number; table: string } | undefined;
+  let curIsSelf = true;
+  for (const a of baseAtoms(power)) {
+    if (a.effectType !== 'DamageBuff') continue;
+    if (a.aspect !== 'Str') continue;
+    if (!a.modifierTable) continue;
+    if (!isConverterDebuff(a)) continue; // the buff arm writes `damageBuff` instead
+    cur = { scale: Math.abs(a.scale), table: a.modifierTable }; // last-write-wins
+    if (!atomLandsOnCaster(a)) curIsSelf = false;
+  }
+  // The converter tags `toWho: 'Self'` from whichever debuff atom landed LAST
+  // (`isSelfTargeting = landsOnCaster(a._target)`), so a foe row arriving after a self row
+  // leaves the slot untagged and the totals pass — which gates on `isSelfDirectedEffect` —
+  // skips it. Atom order is not template order, so "last" is not reproducible here; what IS
+  // reproducible, and agrees with the bag across the corpus, is that the slot reads as a
+  // caster penalty only when NO foe-facing row shares it. Reaction Time's paired
+  // `Target +0.4` / `Self -0.4` is the case that separates the two rules.
+  return curIsSelf ? cur : undefined;
+}
+
+/**
+ * The `effects.stealth` slot, atom-native. Mirrors `convert-powerset.cjs:7127` — the
+ * StealthRadius branch's `Current` arm.
+ *
+ * Only the `Current` face is a radius. The same attrib also carries `Strength` (a multiplier
+ * on the caster's own radius — its whole population is the Assassin's Strike reveal) and
+ * `Maximum` (a cap on it), and because `makeEffect` stores `|scale|`, routing either one into
+ * this slot turns a cut into a buff: ATOM-BAG-7 gave every Stalker holding an Assassin's
+ * Strike +1 ft of stealth on both axes. Both faces are dropped here exactly as the converter
+ * drops them. An unhandled face is NOT silently skipped — it throws, so a face nobody has seen
+ * stops the run rather than resolving to a plausible neighbour.
+ *
+ * `stackKey` rides only on a `Suppress` atom whose key resolves (the converter reads
+ * `4294967295` and `0` as "no key"): powers sharing a key suppress rather than stack, which is
+ * why pool Stealth and Super Speed don't add while a Stealth IO lands on top.
+ */
+export function stealthValue(
+  power: AtomSource,
+): { stealthPvE?: { scale: number; table: string }; stealthPvP?: { scale: number; table: string }; stackKey?: string } | undefined {
+  let out: { stealthPvE?: { scale: number; table: string }; stealthPvP?: { scale: number; table: string }; stackKey?: string } | undefined;
+  for (const a of baseAtoms(power)) {
+    if (a.effectType !== 'Stealth') continue;
+    if (a.subType !== 'RadiusPvE' && a.subType !== 'RadiusPvP') continue;
+    if (a.aspect === 'Str' || a.aspect === 'Max') continue; // multiplier / cap — no slot to land in
+    if (a.aspect !== 'Cur') {
+      throw new Error(
+        `${power.name ?? '(unnamed)'}: Stealth ${a.subType} on an unhandled '${a.aspect}' face. ` +
+        `The stealth slot models the Current face (a radius) only.`,
+      );
+    }
+    if (!a.modifierTable) continue;
+    out ??= {};
+    const key = a.subType === 'RadiusPvE' ? 'stealthPvE' : 'stealthPvP';
+    out[key] = { scale: Math.abs(a.scale), table: a.modifierTable }; // last-write-wins
+    const sk = a.stackKey;
+    if (a.stacking === 'Suppress' && sk && sk !== '4294967295' && sk !== '0') out.stackKey = sk;
+  }
+  return out;
+}
+
+/** Wire `subType` → the bag's mez slot name. Mirrors `MEZ_TYPES` (`convert-powerset.cjs:3311`),
+ *  which keys on the resolved attrib string; the atom spells the same six as `subType`. */
+const MEZ_SUBTYPE_TO_SLOT: Record<string, string> = {
+  held: 'hold', hold: 'hold',
+  stunned: 'stun', stun: 'stun', disorient: 'stun',
+  sleep: 'sleep', sleeping: 'sleep', slept: 'sleep',
+  immobilized: 'immobilize', immobilize: 'immobilize',
+  confused: 'confuse', confuse: 'confuse',
+  afraid: 'fear', terrorized: 'fear', fear: 'fear', terrorize: 'fear',
+};
+
+/**
+ * One of the six `effects.<mezType>` slots (hold/stun/sleep/immobilize/confuse/fear),
+ * atom-native. Mirrors `convert-powerset.cjs:6663`'s else-arm — the face that is neither
+ * `resistance` (which routes to `mezResistance`) nor `strength` (which routes to
+ * `specialBuff`), written as `makeMezEffect()`.
+ *
+ * The converter picks ONE atom per slot with a two-step preference, reproduced here: a PvE
+ * table beats a PvP one, and within the same PvP-ness the larger `magnitude` wins. The test is
+ * on the TABLE NAME, not `pvMode` — that is the converter's own spelling, and the two disagree
+ * (Kuji-In Toh's protection atom is `pvMode: 'PvE'` on `Melee_Res_Boolean`, a table that names
+ * neither side).
+ *
+ * `scale` rides SIGNED, which is the protection spelling — negative scale is an armor's status
+ * protection rather than applied foe control (MEZFACE-1). The totals pass takes `|scale| ×
+ * table@50` and gates on a `res_boolean` table, so this reader stays value-faithful and leaves
+ * the protection-vs-control verdict to the caller that already owns it.
+ */
+export function mezSlotValue(
+  power: AtomSource,
+  slot: 'hold' | 'stun' | 'sleep' | 'immobilize' | 'confuse' | 'fear',
+): { mag: number; scale: number; table: string; attribType: string } | undefined {
+  let cur: { mag: number; scale: number; table: string; attribType: string } | undefined;
+  for (const a of baseAtoms(power)) {
+    if (a.effectType !== 'Mez') continue;
+    if (a.aspect === 'Res' || a.aspect === 'Str') continue; // mezResistance / specialBuff arms
+    // `guardThunderspyAppliedMez` deletes an applied-mez slot on a power whose
+    // `targets_affected` names no foe and whose row is not protection-backed, and stamps the
+    // atoms behind it (TSPY-10). The nine Thunderspy rows are self-roots on rez/hibernate
+    // powers (Revive, Restore Essence, Hide, Hibernate, Elixir of Life).
+    if (a.notOnCaster) continue;
+    if (!a.subType || MEZ_SUBTYPE_TO_SLOT[a.subType.toLowerCase()] !== slot) continue;
+    if (!a.modifierTable) continue;
+    const next = { mag: a.magnitude, scale: a.scale, table: a.modifierTable, attribType: a.attribType };
+    if (!cur) { cur = next; continue; }
+    const curIsPvP = /pvp/i.test(cur.table);
+    const nextIsPvP = /pvp/i.test(next.table);
+    if (curIsPvP !== nextIsPvP) { if (curIsPvP) cur = next; continue; } // prefer PvE
+    if (next.mag > cur.mag) cur = next;
+  }
+  return cur;
+}
+
+/** The converter's `landsOnCaster` (`convert-powerset.cjs:6156`), which is what decides the
+ *  `toWho: 'Self'` tag on the debuff slots. Deliberately NOT {@link reachesCaster}: that one
+ *  also consults the POWER's recipients, so on a self-targeted toggle it reads true for a
+ *  `Target` row too, and Reaction Time's foe `-recharge` would tag the caster's own slot.
+ *
+ *  Spelled in WIRE values, not the converter's: its third arm is `AnyAffectedAndPets`, which
+ *  the ModTarget fold ships as `TargetAndPets` (`atomic-effect.ts:1169`). Copying the
+ *  converter's spelling literally would have made that arm unreachable and silently dropped
+ *  every pet-inclusive self row. */
+function atomLandsOnCaster(a: AtomicEffect): boolean {
+  return a.toWho === 'Self' || a.toWho === 'SelfAndPets' || a.toWho === 'TargetAndPets';
+}
+
+/** The converter's `isDebuff` (`convert-powerset.cjs:6393`): the SIGN is not the whole test —
+ *  a `*_Debuff_*` table is a debuff whatever the scale says (Conduit of Pain's +3 on
+ *  `Ranged_Debuff_Dam`). Reading the sign alone loses every positive-scale debuff row. */
+function isConverterDebuff(a: AtomicEffect): boolean {
+  return a.scale < 0 || (a.modifierTable || '').toLowerCase().includes('debuff');
+}
+
+/**
+ * The COMBAT_MODIFIERS scalar slots, atom-native. One shape covers six of them because the
+ * converter writes them with one shape (`convert-powerset.cjs:7028-7091`): pick the atoms of
+ * one effect type, drop the `resistance` face (that arm routes to `debuffResistance`, a
+ * different slot), split buff from debuff on the sign, and assign `makeEffect()` —
+ * `{scale: |scale|, table}`, last-write-wins, no accumulate.
+ *
+ * `wantDebuff` selects the arm. `slowIsDebuff` carries the rechargeTime branch's extra
+ * disjunct (a `slow` table is a debuff whatever the sign says). `casterOnly` carries the
+ * range branch's `reachesCaster` gate — ATOM-BAG-9/TARGETS-3: that slot claims what the power
+ * adds to the CASTER's range, so the question is the power's recipients, not the row's aspect,
+ * and a `['Friend']`-only carrier (Brainstorm's Magnify) is declined.
+ */
+function combatModifierSlot(
+  power: AtomSource,
+  effectType: EffectType,
+  opts: { wantDebuff?: boolean; slowIsDebuff?: boolean; casterOnly?: boolean; selfOnly?: boolean } = {},
+): { scale: number; table: string; perTarget?: number } | undefined {
+  const atoms = baseAtoms(power).filter((a) => {
+    if (a.effectType !== effectType) return false;
+    if (a.aspect === 'Res') return false; // the debuffResistance arm
+    // The converter's Thunderspy `*_Ones` guard deletes the whole `rechargeBuff` slot on a
+    // power whose shortHelp does not advertise `+Rech`, and stamps the atoms behind it
+    // (TSPY-10). Skipping them here is what keeps this reader equal to the bag; without it
+    // 23 Thunderspy powers re-credit the caster with recharge the guard just removed.
+    // Inert for the other three slots — the converter stamps no Accuracy/Range/
+    // EnduranceDiscount atom, and never the debuff face this predicate can also select.
+    if (a.notOnCaster) return false;
+    if (!a.modifierTable) return false;
+    const isDebuff = isConverterDebuff(a)
+      || (!!opts.slowIsDebuff && a.modifierTable.toLowerCase().includes('slow'));
+    if (isDebuff !== !!opts.wantDebuff) return false;
+    if (opts.casterOnly && !reachesCaster(a, power)) return false;
+    return true;
+  });
+  if (!atoms.length) return undefined;
+  // `selfOnly` mirrors the converter's post-assignment `toWho` tag — see
+  // {@link selfDamageDebuffValue} for why "no foe row shares the slot" stands in for "the
+  // last row was a self row".
+  if (opts.selfOnly && !atoms.every(atomLandsOnCaster)) return undefined;
+  return perTargetValueOf(atoms, power);
+}
+
+/** `effects.accuracyBuff` (`convert-powerset.cjs:7038`). */
+export function accuracyBuffValue(power: AtomSource) {
+  return combatModifierSlot(power, 'Accuracy');
+}
+
+/** `effects.rechargeBuff` (`convert-powerset.cjs:7053`) — a `slow` table is the debuff arm.
+ *  The `strength` face is NOT split off here: unlike `toHit`, the converter's rechargeTime
+ *  branch has no `aspect === 'strength'` arm, so a Str-face row lands in this slot (Beta
+ *  Decay's two `Melee_Ones` rows accumulate to 0.125 with a 0.025 per-foe increment). */
+export function rechargeBuffValue(power: AtomSource) {
+  return combatModifierSlot(power, 'RechargeTime', { slowIsDebuff: true });
+}
+
+/** `effects.rechargeDebuff` restricted to the SELF-tagged arm (`convert-powerset.cjs:7049`) —
+ *  the caster's own recharge penalty, which is the only arm the totals pass reads. */
+export function selfRechargeDebuffValue(power: AtomSource) {
+  return combatModifierSlot(power, 'RechargeTime', { wantDebuff: true, slowIsDebuff: true, selfOnly: true });
+}
+
+/** `effects.rangeBuff` (`convert-powerset.cjs:7085`) — caster-recipient only, see ATOM-BAG-9. */
+export function rangeBuffValue(power: AtomSource) {
+  return combatModifierSlot(power, 'Range', { casterOnly: true });
+}
+
+/** `effects.perceptionBuff` (`convert-powerset.cjs:7108`) — the Perception attrib's buff arm.
+ *  `Stealth` shares the STEALTH_TYPES table but routes to its own slot; see {@link stealthValue}. */
+export function perceptionBuffValue(power: AtomSource) {
+  return combatModifierSlot(power, 'Perception');
+}
+
+/** `effects.enduranceDiscount` (`convert-powerset.cjs:7090`) — no sign or aspect split. */
+export function enduranceDiscountValue(power: AtomSource): { scale: number; table: string } | undefined {
+  let cur: { scale: number; table: string } | undefined;
+  for (const a of baseAtoms(power)) {
+    if (a.effectType !== 'EnduranceDiscount') continue;
+    if (!a.modifierTable) continue;
+    cur = { scale: Math.abs(a.scale), table: a.modifierTable };
+  }
+  return cur;
+}
+
+
+/**
+ * `effects.maxEndBuff` (`convert-powerset.cjs:6898`) — the Endurance attrib's `Maximum` face.
+ * Unlike the combat-modifier slots this one ACCUMULATES (`addOrAccumulate`), so it uses the
+ * same sum-with-reset-on-table-change fold the other resource slots use.
+ */
+export function maxEndBuffValue(power: AtomSource): { scale: number; table: string } | undefined {
+  const mine = baseAtoms(power).filter(
+    (a) => a.effectType === 'MaxEndurance' && a.aspect === 'Max' && !!a.modifierTable,
+  );
+  if (!mine.length) return undefined;
+  return foldResourceSum(mine);
+}
+
+/** Wire `effectType` → the `debuffResistance` sub-key the converter writes when the row's face
+ *  is `resistance`. One entry per `effects.debuffResistance.X = makeEffect()` site in
+ *  `convert-powerset.cjs` (6628, 6772, 6891, 6907, 6926, 7012, 7031, 7046, 7067, 7102). */
+const DEBUFF_RES_KEY: Partial<Record<EffectType, string>> = {
+  Defense: 'defense',
+  Movement: 'movement',
+  Endurance: 'endurance',
+  Recovery: 'recovery',
+  Regeneration: 'regeneration',
+  ToHit: 'tohit',
+  Accuracy: 'accuracy',
+  RechargeTime: 'recharge',
+  Range: 'range',
+  Perception: 'perception',
+};
+
+/**
+ * The `effects.debuffResistance` by-type map, atom-native — resistance to having a stat
+ * debuffed, which is a different face from resisting damage. Every branch that writes it does
+ * so on `aspect === 'resistance'` and assigns `makeEffect()`, so this is a last-write-wins map
+ * keyed by the row's effect type.
+ *
+ * `Resistance` itself is deliberately absent from {@link DEBUFF_RES_KEY}: a `Res`-face damage
+ * row is damage resistance, which has its own slot. Keying on the attrib NAME rather than the
+ * face is the collapse this whole model exists to avoid.
+ */
+export function debuffResistanceValue(
+  power: AtomSource,
+): Record<string, { scale: number; table: string }> | undefined {
+  let out: Record<string, { scale: number; table: string }> | undefined;
+  for (const a of baseAtoms(power)) {
+    if (a.aspect !== 'Res') continue;
+    if (!a.modifierTable) continue;
+    const key = DEBUFF_RES_KEY[a.effectType];
+    if (!key) continue;
+    out ??= {};
+    out[key] = { scale: Math.abs(a.scale), table: a.modifierTable };
+  }
+  return out;
+}
+
+/**
+ * The `effects.mezResistance` by-type map, atom-native (`convert-powerset.cjs:6665` for the six
+ * mez types, `:7108`'s knockback arm for the KB/KU pair).
+ *
+ * Two admission rules, both the converter's. The mez types take the `resistance` face of a
+ * `Mez`/`MezResist` row. The knockback pair takes it only when the table is NOT `res_boolean`
+ * — a `Res_Boolean` KB row is PROTECTION (a mag you must exceed) and routes to the `knockback`
+ * slot instead, which is the distinction {@link kbProtectionValue} owns.
+ *
+ * Unlike `debuffResistance` this map ACCUMULATES: repeated rows on the same table sum, and a
+ * table change starts fresh, mirroring the converter's `+= Math.abs(scale)` branch.
+ */
+export function mezResistanceValue(
+  power: AtomSource,
+): Record<string, { scale: number; table: string }> | undefined {
+  let out: Record<string, { scale: number; table: string }> | undefined;
+  const add = (key: string, a: AtomicEffect) => {
+    out ??= {};
+    const cur = out[key];
+    if (cur && cur.table === a.modifierTable) cur.scale += Math.abs(a.scale);
+    else out[key] = { scale: Math.abs(a.scale), table: a.modifierTable! };
+  };
+  for (const a of baseAtoms(power)) {
+    if (a.aspect !== 'Res') continue;
+    if (!a.modifierTable) continue;
+    if (a.effectType !== 'Mez' && a.effectType !== 'MezResist') continue;
+    const sub = (a.subType || '').toLowerCase();
+    const mez = MEZ_SUBTYPE_TO_SLOT[sub];
+    if (mez) { add(mez, a); continue; }
+    if (sub === 'knockback' || sub === 'knockup') {
+      // The KB arm's foe branch drops the `resistance` face outright
+      // (`convert-powerset.cjs`: `if (aspect === 'resistance' || scale <= 0) continue`), so only
+      // a CASTER-directed row reaches this map. Without the gate a Controller's foe-facing
+      // knockback row reads as 10000 self KB resistance.
+      if (!atomLandsOnCaster(a)) continue;
+      if (a.modifierTable.toLowerCase().includes('res_boolean')) continue; // protection, not resistance
+      add(sub, a);
+    }
+  }
+  return out;
+}
+
+/**
+ * The top-level `effects.taunt` / `effects.placate` slot, atom-native — taunt/placate
+ * RESISTANCE (Leadership: Assault, World of Pain, Tactical Training: Assault).
+ *
+ * Mirrors `coh_math::appliers::taunt_placate::taunt_placate_value`, which has been the Rust
+ * engine's reader since ATOM12. The TS side went on reading the bag slot, so retiring the bag
+ * left `mezResistTaunt`/`mezResistPlacate` reading zero here while Rust kept reading the atom —
+ * a divergence nothing could see, because the one probe that grades the pair was itself
+ * selecting on the same dead slot.
+ *
+ * Taunt and Placate are Mez SUBTYPES, not effect types, which is why {@link mezResistanceValue}
+ * never covered them: its `MEZ_SUBTYPE_TO_SLOT` spells the six control types only.
+ *
+ * The fold is the converter's CONTROL fold (TAUNT-1): the power's own row beats a
+ * redirect-collected one — `ownerTargets` is the collection provenance, stamped exactly when a
+ * collector pulls a template out of another power's file — and within one provenance the LAST
+ * row wins. Without the provenance test a Tanker's inherent punchvoke row, collected through a
+ * redirect, always shadows the power's own.
+ *
+ * `aspect: 'Res'` rows are excluded: that face is the OTHER encoding of this stat, which routes
+ * through the `mezResistance` slot instead. The two are carried by disjoint power sets, so they
+ * sum rather than collide.
+ *
+ * No table gate here — the caller applies it. Only a `Res_Boolean` table is taunt/placate
+ * RESISTANCE; the taunt EFFECT rides `InherentTaunt`/`_Ones` tables and must drop, and that
+ * verdict belongs with the consumer that already owns the table lookup.
+ */
+export function tauntPlacateValue(
+  power: AtomSource,
+  sub: 'Taunt' | 'Placate',
+): { scale: number; table: string } | undefined {
+  const rows = baseAtomsOfType(power, 'Mez').filter(
+    (a) => a.subType === sub && a.aspect !== 'Res' && !!a.modifierTable,
+  );
+  if (!rows.length) return undefined;
+  const own = [...rows].reverse().find((a) => !a.ownerTargets?.length);
+  const atom = own ?? rows[rows.length - 1];
+  return { scale: Math.abs(atom.scale), table: atom.modifierTable! };
+}
+
+/**
+ * The `effects.elusivity` by-type map, atom-native (`convert-powerset.cjs:6657`).
+ * Elusivity is PvP-only defence that ignores the attacker's accuracy; the converter's branch
+ * has no aspect or sign gate, so this is a plain last-write-wins map keyed by damage/position
+ * type. `subType` carries the same vocabulary `ELUSIVITY_TYPES` maps to (Smashing … AoE, and
+ * `All` for the `elusivitybase` attrib), lowercased to match the bag's key spelling.
+ */
+export function elusivityValue(
+  power: AtomSource,
+): Record<string, { scale: number; table: string }> | undefined {
+  let out: Record<string, { scale: number; table: string }> | undefined;
+  for (const a of baseAtoms(power)) {
+    if (a.effectType !== 'Elusivity') continue;
+    if (!a.modifierTable || !a.subType) continue;
+    out ??= {};
+    out[a.subType.toLowerCase()] = { scale: Math.abs(a.scale), table: a.modifierTable };
+  }
+  return out;
+}
+
+/**
+ * The FLAT half of `effects.absorb` (`convert-powerset.cjs`'s `addOrAccumulate('absorb')` arm),
+ * atom-native — an absorb shield stated as `scale × table` HP.
+ *
+ * Two sibling arms are deliberately NOT reproduced. The `Maximum` + `Expression` arm is the
+ * MaxHP-FRACTION shield (Wild Bastion), whose magnitude resolves against the caster's final
+ * Max HP and therefore cannot be a `{scale, table}` at all; it ships as `{maxHPFraction}` and
+ * belongs to the later pass. The `strength` arm is a +Absorb STRENGTH buff, which routes to
+ * `specialBuff` — the same attrib name on a different face meaning a different thing, which is
+ * exactly the collapse the aspect axis exists to prevent.
+ */
+export function absorbValue(power: AtomSource): { scale: number; table: string; perTarget?: number } | undefined {
+  const mine = baseAtoms(power).filter(
+    (a) => a.effectType === 'Absorb'
+      && a.aspect !== 'Str'
+      && !(a.aspect === 'Max' && a.attribType === 'Expression')
+      && !!a.modifierTable,
+  );
+  if (!mine.length) return undefined;
+  // `foldResourceSum`, the same accumulate the converter's `addOrAccumulate` performs: two
+  // identical shield rows SUM (Chilling Embrace's paired 0.15 is a 0.3 shield). Routing this
+  // through `perTargetValueOf` instead halves ten powers, because its `sumDistinctAbs` treats
+  // the repeat as one value rather than two applications.
+  return foldResourceSum(mine);
+}
+
+// ============================================================================
+// Stacking
+// ============================================================================
+
+/**
+ * Does this atom self-stack, and to what depth? The TS twin of `coh_math::stacking::self_stacks`
+ * — the converter's `detectSelfStacking` test read off the atom instead of the template it was
+ * derived from. The converter qualifies on `target === 'Self'`, `stack ∈ {Stack, RefreshToCount}`
+ * and `stack_limit > 1`; all three ride the wire as `toWho`, `stacking` and `stackCap`, which is
+ * what retires the bag's `stacksLinear` / `maxStacks` / `stackCaps`.
+ *
+ * A per-target atom is on the AoE path and is excluded here, so the family agrees with the two
+ * independent rules that already say so: the converter drops those keys from `stacksLinear`
+ * through its `excludeKeys` argument, and `adjustForStacking` short-circuits a per-target value
+ * before the stack multiply can reach it.
+ *
+ * The recipient test is {@link landsOnCaster}, wider than the converter's literal
+ * `target === 'Self'` — it admits `SelfAndPets` and `TargetAndPets`, the reading TARGETS-2
+ * settled as canonical.
+ */
+function selfStacks(a: AtomicEffect): boolean {
+  return !(a.perTarget !== undefined && a.perTarget !== 0)
+    && landsOnCaster(a)
+    && (a.stacking === 'Stack' || a.stacking === 'RefreshToCount')
+    && a.stackCap !== undefined
+    && a.stackCap > 1;
+}
+
+/** `Enhancement` sub type → its `specialBuff` key. `All` is the aggregate defense key. */
+const SPECIAL_BUFF_ENHANCEMENT_KEY: Record<string, string> = {
+  Melee: 'melee', Ranged: 'ranged', AoE: 'aoe',
+  Smashing: 'smashing', Lethal: 'lethal', Fire: 'fire', Cold: 'cold',
+  Energy: 'energy', Negative: 'negative', Psionic: 'psionic', Toxic: 'toxic',
+  All: 'defense',
+  Held: 'hold', Stunned: 'stun', Sleep: 'sleep', Confused: 'confuse',
+  Terrorized: 'fear', Immobilized: 'immobilize',
+};
+
+/** Effect type → its `specialBuff` key, for the types that name the aspect themselves. */
+const SPECIAL_BUFF_TYPE_KEY: Partial<Record<EffectType, string>> = {
+  Heal: 'heal', Absorb: 'absorb', Endurance: 'endurance', Movement: 'movement', ToHit: 'tohit',
+};
+
+/**
+ * The `specialBuff` key a +Strength atom lands on, or `undefined` for an `aspect: Str` atom the
+ * bag would not record. Mirrors `coh_math::strength::special_key`: the effect type names the
+ * aspect, and for the enumerated `Enhancement` atoms the sub type names the defense
+ * position/type or the mez kind.
+ *
+ * `DamageBuff`, `Accuracy` and `RechargeTime` are absent on purpose — the converter's
+ * `specialBuff` block skips those three strength attribs, so they fall through to their own buff
+ * key. Build Up's `DamageBuff|Str` is its +damage buff; Power Boost's `Absorb|Str` is a strength
+ * meta. A flat "admit Str" or "exclude Str" rule gets one of the two wrong.
+ */
+export function specialBuffKey(a: AtomicEffect): string | undefined {
+  if (a.effectType === 'Enhancement') return SPECIAL_BUFF_ENHANCEMENT_KEY[a.subType ?? ''];
+  return SPECIAL_BUFF_TYPE_KEY[a.effectType];
+}
+
+/** Does this atom reach a `specialBuff` key at all? The membership half of {@link specialBuffKey}. */
+function isSpecialBuffAtom(a: AtomicEffect): boolean {
+  return a.aspect === 'Str' && specialBuffKey(a) !== undefined;
+}
+
+/**
+ * Is this atom one of the ten debuff-resistance routes? The membership half of
+ * {@link DEBUFF_RES_KEY}, kept separate so the three {@link StackFamily} variants partition the
+ * atom stream rather than making three overlapping claims on it.
+ *
+ * `aspect: Res` alone is NOT the test, which is the whole reason this exists: `Resistance` is
+ * absent from the map because a `Resistance|Res` atom is ordinary damage resistance, the buff
+ * face of its own type.
+ */
+function isDebuffResistanceAtom(a: AtomicEffect): boolean {
+  return a.aspect === 'Res' && DEBUFF_RES_KEY[a.effectType] !== undefined;
+}
+
+/**
+ * Which enhancement half of a buff face a stacking question is about — the discriminator behind
+ * the bag's twinned slot names (`tohitBuff` vs `tohitBuffUnenhanced`). `'either'` is for the
+ * families the bag never split, and it is the honest spelling for them: asking for a half that
+ * does not exist would answer `undefined` for every power.
+ */
+export type StackHalf = 'enhanceable' | 'unenhanced' | 'either';
+
+/**
+ * Which of a power's atoms a stacking question is about — the TS twin of
+ * `coh_math::stacking::StackFamily`, and the atom-native replacement for passing a bag SLOT KEY
+ * to `effects.stacksLinear` / `effects.maxStacks` / `effects.stackCaps`.
+ *
+ * The key list is gone rather than ported. `stacksLinear` membership was produced by the
+ * converter's `classifyTemplateForStacking`, a second atom→slot-key projection running parallel
+ * to the main one, and reproducing THAT is what a third copy would have meant. An atom carries
+ * its own cap, so the question "does this family stack, and how far" is answered by the family's
+ * own atoms, and {@link stackCapOf} returning a number IS the membership answer.
+ *
+ * The variants are the appliers' own partition, measured rather than tidied. Two discriminators
+ * the bag's key names encode have to survive: Build Up's +damage buff is an `aspect: Str` atom
+ * (so excluding `Str` from a buff face silently unstacks it), and the enhanceable and
+ * IgnoreStrength halves of ToHit / Regeneration / Recovery are separate slots differing on no
+ * field but `ignoreStrength`.
+ *
+ * The third discriminator is the sub type, carried by `buff` as an optional narrowing (STACK-4).
+ * A whole-family cap is the MAX over every admitted atom, so one cap covered a family whose axes
+ * disagreed — Thunderspy's Time Wall states its Run axis `Stack` (cap 2) and its Fly / Jump axes
+ * `Replace`. Only the consumers that ask a per-sub-type question pass one: the movement axes, the
+ * defense positions and the resistance types each own a row.
+ */
+export type StackFamily =
+  | { readonly kind: 'buff'; readonly effectType: EffectType; readonly half: StackHalf; readonly subType?: string }
+  | { readonly kind: 'debuffResistance' }
+  | { readonly kind: 'specialBuff' };
+
+/** The buff face of one effect type, optionally narrowed to one half and one sub type. */
+export function buffStack(effectType: EffectType, half: StackHalf = 'either', subType?: string): StackFamily {
+  return { kind: 'buff', effectType, half, subType };
+}
+
+/** The bag's `debuffResistance` — one cap across a power's defense-DDR and its recharge-DDR alike. */
+export const DEBUFF_RESISTANCE_STACK: StackFamily = { kind: 'debuffResistance' };
+
+/** The bag's `specialBuff` — the +Strength self-buffs that reach a key. */
+export const SPECIAL_BUFF_STACK: StackFamily = { kind: 'specialBuff' };
+
+/**
+ * The sub type a movement axis KEY names. The call sites hold the bag's axis spelling
+ * (`runSpeed`, `flySpeed`, …) and the atoms hold the wire sub type, so the narrowing needs the
+ * translation. `fly` is the display's flattened rename of the same axis.
+ */
+export function movementAxisSubType(axis: string): string | undefined {
+  switch (axis) {
+    case 'runSpeed': return 'Run';
+    case 'fly': case 'flySpeed': return 'Fly';
+    case 'jumpSpeed': return 'Jump';
+    case 'jumpHeight': return 'JumpHeight';
+    default: return undefined;
+  }
+}
+
+/**
+ * Does this atom answer the narrowed question? An atom naming the sub type itself does, and so
+ * does an `All` atom — the export's own spelling of "every one of them". Homecoming states
+ * Personal Force Field as eleven typed defense rows where the two Parse6 forks state the
+ * identical value once as `Defense/All`, so an `All` atom IS the typed atom of each position it
+ * covers. An atom naming NO sub type answers only the whole-family question; it owns no row.
+ *
+ * Compared case-insensitively because the per-type call sites hold the bag's lowercase key
+ * (`melee`, `smashing`) while the atom holds the wire spelling — the same fold
+ * `SubType::from_wire_lower` performs on the Rust side.
+ */
+function admitsSubType(a: AtomicEffect, subType: string): boolean {
+  if (a.subType === undefined) return false;
+  return a.subType.toLowerCase() === subType.toLowerCase() || a.subType === 'All';
+}
+
+/** Is this atom one of the ones `family` is asking about? Twin of `StackFamily::admits`. */
+function familyAdmits(family: StackFamily, a: AtomicEffect): boolean {
+  switch (family.kind) {
+    case 'debuffResistance':
+      return isDebuffResistanceAtom(a);
+    case 'specialBuff':
+      return isSpecialBuffAtom(a);
+    case 'buff':
+      return a.effectType === family.effectType
+        // The buff face is the leftovers, so the three variants partition the stream by
+        // construction instead of by three filters kept consistent by hand.
+        && !isDebuffResistanceAtom(a)
+        && !isSpecialBuffAtom(a)
+        // A Defiance rider is a `DamageBuff` atom the damage applier rejects — the
+        // scaling-with-health mechanic, not a buff the power confers — so it must not decide
+        // whether that power's +damage stacks either. Every plain attack carries one.
+        && !isDefianceAtom(a)
+        && (family.subType === undefined || admitsSubType(a, family.subType))
+        && (family.half === 'either'
+          || (family.half === 'enhanceable' ? a.ignoreStrength !== true : a.ignoreStrength === true));
+  }
+}
+
+/**
+ * The stack depth this family reaches on `power`, or `undefined` when nothing in it self-stacks
+ * — the same answer `stacksLinear.includes(key)` used to give, sourced from the atoms instead of
+ * from a list the converter wrote, and carrying the depth `stackCaps[key] ?? maxStacks` used to
+ * reconstruct from two slots.
+ *
+ * MAX rather than sum or first: two atoms of one family disagreeing on their cap is the power
+ * stacking to the deeper of them. A sub type with no atom naming it answers `undefined`, which is
+ * the row not stacking — not a cap of zero.
+ *
+ * Reads {@link atomsOf} rather than {@link baseAtoms}, matching `StackFamily::cap`: a gated atom
+ * still states the depth its family reaches.
+ */
+export function stackCapOf(power: AtomSource, family: StackFamily): number | undefined {
+  let cap: number | undefined;
+  for (const a of atomsOf(power)) {
+    if (!familyAdmits(family, a) || !selfStacks(a)) continue;
+    const own = a.stackCap;
+    if (own === undefined) continue;
+    if (cap === undefined || own > cap) cap = own;
+  }
+  return cap;
+}

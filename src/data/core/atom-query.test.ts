@@ -16,6 +16,7 @@ import { encodeAtom, type AtomicEffect } from './atomic-effect';
 import {
   atomsOf, atomsOfType, baseAtoms, gatedAtoms, baseAtomsOfType, byType, bySubType,
   selfDirected, targetDirected, enhanceableVsNot, resistibleTwins, durationBuckets,
+  stackCapOf, buffStack, movementAxisSubType, DEBUFF_RESISTANCE_STACK, SPECIAL_BUFF_STACK,
 } from './atom-query';
 
 /** A complete AtomicEffect with sane defaults; override only what a test means. */
@@ -224,5 +225,111 @@ describe('durationBuckets — the duration axis', () => {
     const fwd = durationBuckets([mk(10), mk(20)]).map((b) => b.duration);
     const rev = durationBuckets([mk(20), mk(10)]).map((b) => b.duration);
     expect(fwd).toEqual(rev);
+  });
+});
+
+describe('stackCapOf', () => {
+  /** A self row that stacks to `cap`; override whatever the case is about. */
+  const stacker = (over: Partial<AtomicEffect> = {}, cap = 2): AtomicEffect =>
+    atom({ toWho: 'Self', aspect: 'Cur', stacking: 'Stack', stackCap: cap, ...over });
+
+  it('answers the membership question and the depth at once', () => {
+    const p = powerWith([stacker({ effectType: 'DamageBuff', aspect: 'Str', subType: undefined })]);
+    expect(stackCapOf(p, buffStack('DamageBuff'))).toBe(2);
+    // a family with no self-stacking atom is `undefined` — not stacking, not a cap of zero
+    expect(stackCapOf(p, buffStack('ToHit'))).toBeUndefined();
+  });
+
+  it('takes the MAX across a family whose atoms disagree', () => {
+    const p = powerWith([
+      stacker({ effectType: 'ToHit', subType: undefined }, 2),
+      stacker({ effectType: 'ToHit', subType: undefined }, 3),
+    ]);
+    expect(stackCapOf(p, buffStack('ToHit'))).toBe(3);
+  });
+
+  it('splits the enhanceable half from its IgnoreStrength twin', () => {
+    // The two differ on no field but `ignoreStrength`, which is exactly what the bag's
+    // `regenBuff` / `regenBuffUnenhanced` slot pair encoded.
+    const p = powerWith([
+      stacker({ effectType: 'Regeneration', subType: undefined }, 2),
+      stacker({ effectType: 'Regeneration', subType: undefined, ignoreStrength: true }, 4),
+    ]);
+    expect(stackCapOf(p, buffStack('Regeneration', 'enhanceable'))).toBe(2);
+    expect(stackCapOf(p, buffStack('Regeneration', 'unenhanced'))).toBe(4);
+    expect(stackCapOf(p, buffStack('Regeneration', 'either'))).toBe(4);
+  });
+
+  it('narrows to one movement axis (STACK-4)', () => {
+    // Time Wall's shape: the Run axis states `Stack`, the Fly axis `Replace`. A whole-family
+    // cap answered all three axes with 2 and multiplied the ones that never double.
+    const p = powerWith([
+      stacker({ effectType: 'Movement', subType: 'Run' }, 2),
+      atom({ effectType: 'Movement', subType: 'Fly', toWho: 'Self', aspect: 'Cur', stacking: 'Replace' }),
+    ]);
+    expect(stackCapOf(p, buffStack('Movement', 'either', movementAxisSubType('runSpeed')))).toBe(2);
+    expect(stackCapOf(p, buffStack('Movement', 'either', movementAxisSubType('flySpeed')))).toBeUndefined();
+    expect(stackCapOf(p, buffStack('Movement', 'either'))).toBe(2);
+  });
+
+  it('reads an `All` atom as the typed atom of every position it covers', () => {
+    // The two Parse6 forks state one `Defense/All` row where Homecoming states eleven typed
+    // ones; the narrowed question has to get the same answer on both.
+    const p = powerWith([stacker({ effectType: 'Defense', subType: 'All', aspect: 'Cur' })]);
+    expect(stackCapOf(p, buffStack('Defense', 'either', 'melee'))).toBe(2);
+    expect(stackCapOf(p, buffStack('Defense', 'either', 'smashing'))).toBe(2);
+  });
+
+  it('gives an atom naming NO sub type only the whole-family question', () => {
+    // It owns no row, so a narrowed ask must not borrow it. Admitting it would answer every
+    // defense position with a cap the export never stated for any of them.
+    const p = powerWith([stacker({ effectType: 'Defense', subType: undefined, aspect: 'Cur' })]);
+    expect(stackCapOf(p, buffStack('Defense', 'either'))).toBe(2);
+    expect(stackCapOf(p, buffStack('Defense', 'either', 'melee'))).toBeUndefined();
+  });
+
+  it('keeps the three variants a partition — Str and Res are not one rule', () => {
+    // Both spellings of a flat rule were measured wrong before the carve-outs stood:
+    // Build Up's `DamageBuff|Str` is its +damage BUFF, while Power Boost's `Absorb|Str` is a
+    // specialBuff strength meta; and a `Resistance|Res` atom is ordinary damage resistance
+    // where a `ToHit|Res` atom is debuff-resistance.
+    const p = powerWith([
+      stacker({ effectType: 'DamageBuff', aspect: 'Str', subType: undefined }, 2),
+      stacker({ effectType: 'Absorb', aspect: 'Str', subType: undefined }, 3),
+      stacker({ effectType: 'Resistance', aspect: 'Res', subType: 'Fire' }, 4),
+      stacker({ effectType: 'ToHit', aspect: 'Res', subType: undefined }, 5),
+    ]);
+    expect(stackCapOf(p, buffStack('DamageBuff'))).toBe(2);
+    expect(stackCapOf(p, SPECIAL_BUFF_STACK)).toBe(3);
+    expect(stackCapOf(p, buffStack('Resistance', 'either', 'fire'))).toBe(4);
+    expect(stackCapOf(p, DEBUFF_RESISTANCE_STACK)).toBe(5);
+    // and the buff face of ToHit is NOT the debuff-resistance row that shares its type
+    expect(stackCapOf(p, buffStack('ToHit'))).toBeUndefined();
+  });
+
+  it('declines a per-target atom — that value is on the AoE path', () => {
+    const p = powerWith([stacker({ effectType: 'Defense', subType: 'Melee', perTarget: 0.05 })]);
+    expect(stackCapOf(p, buffStack('Defense', 'either', 'melee'))).toBeUndefined();
+  });
+
+  it('declines a foe-facing row, a `Replace` row, and a cap of 1', () => {
+    expect(stackCapOf(powerWith([stacker({ effectType: 'ToHit', subType: undefined, toWho: 'Target' })]),
+      buffStack('ToHit'))).toBeUndefined();
+    expect(stackCapOf(powerWith([stacker({ effectType: 'ToHit', subType: undefined, stacking: 'Replace' })]),
+      buffStack('ToHit'))).toBeUndefined();
+    expect(stackCapOf(powerWith([stacker({ effectType: 'ToHit', subType: undefined }, 1)]),
+      buffStack('ToHit'))).toBeUndefined();
+  });
+
+  it('declines a Defiance rider — it decides no power\u2019s +damage stacks', () => {
+    const p = powerWith([
+      stacker({ effectType: 'DamageBuff', aspect: 'Str', subType: undefined, tags: 'Defiance' }),
+    ]);
+    expect(stackCapOf(p, buffStack('DamageBuff'))).toBeUndefined();
+  });
+
+  it('counts a gated atom — it still states the depth its family reaches', () => {
+    const p = powerWith([stacker({ effectType: 'ToHit', subType: undefined, gated: true })]);
+    expect(stackCapOf(p, buffStack('ToHit'))).toBe(2);
   });
 });
