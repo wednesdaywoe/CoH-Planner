@@ -53,9 +53,12 @@ export type PvMode = 'Any' | 'PvE' | 'PvP';
  */
 export type Aspect = 'Res' | 'Max' | 'Abs' | 'Str' | 'Cur' | 'Unspecified';
 
-/** eAttribType — how the scale is interpreted. ('Constant' is a bin-export-only
- *  application flavor folded onto Magnitude here.) */
-export type AttribType = 'Magnitude' | 'Duration' | 'Expression';
+/** eAttribType — how the scale is interpreted, one member per the parser's four
+ *  `ATTRIB_MOD_TYPE` values (`_enums.py`, verified against the Ghidra keyword table).
+ *  'Constant' used to be folded onto 'Magnitude' (ATTRTYPE-1), which laundered a parse
+ *  fact into plausible data — the STACK-3 shape — even though no consumer distinguished
+ *  the two; the fold is retired here so the type is what the game stores. */
+export type AttribType = 'Magnitude' | 'Duration' | 'Constant' | 'Expression';
 
 /**
  * eToWho — who the effect lands on. Replaces the ad-hoc `selfPenalty` flag: a foe-debuff
@@ -1123,9 +1126,21 @@ const ASPECT_MAP: Record<string, Aspect> = {
 };
 
 export function mapAttribType(t?: string): AttribType {
-  if (t === 'Duration') return 'Duration';
-  if (t === 'Expression') return 'Expression';
-  return 'Magnitude'; // Magnitude, Constant, undefined
+  const known: Record<string, AttribType> = {
+    Duration: 'Duration',
+    Magnitude: 'Magnitude',
+    Constant: 'Constant',
+    Expression: 'Expression',
+  };
+  // Absence is the parse table's own default, not a guess: the AttribMod table declares
+  // the field `TOK_INT(AttribModTemplate, eType, kModType_Magnitude)`
+  // (`Common/entity/attribmod.h:678`), so a def with no `Type` line compiles to
+  // Magnitude. ATTRTYPE-1 could only measure this (Detention Field's mez row reads
+  // Magnitude); the parse table states it.
+  if (!t) return 'Magnitude';
+  const mapped = known[t];
+  if (!mapped) throw new Error(`unrecognized attrib type ${JSON.stringify(t)}`);
+  return mapped;
 }
 /**
  * Template `target` → {@link AtomicEffect.toWho}, one member of the game's `ModTarget`

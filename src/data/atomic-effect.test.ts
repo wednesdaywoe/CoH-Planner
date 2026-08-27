@@ -8,6 +8,7 @@ import {
   identityKey,
   structuralKey,
   parseDuration,
+  mapAttribType,
   type AtomicEffect,
 } from './core/atomic-effect';
 
@@ -245,5 +246,38 @@ describe('coverage — every HC attrib has a bridge rule (post-patch regression 
     );
     // the confidently-mappable core should dominate
     expect(mappedPct).toBeGreaterThan(80);
+  });
+});
+
+/**
+ * ATTRTYPE-1 — `mapAttribType` maps all four of the parser's `ATTRIB_MOD_TYPE`
+ * values and throws on an unrecognized spelling. It used to fold `Constant` onto
+ * `Magnitude` (`return 'Magnitude'; // Magnitude, Constant, undefined`) — the
+ * STACK-3 shape, a soft default turning a parse fact into plausible data. This
+ * grades the fix directly: a regression to the fall-through fails the `Constant`
+ * assertion, and a new/unlisted type value fails the throw (Rule 1: show the
+ * fault rather than laundering it). Absence stays folded to `Magnitude`, matching
+ * the parser default the def compiler authors (Detention Field's mez row reads
+ * `Magnitude`).
+ */
+describe('mapAttribType — four-member vocabulary, throw on unknown (ATTRTYPE-1)', () => {
+  it('maps each of the four parser ATTRIB_MOD_TYPE values', () => {
+    expect(mapAttribType('Duration')).toBe('Duration');
+    expect(mapAttribType('Magnitude')).toBe('Magnitude');
+    expect(mapAttribType('Constant')).toBe('Constant');
+    expect(mapAttribType('Expression')).toBe('Expression');
+  });
+
+  it('keeps Constant off Magnitude — the ATTRTYPE-1 fold is retired', () => {
+    expect(mapAttribType('Constant')).not.toBe('Magnitude');
+  });
+
+  it('throws on a present-but-unrecognized spelling (the STACK-3 soft-default guard)', () => {
+    expect(() => mapAttribType('Gibberish')).toThrow();
+  });
+
+  it('folds an absent type to Magnitude, matching the parser default', () => {
+    expect(mapAttribType(undefined)).toBe('Magnitude');
+    expect(mapAttribType('')).toBe('Magnitude');
   });
 });
