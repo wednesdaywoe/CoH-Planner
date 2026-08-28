@@ -17,19 +17,137 @@ not. Full narrative for every entry lives in [docs/gaps/](gaps/); the audit tool
 each leg can see is in [gaps/audit-legs.md](gaps/audit-legs.md), the method notes in
 [gaps/method-notes.md](gaps/method-notes.md).
 
+## How to read a row
+
+A **closed** row is one line: the id, and what the defect was. That is all it will ever be here —
+the story is in its [gaps/](gaps/) file.
+
+An **open** row carries three parts, because an open row has to be actionable by a session that
+has read nothing else:
+
+| part | what it holds |
+|---|---|
+| the line | the defect, its measured population, and the fork(s) it is on |
+| **Goal** | the state that ends the item, in one sentence |
+| **Done when** | the conditions that make it checkable — what must be censused, what must read what, what guard must stand |
+| **Check** | a command that confirms or breaks a door-closing claim in the line above |
+
+`Done when` is an exit condition in the sense CLAUDE.md's deviation door means it: something a
+later session can run or read to decide, not a feeling that the work looks finished. Where the
+answer to a `Done when` is "measure and adjudicate", the *measurement* is the deliverable and a
+written adjudication closes the row.
+
+**A claim that closes a door needs a key.** Sort a row's claims by what happens if they are wrong.
+
+*"Conduit of Pain reads +100%"*, *"the other 314 agree"* — these describe current state. If they
+are wrong the work surfaces it anyway, so no key.
+
+*"A filter is not the fix"*, *"1 power, 2 partitions"* — these stop the next session looking. If
+they rot, nothing surfaces them, because nobody goes there. These get a `Check`, and it says what
+result BREAKS the claim, not just what confirms it. One turn to run; re-deriving it from first
+principles is what the row exists to save.
+
+This is the honest failure mode of a tracker: every claim is true when written, and the
+door-closing ones are exactly the ones that rot silently. TSPY-11's key was cut on 2026-08-28 and
+broke its own claim on first run — see the row.
+
+Most keys are a `grep` written into the row. Where a claim needs more than a text search, the key
+lives in [`scripts/keys/`](../scripts/keys/) — canonical-only, like the [gaps/](gaps/) narratives,
+because it reads data trees the beta does not carry.
+
 ## Current frontier
 
-**1 open, of 229 entries.** When an entry is open it is listed here with what it's waiting on.
-Closed entries keep their narrative in [docs/gaps/](gaps/); this section stays a pointer list and
-doesn't accumulate closure prose.
+**1 open, of 240 entries.** Every other entry is fixed with a guard or adjudicated in writing
+with its census.
 
-- **VOCAB-1** ([stat-routing](gaps/stat-routing.md)) — `affects_foe`'s vocabulary omits
-  `DeadOrAliveAny`, the one recipient word the corpus carries that is neither foe-listed nor
-  unambiguously friendly, so Defibrillate's `Expression`-spelled foe sleep reads as protection.
-  Waiting on an oracle to say whether that word is foe-capable.
+- **TSPY-11** — the recharge fold double-counts a buff a power gives to both an ally and the
+  caster. Stat routing, below. Blocked with the absorb-fold residual on one shared census.
 
-Closures are the `[x]` rows in the sections below; each entry's narrative (severity, census,
-guards and their mutations) lives in its [gaps/](gaps/) file, not here.
+**Carried residuals — named work inside closed entries.** Four items were scoped out of a closure
+and recorded there rather than reopened. They are not `[ ]` rows: their hosts *are* closed with
+guards, and nothing leaves this file as less.
+
+They are listed in the next section so a session sees them without reading four narratives first.
+
+By the CLAUDE.md mandate, nothing in either list outranks the others: TSPY-11 and all four
+residuals are stat-routing or resolution-path items downstream of a faithful parse. **The parser
+frontier is clear**, so feature work in [REBUILD-PROGRESS](REBUILD-PROGRESS.md) is not being
+blocked by this file today.
+
+---
+
+## Carried residuals
+
+Open work that lives inside a closed entry. Each names its host; the host's narrative is where the
+measurement went, and where a closure for the residual belongs too.
+
+- **Absorb fold + stack pre-scan** — host **ABSORB-4** ([stat-routing](gaps/stat-routing.md)).
+  `absorbValue` reproduces the shield's value but not the converter's absorb-stack pre-scan, which
+  decides whether repeated identical rows SUM (Reaction Time's paired 0.075 → 0.15) or count once
+  (Particle Shielding's seven → 0.075); guessing is wrong on 10–15 powers either way
+  (`foldResourceSum` wrong on 15, `perTargetValueOf` wrong on 10). The MaxHP-FRACTION half has no
+  atom source at all and belongs to M4.
+  **Goal** — one adjudicated fold rule per absorb half, stated with the population it moves, so no
+  absorb slot is reading a value nobody chose.
+  **Done when** — a corpus-wide census grades every candidate fold against the pre-strip bag on all
+  four forks; the chosen rule is written into the ABSORB-4 narrative with its divergence list; a
+  standing guard pins the fold on that population; and the MaxHP-fraction half is either sourced
+  from an atom or closed unmodelled with the absence pinned.
+  **Check** — none can be cut, and that is the finding. "Wrong on 10–15 either way" was measured
+  against the `effects` bag, retired 2026-08-28, so the comparison is not re-runnable as stated:
+  both folds survive (`foldResourceSum` at `src/data/core/atom-query.ts:1186`, `perTargetValueOf`
+  at `:341`) but the oracle they were graded against does not. Treat the figures as provenance,
+  not as measurement, and re-measure against the power's own atoms before quoting them.
+  **Note** — same census as TSPY-11. Do them together or the second re-derives the first.
+
+- **Redirect-collected mez face** — host **VOCAB-1** ([stat-routing](gaps/stat-routing.md)).
+  Defibrillate's sleep is authored `Foe` on its `Defibrillate_Debuff` child, but the face label
+  takes the PARENT's `affects_foe()` — the `DeadOrAliveAny` manifest word — so a foe sleep reads as
+  self protection. One row per fork. Left out of the VOCAB-1 closure on purpose: fixing it is a
+  resolution-path change, not a vocabulary change, and merging the two would have hidden that.
+  **Goal** — a redirect-collected effect is classified by the authored target of the power that
+  states it, not by the recipient word of the power that reached it.
+  **Done when** — the resolution path carries the child's `targetsAffected` to the face label; a
+  census names every effect whose parent and child words disagree on all four forks (the rule
+  cannot be graded on Defibrillate alone); `mez_face_routing`'s `vocab1` pin is re-read against the
+  new population rather than re-pinned on sight; and the `FOE` list itself is untouched, so the
+  VOCAB-1 adjudication still stands.
+  **Check** — `grep -rl DeadOrAliveAny contract/*/powersets` names the carriers, and
+  `Power::affects_foe` in `crates/coh_data` holds the `FOE` list the claim turns on. If the list
+  has gained `DeadOrAliveAny`, this residual is already closed by something else and the VOCAB-1
+  adjudication was reversed without its narrative moving.
+
+- **Pseudo-pet shell roster is name-curated** — host **SHELL-1** ([pets-entities](gaps/pets-entities.md)).
+  `PSEUDOPET_SHELL_ENTITIES` (`scripts/convert-powerset.cjs:2721`) is a hand-maintained set of game
+  proper nouns deciding which summons are shells. The binary carries an `isPseudoPet` flag that
+  should decide it instead — a Rule 0 shape, live but not yet a declared deviation.
+  **Goal** — membership derives from the binary flag, and no game proper noun decides whether a
+  summon is a shell.
+  **Done when** — the curated set is A/B'd against the flag on all four forks and every
+  disagreement is adjudicated in writing (not deleted); the set is retired; and a guard grades the
+  derived roster so a fork whose flag population moves reds instead of drifting.
+  **Check** — `grep -rl isPseudoPet contract/` — the flag DOES reach the wire (confirmed
+  2026-08-28), so this item is blocked on the A/B, not on the parser. An empty result would mean
+  the opposite and would make this a parser gap, which by the mandate would outrank everything
+  above it.
+
+- **Kheldian shapeshift suppression is unmodelled** — host **COND-11** ([conditionals-gates](gaps/conditionals-gates.md)).
+  276 tagged groups across 17 Rebirth powers: entering Nova/Dwarf form fires a
+  `ShapeshiftDeactive −1.0` / `ShapeshiftActive +1.0` `Global_Chance_Mod` pair that suppresses the
+  pool toggles and Kheldian shields. Nothing is *granted* through the channel — no `ShapeshiftActive`
+  copy carries a non-zero magnitude anywhere in the corpus — so no wrong number ships today; the
+  build simply keeps counting toggles the game has switched off. `_variant-modes.cjs` correctly
+  declines it (each shapeshift publishes 3–4 `Set_Mode` rows, not the one the selector rule wants),
+  so it needs its own collector.
+  **Goal** — a shapeshifted build's totals drop the toggles the form suppresses, through a
+  collector that reads the tag pair rather than the powerset name.
+  **Done when** — the suppression pair is collected by shape, with no proper noun in the branch; a
+  census states the affected population per fork; a Kheldian build in Nova form counts zero from
+  the 17 carriers; and a guard pins both the population and the zero-grant premise.
+  **Check** — `python3 scripts/keys/shapeshift-suppression.py`. Exit 0 today: 16 active / 260
+  deactive groups over 17 powers, every `ShapeshiftActive` group at chance 0. Exit 1 means the
+  channel has started GRANTING something and this stops being a dormant residual — it becomes a
+  live wrong number and outranks its position in this list.
 
 ---
 
@@ -87,7 +205,7 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
 
 ## Parser + binary fidelity
 
-[Full detail](gaps/parser-fidelity.md) — 45 of 45 closed
+[Full detail](gaps/parser-fidelity.md) — 46 of 46 closed
 
 - [x] **ATTRTYPE-1** — `mapAttribType` maps three of the parser's four `ATTRIB_MOD_TYPE` values
   and falls through, so `Constant` reaches the wire as `Magnitude` and 4,746 Homecoming templates
@@ -103,6 +221,10 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
   magnitude whose sign never reaches the wire, so real protection read as applied control and was
   stripped: 199 keys over 51 powers, Inner Will (Blaster/Martial Manipulation) losing all six.
   Carve-out reads all three spellings, `window_slots.rs` mirror moved in step; 531 keys → 332
+- [x] **TSPY-10** — the Thunderspy target-trap guards deleted `rechargeBuff` and the applied-mez
+  slots from the bag but stamped no atom, so the atom-native readers re-credited them (+120%
+  phantom recharge on one Blaster secondary); the effects-bag strip then silenced both guards
+  outright. Guarded by `caster_excluded_trapped_slots.rs`, mutation-scored.
 - [x] **TSPY-9** — not a parser gap, closed as unresolvable design intent: Thunderspy's binary
   DOES carry the per-template target (read via `ATTRIB_MOD_TARGET`, byte-identical across all four
   forks), so the guard's "schema drops the target" premise was stale; the authored-defs oracle
@@ -281,7 +403,68 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
 
 ## Stat routing + caps
 
-[Full detail](gaps/stat-routing.md) — 55 of 56 closed
+[Full detail](gaps/stat-routing.md) — 65 of 66 closed
+
+- [ ] **TSPY-11** — `recharge_buff_value` folds `Σ|scale|` with no recipient test, so a power
+  carrying both the ally copy and the caster's copy of one buff double-counts (Conduit of Pain
+  +100% for +50%; Thunderspy only — the other three forks carry the `Self` row alone). A
+  `reaches_caster` filter looks like the fix and mostly is not: it zeroes seven real ally buffs
+  whose rows are `Target`-only. So the fix is a fold rule, not a filter.
+  **Goal** — one fold rule for the family, chosen by census rather than by the one power that
+  exposed it, reading Conduit of Pain at +50% without moving the powers the fold already agrees
+  with.
+  **Done when** — every candidate fold (`Σ|scale|`, `sum_distinct_abs`, `perTargetValueOf`) is
+  graded corpus-wide on all four forks with its divergence list written down; the chosen rule is
+  stated in [stat-routing](gaps/stat-routing.md) with the population it moves; Conduit of Pain
+  reads +50% on both Thunderspy partitions; the agreeing population is byte-identical; and a
+  standing guard pins the fold against that population, not against Conduit of Pain.
+  **Check** — `python3 scripts/keys/tspy11-filter-cost.py`. Exit 1 names any power the filter would
+  NOT zero. It already exits 1: Speed Boost on Thunderspy survives (`targetsAffected` names Self,
+  its row is ungated, so `reaches_caster` keeps it) and Time Bomb carries no recharge-buff row on
+  any fork. Re-measure the cost of a filter before quoting it.
+  **Blocked with** — the absorb fold residual above wants the same census. One census, both rules.
+
+- [x] **STACK-7** — the oracle read `stacksLinear`/`maxStacks`/`stackCaps` off the retired bag, so
+  `adjustForStacking` multiplied by 1 where the engine stacks atom-natively and multiplies by 2
+  (Build Up at 3 targets: damage 80 vs 160, four forks); the list of 27 bag keys is retired rather
+  than re-derived, every call site names its own `StackFamily` over the power's own atoms, and the
+  held-back probe now grades the multiply and the cap on all four forks at a clean 119 builds
+
+- [x] **ENDSTAT-1** — closed 2026-08-28: `collectAllPowers`'s `enrich` projected `effects` and
+  `atoms` from the definition but never `stats`, so `applyToggleEndCosts`'s documented
+  `stats.endurance / activatePeriod` fallback was unreachable and every toggle's cost came from the
+  bag alone; all 75/70/71 epic toggles are bagless post-strip, so each drained zero (Scorpion Shield
+  0.325 end/s → 0) while still-bagged pool toggles masked it. `stats` now rides the projection;
+  latent-not-live in the beta, whose epic bag survives.
+- [x] **STRTEST-1** — closed 2026-08-28: six `strength-buffs.test.ts` guards asserted on
+  `power.effects` of real dataset powers, so the strip left them erroring on `undefined` rather than
+  failing — Power Boost's purity and end cost, three mez PvE-table cases, Build Up's damage table.
+  Re-pointed at atom readers; the mez trio now pins the gated PvP row that outranks the winning PvE
+  row on magnitude, because `not.toMatch(/pvp/i)` alone is vacuous once `baseAtoms` drops it.
+- [x] **PROBE-1** — closed 2026-08-27: every selector in the totals-fixture emitter picked its probe
+  power off the retired bag, so 16 probes silently skipped and the graded corpus fell 134 → 65 builds
+  with every test green — the strip removed the observer. 14 selectors re-pointed at atom readers, 3
+  made stated skips, the recovery probe retired with the fallback it graded. 65 → 115 builds.
+- [x] **TPRES-1** — closed 2026-08-27: the oracle read taunt/placate resistance off the retired bag
+  while Rust had been atom-native since ATOM12, so both fields read 0 where the oracle judges. No
+  reader covered them because Taunt/Placate are Mez SUBTYPES, which `mezResistanceValue` drops.
+  `tauntPlacateValue` mirrors the Rust applier and its TAUNT-1 provenance fold; gate-verified.
+- [x] **ABSORB-4** — closed 2026-08-27: the flat absorb slot stayed bag-only pending the absorb-stack
+  pre-scan adjudication, so once the bag went it read 0 on every power instead of the unsettled
+  value. Re-pointed to `absorbValue ?? bag`; the gate agrees exactly on four forks. The pre-scan
+  question and the MaxHP-fraction half are untouched and still open.
+- [x] **STR-1** — closed 2026-08-27: the Pass 1 strength path read `effects.specialBuff`, so every
+  +Strength self-buff contributed 0 once the bag went, while Rust had been atom-native since M3.
+  `specialBuffValue` is the missing TS twin; it retires PROBE-1's stated skip. Rust read its own
+  map off EVERY atom, paying Athletic Regulation's stance movement strength in all three stances.
+  119 → 127 builds.
+- [x] **POOLXFORM-1** — closed 2026-08-27: the pool and epic transforms never followed the bag out
+  of the contract. `transformEpicPower` destructured `legacy.effects`, so epic pools THREW on all
+  four datasets and none could be listed or picked; both also dropped `atoms`/`targetsAffected`,
+  leaving pool powers answerable only by their surviving bag and epic powers by nothing.
+- [x] **ELUS-1** — closed 2026-08-27 as adjudicated: the elusivity probe reads as a roster gap and
+  is not one — all 199/126/87/228 elusivity atoms are `gated: true`, and `elusivityValue` reads
+  `baseAtoms`, which drops gated. The bag agreed at HEAD, so this is not strip damage. Stated skip.
 
 - [x] **MEZDUR-1** — closed 2026-08-26: the discriminator is the atom's `attribType`, which the
   converters now stamp on the mez bag value; the table sniff standing in for it was wrong in BOTH
@@ -292,9 +475,11 @@ guards and their mutations) lives in its [gaps/](gaps/) file, not here.
 - [x] **MEZFACE-1** — closed 2026-08-26: the mez bag value rides the SIGNED scale and a
   `toWho: Self` mark, and both displays read the face off the stamps instead of sniffing
   `res_boolean`; ~37 rows per fork back in the group, self-roots labelled. Residue: VOCAB-1.
-- [ ] **VOCAB-1** — `affects_foe`'s vocabulary omits `DeadOrAliveAny`, the one recipient word the
-  corpus carries that is neither foe-listed nor unambiguously friendly, so Defibrillate's
-  `Expression`-spelled foe sleep reads as protection. Pinned, not fixed.
+- [x] **VOCAB-1** — closed 2026-08-27 as adjudicated: `DeadOrAliveAny` is a genuine any-entity
+  recipient (foes + allies + dead), not foe-capable in the exclusive sense the FOE list requires, so
+  it stays out of `affects_foe` and the pins stand (1/1/0/0 in `mez_face_routing`). Residual:
+  Defibrillate's sleep is foe-authored on its child redirect but classified by the parent's
+  ambiguous word — a resolution-path change, not a vocab change, so a separate lower-fidelity item.
 - [x] **MEZPROT-2** — closed 2026-08-25: the discriminator is neither table nor bare sign but the
   converter's three-spelling protection test plus recipient, graded on the fold winner (the gate
   could not see spelling before — the fold abs'd it). The apply pass now credits a
@@ -531,5 +716,11 @@ being measured (METHOD-4).
 *Update this register whenever an audit leg is rerun or a recorded gap changes state. A gap
 leaving this file must leave as fixed-with-a-guard, not silently deleted.*
 
-*When an entry closes, tick its row and put the narrative in `gaps/`. Current frontier lists open
-entries only. If a closure's story is sitting in this file, it's in the wrong file.*
+*When an entry closes, tick its row, drop its `Goal` / `Done when` block, and put the narrative in
+`gaps/`. Current frontier lists open entries only. If a closure's story is sitting in this file,
+it's in the wrong file.*
+
+*When a closure scopes something out — a fold left unadjudicated, a curated table left standing, a
+mechanic left unmodelled — it goes in Carried residuals with its own `Goal` and `Done when`. A
+residual recorded only in the narrative is one nobody will find, which is the state this section
+exists to end.*

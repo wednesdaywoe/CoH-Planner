@@ -25,9 +25,10 @@
  *   4. prose paragraphs: max 400 chars in Current frontier (observed max of the
  *      legitimate frontier prose: 226; the wall: 12,764), max 550 elsewhere
  *      (observed max in the legitimate file: the 503-char header intro).
- *   5. a checkbox row (with wrapped continuations) stays under 542 chars
+ *   5. a CLOSED checkbox row (with wrapped continuations) stays under 542 chars
  *      (observed max legitimate row: ATOM-BAG-8 at 542) — a growing row is a
- *      story being filed in the wrong place.
+ *      story being filed in the wrong place. An OPEN row gets a larger cap: see
+ *      the note on rules 8 and 9 below.
  *   6. every checkbox ID has a narrative section (## ID / ### ID header) in
  *      docs/gaps/ — "a gap leaves this file only as fixed-with-a-guard, never
  *      by silent deletion," and the narrative is the other half of that. This
@@ -40,6 +41,22 @@
  *      did: on 2026-08-24 four of eight had drifted, and two of them ("26 of 27",
  *      "35 of 36") still advertised an open entry while the header correctly
  *      said 0 open. A count nobody grades is a comment.
+ *   8. a closed row carries no exit condition — an `[x]` row may not hold a
+ *      `**Goal**` or `**Done when**` block. This is what makes rule 5's larger
+ *      open-row cap self-cleaning rather than a hole.
+ *   9. a plain (non-checkbox) list item stays under the same open-row cap, at
+ *      the frontier's own tighter cap inside Current frontier. Carried residuals
+ *      is a list of open work and would otherwise be ungraded.
+ *
+ * WHY AN OPEN ROW MAY BE LONGER (2026-08-28). The wall this guard exists to stop
+ * was closure narrative: 12,764 chars describing work already finished, in a file
+ * whose job is to say what is NOT. An open row's exit condition is the opposite
+ * thing — it is what makes the row actionable by a session that has read nothing
+ * else, and it is deleted the moment the row closes. So the caps now split on the
+ * checkbox: `[x]` keeps 542 exactly, `[ ]` gets MAX_OPEN_ROW, and rule 8 forbids a
+ * closed row from keeping the block, which is what stops the exemption becoming a
+ * back door into the shape this guard was built to prevent. Nothing about how a
+ * CLOSED entry is graded changed.
  *
  * Rules 1, 3 and 6 all key on the id pattern, and until 2026-08-18 that pattern
  * ended in `\d+`, which only matches an id whose digits follow a letter directly.
@@ -79,7 +96,14 @@ if (!ROLE) throw new Error('package.json name is neither repo');
 const NARRATED_HERE = ROLE === 'canonical';
 const MAX_FRONTIER_PROSE = 400; // observed max of the legitimate frontier (intro: 226)
 const MAX_OTHER_PROSE = 550; // observed max elsewhere (header intro: 503)
-const MAX_ROW = 542; // observed max legitimate checkbox row (ATOM-BAG-8)
+const MAX_ROW = 542; // observed max legitimate CLOSED checkbox row (ATOM-BAG-8)
+/**
+ * An open row also carries its `Goal` / `Done when` block, so it is graded against a larger cap.
+ * 1600 is the observed max of the 2026-08-28 open rows (TSPY-11 at 1414, the Kheldian residual at
+ * 1266) plus headroom for one more clause, not a round number picked to make today pass. Rule 8
+ * is the other half: the block goes when the row closes, so nothing lands here permanently.
+ */
+const MAX_OPEN_ROW = 1600;
 
 /**
  * An entry id: uppercase segments joined by hyphens, with a digit somewhere (INHERENT-6,
@@ -153,13 +177,21 @@ const paraCap = (slice, cap, where) => {
       );
     para = [];
   };
+  let inItem = false;
   slice.forEach((l, i) => {
     const blank = l.trim() === '';
-    const structural = l === '---' || l.startsWith('## ') || l.startsWith('### ') || /^[-*] /.test(l);
+    const bullet = /^[-*] /.test(l);
+    const structural = l === '---' || l.startsWith('## ') || l.startsWith('### ') || bullet;
     if (blank || structural) {
       flush();
+      inItem = bullet;
       return;
     }
+    // An indented line under a bullet is that item's own continuation, not prose. Rule 5 caps it
+    // for a checkbox row and rule 9 for a plain one, both tighter in the frontier than 550 — so
+    // this is where the text is graded, not an exemption from grading.
+    if (inItem && /^[ \t]+\S/.test(l)) return;
+    inItem = false;
     if (!para.length) start = i;
     para.push(l);
   });
@@ -172,21 +204,56 @@ if (fh !== -1) {
   paraCap(lines.slice(0, fh).concat(body), MAX_OTHER_PROSE, 'register body');
 }
 
-// -- 5: checkbox row cap (row + its wrapped continuations) -------------------------
+// -- 5 + 8: checkbox row cap, and a closed row keeps no exit condition -------------
 for (let i = 0; i < lines.length; i++) {
   if (!/^[-*] \[[ x]\] \*\*/.test(lines[i])) continue;
-  let n = lines[i].length;
+  const closed = /^[-*] \[x\] \*\*/.test(lines[i]);
+  const body = [lines[i]];
   let j = i + 1;
   while (j < lines.length && /^[ \t]+\S/.test(lines[j]) && !/^[-*] \[/.test(lines[j])) {
-    n += lines[j].length;
+    body.push(lines[j]);
     j++;
   }
-  if (n > MAX_ROW)
+  const n = body.join('').length;
+  const cap = closed ? MAX_ROW : MAX_OPEN_ROW;
+  if (n > cap)
     errors.push(
-      `line ${i + 1}: checkbox row of ${n} chars (max ${MAX_ROW}) — the row is a checklist line, ` +
-        `the story goes in docs/gaps/`
+      `line ${i + 1}: ${closed ? 'closed' : 'open'} row of ${n} chars (max ${cap}) — the row is a ` +
+        `checklist line, the story goes in docs/gaps/`
+    );
+  // Rule 8. An exit condition describes work not yet done, so a closed row holding one is either
+  // a row ticked without dropping its block or a closure narrative wearing the block's clothes.
+  if (closed && /\*\*(Goal|Done when)\*\*/.test(body.join('\n')))
+    errors.push(
+      `line ${i + 1}: closed row still carries a **Goal** / **Done when** block — an exit ` +
+        `condition goes when the row is ticked, and the narrative goes to docs/gaps/`
     );
   i = j - 1;
+}
+
+// -- 9: plain (non-checkbox) list items are capped too ------------------------------
+// Carried residuals is a list of open work with no checkbox, so rule 5 cannot see it. Inside
+// Current frontier the frontier's own tighter cap applies, because a frontier that grows a wall
+// of bullets is the same defect as one that grows a wall of prose.
+{
+  const frontierEnd = fh === -1 ? -1 : fh + 1 + lines.slice(fh + 1).findIndex((l) => l.startsWith('## '));
+  for (let i = 0; i < lines.length; i++) {
+    if (!/^[-*] /.test(lines[i]) || /^[-*] \[[ x]\] /.test(lines[i])) continue;
+    let n = lines[i].length;
+    let j = i + 1;
+    while (j < lines.length && /^[ \t]+\S/.test(lines[j]) && !/^[-*] /.test(lines[j])) {
+      n += lines[j].length;
+      j++;
+    }
+    const inFrontier = fh !== -1 && i > fh && (frontierEnd === -1 || i < frontierEnd);
+    const cap = inFrontier ? MAX_FRONTIER_PROSE : MAX_OPEN_ROW;
+    if (n > cap)
+      errors.push(
+        `line ${i + 1}: list item of ${n} chars (max ${cap})${inFrontier ? ' in Current frontier' : ''} ` +
+          `— closure narrative belongs in docs/gaps/`
+      );
+    i = j - 1;
+  }
 }
 
 // -- 7: per-section counts agree with the rows under them -------------------------
@@ -260,7 +327,8 @@ if (errors.length) {
   console.log(
     `ok: ${allBoxes} entries (${openBoxes} open), section counts agree, ` +
       `frontier prose under ${MAX_FRONTIER_PROSE} chars/paragraph, ` +
-      `rows under ${MAX_ROW} chars, ` +
+      `closed rows under ${MAX_ROW} chars and open rows under ${MAX_OPEN_ROW} with no ` +
+      `exit condition left on a closed one, ` +
       (NARRATED_HERE
         ? `all ${checkboxIds.length} ids narrated in docs/gaps/`
         : `${checkboxIds.length} ids NOT checked for narratives — they live in the private ` +

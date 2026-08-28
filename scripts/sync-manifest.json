@@ -6,6 +6,21 @@
   },
   "canonicalOnly": [
     {
+      "path": "scripts/keys/README.md",
+      "reason": "The keys convention: a tracker row that makes a door-closing claim carries a Check that turns it. Canonical-only because the keys are, and a README for files the beta does not hold would describe nothing there.",
+      "gap": "FORK-1"
+    },
+    {
+      "path": "scripts/keys/tspy11-filter-cost.py",
+      "reason": "Turns DATA-GAP-REGISTER TSPY-11's \"a reaches_caster filter is not the fix\". Reads contract/*/powersets, which the beta does not carry in this layout, and mirrors a Rust predicate (reaches_caster) the beta's TS engine spells differently — so a beta copy would grade a different question under the same name. The register naming it is a docs/ reference, outside verify-sync's WIRING_PATHS, and the same already-stated condition as the docs/gaps/ narratives its rows cite (lint-register-shape.cjs rule 6).",
+      "gap": "FORK-1"
+    },
+    {
+      "path": "scripts/keys/shapeshift-suppression.py",
+      "reason": "Turns the Kheldian shapeshift residual's \"nothing is granted through this channel\". Walks exported_powers/, the 746 MB export tree, which is canonical-only. Same docs/-reference reasoning as the sibling key.",
+      "gap": "FORK-1"
+    },
+    {
       "path": "scripts/audit-converter-twins.cjs",
       "reason": "Wired into canonical's regen-all.cjs and package.json as audit:twins. The beta held a copy it never referenced and could not have run — the --gate leg reads scripts/audit-twins-baseline.json, which the beta does not carry.",
       "gap": "FORK-1"
@@ -138,7 +153,7 @@
     {
       "path": "docs/DATA-GAP-REGISTER.md",
       "status": "identical",
-      "sha256": "f955f6a22efab9fd003f7127d9c0cb1060f818d145d79c7c8b31a13bb1f38003"
+      "sha256": "8084283e6f83f6e385434371d8bfec431e905a96b38c2399b9934e988f4f949a"
     },
     {
       "path": "scripts/README-bulk-import-mids.md",
@@ -413,7 +428,7 @@
     {
       "path": "scripts/lint-register-shape.cjs",
       "status": "identical",
-      "sha256": "06959d08e3d213a92138fbc64e5f7d8be12b53a0867ed839914bae29b5a68af1"
+      "sha256": "88a6d85e8c7a9852ace2890e6a473ae34a1fdce58d95c41c189bbd1daeaad1b1"
     },
     {
       "path": "scripts/planb-shadow-sweep.cjs",
