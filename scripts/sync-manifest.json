@@ -47,6 +47,80 @@
       "mentions": [
         "scripts/attic/README.md"
       ]
+    },
+    {
+      "path": "scripts/planb-shadow-bag.cjs",
+      "reason": "Shadow gate for the whole-bag sweep: it grades the atom path against the contract's effects bag, and canonical deleted it in the atom1-13 bag strip (aaab1c4077) together with the bag it reads, so there is nothing left there to compare against. The beta still ships the bag and its regen-all.cjs runs this script, so it stays live here and retires when the beta strips its own bag. Canonical's names for it are provenance prose in comments, not a require.",
+      "gap": "FORK-2",
+      "mentions": [
+        "scripts/convert-powerset.cjs",
+        "src/data/core/atom-query.test.ts",
+        "src/data/core/atom-query.ts",
+        "src/data/core/atomic-effect.ts"
+      ]
+    },
+    {
+      "path": "scripts/planb-shadow-defense.cjs",
+      "reason": "Shadow gate for the defense family: it grades the atom path against the contract's effects bag, and canonical deleted it in the atom1-13 bag strip (aaab1c4077) together with the bag it reads, so there is nothing left there to compare against. The beta still ships the bag and its regen-all.cjs runs this script, so it stays live here and retires when the beta strips its own bag. Canonical's names for it are provenance prose in comments, not a require.",
+      "gap": "FORK-2",
+      "mentions": [
+        "src/data/core/atom-query.ts",
+        "src/data/core/atomic-effect.ts",
+        "src/utils/calculations/character-totals.ts",
+        "src/utils/calculations/defense-atom-native.verify.test.ts"
+      ]
+    },
+    {
+      "path": "scripts/planb-shadow-maxhp.cjs",
+      "reason": "Shadow gate for the MaxHP family: it grades the atom path against the contract's effects bag, and canonical deleted it in the atom1-13 bag strip (aaab1c4077) together with the bag it reads, so there is nothing left there to compare against. The beta still ships the bag and its regen-all.cjs runs this script, so it stays live here and retires when the beta strips its own bag. Canonical's names for it are provenance prose in comments, not a require.",
+      "gap": "FORK-2",
+      "mentions": [
+        "src/data/core/atom-query.ts",
+        "src/utils/calculations/character-totals.ts",
+        "src/utils/calculations/maxhp-atom-native.verify.test.ts"
+      ]
+    },
+    {
+      "path": "scripts/planb-shadow-movement.cjs",
+      "reason": "Shadow gate for the movement and slow families: it grades the atom path against the contract's effects bag, and canonical deleted it in the atom1-13 bag strip (aaab1c4077) together with the bag it reads, so there is nothing left there to compare against. The beta still ships the bag and its regen-all.cjs runs this script, so it stays live here and retires when the beta strips its own bag. Canonical's names for it are provenance prose in comments, not a require.",
+      "gap": "FORK-2",
+      "mentions": [
+        "src/data/core/atom-query.ts",
+        "src/utils/calculations/character-totals.ts",
+        "src/utils/calculations/movement-atom-native.verify.test.ts"
+      ]
+    },
+    {
+      "path": "scripts/planb-shadow-pertarget.cjs",
+      "reason": "Shadow gate for the per-target increment: it grades the atom path against the contract's effects bag, and canonical deleted it in the atom1-13 bag strip (aaab1c4077) together with the bag it reads, so there is nothing left there to compare against. The beta still ships the bag and its regen-all.cjs runs this script, so it stays live here and retires when the beta strips its own bag. Canonical's names for it are provenance prose in comments, not a require.",
+      "gap": "FORK-2",
+      "mentions": [
+        "scripts/attic/README.md",
+        "src/data/core/atom-query.ts",
+        "src/data/core/atomic-effect.ts",
+        "src/utils/calculations/character-totals.ts",
+        "src/utils/calculations/tohit-atom-native.verify.test.ts"
+      ]
+    },
+    {
+      "path": "scripts/planb-shadow-resistance.cjs",
+      "reason": "Shadow gate for the resistance family: it grades the atom path against the contract's effects bag, and canonical deleted it in the atom1-13 bag strip (aaab1c4077) together with the bag it reads, so there is nothing left there to compare against. The beta still ships the bag and its regen-all.cjs runs this script, so it stays live here and retires when the beta strips its own bag. Canonical's names for it are provenance prose in comments, not a require.",
+      "gap": "FORK-2",
+      "mentions": [
+        "src/data/core/atom-query.ts",
+        "src/utils/calculations/character-totals.ts",
+        "src/utils/calculations/resistance-atom-native.verify.test.ts"
+      ]
+    },
+    {
+      "path": "scripts/planb-shadow-resources.cjs",
+      "reason": "Shadow gate for the regen/recovery families: it grades the atom path against the contract's effects bag, and canonical deleted it in the atom1-13 bag strip (aaab1c4077) together with the bag it reads, so there is nothing left there to compare against. The beta still ships the bag and its regen-all.cjs runs this script, so it stays live here and retires when the beta strips its own bag. Canonical's names for it are provenance prose in comments, not a require.",
+      "gap": "FORK-2",
+      "mentions": [
+        "scripts/convert-powerset.cjs",
+        "src/data/core/atom-query.ts",
+        "src/data/core/resources-atom-native.verify.test.ts"
+      ]
     }
   ],
   "entries": [
@@ -340,41 +414,6 @@
       "path": "scripts/lint-register-shape.cjs",
       "status": "identical",
       "sha256": "06959d08e3d213a92138fbc64e5f7d8be12b53a0867ed839914bae29b5a68af1"
-    },
-    {
-      "path": "scripts/planb-shadow-bag.cjs",
-      "status": "identical",
-      "sha256": "352b18d9b1879752e20d3959d66309127648fe4e9643f8179dbd3f17457454ae"
-    },
-    {
-      "path": "scripts/planb-shadow-defense.cjs",
-      "status": "identical",
-      "sha256": "db8c284e1c9b62092e6163c0eda51934a6924d1ecd6b416000db1ee260e52483"
-    },
-    {
-      "path": "scripts/planb-shadow-maxhp.cjs",
-      "status": "identical",
-      "sha256": "2c0d7ce0f630da4a5d7345884b7e976cc157f28a316e1affb1f9b4fc622f93b3"
-    },
-    {
-      "path": "scripts/planb-shadow-movement.cjs",
-      "status": "identical",
-      "sha256": "ce68a0e652a7991b15f109ef7b21ee32e749617f81eb5b0f6b1eda5175bc238c"
-    },
-    {
-      "path": "scripts/planb-shadow-pertarget.cjs",
-      "status": "identical",
-      "sha256": "56fbc5de1ffdd4f6e80869f89305d2bffa52a9419aac168e50e4ede0f9fe256d"
-    },
-    {
-      "path": "scripts/planb-shadow-resistance.cjs",
-      "status": "identical",
-      "sha256": "e5e7917b54914856fdc52aec62ae091a47ada93930db22860d4382e16994c017"
-    },
-    {
-      "path": "scripts/planb-shadow-resources.cjs",
-      "status": "identical",
-      "sha256": "f29f86000b288bed0a77da9fc7dbe303614fb1aa6c4491c7ea7c8c583c47fc05"
     },
     {
       "path": "scripts/planb-shadow-sweep.cjs",
