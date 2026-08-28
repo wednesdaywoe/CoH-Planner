@@ -16,7 +16,8 @@ import { encodeAtom, type AtomicEffect } from './atomic-effect';
 import {
   atomsOf, atomsOfType, baseAtoms, gatedAtoms, baseAtomsOfType, byType, bySubType,
   selfDirected, targetDirected, enhanceableVsNot, resistibleTwins, durationBuckets,
-  stackCapOf, buffStack, movementAxisSubType, DEBUFF_RESISTANCE_STACK, SPECIAL_BUFF_STACK,
+  stackCapOf, buffStack, movementAxisSubType, specialBuffValue,
+  DEBUFF_RESISTANCE_STACK, SPECIAL_BUFF_STACK,
 } from './atom-query';
 
 /** A complete AtomicEffect with sane defaults; override only what a test means. */
@@ -331,5 +332,73 @@ describe('stackCapOf', () => {
   it('counts a gated atom — it still states the depth its family reaches', () => {
     const p = powerWith([stacker({ effectType: 'ToHit', subType: undefined, gated: true })]);
     expect(stackCapOf(p, buffStack('ToHit'))).toBe(2);
+  });
+});
+
+describe('specialBuffValue', () => {
+  /** A +Strength self-buff row: the `aspect: Str` face, cast on the caster. */
+  const str = (over: Partial<AtomicEffect> = {}): AtomicEffect =>
+    atom({ effectType: 'Enhancement', subType: 'All', aspect: 'Str', toWho: 'Self',
+      modifierTable: 'Melee_Ones', scale: 1, ...over });
+
+  it('routes the effect type and the enumerated sub type to their keys', () => {
+    const p = powerWith([
+      str({ subType: 'All' }), str({ subType: 'Melee' }), str({ subType: 'Held' }),
+      str({ effectType: 'ToHit', subType: undefined }),
+      str({ effectType: 'Heal', subType: undefined }),
+      str({ effectType: 'Endurance', subType: undefined }),
+    ]);
+    expect(Object.keys(specialBuffValue(p)!).sort())
+      .toEqual(['defense', 'endurance', 'heal', 'hold', 'melee', 'tohit']);
+  });
+
+  it('stores the MAGNITUDE — the sign of a specialBuff lives in the table', () => {
+    // Reaction Time's self JumpHeight slow: -0.7 on a NEGATIVE table. Kept as -0.7 the
+    // two negatives cancel into a movement-strength buff the game never grants.
+    const p = powerWith([str({ effectType: 'Movement', subType: 'JumpHeight', scale: -0.7, modifierTable: 'Melee_Slow' })]);
+    expect(specialBuffValue(p)).toEqual({ movement: { scale: 0.7, table: 'Melee_Slow' } });
+  });
+
+  it('holds one entry per key, the bag\u2019s own shape', () => {
+    const p = powerWith([str({ subType: 'All', scale: 1 }), str({ subType: 'All', scale: 2 })]);
+    expect(specialBuffValue(p)).toEqual({ defense: { scale: 2, table: 'Melee_Ones' } });
+  });
+
+  it('declines a gated row — that one belongs to the stance that re-admits it', () => {
+    // Bio Armor's Athletic Regulation: its `movement` strength is Rested Adaptation's.
+    const p = powerWith([str({ effectType: 'Movement', subType: undefined, gated: true })]);
+    expect(specialBuffValue(p)).toBeUndefined();
+  });
+
+  it('declines a row the caster is not the recipient of', () => {
+    // A legacy foe -Special (Benumb, Time Stop) stores a POSITIVE magnitude, so only the
+    // recipient tells it from a caster buff.
+    expect(specialBuffValue(powerWith([str({ subType: 'Held', toWho: 'Target' })]))).toBeUndefined();
+    // `Target` is the AnyAffected pronoun, so a power that DOES affect Self resolves it to one.
+    const anyAffected = { name: 'T', targetsAffected: ['Self', 'Teammate'],
+      atoms: [str({ subType: 'Held', toWho: 'Target' })].map(encodeAtom) } as unknown as Power;
+    expect(specialBuffValue(anyAffected)).toEqual({ hold: { scale: 1, table: 'Melee_Ones' } });
+  });
+
+  it('declines the Cur face of a row whose key WOULD match — the aspect is the only difference', () => {
+    // Both of these reach a key on type and sub type alone; `aspect` is the whole test.
+    // Stated on rows that would otherwise land, so the assertion grades the axis rather
+    // than an unrelated lookup miss.
+    expect(specialBuffValue(powerWith([str({ subType: 'All', aspect: 'Cur' })]))).toBeUndefined();
+    expect(specialBuffValue(powerWith([str({ effectType: 'ToHit', subType: undefined, aspect: 'Cur' })])))
+      .toBeUndefined();
+    // and the same rows on the Str face DO land, so this is a live pair, not two silences
+    expect(specialBuffValue(powerWith([str({ subType: 'All' })]))).toEqual({ defense: { scale: 1, table: 'Melee_Ones' } });
+  });
+
+  it('declines DamageBuff, Accuracy and RechargeTime — those Str rows are their own buff', () => {
+    // Build Up's `DamageBuff|Str` IS its +damage buff, not a strength meta. A flat
+    // "admit Str" rule credits it twice; a flat "exclude Str" rule loses Power Boost.
+    const p = powerWith([
+      str({ effectType: 'DamageBuff', subType: undefined }),
+      str({ effectType: 'Accuracy', subType: undefined }),
+      str({ effectType: 'RechargeTime', subType: undefined }),
+    ]);
+    expect(specialBuffValue(p)).toBeUndefined();
   });
 });

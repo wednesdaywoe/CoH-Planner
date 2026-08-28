@@ -61,6 +61,12 @@ interface LegacyPoolPower {
   maxSlots: number;
   allowedEnhancements: string[];
   allowedSetCategories: string[];
+  /** The power's atom stream, the primary side of every reader seam. Carried by
+   *  `MINTED_FIELDS`; declared here so the pick is typed rather than indexed loosely. */
+  atoms?: Power['atoms'];
+  /** EntsAffected — the power-level recipient list `reachesCaster` resolves an atom's
+   *  `AnyAffected` pronoun against (TARGETS-3). */
+  targetsAffected?: string[];
   effects: LegacyPoolPowerEffects;
   // Game "mode" gating — the combat states a caster can be in (Kheldian
   // Nova/Dwarf forms, Titan Momentum, Domination, Granite, Swap Ammo, travel
@@ -157,7 +163,13 @@ function pickModeGates(legacy: LegacyPoolPower): ModeGates {
  * states the same numbers. Carried by list for the reason `pickModeGates` exists: this transform
  * is a top-level whitelist, and a field it does not name reaches no consumer.
  */
-const MINTED_FIELDS = ['stats', 'effectArea', 'damage'] as const;
+// `atoms` and `targetsAffected` ride along because the atom-native readers are the
+// PRIMARY side of every `xxxValue(power) ?? effects.xxx` seam, and a transform that
+// drops the atom stream leaves a pool or epic power answerable only by its bag.
+// `targetsAffected` travels with them: it is the power-level list `reachesCaster`
+// consults to resolve an `AnyAffected` atom's pronoun, so atoms without it are a
+// question the readers cannot answer (TARGETS-3).
+const MINTED_FIELDS = ['stats', 'effectArea', 'damage', 'atoms', 'targetsAffected'] as const;
 
 type Minted = Pick<Power, (typeof MINTED_FIELDS)[number]>;
 

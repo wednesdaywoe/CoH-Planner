@@ -2002,6 +2002,51 @@ function isSpecialBuffAtom(a: AtomicEffect): boolean {
 }
 
 /**
+ * The `effects.specialBuff` by-aspect map, atom-native — the caster's own +Strength self-buffs
+ * (Power Boost, Power Build Up, Gather Shadows, Adrenal Booster, …), which multiply the
+ * caster's OWN matching power output.
+ *
+ * Mirrors `coh_math::strength::special_buff_map`, the Rust side's reader since M3. This is the
+ * TS half that never existed: `collectStrengthBuffs` went on reading the bag slot, so retiring
+ * the bag left the whole Pass 1 strength path reading zero on real data while Rust kept reading
+ * the atom. Nothing could see it — the fixture emitter's probe selected on the same dead slot,
+ * so the family reported a roster gap rather than a divergence.
+ *
+ * Last-write-wins per key, which is the bag's own shape: a slot holds one entry, and a power's
+ * atoms for one key are uniform (the binary simply enumerates every defense position or mez
+ * kind at the same scale), so which one wins is immaterial.
+ *
+ * The scale is taken as a MAGNITUDE, mirroring the converter's `makeEffect` (`Math.abs`): the
+ * sign of a specialBuff lives in the modifier table, not the scale. Reaction Time's self
+ * JumpHeight slow is `-0.7` on `Melee_Slow`, whose table is itself negative; reconstructing it
+ * as raw `-0.7` double-negates into a movement-strength BUFF the game never grants, where
+ * `+0.7` correctly resolves to `-0.7`, fails the `> 0` test, and credits nothing (STRENGTH-1).
+ *
+ * {@link baseAtoms} scopes this to the power's unconditional base, which is what the bag slot
+ * held: a mode-gated +Strength atom is the converter's `conditionalEffects` business, and Bio
+ * Armor's Athletic Regulation carries exactly that — a Rested-Adaptation `movement` strength
+ * that belongs to the build only while that stance is up.
+ */
+export function specialBuffValue(
+  power: AtomSource,
+): Record<string, { scale: number; table?: string }> | undefined {
+  let out: Record<string, { scale: number; table?: string }> | undefined;
+  for (const a of baseAtoms(power)) {
+    if (a.aspect !== 'Str') continue;
+    // The recipient test is the atom's, not the power's. The bag path had to skip whole
+    // non-self-targeted powers, because a legacy foe -Special debuff (Benumb, Weaken, Time
+    // Stop) stored its magnitude as a POSITIVE `specialBuff` on a Foe power with nothing on
+    // the slot to say so. An atom says so itself.
+    if (!reachesCaster(a, power)) continue;
+    const key = specialBuffKey(a);
+    if (!key) continue;
+    out ??= {};
+    out[key] = { scale: Math.abs(a.scale), table: a.modifierTable };
+  }
+  return out;
+}
+
+/**
  * Is this atom one of the ten debuff-resistance routes? The membership half of
  * {@link DEBUFF_RES_KEY}, kept separate so the three {@link StackFamily} variants partition the
  * atom stream rather than making three overlapping claims on it.

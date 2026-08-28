@@ -410,7 +410,7 @@
     {
       "path": "src/data/core/atom-query.ts",
       "status": "identical",
-      "sha256": "c89c7f792b6022eebd639bef3ed7bb17d4b41537832c110668e15e8d5b98fa39"
+      "sha256": "9fc6a8287dcd09f0b227c689f5c133e44e416dc8a4ae3f5b1abd67494e9504d0"
     },
     {
       "path": "src/data/core/atomic-effect.ts",
@@ -430,7 +430,7 @@
     {
       "path": "src/data/epic-pools.ts",
       "status": "identical",
-      "sha256": "f0848d9a874cbc78571f3d7ce8e87322d9910069675b00c2a2885c129d2f7ca7"
+      "sha256": "e288c5ce08f408afe4318802ef858e28d16a06c9a3b6499cc1a55881ce1ea82a"
     },
     {
       "path": "src/data/incarnate-effects.ts",
@@ -455,7 +455,7 @@
     {
       "path": "src/data/power-pools.ts",
       "status": "identical",
-      "sha256": "0c8e3d6a342021ba5c444abba74a975aaaac98198718b29367cf786e550a0563"
+      "sha256": "d991e6ef48454eef1614b5872c9fa7d4e563b4514910fb3341f5eb2e6c5882f2"
     },
     {
       "path": "src/types/archetype.ts",
