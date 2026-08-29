@@ -57,7 +57,7 @@ because it reads data trees the beta does not carry.
 
 ## Current frontier
 
-**3 open, of 244 entries.** Every other entry is fixed with a guard or adjudicated in writing
+**2 open, of 244 entries.** Every other entry is fixed with a guard or adjudicated in writing
 with its census.
 
 - **TSPY-11** — the recharge fold double-counts a buff a power gives to both an ally and the
@@ -65,17 +65,14 @@ with its census.
 - **STRIP-1** — the bag strip's residue is 17 red Rust tests and 122 red vitest tests, and the
   canonical TS totals oracle now answers 0 for the families it never migrated. Pipeline +
   provenance, below.
-- **FIXTURE-2** — the movement fixture emitter selects on the retired `effects` bag, so a regen
-  empties the fixture (157 lines to 8) and `movement_gate` reds on its vacuity floor. Pipeline +
-  provenance, below. Latent at HEAD; the ENT-22 regen is what made it visible.
 
-**Carried residuals — named work inside closed entries.** Six items were scoped out of a closure
+**Carried residuals — named work inside closed entries.** Seven items were scoped out of a closure
 and recorded there rather than reopened. They are not `[ ]` rows: their hosts *are* closed with
 guards, and nothing leaves this file as less.
 
 They are listed in the next section so a session sees them without reading four narratives first.
 
-The open row and the six residuals are downstream of a faithful parse, and the parse itself is
+The open rows and the seven residuals are downstream of a faithful parse, and the parse itself is
 still clean.
 
 ---
@@ -185,6 +182,23 @@ measurement went, and where a closure for the residual belongs too.
   deactive groups over 17 powers, every `ShapeshiftActive` group at chance 0. Exit 1 means the
   channel has started GRANTING something and this stops being a dormant residual — it becomes a
   live wrong number and outranks its position in this list.
+
+- **Movement combat suppression is unexercised** — host **FIXTURE-2**
+  ([pipeline-provenance](gaps/pipeline-provenance.md)). `movement_gate` claims to probe combat
+  suppression and does not: no power in any fork's fixture population is stamped suppressible, so
+  all 74 `combatMode: true` lines restate their out-of-combat twin. Pre-existing, not caused by the
+  strip — the pre-strip fixture diverges on 0 of 56 solo powers too. The corpus holds 24
+  suppressible `Movement` atoms and every one sits on a form power the emitter's `isModeDisruptor`
+  excludes, or on a `gated` row `baseAtomsOfType` drops, so that exclusion is what starves the
+  branch.
+  **Goal** — the suppression branch of `resolveMovementTotals` is graded against the powers that
+  carry the flag, rather than reported as covered by lines that change nothing.
+  **Done when** — the fixture reaches the form powers with their mode context stated on both sides
+  (or the exclusion is adjudicated in writing with the population it drops); the per-fork
+  suppressible count in `fixtures/movement/manifest.json` is non-zero where the data is; and a
+  combat line differs from its twin on every fork that declares one.
+  **Check** — `cargo test -p coh_math --test movement_gate`. Both arms of
+  `suppression_is_stated_not_assumed` are mutation-verified.
 
 ---
 
@@ -594,7 +608,7 @@ measurement went, and where a closure for the residual belongs too.
 
 ## Pipeline + provenance
 
-[Full detail](gaps/pipeline-provenance.md) — 40 of 42 closed
+[Full detail](gaps/pipeline-provenance.md) — 41 of 42 closed
 
 - [x] **MBDEXPORT-1** — the .mbd exporter built Mids' enhancement UIDs out of set display names, and
   Mids answers a UID it does not know by leaving the slot empty with no error: a user's exported
@@ -745,19 +759,10 @@ measurement went, and where a closure for the residual belongs too.
 - [x] **INHERENT-3** — the committed `exported_powers/` was not reproducible by a plain export run
 - [x] **SOURCE-1** — second-source constants the export did not surface (the engine's wholesale Rule-0 holes)
 - [x] **TWIN-1** — converter-twin shape divergences, burned down entry by entry
-- [ ] **FIXTURE-2** — `emit-movement-fixtures.ts` picks its probe powers with `hasMovement(p.effects)`
-  and puts `p.effects` in every fixture, so the bag strip starved it: a plain re-emit yields
-  **8 lines against the committed 157**, all of them the empty-`powers` base cases, and
-  `movement_gate` reds on its own `≥20 lines` vacuity floor. The committed fixture predates the
-  strip and any regen replaces it, so `regen → git diff --exit-code` cannot pass at HEAD either
-  — measured on a clean tree at 0d409898d1, not inferred. FIXTURE-1 closed the drift class by
-  putting the emitters in `npm run regen`; this is the emitter's own SOURCE going away underneath
-  it, which that closure could not see because it graded sampling identity, not population size.
-  **Goal** — the movement fixtures select and carry their powers from a source the strip has not
-  removed, so a regen reproduces a population rather than emptying one.
-  **Check** — `node --import ./scripts/ts-esm-register.mjs scripts/emit-movement-fixtures.ts`
-  then `wc -l fixtures/movement/contributions.jsonl`. 8 is the starved emitter; the gate needs
-  ≥20 and the pre-strip fixture held 157.
+- [x] **FIXTURE-2** — the movement fixture emitter selected and paid out through the retired
+  `effects` bag, so the strip emptied it (148 committed lines to 8); selection and payload now come
+  from the resolve's own readers, a re-emit reproduces 148, and the new population is the old one
+  minus 28 recipient-blind rows that all graded zero
 - [ ] **STRIP-1** — the bag strip's residue was never filed: **17 red Rust tests over 12 targets
   and 122 red vitest tests over 26 files**, measured 2026-08-29, on all four forks. Every Rust
   failure is a guard reporting its own vacuity, not a wrong number, and 48 base-bag reads survive
