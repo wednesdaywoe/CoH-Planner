@@ -21,6 +21,11 @@
       "gap": "FORK-1"
     },
     {
+      "path": "scripts/keys/effects-bag-survivors.py",
+      "reason": "Turns the REBUILD-PROGRESS `effects` writer-side row's \"the reader side is done, so what is left is an emitter edit plus a regen\". Reads contract/ and crates/*/src — the emitted bundle and the Rust engine, neither of which the beta carries. Its Rust leg is the point: the beta has no crates/ at all, so a mirrored copy would silently report zero raw-`effects` readers and read as a green light to strip. Same docs/-reference reasoning as the sibling keys.",
+      "gap": "FORK-1"
+    },
+    {
       "path": "scripts/audit-converter-twins.cjs",
       "reason": "Wired into canonical's regen-all.cjs and package.json as audit:twins. The beta held a copy it never referenced and could not have run — the --gate leg reads scripts/audit-twins-baseline.json, which the beta does not carry.",
       "gap": "FORK-1"
@@ -440,10 +445,10 @@
       "path": "scripts/regen-all.cjs",
       "status": "per-repo",
       "sha256": {
-        "canonical": "ed2b5a1bb2bac0fee4c299d78e2057f40f914d4722767c8d6208424c4a04e56c",
+        "canonical": "5d0b254e47331e78677e34a4bf1b9cb26ad68848f4670c6f22e2ca15069419e7",
         "beta": "d46098283b99ef618925b0cbc727aa93b80d0932405f3b5db0325387a36af8f8"
       },
-      "reason": "The stage roster and the gate roster ARE the repo's identity — which converters exist and which gates it can currently pass — so two repos with different pipelines have different stage lists by definition. Measured 2026-08-21: strip the comments and the STEPS body and the driver is byte-identical, so all the divergence is in the two parts a shared table would have to hold. Canonical runs 22 stages to beta's 14 (24 until FORK-2 retired the two form-variant generators), not a subset either way (beta drives convert-archetype-inherents.cjs, which canonical has no copy of), and 15 post-loop gate blocks to beta's 7. Those blocks are not a stage list: they carry dataset predicates, existsSync optionality, a python3 runner, a ts-esm-register runner and two --dataset arg conventions, so a declarative table for them is a predicate/runner/optionality DSL written to describe a list of shell commands. And a shared table is a file canonical edits and beta EXECUTES at the head of the pipeline that produces beta's committed data, where a stage carrying the wrong repo-membership flag is silent on beta's side.",
+      "reason": "The stage roster and the gate roster ARE the repo's identity — which converters exist and which gates it can currently pass — so two repos with different pipelines have different stage lists by definition. Re-measured 2026-08-29; the 2026-08-21 figures had gone stale on both halves (beta gained convert-accolades.cjs on 2026-08-22, and canonical's bag strip aaab1c4077 deleted seven post-loop blocks). Strip the comments, the STEPS body and the post-loop blocks and what is left is a 21-line driver, byte-identical, so all the divergence is in the two parts a shared table would have to hold. Canonical runs 22 stages to beta's 15 and neither is a subset: 14 shared, 8 canonical-only (convert-boost-index, convert-special-enhancements, convert-inherents, convert-incarnate-slot-indices, detect-chance-mod-selectors, detect-caster-meters, validate-converter-output, dsh8-incarnate-collapse-detector), 1 beta-only (convert-archetype-inherents.cjs, which canonical has no copy of). Post-loop — counting each top-level if/block/for after the dataset loop that runs a command, which is the measure the 2026-08-21 note left unstated — canonical runs 16 blocks to beta's 8, and the strip made that divergence sharper rather than smaller: canonical's are 13 audit gates plus 3 emitter/fixture blocks, while beta's are dsh6 plus the seven planb-shadow gates canonical deleted along with the bag they read. Those blocks are not a stage list: they carry dataset predicates, existsSync optionality, a python3 runner, a ts-esm-register runner and two --dataset arg conventions, so a declarative table for them is a predicate/runner/optionality DSL written to describe a list of shell commands. And a shared table is a file canonical edits and beta EXECUTES at the head of the pipeline that produces beta's committed data, where a stage carrying the wrong repo-membership flag is silent on beta's side.",
       "exit": null,
       "gap": "FORK-1"
     },
@@ -778,6 +783,11 @@
       "sha256": "18beeb2c193f0fd7b52d4b377792614ce2f7606ada5a91ed0e55c2429f7feaa2"
     },
     {
+      "path": "tools/bin-crawler/tests/test_attrib_type.py",
+      "status": "identical",
+      "sha256": "27b209b06780d1e35101ec2415007f997b50158f7a1f2673ec48b0259a69d2a3"
+    },
+    {
       "path": "tools/bin-crawler/tests/test_attribmod_flags.py",
       "status": "identical",
       "sha256": "c0a13b3c590d6fd8045eb71a4fb30267daac12081f041faa1449739f49fbaf76"
@@ -816,6 +826,11 @@
       "path": "tools/bin-crawler/tests/test_export_roster.py",
       "status": "identical",
       "sha256": "aee1f95cfdf6814853888649114dd78955cb20bb6d6ffa99dedfb26a7be1685d"
+    },
+    {
+      "path": "tools/bin-crawler/tests/test_exprmag.py",
+      "status": "identical",
+      "sha256": "cebee881fbd3f6848b8f5dc1c0b8ec00a3e1d95446e52203eae6406b820fa78c"
     },
     {
       "path": "tools/bin-crawler/tests/test_fork_event_enum.py",
