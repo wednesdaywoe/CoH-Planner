@@ -1756,6 +1756,32 @@ export function enduranceDiscountValue(power: AtomSource): { scale: number; tabl
 
 
 /**
+ * `effects.enduranceGain` (`convert-powerset.cjs:6909`) — the Endurance attrib's Current
+ * face, buff arm: a one-shot endurance restore (Consume, Dark Consumption, Energy Drain).
+ *
+ * The converter reaches this branch by elimination, so the query mirrors that order rather
+ * than asking a positive question: `Res` is debuff-resistance, `Str` is `specialBuff`, the
+ * `Maximum` face is a different attrib entirely (`MaxEndurance` on the wire — see
+ * {@link maxEndBuffValue}), and a negative scale is `enduranceDrain`. What is left is the
+ * gain. Keying on the attrib NAME alone would fold all five into one number.
+ */
+export function enduranceGainValue(power: AtomSource): { scale: number; table: string } | undefined {
+  const mine = baseAtoms(power).filter(
+    (a) => a.effectType === 'Endurance'
+      && a.aspect !== 'Res' && a.aspect !== 'Str' && a.aspect !== 'Max'
+      && !isDebuffAtom(a) && !!a.modifierTable
+      // The restore must LAND ON THE CASTER, the same exclusion `resourceBuffValue` applies
+      // to +Regen/+Recovery. Thunderspy's Repair is the case: an `Own Pet (Alive)` power whose
+      // whole payload is one Endurance atom aimed at the robot. Without this the Mastermind is
+      // credited with his henchman's endurance, and `affectsCaster` cannot catch it -- a pet
+      // target is not an ally target.
+      && !a.notOnCaster && reachesCaster(a, power),
+  );
+  if (!mine.length) return undefined;
+  return foldResourceSum(mine);
+}
+
+/**
  * `effects.maxEndBuff` (`convert-powerset.cjs:6898`) — the Endurance attrib's `Maximum` face.
  * Unlike the combat-modifier slots this one ACCUMULATES (`addOrAccumulate`), so it uses the
  * same sum-with-reset-on-table-change fold the other resource slots use.

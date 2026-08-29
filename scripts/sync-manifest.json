@@ -159,7 +159,7 @@
     {
       "path": "docs/DATA-GAP-REGISTER.md",
       "status": "identical",
-      "sha256": "f6f06ee5ab204029e29549319d074583aba3f5fbdd5ba7c1b2ca2a530744d10d"
+      "sha256": "f537b86cbc2bedf4f36568f63012ed73d27902fa0b6baa7febd60c8fc5373956"
     },
     {
       "path": "scripts/README-bulk-import-mids.md",
@@ -470,7 +470,7 @@
     {
       "path": "src/data/core/atom-query.ts",
       "status": "identical",
-      "sha256": "c9ee45dc7cde50a41cc46a8adb80f6e665ccdf97b32b36f8b33658b49c49dd13"
+      "sha256": "2f4fe8e90f4ee6340ce2fc4873b97d16e9ff5cc3493b35c17fbf219426aaf447"
     },
     {
       "path": "src/data/core/atomic-effect.ts",

@@ -62,7 +62,7 @@ with its census.
 
 - **TSPY-11** — the recharge fold double-counts a buff a power gives to both an ally and the
   caster. Stat routing, below. Blocked with the absorb-fold residual on one shared census.
-- **STRIP-1** — the bag strip's residue is 17 red Rust tests and 103 red vitest tests, and the
+- **STRIP-1** — the bag strip's residue is 17 red Rust tests and 102 red vitest tests, and the
   canonical TS totals oracle now answers 0 for the families it never migrated. Pipeline +
   provenance, below.
 
@@ -764,8 +764,8 @@ measurement went, and where a closure for the residual belongs too.
   from the resolve's own readers, a re-emit reproduces 148, and the new population is the old one
   minus 28 recipient-blind rows that all graded zero
 - [ ] **STRIP-1** — the bag strip's residue was never filed: **17 red Rust tests over 12 targets
-  and 103 red vitest tests over 25 files**, measured 2026-08-29 on all four forks (the vitest half
-  was 122 over 26 before the accolade roster went atom-native). Every Rust failure is a guard reporting its own vacuity, not a wrong number, and 48 base-bag reads survive
+  and 102 red vitest tests over 24 files**, measured 2026-08-29 on all four forks (the vitest half
+  was 122 over 26 before the accolade roster, then 103 over 25 before the toggle roster). Every Rust failure is a guard reporting its own vacuity, not a wrong number, and 48 base-bag reads survive
   in 36 Rust files — 7 still grading the FROZEN corpus, 12 red, 10 GREEN over a field that is now
   always absent. The TS half spends ~45 slots out of `character-totals.ts:1145`'s
   `power.effects ?? {}`, and this repo's `src/` is the totals ORACLE.
