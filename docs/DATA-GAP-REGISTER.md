@@ -61,8 +61,8 @@ because it reads data trees the beta does not carry.
 with its census.
 
 - **ENT-22** — the writer-side strip took `effects.summon` before its three readers moved, so
-  400+ summoners per fork have no pet data: pet rows are gone from the display and a buff pet's
-  aura never reaches the caster's totals. Pets + entities, below.
+  400+ summoners per fork have no pet data: pet rows are gone from the display, and the buff-pet
+  totals fold is at zero on all four forks, measured on builds. Pets + entities, below.
 - **TSPY-11** — the recharge fold double-counts a buff a power gives to both an ally and the
   caster. Stat routing, below. Blocked with the absorb-fold residual on one shared census.
 
@@ -370,10 +370,10 @@ measurement went, and where a closure for the residual belongs too.
 - [ ] **ENT-22** — the strip already removed `effects.summon`, so the live contract carries 2/8/5/2
   records where the 2026-08-23 frozen corpus carries 145/156/151/146, and nothing replaced it.
   **425 Homecoming / 441 Rebirth / 408 Thunderspy / 434 Brainstorm** powers carry `EntCreate`
-  atoms and no summon value. `pseudo_pet_effects` merges nothing, `buff_pets::each_folded_row`
-  returns before folding (a TOTALS consequence, size unmeasured), `procs::power_summon` sees
-  nothing. Measured on Homecoming: 61 shared powers lose 310 unenhanceable display rows against
-  the frozen corpus, every one a summoner (Caltrops 18→0, Blizzard 12→0, Dark Servant 6→0).
+  atoms and no summon value. `pseudo_pet_effects` merges nothing, `procs::power_summon` sees
+  nothing, and the TOTALS fold is gone outright: measured on builds, **28/16/14/32** power records
+  (9/6/6/10 powers) fold a buff-pet aura on the frozen corpus and **0** do live (249/54/63/365 rows). Homecoming display
+  half: 61 shared powers lose 310 unenhanceable rows, every one a summoner (Caltrops 18→0).
   **Goal** — the pet parameters reach the three readers from the atoms, so which powers show their
   pets stops depending on which bags a strip left behind.
   **Done when** — `extractSummon`'s parameters have an atom-side or typed home the three readers
