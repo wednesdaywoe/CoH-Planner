@@ -159,7 +159,7 @@
     {
       "path": "docs/DATA-GAP-REGISTER.md",
       "status": "identical",
-      "sha256": "38030821c6eef4ac6cb40561015289d1e1d878b1cea8f2fc8a205aa753d61317"
+      "sha256": "f6f06ee5ab204029e29549319d074583aba3f5fbdd5ba7c1b2ca2a530744d10d"
     },
     {
       "path": "scripts/README-bulk-import-mids.md",
