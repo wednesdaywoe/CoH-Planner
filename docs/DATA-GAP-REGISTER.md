@@ -57,14 +57,14 @@ because it reads data trees the beta does not carry.
 
 ## Current frontier
 
-**2 open, of 242 entries.** Every other entry is fixed with a guard or adjudicated in writing
+**2 open, of 243 entries.** Every other entry is fixed with a guard or adjudicated in writing
 with its census.
 
-- **ENT-22** — the writer-side strip took `effects.summon` before its three readers moved, so
-  400+ summoners per fork have no pet data: pet rows are gone from the display, and the buff-pet
-  totals fold is at zero on all four forks, measured on builds. Pets + entities, below.
 - **TSPY-11** — the recharge fold double-counts a buff a power gives to both an ally and the
   caster. Stat routing, below. Blocked with the absorb-fold residual on one shared census.
+- **FIXTURE-2** — the movement fixture emitter selects on the retired `effects` bag, so a regen
+  empties the fixture (157 lines to 8) and `movement_gate` reds on its vacuity floor. Pipeline +
+  provenance, below. Latent at HEAD; the ENT-22 regen is what made it visible.
 
 **Carried residuals — named work inside closed entries.** Six items were scoped out of a closure
 and recorded there rather than reopened. They are not `[ ]` rows: their hosts *are* closed with
@@ -72,11 +72,8 @@ guards, and nothing leaves this file as less.
 
 They are listed in the next section so a session sees them without reading four narratives first.
 
-By the CLAUDE.md mandate ENT-22 outranks the rest: the export carries the pet parameters and the
-contract no longer does, so a writer ran ahead of its readers.
-
-The other open row and the six residuals are downstream of a faithful parse, and the parse itself
-is still clean.
+The open row and the six residuals are downstream of a faithful parse, and the parse itself is
+still clean.
 
 ---
 
@@ -327,7 +324,7 @@ measurement went, and where a closure for the residual belongs too.
 
 ## Pets + summoned entities
 
-[Full detail](gaps/pets-entities.md) — 21 of 22 closed
+[Full detail](gaps/pets-entities.md) — 22 of 22 closed
 
 - [x] **ENT-1** — Rebirth pet commandability was guessed from the class name
 - [x] **ENT-2** — the villaindef level element was read at Homecoming's width on both forks
@@ -367,23 +364,11 @@ measurement went, and where a closure for the residual belongs too.
   advertises and defaulted an absent field to `""`, so on pet records — which carry no `shortHelp`
   and no `targetType` — it degraded to an unconditional strip and took all 13 Thunderspy pet
   `rechargeBuff` rows, the only reader that key has ever had; the mirror now declines on absence
-- [ ] **ENT-22** — the strip already removed `effects.summon`, so the live contract carries 2/8/5/2
-  records where the 2026-08-23 frozen corpus carries 145/156/151/146, and nothing replaced it.
-  **425 Homecoming / 441 Rebirth / 408 Thunderspy / 434 Brainstorm** powers carry `EntCreate`
-  atoms and no summon value. `pseudo_pet_effects` merges nothing, `procs::power_summon` sees
-  nothing, and the TOTALS fold is gone outright: measured on builds, **28/16/14/32** power records
-  (9/6/6/10 powers) fold a buff-pet aura on the frozen corpus and **0** do live (249/54/63/365 rows). Homecoming display
-  half: 61 shared powers lose 310 unenhanceable rows, every one a summoner (Caltrops 18→0).
-  **Goal** — the pet parameters reach the three readers from the atoms, so which powers show their
-  pets stops depending on which bags a strip left behind.
-  **Done when** — `extractSummon`'s parameters have an atom-side or typed home the three readers
-  take; the population above resolves the rows the frozen corpus resolves for it, graded per power;
-  the gate script counts casualties beside survivors; and the buff-pet totals fold is measured on a
-  build rather than argued from its entry condition.
-  **Check** — `python3 scripts/keys/effects-bag-survivors.py` reports the `summon` population as
-  **17**, and that is the SURVIVOR count, not the gap — the gap is every power with an `EntCreate`
-  atom and no `effects.summon`, 425 on Homecoming. A run still reporting 17 as the migration size
-  has not been re-cut.
+- [x] **ENT-22** — the strip removed `effects.summon` while four readers still consumed it, so the
+  pet parameters had no address: 400+ summoners per fork showed no pet and the buff-pet aura fold
+  was gone on all four forks (28/16/14/32 records folding 249/54/63/365 rows before, 0 after);
+  `extractSummon`'s value is emitted at `power.summon` by all five converters and read through one
+  `Power::summon`, restoring every summon the pre-strip corpus resolved and the fold's exact figures
 - [x] **SHELL-1** — opaque-shell pseudo-pet summons were unresolved
 
 ---
@@ -606,7 +591,7 @@ measurement went, and where a closure for the residual belongs too.
 
 ## Pipeline + provenance
 
-[Full detail](gaps/pipeline-provenance.md) — 40 of 40 closed
+[Full detail](gaps/pipeline-provenance.md) — 40 of 41 closed
 
 - [x] **MBDEXPORT-1** — the .mbd exporter built Mids' enhancement UIDs out of set display names, and
   Mids answers a UID it does not know by leaving the slot empty with no error: a user's exported
@@ -757,6 +742,19 @@ measurement went, and where a closure for the residual belongs too.
 - [x] **INHERENT-3** — the committed `exported_powers/` was not reproducible by a plain export run
 - [x] **SOURCE-1** — second-source constants the export did not surface (the engine's wholesale Rule-0 holes)
 - [x] **TWIN-1** — converter-twin shape divergences, burned down entry by entry
+- [ ] **FIXTURE-2** — `emit-movement-fixtures.ts` picks its probe powers with `hasMovement(p.effects)`
+  and puts `p.effects` in every fixture, so the bag strip starved it: a plain re-emit yields
+  **8 lines against the committed 157**, all of them the empty-`powers` base cases, and
+  `movement_gate` reds on its own `≥20 lines` vacuity floor. The committed fixture predates the
+  strip and any regen replaces it, so `regen → git diff --exit-code` cannot pass at HEAD either
+  — measured on a clean tree at 0d409898d1, not inferred. FIXTURE-1 closed the drift class by
+  putting the emitters in `npm run regen`; this is the emitter's own SOURCE going away underneath
+  it, which that closure could not see because it graded sampling identity, not population size.
+  **Goal** — the movement fixtures select and carry their powers from a source the strip has not
+  removed, so a regen reproduces a population rather than emptying one.
+  **Check** — `node --import ./scripts/ts-esm-register.mjs scripts/emit-movement-fixtures.ts`
+  then `wc -l fixtures/movement/contributions.jsonl`. 8 is the starved emitter; the gate needs
+  ≥20 and the pre-strip fixture held 157.
 - [x] **Advisory checks** — adjudicated binary-first; Mids retired as an authority
 
 ---

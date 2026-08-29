@@ -1193,6 +1193,23 @@ export interface Power {
   /** All effects of this power */
   effects?: PowerEffects;
   /**
+   * The pet this power summons — entity name(s) and count, lifespan, display name, the redirect
+   * powers a location pseudo-pet stands for, and the inline `resolvedEntities` payload where the
+   * entity table has no record. Absent when the power summons nothing.
+   *
+   * A converter VERDICT built with the whole power in view, not a projection of the atoms: which
+   * `EntCreate` row is the power's window (ENT-14), how repeated rows aggregate into `entities`
+   * with counts, which P-hash resolves to which sibling, which redirect list names a real entity
+   * (ENT-16), and whether a tier-gated summon rebuilds at all.
+   *
+   * It rode inside {@link effects} and had no other address until 2026-08-29, so retiring that
+   * bag took the pets with it and 400+ summoners per fork went dark — no pet on the display, and
+   * the buff-pet aura fold at zero on all four forks (DATA-GAP-REGISTER ENT-22). Every partition
+   * writes it here now: powersets, pools, epics, inherents and accolades alike, so which powers
+   * show their pets stops depending on which bags a strip left behind.
+   */
+  summon?: SummonEffect;
+  /**
    * The fast (uninterruptible) redirect form of an interruptible power, and the gate that
    * selects it. `condition` is the redirect's own expression VERBATIM, as the token list the
    * wire holds — Homecoming's `kEngaged … Experienced_Marksman …`, the forks'

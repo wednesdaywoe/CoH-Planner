@@ -154,7 +154,7 @@
     {
       "path": "docs/DATA-GAP-REGISTER.md",
       "status": "identical",
-      "sha256": "b7057cd6562b4bd3faca801daf5292e26df45ba06d3aad6b51d322ff667dd75a"
+      "sha256": "2470b5034f63acc2ac088b044512a1e0be03051cb9f835cbeba36fd32bb52b87"
     },
     {
       "path": "scripts/README-bulk-import-mids.md",
@@ -339,7 +339,7 @@
     {
       "path": "scripts/convert-pool-powers.cjs",
       "status": "identical",
-      "sha256": "008f9f1d795ccb03d5e8b843342fb252f640de53c3ba61b33d6e469d804ce3eb"
+      "sha256": "2aef6b2a8512dc7ea42a68c9f378c7f18820ce1fdae8e55ba2b428595db0b72b"
     },
     {
       "path": "scripts/convert-powerset.cjs",
@@ -545,7 +545,7 @@
     {
       "path": "src/types/power.ts",
       "status": "identical",
-      "sha256": "4e6ab2173b10379ee0772f5f7971808de2f1d7266762490637513b4c360d574a"
+      "sha256": "87b6f8fdd53afea9703ab7a19e181f199f25514d3355160173052ce7d81ff79c"
     },
     {
       "path": "src/types/shared.ts",

@@ -422,6 +422,13 @@ function convertPoolPower(rawJson, rank, availableLevel) {
 
   power.effects = effects;
 
+  // The pets, at the address every partition now answers on. This converter still ships the
+  // whole legacy bag, so its summons were never strip casualties — but a reader that has to ask
+  // `power.summon ?? power.effects.summon` is two rules, and which one answers would depend on
+  // which partition the power came from, which is the shape ENT-22 was. One writer, one address;
+  // the bag's copy is the same object and dies with the rest of the legacy shape.
+  if (effects.summon) power.summon = effects.summon;
+
   // Conditional bonus effects (Mechanic Adjusters) — the positive state gates the base
   // collector filters out, surfaced as toggles. Called AFTER the atom emit above for the
   // reason convert-powerset.cjs orders them that way: `extractConditionalEffects` stamps
