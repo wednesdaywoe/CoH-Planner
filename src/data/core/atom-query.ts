@@ -42,7 +42,7 @@ import { decodeAtoms, landsOnCaster, type AtomicEffect, type EffectType } from '
  * reach the caster". That is the safe direction, and `scripts/planb-shadow-targets3.cjs`
  * asserts the corpus never relies on it.
  */
-type AtomSource = Pick<Power, 'atoms' | 'targetsAffected'> & Partial<Pick<Power, 'name'>>;
+export type AtomSource = Pick<Power, 'atoms' | 'targetsAffected'> & Partial<Pick<Power, 'name'>>;
 // `name` is optional because a hand-built source is allowed to omit it; the one reader is a
 // Rule 1 throw, where a missing name costs a less specific message and nothing else.
 
@@ -611,7 +611,7 @@ const RESIST_STD_SUBTYPES = new Set([
  *  `*_debuff` table (a −resistance/−defense at scale ≥ 0 on a debuff table still
  *  debuffs). Shared by the resistance and defense buff/penalty helpers, which must
  *  split buffs from debuffs exactly as the converter's routing does. */
-function isDebuffAtom(a: AtomicEffect): boolean {
+export function isDebuffAtom(a: AtomicEffect): boolean {
   return a.scale < 0 || (a.modifierTable || '').toLowerCase().includes('debuff');
 }
 
