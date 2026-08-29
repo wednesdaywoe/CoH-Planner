@@ -57,11 +57,14 @@ because it reads data trees the beta does not carry.
 
 ## Current frontier
 
-**2 open, of 243 entries.** Every other entry is fixed with a guard or adjudicated in writing
+**3 open, of 244 entries.** Every other entry is fixed with a guard or adjudicated in writing
 with its census.
 
 - **TSPY-11** — the recharge fold double-counts a buff a power gives to both an ally and the
   caster. Stat routing, below. Blocked with the absorb-fold residual on one shared census.
+- **STRIP-1** — the bag strip's residue is 17 red Rust tests and 122 red vitest tests, and the
+  canonical TS totals oracle now answers 0 for the families it never migrated. Pipeline +
+  provenance, below.
 - **FIXTURE-2** — the movement fixture emitter selects on the retired `effects` bag, so a regen
   empties the fixture (157 lines to 8) and `movement_gate` reds on its vacuity floor. Pipeline +
   provenance, below. Latent at HEAD; the ENT-22 regen is what made it visible.
@@ -591,7 +594,7 @@ measurement went, and where a closure for the residual belongs too.
 
 ## Pipeline + provenance
 
-[Full detail](gaps/pipeline-provenance.md) — 40 of 41 closed
+[Full detail](gaps/pipeline-provenance.md) — 40 of 42 closed
 
 - [x] **MBDEXPORT-1** — the .mbd exporter built Mids' enhancement UIDs out of set display names, and
   Mids answers a UID it does not know by leaving the slot empty with no error: a user's exported
@@ -755,6 +758,26 @@ measurement went, and where a closure for the residual belongs too.
   **Check** — `node --import ./scripts/ts-esm-register.mjs scripts/emit-movement-fixtures.ts`
   then `wc -l fixtures/movement/contributions.jsonl`. 8 is the starved emitter; the gate needs
   ≥20 and the pre-strip fixture held 157.
+- [ ] **STRIP-1** — the bag strip's residue was never filed: **17 red Rust tests over 12 targets
+  and 122 red vitest tests over 26 files**, measured 2026-08-29, on all four forks. Every Rust
+  failure is a guard reporting its own vacuity, not a wrong number, and 48 base-bag reads survive
+  in 36 Rust files — 7 still grading the FROZEN corpus, 12 red, 10 GREEN over a field that is now
+  always absent. The TS half is worse than untested:
+  `character-totals.ts:1145` opens `power.effects ?? {}` and spends ~45 slots from it, so the
+  canonical totals ORACLE answers 0 where it answered a number.
+  **Goal** — every reader the strip starved is atom-native, retired with its claim restated on a
+  live source, or recorded as a stated skip carrying its measured population; no guard is green on
+  an empty one.
+  **Done when** — `cargo test --no-fail-fast` on both crates and `npm test` are green or every
+  remaining failure is a written adjudication naming its population; no LIVE reader calls
+  `extra.get("effects")` or `power.effects` (a unit fixture building its own bag may stay, named as
+  such); the TS totals path spends no bag slot; and each retired guard's claim is restated rather
+  than deleted.
+  **Check** — `grep -rlPz '\.extra\s*\.get\("effects"\)' --include=*.rs crates/ | tr '\0' '\n'
+  | grep -c .` — 36 today. It must span line breaks: a single-line grep reads 25 and misses three
+  of the red targets. A zero here while the tests are still red would mean readers were deleted
+  rather than migrated, which is the outcome this row exists to prevent.
+
 - [x] **Advisory checks** — adjudicated binary-first; Mids retired as an authority
 
 ---
