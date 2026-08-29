@@ -57,22 +57,22 @@ because it reads data trees the beta does not carry.
 
 ## Current frontier
 
-**1 open, of 240 entries.** Every other entry is fixed with a guard or adjudicated in writing
+**1 open, of 241 entries.** Every other entry is fixed with a guard or adjudicated in writing
 with its census.
 
 - **TSPY-11** — the recharge fold double-counts a buff a power gives to both an ally and the
   caster. Stat routing, below. Blocked with the absorb-fold residual on one shared census.
 
-**Carried residuals — named work inside closed entries.** Four items were scoped out of a closure
+**Carried residuals — named work inside closed entries.** Six items were scoped out of a closure
 and recorded there rather than reopened. They are not `[ ]` rows: their hosts *are* closed with
 guards, and nothing leaves this file as less.
 
 They are listed in the next section so a session sees them without reading four narratives first.
 
-By the CLAUDE.md mandate, nothing in either list outranks the others: TSPY-11 and all four
-residuals are stat-routing or resolution-path items downstream of a faithful parse. **The parser
-frontier is clear**, so feature work in [REBUILD-PROGRESS](REBUILD-PROGRESS.md) is not being
-blocked by this file today.
+By the CLAUDE.md mandate, nothing in either list outranks the others: TSPY-11 and all six
+residuals are stat-routing, resolution-path or display-sourcing items downstream of a faithful
+parse. **The parser frontier is clear**, so feature work in
+[REBUILD-PROGRESS](REBUILD-PROGRESS.md) is not being blocked by this file today.
 
 ---
 
@@ -130,6 +130,39 @@ measurement went, and where a closure for the residual belongs too.
   2026-08-28), so this item is blocked on the A/B, not on the parser. An empty result would mean
   the opposite and would make this a parser gap, which by the mandate would outrank everything
   above it.
+
+- **The beta still reads the Domination hardcode** — host **PARTSTAT-2**
+  ([pipeline-provenance](gaps/pipeline-provenance.md)). The beta repo keeps the `effects` block in
+  its own `archetypes.ts`, so its Thunderspy Dominator card still shows recharge 200 against an
+  export that says 180 — live, on a surface users read. Not ported because `convert-inherents.cjs`
+  is declared canonical-only (FORK-1, HELPTEXT-1) and the beta has no generated inherent powerset
+  to read, so the fix has no floor there. The shared `src/data/dataset.ts` DID cross, carrying
+  `archetypeInherentPowerset` as an optional member.
+  **Goal** — the beta's Dominator card reads its own export twin, or the beta is archived and the
+  question is moot.
+  **Done when** — either `convert-inherents.cjs` stops being canonical-only and the beta's three
+  datasets carry a generated inherent powerset, with this row's guard ported and green there; or
+  RB4's handover lands and the beta stops being a surface users read.
+  **Check** — `grep -n "enduranceGain: 100" ../CoH-Sidekick/src/data/datasets/*/archetypes.ts`.
+  Three hits today, one per fork. No hits means the port landed or the file went.
+
+- **Always-on archetype inherents are unsourced in TS** — host **PARTSTAT-2**
+  ([pipeline-provenance](gaps/pipeline-provenance.md)). `createArchetypeInherentPower` takes its
+  execution payload from the `Inherent.Inherent` twin only for a Click inherent, so Domination is
+  sourced and the other fourteen show none of the rows their twins ship. Not a wrong number — the
+  Rust engine reads their atoms from the contract, and Pass 3 derives Fury's and Vigilance's
+  damage — but the TS card is silent where the export is not, and lifting the gate as-is would put
+  a second, differently derived damage row beside the Pass-3 one on those two.
+  **Goal** — an archetype inherent's card rows come from its twin whatever its power type, with
+  the Pass-3 calcs and the card agreeing on one source.
+  **Done when** — the fourteen are A/B'd card-row by card-row against their twins on all four
+  forks with every disagreement adjudicated in writing (Fury and Vigilance first, since they are
+  the two the Pass-3 calcs also answer); the Click gate in `archetypeInherentCalcFields` goes; and
+  the guard's "an always-on inherent takes no execution payload" case is re-cut rather than
+  deleted, so the replacement rule is graded on the same population.
+  **Check** — `grep -n "powerType !== 'Click'" src/data/datasets/homecoming/levels.ts` names the
+  gate. An empty result means the gate is already gone and this residual is closed or was widened
+  without its narrative moving.
 
 - **Kheldian shapeshift suppression is unmodelled** — host **COND-11** ([conditionals-gates](gaps/conditionals-gates.md)).
   276 tagged groups across 17 Rebirth powers: entering Nova/Dwarf form fires a
@@ -552,7 +585,7 @@ measurement went, and where a closure for the residual belongs too.
 
 ## Pipeline + provenance
 
-[Full detail](gaps/pipeline-provenance.md) — 39 of 39 closed
+[Full detail](gaps/pipeline-provenance.md) — 40 of 40 closed
 
 - [x] **MBDEXPORT-1** — the .mbd exporter built Mids' enhancement UIDs out of set display names, and
   Mids answers a UID it does not know by leaving the slot empty with no error: a user's exported
@@ -560,6 +593,8 @@ measurement went, and where a closure for the residual belongs too.
   the alpha slot, the origin and every slot's placement level; UIDs are now read from Mids' own
   EnhDB per fork, both directions share the table, and three population sweeps plus a source-hash
   staleness gate hold it
+- [x] **PARTSTAT-2** — the Dominator `Domination` node in `archetypes.json` hand-copied three values the export owns and had drifted, stating `recharge` 200 on the fork whose export says 180; TS gained the name-join to the `Inherent.Inherent` twin that Rust already had, the card's window is now the longest span its caster-side atoms hold open rather than the bag's modal vote, and the four hand-authored `effects` blocks are gone — atom-less bags 4 → 0
+
 - [x] **PARTSTAT-1** — four converters wrote a power's execution stats into the `effects` bag
   under the export's own field names, and the loader's rename reached only two of them: every
   accolade and archetype inherent projected with no cast time and no endurance cost (82 and 30

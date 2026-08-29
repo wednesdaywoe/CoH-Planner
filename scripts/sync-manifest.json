@@ -41,6 +41,7 @@
       "gap": "HELPTEXT-1",
       "mentions": [
         "scripts/convert-accolades.cjs",
+        "src/data/dataset.ts",
         "scripts/detect-chance-mod-selectors.cjs"
       ]
     }
@@ -153,7 +154,7 @@
     {
       "path": "docs/DATA-GAP-REGISTER.md",
       "status": "identical",
-      "sha256": "8084283e6f83f6e385434371d8bfec431e905a96b38c2399b9934e988f4f949a"
+      "sha256": "6db46a35048e2e9325ea0010ce33ece9123fc4e6a4719924ee8b1a071535c637"
     },
     {
       "path": "scripts/README-bulk-import-mids.md",
@@ -474,7 +475,7 @@
     {
       "path": "src/data/dataset.ts",
       "status": "identical",
-      "sha256": "cbce62e13dccaa7023e3cfcc7ac892915b032e7f5a8ab8140f891e1dcae07ec9"
+      "sha256": "73e72e3d6af7c35a2268936242100b6182911837647366b4a6d5eba1f817640e"
     },
     {
       "path": "src/data/enhancement-curves.ts",
