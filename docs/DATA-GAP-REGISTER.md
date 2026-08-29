@@ -57,9 +57,12 @@ because it reads data trees the beta does not carry.
 
 ## Current frontier
 
-**1 open, of 241 entries.** Every other entry is fixed with a guard or adjudicated in writing
+**2 open, of 242 entries.** Every other entry is fixed with a guard or adjudicated in writing
 with its census.
 
+- **ENT-22** — the writer-side strip took `effects.summon` before its three readers moved, so
+  400+ summoners per fork have no pet data: pet rows are gone from the display and a buff pet's
+  aura never reaches the caster's totals. Pets + entities, below.
 - **TSPY-11** — the recharge fold double-counts a buff a power gives to both an ally and the
   caster. Stat routing, below. Blocked with the absorb-fold residual on one shared census.
 
@@ -69,10 +72,11 @@ guards, and nothing leaves this file as less.
 
 They are listed in the next section so a session sees them without reading four narratives first.
 
-By the CLAUDE.md mandate, nothing in either list outranks the others: TSPY-11 and all six
-residuals are stat-routing, resolution-path or display-sourcing items downstream of a faithful
-parse. **The parser frontier is clear**, so feature work in
-[REBUILD-PROGRESS](REBUILD-PROGRESS.md) is not being blocked by this file today.
+By the CLAUDE.md mandate ENT-22 outranks the rest: the export carries the pet parameters and the
+contract no longer does, so a writer ran ahead of its readers.
+
+The other open row and the six residuals are downstream of a faithful parse, and the parse itself
+is still clean.
 
 ---
 
@@ -323,7 +327,7 @@ measurement went, and where a closure for the residual belongs too.
 
 ## Pets + summoned entities
 
-[Full detail](gaps/pets-entities.md) — 21 of 21 closed
+[Full detail](gaps/pets-entities.md) — 21 of 22 closed
 
 - [x] **ENT-1** — Rebirth pet commandability was guessed from the class name
 - [x] **ENT-2** — the villaindef level element was read at Homecoming's width on both forks
@@ -363,6 +367,23 @@ measurement went, and where a closure for the residual belongs too.
   advertises and defaulted an absent field to `""`, so on pet records — which carry no `shortHelp`
   and no `targetType` — it degraded to an unconditional strip and took all 13 Thunderspy pet
   `rechargeBuff` rows, the only reader that key has ever had; the mirror now declines on absence
+- [ ] **ENT-22** — the strip already removed `effects.summon`, so the live contract carries 2/8/5/2
+  records where the 2026-08-23 frozen corpus carries 145/156/151/146, and nothing replaced it.
+  **425 Homecoming / 441 Rebirth / 408 Thunderspy / 434 Brainstorm** powers carry `EntCreate`
+  atoms and no summon value. `pseudo_pet_effects` merges nothing, `buff_pets::each_folded_row`
+  returns before folding (a TOTALS consequence, size unmeasured), `procs::power_summon` sees
+  nothing. Measured on Homecoming: 61 shared powers lose 310 unenhanceable display rows against
+  the frozen corpus, every one a summoner (Caltrops 18→0, Blizzard 12→0, Dark Servant 6→0).
+  **Goal** — the pet parameters reach the three readers from the atoms, so which powers show their
+  pets stops depending on which bags a strip left behind.
+  **Done when** — `extractSummon`'s parameters have an atom-side or typed home the three readers
+  take; the population above resolves the rows the frozen corpus resolves for it, graded per power;
+  the gate script counts casualties beside survivors; and the buff-pet totals fold is measured on a
+  build rather than argued from its entry condition.
+  **Check** — `python3 scripts/keys/effects-bag-survivors.py` reports the `summon` population as
+  **17**, and that is the SURVIVOR count, not the gap — the gap is every power with an `EntCreate`
+  atom and no `effects.summon`, 425 on Homecoming. A run still reporting 17 as the migration size
+  has not been re-cut.
 - [x] **SHELL-1** — opaque-shell pseudo-pet summons were unresolved
 
 ---
