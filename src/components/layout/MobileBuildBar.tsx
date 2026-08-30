@@ -46,16 +46,17 @@ export function MobileBuildBar() {
         </Tooltip>
       )}
 
-      {/* Pick / slot budget — mirrors the dashboard counters */}
+      {/* Pick / slot budget — mirrors the dashboard counters, USED of budget (the
+          remainder is in the tooltip; see StatsDashboard for why round that way). */}
       <div className="flex items-center gap-2 ml-auto shrink-0">
         <Tooltip content={`${powerRemaining} power picks remaining (${currentPowerCount} used of ${powerBudget})`}>
           <span className={`text-xs font-medium tabular-nums whitespace-nowrap ${powerColor}`}>
-            Pwr {powerRemaining}/{powerBudget}
+            Pwr {currentPowerCount}/{powerBudget}
           </span>
         </Tooltip>
         <Tooltip content={`${slotRemaining} enhancement slots remaining (${currentSlotCount} used of ${slotBudget})`}>
           <span className={`text-xs font-medium tabular-nums whitespace-nowrap ${slotColor}`}>
-            Slot {slotRemaining}/{slotBudget}
+            Slot {currentSlotCount}/{slotBudget}
           </span>
         </Tooltip>
       </div>

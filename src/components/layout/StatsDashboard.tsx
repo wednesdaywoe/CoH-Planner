@@ -502,18 +502,24 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
                 Lvl {build.level}
               </span>
             </Tooltip>
+            {/* USED of budget, not remaining. The chips read "23/24" the way a reader
+                expects an x/y pair to read, and match the number the import dialog
+                reports; the tooltip still gives the remainder. Showing the remainder in
+                the chip made a build that had lost a power to a bad import look like a
+                build with one pick left to spend, which is how a real report of wrong
+                numbers came in. */}
             <Tooltip content={`${Math.max(0, powerBudget - currentPowerCount)} power picks remaining (${currentPowerCount} used of ${powerBudget} at level ${build.level})`}>
               <span className={`text-xs tabular-nums font-medium px-1 ${
                 currentPowerCount > powerBudget ? 'text-red-400' : powerBudget - currentPowerCount <= 3 ? 'text-yellow-400' : 'text-emerald-400'
               }`}>
-                Pwr {Math.max(0, powerBudget - currentPowerCount)}/{powerBudget}
+                Pwr {currentPowerCount}/{powerBudget}
               </span>
             </Tooltip>
             <Tooltip content={`${Math.max(0, slotBudget - currentSlotCount)} enhancement slots remaining (${currentSlotCount} used of ${slotBudget} at level ${build.level})`}>
               <span className={`text-xs tabular-nums font-medium px-1 ${
                 currentSlotCount > slotBudget ? 'text-red-400' : slotBudget - currentSlotCount <= 5 ? 'text-yellow-400' : 'text-emerald-400'
               }`}>
-                Slot {Math.max(0, slotBudget - currentSlotCount)}/{slotBudget}
+                Slot {currentSlotCount}/{slotBudget}
               </span>
             </Tooltip>
             <div className="hidden lg:block w-px h-4 bg-gray-700 mx-0.5 shrink-0" />

@@ -90,6 +90,19 @@ export function getAccolades(): AccoladePower[] {
 }
 
 /**
+ * Every accolade the export carries, toggle or not.
+ *
+ * The Mids importer needs the wider roster to tell two skips apart: a name that is a real
+ * accolade with no stat buff (Eye of the Magus) has no toggle by design and drops silently,
+ * while a name in neither list is a roster divergence and has to warn. Reading only
+ * `getAccolades()` collapses those two into one silent drop, which is the shape that let
+ * MBDIMPORT-1 sit unnoticed.
+ */
+export function getAllAccolades(): AccoladePower[] {
+  return activeAccoladePowerset().powers;
+}
+
+/**
  * Modes the game requires for this accolade's buff to apply, as display labels.
  *
  * Empty for the permanent ones, which is nearly all of them. The totals fold every selected

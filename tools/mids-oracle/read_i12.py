@@ -53,6 +53,7 @@ E_DAMAGE = [
     "Psionic", "Special", "Melee", "Ranged", "AoE", "Unique1", "Unique2", "Unique3",
 ]
 E_EFFECT_CLASS = ["Primary", "Secondary", "Tertiary", "Special", "Ignored", "DisplayOnly"]
+E_POWER_TYPE = ["Click", "Auto", "Toggle", "Boost", "Inspiration", "GlobalBoost"]
 E_EFFECT_TYPE = [
     "None", "Accuracy", "ViewAttrib", "Damage", "DamageBuff", "Defense", "DropToggles",
     "Endurance", "EnduranceDiscount", "Enhancement", "Fly", "SpeedFlying", "GrantPower",
@@ -288,11 +289,11 @@ def read_power(r: Reader) -> dict:
     set_name = r.string()
     power_name = r.string()
     display_name = r.string()
-    _available = r.int32()
+    available = r.int32()
     requires = read_requirement(r)
     _modes_required = r.int32()
     _modes_disallowed = r.int32()
-    _power_type = r.int32()
+    power_type = r.int32()
     _accuracy = r.single()
     _attack_types = r.int32()
     for _ in range(r.int32() + 1):          # GroupMembership: count+1 strings
@@ -336,7 +337,7 @@ def read_power(r: Reader) -> dict:
         r.int32()
     _click_buff = r.boolean()
     _always_toggle = r.boolean()
-    _level = r.int32()
+    level = r.int32()
     _allow_front_loading = r.boolean()
     _variable_enabled = r.boolean()
     _variable_override = r.boolean()
@@ -377,6 +378,14 @@ def read_power(r: Reader) -> dict:
         "set": set_name,
         "power": power_name,
         "display": display_name,
+        # `available` is the 0-based level the power unlocks at; `level` is Mids' own
+        # ordering level. Both are carried because the two disagree for granted powers,
+        # and MBDIMPORT-2's name join uses availability to tell a renamed power from a
+        # reused name — a display match that disagrees on when the power unlocks is a
+        # coincidence, not an identity.
+        "available": available,
+        "level": level,
+        "power_type": enum_name(E_POWER_TYPE, power_type),
         "class_name": requires["class_name"],
         "ignore_strength": ignore_strength,
         "effects": effects,

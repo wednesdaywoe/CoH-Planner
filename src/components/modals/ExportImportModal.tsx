@@ -773,14 +773,18 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
 
   const renderImportResultSummary = (
     resultBuild: NonNullable<MidsImportResult['build']> | NonNullable<GameImportResult['build']>,
-    summary: { powersImported: number; powersFailed: number; enhancementsImported: number; enhancementsFailed: number },
+    summary: {
+      powersImported: number; powersFailed: number;
+      enhancementsImported: number; enhancementsFailed: number;
+      accoladesImported?: number; incarnatesImported?: number;
+    },
     characterName?: string,
   ) => {
-    // Enhancements the source tool routed into a power the game won't allow them
-    // in — most often a power-name mismatch (e.g. Shield Defense's internal
-    // names are permuted vs their display names, so a defense set can land in
-    // the mez-only "Active Defense"). They're excluded from totals and flagged
-    // in the build; tell the user so they can move or clear them.
+    // Enhancements the source tool routed into a power the game won't allow them in.
+    // Shield Defense's permuted internal names used to be the common cause and are no
+    // longer (MBDIMPORT-2 resolves the rotation before binding), so what reaches here now
+    // is a genuine mismatch. They're excluded from totals and flagged in the build; tell
+    // the user so they can move or clear them.
     const illegal = findIllegalSlots(resultBuild);
     const illegalByPower = new Map<string, string[]>();
     for (const s of illegal) {
@@ -809,7 +813,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
         <span className="text-white">{resultBuild.level}</span>
         <span>Powers:</span>
         <span className="text-white">
-          {summary.powersImported} imported
+          {summary.powersImported} picked
           {summary.powersFailed > 0 && (
             <span className="text-red-400"> / {summary.powersFailed} failed</span>
           )}
@@ -821,6 +825,22 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
             <span className="text-red-400"> / {summary.enhancementsFailed} failed</span>
           )}
         </span>
+        {/* Accolades and incarnates get their own lines rather than being folded into
+            "Powers": neither consumes a power pick, and folding them in is what made the
+            old count disagree with the dashboard's Pwr chip. Hidden when the importer
+            does not report the split (the .mxd path) or the build carries none. */}
+        {!!summary.accoladesImported && (
+          <>
+            <span>Accolades:</span>
+            <span className="text-white">{summary.accoladesImported} imported</span>
+          </>
+        )}
+        {!!summary.incarnatesImported && (
+          <>
+            <span>Incarnates:</span>
+            <span className="text-white">{summary.incarnatesImported} imported</span>
+          </>
+        )}
         <span>Pools:</span>
         <span className="text-white">
           {resultBuild.pools.map((p) => p.name).join(', ') || 'None'}

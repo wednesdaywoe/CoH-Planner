@@ -110,6 +110,7 @@ import {
   mapEnhancementUid,
   mapEnhancementByDisplayName,
   MIDS_SILENT_SKIP_PATHS,
+  midsNameIsRetired,
 } from './mappers';
 
 /**
@@ -134,6 +135,8 @@ function resolveSlotEnhancement(enh: {
   return { enhancement: null, warning: null };
 }
 import type { PoolPowerMatch, EpicPowerMatch } from './mappers';
+import { getAccolades, getAllAccolades, accoladeId } from '@/data/accolades';
+import { countBudgetPowerPicks } from '@/utils/build-budget';
 import { warnFallback } from '@/utils/fallback-warnings';
 import { ensureSlotOrderPopulated } from '@/utils/slot-levels';
 
@@ -145,6 +148,8 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
   const warnings: MidsImportWarning[] = [];
   const summary: MidsImportSummary = {
     powersImported: 0,
+    accoladesImported: 0,
+    incarnatesImported: 0,
     powersFailed: 0,
     enhancementsImported: 0,
     enhancementsFailed: 0,
@@ -345,6 +350,12 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
   const epicPowers: SelectedPower[] = [];
   const inherentSlotData: SelectedPower[] = []; // Slot data from Inherent.* entries
   const incarnateResults: Partial<Record<IncarnateSlotId, SelectedIncarnatePower>> = {};
+  const accoladeIds: string[] = [];
+  /**
+   * Which Mids entry took each resolved power, so a later entry landing on the same one
+   * can tell a duplicate apart from a collision. See `claimSlot` below.
+   */
+  const claimedBy = new Map<string, string>();
   // Capture Mids' per-power slider (VariableValue) for things like Siphon
   // Speed stacks or Domination duration. Keyed by power internalName so the
   // caller can write directly to uiStore.targetsHitValues after applying
@@ -367,6 +378,15 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
       continue;
     }
 
+    // Accolades ride in as temporary powers, and the generic `Temporary_Powers.` skip
+    // further down would drop them. They are toggles rather than picks, so they are
+    // resolved here and never reach `processEntry`.
+    if (entry.PowerName.startsWith('Temporary_Powers.Accolades.')) {
+      const id = processAccoladeEntry(entry, warnings, summary);
+      if (id && !accoladeIds.includes(id)) accoladeIds.push(id);
+      continue;
+    }
+
     // Skip non-slottable granted sub-powers (e.g., Defensive/Efficient/Offensive Adaptation)
     // These are auto-displayed under their parent power; importing them as separate entries
     // would cause them to appear as standalone picked powers.
@@ -379,8 +399,7 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
         if (entry.StatInclude) {
           activeSubPowers.set(parentName, internalName);
         }
-        summary.powersImported++;
-        continue;
+          continue;
       }
     }
 
@@ -396,10 +415,18 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
       const parentName = slottableSubPowerParent.get(subInternal.toLowerCase());
       if (parentName) {
         const primaryMatch = primaryId
-          ? findPowerByMidsName([...(primaryPowerset?.powers ?? []), ...branchPrimaryPowers], subInternal)
+          ? findPowerByMidsName(
+              [...(primaryPowerset?.powers ?? []), ...branchPrimaryPowers],
+              subInternal,
+              [primaryPowerset, ...[...branchPrimarySetIds].map((id) => getPowerset(id))],
+            )
           : null;
         const secondaryMatch = !primaryMatch && secondaryId
-          ? findPowerByMidsName([...(secondaryPowerset?.powers ?? []), ...branchSecondaryPowers], subInternal)
+          ? findPowerByMidsName(
+              [...(secondaryPowerset?.powers ?? []), ...branchSecondaryPowers],
+              subInternal,
+              [secondaryPowerset, ...[...branchSecondarySetIds].map((id) => getPowerset(id))],
+            )
           : null;
         const match = primaryMatch ?? secondaryMatch;
         if (match) {
@@ -420,8 +447,7 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
           const targetList = primaryMatch ? primaryPowers : secondaryPowers;
           if (!targetList.some((p) => p.internalName === match.internalName)) {
             targetList.push(subPower);
-            summary.powersImported++;
-          }
+                }
         } else {
           warnings.push({ type: 'power', midsName: entry.PowerName, message: 'Form sub-power not found in primary/secondary powerset' });
           summary.powersFailed++;
@@ -461,13 +487,42 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
     // same power, which would cause the power to appear twice (same slot, same level).
     const powerName = result.power.internalName;
 
+    /**
+     * Take the slot for this power, or report why we could not.
+     *
+     * A repeat of the SAME Mids name is an ordinary duplicate entry and stays silent —
+     * Mids files carry those. Two DIFFERENT names landing on one power is not a duplicate,
+     * it is a collision, and it was the quiet half of MBDIMPORT-2: the loser's slots and
+     * enhancements were dropped by a bare `break`, with `warnings: []` and `powersFailed: 0`
+     * still on the summary. The user's only symptom was a power missing from a build they
+     * watched import cleanly. A soft failure is a lie; this is the line that makes it a
+     * bug report instead.
+     */
+    const claimSlot = (held: SelectedPower[]): boolean => {
+      const incumbent = held.find((p) => p.internalName === powerName);
+      if (!incumbent) {
+        claimedBy.set(powerName, entry.PowerName);
+        return true;
+      }
+      const by = claimedBy.get(powerName);
+      if (by && by !== entry.PowerName) {
+        warnings.push({
+          type: 'power',
+          midsName: entry.PowerName,
+          message: `Resolved to '${result.power.name}', which '${by}' already claimed — `
+            + 'this entry and its slots were dropped',
+        });
+      }
+      return false;
+    };
+
     switch (result.category) {
       case 'primary':
-        if (primaryPowers.some(p => p.internalName === powerName)) break;
+        if (!claimSlot(primaryPowers)) break;
         primaryPowers.push(result.power);
         break;
       case 'secondary':
-        if (secondaryPowers.some(p => p.internalName === powerName)) break;
+        if (!claimSlot(secondaryPowers)) break;
         secondaryPowers.push(result.power);
         break;
       case 'pool': {
@@ -476,12 +531,12 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
           poolPowersMap[poolId] = [];
           if (!poolIds.includes(poolId)) poolIds.push(poolId);
         }
-        if (poolPowersMap[poolId].some(p => p.internalName === powerName)) break;
+        if (!claimSlot(poolPowersMap[poolId])) break;
         poolPowersMap[poolId].push(result.power);
         break;
       }
       case 'epic':
-        if (epicPowers.some(p => p.internalName === powerName)) break;
+        if (!claimSlot(epicPowers)) break;
         epicPowers.push(result.power);
         break;
       case 'inherent':
@@ -616,7 +671,7 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
     pools,
     epicPool,
     inherents,
-    accolades: [],
+    accolades: accoladeIds,
     settings: {
       origin,
     },
@@ -641,6 +696,11 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
   // the touched entry recorded — every other slot collapses to its power's
   // pick level. See `ensureSlotOrderPopulated` for the full diagnosis.
   ensureSlotOrderPopulated(build);
+
+  // Counted from the finished build rather than tallied on the way in, so the number the
+  // import dialog reports and the number the dashboard's Pwr chip reports are the same
+  // number computed the same way. See `countBudgetPowerPicks`.
+  summary.powersImported = countBudgetPowerPicks(build);
 
   return {
     success: true,
@@ -709,7 +769,18 @@ function processEntry(
   // Extract segments: "Brute_Melee.Kinetic_Attack.Quick_Strike" → ["Brute_Melee", "Kinetic_Attack", "Quick_Strike"]
   const segments = PowerName.split('.');
 
-  // Skip temporary powers
+  /**
+   * This powerset has given the name to a different power, and offers no counterpart for
+   * the one Mids means (MBDIMPORT-2). Every exact-name door below has to honour it — the
+   * powerset matcher does so through `findPowerByMidsName`, and the pool and epic fullName
+   * lookups need it stated here because they never call that.
+   */
+  const reassigned = segments.length >= 3
+    && midsNameIsRetired(`${segments[0]}.${segments[1]}`, segments[2]);
+
+  // Skip temporary powers. Accolades share this prefix but are pulled out by the caller
+  // before we get here — see `processAccoladeEntry`. Everything else under it (day-job
+  // powers, mission temps) has no planner representation at all.
   if (PowerName.startsWith('Temporary_Powers.')) {
     return null;
   }
@@ -766,7 +837,12 @@ function processEntry(
 
   // Try pool powers first (Pool.X.Y)
   if (PowerName.startsWith('Pool.')) {
-    const poolMatch = poolLookup.get(PowerName);
+    // The fullName lookup is an exact internal-name match wearing a different hat, so it
+    // needs the same guard: `Pool.Flight.Afterburner` is a real fullName here, and an
+    // older Mids file naming the pre-rework Afterburner would walk straight past the remap
+    // into the power now displayed "Evasive Maneuvers". Withholding the direct hit sends
+    // it to `findPowerByMidsName`, which resolves it on display instead.
+    const poolMatch = reassigned ? undefined : poolLookup.get(PowerName);
     if (poolMatch) {
       const power = buildSelectedPower(
         poolMatch.power,
@@ -777,7 +853,6 @@ function processEntry(
         warnings,
         summary,
       );
-      summary.powersImported++;
       return { category: 'pool', power, poolId: poolMatch.poolId };
     }
 
@@ -786,11 +861,10 @@ function processEntry(
       const poolId = segments[1].toLowerCase();
       const pool = getPowerPool(poolId);
       if (pool) {
-        const powerDef = findPowerByMidsName(pool.powers, segments[2]);
+        const powerDef = findPowerByMidsName(pool.powers, segments[2], [pool]);
         if (powerDef) {
           const power = buildSelectedPower(powerDef, poolId, appLevel, StatInclude, SlotEntries, warnings, summary);
-          summary.powersImported++;
-          return { category: 'pool', power, poolId };
+              return { category: 'pool', power, poolId };
         }
       }
     }
@@ -802,7 +876,8 @@ function processEntry(
 
   // Try epic powers (Epic.X.Y)
   if (PowerName.startsWith('Epic.')) {
-    const epicMatch = epicLookup.get(PowerName);
+    // Same second door as the pool branch above — see `reassigned`.
+    const epicMatch = reassigned ? undefined : epicLookup.get(PowerName);
     if (epicMatch) {
       const power = buildSelectedPower(
         epicMatch.power,
@@ -813,7 +888,6 @@ function processEntry(
         warnings,
         summary,
       );
-      summary.powersImported++;
       return { category: 'epic', power };
     }
 
@@ -823,11 +897,10 @@ function processEntry(
       if (epicPoolId) {
         const epicPool = getEpicPool(epicPoolId);
         if (epicPool) {
-          const powerDef = findPowerByMidsName(epicPool.powers, segments[2]);
+          const powerDef = findPowerByMidsName(epicPool.powers, segments[2], [epicPool]);
           if (powerDef) {
             const power = buildSelectedPower(powerDef, epicPoolId, appLevel, StatInclude, SlotEntries, warnings, summary);
-            summary.powersImported++;
-            return { category: 'epic', power };
+                  return { category: 'epic', power };
           }
         }
       }
@@ -849,7 +922,10 @@ function processEntry(
 
   // Try primary
   if (primaryId) {
-    const match = findPowerByMidsName(primaryPowers, powerInternalName);
+    const match = findPowerByMidsName(primaryPowers, powerInternalName, [
+      getPowerset(primaryId),
+      ...[...branchPrimarySetIds].map((id) => getPowerset(id)),
+    ]);
     if (match) {
       // Determine correct powerset ID — may be a branch powerset, not the base
       let correctSetId = primaryId;
@@ -861,14 +937,16 @@ function processEntry(
         }
       }
       const power = buildSelectedPower(match, correctSetId, appLevel, StatInclude, SlotEntries, warnings, summary);
-      summary.powersImported++;
       return { category: 'primary', power };
     }
   }
 
   // Try secondary
   if (secondaryId) {
-    const match = findPowerByMidsName(secondaryPowers, powerInternalName);
+    const match = findPowerByMidsName(secondaryPowers, powerInternalName, [
+      getPowerset(secondaryId),
+      ...[...branchSecondarySetIds].map((id) => getPowerset(id)),
+    ]);
     if (match) {
       // Determine correct powerset ID — may be a branch powerset, not the base
       let correctSetId = secondaryId;
@@ -880,9 +958,24 @@ function processEntry(
         }
       }
       const power = buildSelectedPower(match, correctSetId, appLevel, StatInclude, SlotEntries, warnings, summary);
-      summary.powersImported++;
       return { category: 'secondary', power };
     }
+  }
+
+  // The .mbd names the powerset, and its own matchers have now had their turn. A name that
+  // set has reassigned, with no counterpart of its own, is a definite answer: the power is
+  // gone. Ranging on into the fallbacks below would bind a same-named power from a set the
+  // character never took — Willpower's `Reconstruction` finding Regeneration's — and a
+  // wrong answer that looks deliberate is worse than none.
+  if (reassigned) {
+    warnings.push({
+      type: 'power',
+      midsName: PowerName,
+      message: `'${powerInternalName}' names a different power in this dataset, `
+        + 'and the one Mids means has no counterpart here',
+    });
+    summary.powersFailed++;
+    return null;
   }
 
   // Fallback 1: resolve the powerset directly from the power's path
@@ -891,13 +984,12 @@ function processEntry(
   if (fallbackPowersetId) {
     const fallbackPowerset = getPowerset(fallbackPowersetId);
     if (fallbackPowerset) {
-      const match = findPowerByMidsName(fallbackPowerset.powers, powerInternalName);
+      const match = findPowerByMidsName(fallbackPowerset.powers, powerInternalName, [fallbackPowerset]);
       if (match) {
         const category = categorizePowerset(fallbackPowersetId, fallbackPowerset.category, branchPrimarySetIds, branchSecondarySetIds);
         warnFallback('mids-import/processEntry', `power '${PowerName}' resolved via powerset path (fallback 1) to '${fallbackPowersetId}' as ${category}`);
         const power = buildSelectedPower(match, fallbackPowersetId, appLevel, StatInclude, SlotEntries, warnings, summary);
-        summary.powersImported++;
-        return { category, power };
+          return { category, power };
       }
     }
   }
@@ -906,12 +998,11 @@ function processEntry(
   const allPowersets = getAllPowersets();
   for (const [psId, ps] of Object.entries(allPowersets)) {
     if (ps.archetype?.toLowerCase() !== archetypeId.toLowerCase()) continue;
-    const match = findPowerByMidsName(ps.powers, powerInternalName);
+    const match = findPowerByMidsName(ps.powers, powerInternalName, [ps]);
     if (match) {
       const category = categorizePowerset(psId, ps.category, branchPrimarySetIds, branchSecondarySetIds);
       warnFallback('mids-import/processEntry', `power '${PowerName}' resolved via brute-force search (fallback 2) — found in '${psId}' as ${category}`);
       const power = buildSelectedPower(match, psId, appLevel, StatInclude, SlotEntries, warnings, summary);
-      summary.powersImported++;
       return { category: category as 'primary' | 'secondary', power };
     }
   }
@@ -924,6 +1015,55 @@ function processEntry(
 // ============================================
 // INCARNATE POWER PROCESSING
 // ============================================
+
+/**
+ * Resolve one `Temporary_Powers.Accolades.*` entry to the planner's accolade toggle id.
+ *
+ * Accolades are not picked powers here — the planner carries them as independent on/off
+ * toggles keyed on the accolade's own internal name (`src/data/accolades.ts`), so they never
+ * travel the powerset path the rest of this file walks.
+ *
+ * `StatInclude` is the mapping, not mere presence. Mids keeps "owned" and "counted" apart;
+ * the planner has one state, and it is the counted one, so an accolade the user excluded
+ * from their Mids totals must not arrive switched on.
+ *
+ * Three outcomes, and keeping them distinct is the point of the row that opened this:
+ *   - a stat toggle  → its id, folded into `build.accolades`
+ *   - a real accolade with no permanent buff (Eye of the Magus, Long Range Teleport) →
+ *     silent, because the planner offers no toggle for it by design
+ *   - a name in neither roster → a warning, because that is a roster divergence and the
+ *     only thing that would surface it
+ */
+function processAccoladeEntry(
+  entry: MbdPowerEntry,
+  warnings: MidsImportWarning[],
+  summary: MidsImportSummary,
+): string | null {
+  const internalName = entry.PowerName.split('.').map((s) => s.trim())[2] ?? '';
+  const matches = (candidate: { internalName: string }) =>
+    candidate.internalName.toLowerCase() === internalName.toLowerCase();
+
+  const toggle = getAccolades().find(matches);
+  if (toggle) {
+    // `StatInclude` false means the user owns it but excluded it from their Mids totals;
+    // the planner has only the counted state, so it arrives off and is not counted here.
+    if (!entry.StatInclude) return null;
+    summary.accoladesImported = (summary.accoladesImported ?? 0) + 1;
+    return accoladeId(toggle);
+  }
+
+  if (getAllAccolades().some(matches)) {
+    return null;
+  }
+
+  warnings.push({
+    type: 'power',
+    midsName: entry.PowerName,
+    message: 'Accolade not found in this dataset',
+  });
+  summary.powersFailed++;
+  return null;
+}
 
 function processIncarnateEntry(
   entry: MbdPowerEntry,
@@ -966,7 +1106,7 @@ function processIncarnateEntry(
   }
 
   const tree = getIncarnateTree(slotId, power.treeId);
-  summary.powersImported++;
+  summary.incarnatesImported = (summary.incarnatesImported ?? 0) + 1;
 
   return {
     slotId,

@@ -12,9 +12,7 @@
 import { useBuildStore } from '@/stores';
 import { getPowerPicksAtLevel, getTotalSlotsAtLevel } from '@/data';
 import { countPlacedBudgetSlots } from '@/utils/slot-levels';
-
-const countNonGranted = (powers: { isAutoGranted?: boolean }[]) =>
-  powers.filter((p) => !p.isAutoGranted).length;
+import { countBudgetPowerPicks } from '@/utils/build-budget';
 
 export interface BuildBudget {
   /** Manually-picked powers consuming the level-up budget. */
@@ -34,11 +32,7 @@ export interface BuildBudget {
 export function useBuildBudget(): BuildBudget {
   const build = useBuildStore((s) => s.build);
 
-  const currentPowerCount =
-    countNonGranted(build.primary.powers) +
-    countNonGranted(build.secondary.powers) +
-    build.pools.reduce((sum, pool) => sum + countNonGranted(pool.powers), 0) +
-    (build.epicPool ? countNonGranted(build.epicPool.powers) : 0);
+  const currentPowerCount = countBudgetPowerPicks(build);
   const currentSlotCount = countPlacedBudgetSlots(build);
   const powerBudget = getPowerPicksAtLevel(build.level);
   const slotBudget = getTotalSlotsAtLevel(build.level, build.serverId);

@@ -57,7 +57,7 @@ because it reads data trees the beta does not carry.
 
 ## Current frontier
 
-**3 open, of 246 entries.** Every other entry is fixed with a guard or adjudicated in writing
+**3 open, of 249 entries.** Every other entry is fixed with a guard or adjudicated in writing
 with its census.
 
 - **TSPY-11** — the recharge fold double-counts a buff a power gives to both an ally and the
@@ -611,8 +611,22 @@ measurement went, and where a closure for the residual belongs too.
 
 ## Pipeline + provenance
 
-[Full detail](gaps/pipeline-provenance.md) — 42 of 44 closed
+[Full detail](gaps/pipeline-provenance.md) — 45 of 47 closed
 
+- [x] **MBDIMPORT-1** — Mids files accolades under `Temporary_Powers.Accolades.*` and the importer's
+  blanket temp-power skip dropped every one of them upstream of the warning counters, so a user's
+  build lost four accolades' +MaxHP/+MaxEnd while the summary reported 0 failed and `warnings: []`;
+  the resolver now runs ahead of `processEntry` against the accolade roster, honours `StatInclude`,
+  and splits the by-design skip from a roster divergence that warns
+- [x] **MBDIMPORT-2** — HC rotates internal names under stable display names, so an exact match on a
+  .mbd name binds the WRONG power and nothing fails: Tactical Arrow's `Gymnastics` is Oil Slick Arrow
+  here, took its slots, and the entry owning them was deduped into silence; 71 player-pickable names,
+  Shield Defense a three-cycle; a derived per-powerset map now precedes every exact-name door
+- [x] **MBDIMPORT-3** — the import dialog counted resolved ENTRIES and the dashboard counted picks
+  the build holds, so one build read 31 powers and 23 of 24 at once; the summary now derives its
+  number from the finished build through the same `countBudgetPowerPicks` the dashboard uses,
+  accolades and incarnates count on their own lines, and the chips show used of budget rather than
+  a remainder that reads like a total
 - [x] **MBDEXPORT-1** — the .mbd exporter built Mids' enhancement UIDs out of set display names, and
   Mids answers a UID it does not know by leaving the slot empty with no error: a user's exported
   build arrived missing 13 of 63 enhancements, all four Fitness inherents and the uniques in them,

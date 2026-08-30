@@ -22,6 +22,7 @@ import {
 import { LEGACY_PIECE_ALIASES } from './legacy-piece-aliases';
 import type { MidsImportWarning } from './types';
 import { warnFallback } from '@/utils/fallback-warnings';
+import { midsNameRemap, midsNameOwners } from '@/data/mids-name-map';
 import {
   parseIOSetUid,
   mapArchetypeClass,
@@ -157,13 +158,18 @@ export function resolvePowerset(
 // ============================================
 
 /**
- * Known Mids-name → app internalName remaps.
+ * Hand-authored Mids-name → app internalName remaps, applied ONLY after every other
+ * matcher has failed against the original name.
  *
- * Applied ONLY as a fallback after every other matcher fails against the
- * original name. This makes renames safe even when the old name is still valid
- * in some powersets: e.g. `Conserve_Power` still matches Brute Energy Aura's
- * `Conserve_Power` directly, but for Tanker Energy Aura (which no longer has
- * Conserve_Power) the rename kicks in and maps to `Energize`.
+ * This is now the RESIDUE of the derived map, not the mechanism. `convert-mids-name-map.cjs`
+ * joins Mids' power list to the export on display name and reproduces six of the rows below
+ * on its own, scoped per powerset — which is strictly better than the caveat this table used
+ * to carry about `Conserve_Power` being valid in Brute Energy Aura and not Tanker's.
+ *
+ * What is left is what a display-name join cannot reach: a display name Mids itself spells
+ * differently ("Brillant Barrage"), and the VEAT branch prefixes, which are a naming
+ * convention rather than a rename. Rows the derived map now covers are kept because it is
+ * built per dataset, and a fork whose Mids database is older still arrives here.
  */
 const MIDS_NAME_TYPOS: Record<string, string> = {
   'spectral_terrror': 'Spectral_Terror',
@@ -208,9 +214,11 @@ export const MIDS_SILENT_SKIP_PATHS = new Set<string>([
   // Auto-granted passive from Beast Mastery summons; not a player pick in HC.
   'mastermind_summon.beast_mastery.pack_mentality',
 
-  // Mids serialization quirk: emits a "Radiation_Emission" power entry inside
-  // the Radiation_Emission set (likely the set root). No corresponding power.
-  'mastermind_buff.radiation_emission.radiation_emission',
+  // NOT skipped: `Mastermind_Buff.Radiation_Emission.Radiation_Emission` used to sit here
+  // as a presumed set-root artifact. It is a real power — Mids displays it as "Radiant
+  // Aura", which is `Radiant_Aura` here — so the skip was throwing away a Mastermind's
+  // heal on every import. The derived name map (MBDIMPORT-2) resolves it; the guess that
+  // put it on this list was made from the name alone, without asking what Mids displays.
 ]);
 
 function tryMatch(powers: Power[], name: string): Power | null {
@@ -279,21 +287,102 @@ function tryMatch(powers: Power[], name: string): Power | null {
 }
 
 /**
+ * A powerset the candidate powers were drawn from — a powerset, a power pool, an epic pool.
+ *
+ * Both shapes are accepted because the two carry their identity differently: an archetype
+ * powerset states it as `setPath`, while pool and epic powers carry a `fullName` and their
+ * container carries no path at all. Asking for whichever exists beats asking every caller
+ * to spell the key, which would put the answer in nine places instead of one.
+ */
+export interface MidsPowersetSource {
+  setPath?: string;
+  powers?: ReadonlyArray<{ fullName?: string }>;
+}
+
+/** Every `group.powerset` key these sources represent, lower-cased as the map is keyed. */
+function powersetKeysOf(sources: ReadonlyArray<MidsPowersetSource | null | undefined>): string[] {
+  const keys = new Set<string>();
+  for (const source of sources) {
+    if (!source) continue;
+    const path = source.setPath ?? source.powers?.find((p) => p.fullName)?.fullName ?? '';
+    const segments = path.split('.');
+    if (segments.length >= 2) keys.add(`${segments[0]}.${segments[1]}`.toLowerCase());
+  }
+  return [...keys];
+}
+
+/**
+ * True when `powersetPath`'s own table shows this Mids name belongs to a DIFFERENT power
+ * here and offers the entry no counterpart of its own — the shape of a power HC retired.
+ *
+ * Stalker Willpower is the case: Mids' `Reconstruction` is a heal click the set no longer
+ * has, while the name now labels the rez. Without this the entry falls past the powerset
+ * that rejected it into the cross-archetype and brute-force fallbacks, and binds
+ * Regeneration's `Reconstruction` — a power from a set the character never took. A wrong
+ * answer that looks deliberate is worse than none, so the .mbd naming the powerset is
+ * taken as final: this name, in this set, resolves to nothing.
+ */
+export function midsNameIsRetired(powersetPath: string, midsName: string): boolean {
+  if (midsNameRemap(powersetPath, midsName)) return false;
+  const owner = midsNameOwners(powersetPath).get(midsName.toLowerCase());
+  return owner !== undefined && owner !== midsName.toLowerCase();
+}
+
+/**
  * Find a power within a list of Power definitions by Mids internal name.
  *
  * Strategy:
+ *   0. Consult the DERIVED Mids→dataset name map FIRST (MBDIMPORT-2), scoped to the powersets
+ *      `sources` names. It has to run ahead
+ *      of the exact match, because the bug it closes is an exact match that SUCCEEDS on
+ *      the wrong power: HC rotated internal names under stable display names, so Tactical
+ *      Arrow's `Gymnastics` resolves to Oil Slick Arrow and takes its slots, and the entry
+ *      that owned them is deduped away. A matcher can only be ordered by reliability, and
+ *      an exact hit on a rotated namespace is not evidence. `sources` is REQUIRED rather
+ *      than optional: an optional key is a call-site gate, and a site that omits it loses
+ *      the remap silently, which is the failure shape this whole path exists to end.
  *   1. Try every matcher on the original Mids name (exact, display, normalized, fullName-tail).
  *   2. Only if all of those fail, apply MIDS_NAME_TYPOS and retry the exact-match
  *      lookup with the renamed target. This keeps renames safe in powersets
  *      where the old name is still valid.
  */
-export function findPowerByMidsName(powers: Power[], midsName: string): Power | null {
-  const direct = tryMatch(powers, midsName);
+export function findPowerByMidsName(
+  powers: Power[],
+  midsName: string,
+  sources: ReadonlyArray<MidsPowersetSource | null | undefined>,
+): Power | null {
+  const keys = powersetKeysOf(sources);
+  const lowerMidsName = midsName.toLowerCase();
+
+  for (const key of keys) {
+    const remapped = midsNameRemap(key, midsName);
+    if (!remapped) continue;
+    const target = powers.find(
+      (p) => p.internalName?.toLowerCase() === remapped.toLowerCase(),
+    );
+    if (target) return target;
+  }
+
+  // Powers another Mids name owns, withheld from every matcher below. Their rightful
+  // claimant already had its turn in the loop above, so nothing legitimate is being
+  // hidden — what is being refused is a same-spelled name arriving from a namespace
+  // where it meant something else.
+  const spokenFor = new Set<string>();
+  for (const key of keys) {
+    for (const [ourName, owner] of midsNameOwners(key)) {
+      if (owner !== lowerMidsName) spokenFor.add(ourName);
+    }
+  }
+  const available = spokenFor.size === 0
+    ? powers
+    : powers.filter((p) => !spokenFor.has((p.internalName ?? '').toLowerCase()));
+
+  const direct = tryMatch(available, midsName);
   if (direct) return direct;
 
   const renamed = MIDS_NAME_TYPOS[midsName.toLowerCase()];
   if (renamed && renamed.toLowerCase() !== midsName.toLowerCase()) {
-    const viaRename = powers.find(
+    const viaRename = available.find(
       (p) => p.internalName?.toLowerCase() === renamed.toLowerCase(),
     );
     if (viaRename) {

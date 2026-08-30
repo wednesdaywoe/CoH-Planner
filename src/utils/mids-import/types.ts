@@ -67,11 +67,26 @@ export interface MidsImportWarning {
 }
 
 export interface MidsImportSummary {
+  /**
+   * Power PICKS the finished build holds — derived from the build at the end of the
+   * import, not tallied as entries resolve. See `countBudgetPowerPicks`: the tally it
+   * replaced counted inherent slot-data entries, accolades and incarnate slots as
+   * powers, and reported 31 for a build the dashboard then showed as 23 of 24 picks.
+   */
   powersImported: number;
   powersFailed: number;
   enhancementsImported: number;
   enhancementsFailed: number;
   slotsImported: number;
+  /**
+   * Accolade toggles switched on, counted apart from powers because they consume no
+   * pick. Optional, and absent rather than 0 for an importer that does not report the
+   * split — the .mxd path shares this result type and has no separate accolade pass, so
+   * a hard 0 there would state a count it never took.
+   */
+  accoladesImported?: number;
+  /** Incarnate slots filled, on the same terms. */
+  incarnatesImported?: number;
 }
 
 export interface MidsImportResult {

@@ -169,7 +169,7 @@
     {
       "path": "docs/DATA-GAP-REGISTER.md",
       "status": "identical",
-      "sha256": "5e7a1f30d2422e602de236c841962411c7f72d804a77499a93e71574d1fc1af0"
+      "sha256": "9c244a9341ea0deac1289e0106a86ce4ba72caa78e4f2ce1876b4d8bf842837e"
     },
     {
       "path": "scripts/README-bulk-import-mids.md",
@@ -355,6 +355,11 @@
       "path": "scripts/convert-pool-powers.cjs",
       "status": "identical",
       "sha256": "2aef6b2a8512dc7ea42a68c9f378c7f18820ce1fdae8e55ba2b428595db0b72b"
+    },
+    {
+      "path": "scripts/convert-mids-name-map.cjs",
+      "status": "identical",
+      "sha256": "24cc311642e6766d1dbb4e28454968a354089d42a2b119ff69110251a0849fb3"
     },
     {
       "path": "scripts/convert-powerset.cjs",
