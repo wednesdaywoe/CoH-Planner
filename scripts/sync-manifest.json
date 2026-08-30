@@ -58,26 +58,12 @@
   ],
   "betaOnly": [
     {
-      "path": "scripts/push-changelog-discord.ts",
-      "reason": "Wired into beta's package.json as changelog:push and read by src/data/changelog-manual.ts; it posts the beta site's changelog to a Discord webhook, and canonical has no such entry point. Canonical kept an archived copy under scripts/attic/ and it went 100 lines stale — the beta gained id-keyed dedup and unknown-flag rejection in cc193fb3f8, canonical never had it, and the attic move had already taken the file off the path this manifest keys on.",
-      "gap": "FORK-2",
-      "mentions": [
-        "scripts/attic/README.md",
-        "src/data/changelog-manual.ts"
-      ]
-    },
-    {
       "path": "scripts/delete-user-shared-builds.ts",
       "reason": "Wired into beta's package.json as delete-user-builds. It cleans up shared builds in beta's Supabase backend, which canonical does not have. Canonical's archived copy was still byte-identical and would have drifted the way its sibling did.",
       "gap": "FORK-2",
       "mentions": [
         "scripts/attic/README.md"
       ]
-    },
-    {
-      "path": "scripts/sync-shared.cjs",
-      "reason": "The machine copy for the shared surface this manifest adjudicates, wired into the beta's package.json as sync:shared. Beta-only for the same reason sync-bin-crawler.sh is: it runs in the repo that RECEIVES, because it overwrites, and a canonical copy would be a script pointing the wrong way down a one-way street. It reads canonical's manifest for the file list and runs canonical's verify-sync.cjs --write, so canonical needs no copy of it to participate.",
-      "gap": "FORK-3"
     },
     {
       "path": "scripts/planb-shadow-bag.cjs",
@@ -152,6 +138,25 @@
         "src/data/core/atom-query.ts",
         "src/data/core/resources-atom-native.verify.test.ts"
       ]
+    },
+    {
+      "path": "scripts/push-changelog-discord.ts",
+      "reason": "Wired into beta's package.json as changelog:push and read by src/data/changelog-manual.ts; it posts the beta site's changelog to a Discord webhook, and canonical has no such entry point. Canonical kept an archived copy under scripts/attic/ and it went 100 lines stale — the beta gained id-keyed dedup and unknown-flag rejection in cc193fb3f8, canonical never had it, and the attic move had already taken the file off the path this manifest keys on.",
+      "gap": "FORK-2",
+      "mentions": [
+        "scripts/attic/README.md",
+        "src/data/changelog-manual.ts"
+      ]
+    },
+    {
+      "path": "scripts/sync-shared.cjs",
+      "reason": "The machine copy for the shared surface this manifest adjudicates, wired into the beta's package.json as sync:shared. Beta-only for the same reason sync-bin-crawler.sh is: it runs in the repo that RECEIVES, because it overwrites, and a canonical copy would be a script pointing the wrong way down a one-way street. It reads canonical's manifest for the file list and runs canonical's verify-sync.cjs --write, so canonical needs no copy of it to participate.",
+      "gap": "FORK-3"
+    },
+    {
+      "path": "src/utils/mids-import/relative-level.test.ts",
+      "reason": "Guards beta's signed `RelativeLevel` read, which canonical does not carry — see the forked mappers.ts row and MBDIMPORT-4. Beta-only because the code it grades is beta-only; canonical growing this file back means the fix landed there and the pair is shared surface again, which is what this declaration is here to catch.",
+      "gap": "MBDIMPORT-4"
     }
   ],
   "entries": [
@@ -169,7 +174,7 @@
     {
       "path": "docs/DATA-GAP-REGISTER.md",
       "status": "identical",
-      "sha256": "9c244a9341ea0deac1289e0106a86ce4ba72caa78e4f2ce1876b4d8bf842837e"
+      "sha256": "a1612f145a4fe68793bdbaeda0deb3f174b6bc2125d627c3c55ee3747824b5aa"
     },
     {
       "path": "scripts/README-bulk-import-mids.md",
@@ -347,6 +352,11 @@
       "sha256": "69498458cedbe32315913eb3cc0d4453bafa0b7210cd36493dc38070b7ee1a2f"
     },
     {
+      "path": "scripts/convert-mids-name-map.cjs",
+      "status": "identical",
+      "sha256": "24cc311642e6766d1dbb4e28454968a354089d42a2b119ff69110251a0849fb3"
+    },
+    {
       "path": "scripts/convert-pet-entities.cjs",
       "status": "identical",
       "sha256": "65989c2d5183e7d3dad54cfa0e958622573378430fa6d0de6a15bcbe612b7c92"
@@ -355,11 +365,6 @@
       "path": "scripts/convert-pool-powers.cjs",
       "status": "identical",
       "sha256": "2aef6b2a8512dc7ea42a68c9f378c7f18820ce1fdae8e55ba2b428595db0b72b"
-    },
-    {
-      "path": "scripts/convert-mids-name-map.cjs",
-      "status": "identical",
-      "sha256": "24cc311642e6766d1dbb4e28454968a354089d42a2b119ff69110251a0849fb3"
     },
     {
       "path": "scripts/convert-powerset.cjs",
@@ -480,7 +485,7 @@
     {
       "path": "scripts/verify-sync.cjs",
       "status": "identical",
-      "sha256": "d242b397cbf69de9e9f47a0a7dc36f381db2854ec484a7b5846b4e4dfead289a"
+      "sha256": "518356c265e4bc868fcdabf55cfda0fcf4932817cd4bc9ce823ae45d11ce7488"
     },
     {
       "path": "src/data/core/atom-query.ts",
@@ -586,6 +591,57 @@
       "path": "src/utils/calculations/enhancement-values.ts",
       "status": "identical",
       "sha256": "5e2e823ae8c20995f1e887ff65dd75ff7a6a818be4af7c0aacebe4cc20110c5c"
+    },
+    {
+      "path": "src/utils/mids-import/accolades.test.ts",
+      "status": "identical",
+      "sha256": "d521254056d2bc7d0f8a2e67f924fa9f7315c03fc9d211c4068d9070dbdd456f"
+    },
+    {
+      "path": "src/utils/mids-import/importer.test.ts",
+      "status": "identical",
+      "sha256": "7ed839b937661905bf6d80b727370700a5030ee025568da1595ed9f7f27117b0"
+    },
+    {
+      "path": "src/utils/mids-import/importer.ts",
+      "status": "identical",
+      "sha256": "8b88d0b998ae8f354bb9126802f7ed79b6519a4676fef7afb2752e1c8c1530e5"
+    },
+    {
+      "path": "src/utils/mids-import/index.ts",
+      "status": "identical",
+      "sha256": "b70a20bb13c15bed158524d967b63adaf988cb854b4410b08513fa3e7f7cc6e4"
+    },
+    {
+      "path": "src/utils/mids-import/legacy-piece-aliases.ts",
+      "status": "identical",
+      "sha256": "e312d0e5a6ec19d33d6c553a15bda8c8496a61b6df1e1de01e638e7c538b9789"
+    },
+    {
+      "path": "src/utils/mids-import/mappers.ts",
+      "status": "forked",
+      "sha256": {
+        "canonical": "7cde84f6cfecac37e506c6f0f70d806f8c6dd1aa5d01c6ea0ba55a05fb18bb03",
+        "beta": "4d67b587c1e61355d75bf503a592e9928aae9fe4f217c05c38847ba206b8903d"
+      },
+      "reason": "Beta reads Mids' `RelativeLevel` (the `eEnhRelative` enum) as a SIGNED offset, MinusThree through PlusFive. Canonical still carries the older 0-to-5 `RELATIVE_LEVEL_BOOST`, whose lookup ends `?? 0`, so the negative half imports as even and a levelling build slotted with red SOs reads as though every enhancement were fresh — an SO three levels under combat level is worth x0.70 on Homecoming. Beta's half is the correct one. It is inert in canonical today because the Rust app still stubs Mids import out (crates/app/src/build_io.rs), so this is drift waiting for the port rather than a number a user can see, and porting it moves fixture output, which is its own adjudication.",
+      "exit": "Port beta's signed offset table and relative-level.test.ts into canonical, re-emit whatever fixtures the change moves, and the two copies converge back to identical.",
+      "gap": "MBDIMPORT-4"
+    },
+    {
+      "path": "src/utils/mids-import/name-map.test.ts",
+      "status": "identical",
+      "sha256": "9b9b8ab7b422c58a865d2b165fbd1cc94f8b009988b47c948897a72f723cbaeb"
+    },
+    {
+      "path": "src/utils/mids-import/summary-counts.test.ts",
+      "status": "identical",
+      "sha256": "890b8a31ae837fe9c7137ee6a3d6f541e9e48410d14a814ef5db8d3fda40a870"
+    },
+    {
+      "path": "src/utils/mids-import/types.ts",
+      "status": "identical",
+      "sha256": "5a318cca903590857c07e6a3d52c296df9fa5dabed46039fa3600e94465f29fa"
     },
     {
       "path": "tools/bin-crawler/audit_stack_alignment.py",
@@ -956,6 +1012,111 @@
       "path": "tools/bin-crawler/tests/test_wrapper_targets_are_exported.py",
       "status": "identical",
       "sha256": "d3b98215b8120231c31f4acb4753c6db389c5852d6ab3daaa5e871dc156d3728"
+    },
+    {
+      "path": "tools/mids-oracle/README.md",
+      "status": "identical",
+      "sha256": "1919f4ea12dd02fcc7f76eb47e6fe80c691c2a1b54bb82d03005cb6126782cbb"
+    },
+    {
+      "path": "tools/mids-oracle/crosscheck_bridge.ts",
+      "status": "identical",
+      "sha256": "d45cbe72ed7edc4835e91afa9b5b3f8925763c4b40739c3bdef54e6eb1403b69"
+    },
+    {
+      "path": "tools/mids-oracle/diff_enh_oracle.py",
+      "status": "identical",
+      "sha256": "7bd0fb6d23975fb182885f1324db756d7c92f72a861a98192672dda6604e6a2c"
+    },
+    {
+      "path": "tools/mids-oracle/diff_harness.py",
+      "status": "identical",
+      "sha256": "f0a8628e5da61028cbb746e5c2824ab5c36f31360a22d26cd57670027bddb98e"
+    },
+    {
+      "path": "tools/mids-oracle/diff_oracle.py",
+      "status": "identical",
+      "sha256": "e40727147a38ecdbc892d714e2f8f8eb7e09f0013b5fcd8e482d3b362700e1cc"
+    },
+    {
+      "path": "tools/mids-oracle/emit_canonical.ts",
+      "status": "identical",
+      "sha256": "0d2b1f2dfa5dcdde8167550271446d3b29cc9b9b4b5094e164982b90232a6d2a"
+    },
+    {
+      "path": "tools/mids-oracle/emit_mids_names.py",
+      "status": "identical",
+      "sha256": "998a113514fad4c73ff22076ae9cd5be9a51e5bda6a94cb1286727c98e2e42b9"
+    },
+    {
+      "path": "tools/mids-oracle/emit_mids_uids.py",
+      "status": "identical",
+      "sha256": "ca15d55c17cea1e23a54801faa0b43e255c7e91a706df0ae96549a894034517b"
+    },
+    {
+      "path": "tools/mids-oracle/enh_oracle_mapping_gap_worklist.json",
+      "status": "identical",
+      "sha256": "1b740294162d9ce7e00b9392d2cf8eb68774fba0b428c42b1efbe90b7c74cb80"
+    },
+    {
+      "path": "tools/mids-oracle/enh_oracle_mapping_gap_worklist.md",
+      "status": "identical",
+      "sha256": "677ac798e674c6f1d66d36864932df521e179947f2c2661685ea52b60de6ab80"
+    },
+    {
+      "path": "tools/mids-oracle/enh_oracle_residual_baseline.json",
+      "status": "identical",
+      "sha256": "2bd530a9141373e2f77535c4312db35982f0530d8017637cd18929a590235979"
+    },
+    {
+      "path": "tools/mids-oracle/enh_oracle_triage.json",
+      "status": "identical",
+      "sha256": "341dd572d27f4c94f71e1ff8d6915198fb4ec6e29ad5e3b641d90c950a559420"
+    },
+    {
+      "path": "tools/mids-oracle/mids-power-names.homecoming.json",
+      "status": "identical",
+      "sha256": "66b71533552363a94900231238b2b99bf45855d0510bb271999a2c7cd2f710e8"
+    },
+    {
+      "path": "tools/mids-oracle/mids-power-names.rebirth.json",
+      "status": "identical",
+      "sha256": "ae17428afa9d8fab05c3fd9ce5a727b0446d3f6690f9adff646983fd3ab26a1d"
+    },
+    {
+      "path": "tools/mids-oracle/mids-power-names.thunderspy.json",
+      "status": "identical",
+      "sha256": "a9398414bee1d3dc6e0d3e7da2b25329fef0fe436eea16dd07a9d1e3f2d56428"
+    },
+    {
+      "path": "tools/mids-oracle/mids-wine.sh",
+      "status": "identical",
+      "sha256": "c263962855fa6907449454f8be79a150a7583b758c9787387f369240c63f4b5f"
+    },
+    {
+      "path": "tools/mids-oracle/oracle_divergence_rules.json",
+      "status": "identical",
+      "sha256": "695897dfe03761ef019e939fdce1f639db2192d113282b2621cdb50a3135847b"
+    },
+    {
+      "path": "tools/mids-oracle/read_enhdb.py",
+      "status": "identical",
+      "sha256": "9dfbb52d360ab6bd1e23cbb6571bdbf616884ef9345fc5e2e922016e176c8599"
+    },
+    {
+      "path": "tools/mids-oracle/read_i12.py",
+      "status": "identical",
+      "sha256": "409e00f0567e7431317bd4ffde021aa47d722a8a9978db0f12c00b3f3dcd4615"
+    },
+    {
+      "path": "tools/mids-oracle/test_diff_enh_oracle.py",
+      "status": "identical",
+      "sha256": "bfbbfbf9a006bc21e8737caea37dd5331d28f112ee40015a10e158e99f5ff3e2"
+    },
+    {
+      "path": "tools/mids-oracle/test_read_enhdb.py",
+      "status": "identical",
+      "sha256": "2c32455fe0083fdea4a87979720ba1566bc67158c94a13797e76f36977568364"
     }
   ]
 }

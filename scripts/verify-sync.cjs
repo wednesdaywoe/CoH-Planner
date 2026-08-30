@@ -116,7 +116,22 @@ if (write && !paired) throw new Error('--write needs --sibling: it records both 
  * a fork under FORK-1's opening census. Measuring it while it agrees costs nothing and means the
  * first disagreement is the thing that reports, rather than a later census discovering an old one.
  */
-const TRACKED_ROOTS = ['scripts', 'tools/bin-crawler', 'docs'];
+const TRACKED_ROOTS = [
+  'scripts',
+  'tools/bin-crawler',
+  // Joined 2026-08-30 at zero drift, same argument as bin-crawler: 21 files, every hash equal.
+  // It reads Mids' database, and MBDIMPORT-2 made it a build input — `mids-power-names.*.json`
+  // is the committed half of a name map the planner resolves every .mbd import through.
+  'tools/mids-oracle',
+  // Joined 2026-08-30. Not reachable the way the rest of `src/` here is: `pipelineSources`
+  // follows `require('../src/…')` out of the .cjs converters, and nothing a converter executes
+  // imports the importer. It is seeded as a ROOT rather than by widening that walk, because the
+  // walk would arrive through `scripts/bulk-import-mids.ts` and drag the whole `@/data` closure
+  // with it — 66 more paths and 27 engine files mid-bag-strip, which is a different adjudication
+  // than this one. Listing the directory guards its own files and follows none of its imports.
+  'src/utils/mids-import',
+  'docs',
+];
 
 /**
  * `docs` joined on 2026-08-21, and it is not symmetric the way the other two are: canonical holds
