@@ -26,6 +26,11 @@
       "gap": "FORK-1"
     },
     {
+      "path": "scripts/keys/fork4-test-surface-direction.py",
+      "reason": "Turns DATA-GAP-REGISTER FORK-4's \"keep sync:shared off the shared test surface\". Reads BOTH repos' whole git history for each shared test path, so it can only run where the private canonical tree is the cwd and the beta is the sibling — the beta cannot see canonical at all, and a copy there would grade one repo against itself and always find the surface one-way. That is the failure mode the key exists to prevent, so a mirrored copy would be worse than none. Same docs/-reference reasoning as the sibling keys.",
+      "gap": "FORK-4"
+    },
+    {
       "path": "scripts/audit-converter-twins.cjs",
       "reason": "Wired into canonical's regen-all.cjs and package.json as audit:twins. The beta held a copy it never referenced and could not have run — the --gate leg reads scripts/audit-twins-baseline.json, which the beta does not carry.",
       "gap": "FORK-1"
@@ -164,7 +169,7 @@
     {
       "path": "docs/DATA-GAP-REGISTER.md",
       "status": "identical",
-      "sha256": "495328cd6a750f50c8d71bd9bd3a7f32db78ec6ecb82c4e1136857ac4c0ff422"
+      "sha256": "5263f43b2369e43518249b13365d9997e3a3b9275e7765c6462b15aaf09476d8"
     },
     {
       "path": "scripts/README-bulk-import-mids.md",

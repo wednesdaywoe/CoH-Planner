@@ -57,7 +57,7 @@ because it reads data trees the beta does not carry.
 
 ## Current frontier
 
-**2 open, of 245 entries.** Every other entry is fixed with a guard or adjudicated in writing
+**3 open, of 246 entries.** Every other entry is fixed with a guard or adjudicated in writing
 with its census.
 
 - **TSPY-11** — the recharge fold double-counts a buff a power gives to both an ally and the
@@ -65,6 +65,9 @@ with its census.
 - **STRIP-1** — the bag strip's residue is 17 red Rust tests and 102 red vitest tests, and the
   canonical TS totals oracle now answers 0 for the families it never migrated. Pipeline +
   provenance, below.
+- **FORK-4** — 165 test files share a path between the two repos and none is adjudicated; 16 are
+  live two-way forks. Pipeline + provenance, below. The census is landed; what is open is a
+  tripwire on the 114 that still agree.
 
 **Carried residuals — named work inside closed entries.** Seven items were scoped out of a closure
 and recorded there rather than reopened. They are not `[ ]` rows: their hosts *are* closed with
@@ -608,7 +611,7 @@ measurement went, and where a closure for the residual belongs too.
 
 ## Pipeline + provenance
 
-[Full detail](gaps/pipeline-provenance.md) — 42 of 43 closed
+[Full detail](gaps/pipeline-provenance.md) — 42 of 44 closed
 
 - [x] **MBDEXPORT-1** — the .mbd exporter built Mids' enhancement UIDs out of set display names, and
   Mids answers a UID it does not know by leaving the slot empty with no error: a user's exported
@@ -735,6 +738,23 @@ measurement went, and where a closure for the residual belongs too.
   control row was the argument against that — 0 drift in 58,445 machine-copied files beside 17 in
   49 hand-copied. `npm run sync:shared` now takes the `identical` set, refuses to overwrite a
   beta-authored edit, and re-adjudicates inside the copy
+- [ ] **FORK-4** — the shared surface has a peer nothing has ever measured: **165 `src/` test files
+  share a path between the two repos, 51 of them differ, and 0 appear in `sync-manifest.json`** —
+  not in `entries`, not in `canonicalOnly`, not in `betaOnly`. `verify-sync` discovers `src/` by
+  following require edges out of the converters, so a test file is undiscoverable rather than
+  overlooked. Graded by origination as FORK-1 graded `convert-powerset.cjs`, the surface forks BOTH
+  ways — 41 files hold beta-authored content canonical's history never had, 27 the reverse, 16
+  both — so FORK-3's mirror must stay off it. Five files were wrong against a live source and are
+  fixed; eight more differ per-repo and stay.
+  **Goal** — the 114 currently-identical pairs cannot diverge without something going red, and the
+  51 that differ carry a written adjudication rather than an unread diff.
+  **Done when** — a guard fails on a currently-identical shared test file drifting in either repo;
+  each differing file is `per-repo` with a reason, or reconciled, or named as in-flight with the
+  row it belongs to (STRIP-1 and ENT-22 own most of the canonical side); and the manifest has NOT
+  grown 165 rows to say so.
+  **Check** — `python3 scripts/keys/fork4-test-surface-direction.py` — exits 0 today on 41
+  beta-original files. It exits 1 when that reaches 0, which means the surface has gone one-way and
+  the "keep the mirror off it" claim above has expired and must be re-decided, not re-trusted.
 - [x] **FIXTURE-1** — the manually-emitted gate fixtures (procs, movement, set-bonus) drifted on
   sampling identity and labels only, no values; all three re-emitted, gates green, and the
   emitters now run in `npm run regen` so the drift class is closed
