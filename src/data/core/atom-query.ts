@@ -1299,7 +1299,27 @@ function isSlowAtom(a: AtomicEffect): boolean {
 }
 
 /**
- * Which of the two movement maps an atom belongs to, or `undefined` when an earlier
+ * The two axes the converter's cap-bump branch refuses even at `Max` aspect, so they fall
+ * through to the ordinary maps (`convert-powerset.cjs:6120`). They have no travel ceiling
+ * to raise — a control/friction ceiling is not a speed cap — and the exclusion is theirs
+ * alone, not a property of `Max`.
+ *
+ * UNMEASURED, and said so rather than left to look load-bearing: no power on any fork
+ * states a self, positive, `Max`-aspect control or friction row (0 / 0 / 0 / 0, measured
+ * over all four bundles), so deleting this test moves nothing here and the corpus cannot
+ * grade it. It is here because the converter branch it mirrors has it, and because the
+ * Rust twin `is_capless_axis` has it — the only warrant available, and the day such a row
+ * is authored, the two sides agreeing is what keeps the reader and the slot together.
+ *
+ * Inert twice over on the buff side even if such a row appeared: it would fall through to
+ * `movement`, and `MOVEMENT_AXIS_TO_KEY` has no Control or Friction key to spend it on.
+ */
+function isCaplessAxis(a: AtomicEffect): boolean {
+  return a.subType === 'Control' || a.subType === 'Friction';
+}
+
+/**
+ * Which of the four movement slots an atom belongs to, or `undefined` when an earlier
  * branch of the routing chain claims it or nothing does.
  *
  * Mirrors the bag's MOVEMENT routing (`convert-powerset.cjs`), whose branches are a
@@ -1317,14 +1337,32 @@ function isSlowAtom(a: AtomicEffect): boolean {
  *
  * One function because the chain is one chain: the branches are ordered, and a reader
  * that reproduces only its own branch re-derives the ones above it and drifts from them.
+ * The two CAP branches returned `undefined` here until STRIP-1, and naming them is the
+ * whole difference between four readers over one chain and four re-derivations of it.
+ *
+ * The deactivation clause arrived with the cap branches and had to. A toggle's shutdown
+ * burst is not a standing effect — it fires when the power turns OFF — and Reaction Time
+ * is the whole population that reaches a movement slot: 5 / 5 / 30 / 5 non-gated rows on
+ * one power per fork, and no other power on any fork states one. {@link isCancelledPair}
+ * had been catching the three `Cur` halves by matching `+X` against `−X`, so `movement`
+ * and `slow` already read empty for it and this clause moves neither. What arithmetic
+ * could not reach is the mirror's `Max` row — a `+1.0` run-cap RAISE that negates nothing
+ * and so matched nothing — and the moment `capBump` was named and given a consumer, that
+ * row became a phantom +1 cap on every Reaction Time build. MOVEMAP-6 is the Rust side of
+ * the same finding; `isCancelledPair` stays until its TS half retires it, now covering no
+ * atom this clause does not.
  */
-function routeMovementAtom(a: AtomicEffect, power: AtomSource): 'movement' | 'slow' | undefined {
+function routeMovementAtom(
+  a: AtomicEffect,
+  power: AtomSource,
+): 'movement' | 'slow' | 'capBump' | 'capDebuff' | undefined {
   if (isUnmodedSentinel(a)) return undefined;
+  if (a.applicationType === 'OnDeactivate') return undefined;
   const self = reachesCaster(a, power);
   if (a.aspect === 'Res') return undefined;
   if (self && a.aspect === 'Str') return undefined;
-  if (self && a.aspect === 'Max' && a.scale > 0) return undefined;
-  if (a.aspect === 'Max' && isSlowAtom(a)) return undefined;
+  if (self && a.aspect === 'Max' && a.scale > 0 && !isCaplessAxis(a)) return 'capBump';
+  if (a.aspect === 'Max' && isSlowAtom(a)) return 'capDebuff';
   // Only the caster's own penalty reaches a caster total; a foe slow shares the map
   // (`isSelfDirectedEffect` filters it there) and is not ours.
   if (isSlowAtom(a)) return self ? 'slow' : undefined;
@@ -1486,6 +1524,99 @@ function isCancelledPair(a: AtomicEffect, siblings: readonly AtomicEffect[]): bo
       o.scale === -a.scale &&
       isSlowAtom(o),
   );
+}
+
+/**
+ * Shared body of the two cap readers — one function for the same reason
+ * {@link routeMovementAtom} is one function, and because they differ only in which side of
+ * the split they take, how wide their axis map is, and whether the facing filter applies.
+ *
+ * One entry per axis, LAST atom wins, mirroring the converter's plain
+ * `effects.movementCap*[axis] = …` assignment rather than {@link keyedMovementEntries}'s
+ * finer (axis, `ignoreStrength`, `suppressible`) key. The two agree on the corpus — no
+ * power carries two cap atoms on one axis, on any fork — so the coarser key is the
+ * converter's rule rather than a collapse this reader chose.
+ *
+ * `perTarget` rides the Rust twin's entry and not this one: the TS `MovementBuffEntry` is
+ * shared with the two speed readers, which omit it, and no TS consumer reads it.
+ */
+function capEntries(
+  power: AtomSource,
+  slot: 'capBump' | 'capDebuff',
+  axisMap: Record<string, string>,
+  selfOnly: boolean,
+): MovementBuffEntry[] | undefined {
+  const movement = baseAtomsOfType(power, 'Movement');
+  if (!movement.length) return undefined;
+  const out: MovementBuffEntry[] = [];
+  for (const a of movement) {
+    if (routeMovementAtom(a, power) !== slot) continue;
+    if (selfOnly && !reachesCaster(a, power)) continue;
+    const axis = axisMap[a.subType ?? ''];
+    if (!axis) continue;
+    const value: MovementBuffEntry = {
+      axis,
+      scale: Math.abs(a.scale),
+      table: a.modifierTable,
+      ...(a.stacking === 'Suppress' && a.stackKey ? { stackKey: a.stackKey } : {}),
+      ...(a.suppressible ? { suppressible: true } : {}),
+      ...(a.ignoreStrength ? { ignoreStrength: true } : {}),
+    };
+    const at = out.findIndex((e) => e.axis === axis);
+    // Replace, never merge, for the reason {@link keyedMovementEntries} gives: the two
+    // flags are absent rather than false, so a merge leaves a loser's `true` standing.
+    if (at >= 0) out[at] = value;
+    else out.push(value);
+  }
+  return out;
+}
+
+/**
+ * The atom-native `effects.movementCapBump` — a travel power's `aspect=Maximum` CEILING
+ * raise (Super Speed's run cap +1.938, Fly's +2.0475, Afterburner's +1.0 on top), spent by
+ * `getEffectiveMovementCaps` through StatsDashboard.
+ *
+ * A separate slot from the speed buff because they are separate attributes: the two shared
+ * one axis key until ATOM-BAG-4(b) and the cap row clobbered the real Current-aspect buff,
+ * which is how Super Speed came to report `1.938 × Melee_Ones` instead of
+ * `1.0 × Melee_SpeedRunning`. {@link routeMovementAtom} holds that split; this reader only
+ * says which side of it to take.
+ *
+ * NOT self-filtered, mirroring the converter: the cap-bump branch is already self-gated at
+ * the route, so a second facing test here would say nothing the chain has not said.
+ */
+export function movementCapBumpValue(power: AtomSource): MovementBuffEntry[] | undefined {
+  return capEntries(power, 'capBump', MOVEMENT_AXIS_TO_KEY, false);
+}
+
+/**
+ * The atom-native self-directed `effects.movementCapDebuff` — the DEBUFF direction of the
+ * same split, lowering the ceiling rather than the speed (Granite Armor's −1.7851 jump
+ * height). ATOM-BAG-4(c) on the Rust side; STRIP-1 here.
+ *
+ * Self-directed only, mirroring the bag's `toWho === 'Self'` filter: the converter writes
+ * this key for a foe cap debuff too and only TAGS the self ones, so the facing test belongs
+ * to the reader rather than to {@link routeMovementAtom}. Axis-keyed as wide as the slow
+ * side, since a control/friction ceiling reaches a modelled global here (MOVE-1) even
+ * though the cap-BUMP branch refuses those two axes outright.
+ *
+ * This slot is why the reader exists rather than being tidy. The bag half went silent at
+ * the strip — 87 / 59 / 81 / 87 carrier instances before it, 0 after, on every fork — and
+ * `character-totals.ts` spent it straight from the bag, so Granite Armor's jump-height cap
+ * debuff had been reading 0 with nothing red to say so.
+ *
+ * Against the frozen pre-strip bag it reproduces every carrier but ONE, and the exception
+ * is deliberate. Rest states its `−1000 Melee_Ones` run-cap row `toWho: 'Target'` on a
+ * `Self`-only power, so the converter wrote the slot and never stamped it `Self`, and
+ * `isSelfDirectedEffect` threw it away at the spend site. {@link reachesCaster} makes the
+ * TARGETS-3 join the stamp predates — a Self-only power's "target" is the caster — and
+ * admits it. That is not this reader choosing to differ: {@link selfSlowValue} already
+ * states Rest's four `−1000` axes on the identical join and the totals already spend them,
+ * and the Rust twin admits the cap row on the same `reaches_caster` test. The bag is the
+ * side that was inconsistent; this makes the fourth map agree with the other three.
+ */
+export function selfMovementCapDebuffValue(power: AtomSource): MovementBuffEntry[] | undefined {
+  return capEntries(power, 'capDebuff', SLOW_AXIS_TO_KEY, true);
 }
 
 /** Σ of `val(a)` over atoms with a DISTINCT `|val|` (dedup the type/duration copies). */
