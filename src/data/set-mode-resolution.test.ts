@@ -40,7 +40,7 @@ function setModes(node: unknown): Array<[number, string | undefined]> {
       for (const t of obj.templates ?? []) {
         if ((t.attribs ?? []).includes('Set_Mode')) out.push([t.magnitude ?? -1, t.mode_name]);
       }
-      for (const k of ['effects', 'child_groups', 'redirects', 'activation_effects']) {
+      for (const k of ['effects', 'child_effects', 'redirects', 'activation_effects']) {
         const v = obj[k];
         if (Array.isArray(v)) v.forEach(walk);
       }

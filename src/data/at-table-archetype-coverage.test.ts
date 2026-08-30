@@ -12,14 +12,15 @@ import { AT_TABLES as BS_AT, getTableValue as bsGet } from './datasets/brainstor
  * must also ship modifier tables.
  *
  * The bug this guards (Rebirth Guardian, 2026-07-07): `scripts/extract-at-tables.cjs`
- * carries a hand-listed `PLAYER_ARCHETYPES` allowlist. The Rebirth-only Guardian AT
+ * once read a hand-listed `PLAYER_ARCHETYPES` allowlist. The Rebirth-only Guardian AT
  * had generated powersets but was missing from that allowlist, so its `guardian.json`
  * modifier tables were never folded into `at-tables.ts`. Every Guardian defense power
  * then missed its `Melee_Buff_Def` lookup and the display fell through to the legacy
  * `scale × 0.10 × buffDebuffMod` path — rendering S/L Defense at 3.4% where the game
- * shows 12.75% (and Combat Jumping at 0.5% vs 1.88%). The custom-AT allowlist is the
- * same "inductive schema smell" flagged for the pet/table extractors: it silently
- * drops any AT nobody remembered to add.
+ * shows 12.75% (and Combat Jumping at 0.5% vs 1.88%). That allowlist is now derived from
+ * the export's own membership signal (`derivePlayerArchetypes` in
+ * `scripts/_player-classes.cjs`), closing the omission class at the source; this test is
+ * the independent structural backstop should the discriminator ever exclude a real AT.
  *
  * The invariant is structural and can't be fooled by a valid-but-absent table name
  * (which `converter-table-integrity.test.ts` deliberately can't catch — it resolves a

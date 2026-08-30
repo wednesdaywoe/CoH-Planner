@@ -109,7 +109,7 @@ describe('atom-native resources — Equip Thugs (the Thunderspy target-trap)', (
 describe('atom-native resources — Icy Bastion (the StackByAttribAndKey burst/tail)', () => {
   // A temp toggle (activate_period 0.5): its own effects carry the larger +6 regen /
   // +2 recovery at 0.75s — re-applied every tick, so alive only while the toggle is up —
-  // while an OnTick Execute_Power applies the +4 / +2 @30s lingering half that survives
+  // while an OnActivate Execute_Power applies the +4 / +2 @30s lingering half that survives
   // an early detoggle. Both are active for the 30s the power is doing its job, so the
   // value is their SUM. Confirmed in-game and by the power's own display_help.
   it('sums the toggle-gated burst and the 30s lingering half (+10 regen)', () => {

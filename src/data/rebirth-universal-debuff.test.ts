@@ -9,10 +9,9 @@ import { fileURLToPath } from 'node:url';
  * Debuff). The binary tags them `ECToHitDeBuff` (one of their aspects), which made
  * the exporter label every power that can slot them — via ANY of those aspects —
  * as accepting "To Hit Debuff". That wrongly implied Tar Patch (a Slow/-Res patch
- * with NO to-hit debuff) takes ToHit-debuff sets. Recategorized to "Universal
- * Debuff" (a `_CHALLENGE_SET_OVERRIDES_BY_NAME` entry in _boostsets.py), surgically
- * re-applied to `exported_powers/rebirth` allowed_set_categories, and plumbed
- * through the planner. See HOMECOMING_PARSER.
+ * with NO to-hit debuff) takes ToHit-debuff sets. The record's own GroupName says
+ * "Universal Debuff" and always did — first restored by a curated override, then read
+ * straight off the record at BOOST-2 when the whole inference chain came out.
  */
 function gen(rel: string): string {
   const p = fileURLToPath(new URL(`./datasets/rebirth/generated/powersets/${rel}`, import.meta.url));

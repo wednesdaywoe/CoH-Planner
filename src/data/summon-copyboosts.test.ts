@@ -11,7 +11,7 @@ import { fileURLToPath } from 'node:url';
  * swallowed into the opaque Params tail, so `template.flags` never contained
  * 'CopyBoosts' and `summon.copyBoosts` was always undefined (the converter wired
  * it up at convert-powerset.cjs but had nothing to read). The parser now decodes
- * that word (_FLAG2_BITS in tools/bin-crawler/bin_crawler/parser/_powers.py), so
+ * that word (_FLAG2_BITS_BY_ATTRIB in tools/bin-crawler/bin_crawler/parser/_powers.py), so
  * the value is binary-sourced. This retired the hand `copyBoosts: true` overrides
  * on Electrical Affinity Discharge (controller + corruptor).
  *
