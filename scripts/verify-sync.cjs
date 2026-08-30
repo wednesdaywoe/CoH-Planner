@@ -43,6 +43,16 @@
  * a null reason is an error. That's deliberate, and it's the same door CLAUDE.md puts in front
  * of a Rule 0 deviation: a fork becomes legitimate by being named and given an exit, never by
  * being noticed and left alone.
+ *
+ * WHAT MAKES THE PAIR AGREE IS NOT THIS FILE. This guard measures; the beta's `sync-shared.cjs`
+ * (`npm run sync:shared`, beta-only, declared) is what copies. Keeping those apart is the point
+ * — a guard that repaired what it measured could never report the one thing worth reporting, a
+ * file the beta authored — but so is the fact that the copy exists at all. FORK-1's opening
+ * census is the argument: `exported_powers/` was the only surface copied by machine and the only
+ * one with zero drift, across 58,445 files, while the 49 hand-copied scripts beside it had
+ * forked 17 ways. This guard shipped without its other half, and for three months every shared
+ * edit was still a hand copy plus a re-adjudication in two repos. The mirror runs `--write` for
+ * you, from canonical, and carries the result back; see FORK-3.
  */
 
 'use strict';

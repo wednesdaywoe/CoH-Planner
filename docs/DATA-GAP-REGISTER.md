@@ -57,7 +57,7 @@ because it reads data trees the beta does not carry.
 
 ## Current frontier
 
-**2 open, of 244 entries.** Every other entry is fixed with a guard or adjudicated in writing
+**2 open, of 245 entries.** Every other entry is fixed with a guard or adjudicated in writing
 with its census.
 
 - **TSPY-11** — the recharge fold double-counts a buff a power gives to both an ally and the
@@ -608,7 +608,7 @@ measurement went, and where a closure for the residual belongs too.
 
 ## Pipeline + provenance
 
-[Full detail](gaps/pipeline-provenance.md) — 41 of 42 closed
+[Full detail](gaps/pipeline-provenance.md) — 42 of 43 closed
 
 - [x] **MBDEXPORT-1** — the .mbd exporter built Mids' enhancement UIDs out of set display names, and
   Mids answers a UID it does not know by leaving the slot empty with no error: a user's exported
@@ -729,6 +729,12 @@ measurement went, and where a closure for the residual belongs too.
   `git ls-files scripts` alone; the hand-typed leveling schedule gated Thunderspy's pools at 4
   where `schedules.bin` says 1, and the last fork's form model was two proper-noun enums served
   by a community mapping the parser had already made retirable
+- [x] **FORK-3** — `verify-sync.cjs` measured the shared surface and shipped without the half that
+  repairs it, so every shared edit stayed a hand copy plus a re-adjudication committed twice: 61 of
+  the beta's last 90 days of shared-surface commits are `sync-manifest.json` alone. FORK-1's own
+  control row was the argument against that — 0 drift in 58,445 machine-copied files beside 17 in
+  49 hand-copied. `npm run sync:shared` now takes the `identical` set, refuses to overwrite a
+  beta-authored edit, and re-adjudicates inside the copy
 - [x] **FIXTURE-1** — the manually-emitted gate fixtures (procs, movement, set-bonus) drifted on
   sampling identity and labels only, no values; all three re-emitted, gates green, and the
   emitters now run in `npm run regen` so the drift class is closed

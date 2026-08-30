@@ -23,6 +23,12 @@
 # The sync writes `tools/bin-crawler-vendored.json`; the guard in
 # `src/data/bin-crawler-vendored.test.ts` reads it. Commit the result — this
 # script deliberately does not, so the diff gets reviewed like any other.
+#
+# This is one of two mirrors and the expensive one: 746 MB of export and the parser
+# that read it, moved with a tar. `scripts/sync-shared.cjs` (`npm run sync:shared`) is
+# the other, and it takes the rest of the shared surface — the converters, the `src/`
+# modules they execute, the register — plus the manifest re-adjudication that BOTH
+# mirrors owe, because `tools/bin-crawler` is itself 74 of the manifest's entries.
 
 set -euo pipefail
 cd "$(dirname "$0")/.."
@@ -146,7 +152,8 @@ if [[ "$CHANGED" -eq 0 ]]; then
   pass "already in sync with $HEAD_SHA — nothing changed"
 else
   printf '\n\033[1;33m%s file(s) changed.\033[0m Next:\n' "$CHANGED"
-  printf '  1. npm run regen      # exported_powers feeds the converters\n'
-  printf '  2. npm test           # the vendoring + export-staleness guards\n'
-  printf '  3. review the diff and commit\n'
+  printf '  1. npm run sync:shared  # tools/bin-crawler is shared surface, so the manifest moved too\n'
+  printf '  2. npm run regen        # exported_powers feeds the converters\n'
+  printf '  3. npm test             # the vendoring + export-staleness guards\n'
+  printf '  4. review the diff and commit\n'
 fi

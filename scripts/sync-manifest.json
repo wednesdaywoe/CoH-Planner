@@ -70,6 +70,11 @@
       ]
     },
     {
+      "path": "scripts/sync-shared.cjs",
+      "reason": "The machine copy for the shared surface this manifest adjudicates, wired into the beta's package.json as sync:shared. Beta-only for the same reason sync-bin-crawler.sh is: it runs in the repo that RECEIVES, because it overwrites, and a canonical copy would be a script pointing the wrong way down a one-way street. It reads canonical's manifest for the file list and runs canonical's verify-sync.cjs --write, so canonical needs no copy of it to participate.",
+      "gap": "FORK-3"
+    },
+    {
       "path": "scripts/planb-shadow-bag.cjs",
       "reason": "Shadow gate for the whole-bag sweep: it grades the atom path against the contract's effects bag, and canonical deleted it in the atom1-13 bag strip (aaab1c4077) together with the bag it reads, so there is nothing left there to compare against. The beta still ships the bag and its regen-all.cjs runs this script, so it stays live here and retires when the beta strips its own bag. Canonical's names for it are provenance prose in comments, not a require.",
       "gap": "FORK-2",
@@ -159,7 +164,7 @@
     {
       "path": "docs/DATA-GAP-REGISTER.md",
       "status": "identical",
-      "sha256": "f537b86cbc2bedf4f36568f63012ed73d27902fa0b6baa7febd60c8fc5373956"
+      "sha256": "495328cd6a750f50c8d71bd9bd3a7f32db78ec6ecb82c4e1136857ac4c0ff422"
     },
     {
       "path": "scripts/README-bulk-import-mids.md",
@@ -465,7 +470,7 @@
     {
       "path": "scripts/verify-sync.cjs",
       "status": "identical",
-      "sha256": "7d5e799c08cf2927fe2eb25d0550c57f0d8c82f895432f957e502347adf73e76"
+      "sha256": "d242b397cbf69de9e9f47a0a7dc36f381db2854ec484a7b5846b4e4dfead289a"
     },
     {
       "path": "src/data/core/atom-query.ts",
