@@ -57,20 +57,17 @@ because it reads data trees the beta does not carry.
 
 ## Current frontier
 
-**4 open, of 250 entries.** Every other entry is fixed with a guard or adjudicated in writing
+**3 open, of 250 entries.** Every other entry is fixed with a guard or adjudicated in writing
 with its census.
 
 - **TSPY-11** — the recharge fold double-counts a buff a power gives to both an ally and the
   caster. Stat routing, below. Blocked with the absorb-fold residual on one shared census.
-- **STRIP-1** — the bag strip's residue is 17 red Rust tests and 79 red vitest tests, and the
+- **STRIP-1** — the bag strip's residue is 15 red Rust tests and 54 red vitest tests, and the
   canonical TS totals oracle now answers 0 for the families it never migrated. Pipeline +
   provenance, below.
 - **FORK-4** — 165 test files share a path between the two repos and none is adjudicated; 16 are
   live two-way forks. Pipeline + provenance, below. The tripwire on the agreeing pairs is landed;
   what is open is the 54 that differ.
-- **MBDIMPORT-4** — canonical's `mids-import/mappers.ts` reads Mids' `RelativeLevel` unsigned, so
-  every `Minus*` imports as even and a levelling build overstates itself. Beta has the fix.
-  Pipeline + provenance, below. Now declared as the one fork in the newly guarded twin surface.
 
 **Carried residuals — named work inside closed entries.** Seven items were scoped out of a closure
 and recorded there rather than reopened. They are not `[ ]` rows: their hosts *are* closed with
@@ -614,7 +611,7 @@ measurement went, and where a closure for the residual belongs too.
 
 ## Pipeline + provenance
 
-[Full detail](gaps/pipeline-provenance.md) — 45 of 48 closed
+[Full detail](gaps/pipeline-provenance.md) — 46 of 48 closed
 
 - [x] **MBDIMPORT-1** — Mids files accolades under `Temporary_Powers.Accolades.*` and the importer's
   blanket temp-power skip dropped every one of them upstream of the warning counters, so a user's
@@ -630,12 +627,11 @@ measurement went, and where a closure for the residual belongs too.
   number from the finished build through the same `countBudgetPowerPicks` the dashboard uses,
   accolades and incarnates count on their own lines, and the chips show used of budget rather than
   a remainder that reads like a total
-- [ ] **MBDIMPORT-4** — canonical's `mids-import/mappers.ts` still floors Mids' `RelativeLevel` at
-  0 through a `?? 0`, so `MinusThree` imports as even and a build slotted with red SOs reads as
-  though every one were fresh (an SO three under combat level is worth x0.70 on HC); beta carries
-  the signed table and `relative-level.test.ts`, canonical does not, and the two are now declared
-  `forked` in sync-manifest rather than merely differing — **exit:** port the signed table and its
-  test into canonical, re-emit whatever fixtures the change moves, and the copies converge
+- [x] **MBDIMPORT-4** — canonical's importer read Mids' `RelativeLevel` unsigned, so every
+  `Minus*` imported as even and a levelling build slotted with red SOs overstated itself
+  (x0.70 read as fresh); beta's signed offset table is ported with `relative-level.test.ts`,
+  and the Special/Origin factories' +3 cap gave way to `storedLevelOffset`, which preserves
+  a negative and clamps to no range — the copies converge back to identical
 - [x] **MBDEXPORT-1** — the .mbd exporter built Mids' enhancement UIDs out of set display names, and
   Mids answers a UID it does not know by leaving the slot empty with no error: a user's exported
   build arrived missing 13 of 63 enhancements, all four Fitness inherents and the uniques in them,
@@ -812,9 +808,10 @@ measurement went, and where a closure for the residual belongs too.
   `effects` bag, so the strip emptied it (148 committed lines to 8); selection and payload now come
   from the resolve's own readers, a re-emit reproduces 148, and the new population is the old one
   minus 28 recipient-blind rows that all graded zero
-- [ ] **STRIP-1** — the bag strip's residue was never filed: **17 red Rust tests over 12 targets
-  and 79 red vitest tests over 22 files**, measured 2026-08-30 on all four forks (the vitest half
-  opened at 122 over 26; the accolade, toggle and adaptation-stance clusters are the delta). Every Rust failure is a guard reporting its own vacuity, not a wrong number, and 48 base-bag reads survive
+- [ ] **STRIP-1** — the bag strip's residue was never filed: **15 red Rust tests over 10 targets
+  and 54 red vitest tests over 18 files**, measured 2026-08-30 on all four forks (122→54; the
+  accolade, toggle, adaptation-stance and Thunderspy-vocab clusters are the delta). Every Rust
+  failure is a guard reporting its own vacuity, not a wrong number, and 48 base-bag reads survive
   in 36 Rust files — 7 still grading the FROZEN corpus, 12 red, 10 GREEN over a field that is now
   always absent. The TS half spends ~45 slots out of `character-totals.ts:1145`'s
   `power.effects ?? {}`, and this repo's `src/` is the totals ORACLE.

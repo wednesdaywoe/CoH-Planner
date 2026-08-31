@@ -152,11 +152,6 @@
       "path": "scripts/sync-shared.cjs",
       "reason": "The machine copy for the shared surface this manifest adjudicates, wired into the beta's package.json as sync:shared. Beta-only for the same reason sync-bin-crawler.sh is: it runs in the repo that RECEIVES, because it overwrites, and a canonical copy would be a script pointing the wrong way down a one-way street. It reads canonical's manifest for the file list and runs canonical's verify-sync.cjs --write, so canonical needs no copy of it to participate.",
       "gap": "FORK-3"
-    },
-    {
-      "path": "src/utils/mids-import/relative-level.test.ts",
-      "reason": "Guards beta's signed `RelativeLevel` read, which canonical does not carry — see the forked mappers.ts row and MBDIMPORT-4. Beta-only because the code it grades is beta-only; canonical growing this file back means the fix landed there and the pair is shared surface again, which is what this declaration is here to catch.",
-      "gap": "MBDIMPORT-4"
     }
   ],
   "entries": [
@@ -174,7 +169,7 @@
     {
       "path": "docs/DATA-GAP-REGISTER.md",
       "status": "identical",
-      "sha256": "a1612f145a4fe68793bdbaeda0deb3f174b6bc2125d627c3c55ee3747824b5aa"
+      "sha256": "4ed9208b0a77447bca3de4e35e956e7208bdc4392f1b0159cb9e710a7f53444d"
     },
     {
       "path": "scripts/README-bulk-import-mids.md",
@@ -619,14 +614,13 @@
     },
     {
       "path": "src/utils/mids-import/mappers.ts",
-      "status": "forked",
-      "sha256": {
-        "canonical": "7cde84f6cfecac37e506c6f0f70d806f8c6dd1aa5d01c6ea0ba55a05fb18bb03",
-        "beta": "4d67b587c1e61355d75bf503a592e9928aae9fe4f217c05c38847ba206b8903d"
-      },
-      "reason": "Beta reads Mids' `RelativeLevel` (the `eEnhRelative` enum) as a SIGNED offset, MinusThree through PlusFive. Canonical still carries the older 0-to-5 `RELATIVE_LEVEL_BOOST`, whose lookup ends `?? 0`, so the negative half imports as even and a levelling build slotted with red SOs reads as though every enhancement were fresh — an SO three levels under combat level is worth x0.70 on Homecoming. Beta's half is the correct one. It is inert in canonical today because the Rust app still stubs Mids import out (crates/app/src/build_io.rs), so this is drift waiting for the port rather than a number a user can see, and porting it moves fixture output, which is its own adjudication.",
-      "exit": "Port beta's signed offset table and relative-level.test.ts into canonical, re-emit whatever fixtures the change moves, and the two copies converge back to identical.",
-      "gap": "MBDIMPORT-4"
+      "status": "identical",
+      "sha256": "3dd096f577100df559ab6fe215b8465bcd017382b5b6f27201a66c215d07b9f2"
+    },
+    {
+      "path": "src/utils/mids-import/relative-level.test.ts",
+      "status": "identical",
+      "sha256": "9defbaa5dcf80c6b5cca605b9ea04b559ad8984db50880d8d415a89a5ebbec7b"
     },
     {
       "path": "src/utils/mids-import/name-map.test.ts",

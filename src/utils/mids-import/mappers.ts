@@ -768,9 +768,6 @@ function getIOSetNameLookup(): Map<string, string> {
 }
 
 /**
- * Known enhancement stat names in Mids and their app equivalents
- */
-/**
  * Mids UID suffix → planner stat. Many-to-one: Mids has spelled the same stat
  * several ways across its history, and every spelling has to import.
  *
