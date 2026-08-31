@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest';
+import { atomsOfType } from '@/data/core/atom-query';
 import { POWER_POOLS_RAW } from '@/data/datasets/thunderspy/generated/power-pools';
 import { FocusedFighting } from '@/data/datasets/thunderspy/generated/powersets/brute/secondary/super-reflexes/focused-fighting';
 
@@ -36,12 +37,13 @@ describe('Thunderspy defense powers carry their defense magnitude', () => {
   );
 
   it('armor toggle Focused Fighting carries positional (melee) defense', () => {
-    const eff: any = (FocusedFighting as any).effects;
-    expect(hasDefense(eff)).toBe(true);
     // The affected attrib comes from the index array (HC parity: 'Melee'), not
-    // the bogus 'Buff_Def' front token.
-    const def = eff.defenseBuff ?? eff.defenseBuffSuppressible;
-    expect(def.melee, 'Focused Fighting should buff melee defense').toBeDefined();
-    expect(def.melee.scale).toBeGreaterThan(0);
+    // the bogus 'Buff_Def' front token. Stated on the atoms — the `effects` bag
+    // the bag-side projection provided is retired (STRIP-1).
+    const melee = atomsOfType(FocusedFighting, 'Defense')
+      .filter((a) => a.aspect === 'Cur' && a.modifierTable === 'Melee_Buff_Def')
+      .find((a) => a.subType === 'Melee');
+    expect(melee, 'Focused Fighting should buff melee defense').toBeDefined();
+    expect(melee!.scale).toBeGreaterThan(0);
   });
 });

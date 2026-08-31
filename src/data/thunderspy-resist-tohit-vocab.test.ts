@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll } from 'vitest';
 import { loadDataset } from '@/data/dataset';
-import { isScaledEffect, type NumberOrScaled } from '@/types/power';
+import { atomsOf, atomsOfType } from '@/data/core/atom-query';
 import { MindOverBody } from './datasets/thunderspy/generated/powersets/brute/secondary/willpower/mind-over-body';
 import { HighPainTolerance } from './datasets/thunderspy/generated/powersets/brute/secondary/willpower/high-pain-tolerance';
 import { Aim } from './datasets/thunderspy/generated/powersets/arachnos-soldier/epic/crab-spider-soldier/aim';
@@ -29,15 +29,10 @@ import { CloakofDarkness } from './datasets/thunderspy/generated/powersets/brute
  * plain `tohitBuff`.
  *
  * These re-read the committed dataset so a future regen can't silently undo it
- * (GAME-DATA-PRINCIPLES §9). See [[tspy-player-vocab-gap]].
+ * (GAME-DATA-PRINCIPLES §9). The STRIP-1 bag strip removed the projected `effects`
+ * object these once read; the claims are now stated on the ATOMS the strip left in
+ * place, which is the same surface the migration's other survivors moved to.
  */
-/** Narrow a NumberOrScaled to a ScaledEffect, failing the test if it is a bare
- *  number (these slots are all table-backed ScaledEffects — the surfacing fix's
- *  whole point). */
-function asScaled(value: NumberOrScaled | undefined, label: string) {
-  expect(isScaledEffect(value), `${label} should be a ScaledEffect`).toBe(true);
-  return value as { scale: number; table: string };
-}
 
 describe('Thunderspy resistance / ToHit vocabulary surfacing (TSPY11)', () => {
   beforeAll(async () => {
@@ -47,35 +42,40 @@ describe('Thunderspy resistance / ToHit vocabulary surfacing (TSPY11)', () => {
   it('Mind Over Body surfaces its resistance (was empty {})', () => {
     // tspy MoB's bin carries a single Smashing resistance template (Lethal/Psi absent
     // from the tspy data, unlike HC's 3 templates — faithful to the bin).
-    const res = MindOverBody.effects?.resistance;
-    expect(res).toBeDefined();
-    const smashing = asScaled(res?.smashing, 'resistance.smashing');
-    expect(smashing.scale).toBeCloseTo(2.25, 5);
-    expect(smashing.table).toMatch(/res_dmg/i);
+    const smashing = atomsOfType(MindOverBody, 'Resistance').find((a) => a.subType === 'Smashing');
+    expect(smashing).toBeDefined();
+    expect(smashing!.scale).toBeCloseTo(2.25, 5);
+    expect(smashing!.modifierTable).toMatch(/res_dmg/i);
+    expect(smashing!.aspect).toBe('Res');
   });
 
   it('High Pain Tolerance surfaces ALL its per-type resistances (multi-attrib index)', () => {
     // Proves the index array decodes multi-type, not just the first entry.
-    const res = HighPainTolerance.effects?.resistance ?? {};
-    for (const t of ['smashing', 'lethal', 'fire', 'cold', 'energy', 'negative', 'psionic', 'toxic']) {
-      expect(res[t as keyof typeof res], `missing resistance.${t}`).toBeDefined();
+    const types = atomsOfType(HighPainTolerance, 'Resistance')
+      .filter((a) => a.aspect === 'Res')
+      .map((a) => a.subType);
+    for (const t of ['Smashing', 'Lethal', 'Fire', 'Cold', 'Energy', 'Negative', 'Psionic', 'Toxic']) {
+      expect(types, `missing resistance.${t}`).toContain(t);
     }
   });
 
   it('Aim surfaces its ToHit buff (Buff_ToHit-front → ToHit) with no bogus aspect', () => {
     // scale 5 × Melee_Buff_ToHit resolves to the HC-sane ~+37.5% — the table-vs-literal
     // ambiguity resolves in favor of the table.
-    const tohit = asScaled(Aim.effects?.tohitBuff, 'tohitBuff');
-    expect(tohit.scale).toBeCloseTo(5, 5);
-    expect(tohit.table).toMatch(/buff_tohit/i);
-    // A ToHit buff must NOT be mislabeled as a resistance debuff.
-    expect(Aim.effects?.tohitDebuff).toBeUndefined();
+    const tohit = atomsOfType(Aim, 'ToHit').find((a) => a.aspect === 'Cur');
+    expect(tohit).toBeDefined();
+    expect(tohit!.scale).toBeCloseTo(5, 5);
+    expect(tohit!.modifierTable).toMatch(/buff_tohit/i);
+    // A ToHit buff must NOT surface as a resistance-debuff-shaped atom (aspect Res).
+    expect(atomsOfType(Aim, 'ToHit').find((a) => a.aspect === 'Res' || a.aspect === 'Str')).toBeUndefined();
     // Aim's OTHER half is a real +Damage buff, on its own `Melee_Buff_Dmg` template.
     // It was invisible until the parser walked every AttribMod in an element (TSPY-4);
     // tspy now carries the same two templates Homecoming does.
-    const damage = asScaled(Aim.effects?.damageBuff, 'damageBuff');
-    expect(damage.scale).toBeCloseTo(5, 5);
-    expect(damage.table).toMatch(/buff_dmg/i);
+    const dmgAtoms = atomsOfType(Aim, 'DamageBuff');
+    expect(dmgAtoms.length).toBeGreaterThan(0);
+    expect(dmgAtoms.every((a) => a.modifierTable)).toBe(true);
+    expect(dmgAtoms[0].modifierTable).toMatch(/buff_dmg/i);
+    expect(dmgAtoms[0].scale).toBeCloseTo(5, 5);
   });
 });
 
@@ -89,23 +89,29 @@ describe('Thunderspy resistance / ToHit vocabulary surfacing (TSPY11)', () => {
  * DAMAGE (Glacial Shield "Cold damage 4.5", Enervating Field "damage -3"). The parser
  * now also synthesizes aspect='Resistance' when EVERY attrib is a `*_Dmg` type on a
  * `*_Res_Dmg` table (damage never uses a resistance table). See [[tspy-player-vocab-gap]].
+ *
+ * The proof that a row is a resistance FACE rather than damage is the pair (aspect
+ * `Res`, a `*_Res_Dmg` table): damage never rides a resistance table. Asserted on the
+ * atoms directly now that the strip retired the `effects` bag these read.
  */
 describe('Thunderspy Case B — damage-type-front resistance mislabel', () => {
   it('Glacial Shield is Res(Cold), not Cold damage', () => {
-    expect(GlacialShield.effects?.resistance?.cold).toBeDefined();
-    const cold = asScaled(GlacialShield.effects?.resistance?.cold, 'resistance.cold');
-    expect(cold.table).toMatch(/res_dmg/i);
+    const res = atomsOfType(GlacialShield, 'Resistance');
+    expect(res.some((a) => a.aspect === 'Res' && a.subType === 'Cold')).toBe(true);
+    expect(res.every((a) => a.aspect === 'Res' && /res_dmg/i.test(a.modifierTable))).toBe(true);
     // Must NOT leak back as damage.
-    expect((GlacialShield as { damage?: unknown }).damage).toBeUndefined();
-    expect(GlacialShield.effects?.damage).toBeUndefined();
+    expect(atomsOfType(GlacialShield, 'Damage')).toHaveLength(0);
   });
 
   it('Enervating Field is -Res(all), not damage', () => {
-    const rd = EnervatingField.effects?.resistanceDebuff ?? {};
-    for (const t of ['smashing', 'lethal', 'fire', 'cold', 'energy', 'negative', 'psionic', 'toxic']) {
-      expect(rd[t as keyof typeof rd], `missing resistanceDebuff.${t}`).toBeDefined();
+    const res = atomsOfType(EnervatingField, 'Resistance');
+    for (const t of ['Smashing', 'Lethal', 'Fire', 'Cold', 'Energy', 'Negative', 'Psionic', 'Toxic']) {
+      expect(res.some((a) => a.aspect === 'Res' && a.subType === t && a.scale < 0), `missing resistanceDebuff.${t}`).toBe(true);
     }
-    expect(EnervatingField.effects?.damage).toBeUndefined();
+    // No row rides a resistance table as a damage buff: damage is `Damage` type, not
+    // these `Ranged_Debuff_Dam` damage-DEBUFF riders. Strachely, the -debuff rows are
+    // the foe damage debuff, not a damage buff — see the discriminator, not the name.
+    expect(atomsOfType(EnervatingField, 'Damage')).toHaveLength(0);
   });
 });
 
@@ -123,19 +129,20 @@ describe('Thunderspy Case B — damage-type-front resistance mislabel', () => {
  */
 describe('Thunderspy displaced-defense index-array recovery', () => {
   it('Mind Link grants multi-type defense, not Melee-only', () => {
-    const def = NWMindLink.effects?.defenseBuff ?? {};
     // Was ['melee'] only. Should now carry positional + typed defense (Def-All-ish).
-    for (const t of ['melee', 'ranged', 'aoe', 'smashing', 'lethal', 'fire', 'cold', 'energy', 'negative', 'psionic']) {
-      expect(def[t as keyof typeof def], `missing defenseBuff.${t}`).toBeDefined();
+    const subs = atomsOfType(NWMindLink, 'Defense').map((a) => a.subType);
+    for (const t of ['Melee', 'Ranged', 'AoE', 'Smashing', 'Lethal', 'Fire', 'Cold', 'Energy', 'Negative', 'Psionic']) {
+      expect(subs, `missing defenseBuff.${t}`).toContain(t);
     }
   });
 
   it('a currently-correct armor toggle keeps its full defense (no regression)', () => {
     // Cloak of Darkness read correctly before the fix (its array sits at the fixed
-    // offset); confirm the recovery path left it whole.
-    const def = CloakofDarkness.effects?.defenseBuff ?? {};
-    for (const t of ['melee', 'ranged', 'aoe', 'smashing', 'lethal', 'psionic']) {
-      expect(def[t as keyof typeof def], `missing defenseBuff.${t}`).toBeDefined();
+    // offset); confirm the recovery path left it whole. Its defense rows are all
+    // Self-recipient toWho Cur-face.
+    const subs = atomsOfType(CloakofDarkness, 'Defense').map((a) => a.subType);
+    for (const t of ['Melee', 'Ranged', 'AoE', 'Smashing', 'Lethal', 'Psionic']) {
+      expect(subs, `missing defenseBuff.${t}`).toContain(t);
     }
   });
 });
