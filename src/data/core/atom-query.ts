@@ -1689,6 +1689,37 @@ export function selfDamageDebuffValue(
 }
 
 /**
+ * The self-tagged arm of the bag's `defenseDebuff` — the converter's `base_defense`
+ * debuff branch (`convert-powerset.cjs:6637-6642`): a Defense/All debuff row
+ * (Rage's crash −20% Def(All), the DSH6c catch) writes the slot as a SCALAR
+ * `{scale, table}` with `toWho:'Self'` when `isSelfTargeting`. The typed damage-type
+ * and position arms key the bag by type instead, and no corpus power carries a
+ * caster-facing typed defense debuff that the totals pass reads — the guard this
+ * reader serves (`self-penalty-towho.test.ts`) asserts the scalar slot only, over
+ * a measured population of 2/2/1/0 (brute/tanker Rage on HC/Rebirth, none on
+ * Thunderspy).
+ *
+ * Same "no foe row shares the slot" rule as {@link selfDamageDebuffValue}: the
+ * converter tags from whichever row landed last, so the slot reads as a caster
+ * penalty only when every Defense/All debuff row lands on the caster.
+ */
+export function selfDefenseDebuffValue(
+  power: AtomSource,
+): { scale: number; table: string } | undefined {
+  let cur: { scale: number; table: string } | undefined;
+  let curIsSelf = true;
+  for (const a of baseAtoms(power)) {
+    if (a.effectType !== 'Defense') continue;
+    if (a.subType !== 'All') continue; // the bag's scalar arm is `base_defense` only
+    if (a.aspect !== 'Cur') continue; // Res/Str faces route elsewhere (debuffResistance, specialBuff)
+    if (!isConverterDebuff(a)) continue; // the buff arm writes `defenseBuff` instead
+    cur = { scale: Math.abs(a.scale), table: a.modifierTable }; // last-write-wins
+    if (!atomLandsOnCaster(a)) curIsSelf = false;
+  }
+  return curIsSelf ? cur : undefined;
+}
+
+/**
  * The `effects.stealth` slot, atom-native. Mirrors `convert-powerset.cjs:7127` — the
  * StealthRadius branch's `Current` arm.
  *
