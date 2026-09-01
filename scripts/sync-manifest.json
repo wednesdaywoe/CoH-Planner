@@ -170,7 +170,7 @@
       "path": "docs/DATA-GAP-REGISTER.md",
       "status": "forked",
       "sha256": {
-        "canonical": "eb84574354513654a28bdd61cd04e49a17ebd28c22204d849884c5bf2c0c516d",
+        "canonical": "b9e2477d7595f6b5531ce01b41a855ac3ac09de3919930f1fe64b2802af0d06b",
         "beta": "4ed9208b0a77447bca3de4e35e956e7208bdc4392f1b0159cb9e710a7f53444d"
       },
       "reason": "canonical's register carries the STRIP-1 burn-down (KB-INFO row, lint trims, closure narratives) the beta's copy lacks; beta's copy is the pre-migration register.",
