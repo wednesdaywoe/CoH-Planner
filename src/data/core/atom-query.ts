@@ -2094,6 +2094,90 @@ export function absorbValue(power: AtomSource): { scale: number; table: string; 
   return foldResourceSum(mine);
 }
 
+/**
+ * The MaxHP-fraction absorb magnitude, read atom-native — the TS twin of
+ * `coh_math::appliers::absorb::absorb_max_hp_fraction_value` (ATOM10), which
+ * EVALUATES the `Absorb`/`aspect=Max`/`type=Expression` atom's `magnitudeExpression`.
+ *
+ * The magnitude is `Max.kHitPoints source> C * [@Strength *]`: `C` fraction of the caster's
+ * CURRENT Max HP, optionally scaled by +Absorb strength. Only `C` is atom-static — max HP and
+ * strength are build state applied downstream — so the probe neutralizes both `Max.kHitPoints`
+ * and `@Strength` to unity and returns the bare coefficient `C`, the same value the retired bag
+ * slotted as `maxHPFraction`. This is the half {@link absorbValue} deliberately EXCLUDES
+ * (`aspect==='Max' && attribType==='Expression'`) — the totals oracle answered 0 for it until
+ * this reader landed (STRIP-1).
+ *
+ * Mirrors the converter's `parseAbsorbMaxHPFraction` gate exactly: BASE atoms only, one distinct
+ * fraction; an unevaluable ceiling or two distinct base fractions returns `None` (fall back to
+ * the bag) rather than a fabricated number (Rule 1).
+ */
+function fractionProbeEvaluate(program: string[], onesTable: boolean, scale: number): number | undefined {
+  // A minimal RPN evaluator mirroring Rust's `FractionProbe` `EvalContext`:
+  //  - `Max.kHitPoints source>` → 1.0 (the caster's max HP, applied downstream)
+  //  - `@Strength` → 1.0 (applied by the caller's enh multiplier)
+  //  - `@StdResult` → the atom's own scale, but ONLY on a `_ones` table where the level term
+  //    cancels (Sentinel Ablative Carapace / Parasitic Leech); otherwise Indeterminate
+  //  - every other reader → Indeterminate (never fabricated)
+  const stack: number[] = [];
+  for (const tok of program) {
+    const t = tok.trim();
+    if (t === '') continue;
+    if (t === '*') {
+      if (stack.length < 2) return undefined;
+      const b = stack.pop()!;
+      const a = stack.pop()!;
+      stack.push(a * b);
+    } else if (t === '+') {
+      if (stack.length < 2) return undefined;
+      const b = stack.pop()!;
+      const a = stack.pop()!;
+      stack.push(a + b);
+    } else if (/^-?\d+(\.\d+)?$/.test(t)) {
+      stack.push(Number(t));
+    } else if (t === '@Strength') {
+      stack.push(1.0);
+    } else if (t === '@StdResult') {
+      if (!onesTable) return undefined;
+      stack.push(scale);
+    } else if (t === 'source>' || t === 'Source>') {
+      // `Max.kHitPoints source>` is pushed by the previous token's reader; the RPN program
+      // reads `Max.kHitPoints` as a symbol then `source>` as its qualifier. Treat the pair as
+      // the max-HP reader → 1.0.
+      if (stack.length === 0) return undefined;
+      const prev = stack.pop()!;
+      // The symbol token itself pushes nothing meaningful; `Max.kHitPoints` is a marker only.
+      // In Rust the reader for `source>` with operand `Max.kHitPoints` → 1.0. Here the program
+      // is `['Max.kHitPoints','source>','0.25','*','@Strength','*']`, so the marker sits at the
+      // bottom and `source>` resolves it. Represent the max-HP read as 1.0.
+      stack.push(1.0);
+      void prev;
+    } else {
+      // The reader symbol (e.g. `Max.kHitPoints`) pushed before its qualifier. In the real
+      // program it leaves no number; represent the max-HP marker as 1.0 so `source>` finds it.
+      if (t === 'Max.kHitPoints') stack.push(1.0);
+      else return undefined;
+    }
+  }
+  if (stack.length !== 1) return undefined;
+  return stack[0];
+}
+
+export function absorbMaxHPFractionValue(power: AtomSource): number | undefined {
+  let fraction: number | undefined;
+  for (const a of baseAtoms(power)) {
+    if (a.effectType !== 'Absorb' || a.aspect !== 'Max' || a.attribType !== 'Expression') continue;
+    if (a.notOnCaster) continue;
+    const program = a.magnitudeExpression as unknown as string[] | undefined;
+    if (!program?.length) return undefined; // an unevaluable ceiling bails the whole read
+    const isOnes = (a.modifierTable || '').toLowerCase().endsWith('_ones');
+    const value = fractionProbeEvaluate(program, isOnes, a.scale ?? 0);
+    if (value === undefined) return undefined;
+    if (fraction === undefined) fraction = value;
+    else if (Math.abs(fraction - value) >= 1e-9) return undefined; // two distinct fractions → bag
+  }
+  return fraction;
+}
+
 // ============================================================================
 // Stacking
 // ============================================================================
