@@ -168,8 +168,14 @@
     },
     {
       "path": "docs/DATA-GAP-REGISTER.md",
-      "status": "identical",
-      "sha256": "4ed9208b0a77447bca3de4e35e956e7208bdc4392f1b0159cb9e710a7f53444d"
+      "status": "forked",
+      "sha256": {
+        "canonical": "998b5bc48928c7bbf240b8c5e9073241e602d7561ed728ea198772fb141da4e4",
+        "beta": "4ed9208b0a77447bca3de4e35e956e7208bdc4392f1b0159cb9e710a7f53444d"
+      },
+      "reason": "canonical's register carries the STRIP-1 burn-down (KB-INFO row, lint trims, closure narratives) the beta's copy lacks; beta's copy is the pre-migration register.",
+      "exit": "the converter mirror (FORK-3 sync:shared) after the STRIP-1 migration lands on the beta side.",
+      "gap": "STRIP-1"
     },
     {
       "path": "scripts/README-bulk-import-mids.md",
@@ -308,8 +314,14 @@
     },
     {
       "path": "scripts/convert-accolades.cjs",
-      "status": "identical",
-      "sha256": "fe333313156c65ba3453ecd3922d85177f7f4fa31072f63852441349696cae3b"
+      "status": "forked",
+      "sha256": {
+        "canonical": "5baa7af52a5252f155bb75322fec1e3a3acc5f8dc3887f11b9824bbfe1a2ac30",
+        "beta": "fe333313156c65ba3453ecd3922d85177f7f4fa31072f63852441349696cae3b"
+      },
+      "reason": "STRIP-1/ENT-22 migration changed canonical's converter (bag strip, pet-parameter hoist); beta's copy is pre-strip and stays until the converter mirror carries the migration across.",
+      "exit": "the converter mirror (FORK-3 sync:shared) after the STRIP-1 migration lands on the beta side.",
+      "gap": "STRIP-1"
     },
     {
       "path": "scripts/convert-all-powersets.cjs",
@@ -323,8 +335,14 @@
     },
     {
       "path": "scripts/convert-basic-inherents.cjs",
-      "status": "identical",
-      "sha256": "389e3d1abb54c24c13bacef75a41d321fad91883ff98b09ec564b9444292c1b3"
+      "status": "forked",
+      "sha256": {
+        "canonical": "d5ffd1486600822bde9f5670d7727baa57b10bdb75e4ed3ef4675e1cb2469b33",
+        "beta": "389e3d1abb54c24c13bacef75a41d321fad91883ff98b09ec564b9444292c1b3"
+      },
+      "reason": "STRIP-1/ENT-22 migration changed canonical's converter (bag strip, pet-parameter hoist); beta's copy is pre-strip and stays until the converter mirror carries the migration across.",
+      "exit": "the converter mirror (FORK-3 sync:shared) after the STRIP-1 migration lands on the beta side.",
+      "gap": "STRIP-1"
     },
     {
       "path": "scripts/convert-enhancement-curves.cjs",
@@ -333,8 +351,14 @@
     },
     {
       "path": "scripts/convert-epic-pools.cjs",
-      "status": "identical",
-      "sha256": "2fc1a2e92b35048e5e0274c9f59880a1a848d1eaa4ae879b8f0b9e650c9dc880"
+      "status": "forked",
+      "sha256": {
+        "canonical": "6de0efbe3cae2861e4fd7c32840a99a713595824009ceac62909ba9bf17d8b5e",
+        "beta": "2fc1a2e92b35048e5e0274c9f59880a1a848d1eaa4ae879b8f0b9e650c9dc880"
+      },
+      "reason": "STRIP-1/ENT-22 migration changed canonical's converter (bag strip, pet-parameter hoist); beta's copy is pre-strip and stays until the converter mirror carries the migration across.",
+      "exit": "the converter mirror (FORK-3 sync:shared) after the STRIP-1 migration lands on the beta side.",
+      "gap": "STRIP-1"
     },
     {
       "path": "scripts/convert-incarnate-effects.cjs",
@@ -363,8 +387,14 @@
     },
     {
       "path": "scripts/convert-powerset.cjs",
-      "status": "identical",
-      "sha256": "d632e330d0d2051629a46b4b80cfc326ca9fa91e05037b841937b06a8ce9236f"
+      "status": "forked",
+      "sha256": {
+        "canonical": "894fa7ef1f0c92af45de70e4e9cae60d4ed063dbc4269f91cf0994ce8b8ac56c",
+        "beta": "d632e330d0d2051629a46b4b80cfc326ca9fa91e05037b841937b06a8ce9236f"
+      },
+      "reason": "STRIP-1/ENT-22 migration changed canonical's converter (bag strip, pet-parameter hoist); beta's copy is pre-strip and stays until the converter mirror carries the migration across.",
+      "exit": "the converter mirror (FORK-3 sync:shared) after the STRIP-1 migration lands on the beta side.",
+      "gap": "STRIP-1"
     },
     {
       "path": "scripts/convert-salvage.cjs",
@@ -388,13 +418,25 @@
     },
     {
       "path": "scripts/dsh6-collapse-detector.cjs",
-      "status": "identical",
-      "sha256": "14d94396a8dae0388f3e0e1fb32d5dabb3a2e9542158454805aa93065b443321"
+      "status": "forked",
+      "sha256": {
+        "canonical": "f81d5c991635b24e6ce7e109f00623837698de9ab1aadd52d54296768a5e8665",
+        "beta": "14d94396a8dae0388f3e0e1fb32d5dabb3a2e9542158454805aa93065b443321"
+      },
+      "reason": "STRIP-1/ENT-22 migration changed canonical's converter (bag strip, pet-parameter hoist); beta's copy is pre-strip and stays until the converter mirror carries the migration across.",
+      "exit": "the converter mirror (FORK-3 sync:shared) after the STRIP-1 migration lands on the beta side.",
+      "gap": "STRIP-1"
     },
     {
       "path": "scripts/dsh6-collapse-worklist.json",
-      "status": "identical",
-      "sha256": "7d7a7bb2589c9924186584dbce6037422c37c86bfba3af4a45456721a6e4431a"
+      "status": "forked",
+      "sha256": {
+        "canonical": "f609cca8ce2ddffabc4f3330c526be11248f02163609e81e74f9bacf9f827524",
+        "beta": "7d7a7bb2589c9924186584dbce6037422c37c86bfba3af4a45456721a6e4431a"
+      },
+      "reason": "STRIP-1/ENT-22 migration changed canonical's converter (bag strip, pet-parameter hoist); beta's copy is pre-strip and stays until the converter mirror carries the migration across.",
+      "exit": "the converter mirror (FORK-3 sync:shared) after the STRIP-1 migration lands on the beta side.",
+      "gap": "STRIP-1"
     },
     {
       "path": "scripts/dsh6-gate-allowlist.json",
@@ -474,8 +516,14 @@
     },
     {
       "path": "scripts/validate-converter-output.cjs",
-      "status": "identical",
-      "sha256": "c048d77f1747cae261d45909d1617ebbaad05f76b48adc495585029d70162d42"
+      "status": "forked",
+      "sha256": {
+        "canonical": "81e255c47192620b7e264e1c5d7ea73a5733f042c2e1d9ac46668e8ac930b30f",
+        "beta": "c048d77f1747cae261d45909d1617ebbaad05f76b48adc495585029d70162d42"
+      },
+      "reason": "STRIP-1/ENT-22 migration changed canonical's converter (bag strip, pet-parameter hoist); beta's copy is pre-strip and stays until the converter mirror carries the migration across.",
+      "exit": "the converter mirror (FORK-3 sync:shared) after the STRIP-1 migration lands on the beta side.",
+      "gap": "STRIP-1"
     },
     {
       "path": "scripts/verify-sync.cjs",
@@ -618,14 +666,14 @@
       "sha256": "3dd096f577100df559ab6fe215b8465bcd017382b5b6f27201a66c215d07b9f2"
     },
     {
-      "path": "src/utils/mids-import/relative-level.test.ts",
-      "status": "identical",
-      "sha256": "9defbaa5dcf80c6b5cca605b9ea04b559ad8984db50880d8d415a89a5ebbec7b"
-    },
-    {
       "path": "src/utils/mids-import/name-map.test.ts",
       "status": "identical",
       "sha256": "9b9b8ab7b422c58a865d2b165fbd1cc94f8b009988b47c948897a72f723cbaeb"
+    },
+    {
+      "path": "src/utils/mids-import/relative-level.test.ts",
+      "status": "identical",
+      "sha256": "9defbaa5dcf80c6b5cca605b9ea04b559ad8984db50880d8d415a89a5ebbec7b"
     },
     {
       "path": "src/utils/mids-import/summary-counts.test.ts",
