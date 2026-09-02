@@ -1999,12 +1999,13 @@ export function debuffResistanceValue(
 
 /**
  * The `effects.mezResistance` by-type map, atom-native (`convert-powerset.cjs:6665` for the six
- * mez types, `:7108`'s knockback arm for the KB/KU pair).
+ * mez types, `:7108`'s knockback arm for the KB/KU pair, `:7150`'s CONTROL arm for teleport).
  *
- * Two admission rules, both the converter's. The mez types take the `resistance` face of a
+ * Three admission rules, all the converter's. The mez types take the `resistance` face of a
  * `Mez`/`MezResist` row. The knockback pair takes it only when the table is NOT `res_boolean`
  * — a `Res_Boolean` KB row is PROTECTION (a mag you must exceed) and routes to the `knockback`
- * slot instead, which is the distinction {@link kbProtectionValue} owns.
+ * slot instead, which is the distinction {@link kbProtectionValue} owns. Teleport takes the
+ * caster-directed rows only — see the gate below.
  *
  * Unlike `debuffResistance` this map ACCUMULATES: repeated rows on the same table sum, and a
  * table change starts fresh, mirroring the converter's `+= Math.abs(scale)` branch.
@@ -2033,6 +2034,18 @@ export function mezResistanceValue(
       // knockback row reads as 10000 self KB resistance.
       if (!atomLandsOnCaster(a)) continue;
       if (a.modifierTable.toLowerCase().includes('res_boolean')) continue; // protection, not resistance
+      add(sub, a);
+    }
+    if (sub === 'teleport') {
+      // STRIP-1's carried residual, ported from `coh_math::appliers::mez_resistance` (MEZRES-3).
+      // A `MezResist`/`Teleport` row is spelled identically whether it protects the caster
+      // (Static Shield, Personal Force Field) or whoever the power just yanked (Wormhole, Shadow
+      // Slip, Fold Space author it beside the `Mez/Teleport` that moved the foe) or buffed
+      // (Increase Density's is the ally's). `toWho == Self` alone under-reads Static Shield,
+      // whose `Target kTarget` names the caster because the power's own `targetsAffected` is
+      // `['Self']` — the same pronoun resolution {@link reachesCaster} already carries for every
+      // other `AnyAffected` row, so no separate rule is minted here.
+      if (!reachesCaster(a, power)) continue;
       add(sub, a);
     }
   }

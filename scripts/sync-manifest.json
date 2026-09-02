@@ -170,7 +170,7 @@
       "path": "docs/DATA-GAP-REGISTER.md",
       "status": "forked",
       "sha256": {
-        "canonical": "abd0567b5106c855d004634d7ad32c22f5a2f973164e4b26089c7a86950812f7",
+        "canonical": "e14b4b72a35a44dd8b13df38dfe3f7043272b299a30a7ae61fde3d7c6d7f9cc4",
         "beta": "4ed9208b0a77447bca3de4e35e956e7208bdc4392f1b0159cb9e710a7f53444d"
       },
       "reason": "canonical's register carries the STRIP-1 burn-down (KB-INFO row, lint trims, closure narratives) the beta's copy lacks; beta's copy is the pre-migration register.",
@@ -533,7 +533,7 @@
     {
       "path": "src/data/core/atom-query.ts",
       "status": "identical",
-      "sha256": "d2a36f7f500173b434c69a73f32b3a498adbb6ffde0df5acfc2b4f4d4420c418"
+      "sha256": "39574c1317338917f875c7b9f59df033612890db13582feedfba321944e392f8"
     },
     {
       "path": "src/data/core/atomic-effect.ts",
