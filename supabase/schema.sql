@@ -32,7 +32,13 @@ CREATE TABLE shared_builds (
   -- share-preview image (e.g. 'previews/<id>.png'), or NULL if none has been
   -- rendered yet. Written only by the share-build edge function (service
   -- role) — never by a direct client write. See streams/BUILD_PREVIEW_IMAGE_PLAN.md.
-  preview_image_path TEXT
+  preview_image_path TEXT,
+  -- The CURRENT_PREVIEW_TEMPLATE_VERSION the image at preview_image_path was
+  -- rendered under, or NULL alongside a NULL preview_image_path (never
+  -- rendered). Lets a stale image (rendered under an older visual template)
+  -- be told apart from a current one without re-deriving anything from the
+  -- image itself. See streams/BUILD_PREVIEW_BACKFILL_PLAN.md (PREVBF1).
+  preview_template_version INTEGER
 );
 
 -- Indexes for search and filtering
@@ -466,6 +472,30 @@ ON CONFLICT (id) DO NOTHING;
 --    (grep confirms none exist anywhere in this file) — access comes from
 --    Supabase's project-wide default privileges, which apply to newly
 --    created objects the same as existing ones.
+DROP VIEW IF EXISTS shared_builds_with_author;
+CREATE VIEW shared_builds_with_author
+WITH (security_invoker = on) AS
+SELECT b.*,
+       p.handle       AS author_handle,
+       p.display_name AS author_display_name,
+       p.avatar_url   AS author_avatar_url
+FROM shared_builds b
+LEFT JOIN profiles p ON p.user_id = b.user_id;
+
+-- ============================================
+-- Migration: Preview image backfill/refresh (run on existing databases)
+-- ============================================
+-- Lets a build whose preview image was rendered under an older visual
+-- template be told apart from one that's current, so both a never-generated
+-- and a stale image can be regenerated automatically. Every pre-existing row
+-- lands NULL here, same as preview_image_path — NULL already means
+-- "generate regardless of version," which is correct for a row this column
+-- predates. See streams/BUILD_PREVIEW_BACKFILL_PLAN.md (PREVBF1).
+ALTER TABLE shared_builds ADD COLUMN IF NOT EXISTS preview_template_version INTEGER;
+
+-- shared_builds_with_author freezes its `b.*` expansion at creation, same as
+-- the EMBED1 migration above — rebuild it the same way (DROP+CREATE, no
+-- GRANTs on the view to preserve).
 DROP VIEW IF EXISTS shared_builds_with_author;
 CREATE VIEW shared_builds_with_author
 WITH (security_invoker = on) AS

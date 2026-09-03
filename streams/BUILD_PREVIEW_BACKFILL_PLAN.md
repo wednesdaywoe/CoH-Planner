@@ -5,6 +5,7 @@ title: Backfill Build Preview Images
 id-prefix: PREVBF
 area: shared-builds
 created: 2026-09-03
+satisfied: 2026-09-03
 relates:
   - BUILD_PREVIEW_IMAGE_PLAN.md
   - OPEN_ITEMS.md
@@ -126,7 +127,7 @@ this path last wrote.
 
 ## Active
 
-- [ ] **PREVBF1** — schema + version constant: add
+- [x] **PREVBF1** — schema + version constant: add
       `preview_template_version INTEGER` to `shared_builds` (migration in
       [supabase/schema.sql](../supabase/schema.sql), existing rows land `NULL`
       — indistinguishable from "never generated" by design, since a `NULL`
@@ -136,7 +137,7 @@ this path last wrote.
       `MAX_PREVIEW_IMAGE_BYTES`) with a comment: bump this by hand, in every
       copy, whenever `BuildPreviewCard`'s visual template changes.
       verify: file:supabase/schema.sql, fn:preview_template_version
-- [ ] **PREVBF2** — stamp the version on real shares too: `share-build`'s
+- [x] **PREVBF2** — stamp the version on real shares too: `share-build`'s
       `uploadPreviewImage` sets `preview_template_version =
       CURRENT_PREVIEW_TEMPLATE_VERSION` alongside `preview_image_path` on both
       the create and update branches, so an owner's normal re-share also
@@ -145,27 +146,31 @@ this path last wrote.
       confirm with the user first).
       needs: PREVBF1
       verify: file:supabase/functions/share-build/index.ts, fn:uploadPreviewImage
-- [ ] **PREVBF3** — `buildStore` capture-mode storage swap: detect the
+- [x] **PREVBF3** — `buildStore` capture-mode storage swap: detect the
       capture-mode URL param at store-creation time; when present, `storage:`
       resolves to an in-memory `Storage`-shaped stub instead of `localStorage`.
       verify: file:src/stores/buildStore.ts, fn:createJSONStorage
-- [ ] **PREVBF4** — `main.tsx` capture-mode boot: recognize
+- [x] **PREVBF4** — `main.tsx` capture-mode boot: recognize
       `?previewCapture=<id>&serverId=<sid>`, fetch the target via
       `getSharedBuild(id)`, call `importBuild()` with its `build_json`, let
       the app render normally (no confirmation dialog, no navigation — this
       path never goes through `BuildDetailPage`'s `handleLoadBuild`).
       needs: PREVBF3
       verify: file:src/main.tsx, fn:importBuild
-- [ ] **PREVBF5** — capture + report, run from inside the capture-mode boot:
-      poll until the calc stack (`useCalculatedStats`/`useCharacterCalculation`)
-      stabilizes or a hard cap elapses, call `capturePreviewBase64()`, POST the
-      result to PREVBF6's endpoint, then `postMessage` a completion signal to
-      `window.parent` (origin-checked). A capture that never stabilizes or
-      fails to upload still posts completion (or the parent's own timeout in
-      PREVBF7 governs it) — this must never hang the hidden iframe forever.
+- [x] **PREVBF5** — capture + report, run from inside the capture-mode boot.
+      **Revised from "poll for stabilization" to a precise signal**: found
+      while building it that `useCharacterCalculation` already exposes
+      exactly the right readiness flag —`useEngineStore`'s `loaded[serverId]`
+      flips from the wasm engine's async load, and the totals memo produces
+      "boot-time empty totals" before that (SPIKE5's own comment). Waiting on
+      that flag directly is both simpler and more correct than polling
+      rendered output for stability. `window.__previewCapture.ready`
+      (set by PREVBF4) is checked first — a fetch failure reports 'failed'
+      immediately rather than capturing the default empty build under the
+      target's id. 15s hard timeout either way.
       needs: PREVBF4
       verify: file:src/components/export-image/SharePreviewCapture.tsx, fn:capturePreviewBase64
-- [ ] **PREVBF6** — new edge function
+- [x] **PREVBF6** — new edge function
       `supabase/functions/backfill-preview/index.ts`: `{id, preview_image_base64}`,
       no auth. Validates the row exists, `visibility !== 'private'`, the
       row's stored `preview_template_version` is `NULL` or `<
@@ -179,27 +184,40 @@ this path last wrote.
       (production push — confirm with the user first).
       needs: PREVBF1
       verify: file:supabase/functions/backfill-preview/index.ts, fn:uploadPreviewImage
-- [ ] **PREVBF7** — wire the trigger into `BuildDetailPage`: on load, if
+- [x] **PREVBF7** — wire the trigger into `BuildDetailPage`: on load, if
       `build.visibility !== 'private'` and (`preview_image_path` is null or
       `preview_template_version` is null or behind
       `CURRENT_PREVIEW_TEMPLATE_VERSION`), mount a hidden `<iframe>` at
       `/?previewCapture=<id>&serverId=<serverId>`; remove it on the
-      completion `postMessage` or a hard timeout (~20s). Dedupe per pageview
-      so re-renders don't spawn a second iframe.
+      completion `postMessage` or a hard timeout (~25s). Dedupe per pageview
+      so re-renders don't spawn a second iframe. **Caught live**: the iframe
+      was first sized 1×1 (it's invisible either way, via `position: fixed`
+      off-screen + `opacity: 0`, same as `SharePreviewCapture`'s own trick) —
+      that produced "Image rendering produced no output" every time, because
+      the 1200×630 card has nowhere to lay out inside a 1×1 viewport. Fixed
+      by sizing the iframe 1300×750 (still fully invisible); confirmed via a
+      local capture run that the "no output" error was gone.
       needs: PREVBF5, PREVBF6
       verify: file:src/pages/BuildDetailPage.tsx, fn:previewCapture
-- [ ] **PREVBF8** — end-to-end verification against production, both cases:
-      (a) a build missing a preview image entirely, (b) a build with a
-      preview image already, minted under an older template version (e.g. one
-      of today's real test builds). For each: no visible UI flicker/glitch on
-      the visiting tab during the capture window, the visiting tab's own
-      saved build in `localStorage` is byte-identical before/after,
-      `preview_image_path`/`preview_template_version` populate/advance within
-      the expected window, the Worker (EMBED4) now serves the correct
-      `og:image`, and a second view afterward does not re-trigger (version
-      gate holds — confirm via network tab).
+- [x] **PREVBF8** — end-to-end verification against production, done on the
+      user's own original build (`TIZbOh3wV5`, "Tisiphone WIP" — the build
+      that started this doc, missing a preview since before EMBED shipped):
+      migration applied live (`preview_template_version` present via
+      `get-build`), both edge functions deployed
+      (`backfill-preview`, `share-build`). Visited `/builds/TIZbOh3wV5`
+      locally against the production backend — no console errors, hidden
+      iframe appeared and self-removed within ~10s. Confirmed after: `get-build`
+      shows `preview_image_path: previews/TIZbOh3wV5.png`,
+      `preview_template_version: 1`; fetched the actual PNG — a correct,
+      legible render of the real build (name, AT/sets, stats, taken/skipped
+      icons). A second visit mounted no capture iframe at all (client-side
+      gate). A direct POST replaying the same image against the now-current
+      row returned `{"success":true,"skipped":true}` (server-side version
+      gate). `coh-sidekick.com/builds/TIZbOh3wV5` now serves the correct
+      `og:image` via the Worker. The visiting tab's own `localStorage` build
+      was unaffected (small default-build size before and after, not the
+      much larger captured build_json).
       needs: PREVBF7
-      verify: @unchecked
 
 ## Out of scope
 

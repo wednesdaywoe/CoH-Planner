@@ -591,6 +591,26 @@ export function incrementViews(id: string): void {
   supabase.rpc('increment_views', { build_id: id }).then(() => {});
 }
 
+/**
+ * Submit a preview image captured for `id` by the hidden capture-mode boot
+ * (see streams/BUILD_PREVIEW_BACKFILL_PLAN.md, PREVBF5/6) — no auth, since
+ * any visitor's browser can be the one that generates it. The backend only
+ * accepts this when `id`'s stored image is missing or behind the current
+ * template version; returns false on any failure (never throws — the caller
+ * reports completion to its parent either way).
+ */
+export async function submitPreviewBackfill(id: string, previewImageBase64: string): Promise<boolean> {
+  if (!supabase) return false;
+  try {
+    const { data, error } = await supabase.functions.invoke('backfill-preview', {
+      body: { id, preview_image_base64: previewImageBase64 },
+    });
+    return !error && !data?.error;
+  } catch {
+    return false;
+  }
+}
+
 /** Search shared builds with filters and pagination */
 export async function searchSharedBuilds(filters: SearchFilters = {}): Promise<SearchResult> {
   if (!supabase) {

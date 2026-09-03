@@ -6,7 +6,7 @@
  */
 
 import { create } from 'zustand';
-import { persist, createJSONStorage } from 'zustand/middleware';
+import { persist, createJSONStorage, type StateStorage } from 'zustand/middleware';
 import type {
   Build,
   AttackChain,
@@ -78,6 +78,31 @@ import { selectableModes, publishedModes } from '@/utils/mode-suppression';
 import { shouldShowToggle } from '@/components/powers/power-row-utils';
 import { useHistoryStore } from './historyStore';
 import { useUIStore } from './uiStore';
+
+// ============================================
+// CAPTURE-MODE PERSISTENCE
+// ============================================
+// A hidden capture-mode boot (see streams/BUILD_PREVIEW_BACKFILL_PLAN.md,
+// PREVBF3/4) imports an arbitrary build — someone else's, for a preview
+// render — into this store. That must never reach the visiting browser's
+// real `localStorage`: this module is a singleton, and `persist` writes on
+// every state change, so a real write here would overwrite whatever build
+// that browser actually has saved. Capture-mode boots read the URL param
+// once at store-creation time and swap in an in-memory stub instead — the
+// import still works (the store still holds the data in memory for
+// SharePreviewCapture to render), it just never leaves the tab.
+
+function isPreviewCaptureMode(): boolean {
+  if (typeof window === 'undefined') return false;
+  return new URLSearchParams(window.location.search).has('previewCapture');
+}
+
+const memoryStorageData = new Map<string, string>();
+const memoryStorage: StateStorage = {
+  getItem: (name) => memoryStorageData.get(name) ?? null,
+  setItem: (name, value) => void memoryStorageData.set(name, value),
+  removeItem: (name) => void memoryStorageData.delete(name),
+};
 
 // ============================================
 // POWER CATEGORY TYPE
@@ -3382,7 +3407,7 @@ export const useBuildStore = create<BuildStore>()(
     });},
     {
       name: 'coh-planner-build',
-      storage: createJSONStorage(() => localStorage),
+      storage: createJSONStorage(() => (isPreviewCaptureMode() ? memoryStorage : localStorage)),
       // The rehydrate migrations reach into the active dataset (inherent rules,
       // power defs via syncBuildDefinitions). Auto-hydration runs at store-import
       // time — BEFORE main.tsx's loadDataset() — so those migrations threw

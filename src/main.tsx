@@ -151,6 +151,17 @@ function bootServerId(): DatasetId {
   }
 }
 
+// ?previewCapture=<id> boots the app in a hidden capture-mode iframe to render
+// and snapshot someone else's build (see
+// streams/BUILD_PREVIEW_BACKFILL_PLAN.md, PREVBF4/5). buildStore's persist
+// already swapped to an in-memory stub for this boot (see
+// isPreviewCaptureMode in stores/buildStore.ts), so importBuild() here can't
+// touch this browser's real saved build — it only has to win the race against
+// the (harmless, empty) rehydrate above.
+function previewCaptureId(): string | null {
+  return new URLSearchParams(window.location.search).get('previewCapture')
+}
+
 bootReady = loadDataset(bootServerId()).then(async () => {
   // Hydrate the persisted build only AFTER the dataset is loaded — its rehydrate
   // migrations (inherent reconciliation, syncBuildDefinitions) read the active
@@ -158,6 +169,25 @@ bootReady = loadDataset(bootServerId()).then(async () => {
   // already pre-peeked the persisted serverId so the matching dataset is active.
   const { useBuildStore } = await import('./stores/buildStore')
   await useBuildStore.persist.rehydrate()
+
+  const captureId = previewCaptureId()
+  if (captureId) {
+    // Records whether the *target* build actually loaded — read by
+    // SharePreviewCapture's capture pass (PREVBF5) before it uploads
+    // anything. Without this, a fetch failure would silently capture and
+    // upload the default empty build as if it were captureId's real preview.
+    window.__previewCapture = { id: captureId, ready: false }
+    try {
+      const { getSharedBuild } = await import('@/services/sharedBuilds')
+      const shared = await getSharedBuild(captureId)
+      if (shared) {
+        useBuildStore.getState().importBuild(JSON.stringify(shared.build_json))
+        window.__previewCapture.ready = true
+      }
+    } catch {
+      // ready stays false — PREVBF5 reports failure instead of capturing.
+    }
+  }
 })
 
 bootReady.then(() => {

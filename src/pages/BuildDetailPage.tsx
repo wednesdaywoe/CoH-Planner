@@ -2,7 +2,7 @@
  * BuildDetailPage — read-only preview of a shared build
  */
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate, useSearch, Link } from '@tanstack/react-router';
 import { Button } from '@/components/ui/Button';
 import { getSharedBuild, incrementViews, isOwnedBuild, deleteBuild, reclaimBuild, updateBuildVisibility, updateBuildMetadata } from '@/services/sharedBuilds';
@@ -10,7 +10,21 @@ import { useBuildStore } from '@/stores/buildStore';
 import { useAuthStore } from '@/stores/authStore';
 import { getActiveDataset } from '@/data/dataset';
 import { buildDocumentTitle, useDocumentTitle, DEFAULT_DOCUMENT_TITLE } from '@/utils/document-title';
+import { CURRENT_PREVIEW_TEMPLATE_VERSION } from '@/components/export-image/BuildPreviewCard';
 import type { SharedBuild, BuildVisibility } from '@/types/shared';
+
+/** Hard cap on how long a hidden preview-capture iframe can run before this
+ *  page gives up on it — matches SharePreviewCapture's own timeout, plus
+ *  headroom for the iframe's own app boot (dataset load, wasm engine).
+ *  See streams/BUILD_PREVIEW_BACKFILL_PLAN.md (PREVBF7). */
+const PREVIEW_CAPTURE_TIMEOUT_MS = 25000;
+
+function needsPreviewCapture(build: SharedBuild): boolean {
+  if (build.visibility === 'private') return false;
+  if (!build.preview_image_path) return true;
+  const version = build.preview_template_version;
+  return version == null || version < CURRENT_PREVIEW_TEMPLATE_VERSION;
+}
 
 export function BuildDetailPage() {
   const { id } = useParams({ from: '/builds/$id' });
@@ -21,6 +35,8 @@ export function BuildDetailPage() {
   const user = useAuthStore((s) => s.user);
 
   const [build, setBuild] = useState<SharedBuild | null>(null);
+  const [previewCaptureUrl, setPreviewCaptureUrl] = useState<string | null>(null);
+  const previewCaptureAttempted = useRef(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
@@ -84,6 +100,34 @@ export function BuildDetailPage() {
     fetch();
     return () => { cancelled = true; };
   }, [id]);
+
+  // Automatic preview-image backfill/refresh (PREVBF7): a hidden capture-mode
+  // iframe renders and uploads this build's image if it's missing or stale.
+  // `previewCaptureAttempted` guards this to once per pageview — a later
+  // `setBuild` (e.g. from the visibility toggle below) must not re-trigger it.
+  useEffect(() => {
+    if (!build || previewCaptureAttempted.current || !needsPreviewCapture(build)) return;
+    previewCaptureAttempted.current = true;
+    const serverId = build.build_json.build.serverId ?? 'homecoming';
+    setPreviewCaptureUrl(`/?previewCapture=${encodeURIComponent(id)}&serverId=${encodeURIComponent(serverId)}`);
+  }, [build, id]);
+
+  useEffect(() => {
+    if (!previewCaptureUrl) return;
+    const timeout = setTimeout(() => setPreviewCaptureUrl(null), PREVIEW_CAPTURE_TIMEOUT_MS);
+    const onMessage = (event: MessageEvent) => {
+      if (event.origin !== window.location.origin) return;
+      if (event.data?.type === 'coh-sidekick-preview-capture' && event.data?.id === id) {
+        clearTimeout(timeout);
+        setPreviewCaptureUrl(null);
+      }
+    };
+    window.addEventListener('message', onMessage);
+    return () => {
+      clearTimeout(timeout);
+      window.removeEventListener('message', onMessage);
+    };
+  }, [previewCaptureUrl, id]);
 
   const handleCopyLink = async () => {
     try {
@@ -559,6 +603,21 @@ export function BuildDetailPage() {
           </div>
         )}
       </div>
+
+      {/* Hidden preview-image backfill/refresh capture (PREVBF7) — see
+          streams/BUILD_PREVIEW_BACKFILL_PLAN.md. Never visible; removed on
+          completion or PREVIEW_CAPTURE_TIMEOUT_MS. */}
+      {previewCaptureUrl && (
+        <iframe
+          src={previewCaptureUrl}
+          aria-hidden
+          title="preview capture"
+          // Wide/tall enough for the 1200x630 card to actually lay out and
+          // render inside the iframe's own viewport — a 1x1 iframe produced
+          // no rendered output at all (found live, not theoretical).
+          style={{ position: 'fixed', left: -100000, top: 0, width: 1300, height: 750, border: 0, opacity: 0 }}
+        />
+      )}
     </div>
   );
 }

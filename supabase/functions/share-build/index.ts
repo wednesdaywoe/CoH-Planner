@@ -37,6 +37,12 @@ async function sha256(input: string): Promise<string> {
 // without rejecting a legitimate one.
 const MAX_PREVIEW_IMAGE_BYTES = 2 * 1024 * 1024;
 
+// Mirrors src/components/export-image/BuildPreviewCard.tsx's
+// CURRENT_PREVIEW_TEMPLATE_VERSION — Deno functions can't import frontend TS,
+// so this is a hand-kept duplicate. Bump both together whenever that file's
+// visual template changes. See streams/BUILD_PREVIEW_BACKFILL_PLAN.md (PREVBF1).
+const CURRENT_PREVIEW_TEMPLATE_VERSION = 1;
+
 /**
  * Best-effort: upload a base64-encoded PNG (from the client's off-screen
  * BuildPreviewCard capture, see src/utils/preview-capture.ts) to the
@@ -291,7 +297,10 @@ Deno.serve(async (req: Request) => {
       // update too. Left out entirely (not nulled) when capture failed, so a
       // stale-but-present image beats no image rather than being wiped.
       const previewPath = await uploadPreviewImage(supabase, body.existing_id, body.preview_image_base64);
-      if (previewPath) updateFields.preview_image_path = previewPath;
+      if (previewPath) {
+        updateFields.preview_image_path = previewPath;
+        updateFields.preview_template_version = CURRENT_PREVIEW_TEMPLATE_VERSION;
+      }
 
       const { error: updateError } = await supabase
         .from('shared_builds')
@@ -325,6 +334,7 @@ Deno.serve(async (req: Request) => {
       owner_token_hash: ownerTokenHash,
       user_id: authUserId,  // null if not logged in, UUID if authenticated
       preview_image_path: previewPath,  // null when capture wasn't provided or failed
+      preview_template_version: previewPath ? CURRENT_PREVIEW_TEMPLATE_VERSION : null,
     });
 
     if (insertError) {
