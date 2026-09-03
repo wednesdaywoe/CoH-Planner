@@ -88,6 +88,25 @@ icon row for powers taken (skipped powers shown faded/empty, not omitted, so
 "what did they skip" is still legible). No per-power slotting/enhancement
 detail — not legible at social-embed image sizes.
 
+**Two-round legibility correction, found live 2026-09-03 (after this doc
+closed):** the first pass (commit `614261b342`, `CURRENT_PREVIEW_TEMPLATE_VERSION`
+1) sized type against a full-resolution screenshot downscaled to a *guessed*
+Discord embed width and looked fine — but the user's own Discord screenshots
+of the deployed result said otherwise twice: once genuinely too small, and
+once (`CURRENT_PREVIEW_TEMPLATE_VERSION` 2) still not legible enough even
+after a real size bump, because bigger type within the same content density
+(8 stat tiles + 3 icon rows + a footer hint) left a real overflow bug — the
+Pool/Epic icon row clipped against the footer border, measured live via
+`getBoundingClientRect`/`scrollHeight` rather than guessed. Fixed by both
+bumping type further *and* cutting the footer's "faded icon = skipped power"
+hint line (least essential content) to reclaim room, then re-verified the
+same way — measured heights match content heights (no clipping) and a
+400px/320px downscale (bracketing the range a real Discord client renders
+at) both read cleanly. Lesson for next time: verify against an *actual*
+posted Discord embed's measured pixel width, not an assumed one — a
+downscaled screenshot that "looks fine" zoomed in is not the same claim as
+"legible at the size a viewer will actually see."
+
 ## Active
 
 - [x] **EMBED1** — Storage bucket + schema: add a `build-previews` Storage
