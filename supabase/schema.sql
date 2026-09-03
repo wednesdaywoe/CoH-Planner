@@ -456,10 +456,18 @@ ON CONFLICT (id) DO NOTHING;
 
 -- 3. shared_builds_with_author is `SELECT b.*, ...` — Postgres freezes that
 --    expansion at (re)creation time, so the view will NOT pick up the new
---    column until it is rebuilt. Adding a column can use CREATE OR REPLACE
---    (only a *dropped* column forces DROP+CREATE, per the "Unlisted
---    visibility" migration above).
-CREATE OR REPLACE VIEW shared_builds_with_author
+--    column until it is rebuilt. CREATE OR REPLACE only allows appending a
+--    column at the very END of the view's output — `preview_image_path`
+--    lands via `b.*` BEFORE the trailing author_handle/display_name/
+--    avatar_url columns, which counts as reordering, not appending. (Wrongly
+--    assumed CREATE OR REPLACE would work here — it doesn't; DROP+CREATE
+--    it is, same as the "Unlisted visibility" migration above.) Dropping and
+--    recreating is safe: this project has no explicit GRANTs on the view
+--    (grep confirms none exist anywhere in this file) — access comes from
+--    Supabase's project-wide default privileges, which apply to newly
+--    created objects the same as existing ones.
+DROP VIEW IF EXISTS shared_builds_with_author;
+CREATE VIEW shared_builds_with_author
 WITH (security_invoker = on) AS
 SELECT b.*,
        p.handle       AS author_handle,
