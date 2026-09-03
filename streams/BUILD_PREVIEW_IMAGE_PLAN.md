@@ -88,6 +88,9 @@ icon row for powers taken (skipped powers shown faded/empty, not omitted, so
 "what did they skip" is still legible). No per-power slotting/enhancement
 detail — not legible at social-embed image sizes.
 
+*(The faded-skipped-powers half of that was reversed in round three below: it
+turned out not to be legible at embed size either.)*
+
 **Two-round legibility correction, found live 2026-09-03 (after this doc
 closed):** the first pass (commit `614261b342`, `CURRENT_PREVIEW_TEMPLATE_VERSION`
 1) sized type against a full-resolution screenshot downscaled to a *guessed*
@@ -106,6 +109,31 @@ at) both read cleanly. Lesson for next time: verify against an *actual*
 posted Discord embed's measured pixel width, not an assumed one — a
 downscaled screenshot that "looks fine" zoomed in is not the same claim as
 "legible at the size a viewer will actually see."
+
+**Third round, 2026-09-03 (`CURRENT_PREVIEW_TEMPLATE_VERSION` 3):** rounds one
+and two both tried to make the *same* content bigger, and both ran out of card.
+Round three cut content instead. Two findings drove it, and this time the
+starting point was the deployed PNG fetched from Storage rather than a local
+render — worth doing first, because it also settled that the round-two template
+*had* shipped correctly and the remaining complaint was design, not a stale
+image or a cache:
+
+- **A real overflow bug, live.** The Regn tile rendered the dashboard's own
+  format, `12.24/s (+128%)`, which overran the tile and spilled a stray `)`
+  across the Net End tile beside it. The card now carries a small preview-only
+  formatter table keyed by stat id (`PREVIEW_VALUE_FORMAT`) for values whose
+  dashboard rendering is too long here. It re-renders `stat.value`; it does not
+  recompute it.
+- **The skipped-power slots were costing more than they returned.** They were
+  ~13px in the embed, and the fade that carried their entire meaning was
+  invisible at that size — so a third of the card's height bought nothing. Cut
+  them, along with the per-powerset label column (the sets are named in the
+  header anyway), and spent the space on 70px icons for the taken powers and on
+  type: labels 18→26px, values 38→52px.
+
+Content density is the lever, not type size — a card that must survive a 3×
+downscale can only carry so many legible atoms, and the way to make one bigger
+is to remove another.
 
 ## Active
 
