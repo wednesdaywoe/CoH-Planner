@@ -84,9 +84,13 @@ detail — not legible at social-embed image sizes.
       a `b.*` view's expansion freezes at creation, so it wouldn't otherwise
       see the new column). `SharedBuild` type updated in
       [src/types/shared.ts](../src/types/shared.ts); `tsc --noEmit` clean.
-      **Not yet applied to the live Supabase project** — the migration block
-      still needs to be run by hand in the Supabase SQL editor before EMBED3
-      can be tested end-to-end.
+      **Applied to the live Supabase project 2026-09-03** (user-run in the SQL
+      editor) — first attempt hit 42P16 (`CREATE OR REPLACE VIEW` can only
+      append a trailing column; `preview_image_path` lands before the
+      existing `author_*` columns via `b.*`, which counts as a reorder).
+      Fixed to `DROP VIEW` + `CREATE VIEW` (schema.sql corrected to match,
+      commit efa5757c39), re-run, both `preview_image_path` and the
+      `build-previews` bucket confirmed present.
       verify: file:supabase/schema.sql, fn:preview_image_path
 - [x] **EMBED2** — Client-side renderer: **revised in the doing** from a
       hand-rolled `<canvas>` module to reusing this repo's existing
