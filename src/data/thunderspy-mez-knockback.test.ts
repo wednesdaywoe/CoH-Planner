@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { atomsOf } from '@/data/core/atom-query';
+import { atomsOf, type AtomSource } from '@/data/core/atom-query';
 // Recovered APPLIED mez / offensive knockback — read straight from the committed
 // generated base (pre-override), so a future regen can't silently undo the fix.
 import { Fossilize } from './datasets/thunderspy/generated/powersets/controller/primary/earth-control/fossilize';
@@ -43,7 +43,7 @@ import { ClearMind } from './datasets/thunderspy/generated/powersets/defender/pr
  */
 /** True when the power carries an always-on atom of `effectType`+`subType` matching `pred`. */
 function hasAtom(
-  power: { atoms: Parameters<typeof atomsOf>[0]['atoms'] },
+  power: AtomSource,
   effectType: string,
   subType: string,
   pred: (a: ReturnType<typeof atomsOf>[number]) => boolean = () => true,

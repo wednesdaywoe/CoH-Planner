@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll } from 'vitest';
 import { loadDataset } from '@/data/dataset';
-import { atomsOf, atomsOfType } from '@/data/core/atom-query';
+import { atomsOfType } from '@/data/core/atom-query';
 import { MindOverBody } from './datasets/thunderspy/generated/powersets/brute/secondary/willpower/mind-over-body';
 import { HighPainTolerance } from './datasets/thunderspy/generated/powersets/brute/secondary/willpower/high-pain-tolerance';
 import { Aim } from './datasets/thunderspy/generated/powersets/arachnos-soldier/epic/crab-spider-soldier/aim';
