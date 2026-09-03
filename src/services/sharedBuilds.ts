@@ -6,6 +6,7 @@ import { supabase } from '@/lib/supabase';
 import { useAuthStore } from '@/stores/authStore';
 import type { SharedBuild, ShareBuildInput, SearchFilters, SearchResult, BuildVisibility } from '@/types/shared';
 import { capturePreviewBase64 } from '@/utils/preview-capture';
+import { CURRENT_PREVIEW_TEMPLATE_VERSION } from '@/components/export-image/BuildPreviewCard';
 import type { BuildExport } from '@/types/build';
 import { DEFAULT_BUILD_NAME } from '@/types/build';
 
@@ -415,6 +416,14 @@ export async function updateBuildMetadata(existing: SharedBuild, patch: BuildMet
 interface QuickShareCache {
   shareId: string;
   fingerprint: string;
+  /** CURRENT_PREVIEW_TEMPLATE_VERSION at the time this row's image was last
+   *  captured. A cache hit whose build is unchanged but whose template has
+   *  since moved on must still re-share (see quickShareBuild) — otherwise
+   *  repeatedly clicking "Copy Short Link" on the same build could never
+   *  pick up a template fix, only the automatic backfill would (and only
+   *  once someone opens the link in a browser). Absent on a cache written
+   *  before this field existed, which correctly reads as "stale". */
+  templateVersion?: number;
 }
 
 function readQuickShareCache(): QuickShareCache | null {
@@ -467,7 +476,7 @@ export async function quickShareBuild(buildExport: BuildExport): Promise<{ url: 
   const fingerprint = await fingerprintBuild(buildExport);
   const cached = readQuickShareCache();
 
-  if (cached && cached.fingerprint === fingerprint) {
+  if (cached && cached.fingerprint === fingerprint && cached.templateVersion === CURRENT_PREVIEW_TEMPLATE_VERSION) {
     return { url: `${window.location.origin}/builds/${cached.shareId}` };
   }
 
@@ -504,7 +513,7 @@ export async function quickShareBuild(buildExport: BuildExport): Promise<{ url: 
       // first quick-shared; a re-share must not silently revert it to unlisted.
       const { visibility: _ignored, ...updateInput } = shareInput;
       const result = await shareBuild({ ...updateInput, existingId: cached.shareId });
-      writeQuickShareCache({ shareId: result.id, fingerprint });
+      writeQuickShareCache({ shareId: result.id, fingerprint, templateVersion: CURRENT_PREVIEW_TEMPLATE_VERSION });
       return { url: result.url };
     } catch (e) {
       // A rate limit means a retry-as-create would just burn a second slot and
@@ -515,7 +524,7 @@ export async function quickShareBuild(buildExport: BuildExport): Promise<{ url: 
   }
 
   const result = await shareBuild(shareInput);
-  writeQuickShareCache({ shareId: result.id, fingerprint });
+  writeQuickShareCache({ shareId: result.id, fingerprint, templateVersion: CURRENT_PREVIEW_TEMPLATE_VERSION });
   return { url: result.url };
 }
 
