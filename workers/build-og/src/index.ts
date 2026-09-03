@@ -32,9 +32,30 @@ interface BuildMeta {
   secondary_name: string;
   level: number;
   preview_image_path: string | null;
+  preview_template_version: number | null;
+  updated_at: string | null;
 }
 
 const BUILD_PATH = /^\/builds\/([^/]+)\/?$/;
+
+/**
+ * Query suffix that makes the og:image URL change whenever the picture behind
+ * it does. The stored path is `previews/<id>.png` and never varies, and
+ * Discord's media proxy caches by image URL — so without this a regenerated
+ * image is invisible to every client that ever fetched the old one, even from
+ * a page URL Discord has never seen before. Measured 2026-09-03: a
+ * first-time-scraped `?v=3` page URL still embedded a two-generations-old
+ * picture.
+ *
+ * Two keys because two different things regenerate an image: a template bump
+ * moves `preview_template_version`, and editing then re-sharing a build moves
+ * `updated_at` while the version stays put. Storage ignores both.
+ */
+function previewCacheKey(build: BuildMeta): string {
+  const version = build.preview_template_version ?? 0;
+  const stamp = build.updated_at ? Date.parse(build.updated_at) : NaN;
+  return `v=${version}&t=${Number.isNaN(stamp) ? 0 : stamp}`;
+}
 
 /**
  * Point lookup via the get-build edge function — the only path a non-owner
@@ -99,7 +120,7 @@ export default {
     const description = `A level ${build.level} ${build.archetype_name} build: ${build.primary_name} / ${build.secondary_name}. View the full build on Sidekick.`;
     const canonicalUrl = `https://coh-sidekick.com/builds/${id}`;
     const imageUrl = build.preview_image_path
-      ? `${env.SUPABASE_URL}/storage/v1/object/public/build-previews/${build.preview_image_path}`
+      ? `${env.SUPABASE_URL}/storage/v1/object/public/build-previews/${build.preview_image_path}?${previewCacheKey(build)}`
       : null;
 
     const rewriter = new HTMLRewriter()
