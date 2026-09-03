@@ -14,7 +14,7 @@ import {
   isShareEnabled,
   updateBuildVisibility,
 } from '@/services/sharedBuilds';
-import type { SharedBuild, SearchFilters, SearchResult } from '@/types/shared';
+import type { SharedBuild, SearchFilters, SearchResult, BuildVisibility } from '@/types/shared';
 
 type Tab = 'mine' | 'favorites' | 'all';
 
@@ -146,20 +146,21 @@ export function BuildsPage() {
   };
 
   // The list is the single source of truth for the lock icon — BuildCard renders
-  // straight off `build.is_public` rather than holding its own copy, so the
+  // straight off `build.visibility` rather than holding its own copy, so the
   // optimistic flip survives a re-render or a remount. Rethrow on failure so the
   // card can surface the message; the revert has already landed by then.
-  const setVisibility = (id: string, isPublic: boolean) =>
+  const setVisibility = (id: string, visibility: BuildVisibility) =>
     setMyBuilds((prev) =>
-      prev.map((b) => (b.id === id ? { ...b, is_public: isPublic } : b)),
+      prev.map((b) => (b.id === id ? { ...b, visibility } : b)),
     );
 
-  const handleVisibilityToggle = async (id: string, isPublic: boolean) => {
-    setVisibility(id, isPublic);
+  const handleVisibilityToggle = async (id: string, visibility: BuildVisibility) => {
+    const previous = myBuilds.find((b) => b.id === id)?.visibility;
+    setVisibility(id, visibility);
     try {
-      await updateBuildVisibility(id, isPublic);
+      await updateBuildVisibility(id, visibility);
     } catch (e) {
-      setVisibility(id, !isPublic);
+      if (previous) setVisibility(id, previous);
       throw e;
     }
   };

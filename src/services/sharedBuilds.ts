@@ -4,7 +4,7 @@
 
 import { supabase } from '@/lib/supabase';
 import { useAuthStore } from '@/stores/authStore';
-import type { SharedBuild, ShareBuildInput, SearchFilters, SearchResult } from '@/types/shared';
+import type { SharedBuild, ShareBuildInput, SearchFilters, SearchResult, BuildVisibility } from '@/types/shared';
 import type { BuildExport } from '@/types/build';
 import { DEFAULT_BUILD_NAME } from '@/types/build';
 
@@ -293,12 +293,12 @@ export async function shareBuild(input: ShareBuildInput): Promise<{ id: string; 
     tags: input.tags,
     build_json: buildData,
   };
-  // Only send is_public when the caller explicitly set it. Omitting it on an
+  // Only send visibility when the caller explicitly set it. Omitting it on an
   // update tells the backend to PRESERVE the row's current visibility — so a
   // re-save (vault/quick-share) can't silently revert a build the user made
-  // public via the visibility toggle. (Must not coerce undefined→true here, or
-  // the omission would itself flip the row public.)
-  if (input.is_public !== undefined) payload.is_public = input.is_public;
+  // public via the visibility toggle. (Must not default this to 'public' here,
+  // or the omission would itself flip the row public.)
+  if (input.visibility !== undefined) payload.visibility = input.visibility;
 
   // If updating an existing build, attach credentials (token and/or JWT via auth header)
   if (input.existingId) {
@@ -343,7 +343,7 @@ export async function shareBuild(input: ShareBuildInput): Promise<{ id: string; 
     if (isRateLimited) {
       const action: RateLimitAction = body?.action === 'vault' || body?.action === 'share'
         ? body.action
-        : (input.is_public === false ? 'vault' : 'share');
+        : (input.visibility === 'private' || input.visibility === 'unlisted' ? 'vault' : 'share');
       throw new RateLimitError({
         action,
         limit: body?.limit ?? (action === 'vault' ? RATE_LIMITS.vault : RATE_LIMITS.share),
@@ -386,8 +386,8 @@ export interface BuildMetadataPatch {
  * The share-build edge function's update branch overwrites ALL metadata columns
  * wholesale, so we resend the existing build_json plus any fields the caller
  * isn't changing (falling back to the build's current values) — otherwise an
- * omitted field would be blanked. `is_public` is deliberately omitted so the
- * update preserves the row's public/private state (and is metered as a cheap
+ * omitted field would be blanked. `visibility` is deliberately omitted so the
+ * update preserves the row's current visibility (and is metered as a cheap
  * vault action rather than a public share).
  */
 export async function updateBuildMetadata(existing: SharedBuild, patch: BuildMetadataPatch): Promise<void> {
@@ -448,8 +448,9 @@ async function fingerprintBuild(buildExport: BuildExport): Promise<string> {
  *     URL with no network call (instant re-copy).
  *   - Else, updates the cached share row in place via `existingId` (or creates
  *     a new row on the first share, or if the cached row is no longer ownable).
- *   - The created build is unlisted (`is_public: false`) — reachable by the
- *     exact URL but not surfaced in the public gallery.
+ *   - The created build is `visibility: 'unlisted'` — reachable by anyone
+ *     with the exact URL but not surfaced in search/browse or listable via
+ *     the anon API.
  */
 export async function quickShareBuild(buildExport: BuildExport): Promise<{ url: string }> {
   const user = useAuthStore.getState().user;
@@ -483,17 +484,17 @@ export async function quickShareBuild(buildExport: BuildExport): Promise<{ url: 
     server: (buildExport.build.serverId as string | undefined) || '',
     tags: [],
     build_json: buildExport,
-    is_public: false,
+    visibility: 'unlisted',
   };
 
   // Try updating the cached row first; if it fails (deleted, ownership lost,
   // edge function rejects), fall back to creating a new one.
   if (cached) {
     try {
-      // Preserve the row's current visibility on update (drop is_public) — the
-      // user may have made this build public via the toggle since it was first
-      // quick-shared; a re-share must not silently revert it to unlisted.
-      const { is_public: _ignored, ...updateInput } = shareInput;
+      // Preserve the row's current visibility on update (drop visibility) —
+      // the user may have made this build public via the toggle since it was
+      // first quick-shared; a re-share must not silently revert it to unlisted.
+      const { visibility: _ignored, ...updateInput } = shareInput;
       const result = await shareBuild({ ...updateInput, existingId: cached.shareId });
       writeQuickShareCache({ shareId: result.id, fingerprint });
       return { url: result.url };
@@ -549,7 +550,14 @@ export async function deleteBuild(id: string): Promise<void> {
   removeOwnerToken(id);
 }
 
-/** Fetch a single shared build by ID (joined with author profile if any) */
+/** Fetch a single shared build by ID (joined with author profile if any).
+ *
+ * Tries the direct RLS-governed table read first — it covers public builds
+ * and the caller's own rows at any visibility. A miss (RLS hides the row —
+ * a non-owner reading an unlisted build, since unlisted has no anon/
+ * authenticated grant) falls back to the `get-build` edge function, the
+ * only path a non-owner reads an unlisted build through.
+ */
 export async function getSharedBuild(id: string): Promise<SharedBuild | null> {
   if (!supabase) return null;
 
@@ -557,10 +565,16 @@ export async function getSharedBuild(id: string): Promise<SharedBuild | null> {
     .from('shared_builds_with_author')
     .select('*')
     .eq('id', id)
-    .single();
+    .maybeSingle();
 
-  if (error || !data) return null;
-  return data as SharedBuild;
+  if (data) return data as SharedBuild;
+  if (error) return null;
+
+  const { data: fnData, error: fnError } = await supabase.functions.invoke('get-build', {
+    body: { id },
+  });
+  if (fnError || fnData?.error) return null;
+  return fnData as SharedBuild;
 }
 
 /** Increment view count (fire-and-forget) */
@@ -583,7 +597,7 @@ export async function searchSharedBuilds(filters: SearchFilters = {}): Promise<S
   let query = supabase
     .from('shared_builds_with_author')
     .select('*', { count: 'exact' })
-    .eq('is_public', true);
+    .eq('visibility', 'public');
 
   // Apply filters
   if (filters.archetype) {
@@ -656,8 +670,8 @@ export async function getMyBuilds(): Promise<SharedBuild[]> {
   return (data ?? []) as SharedBuild[];
 }
 
-/** Toggle the public/private visibility of an owned build (requires Discord login) */
-export async function updateBuildVisibility(id: string, isPublic: boolean): Promise<void> {
+/** Set the visibility of an owned build (requires Discord login) */
+export async function updateBuildVisibility(id: string, visibility: BuildVisibility): Promise<void> {
   if (!supabase) throw new Error('Sharing is not configured');
 
   const user = useAuthStore.getState().user;
@@ -670,7 +684,7 @@ export async function updateBuildVisibility(id: string, isPublic: boolean): Prom
   }
 
   const { data, error } = await supabase.functions.invoke('update-build-visibility', {
-    body: { id, is_public: isPublic },
+    body: { id, visibility },
   });
 
   if (error) {

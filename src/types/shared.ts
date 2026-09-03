@@ -4,6 +4,13 @@
 
 import type { BuildExport } from './build';
 
+/**
+ * 'private': owner only. 'unlisted': readable by anyone with the exact
+ * share link, never listed in search/browse. 'public': readable by link AND
+ * listed.
+ */
+export type BuildVisibility = 'private' | 'unlisted' | 'public';
+
 /** A build that has been shared to the public repository */
 export interface SharedBuild {
   id: string;
@@ -25,8 +32,7 @@ export interface SharedBuild {
   views: number;
   /** User ID from Discord OAuth (null for anonymous builds) */
   user_id?: string | null;
-  /** Whether the build is visible in public search (false = private vault only) */
-  is_public: boolean;
+  visibility: BuildVisibility;
   /** Author profile fields (joined from `profiles` via shared_builds_with_author view).
    *  Null when user_id is null OR when the user hasn't claimed a handle/profile yet. */
   author_handle?: string | null;
@@ -44,8 +50,8 @@ export interface ShareBuildInput {
   build_json: BuildExport;
   /** If set, updates an existing build instead of creating a new one */
   existingId?: string;
-  /** Whether the build is publicly visible (default true). Requires login to set false. */
-  is_public?: boolean;
+  /** Visibility to set (default 'public'). Requires login to set 'private' or 'unlisted'. */
+  visibility?: BuildVisibility;
 }
 
 /** Filters for searching shared builds */

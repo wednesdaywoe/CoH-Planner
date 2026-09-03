@@ -617,8 +617,14 @@
     },
     {
       "path": "src/types/shared.ts",
-      "status": "identical",
-      "sha256": "41cbf3a1fdddcdeccb63d6f67bb9a68c6f8f04a17e49685e750b6bd7db7e5761"
+      "status": "per-repo",
+      "sha256": {
+        "canonical": "41cbf3a1fdddcdeccb63d6f67bb9a68c6f8f04a17e49685e750b6bd7db7e5761",
+        "beta": "cf553c336f3d32abe6160c98f42cb9664f736df47d4c0c404fb97cc1e880e304"
+      },
+      "reason": "Declares the Shared Builds social feature's Supabase row shape (SharedBuild, ShareBuildInput, SearchFilters). It sits in src/types/ next to the genuinely-shared game-data types but nothing in canonical's converters or Rust crates reads it -- it rode into the manifest as 'identical' on the wholesale src/ transplant, not on a require edge (FORK-5). Canonical's copy is frozen by design (README: edited only by regen, which never touches it); beta's is the live feature type, evolving with the deployed Shared Builds feature (this visibility rework: private/unlisted/public replacing the is_public boolean).",
+      "exit": null,
+      "gap": "FORK-5"
     },
     {
       "path": "src/types/ui.ts",

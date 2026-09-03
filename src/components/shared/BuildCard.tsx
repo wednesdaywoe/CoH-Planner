@@ -5,7 +5,19 @@
 import { useState } from 'react';
 import { useNavigate } from '@tanstack/react-router';
 import { isFavorite, toggleFavorite, isOwnedBuild, deleteBuild } from '@/services/sharedBuilds';
-import type { SharedBuild } from '@/types/shared';
+import type { SharedBuild, BuildVisibility } from '@/types/shared';
+
+/** Click cycles forward through all three states. */
+const NEXT_VISIBILITY: Record<BuildVisibility, BuildVisibility> = {
+  public: 'unlisted',
+  unlisted: 'private',
+  private: 'public',
+};
+
+const VISIBILITY_BADGE: Record<Exclude<BuildVisibility, 'public'>, string> = {
+  private: 'Private',
+  unlisted: 'Unlisted',
+};
 
 interface BuildCardProps {
   build: SharedBuild;
@@ -15,8 +27,8 @@ interface BuildCardProps {
   onDeleted?: (id: string) => void;
   /** Callback when author name is clicked */
   onAuthorClick?: (authorId: string | null, authorName: string) => void;
-  /** Show visibility toggle (lock icon) for the My Builds tab */
-  onVisibilityToggle?: (id: string, isPublic: boolean) => Promise<void>;
+  /** Show visibility control (cycles private/unlisted/public) for the My Builds tab */
+  onVisibilityToggle?: (id: string, visibility: BuildVisibility) => Promise<void>;
 }
 
 export function BuildCard({ build, showDelete, onDeleted, onAuthorClick, onVisibilityToggle }: BuildCardProps) {
@@ -63,17 +75,17 @@ export function BuildCard({ build, showDelete, onDeleted, onAuthorClick, onVisib
     }
   };
 
-  // The lock reflects `build.is_public` from the list, not a local copy — the
-  // caller owns the optimistic flip and the revert. Keeping a second copy here
-  // meant any remount (a refetch flipping the page to its loading state, say)
-  // silently reset the icon to whatever the list still held.
+  // The control reflects `build.visibility` from the list, not a local copy —
+  // the caller owns the optimistic flip and the revert. Keeping a second copy
+  // here meant any remount (a refetch flipping the page to its loading state,
+  // say) silently reset the icon to whatever the list still held.
   const handleVisibilityToggle = async (e: React.MouseEvent) => {
     e.stopPropagation();
     if (!onVisibilityToggle || visibilityLoading) return;
     setVisibilityLoading(true);
     setVisibilityError(null);
     try {
-      await onVisibilityToggle(build.id, !build.is_public);
+      await onVisibilityToggle(build.id, NEXT_VISIBILITY[build.visibility]);
     } catch (err) {
       // updateBuildVisibility unwraps the edge function's error body into a real
       // message ('Build not found or not authorized', 'Session expired', ...).
@@ -95,9 +107,15 @@ export function BuildCard({ build, showDelete, onDeleted, onAuthorClick, onVisib
         <div className="flex items-start justify-between gap-2 mb-2">
           <div className="flex items-center gap-1.5 min-w-0">
             <h3 className="font-semibold text-white text-sm truncate">{build.name}</h3>
-            {!build.is_public && (
-              <span className="shrink-0 px-1 py-0.5 bg-indigo-900/60 border border-indigo-700/50 rounded text-[10px] text-indigo-300 font-medium">
-                Private
+            {build.visibility !== 'public' && (
+              <span
+                className={`shrink-0 px-1 py-0.5 rounded text-[10px] font-medium border ${
+                  build.visibility === 'private'
+                    ? 'bg-indigo-900/60 border-indigo-700/50 text-indigo-300'
+                    : 'bg-amber-900/60 border-amber-700/50 text-amber-300'
+                }`}
+              >
+                {VISIBILITY_BADGE[build.visibility]}
               </span>
             )}
           </div>
@@ -112,23 +130,33 @@ export function BuildCard({ build, showDelete, onDeleted, onAuthorClick, onVisib
             >
               {favorited ? '\u2605' : '\u2606'}
             </span>
-            {/* Visibility toggle (My Builds tab) */}
+            {/* Visibility control (My Builds tab) — click cycles public → unlisted → private */}
             {onVisibilityToggle && !deleteConfirm && (
               <span
                 role="button"
                 onClick={handleVisibilityToggle}
                 className={`p-0.5 transition-colors rounded ${visibilityLoading ? 'opacity-50' : ''} ${
-                  build.is_public ? 'text-gray-500 hover:text-indigo-400' : 'text-indigo-400 hover:text-indigo-300'
+                  build.visibility === 'public'
+                    ? 'text-gray-500 hover:text-indigo-400'
+                    : build.visibility === 'unlisted'
+                      ? 'text-amber-400 hover:text-amber-300'
+                      : 'text-indigo-400 hover:text-indigo-300'
                 }`}
-                title={build.is_public ? 'Make private (save to library)' : 'Make public'}
+                title={`Currently ${build.visibility}. Click to make ${NEXT_VISIBILITY[build.visibility]}.`}
               >
-                {build.is_public ? (
-                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
-                  </svg>
-                ) : (
+                {build.visibility === 'public' && (
                   <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </svg>
+                )}
+                {build.visibility === 'unlisted' && (
+                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 010 5.656l-3 3a4 4 0 01-5.656-5.656l1.5-1.5M10.172 13.828a4 4 0 010-5.656l3-3a4 4 0 015.656 5.656l-1.5 1.5" />
+                  </svg>
+                )}
+                {build.visibility === 'private' && (
+                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
                   </svg>
                 )}
               </span>

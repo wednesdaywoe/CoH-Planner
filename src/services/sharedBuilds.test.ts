@@ -19,6 +19,7 @@ import {
   formatRateLimitMessage,
   rateLimitHint,
   shareBuild,
+  quickShareBuild,
 } from './sharedBuilds';
 import type { ShareBuildInput } from '@/types/shared';
 
@@ -47,11 +48,11 @@ function baseInput(overrides: Partial<ShareBuildInput> = {}): ShareBuildInput {
 
 /**
  * Visibility-preservation contract: a re-save (vault / quick-share) that omits
- * is_public must NOT send the field, so the backend leaves the row's current
- * public/private state untouched. Forcing is_public on update was reverting
- * builds the user had made public via the visibility toggle.
+ * visibility must NOT send the field, so the backend leaves the row's current
+ * visibility untouched. Forcing visibility on update was reverting builds the
+ * user had made public via the visibility toggle.
  */
-describe('shareBuild is_public payload', () => {
+describe('shareBuild visibility payload', () => {
   beforeEach(() => {
     // The suite runs in node (no DOM package); stub the globals shareBuild reads.
     vi.stubGlobal('window', { location: { origin: 'http://test' } });
@@ -66,21 +67,32 @@ describe('shareBuild is_public payload', () => {
     vi.unstubAllGlobals();
   });
 
-  it('omits is_public from the payload when the caller does not set it', async () => {
+  it('omits visibility from the payload when the caller does not set it', async () => {
     await shareBuild(baseInput({ existingId: 'row-1' }));
     const body = invoke().mock.calls[0][1].body;
-    expect('is_public' in body).toBe(false);
+    expect('visibility' in body).toBe(false);
     expect(body.existing_id).toBe('row-1');
   });
 
-  it('sends is_public:false when explicitly creating a private entry', async () => {
-    await shareBuild(baseInput({ is_public: false }));
-    expect(invoke().mock.calls[0][1].body.is_public).toBe(false);
+  it('sends visibility:private when explicitly creating a private entry', async () => {
+    await shareBuild(baseInput({ visibility: 'private' }));
+    expect(invoke().mock.calls[0][1].body.visibility).toBe('private');
   });
 
-  it('sends is_public:true when explicitly sharing publicly', async () => {
-    await shareBuild(baseInput({ is_public: true }));
-    expect(invoke().mock.calls[0][1].body.is_public).toBe(true);
+  it('sends visibility:unlisted when explicitly creating an unlisted entry', async () => {
+    await shareBuild(baseInput({ visibility: 'unlisted' }));
+    expect(invoke().mock.calls[0][1].body.visibility).toBe('unlisted');
+  });
+
+  it('sends visibility:public when explicitly sharing publicly', async () => {
+    await shareBuild(baseInput({ visibility: 'public' }));
+    expect(invoke().mock.calls[0][1].body.visibility).toBe('public');
+  });
+
+  it('quickShareBuild sends visibility:unlisted', async () => {
+    await quickShareBuild(baseInput().build_json);
+    const body = invoke().mock.calls[0][1].body;
+    expect(body.visibility).toBe('unlisted');
   });
 });
 

@@ -299,10 +299,10 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
         tags,
         build_json: exportData,
         // Force private only when creating a fresh vault entry. On an update,
-        // omit is_public so the backend preserves the current visibility —
+        // omit visibility so the backend preserves the current visibility —
         // otherwise re-saving edits would silently revert a build the user made
         // public via the visibility toggle.
-        ...(updateExisting ? {} : { is_public: false }),
+        ...(updateExisting ? {} : { visibility: 'private' as const }),
         existingId: updateExisting ? linkedVaultId : undefined,
       });
       // Link the in-memory build to the (new or updated) entry so a
@@ -657,7 +657,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
         tags,
         build_json: exportData,
         existingId: updateExistingId ?? undefined,
-        is_public: true,
+        visibility: 'public',
       });
 
       setShareUrl(result.url);

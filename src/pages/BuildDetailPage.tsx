@@ -10,7 +10,7 @@ import { useBuildStore } from '@/stores/buildStore';
 import { useAuthStore } from '@/stores/authStore';
 import { getActiveDataset } from '@/data/dataset';
 import { buildDocumentTitle, useDocumentTitle, DEFAULT_DOCUMENT_TITLE } from '@/utils/document-title';
-import type { SharedBuild } from '@/types/shared';
+import type { SharedBuild, BuildVisibility } from '@/types/shared';
 
 export function BuildDetailPage() {
   const { id } = useParams({ from: '/builds/$id' });
@@ -139,14 +139,13 @@ export function BuildDetailPage() {
     }
   };
 
-  const handleToggleVisibility = async () => {
-    if (!build || visibilityLoading) return;
+  const handleChangeVisibility = async (visibility: BuildVisibility) => {
+    if (!build || visibilityLoading || visibility === build.visibility) return;
     setVisibilityLoading(true);
     setVisibilityError(null);
-    const newIsPublic = !build.is_public;
     try {
-      await updateBuildVisibility(id, newIsPublic);
-      setBuild({ ...build, is_public: newIsPublic });
+      await updateBuildVisibility(id, visibility);
+      setBuild({ ...build, visibility });
     } catch (e) {
       setVisibilityError(e instanceof Error ? e.message : 'Failed to update visibility');
     } finally {
@@ -258,17 +257,19 @@ export function BuildDetailPage() {
                 Edit
               </Button>
             )}
-            {/* Visibility toggle — only for Discord-linked owners */}
+            {/* Visibility control — only for Discord-linked owners */}
             {owned && user && build?.user_id === user.id && (
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={handleToggleVisibility}
-                isLoading={visibilityLoading}
-                className={build?.is_public ? 'text-gray-400 hover:text-indigo-300' : 'text-indigo-400 hover:text-indigo-300'}
+              <select
+                value={build.visibility}
+                disabled={visibilityLoading}
+                onChange={(e) => handleChangeVisibility(e.target.value as BuildVisibility)}
+                className="px-2 py-1.5 text-sm rounded bg-gray-700 border border-gray-600 text-gray-200 hover:border-gray-500 disabled:opacity-50 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                title="Build visibility"
               >
-                {build?.is_public ? 'Make Private' : 'Make Public'}
-              </Button>
+                <option value="public">Public</option>
+                <option value="unlisted">Unlisted</option>
+                <option value="private">Private</option>
+              </select>
             )}
             {owned ? (
               <Button
@@ -395,13 +396,21 @@ export function BuildDetailPage() {
         </div>
       )}
 
-      {/* Private build badge */}
-      {build && !build.is_public && (
+      {/* Private/unlisted build badge */}
+      {build && build.visibility === 'private' && (
         <div className="bg-indigo-900/20 border border-indigo-700/50 rounded-lg px-4 py-2.5 mb-6 flex items-center gap-2 text-sm text-indigo-300">
           <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
           </svg>
           This build is private. Only you can see it.
+        </div>
+      )}
+      {build && build.visibility === 'unlisted' && (
+        <div className="bg-amber-900/20 border border-amber-700/50 rounded-lg px-4 py-2.5 mb-6 flex items-center gap-2 text-sm text-amber-300">
+          <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 010 5.656l-3 3a4 4 0 01-5.656-5.656l1.5-1.5M10.172 13.828a4 4 0 010-5.656l3-3a4 4 0 015.656 5.656l-1.5 1.5" />
+          </svg>
+          This build is unlisted. Anyone with this link can see it, but it won't appear in search.
         </div>
       )}
 
