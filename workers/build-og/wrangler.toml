@@ -1,0 +1,17 @@
+# Worker for coh-sidekick.com/builds/* — see src/index.ts and
+# streams/BUILD_PREVIEW_IMAGE_PLAN.md (EMBED4).
+name = "coh-sidekick-build-og"
+main = "src/index.ts"
+compatibility_date = "2026-09-03"
+account_id = "1b349c139ae227d3b2a488dd10cfa736"
+
+routes = [
+  { pattern = "coh-sidekick.com/builds/*", zone_name = "coh-sidekick.com" }
+]
+
+# Not secrets — this is the public anon key, already shipped in the client
+# bundle (Supabase's security model is RLS, not key secrecy). Same value as
+# VITE_SUPABASE_URL / VITE_SUPABASE_ANON_KEY in the frontend's own env.
+[vars]
+SUPABASE_URL = "https://utnqoueoiixygoqerfiw.supabase.co"
+SUPABASE_ANON_KEY = "sb_publishable_J24v979K-DhSi_Gk7yNcXg_k08A052k"

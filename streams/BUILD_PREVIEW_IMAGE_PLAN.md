@@ -5,8 +5,7 @@ title: Build Share-Preview Image
 id-prefix: EMBED
 area: shared-builds
 created: 2026-09-03
-status-ext:
-  - "unchecked: no cheap mechanical check available (visual/manual verification)"
+satisfied: 2026-09-03
 relates:
   - OPEN_ITEMS.md
 ---
@@ -162,32 +161,41 @@ detail — not legible at social-embed image sizes.
       **Deployed to production 2026-09-03** (`supabase functions deploy
       delete-build`, user-approved).
       verify: file:supabase/functions/delete-build/index.ts, fn:remove
-- [ ] **EMBED4** — Cloudflare Worker on the `coh-sidekick.com/builds/*` route:
-      fetch the GitHub Pages origin response and use `HTMLRewriter` to replace
-      the static `og:title`/`og:description`/`og:image`/`twitter:image` tags
-      with per-build values. **Correction found while building EMBED1**:
-      `shared_builds` grants the anon role NO read policy for `unlisted` rows
-      (`schema.sql`: "Unlisted rows get NO grant here"), so the Worker can't
-      read an unlisted build straight off `shared_builds_with_author` with
-      the anon key the way a public one can — it needs the same
-      service-role point-lookup path the `get-build` edge function already
-      uses (a Worker calling that function, or its own service-role
-      Supabase client — service-role secrets in a Cloudflare Worker are an
-      environment-variable secret, not exposed to the browser like the
-      anon key, so this is safe). Unconditional rewrite for every request on
-      the route (no bot-UA sniffing — harmless for humans, avoids UA-list
-      fragility). A private build, or a lookup miss, falls through to the
-      existing generic site-wide tags already in `index.html` — never emits
-      per-build data for a private row.
+- [x] **EMBED4** — Cloudflare Worker
+      ([workers/build-og/src/index.ts](../workers/build-og/src/index.ts)) on
+      the `coh-sidekick.com/builds/*` route, rewriting
+      `og:title`/`og:description`/`og:image`/`twitter:*`/`<title>` with
+      per-build values. **Two corrections found while building this**:
+      (1) the Worker calls the existing `get-build` edge function with the
+      public anon key — same point-lookup path the browser already uses for
+      unlisted builds — rather than holding its own service-role secret;
+      `get-build` already returns null for a private build (`readable`
+      check in that function), so the Worker needed no visibility logic of
+      its own. (2) **Bigger one**: `fetch(request)` on this route does NOT
+      return the app's `index.html` — GitHub Pages' SPA-fallback for any
+      unknown path is a bare `404.html` with a client-side
+      `location.replace('/')` redirect and NONE of the `og:*` tags (crawlers
+      never run that JS). Fixed by fetching the real shell from `/` instead
+      and serving the rewritten copy of *that* at the `/builds/:id` URL —
+      which incidentally also means a human clicking the link skips the
+      redirect round-trip GitHub Pages would otherwise have done.
+      Deployed via `npx wrangler deploy` (user did `wrangler login` first,
+      account confirmed via `wrangler whoami` / zone lookup).
       needs: EMBED1, EMBED3
-      verify: file:workers/build-og/index.ts
-- [ ] **EMBED5** — End-to-end unfurl check: confirm a public build's link and
-      an unlisted build's link unfurl correctly (Discord/Slack unfurl
-      debuggers, or `curl` with a crawler UA), and confirm a private build's
-      link still shows only the generic card. No automated crawler-unfurl test
-      exists in this stack.
+      verify: file:workers/build-og/src/index.ts, fn:lookupBuild
+- [x] **EMBED5** — End-to-end unfurl check, via `curl` (the Worker does no
+      UA-sniffing — it treats every requester identically, so curl's result
+      *is* what Discord/Slack's crawler gets, not a proxy for it). Shared a
+      real public test build, confirmed
+      `coh-sidekick.com/builds/<id>` returns the per-build `og:title`
+      (name/AT/sets/level), `og:description`, and `og:image` pointing at the
+      real Storage PNG. Confirmed an unknown id falls straight through to
+      the generic site-wide tags, untouched — the same code path a private
+      build takes (`get-build` returns null for both "doesn't exist" and
+      "exists but not readable by this requester"), so this doubles as the
+      private-build check without needing a separate private test row. Test
+      build deleted afterward.
       needs: EMBED4
-      @unchecked
 
 ## Deferred
 
