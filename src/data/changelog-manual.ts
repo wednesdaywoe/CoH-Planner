@@ -46,6 +46,14 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
+    date: '2026-09-03',
+
+    items: [
+      { id: 'unlisted-build-visibility', message: 'Shared builds have a new "Unlisted" visibility option, between Private and Public. An unlisted build is open to anyone with the link, but it won\'t show up in Shared Builds browse or search.', type: 'feat' },
+      { id: 'quick-share-was-secretly-private', message: 'The one-click share link should now create a real unlisted build, so the link works for whoever you send it to.', type: 'fix' },
+    ]
+  },
+  {
     date: '2026-08-26',
 
     items: [
