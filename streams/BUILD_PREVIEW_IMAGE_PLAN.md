@@ -159,8 +159,8 @@ detail — not legible at social-embed image sizes.
       being evicted. Fixed with a best-effort `storage.remove()` call after
       the row delete succeeds (deterministic path, no need to read
       `preview_image_path` first; removing a missing object is a no-op).
-      **Not yet deployed** — same "edit ≠ live" gap as EMBED3 hit; needs
-      `supabase functions deploy delete-build`.
+      **Deployed to production 2026-09-03** (`supabase functions deploy
+      delete-build`, user-approved).
       verify: file:supabase/functions/delete-build/index.ts, fn:remove
 - [ ] **EMBED4** — Cloudflare Worker on the `coh-sidekick.com/builds/*` route:
       fetch the GitHub Pages origin response and use `HTMLRewriter` to replace
