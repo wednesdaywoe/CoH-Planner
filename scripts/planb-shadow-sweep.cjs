@@ -33,18 +33,19 @@ const REPO = path.resolve(__dirname, '..');
  * trees nest theirs inside pool objects (`{ pools: { fitness: { powers: [...] } } }`),
  * so this recurses. `seen` guards the cycles those structures contain.
  *
- * `effects` must be the BAG — a plain object. The recursion also reaches
- * `resolvedPseudoPets` ability rows (Lightning_Rod, Shield_Charge_AoE, Geode_Scaling),
- * which carry a `name` and an `effects` ARRAY of effect rows; they are not Powers, have
- * no atom list, and matching them made the gate report nonsense slot names ("projected
- * slots [0, 1, 2]" — array indices). Requiring a non-array `effects`, or an `atoms`
- * array, keeps this to real powers.
+ * An `atoms` array is the whole rule; the bag was the other arm until 2026-09-03, dropped in
+ * step with `emit-contract.cjs`, `collect-composed-powers.cjs` and the engine repo's contract
+ * loader (`coh_data`'s `collect_into`), where a node carrying a bag and no atoms is now an
+ * error rather than a skip. Measured 0 such powers in both repos' generated trees before the
+ * arm came off. The recursion also reaches `resolvedPseudoPets` ability rows (Lightning_Rod,
+ * Shield_Charge_AoE, Geode_Scaling), which carry a `name` and an `effects` ARRAY of effect
+ * rows; they are not Powers, have no atom list, and matching them made the gate report
+ * nonsense slot names ("projected slots [0, 1, 2]" — array indices). Requiring atoms excludes
+ * them by construction, which is what the old non-array check was buying.
  */
 function isPower(node) {
   if (typeof node.name !== 'string') return false;
-  const hasBag = node.effects && typeof node.effects === 'object' && !Array.isArray(node.effects);
-  const hasAtoms = Array.isArray(node.atoms);
-  return Boolean(hasBag || hasAtoms);
+  return Array.isArray(node.atoms);
 }
 
 function collectPowers(node, out = [], seen = new Set()) {

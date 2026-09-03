@@ -496,7 +496,7 @@
     {
       "path": "scripts/planb-shadow-sweep.cjs",
       "status": "identical",
-      "sha256": "86daadb0a02c8923e3dd19132e7e84b02dafb586b96c8e5f7972abee1536f420"
+      "sha256": "9b332edf749a3efe44159a1120daa339abdede2a9961d22341a5310c2ba2bc6d"
     },
     {
       "path": "scripts/regen-all.cjs",
