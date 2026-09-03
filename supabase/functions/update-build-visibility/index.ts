@@ -1,10 +1,14 @@
 /**
  * Supabase Edge Function: update-build-visibility
  *
- * Toggles the is_public flag on a shared build.
+ * Sets the visibility ('private' | 'unlisted' | 'public') on a shared build.
  * Requires Discord OAuth authentication — only the authenticated owner can
  * change visibility. Anonymous (token-only) builds cannot be made private
- * because there is no persistent identity to enforce ownership.
+ * or unlisted because there is no persistent identity to enforce ownership.
+ *
+ * Also accepts a legacy boolean `is_public` body (true→'public',
+ * false→'private') for an old frontend deployed before this function —
+ * the same deploy-skew tolerance share-build already uses.
  *
  * Deploy with: supabase functions deploy update-build-visibility
  */
@@ -15,6 +19,9 @@ const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
+
+const VALID_VISIBILITIES = ['private', 'unlisted', 'public'] as const;
+type Visibility = typeof VALID_VISIBILITIES[number];
 
 /** Extract authenticated user ID from JWT in Authorization header */
 async function getUserIdFromAuth(
@@ -41,7 +48,8 @@ Deno.serve(async (req: Request) => {
   }
 
   try {
-    const { id, is_public } = await req.json();
+    const body = await req.json();
+    const { id } = body;
 
     if (!id) {
       return new Response(
@@ -50,9 +58,21 @@ Deno.serve(async (req: Request) => {
       );
     }
 
-    if (typeof is_public !== 'boolean') {
+    // Legacy callers send a boolean is_public; new callers send visibility.
+    let visibility: Visibility;
+    if (typeof body.visibility === 'string') {
+      if (!VALID_VISIBILITIES.includes(body.visibility)) {
+        return new Response(
+          JSON.stringify({ error: `visibility must be one of: ${VALID_VISIBILITIES.join(', ')}` }),
+          { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } },
+        );
+      }
+      visibility = body.visibility;
+    } else if (typeof body.is_public === 'boolean') {
+      visibility = body.is_public ? 'public' : 'private';
+    } else {
       return new Response(
-        JSON.stringify({ error: 'is_public must be a boolean' }),
+        JSON.stringify({ error: 'visibility (or legacy is_public boolean) is required' }),
         { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } },
       );
     }
@@ -87,7 +107,7 @@ Deno.serve(async (req: Request) => {
 
     const { error: updateError } = await supabase
       .from('shared_builds')
-      .update({ is_public, updated_at: new Date().toISOString() })
+      .update({ visibility, updated_at: new Date().toISOString() })
       .eq('id', id);
 
     if (updateError) {
@@ -99,7 +119,7 @@ Deno.serve(async (req: Request) => {
     }
 
     return new Response(
-      JSON.stringify({ id, is_public }),
+      JSON.stringify({ id, visibility, is_public: visibility === 'public' }),
       { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } },
     );
   } catch (e) {

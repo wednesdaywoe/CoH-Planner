@@ -22,6 +22,9 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
+const VALID_VISIBILITIES = ['private', 'unlisted', 'public'] as const;
+type Visibility = typeof VALID_VISIBILITIES[number];
+
 /** SHA-256 hash a string, returning hex digest */
 async function sha256(input: string): Promise<string> {
   const data = new TextEncoder().encode(input);
@@ -64,19 +67,29 @@ Deno.serve(async (req: Request) => {
 
     const isUpdate = !!(body.existing_id && (body.owner_token || authUserId));
 
-    // is_public defaults to true; a build is private ONLY when an *authenticated*
-    // user asked for it (is_public === false). An anonymous private request is
-    // forced public — they have no library to keep it in. (Previously inverted:
-    // `authUserId !== null` made logged-in "private" saves PUBLIC and metered
-    // them against the public-share bucket, which is why vault rows never
-    // appeared and library saves hit the strict share limit.)
+    // visibility defaults to 'public'. A build is 'private' or 'unlisted' ONLY
+    // when an *authenticated* user asked for it — an anonymous request for
+    // anything but public is forced to 'public', because there is no
+    // persistent identity for them to reclaim a private/unlisted link with.
+    // (Previously inverted: `authUserId !== null` made logged-in "private"
+    // saves PUBLIC and metered them against the public-share bucket, which is
+    // why vault rows never appeared and library saves hit the strict share
+    // limit.)
     //
-    // When is_public is OMITTED on an update, the caller wants to preserve the
-    // row's current visibility (a re-save that must not touch public/private).
-    // We leave the column out of the update payload in that case.
-    const visibilityProvided = typeof body.is_public === 'boolean';
-    const isPrivateRequest = body.is_public === false;
-    const isPublic: boolean = isPrivateRequest ? (authUserId === null) : true;
+    // Legacy callers send a boolean is_public; new callers send visibility.
+    // When neither is provided on an update, the caller wants to preserve the
+    // row's current visibility (a re-save that must not touch it) — we leave
+    // the column out of the update payload in that case.
+    let requestedVisibility: Visibility | undefined;
+    if (typeof body.visibility === 'string' && VALID_VISIBILITIES.includes(body.visibility)) {
+      requestedVisibility = body.visibility;
+    } else if (typeof body.is_public === 'boolean') {
+      requestedVisibility = body.is_public ? 'public' : 'private';
+    }
+    const visibilityProvided = requestedVisibility !== undefined;
+    const visibility: Visibility = requestedVisibility === undefined
+      ? 'public'
+      : (authUserId === null ? 'public' : requestedVisibility);
 
     // ---- Validate required fields ----
     const { name, archetype, archetype_name, primary_set, primary_name, secondary_set, secondary_name, level, build_json } = body;
@@ -113,10 +126,11 @@ Deno.serve(async (req: Request) => {
 
     const windowStart = new Date(Date.now() - RATE_WINDOW_HOURS * 60 * 60 * 1000).toISOString();
 
-    // Vault saves and public shares use separate rate limit buckets. A
-    // visibility-preserving update (is_public omitted) is a low-stakes re-save
-    // — meter it as a vault action. Public shares always send is_public:true.
-    const meterAsPublic = visibilityProvided && isPublic;
+    // Vault saves ('private' and 'unlisted' — personal link-sharing gets the
+    // same generosity as the private vault) and public shares use separate
+    // rate limit buckets. A visibility-preserving update (neither field sent)
+    // is a low-stakes re-save — meter it as a vault action.
+    const meterAsPublic = visibilityProvided && visibility === 'public';
     const rateLimitAction = meterAsPublic ? 'share' : 'vault';
     const rateLimit = meterAsPublic ? SHARE_RATE_LIMIT : VAULT_RATE_LIMIT;
 
@@ -195,8 +209,8 @@ Deno.serve(async (req: Request) => {
       server: (body.server || '').slice(0, 50),
       tags,
       build_json,
-      // is_public is applied per-operation below: preserved on update when the
-      // caller omitted it, always set on insert.
+      // visibility is applied per-operation below: preserved on update when
+      // the caller omitted it, always set on insert.
     };
 
     // ---- UPDATE existing build ----
@@ -232,10 +246,11 @@ Deno.serve(async (req: Request) => {
         );
       }
 
-      // Only write is_public when the caller explicitly provided it; otherwise
-      // leave the column untouched so the current visibility is preserved.
+      // Only write visibility when the caller explicitly provided it;
+      // otherwise leave the column untouched so the current visibility is
+      // preserved.
       const updateFields: Record<string, unknown> = { ...buildData, updated_at: new Date().toISOString() };
-      if (visibilityProvided) updateFields.is_public = isPublic;
+      if (visibilityProvided) updateFields.visibility = visibility;
 
       const { error: updateError } = await supabase
         .from('shared_builds')
@@ -264,7 +279,7 @@ Deno.serve(async (req: Request) => {
     const { error: insertError } = await supabase.from('shared_builds').insert({
       id,
       ...buildData,
-      is_public: isPublic,  // new rows always set visibility explicitly
+      visibility,  // new rows always set visibility explicitly
       owner_token_hash: ownerTokenHash,
       user_id: authUserId,  // null if not logged in, UUID if authenticated
     });

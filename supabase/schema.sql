@@ -24,7 +24,10 @@ CREATE TABLE shared_builds (
   views INTEGER DEFAULT 0,
   owner_token_hash TEXT,
   user_id UUID REFERENCES auth.users(id),
-  is_public BOOLEAN NOT NULL DEFAULT TRUE
+  -- 'private': owner only. 'unlisted': readable by exact id, never listed.
+  -- 'public': readable by exact id AND listed in search/browse.
+  visibility TEXT NOT NULL DEFAULT 'public'
+    CHECK (visibility IN ('private', 'unlisted', 'public'))
 );
 
 -- Indexes for search and filtering
@@ -34,20 +37,25 @@ CREATE INDEX idx_shared_builds_secondary ON shared_builds(secondary_set);
 CREATE INDEX idx_shared_builds_created ON shared_builds(created_at DESC);
 CREATE INDEX idx_shared_builds_views ON shared_builds(views DESC);
 CREATE INDEX idx_shared_builds_user_id ON shared_builds(user_id);
+CREATE INDEX idx_shared_builds_visibility ON shared_builds(visibility) WHERE visibility = 'public';
 CREATE INDEX idx_shared_builds_search ON shared_builds
   USING GIN (to_tsvector('english', name || ' ' || coalesce(description, '') || ' ' || coalesce(author_name, '')));
 
 -- Row Level Security
 ALTER TABLE shared_builds ENABLE ROW LEVEL SECURITY;
 
--- Anon/public role: only public builds
+-- Anon/public role: only public builds. Unlisted rows get NO grant here —
+-- they are deliberately not bulk-readable via the anon key. Non-owner reads
+-- of an unlisted (or private-if-owner) build go through the get-build edge
+-- function (service role, point lookup by exact id only, never a listing).
 CREATE POLICY "Public read" ON shared_builds
-  FOR SELECT USING (is_public = TRUE);
+  FOR SELECT USING (visibility = 'public');
 
--- Authenticated users: all public builds + their own private builds
-CREATE POLICY "Owner read private" ON shared_builds
+-- Authenticated users: their own builds at any visibility, plus all public
+-- builds (via the "Public read" policy above — permissive policies OR).
+CREATE POLICY "Owner read own" ON shared_builds
   FOR SELECT TO authenticated
-  USING (is_public = TRUE OR user_id = auth.uid());
+  USING (user_id = auth.uid());
 
 -- No INSERT/UPDATE/DELETE policies for anon role.
 -- The edge functions use the service role key, which bypasses RLS.
@@ -116,6 +124,53 @@ $$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
 --   FOR SELECT
 --   TO authenticated
 --   USING (is_public = TRUE OR user_id = auth.uid());
+
+-- ============================================
+-- Migration: Unlisted visibility (run on existing databases)
+-- ============================================
+-- Replaces the is_public boolean with a 3-state visibility enum so an
+-- "unlisted" build can be readable by exact id (via the get-build edge
+-- function) without being bulk-listable or appearing in search/browse.
+--
+-- 1. Add visibility, backfilled conservatively — existing is_public=false
+--    rows become 'private', never 'unlisted', so no row gains
+--    stranger-readable access it didn't already have.
+-- ALTER TABLE shared_builds ADD COLUMN IF NOT EXISTS visibility TEXT
+--   CHECK (visibility IN ('private', 'unlisted', 'public'));
+-- UPDATE shared_builds SET visibility = CASE WHEN is_public THEN 'public' ELSE 'private' END
+--   WHERE visibility IS NULL;
+-- ALTER TABLE shared_builds ALTER COLUMN visibility SET NOT NULL;
+-- ALTER TABLE shared_builds ALTER COLUMN visibility SET DEFAULT 'public';
+--
+-- 2. Drop and recreate shared_builds_with_author — a `b.*`-view's column
+--    list is frozen at creation, so dropping is_public needs a drop+recreate,
+--    not CREATE OR REPLACE.
+-- DROP VIEW IF EXISTS shared_builds_with_author;
+-- CREATE VIEW shared_builds_with_author
+-- WITH (security_invoker = on) AS
+-- SELECT b.*,
+--        p.handle       AS author_handle,
+--        p.display_name AS author_display_name,
+--        p.avatar_url   AS author_avatar_url
+-- FROM shared_builds b
+-- LEFT JOIN profiles p ON p.user_id = b.user_id;
+--
+-- 3. Replace the RLS policies.
+-- DROP POLICY IF EXISTS "Public read" ON shared_builds;
+-- DROP POLICY IF EXISTS "Owner read private" ON shared_builds;
+-- CREATE POLICY "Public read" ON shared_builds
+--   FOR SELECT USING (visibility = 'public');
+-- CREATE POLICY "Owner read own" ON shared_builds
+--   FOR SELECT TO authenticated
+--   USING (user_id = auth.uid());
+--
+-- 4. Index for the public browse query, then drop is_public and its old index.
+-- CREATE INDEX IF NOT EXISTS idx_shared_builds_visibility ON shared_builds(visibility) WHERE visibility = 'public';
+-- DROP INDEX IF EXISTS idx_shared_builds_is_public;
+-- ALTER TABLE shared_builds DROP COLUMN is_public;
+--
+-- 5. search_authors below must be re-applied (CREATE OR REPLACE FUNCTION)
+--    after this migration — its build_count now filters on visibility.
 
 -- ============================================
 -- Migration: Auction house price cache (run on existing databases)
@@ -303,7 +358,7 @@ RETURNS TABLE (
 )
 LANGUAGE sql STABLE AS $$
   SELECT p.user_id, p.handle, p.display_name, p.avatar_url,
-         COUNT(b.id) FILTER (WHERE b.is_public) AS build_count,
+         COUNT(b.id) FILTER (WHERE b.visibility = 'public') AS build_count,
          GREATEST(
            -- Prefix match: highest priority
            CASE WHEN p.display_name ILIKE q || '%'        THEN 1.0 ELSE 0 END,
