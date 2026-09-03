@@ -33,6 +33,10 @@ export interface SharedBuild {
   /** User ID from Discord OAuth (null for anonymous builds) */
   user_id?: string | null;
   visibility: BuildVisibility;
+  /** Object path in the `build-previews` Storage bucket for this build's
+   *  social share-preview image, or null/undefined if none has been
+   *  rendered yet (e.g. builds shared before this feature shipped). */
+  preview_image_path?: string | null;
   /** Author profile fields (joined from `profiles` via shared_builds_with_author view).
    *  Null when user_id is null OR when the user hasn't claimed a handle/profile yet. */
   author_handle?: string | null;

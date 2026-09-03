@@ -75,10 +75,18 @@ detail — not legible at social-embed image sizes.
 
 ## Active
 
-- [ ] **EMBED1** — Storage bucket + schema: add a `build-previews` Storage
+- [x] **EMBED1** — Storage bucket + schema: add a `build-previews` Storage
       bucket (public read, write via service role only) and a
       `preview_image_path` column on the shared-builds table, in
-      [supabase/schema.sql](../supabase/schema.sql).
+      [supabase/schema.sql](../supabase/schema.sql). Fresh-install `CREATE
+      TABLE` updated plus a "run on existing databases" migration block
+      (bucket insert + `ALTER TABLE` + `shared_builds_with_author` rebuilt —
+      a `b.*` view's expansion freezes at creation, so it wouldn't otherwise
+      see the new column). `SharedBuild` type updated in
+      [src/types/shared.ts](../src/types/shared.ts); `tsc --noEmit` clean.
+      **Not yet applied to the live Supabase project** — the migration block
+      still needs to be run by hand in the Supabase SQL editor before EMBED3
+      can be tested end-to-end.
       verify: file:supabase/schema.sql, fn:preview_image_path
 - [ ] **EMBED2** — Client-side renderer: a `renderPreviewImage(build)` module
       that composites archetype/sets/level, headline stats, and the compact

@@ -27,7 +27,12 @@ CREATE TABLE shared_builds (
   -- 'private': owner only. 'unlisted': readable by exact id, never listed.
   -- 'public': readable by exact id AND listed in search/browse.
   visibility TEXT NOT NULL DEFAULT 'public'
-    CHECK (visibility IN ('private', 'unlisted', 'public'))
+    CHECK (visibility IN ('private', 'unlisted', 'public')),
+  -- Object path in the `build-previews` Storage bucket for this build's social
+  -- share-preview image (e.g. 'previews/<id>.png'), or NULL if none has been
+  -- rendered yet. Written only by the share-build edge function (service
+  -- role) — never by a direct client write. See streams/BUILD_PREVIEW_IMAGE_PLAN.md.
+  preview_image_path TEXT
 );
 
 -- Indexes for search and filtering
@@ -424,6 +429,44 @@ CREATE POLICY "own favorites insert" ON favorites
   FOR INSERT TO authenticated WITH CHECK (user_id = auth.uid());
 CREATE POLICY "own favorites delete" ON favorites
   FOR DELETE TO authenticated USING (user_id = auth.uid());
+
+-- ============================================
+-- Migration: Build share-preview images (run on existing databases)
+-- ============================================
+-- Social-preview PNG for a shared build's link (Discord/Slack unfurl etc.).
+-- Rendered client-side at share time (the browser already has the computed
+-- stats), then uploaded by the share-build edge function using the service
+-- role key — never a direct client write, so no INSERT policy on
+-- storage.objects is needed here (same reasoning as shared_builds itself:
+-- "The edge functions use the service role key, which bypasses RLS").
+-- See streams/BUILD_PREVIEW_IMAGE_PLAN.md (EMBED1).
+
+-- 1. Where the build stores which preview image belongs to it.
+ALTER TABLE shared_builds ADD COLUMN IF NOT EXISTS preview_image_path TEXT;
+
+-- 2. The bucket the image lives in. `public = true` means Storage serves
+--    GET requests unauthenticated with no RLS policy needed — that's the
+--    entire read path a Discord/Slack crawler needs. Object paths are keyed
+--    by the build's own id (an unguessable token), so this carries the same
+--    "readable by exact id" security property 'unlisted' visibility already
+--    relies on elsewhere in this schema — not a new exposure.
+INSERT INTO storage.buckets (id, name, public)
+VALUES ('build-previews', 'build-previews', true)
+ON CONFLICT (id) DO NOTHING;
+
+-- 3. shared_builds_with_author is `SELECT b.*, ...` — Postgres freezes that
+--    expansion at (re)creation time, so the view will NOT pick up the new
+--    column until it is rebuilt. Adding a column can use CREATE OR REPLACE
+--    (only a *dropped* column forces DROP+CREATE, per the "Unlisted
+--    visibility" migration above).
+CREATE OR REPLACE VIEW shared_builds_with_author
+WITH (security_invoker = on) AS
+SELECT b.*,
+       p.handle       AS author_handle,
+       p.display_name AS author_display_name,
+       p.avatar_url   AS author_avatar_url
+FROM shared_builds b
+LEFT JOIN profiles p ON p.user_id = b.user_id;
 
 -- ============================================
 -- Admin: Assign an owner token to a legacy build
