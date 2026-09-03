@@ -32,6 +32,42 @@ async function sha256(input: string): Promise<string> {
   return [...new Uint8Array(hashBuffer)].map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
+// Generous headroom over the compact 1200×630 share-preview PNG this is meant
+// for (typically well under 300KB) — just enough to reject an abusive payload
+// without rejecting a legitimate one.
+const MAX_PREVIEW_IMAGE_BYTES = 2 * 1024 * 1024;
+
+/**
+ * Best-effort: upload a base64-encoded PNG (from the client's off-screen
+ * BuildPreviewCard capture, see src/utils/preview-capture.ts) to the
+ * `build-previews` Storage bucket and return its object path, or null on any
+ * problem (missing/oversized/malformed input, upload failure). Never throws —
+ * a broken preview image must not break the share itself.
+ */
+async function uploadPreviewImage(
+  supabase: ReturnType<typeof createClient>,
+  buildId: string,
+  base64: unknown,
+): Promise<string | null> {
+  if (typeof base64 !== 'string' || base64.length === 0) return null;
+  try {
+    const bytes = Uint8Array.from(atob(base64), (c) => c.charCodeAt(0));
+    if (bytes.byteLength === 0 || bytes.byteLength > MAX_PREVIEW_IMAGE_BYTES) return null;
+    const path = `previews/${buildId}.png`;
+    const { error } = await supabase.storage
+      .from('build-previews')
+      .upload(path, bytes, { contentType: 'image/png', upsert: true });
+    if (error) {
+      console.error('Preview image upload failed:', error);
+      return null;
+    }
+    return path;
+  } catch (e) {
+    console.error('Preview image decode failed:', e);
+    return null;
+  }
+}
+
 /** Extract authenticated user ID from JWT in Authorization header (if present) */
 async function getUserIdFromAuth(
   req: Request,
@@ -251,6 +287,11 @@ Deno.serve(async (req: Request) => {
       // preserved.
       const updateFields: Record<string, unknown> = { ...buildData, updated_at: new Date().toISOString() };
       if (visibilityProvided) updateFields.visibility = visibility;
+      // A build's stats/powers can change between shares, so re-render on every
+      // update too. Left out entirely (not nulled) when capture failed, so a
+      // stale-but-present image beats no image rather than being wiped.
+      const previewPath = await uploadPreviewImage(supabase, body.existing_id, body.preview_image_base64);
+      if (previewPath) updateFields.preview_image_path = previewPath;
 
       const { error: updateError } = await supabase
         .from('shared_builds')
@@ -275,6 +316,7 @@ Deno.serve(async (req: Request) => {
     const id = nanoid(10);
     const ownerToken = crypto.randomUUID();
     const ownerTokenHash = await sha256(ownerToken);
+    const previewPath = await uploadPreviewImage(supabase, id, body.preview_image_base64);
 
     const { error: insertError } = await supabase.from('shared_builds').insert({
       id,
@@ -282,6 +324,7 @@ Deno.serve(async (req: Request) => {
       visibility,  // new rows always set visibility explicitly
       owner_token_hash: ownerTokenHash,
       user_id: authUserId,  // null if not logged in, UUID if authenticated
+      preview_image_path: previewPath,  // null when capture wasn't provided or failed
     });
 
     if (insertError) {

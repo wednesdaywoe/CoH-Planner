@@ -16,6 +16,7 @@ import { isOverCapMuted } from '@/data/set-bonus-groups';
 import { Tooltip } from '@/components/ui';
 import { StatsConfigModal, AccoladesModal, AboutModal, DonateModal, ExportImportModal, FeedbackModal, ChangelogModal, EnhancementListModal, WelcomeModal, SetBonusLookupModal, ControlsModal, HelpModal, CompareSlottingModal, DetailedTotalsModal, PowersetCompareModal, ProcSettingsModal, EnhancementToolsModal, AttackChainModal, WhatIfBuffsModal, AnnouncementModal, BuildImageModal } from '@/components/modals';
 import { IncarnateSlotGrid, IncarnateModal, IncarnateCraftingModal, DestinyTimeSlider, HybridTargetsSlider } from '@/components/incarnate';
+import { SharePreviewCapture } from '@/components/export-image/SharePreviewCapture';
 import { HINTS } from '@/components/powers';
 import { PinnedPowersBar } from './PinnedPowersBar';
 import { INCARNATE_REQUIRED_LEVEL, createEmptyIncarnateBuildState } from '@/types';
@@ -673,6 +674,10 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
         isOpen={buildImageModalOpen}
         onClose={closeBuildImageModal}
       />
+
+      {/* Always-on off-screen render feeding shareBuild()'s social-preview
+          image capture — see streams/BUILD_PREVIEW_IMAGE_PLAN.md (EMBED2/3) */}
+      <SharePreviewCapture />
 
       {/* Welcome Modal — opened from the update banner's "learn more" link */}
       <WelcomeModal />

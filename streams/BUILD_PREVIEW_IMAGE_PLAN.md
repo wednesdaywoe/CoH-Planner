@@ -88,28 +88,75 @@ detail — not legible at social-embed image sizes.
       still needs to be run by hand in the Supabase SQL editor before EMBED3
       can be tested end-to-end.
       verify: file:supabase/schema.sql, fn:preview_image_path
-- [ ] **EMBED2** — Client-side renderer: a `renderPreviewImage(build)` module
-      that composites archetype/sets/level, headline stats, and the compact
-      taken/skipped power icon row onto a `<canvas>` (OG-standard 1200×630) and
-      resolves a PNG `Blob`.
-      verify: file:src/services/buildPreviewImage.ts, fn:renderPreviewImage
-- [ ] **EMBED3** — Wire EMBED2 into the share flow: after a successful
-      `shareBuild()` (both create and update/re-share paths, since an existing
-      build's stats can change), render the image, upload it to
-      `previews/<id>.png` in the EMBED1 bucket, and persist the path on the
-      row. Best-effort like the existing favorites mirror (§sharedBuilds.ts) —
-      an upload failure must not break the primary share action.
+- [x] **EMBED2** — Client-side renderer: **revised in the doing** from a
+      hand-rolled `<canvas>` module to reusing this repo's existing
+      DOM→PNG "Export as Image" pipeline (`html-to-image` via
+      [renderNodeToPng](../src/utils/export-image.ts)) — discovered while
+      scoping the data plumbing that `BuildImageCard`/`BuildImageModal`
+      already solve taken-power tiles, icon-fallback, and headline-stat
+      layout for the exact same inputs (decision 2026-09-03, engineering
+      call — reuse over a parallel implementation). Built:
+      [BuildPreviewCard.tsx](../src/components/export-image/BuildPreviewCard.tsx)
+      (fixed 1200×630, headline stats + taken-vs-skipped primary/secondary
+      icon row, taken-only pool/epic row), plus two data helpers —
+      [preview-headline-stats.ts](../src/utils/preview-headline-stats.ts)
+      (picks `health`/`regeneration`/`defense_*`/`res_smashing`/`res_lethal`
+      by id out of `computeAllStats`' output) and
+      [build-preview-powers.ts](../src/utils/build-preview-powers.ts)
+      (primary/secondary roster taken-vs-skipped via `isBuyablePick` +
+      `getPowerset`, matching `AvailablePowers.tsx`'s own filtering).
+      Visually verified live in the running app (Playwright): selected a
+      real archetype/primary/secondary, took two powers, un-hid the
+      off-screen card — headline stats, icons, and the taken/skipped
+      contrast all rendered correctly with no console errors. That pass
+      caught a real bug — `computeAllStats()` is scoped to `DETAILED_STATS`,
+      which deliberately excludes `netend` (it's a dashboard-only tile) — so
+      "Net End" was silently missing from the card; fixed by sourcing it
+      directly from `globalBonuses.netEndPerSec` as its own prop instead of
+      through the generic stat-row lookup.
+      verify: file:src/components/export-image/BuildPreviewCard.tsx, fn:BuildPreviewCard
+- [x] **EMBED3** — Wired EMBED2 into the share flow. An always-mounted,
+      off-screen [SharePreviewCapture](../src/components/export-image/SharePreviewCapture.tsx)
+      (mounted in `StatsDashboard.tsx`, unconditionally — unlike
+      `BuildImageModal`'s identical off-screen technique, not gated by a
+      modal's `isOpen`) keeps a live `BuildPreviewCard` in sync with
+      `useBuildStore`; [preview-capture.ts](../src/utils/preview-capture.ts)
+      is the singleton bridge letting `shareBuild()` — a plain service
+      module, no hooks — grab a rasterized, base64-encoded snapshot via
+      `capturePreviewBase64()`. **Revised from the original plan**: the
+      upload itself was moved server-side rather than a direct client
+      Storage write — `shareBuild()` sends the base64 PNG to the
+      `share-build` edge function (both create and update paths, so a
+      build's stats changing between shares gets a fresh image), which
+      uploads it with the service-role key and sets `preview_image_path`.
+      Reason: this repo's whole pattern is mutations going through edge
+      functions with server-side ownership/rate-limit checks
+      ([schema.sql](../supabase/schema.sql): "No INSERT/UPDATE/DELETE
+      policies for anon role"); a direct client Storage write would have
+      needed new bucket-level RLS carrying its own ownership logic,
+      duplicating what the edge function already enforces. Best-effort
+      throughout — a capture or upload failure never blocks the share
+      itself (`capturePreviewBase64()`/`uploadPreviewImage()` catch and
+      return `null`).
       needs: EMBED1, EMBED2
-      verify: fn:uploadPreviewImage
+      verify: file:src/utils/preview-capture.ts, fn:capturePreviewBase64
 - [ ] **EMBED4** — Cloudflare Worker on the `coh-sidekick.com/builds/*` route:
       fetch the GitHub Pages origin response and use `HTMLRewriter` to replace
       the static `og:title`/`og:description`/`og:image`/`twitter:image` tags
-      with per-build values, read from the public `shared_builds_with_author`
-      view by id. Unconditional rewrite for every request on the route (no
-      bot-UA sniffing — harmless for humans, avoids UA-list fragility). A
-      private build, or a lookup miss, falls through to the existing generic
-      site-wide tags already in `index.html` — never emits per-build data for
-      a private row.
+      with per-build values. **Correction found while building EMBED1**:
+      `shared_builds` grants the anon role NO read policy for `unlisted` rows
+      (`schema.sql`: "Unlisted rows get NO grant here"), so the Worker can't
+      read an unlisted build straight off `shared_builds_with_author` with
+      the anon key the way a public one can — it needs the same
+      service-role point-lookup path the `get-build` edge function already
+      uses (a Worker calling that function, or its own service-role
+      Supabase client — service-role secrets in a Cloudflare Worker are an
+      environment-variable secret, not exposed to the browser like the
+      anon key, so this is safe). Unconditional rewrite for every request on
+      the route (no bot-UA sniffing — harmless for humans, avoids UA-list
+      fragility). A private build, or a lookup miss, falls through to the
+      existing generic site-wide tags already in `index.html` — never emits
+      per-build data for a private row.
       needs: EMBED1, EMBED3
       verify: file:workers/build-og/index.ts
 - [ ] **EMBED5** — End-to-end unfurl check: confirm a public build's link and

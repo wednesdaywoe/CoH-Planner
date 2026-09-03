@@ -5,6 +5,7 @@
 import { supabase } from '@/lib/supabase';
 import { useAuthStore } from '@/stores/authStore';
 import type { SharedBuild, ShareBuildInput, SearchFilters, SearchResult, BuildVisibility } from '@/types/shared';
+import { capturePreviewBase64 } from '@/utils/preview-capture';
 import type { BuildExport } from '@/types/build';
 import { DEFAULT_BUILD_NAME } from '@/types/build';
 
@@ -299,6 +300,13 @@ export async function shareBuild(input: ShareBuildInput): Promise<{ id: string; 
   // public via the visibility toggle. (Must not default this to 'public' here,
   // or the omission would itself flip the row public.)
   if (input.visibility !== undefined) payload.visibility = input.visibility;
+
+  // Best-effort social-preview image: the off-screen SharePreviewCapture
+  // renders whatever build is currently live, which is always the build
+  // being shared here (all three share entry points act on the active
+  // build). A capture failure must not block the share — omit the field.
+  const previewImage = await capturePreviewBase64();
+  if (previewImage) payload.preview_image_base64 = previewImage;
 
   // If updating an existing build, attach credentials (token and/or JWT via auth header)
   if (input.existingId) {
