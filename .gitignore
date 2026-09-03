@@ -64,6 +64,7 @@ streams/*
 !streams/OPEN_ITEMS.md
 !streams/CHANGELOG-DISCORD.md
 !streams/BUILD_PREVIEW_IMAGE_PLAN.md
+!streams/BUILD_PREVIEW_BACKFILL_PLAN.md
 raw_data_homecoming-raw_data_homecoming-20251209_7415/
 # exported_powers/ (repo root) is now COMMITTED — it's the converter input, so a fresh
 # clone / CI can regenerate generated/ from it without the gitignored .pigg source.
