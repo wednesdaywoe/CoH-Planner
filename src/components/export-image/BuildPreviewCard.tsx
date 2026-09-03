@@ -33,9 +33,9 @@ interface BuildPreviewCardProps {
 
 function StatTile({ label, value, color }: { label: string; value: string; color: string }) {
   return (
-    <div className="flex-1 min-w-0 rounded-lg bg-slate-800/70 border border-slate-700 px-3 py-2 text-center">
-      <div className="text-[11px] text-slate-400 uppercase tracking-wide truncate">{label}</div>
-      <div className={`text-[20px] font-semibold tabular-nums ${color}`}>{value}</div>
+    <div className="min-w-0 rounded-xl bg-slate-800/70 border border-slate-700 px-4 py-3 text-center">
+      <div className="text-[16px] text-slate-400 uppercase tracking-wide truncate">{label}</div>
+      <div className={`text-[30px] font-semibold tabular-nums whitespace-nowrap ${color}`}>{value}</div>
     </div>
   );
 }
@@ -49,7 +49,7 @@ function RosterIcon({ pick }: { pick: RosterPick }) {
       <img
         src={getPowerIconPath(pick.power.icon)}
         alt=""
-        className="w-8 h-8 rounded"
+        className="w-11 h-11 rounded-lg"
         onError={(e) => {
           (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
         }}
@@ -64,7 +64,7 @@ function ExtraIcon({ power }: { power: SelectedPower }) {
       src={getPowerIconPath(power.icon)}
       alt=""
       title={power.name}
-      className="w-8 h-8 rounded shrink-0"
+      className="w-11 h-11 rounded-lg shrink-0"
       onError={(e) => {
         (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
       }}
@@ -75,9 +75,9 @@ function ExtraIcon({ power }: { power: SelectedPower }) {
 function RosterRow({ label, picks }: { label: string; picks: RosterPick[] }) {
   if (picks.length === 0) return null;
   return (
-    <div className="flex items-center gap-2 mt-1.5">
-      <span className="text-[10px] text-slate-500 uppercase tracking-wide w-14 shrink-0">{label}</span>
-      <div className="flex flex-wrap gap-1">
+    <div className="flex items-center gap-3 mt-2">
+      <span className="text-[16px] text-slate-500 uppercase tracking-wide shrink-0 whitespace-nowrap">{label}</span>
+      <div className="flex flex-wrap gap-1.5">
         {picks.map((pick) => (
           <RosterIcon key={pick.power.internalName} pick={pick} />
         ))}
@@ -102,7 +102,7 @@ export const BuildPreviewCard = forwardRef<HTMLDivElement, BuildPreviewCardProps
   return (
     <div
       ref={ref}
-      className="bg-gray-950 text-gray-100 p-6 flex flex-col overflow-hidden"
+      className="bg-gray-950 text-gray-100 p-8 flex flex-col overflow-hidden"
       style={{
         width: PREVIEW_CARD_WIDTH,
         height: PREVIEW_CARD_HEIGHT,
@@ -110,21 +110,21 @@ export const BuildPreviewCard = forwardRef<HTMLDivElement, BuildPreviewCardProps
       }}
     >
       {/* Header */}
-      <div className="flex items-start justify-between gap-4 border-b border-slate-700 pb-3">
+      <div className="flex items-start justify-between gap-4 border-b border-slate-700 pb-4">
         <div className="min-w-0">
-          <div className="text-[28px] font-bold text-slate-50 leading-tight truncate">
+          <div className="text-[46px] font-bold text-slate-50 leading-tight truncate">
             {build.name || DEFAULT_BUILD_NAME}
           </div>
-          <div className="text-[16px] text-cyan-300 mt-1">
+          <div className="text-[24px] text-cyan-300 mt-1">
             {at}
             {combo && <span className="text-slate-400"> — {combo}</span>}
           </div>
         </div>
-        <div className="text-right text-[15px] text-slate-300 shrink-0">Level {build.level}</div>
+        <div className="text-right text-[22px] text-slate-300 shrink-0">Level {build.level}</div>
       </div>
 
-      {/* Headline stats */}
-      <div className="flex gap-2 mt-4">
+      {/* Headline stats — 8 tiles, wraps into 2 rows of 4 so each tile has room to be legible at embed-thumbnail scale */}
+      <div className="grid grid-cols-4 gap-3 mt-5">
         {headline.slice(0, 2).map((stat) => (
           <StatTile key={stat.id} label={stat.label} value={stat.format(stat.value)} color={stat.color} />
         ))}
@@ -135,14 +135,14 @@ export const BuildPreviewCard = forwardRef<HTMLDivElement, BuildPreviewCardProps
       </div>
 
       {/* Powers — taken vs skipped for primary/secondary, taken-only for pool/epic */}
-      <div className="mt-4 flex-1 min-h-0 overflow-hidden">
-        <div className="text-[10px] font-semibold text-slate-400 uppercase tracking-wide">Powers Taken</div>
+      <div className="mt-5 flex-1 min-h-0 overflow-hidden">
+        <div className="text-[16px] font-semibold text-slate-400 uppercase tracking-wide">Powers Taken</div>
         <RosterRow label={pri ?? 'Primary'} picks={rosters.primary} />
         <RosterRow label={sec ?? 'Secondary'} picks={rosters.secondary} />
         {rosters.extras.length > 0 && (
-          <div className="flex items-center gap-2 mt-1.5">
-            <span className="text-[10px] text-slate-500 uppercase tracking-wide w-14 shrink-0">Pool/Epic</span>
-            <div className="flex flex-wrap gap-1">
+          <div className="flex items-center gap-3 mt-2">
+            <span className="text-[16px] text-slate-500 uppercase tracking-wide shrink-0 whitespace-nowrap">Pool/Epic</span>
+            <div className="flex flex-wrap gap-1.5">
               {rosters.extras.map((power) => (
                 <ExtraIcon key={`${power.powerSet}:${power.internalName}`} power={power} />
               ))}
@@ -151,7 +151,7 @@ export const BuildPreviewCard = forwardRef<HTMLDivElement, BuildPreviewCardProps
         )}
       </div>
 
-      <div className="pt-2 border-t border-slate-800 flex items-center justify-between text-[10px] text-slate-500">
+      <div className="pt-3 border-t border-slate-800 flex items-center justify-between text-[16px] text-slate-500">
         <span>coh-sidekick.com</span>
         <span className="opacity-70">faded icon = skipped power</span>
       </div>
