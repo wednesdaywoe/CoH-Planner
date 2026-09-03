@@ -23,12 +23,29 @@ live 2026-09-03 against three real pre-existing builds (`TIZbOh3wV5`,
 `BuildDetailPage` call `shareBuild()`/`capturePreviewBase64()`, so none of
 them ever populate the column no matter how many times the link is copied.
 
-**Thesis:** a public or unlisted build with no preview image gets one
-automatically — generated in an isolated, hidden capture pass the next time
-any browser views its `/builds/:id` page — without visibly affecting that
-browser's own UI or touching that browser's own locally-saved build.
+**Widened 2026-09-03, same day, before any code landed:** EMBED's own
+"Deferred" section named a second, related gap — "re-render older previews if
+the visual template changes later... revisit if the template changes" — and
+gated it on the template actually changing. It just did (the EMBED2
+legibility fix, commit `614261b342`, bigger type/icons on the same 1200×630
+layout), and the user hit it immediately: a build shared under the old
+template still shows the old small-text image indefinitely, confirmed live
+(bundle check showed the deployed JS is current; the stale image is real, not
+a caching artifact of the fix itself). A *missing* image and a *stale* image
+are the same user-facing failure — "this build's image doesn't reflect
+reality" — and the fix for one is 90% the fix for the other (same capture
+pipeline, same isolation mechanism, same trigger point); building
+missing-only now and bolting on staleness right after would just be rework.
+Widening the thesis rather than opening a third doc.
 
-**satisfied-when:** PREVBF1..PREVBF6 all `[x]`
+**Thesis:** a public or unlisted build's preview image is generated when
+missing and refreshed when it was rendered under an older visual template
+than the one live today — both automatically, in an isolated hidden capture
+pass the next time any browser views its `/builds/:id` page — without
+visibly affecting that browser's own UI or touching that browser's own
+locally-saved build.
+
+**satisfied-when:** PREVBF1..PREVBF8 all `[x]`
 
 ## Preconditions
 
@@ -81,89 +98,120 @@ capture-mode URL param present. Confined to `buildStore.ts`'s persist config
 it's technically the same origin: capture-mode boots simply never write to
 the shared key, regardless of iframe isolation.
 
-## Decision — anonymous-write security (2026-09-03, user-chosen)
+## Decision — anonymous-write security (2026-09-03, user-chosen; widened same
+day for versioning)
 
 Any visitor's view can trigger a write, with no owner check — that's the
-whole point of "automatic on view." To bound the abuse surface: **write-once**
-(the backend only fills a currently-`null` `preview_image_path`, never
-overwrites one that already exists) plus a **server-side shape check**
-(decoded bytes must be a valid PNG, exactly 1200×630, under the existing
-`MAX_PREVIEW_IMAGE_BYTES` cap). Rejected: restricting the trigger to
+whole point of "automatic on view." To bound the abuse surface: **write-once
+per template version** (the backend only writes when the row's stored
+`preview_template_version` is behind the version live today — never when it's
+already current) plus a **server-side shape check** (decoded bytes must be a
+valid PNG, exactly 1200×630, under the existing `MAX_PREVIEW_IMAGE_BYTES`
+cap). This is the null-only "write-once" from the original decision,
+generalized: a never-generated row (`preview_image_path IS NULL`) is just the
+`preview_template_version IS NULL` case. Rejected: restricting the trigger to
 owner-only views (closes the surface entirely but defeats the point — a
 build only backfills when its owner happens to revisit it) and a per-build
 rate limit on top (blunts rapid racing but doesn't close anything the shape
 check doesn't already bound). Accepted residual risk: a determined attacker
 running a modified client could still plant one wrong-but-correctly-shaped
-image before the real one generates, since there's no way to verify image
-*content* server-side without the on-demand server-render approach EMBED
-already rejected (unverified WASM-in-Deno). Narrow and self-correcting — an
-owner re-sharing via the existing EMBED3 path is a separate, unrestricted
-write that always wins regardless of what this path last wrote.
+image before the real one generates for that version, since there's no way to
+verify image *content* server-side without the on-demand server-render
+approach EMBED already rejected (unverified WASM-in-Deno) — and now that
+regeneration is version-gated rather than one-shot-forever, that attacker
+gets a fresh opportunity on every future template bump, not just once. Judged
+acceptable: still cosmetic-only, still narrow, and an owner re-sharing via
+EMBED3 is a separate, unrestricted write that always wins regardless of what
+this path last wrote.
 
 ## Active
 
-- [ ] **PREVBF1** — `buildStore` capture-mode storage swap: detect the
+- [ ] **PREVBF1** — schema + version constant: add
+      `preview_template_version INTEGER` to `shared_builds` (migration in
+      [supabase/schema.sql](../supabase/schema.sql), existing rows land `NULL`
+      — indistinguishable from "never generated" by design, since a `NULL`
+      path already means that). Define
+      `CURRENT_PREVIEW_TEMPLATE_VERSION = 1` as a literal constant, duplicated
+      (frontend + every edge function that writes the column, same pattern as
+      `MAX_PREVIEW_IMAGE_BYTES`) with a comment: bump this by hand, in every
+      copy, whenever `BuildPreviewCard`'s visual template changes.
+      verify: file:supabase/schema.sql, fn:preview_template_version
+- [ ] **PREVBF2** — stamp the version on real shares too: `share-build`'s
+      `uploadPreviewImage` sets `preview_template_version =
+      CURRENT_PREVIEW_TEMPLATE_VERSION` alongside `preview_image_path` on both
+      the create and update branches, so an owner's normal re-share also
+      keeps the version current — not just this doc's new capture path.
+      Deploy via `supabase functions deploy share-build` (production push —
+      confirm with the user first).
+      needs: PREVBF1
+      verify: file:supabase/functions/share-build/index.ts, fn:uploadPreviewImage
+- [ ] **PREVBF3** — `buildStore` capture-mode storage swap: detect the
       capture-mode URL param at store-creation time; when present, `storage:`
       resolves to an in-memory `Storage`-shaped stub instead of `localStorage`.
       verify: file:src/stores/buildStore.ts, fn:createJSONStorage
-- [ ] **PREVBF2** — `main.tsx` capture-mode boot: recognize
+- [ ] **PREVBF4** — `main.tsx` capture-mode boot: recognize
       `?previewCapture=<id>&serverId=<sid>`, fetch the target via
       `getSharedBuild(id)`, call `importBuild()` with its `build_json`, let
       the app render normally (no confirmation dialog, no navigation — this
       path never goes through `BuildDetailPage`'s `handleLoadBuild`).
-      needs: PREVBF1
+      needs: PREVBF3
       verify: file:src/main.tsx, fn:importBuild
-- [ ] **PREVBF3** — capture + report, run from inside the capture-mode boot:
+- [ ] **PREVBF5** — capture + report, run from inside the capture-mode boot:
       poll until the calc stack (`useCalculatedStats`/`useCharacterCalculation`)
       stabilizes or a hard cap elapses, call `capturePreviewBase64()`, POST the
-      result to PREVBF4's endpoint, then `postMessage` a completion signal to
+      result to PREVBF6's endpoint, then `postMessage` a completion signal to
       `window.parent` (origin-checked). A capture that never stabilizes or
       fails to upload still posts completion (or the parent's own timeout in
-      PREVBF5 governs it) — this must never hang the hidden iframe forever.
-      needs: PREVBF2
+      PREVBF7 governs it) — this must never hang the hidden iframe forever.
+      needs: PREVBF4
       verify: file:src/components/export-image/SharePreviewCapture.tsx, fn:capturePreviewBase64
-- [ ] **PREVBF4** — new edge function
+- [ ] **PREVBF6** — new edge function
       `supabase/functions/backfill-preview/index.ts`: `{id, preview_image_base64}`,
-      no auth. Validates the row exists, `visibility !== 'private'`,
-      `preview_image_path IS NULL` (write-once), decoded PNG is exactly
-      1200×630 (read the IHDR chunk) and within `MAX_PREVIEW_IMAGE_BYTES`.
-      Uploads to the existing `build-previews` bucket at the existing
-      `previews/<id>.png` convention and sets `preview_image_path` — reusing
-      EMBED3's `uploadPreviewImage` shape rather than a parallel
+      no auth. Validates the row exists, `visibility !== 'private'`, the
+      row's stored `preview_template_version` is `NULL` or `<
+      CURRENT_PREVIEW_TEMPLATE_VERSION` (version-gated write — never when
+      already current), decoded PNG is exactly 1200×630 (read the IHDR chunk)
+      and within `MAX_PREVIEW_IMAGE_BYTES`. Uploads to the existing
+      `build-previews` bucket at the existing `previews/<id>.png` convention
+      and sets both `preview_image_path` and `preview_template_version` —
+      reusing EMBED3's `uploadPreviewImage` shape rather than a parallel
       implementation. Deploy via `supabase functions deploy backfill-preview`
-      (production push — confirm with the user first, per this project's
-      established pattern for edge-function deploys).
-      needs: EMBED1
+      (production push — confirm with the user first).
+      needs: PREVBF1
       verify: file:supabase/functions/backfill-preview/index.ts, fn:uploadPreviewImage
-- [ ] **PREVBF5** — wire the trigger into `BuildDetailPage`: on load, if
-      `build.preview_image_path` is null and `build.visibility !== 'private'`,
-      mount a hidden `<iframe>` at `/?previewCapture=<id>&serverId=<serverId>`;
-      remove it on the completion `postMessage` or a hard timeout (~20s).
-      Dedupe per pageview so re-renders don't spawn a second iframe.
-      needs: PREVBF3, PREVBF4
+- [ ] **PREVBF7** — wire the trigger into `BuildDetailPage`: on load, if
+      `build.visibility !== 'private'` and (`preview_image_path` is null or
+      `preview_template_version` is null or behind
+      `CURRENT_PREVIEW_TEMPLATE_VERSION`), mount a hidden `<iframe>` at
+      `/?previewCapture=<id>&serverId=<serverId>`; remove it on the
+      completion `postMessage` or a hard timeout (~20s). Dedupe per pageview
+      so re-renders don't spawn a second iframe.
+      needs: PREVBF5, PREVBF6
       verify: file:src/pages/BuildDetailPage.tsx, fn:previewCapture
-- [ ] **PREVBF6** — end-to-end verification against production on a real
-      pre-existing build missing a preview image: (a) no visible UI
-      flicker/glitch on the visiting tab during the capture window, (b) the
-      visiting tab's own saved build in `localStorage` is byte-identical
-      before/after, (c) `preview_image_path` populates within the expected
-      window, (d) the Worker (EMBED4) now serves the correct `og:image` for
-      that build's URL, (e) a second view afterward does not re-trigger
-      (write-once holds — confirm via network tab, no second POST attempt
-      needed since the client already gates on `preview_image_path` being
-      null).
-      needs: PREVBF5
+- [ ] **PREVBF8** — end-to-end verification against production, both cases:
+      (a) a build missing a preview image entirely, (b) a build with a
+      preview image already, minted under an older template version (e.g. one
+      of today's real test builds). For each: no visible UI flicker/glitch on
+      the visiting tab during the capture window, the visiting tab's own
+      saved build in `localStorage` is byte-identical before/after,
+      `preview_image_path`/`preview_template_version` populate/advance within
+      the expected window, the Worker (EMBED4) now serves the correct
+      `og:image`, and a second view afterward does not re-trigger (version
+      gate holds — confirm via network tab).
+      needs: PREVBF7
       verify: @unchecked
 
 ## Out of scope
 
 - Restricting the trigger to owner-only views — decided against in
   §Decision — anonymous-write security; defeats "automatic on view."
-- A server-side rate limit per build id beyond write-once — decided against
-  in the same section; write-once + shape check was judged sufficient.
-- Re-rendering previews when the visual template (EMBED2) changes later —
-  the *other* item EMBED deferred; unrelated to backfilling missing images,
-  still not addressed by this doc either.
-- Retrying a failed backfill attempt on a schedule — no dedicated
-  retry/backoff. A failed attempt just leaves `preview_image_path` null,
-  and the next organic view tries again for free.
+- A server-side rate limit per build id beyond version-gated write — decided
+  against in the same section; the version gate plus shape check was judged
+  sufficient.
+- Retrying a failed backfill/refresh attempt on a schedule — no dedicated
+  retry/backoff. A failed attempt just leaves the row behind, and the next
+  organic view tries again for free.
+- A migration script to bulk-stamp every pre-existing row's
+  `preview_template_version` — unnecessary; `NULL` already means "generate
+  regardless of version," which is the correct behavior for every row that
+  predates this column.
