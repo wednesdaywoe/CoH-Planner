@@ -25,7 +25,7 @@ headline stats (max HP, regen, end gain/drain, S/L and defense/resistance bands)
 and a compact taken-vs-skipped power icon row — while a private build's link
 still unfurls with only the generic site-wide card, leaking nothing per-build.
 
-**satisfied-when:** EMBED1..EMBED5 all `[x]`
+**satisfied-when:** EMBED1..EMBED6 all `[x]`
 
 ## Preconditions
 
@@ -144,6 +144,24 @@ detail — not legible at social-embed image sizes.
       return `null`).
       needs: EMBED1, EMBED2
       verify: file:src/utils/preview-capture.ts, fn:capturePreviewBase64
+      **Verified end-to-end against production 2026-09-03**: deployed the
+      updated `share-build` function (`supabase functions deploy
+      share-build`, user-approved), shared a real test build, and confirmed
+      by direct Storage/REST fetch — `preview_image_path` populated
+      (`previews/<id>.png`), object publicly fetchable with no auth, and a
+      genuine 1200×630 PNG matching the build (headline stats + taken/skipped
+      icons). Test row deleted afterward via `delete-build`.
+- [x] **EMBED6** — `delete-build` never removed the Storage object, so every
+      deleted shared build orphans its preview PNG forever — found while
+      cleaning up the EMBED3 verification's own test row (the object stayed
+      after the row was gone). On-thesis, not a tangential bug: it's a direct
+      consequence of EMBED3's own upload, so it stays in this doc rather than
+      being evicted. Fixed with a best-effort `storage.remove()` call after
+      the row delete succeeds (deterministic path, no need to read
+      `preview_image_path` first; removing a missing object is a no-op).
+      **Not yet deployed** — same "edit ≠ live" gap as EMBED3 hit; needs
+      `supabase functions deploy delete-build`.
+      verify: file:supabase/functions/delete-build/index.ts, fn:remove
 - [ ] **EMBED4** — Cloudflare Worker on the `coh-sidekick.com/builds/*` route:
       fetch the GitHub Pages origin response and use `HTMLRewriter` to replace
       the static `og:title`/`og:description`/`og:image`/`twitter:image` tags

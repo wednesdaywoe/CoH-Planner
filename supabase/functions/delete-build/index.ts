@@ -113,6 +113,15 @@ Deno.serve(async (req: Request) => {
       );
     }
 
+    // Best-effort: the row is already gone, so a leftover preview image in
+    // Storage is orphaned either way — don't fail the delete over it. Path is
+    // deterministic (see share-build's uploadPreviewImage), so no need to
+    // read preview_image_path first; removing a nonexistent object is a no-op.
+    const { error: storageError } = await supabase.storage
+      .from('build-previews')
+      .remove([`previews/${id}.png`]);
+    if (storageError) console.error('Preview image cleanup failed:', storageError);
+
     return new Response(
       JSON.stringify({ success: true }),
       { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
