@@ -15,7 +15,7 @@
  */
 import type { Build, SelectedPower, Enhancement } from '@/types';
 import { INCARNATE_SLOT_ORDER } from '@/types';
-import { computeAllSlotLevels } from '@/utils/slot-levels';
+import { computeExportSlotLevels } from '@/utils/slot-levels';
 import { powerKey, type PowerCategory } from '@/utils/power-key';
 import { getIOSet } from '@/data';
 
@@ -32,11 +32,15 @@ export interface ForumExportOptions {
 export function generateForumExport(
   build: Build,
   format: ForumExportFormat,
+  levelUpMode: boolean,
   options: ForumExportOptions = {},
 ): string {
   const { includeIncarnates = true, includeSetBonuses = true } = options;
   const fmt = formatter(format);
-  const slotLevels = computeAllSlotLevels(build);
+  // Outside Level Up mode a slot carries no real level (SLOT-3); this is a
+  // synthetic, schedule-legal placement for the printed text, not a claim
+  // about the build's actual leveling history.
+  const slotLevels = computeExportSlotLevels(build, levelUpMode);
 
   const lines: string[] = [];
 

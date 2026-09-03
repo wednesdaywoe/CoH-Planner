@@ -5,6 +5,7 @@ import { describe, it, expect, beforeAll } from 'vitest';
 import { loadDataset } from '@/data/dataset';
 import { createEmptyBuild } from '@/types/build';
 import { useBuildStore } from '@/stores/buildStore';
+import { useUIStore } from '@/stores/uiStore';
 import { getSlotGrants } from '@/data';
 import { powerKey } from '@/utils/power-key';
 import { generateForumExport } from './forum-export';
@@ -64,7 +65,7 @@ function install(level: number, powers: any[], slotOrder: any[]): any {
 
 const KEY = (n: string) => powerKey('primary', n);
 const levelsFor = (name: string) =>
-  computeAllSlotLevels(useBuildStore.getState().build).get(KEY(name))!;
+  computeAllSlotLevels(useBuildStore.getState().build, true).get(KEY(name))!;
 
 /** Every level the schedule actually issues a slot at. */
 const isGrantable = (level: number | null): boolean =>
@@ -92,6 +93,10 @@ function noGrantOverclaimed(names: string[]): void {
 describe('slot grant allocation — Homecoming', () => {
   beforeAll(async () => {
     await loadDataset('homecoming');
+    // SLOT-3: the schedule floor these tests pin only applies in Level Up
+    // mode. This suite predates that mode split and exercises leveling-mode
+    // behavior throughout.
+    useUIStore.setState({ levelUpMode: true });
   }, 120000);
 
   it('grants nothing at level 38 — the fixture the bug reported itself through', () => {
@@ -230,12 +235,12 @@ describe('slot grant allocation — Homecoming', () => {
     const before = [levelsFor('Alpha'), levelsFor('Beta')];
 
     const build = poisoned();
-    expect(reconcileStoredSlotLevels(build)).toBe(true);
+    expect(reconcileStoredSlotLevels(build, true)).toBe(true);
     useBuildStore.setState({ build });
     // The repair writes down what was already on screen — it must not move a slot.
     expect([levelsFor('Alpha'), levelsFor('Beta')]).toEqual(before);
     // And every stored level is now one the solver honors.
-    expect(reconcileStoredSlotLevels(build)).toBe(false);
+    expect(reconcileStoredSlotLevels(build, true)).toBe(false);
 
     const betaBefore = levelsFor('Beta');
     expect(useBuildStore.getState().removeSlot('Alpha', 1, 'primary')).toBe(true);
@@ -308,7 +313,8 @@ describe('slot grant allocation — Homecoming', () => {
       canRelocateSlot(
         useBuildStore.getState().build,
         { powerName: 'Early', slotIndex: 4, category: 'primary' },
-        { powerName: 'Late', category: 'primary' }
+        { powerName: 'Late', category: 'primary' },
+        true
       )
     ).toBe(true);
     const moved = useBuildStore.getState().moveSlot(
@@ -332,7 +338,8 @@ describe('slot grant allocation — Homecoming', () => {
       canRelocateSlot(
         useBuildStore.getState().build,
         { powerName: 'Early', slotIndex: 1, category: 'primary' },
-        { powerName: 'B', category: 'primary' }
+        { powerName: 'B', category: 'primary' },
+        true
       )
     ).toBe(false);
   });
@@ -341,6 +348,7 @@ describe('slot grant allocation — Homecoming', () => {
 describe('stored levels are never fabricated', () => {
   beforeAll(async () => {
     await loadDataset('homecoming');
+    useUIStore.setState({ levelUpMode: true }); // SLOT-3: leveling-mode suite
   }, 120000);
 
   it('populate refuses to invent an entry for an unservable slot', () => {
@@ -351,7 +359,7 @@ describe('stored levels are never fabricated', () => {
       [pow('A', 38, 5)],
       [entry('A', 1, 39), entry('A', 2, 39), entry('A', 3, 39)]
     );
-    ensureSlotOrderPopulated(b);
+    ensureSlotOrderPopulated(b, true);
     expect(b.slotOrder.find((e: any) => e.slotIndex === 4)).toBeUndefined();
     expect(b.slotOrder.every((e: any) => isGrantable(e.level))).toBe(true);
   });
@@ -362,8 +370,8 @@ describe('stored levels are never fabricated', () => {
       [pow('A', 38, 5)],
       [entry('A', 1, 39), entry('A', 2, 39), entry('A', 3, 39), entry('A', 4)]
     );
-    backfillSlotOrderLevels(b);
-    ensureSlotOrderPopulated(b);
+    backfillSlotOrderLevels(b, true);
+    ensureSlotOrderPopulated(b, true);
     const orphan = b.slotOrder.find((e: any) => e.slotIndex === 4);
     expect(orphan.level).toBeUndefined();
     expect(b.slotOrder.every((e: any) => e.level === undefined || isGrantable(e.level))).toBe(true);
@@ -382,6 +390,7 @@ describe('stored levels are never fabricated', () => {
 describe('the placement probe and the display agree', () => {
   beforeAll(async () => {
     await loadDataset('homecoming');
+    useUIStore.setState({ levelUpMode: true }); // SLOT-3: leveling-mode suite
   }, 120000);
 
   /**
@@ -420,7 +429,7 @@ describe('the placement probe and the display agree', () => {
     // The sub-power's two extra slots are billed to the budget…
     expect(countPlacedBudgetSlots(b)).toBe(2);
     // …so they must hold real grants, not their parent's pick level.
-    const levels = computeAllSlotLevels(b).get(KEY('Form_Blast'))!;
+    const levels = computeAllSlotLevels(b, true).get(KEY('Form_Blast'))!;
     expect(levels[0]).toBe(20);
     expect(levels.slice(1).every(isGrantable)).toBe(true);
     expect(levels.slice(1)).not.toContain(20);
@@ -430,6 +439,7 @@ describe('the placement probe and the display agree', () => {
 describe('exports print the assigned level, not the pick level', () => {
   beforeAll(async () => {
     await loadDataset('homecoming');
+    useUIStore.setState({ levelUpMode: true }); // SLOT-3: leveling-mode suite
   }, 120000);
 
   /**
@@ -449,7 +459,7 @@ describe('exports print the assigned level, not the pick level', () => {
     b.archetype = { name: 'Blaster' };
     b.primary.name = 'Fire Blast';
 
-    const post = generateForumExport(b, 'plain');
+    const post = generateForumExport(b, 'plain', true);
     expect(post).toContain('A: Recharge IO');
     expect(post).toContain('25: Recharge IO');
     expect(post).not.toContain('1: Recharge IO'); // the pick-level fallback
@@ -465,7 +475,7 @@ describe('exports print the assigned level, not the pick level', () => {
     const b = install(50, [power], [entry('Alpha', 1, 25)]);
     b.archetype = { name: 'Blaster' };
 
-    const html = generatePrintHTML(b);
+    const html = generatePrintHTML(b, true);
     expect(html).toContain('(25)');
   });
 
@@ -479,11 +489,136 @@ describe('exports print the assigned level, not the pick level', () => {
     const b = install(39, [power], [entry('A', 1, 39), entry('A', 2, 39), entry('A', 3, 39)]);
     b.archetype = { name: 'Blaster' };
 
-    const html = generatePrintHTML(b);
+    const html = generatePrintHTML(b, true);
     expect(html).toContain('(?)');
     // Exactly one (38): the free base slot, which IS granted with the pick. A
     // second one would be the unservable slot borrowing the pick level again.
     expect(html.match(/\(38\)/g)).toHaveLength(1);
     expect(html.match(/\(39\)/g)).toHaveLength(3);
+  });
+});
+
+/**
+ * SLOT-3: outside Level Up mode a slot has no dated level at all. The pick-level
+ * floor above is a faithful model of sequential leveling; it is not a faithful
+ * model of a real respec, which grants the player's full earned budget as one
+ * freely assignable pool. Verified against the actual game's respec wizard, not
+ * Mids Reborn — Mids' own live editor turned out to enforce a per-slot floor
+ * with no supply check, and a separate function that does check the schedule
+ * only runs on auto-arrange or build-open, so the two disagree with each other
+ * and with the game.
+ */
+describe('SLOT-3 — free-form planning has no pick-level floor', () => {
+  beforeAll(async () => {
+    await loadDataset('homecoming');
+    useUIStore.setState({ levelUpMode: false });
+  }, 120000);
+
+  it('a power picked as the very last pick still reaches the full 6-slot cap', () => {
+    // Regression fixture: a power picked at 49 in a level-50 build used to cap
+    // at 3-4 total slots under the leveling-mode floor, even with Level Up
+    // mode off, because the floor applied unconditionally.
+    install(50, [pow('Late', 49, 1)], []);
+    const store = useBuildStore.getState();
+    for (let i = 0; i < 5; i++) {
+      expect(store.canAddSlot('Late', 'primary')).toBe(true);
+      expect(store.addSlot('Late', 'primary')).toBe(true);
+    }
+    const late = useBuildStore.getState().build.primary.powers.find((p) => p.internalName === 'Late')!;
+    expect(late.slots.length).toBe(6);
+    // The per-power cap still applies — this is "no schedule floor", not "no limit".
+    expect(store.canAddSlot('Late', 'primary')).toBe(false);
+    expect(store.addSlot('Late', 'primary')).toBe(false);
+  });
+
+  it('the global budget still applies with the schedule floor gone', () => {
+    // Level 4's total budget is 2 (the level-3 grant; the next is at 5). Two
+    // powers with room for more than that between them; the budget runs out
+    // at 2, not at either power's own 6-slot cap.
+    install(4, [pow('A', 1, 1), pow('B', 1, 1)], []);
+    const store = useBuildStore.getState();
+    expect(store.addSlot('A', 'primary')).toBe(true); // budget: 1 used
+    expect(store.addSlot('B', 'primary')).toBe(true); // budget: 2 used — exactly the level-4 limit
+    expect(store.canAddSlot('A', 'primary')).toBe(false); // a 3rd would exceed it
+    expect(store.canAddSlot('B', 'primary')).toBe(false);
+  });
+
+  it('computeAllSlotLevels returns nothing — a slot has no level outside Level Up mode', () => {
+    install(50, [pow('Late', 49, 6)], [entry('Late', 1, 50), entry('Late', 2, 50)]);
+    expect(computeAllSlotLevels(useBuildStore.getState().build, false).size).toBe(0);
+  });
+
+  it('addSlot writes a slotOrder entry with no level', () => {
+    install(50, [pow('Late', 49, 1)], []);
+    expect(useBuildStore.getState().addSlot('Late', 'primary')).toBe(true);
+    const order = useBuildStore.getState().build.slotOrder;
+    expect(order).toHaveLength(1);
+    expect(order[0]).toMatchObject({ powerName: 'Late', slotIndex: 1, category: 'primary' });
+    expect(order[0].level).toBeUndefined();
+  });
+
+  it('relocation ignores the schedule gap between source and target pick levels', () => {
+    install(50, [pow('Early', 1, 2), pow('Late', 49, 1)], [entry('Early', 1)]);
+    expect(
+      useBuildStore.getState().canMoveSlot(
+        { powerName: 'Early', slotIndex: 1, category: 'primary' },
+        { powerName: 'Late', category: 'primary' }
+      )
+    ).toBe(true);
+    const moved = useBuildStore.getState().moveSlot(
+      { powerName: 'Early', slotIndex: 1, category: 'primary' },
+      { powerName: 'Late', category: 'primary' }
+    );
+    expect(moved.ok).toBe(true);
+    const late = useBuildStore.getState().build.primary.powers.find((p) => p.internalName === 'Late')!;
+    expect(late.slots.length).toBe(2);
+  });
+
+  it('slot-level swap is unavailable — there is no level to trade', () => {
+    install(50, [pow('A', 1, 2), pow('B', 1, 2)], [entry('A', 1), entry('B', 1)]);
+    expect(
+      useBuildStore.getState().canMoveSlotLevel(
+        { powerName: 'A', slotIndex: 1, category: 'primary' },
+        { powerName: 'B', slotIndex: 1, category: 'primary' }
+      )
+    ).toBe(false);
+    expect(
+      useBuildStore.getState().moveSlotLevel(
+        { powerName: 'A', slotIndex: 1, category: 'primary' },
+        { powerName: 'B', slotIndex: 1, category: 'primary' }
+      )
+    ).toBe(false);
+  });
+
+  it('turning Level Up mode on freezes real levels onto slots placed while it was off', () => {
+    install(50, [pow('Late', 49, 1)], []);
+    const store = useBuildStore.getState();
+    store.addSlot('Late', 'primary');
+    store.addSlot('Late', 'primary');
+    expect(useBuildStore.getState().build.slotOrder.every((e) => e.level === undefined)).toBe(true);
+
+    useUIStore.setState({ levelUpMode: true });
+    useBuildStore.getState().freezeSlotLevelsForLevelUpMode();
+
+    const order = useBuildStore.getState().build.slotOrder;
+    expect(order).toHaveLength(2);
+    expect(order.every((e) => e.level !== undefined)).toBe(true);
+    expect(order.every((e) => isGrantable(e.level!))).toBe(true);
+    // Live display now agrees with what got frozen in.
+    expect(levelsFor('Late').slice(1)).toEqual(order.map((e) => e.level));
+
+    useUIStore.setState({ levelUpMode: false }); // restore for any tests appended after this one
+  });
+
+  it('freezing is a no-op when every slot already has a real stored level', () => {
+    // Both additional slots already carry levels the schedule actually honors
+    // (5 and 7 each grant 2), so there is nothing left to populate, backfill,
+    // or reconcile.
+    install(50, [pow('Early', 4, 3)], [entry('Early', 1, 5), entry('Early', 2, 7)]);
+    useUIStore.setState({ levelUpMode: true });
+    const before = useBuildStore.getState().build.slotOrder;
+    useBuildStore.getState().freezeSlotLevelsForLevelUpMode();
+    expect(useBuildStore.getState().build.slotOrder).toBe(before); // same reference: no `set` fired
+    useUIStore.setState({ levelUpMode: false });
   });
 });

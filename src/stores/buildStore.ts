@@ -168,6 +168,17 @@ interface BuildActions {
   moveSlot: (source: SlotLevelRef, target: PowerRef) => { ok: boolean; enhancementDropped: boolean };
   /** Whether `moveSlot(source, target)` would succeed (for UI hinting). */
   canMoveSlot: (source: SlotLevelRef, target: PowerRef) => boolean;
+  /**
+   * Freeze real grant levels onto every slot placed while Level Up mode was
+   * off (SLOT-3). Called once, right as the mode turns on — mirrors the
+   * import-time migrations (`ensureSlotOrderPopulated` /
+   * `backfillSlotOrderLevels` / `reconcileStoredSlotLevels`) so a build
+   * planned free-form gets a legal, stable leveling order the moment there is
+   * one to have, rather than a value that could reshuffle on the next slot
+   * edit. A slot the schedule genuinely cannot serve is left level-less and
+   * renders as the existing unhonorable-slot marker.
+   */
+  freezeSlotLevelsForLevelUpMode: () => void;
 
   // Enhancements
   setEnhancement: (powerName: string, slotIndex: number, enhancement: Enhancement, category?: PowerCategory) => void;
@@ -2221,18 +2232,27 @@ export const useBuildStore = create<BuildStore>()(
         // Inherent power slots are excluded entirely from the budget.
         if (countPlacedSlots(state.build) >= getPlacedSlotLimit(state.build.level, state.build.serverId)) return false;
 
-        // Resolve the assigned grant level *before* the slot exists on the power,
-        // so the solver sees the same build it will see in compute. It returns the
-        // lowest grant >= the power's pick level that the whole build can spare —
-        // re-housing another slot onto a freed lower grant where that is what it
-        // takes.
-        const pickLevel = category === 'inherent' ? 1 : power.level;
-        const assignedLevel = findNextAvailableGrantLevel(state.build, pickLevel);
-        // No grant the slot could legally occupy: refuse, the way the count budget
-        // above refuses. Placing it anyway is what wrote an entry with no level,
-        // which the display then filled in with the power's pick level — a level
-        // the game may grant no slots at (SLOT-1).
-        if (assignedLevel === null) return false;
+        // Outside Level Up mode a slot carries no dated level at all — a real
+        // respec hands the player their full earned budget as one freely
+        // assignable pool, with no per-power floor tied to pick order (SLOT-3).
+        // The count budget above is the only limit that still applies.
+        //
+        // In Level Up mode, resolve the assigned grant level *before* the slot
+        // exists on the power, so the solver sees the same build it will see in
+        // compute. It returns the lowest grant >= the power's pick level that
+        // the whole build can spare — re-housing another slot onto a freed
+        // lower grant where that is what it takes.
+        const levelUpMode = useUIStore.getState().levelUpMode;
+        let assignedLevel: number | null = null;
+        if (levelUpMode) {
+          const pickLevel = category === 'inherent' ? 1 : power.level;
+          assignedLevel = findNextAvailableGrantLevel(state.build, pickLevel);
+          // No grant the slot could legally occupy: refuse, the way the count budget
+          // above refuses. Placing it anyway is what wrote an entry with no level,
+          // which the display then filled in with the power's pick level — a level
+          // the game may grant no slots at (SLOT-1).
+          if (assignedLevel === null) return false;
+        }
 
         historyCheckpoint();
         const newSlotIndex = power.slots.length; // index of the slot being added
@@ -2246,7 +2266,9 @@ export const useBuildStore = create<BuildStore>()(
             powerName,
             slotIndex: newSlotIndex,
             category,
-            level: assignedLevel,
+            // Click order is still worth keeping even without a level — it's
+            // what a later switch into Level Up mode backfills from (SLOT-3).
+            ...(assignedLevel !== null ? { level: assignedLevel } : {}),
           };
           newBuild.slotOrder = [...newBuild.slotOrder, newEntry];
           return { build: newBuild };
@@ -2304,7 +2326,7 @@ export const useBuildStore = create<BuildStore>()(
 
       moveSlotLevel: (source, target) => {
         const state = get();
-        const moved = applySlotLevelMove(state.build, source, target);
+        const moved = applySlotLevelMove(state.build, source, target, useUIStore.getState().levelUpMode);
         if (!moved) return false;
         historyCheckpoint();
         set(() => ({ build: moved }));
@@ -2312,16 +2334,17 @@ export const useBuildStore = create<BuildStore>()(
       },
 
       canMoveSlotLevel: (source, target) => {
-        return canMoveSlotLevel(get().build, source, target);
+        return canMoveSlotLevel(get().build, source, target, useUIStore.getState().levelUpMode);
       },
 
       canMoveSlot: (source, target) => {
-        return canRelocateSlot(get().build, source, target);
+        return canRelocateSlot(get().build, source, target, useUIStore.getState().levelUpMode);
       },
 
       moveSlot: (source, target) => {
         const state = get();
-        if (!canRelocateSlot(state.build, source, target)) {
+        const levelUpMode = useUIStore.getState().levelUpMode;
+        if (!canRelocateSlot(state.build, source, target, levelUpMode)) {
           return { ok: false, enhancementDropped: false };
         }
 
@@ -2386,8 +2409,11 @@ export const useBuildStore = create<BuildStore>()(
 
           // 2) Resolve the destination grant level against the POST-removal
           //    slotOrder (so the freed source grant is back in the pool), then
-          //    append the slot to the target power — mirrors addSlot.
-          const assignedLevel = findNextAvailableGrantLevel(newBuild, targetPickLevel);
+          //    append the slot to the target power — mirrors addSlot. Outside
+          //    Level Up mode there is no dated level to resolve (SLOT-3).
+          const assignedLevel = levelUpMode
+            ? findNextAvailableGrantLevel(newBuild, targetPickLevel)
+            : null;
           newBuild = applyPowerUpdate(newBuild, targetCategory, (powers) =>
             powers.map((p) =>
               p.internalName === target.powerName
@@ -2411,6 +2437,26 @@ export const useBuildStore = create<BuildStore>()(
         });
 
         return { ok: true, enhancementDropped };
+      },
+
+      freezeSlotLevelsForLevelUpMode: () => {
+        const state = get();
+        const build = { ...state.build, slotOrder: [...state.build.slotOrder] };
+        // Same order as the rehydrate/import migrations: scrub before backfill
+        // (a stale garbage level must not survive to seed it), ensure after
+        // backfill (only entries still missing a level need populating),
+        // reconcile last (it reads the solved assignment every prior step
+        // could have changed).
+        scrubFabricatedSlotLevels(build);
+        const changed =
+          [
+            backfillSlotOrderLevels(build, true),
+            ensureSlotOrderPopulated(build, true),
+            reconcileStoredSlotLevels(build, true),
+          ].filter(Boolean).length > 0;
+        if (!changed) return;
+        historyCheckpoint();
+        set({ build });
       },
 
       // Enhancements
@@ -3041,12 +3087,16 @@ export const useBuildStore = create<BuildStore>()(
         if (countPlacedSlots(state.build) >= getPlacedSlotLimit(state.build.level, state.build.serverId)) {
           return false;
         }
-        // The count budget is not the only limit. A slot must also land on a
-        // grant at or above its power's pick level, and those run out
-        // separately — Homecoming issues 24 grants from level 39 on, so a build
-        // can be well inside its 67 and still have nowhere to put a slot on a
-        // power taken at 38 (SLOT-1). Mirror addSlot so the + button and the
-        // action agree.
+        // In Level Up mode, the count budget is not the only limit: a slot must
+        // also land on a grant at or above its power's pick level, and those run
+        // out separately — Homecoming issues 24 grants from level 39 on, so a
+        // build can be well inside its 67 and still have nowhere to put a slot
+        // on a power taken at 38 (SLOT-1). Mirror addSlot so the + button and
+        // the action agree.
+        //
+        // Outside Level Up mode there is no dated floor at all (SLOT-3) — the
+        // count budget above is the whole check.
+        if (!useUIStore.getState().levelUpMode) return true;
         const pickLevel = found.category === 'inherent' ? 1 : found.power.level;
         return findNextAvailableGrantLevel(state.build, pickLevel) !== null;
       },
@@ -3162,17 +3212,23 @@ export const useBuildStore = create<BuildStore>()(
 
           // Clear stored levels the schedule never grants — an export written
           // before SLOT-1 can carry the old pick-level fallback frozen in.
+          // Unconditional: harmless hygiene regardless of mode, and a wrong
+          // stored level would wrongly seed a later switch into Level Up mode.
           scrubFabricatedSlotLevels(build);
+          // The remaining three only mean anything in Level Up mode (SLOT-3) —
+          // outside it a slot carries no level to populate, backfill, or
+          // reconcile, and stored history stays exactly as imported.
+          const importLevelUpMode = useUIStore.getState().levelUpMode;
           // Back-fill grant levels on slotOrder entries from pre-fix exports
           // so removing slots behaves like Mids from the first interaction.
-          backfillSlotOrderLevels(build);
+          backfillSlotOrderLevels(build, importLevelUpMode);
           // Populate missing slotOrder entries so untouched slots stay at
           // their assigned levels when add/remove slot kicks computation
           // into leveling mode.
-          ensureSlotOrderPopulated(build);
+          ensureSlotOrderPopulated(build, importLevelUpMode);
           // Make storage agree with the assignment. Runs LAST: it reads the
           // solved levels, so every migration that can change them is above it.
-          reconcileStoredSlotLevels(build);
+          reconcileStoredSlotLevels(build, importLevelUpMode);
 
           // Repair invalid/duplicate/below-unlock pick levels in the import
           // itself — an export carrying addPower's old silent level-50 stamp
@@ -3211,12 +3267,15 @@ export const useBuildStore = create<BuildStore>()(
           build.slotOrder = [];
         }
         scrubFabricatedSlotLevels(build);
-        backfillSlotOrderLevels(build);
+        // The rest only means anything in Level Up mode (SLOT-3) — outside it
+        // a Mids import's slots carry no level, same as anything free-placed.
+        const midsLevelUpMode = useUIStore.getState().levelUpMode;
+        backfillSlotOrderLevels(build, midsLevelUpMode);
         // Mids imports come in with slotOrder empty (or partial). Lock in
         // respec-mode levels as stored entries so the first add/remove
         // slot interaction doesn't collapse untouched slots' levels.
-        ensureSlotOrderPopulated(build);
-        reconcileStoredSlotLevels(build);
+        ensureSlotOrderPopulated(build, midsLevelUpMode);
+        reconcileStoredSlotLevels(build, midsLevelUpMode);
         useUIStore.getState().clearCompareSlottingCopies();
         set({ build });
       },
@@ -3586,19 +3645,28 @@ export const useBuildStore = create<BuildStore>()(
           // Mids-style remove/replace fix. Without this, the first removeSlot
           // on a legacy build still cascades subsequent slots — backfill makes
           // every entry stable from the next interaction onward.
-          backfillSlotOrderLevels(state.build);
+          //
+          // `true` here, not the live toggle: `onRehydrateStorage` can fire
+          // before `useUIStore`'s own persisted state has rehydrated (see the
+          // `setTimeout` a few lines below for the same reason), so reading it
+          // here risks silently skipping this migration for a build that is
+          // actually in Level Up mode. Running it unconditionally reproduces
+          // this migration's exact pre-SLOT-3 behavior; the cost if the build
+          // turns out to be in free mode is unused stored levels sitting in
+          // `slotOrder` that nothing reads (SLOT-3).
+          backfillSlotOrderLevels(state.build, true);
 
           // Migration: Populate any missing slotOrder entries so add/remove
           // slot interactions don't collapse untouched powers' slot levels
           // to their pick level (the symptom of Mids-imported / legacy
           // builds that left slotOrder empty or partial).
-          ensureSlotOrderPopulated(state.build);
+          ensureSlotOrderPopulated(state.build, true);
 
           // Migration: a build leveled through SLOT-2 carries a run of entries
           // all claiming one level. They display correctly but cascade on a
           // removal, because a level no grant can honor reads the same as no
           // level at all. Freeze the solved assignment in. Must run LAST.
-          reconcileStoredSlotLevels(state.build);
+          reconcileStoredSlotLevels(state.build, true);
 
           // Auto-detect branch for VEAT builds on rehydration
           const branch = detectBranch(state.build);

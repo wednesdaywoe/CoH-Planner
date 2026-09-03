@@ -20,6 +20,29 @@ from this point forward are recorded here.
 
 ## Current frontier
 
+SLOT-3 closed 2026-09-02, the day it was reported. The matching solver's pick-level floor was the
+right rule for leveling mode and the wrong one for respec, and it applied in both, because
+`levelUpMode` was never read anywhere in slot placement — only in `addPower`'s pick pacing. Since
+`levelUpMode` defaults off, that was the ordinary planning experience, not an edge case. Mids
+Reborn looked like a second oracle and wasn't — its live "+" click enforces a per-slot floor with
+no global supply check, while a *separate* function walks the true schedule and only runs on
+auto-arrange or build-open, so the two disagree and Mids will happily export an arrangement its
+own schedule can't support (confirmed by round-tripping a build through it into this app, which
+correctly flagged the impossible slots). The real oracle — the game's own respec wizard — settled
+it: a respec grants the full earned slot budget as one freely assignable pool, no pick-level floor
+at all. Fixed by gating the floor on `levelUpMode` rather than on whether `slotOrder` happens to be
+empty: off-mode eligibility is now just the per-power 6-slot cap plus the total budget earned at
+the build's level, with no per-slot pick-level check at all. `addSlot` still writes a `slotOrder`
+entry off-mode, just with no `level`, preserving click order for a later mode switch;
+`freezeSlotLevelsForLevelUpMode` backfills real levels through the same matcher when the user
+toggles Level Up mode on, wired into `Header.tsx`'s `LevelUpModeButton.handleToggle`;
+`showSlotLevels` is disabled off-mode, since there is no real per-slot level to show; and the
+Mids/print/forum exports' synthetic level now carries a one-line advisory instead of shipping
+silently. Full narrative in [gaps/slot-grant-allocation.md#slot-3](gaps/slot-grant-allocation.md#slot-3).
+Full suite green (2399 passing, 2 skipped).
+
+---
+
 SLOT-2 closed 2026-08-26, the day it was reported, and it is SLOT-1's fix reporting a second defect
 in itself. The matching solver displaces an incumbent slot to reach a grant — that is how a power
 taken at 38 gets served at all — but nothing made displacement a last resort, so the placement
@@ -81,7 +104,7 @@ Enhancement slots are placed against a lumpy, level-gated grant schedule — Hom
 them at 28 specific levels and none at all at 38, 41, 44, 47 or 49. Pairing slots to grants is a
 matching; beta allocated them with a walk.
 
-[Full detail](gaps/slot-grant-allocation.md) — 2 of 2 closed
+[Full detail](gaps/slot-grant-allocation.md) — 3 of 3 closed
 
 - [x] **SLOT-1** — deleting a slot and placing it on a later-picked power stranded the freed grant
       and stamped the new slot with its power's pick level (a level the schedule may grant nothing
@@ -101,6 +124,19 @@ matching; beta allocated them with a walk.
       poisoned saves display correctly on the fix alone, but cascaded peers on a removal until
       their storage was made honest. Guarded by four tests in `slot-allocation.test.ts`
       (mutation-tested 4/4)
+- [x] **SLOT-3** — the matching solver's pick-level floor (`grantPool[grant] < pickLevel`) applied
+      unconditionally in both respec and leveling demand collection, and `levelUpMode` was never
+      read by any slot-placement call site — only by `addPower`'s pick pacing. So "respec mode"
+      (`collectRespecDemands`) was reachable only before the build's first slot was ever placed, and
+      even then still floored every demand at its power's own pick level. Verified against the real
+      game's in-game respec wizard (not Mids, which turned out to be a flawed second oracle — its
+      live editor enforces a per-slot floor with no supply check, its separate auto-arrange
+      function enforces the true schedule instead, and the two disagree): a respec grants the full
+      earned slot budget as one freely assignable pool, no pick-level floor at all. `levelUpMode`
+      off is the app's default state, so this was not an edge case; fixed by gating the floor on
+      `levelUpMode` — off-mode eligibility is now the per-power 6-slot cap plus the total budget at
+      the build's level, with `freezeSlotLevelsForLevelUpMode` backfilling real levels on toggle-in.
+      Guarded by `slot-allocation.test.ts`, `slot-levels-move.test.ts`, `slot-move.test.ts`
 
 ---
 

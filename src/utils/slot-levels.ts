@@ -483,10 +483,19 @@ export function findNextAvailableGrantLevel(
  * slot), index 1+ = the grant level consumed for that slot, or `null` where the
  * schedule has no grant left the slot could legally occupy.
  *
- * Automatically selects leveling mode if slotOrder has entries,
- * otherwise uses respec mode.
+ * `levelUpMode` off (SLOT-3): a real in-game respec hands the player their full
+ * earned slot budget as one freely assignable pool — no power's pick level
+ * bounds which grant a slot can use, so there is no such thing as "this slot's
+ * level" outside a sequential leveling walk. Returns an empty map; every
+ * consumer already treats a missing entry as "nothing to show" rather than an
+ * error, so this needs no further special-casing at the call sites.
+ *
+ * `levelUpMode` on: unchanged — leveling mode if `slotOrder` has entries
+ * (honoring any stored preferences, including level-less ones written while
+ * the mode was off — see `collectLevelingDemands`), otherwise respec mode.
  */
-export function computeAllSlotLevels(build: Build): Map<string, SlotLevel[]> {
+export function computeAllSlotLevels(build: Build, levelUpMode: boolean): Map<string, SlotLevel[]> {
+  if (!levelUpMode) return new Map();
   // Defensive: `slotOrder` is normally initialized by every load path
   // (importBuild / hydrateBuild / rehydrate migration), but a build whose
   // rehydrate migration aborted partway can reach here with it undefined.
@@ -497,6 +506,20 @@ export function computeAllSlotLevels(build: Build): Map<string, SlotLevel[]> {
     return computeSlotLevelsRespec(build);
   }
   return computeSlotLevelsLeveling(build);
+}
+
+/**
+ * Slot levels for export interop (Mids .mbd, print, forum text) — unlike
+ * `computeAllSlotLevels`, always returns a real, schedule-legal assignment.
+ * Mids' own file format carries a `Level` per slot regardless of how the
+ * build was planned, so an export needs *some* number even when
+ * `levelUpMode` is off. That number is a synthetic packing (respec mode's
+ * solver, ignoring pick order), not a claim about the user's actual leveling
+ * history — callers should say so in the UI once, not per slot (SLOT-3).
+ */
+export function computeExportSlotLevels(build: Build, levelUpMode: boolean): Map<string, SlotLevel[]> {
+  if (!levelUpMode) return computeSlotLevelsRespec(build);
+  return computeAllSlotLevels(build, levelUpMode);
 }
 
 /**
@@ -518,9 +541,10 @@ export function computeAllSlotLevels(build: Build): Map<string, SlotLevel[]> {
  * here are ones the schedule genuinely issues, just more often than it issues
  * them.
  */
-export function reconcileStoredSlotLevels(build: Build): boolean {
+export function reconcileStoredSlotLevels(build: Build, levelUpMode: boolean): boolean {
+  if (!levelUpMode) return false;
   if (!build.slotOrder?.length) return false;
-  const levels = computeAllSlotLevels(build);
+  const levels = computeAllSlotLevels(build, levelUpMode);
   let changed = false;
   for (const entry of build.slotOrder) {
     const category = resolveSlotCategory(build, entry.powerName, entry.category);
@@ -555,7 +579,8 @@ export function reconcileStoredSlotLevels(build: Build): boolean {
  * levels and locks them in as stored levels, so subsequent
  * add/remove interactions preserve every other slot's position.
  */
-export function ensureSlotOrderPopulated(build: Build): boolean {
+export function ensureSlotOrderPopulated(build: Build, levelUpMode: boolean): boolean {
+  if (!levelUpMode) return false;
   const allPowers = collectAllPowers(build);
 
   // Build a set of (category, powerName, slotIndex) keys for existing entries
@@ -566,7 +591,7 @@ export function ensureSlotOrderPopulated(build: Build): boolean {
     existing.add(`${cat}|${e.powerName}|${e.slotIndex}`);
   }
 
-  const computed = computeAllSlotLevels(build);
+  const computed = computeAllSlotLevels(build, levelUpMode);
   const newEntries: Build['slotOrder'][number][] = [];
 
   for (const { power, category } of allPowers) {
@@ -603,7 +628,8 @@ export function ensureSlotOrderPopulated(build: Build): boolean {
  * loading legacy builds so the Mids-style remove/replace behavior kicks in
  * immediately without waiting for the user to re-place every slot.
  */
-export function backfillSlotOrderLevels(build: Build): boolean {
+export function backfillSlotOrderLevels(build: Build, levelUpMode: boolean): boolean {
+  if (!levelUpMode) return false;
   if (build.slotOrder.length === 0) return false;
   const needsBackfill = build.slotOrder.some((e) => e.level === undefined);
   if (!needsBackfill) return false;
@@ -707,8 +733,13 @@ export function isMovableSlot(build: Build, ref: SlotLevelRef): boolean {
 export function canMoveSlotLevel(
   build: Build,
   source: SlotLevelRef,
-  target: SlotLevelRef
+  target: SlotLevelRef,
+  levelUpMode: boolean
 ): boolean {
+  // Nothing to swap: outside leveling mode a slot carries no level at all
+  // (SLOT-3), so there is no dated value to trade between two slots.
+  if (!levelUpMode) return false;
+
   const s = resolveRef(build, source);
   const t = resolveRef(build, target);
   if (!s || !t) return false;
@@ -720,7 +751,7 @@ export function canMoveSlotLevel(
 
   if (!isMovableSlot(build, source) || !isMovableSlot(build, target)) return false;
 
-  const levels = computeAllSlotLevels(build);
+  const levels = computeAllSlotLevels(build, levelUpMode);
   const sLevel = levels.get(powerKey(s.category, source.powerName))?.[source.slotIndex];
   const tLevel = levels.get(powerKey(t.category, target.powerName))?.[target.slotIndex];
   // `null` is a slot the schedule could not place at all — there is no level on
@@ -745,18 +776,19 @@ export function canMoveSlotLevel(
 export function applySlotLevelMove(
   build: Build,
   source: SlotLevelRef,
-  target: SlotLevelRef
+  target: SlotLevelRef,
+  levelUpMode: boolean
 ): Build | null {
-  if (!canMoveSlotLevel(build, source, target)) return null;
+  if (!canMoveSlotLevel(build, source, target, levelUpMode)) return null;
 
   const s = resolveRef(build, source)!;
   const t = resolveRef(build, target)!;
 
   const next: Build = { ...build, slotOrder: [...build.slotOrder] };
-  ensureSlotOrderPopulated(next);
-  backfillSlotOrderLevels(next);
+  ensureSlotOrderPopulated(next, levelUpMode);
+  backfillSlotOrderLevels(next, levelUpMode);
 
-  const levels = computeAllSlotLevels(next);
+  const levels = computeAllSlotLevels(next, levelUpMode);
   // Both non-null: `canMoveSlotLevel` above refuses the swap otherwise.
   const sLevel = levels.get(powerKey(s.category, source.powerName))![source.slotIndex]!;
   const tLevel = levels.get(powerKey(t.category, target.powerName))![target.slotIndex]!;
@@ -808,6 +840,7 @@ export function canRelocateSlot(
   build: Build,
   source: SlotLevelRef,
   target: PowerRef,
+  levelUpMode: boolean,
 ): boolean {
   if (!isMovableSlot(build, source)) return false;
   const s = resolveRef(build, source);
@@ -821,6 +854,10 @@ export function canRelocateSlot(
   if (s.category === t.category && source.powerName === target.powerName) return false;
   // Target needs an open slot.
   if (t.power.slots.length >= t.power.maxSlots) return false;
+  // Outside leveling mode there is no dated schedule to check the relocation
+  // against — the budget is net-neutral across a move, so an open slot is
+  // the only requirement (SLOT-3).
+  if (!levelUpMode) return true;
   return relocatedGrantLevel(build, source, s, t) !== null;
 }
 

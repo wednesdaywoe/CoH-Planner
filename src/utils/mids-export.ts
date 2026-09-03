@@ -14,7 +14,7 @@ import { getIOSet } from '@/data/io-sets';
 import { getMidsGenericIOUid, getMidsIOSetPieceUid, getMidsOriginUid, getMidsSpecialUid } from '@/data/mids-uids';
 import { MIDS_STAT_MAP } from '@/utils/mids-import/mappers';
 import { getInherentPowers, getArchetypeInherentPowers, POWER_PICK_LEVELS, getPicksGrantedAtLevel } from '@/data';
-import { computeAllSlotLevels, type SlotLevel } from '@/utils/slot-levels';
+import { computeExportSlotLevels, type SlotLevel } from '@/utils/slot-levels';
 import { powerKey, type PowerCategory } from '@/utils/power-key';
 
 // ============================================
@@ -505,11 +505,18 @@ function orderByPickSchedule(chosen: { level: number; entry: MbdPowerEntry }[]):
  * silence, so an unreported warning here is a build the user gets back with
  * holes and no explanation.
  */
-export function exportToMidsWithReport(build: Build): { json: string; warnings: MidsExportWarning[] } {
+export function exportToMidsWithReport(
+  build: Build,
+  levelUpMode: boolean,
+): { json: string; warnings: MidsExportWarning[] } {
   const archetypeId = build.archetype.id || '';
   const midsClass = REVERSE_ARCHETYPE_MAP[archetypeId] || 'Class_Blaster';
   const warnings: MidsExportWarning[] = [];
-  const slotLevels = computeAllSlotLevels(build);
+  // Outside Level Up mode a slot carries no real level (SLOT-3). Mids' own
+  // .mbd format requires a Level per slot regardless, so this is a synthetic,
+  // schedule-legal placement — not a claim about the build's actual leveling
+  // history. The caller is expected to say so once in the UI, not per slot.
+  const slotLevels = computeExportSlotLevels(build, levelUpMode);
 
   // Build PowerSets array: always 8 entries
   // [0]=primary, [1]=secondary, [2]="" (reserved), [3-6]=pools, [7]=epic
@@ -666,6 +673,6 @@ function inherentFullName(power: SelectedPower, archetypeId: string): string | n
  * Export a Sidekick Build to Mids Reborn .mbd JSON format.
  * Returns the JSON string ready to save as a .mbd file.
  */
-export function exportToMids(build: Build): string {
-  return exportToMidsWithReport(build).json;
+export function exportToMids(build: Build, levelUpMode: boolean): string {
+  return exportToMidsWithReport(build, levelUpMode).json;
 }

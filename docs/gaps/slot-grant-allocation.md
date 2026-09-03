@@ -192,3 +192,101 @@ a removal cascading onto peers. Mutation-tested: disabling the write turns the s
 
 An earlier draft of this entry called the saves permanently mangled. That was written from reading
 the code; the replay comparison above is what corrected it.
+
+---
+
+## SLOT-3 — the matching solver's pick-level floor models leveling, not respec, and applies even when the user is planning free-form
+
+**Found:** 2026-09-02, from a user report: a power picked as the very last pick (level 49) could
+only ever hold 3 of its 5 possible extra slots, no matter how much of the 67-slot budget sat
+unspent elsewhere.
+
+**What's wrong.** `assignGrants`'s pick-level floor (`if (grantPool[grant] < pickLevel) continue`)
+applies unconditionally, in both `collectRespecDemands` and `collectLevelingDemands` — there is no
+code path in `slot-levels.ts` that models a real respec's actual rule, which is "any earned slot on
+any owned power, full stop." `collectRespecDemands` still floors every demand at the power's own
+pick level; it only differs from leveling mode in seeding no stored preference. And `levelUpMode`
+(the header toggle, off by default — the app's "classic respec flow") is never read by slot
+placement at all — `canAddSlot`, `addSlot`, `canRelocateSlot`/`moveSlot`, and
+`canMoveSlotLevel`/`moveSlotLevel` all route through the same floored matcher regardless of the
+toggle. It only gates power-*pick* pacing in `addPower`. `collectRespecDemands` is reached only
+when `build.slotOrder` is completely empty — a state that dies the instant the user places their
+first slot, since `addSlot` always appends an entry. So "respec mode" is not a sustained,
+selectable planning state; it is dead code within one click, in every real session.
+
+**Verification.** Three sources, because the first two turned out not to be trustworthy:
+
+1. *The true HC schedule*, decoded from `exported_powers/leveling_schedule.json`'s
+   `assignable_boost` array in the canonical repo (source of truth per Rule 0) — confirmed self-
+   consistent against the well-known real power-pick levels (1×2, then 2, 4, 6, …, 49). It grants
+   67 slots at 27 levels and issues 0 at level 49 itself (nearest are 48 and 50), so the beta's
+   `slotGrants` table is not the bug.
+2. *Mids Reborn's own source* (vendored at `MidsReborn-master/`) — a plausible second oracle that
+   turned out to be a flawed one. `PowerEntry.AddSlot`, which backs the live "+" click, checks only
+   a local `Slots.Length > 5` cap — no global schedule check at all. A separate function,
+   `RearrangeAllSlotsInBuild` (wired to an "Auto-Arrange All Slots" menu item and to build-open
+   validation, not to live editing), does walk the true schedule — a single shared cursor over
+   powers sorted by pick level ascending, no re-housing, displaying `grant - 1`. Because the live
+   editor and the validator disagree, Mids will happily let a user build an arrangement — verified
+   by exporting one and importing it here — that the true 67-slot schedule cannot actually support;
+   the beta's importer correctly flagged the un-honorable slots, which is Rule 1 working as
+   designed, not a beta defect. Mids is a per-slot-floor tool with no supply check; it does not
+   model true respec either, and its numbers cannot be used to validate this fix.
+3. *The actual game client's respec wizard* — the real oracle. A "Choose All Enhancement Slots"
+   screen at Current Respec Level 49 shows every power in the build, including one picked at level
+   49, already holding 5 of 6 slots. A respec hands the player their full earned budget as one
+   freely assignable pool; the only constraint is the flat 6-per-power cap. No pick-level floor
+   exists in the real mechanic at all.
+
+**Blast radius.** Four call-site families, all reading the same floor:
+
+| Family | Call sites | What's wrong in free-form planning |
+|---|---|---|
+| Add a slot | `canAddSlot`/`addSlot` | Refuses past what the dated schedule allows a late power, regardless of unspent budget |
+| Relocate a slot to another power | `canRelocateSlot`/`moveSlot` | Same floor via `relocatedGrantLevel` |
+| Swap which slot shows which level | `canMoveSlotLevel`/`moveSlotLevel` | Operates on a concept (dated levels) that shouldn't exist in this mode |
+| Display | `useSlotLevels` → `ChronologicalPowerSlot`, `SelectedPowers`, `PoolPowers`, `ChronologicalInherentsSection`, `EnhancementInfoContent`, `TouchableSlot` | Shows a "Slotted at Lvl N" badge (`showSlotLevels`, on by default) computed by a solver answering a question that has no real answer outside leveling mode |
+| Export | `mids-export.ts`, `forum-export.ts`, `export-print.ts` | Print a level per slot; `mids-export.ts` already falls back to `power.level` on `null` (`Level: levels?.[index] ?? power.level`) — a smaller, unflagged instance of the exact fabrication SLOT-1 was fixed to stop |
+
+**Severity.** High, and higher than SLOT-1/SLOT-2 by exposure: `levelUpMode: false` is the initial
+state (`uiStore.ts:1040`), so this is not an edge case — it is the default experience for every
+build that isn't deliberately walked level by level.
+
+**Fix.** Gate the floor on `levelUpMode`, not on whether
+`slotOrder` happens to be empty:
+
+- **`levelUpMode` off (default):** no per-slot level exists. Eligibility is `power.maxSlots` +
+  `getTotalSlotsAtLevel(build.level)` only — the same shape the Dioxus rebuild already uses
+  (verified independently: it 6-slotted a level-30-picked power at build level 50 with no
+  resistance, because it never modeled a per-slot grant level to begin with). `showSlotLevels` has
+  nothing to display; `canMoveSlotLevel`/`moveSlotLevel` have nothing to operate on. Mids/print/
+  forum exports still need *some* number per slot for interop — reuse the existing optimal packer
+  as an export-only synthetic assignment, never surfaced to the user as a claim about their
+  planning history (better than today's `power.level` fallback, but the same spirit: a legal
+  assignment, clearly not a record of anything that happened).
+- **`levelUpMode` on:** unchanged — today's dated-grant matcher, stored preferences, level-swap
+  control, display, all exactly as they are.
+
+**Decided** (2026-09-02), before implementation:
+
+1. `addSlot` keeps writing a `slotOrder` entry while `levelUpMode` is off — just with no `level`
+   field. Nearly free to keep doing, and it preserves click order, which is the one thing free
+   mode still has for question 2 to backfill from. The alternative (write nothing) leaves a
+   free-slotted build with no ordering information at all if the user later switches modes.
+2. Toggling *into* Level Up mode mid-build backfills rather than refuses — the same solver
+   (`assignGrants`) already used for SLOT-1/2 recovery, run over `slotOrder` as it stands: entries
+   from an earlier leveling session already carry a real level and seed the matching, question 1's
+   level-less entries feed in as unpreferenced demands in append order, and anything the schedule
+   genuinely cannot serve comes back `null` and renders red — the existing unhonorable-slot path,
+   not a new one. Every other migration in this codebase (Mids import, rehydrate, SLOT-1/2 itself)
+   backfills and flags rather than blocking the user, and this follows that precedent rather than
+   adding the first hard refusal.
+3. `showSlotLevels` is hidden (or shown disabled, with a tooltip) while `levelUpMode` is off, and
+   no level badge renders in that mode regardless of the stored setting — there is nothing real to
+   show, and a live toggle risks a stale badge from a prior leveling session reading as current.
+4. The Mids-export synthetic level (the optimal packer's answer, not a claim about real history)
+   ships with a one-line advisory in the export flow — once per export, not per slot — rather than
+   silence (the SLOT-1 failure mode) or blocking the export outright.
+
+**Guard:** `src/utils/slot-allocation.test.ts`, `src/utils/slot-levels-move.test.ts`,
+`src/utils/slot-move.test.ts`. Full suite green (2399 passing, 2 skipped).

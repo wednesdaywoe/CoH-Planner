@@ -159,7 +159,7 @@
       "path": "docs/CONTROL-SURFACE-INVENTORY.md",
       "status": "per-repo",
       "sha256": {
-        "canonical": "7b8375d1c130d6549aa5349ddd8fb6cf473cf2cd3b7d461de1bd69beada8208f",
+        "canonical": "d0f72fab1e5cc6598606202d3e66c15c5dc78b8d070d51a861334399df9c684a",
         "beta": "dc8d2ff5c7a6f739fd5ebb34773c6bb641dd02a9003af760f7af15006e9db867"
       },
       "reason": "Two censuses of two different applications that share a name and an appendix. Canonical's is the REBUILD's inventory — every menu, popover and control row in the Dioxus app, written to answer one question (what rule decides which surface a new setting goes to), with the beta enumerated as the comparison baseline in an appendix. Beta's copy is that appendix alone. Converging them means one repo carrying an inventory of an app it is not: the 135 lines above canonical's appendix name Dioxus components beta does not have, and beta's own enumeration is the thing canonical is measuring itself AGAINST, so it cannot be dropped there either. The shared appendix text drifts in citation style only (canonical cites paths as code spans, beta as markdown links), which is a document each repo renders its own way rather than a pipeline behaviour, so nothing downstream reads either file.",
@@ -170,7 +170,7 @@
       "path": "docs/DATA-GAP-REGISTER.md",
       "status": "forked",
       "sha256": {
-        "canonical": "e14b4b72a35a44dd8b13df38dfe3f7043272b299a30a7ae61fde3d7c6d7f9cc4",
+        "canonical": "b3cee7dee452a2cb1b79a69fd0097bba25e7dfb57b42a052b52642aa2887a5e0",
         "beta": "4ed9208b0a77447bca3de4e35e956e7208bdc4392f1b0159cb9e710a7f53444d"
       },
       "reason": "canonical's register carries the STRIP-1 burn-down (KB-INFO row, lint trims, closure narratives) the beta's copy lacks; beta's copy is the pre-migration register.",
@@ -389,7 +389,7 @@
       "path": "scripts/convert-powerset.cjs",
       "status": "forked",
       "sha256": {
-        "canonical": "894fa7ef1f0c92af45de70e4e9cae60d4ed063dbc4269f91cf0994ce8b8ac56c",
+        "canonical": "024ded8861eef200efdced51840a1bb0ef1a3cda8e1416e02ca84b9a6bfe4d0d",
         "beta": "d632e330d0d2051629a46b4b80cfc326ca9fa91e05037b841937b06a8ce9236f"
       },
       "reason": "STRIP-1/ENT-22 migration changed canonical's converter (bag strip, pet-parameter hoist); beta's copy is pre-strip and stays until the converter mirror carries the migration across.",
@@ -420,7 +420,7 @@
       "path": "scripts/dsh6-collapse-detector.cjs",
       "status": "forked",
       "sha256": {
-        "canonical": "f81d5c991635b24e6ce7e109f00623837698de9ab1aadd52d54296768a5e8665",
+        "canonical": "accf287e5e463f4f7e906c0b0a01c6359f64431f91396cb3887846b9255abc34",
         "beta": "14d94396a8dae0388f3e0e1fb32d5dabb3a2e9542158454805aa93065b443321"
       },
       "reason": "STRIP-1/ENT-22 migration changed canonical's converter (bag strip, pet-parameter hoist); beta's copy is pre-strip and stays until the converter mirror carries the migration across.",
@@ -518,7 +518,7 @@
       "path": "scripts/validate-converter-output.cjs",
       "status": "forked",
       "sha256": {
-        "canonical": "81e255c47192620b7e264e1c5d7ea73a5733f042c2e1d9ac46668e8ac930b30f",
+        "canonical": "5e9d132caafda92e2a88a6dc7732f33ff9411fcf1cbfaee6c26d49006e8029c2",
         "beta": "c048d77f1747cae261d45909d1617ebbaad05f76b48adc495585029d70162d42"
       },
       "reason": "STRIP-1/ENT-22 migration changed canonical's converter (bag strip, pet-parameter hoist); beta's copy is pre-strip and stays until the converter mirror carries the migration across.",
@@ -647,8 +647,14 @@
     },
     {
       "path": "src/utils/mids-import/importer.ts",
-      "status": "identical",
-      "sha256": "8b88d0b998ae8f354bb9126802f7ed79b6519a4676fef7afb2752e1c8c1530e5"
+      "status": "forked",
+      "sha256": {
+        "canonical": "8b88d0b998ae8f354bb9126802f7ed79b6519a4676fef7afb2752e1c8c1530e5",
+        "beta": "b286a85db96c9f7f419846c6c73714ddd6961b9321c6c89c78708bdb91765f23"
+      },
+      "reason": "SLOT-3: beta's import call now passes ensureSlotOrderPopulated a live levelUpMode flag (false here — this pure parser has no store access, so the store's own importMidsBuild action re-runs the call against the real mode right after) so off-mode slot placement stops enforcing a pick-level schedule floor. Canonical's copy still calls the one-arg form; canonical's slot-levels.ts has no levelUpMode parameter to receive it.",
+      "exit": "canonical's own TS import tooling adopts the same levelUpMode-aware call (or a maintainer confirms it doesn't need SLOT-3's fix), then a --write carries the converged hash across. sync:shared only flows canonical to beta and refuses to clobber a beta-authored edit, so this side won't converge on its own.",
+      "gap": "SLOT-3"
     },
     {
       "path": "src/utils/mids-import/index.ts",

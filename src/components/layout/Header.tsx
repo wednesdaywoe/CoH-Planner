@@ -362,6 +362,7 @@ function LevelUpModeButton() {
   const toggleLevelUpMode = useUIStore((s) => s.toggleLevelUpMode);
   const build = useBuildStore((s) => s.build);
   const setLevel = useBuildStore((s) => s.setLevel);
+  const freezeSlotLevelsForLevelUpMode = useBuildStore((s) => s.freezeSlotLevelsForLevelUpMode);
 
   const level = build.level;
   const picksUsed = countManualPowerPicks(build);
@@ -391,8 +392,15 @@ function LevelUpModeButton() {
   // When enabling Level Up mode, clamp `build.level` down to the user's actual
   // progression level so they can't pre-pay picks/slots from a higher level
   // they reached before enabling the mode. Disabling the mode leaves level alone.
+  //
+  // Also freeze real grant levels onto any slot placed while the mode was off
+  // (SLOT-3) — a build planned free-form has no leveling order yet, and this
+  // is the moment one becomes meaningful. Order matters here: freeze while the
+  // level (and so the grant pool) still reflects what the user actually built,
+  // before the clamp above narrows it.
   const handleToggle = () => {
     if (!levelUpMode) {
+      freezeSlotLevelsForLevelUpMode();
       const progression = getProgressionLevel(picksUsed, slotsUsed, build.serverId);
       if (progression < level) setLevel(progression);
     }
@@ -1148,6 +1156,7 @@ function SettingsPopover() {
   const levelShiftIndex = Math.max(0, levelShiftPrefixes.filter((prefix) => prefix <= levelShiftApplied).length - 1);
   const showSlotLevels = useUIStore((s) => s.showSlotLevels);
   const toggleShowSlotLevels = useUIStore((s) => s.toggleShowSlotLevels);
+  const levelUpModeForSlotLevels = useUIStore((s) => s.levelUpMode);
   const showProcPotential = useUIStore((s) => s.showProcPotential);
   const toggleShowProcPotential = useUIStore((s) => s.toggleShowProcPotential);
   const exemplarMode = useUIStore((s) => s.exemplarMode);
@@ -1393,13 +1402,20 @@ function SettingsPopover() {
           {/* Toggles */}
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <Tooltip content="Show/hide slot level labels on enhancement slots">
+              <Tooltip
+                content={
+                  levelUpModeForSlotLevels
+                    ? 'Show/hide slot level labels on enhancement slots'
+                    : 'Slot levels only apply in Level Up mode — a freely planned build has no leveling order to label'
+                }
+              >
                 <Toggle
                   id="slot-levels-toggle"
                   name="showSlotLevels"
-                  checked={showSlotLevels}
+                  checked={levelUpModeForSlotLevels && showSlotLevels}
                   onChange={toggleShowSlotLevels}
                   label="Slot Levels"
+                  disabled={!levelUpModeForSlotLevels}
                 />
               </Tooltip>
             </div>

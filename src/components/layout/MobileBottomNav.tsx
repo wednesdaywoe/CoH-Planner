@@ -433,6 +433,7 @@ function MobileSettingsContent() {
   const toggleUseArcanaTime = useUIStore((s) => s.toggleUseArcanaTime);
   const showSlotLevels = useUIStore((s) => s.showSlotLevels);
   const toggleShowSlotLevels = useUIStore((s) => s.toggleShowSlotLevels);
+  const levelUpMode = useUIStore((s) => s.levelUpMode);
   const showProcPotential = useUIStore((s) => s.showProcPotential);
   const toggleShowProcPotential = useUIStore((s) => s.toggleShowProcPotential);
   const targetLevelOffset = useUIStore((s) => s.targetLevelOffset);
@@ -530,7 +531,12 @@ function MobileSettingsContent() {
         <ToggleRow label="In-Combat mode" checked={combatMode} onChange={toggleCombatMode} />
         <ToggleRow label="Include procs in DPS" checked={includeProcs} onChange={toggleIncludeProcs} />
         <ToggleRow label="Use ArcanaTime" checked={useArcanaTime} onChange={toggleUseArcanaTime} />
-        <ToggleRow label="Show slot levels" checked={showSlotLevels} onChange={toggleShowSlotLevels} />
+        <ToggleRow
+          label="Show slot levels"
+          checked={levelUpMode && showSlotLevels}
+          onChange={toggleShowSlotLevels}
+          disabled={!levelUpMode}
+        />
         <ToggleRow label="Proc potential badges" checked={showProcPotential} onChange={toggleShowProcPotential} />
       </div>
 
@@ -585,16 +591,27 @@ function Field({ label, children }: { label: string; children: ReactNode }) {
   );
 }
 
-function ToggleRow({ label, checked, onChange }: { label: string; checked: boolean; onChange: () => void }) {
+function ToggleRow({
+  label,
+  checked,
+  onChange,
+  disabled,
+}: {
+  label: string;
+  checked: boolean;
+  onChange: () => void;
+  disabled?: boolean;
+}) {
   return (
     <div className="flex items-center justify-between">
-      <span className="text-sm text-slate-200">{label}</span>
+      <span className={`text-sm ${disabled ? 'text-slate-500' : 'text-slate-200'}`}>{label}</span>
       <Toggle
         id={`mobile-toggle-${label.replace(/\s+/g, '-').toLowerCase()}`}
         name={label}
         checked={checked}
         onChange={onChange}
         label=""
+        disabled={disabled}
       />
     </div>
   );

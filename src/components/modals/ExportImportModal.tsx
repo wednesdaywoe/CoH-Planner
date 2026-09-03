@@ -47,6 +47,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
   // saying so, so the only place the user can learn the file is short is here.
   const [midsExportWarnings, setMidsExportWarnings] = useState<MidsExportWarning[]>([]);
   const requestedTab = useUIStore((s) => s.exportImportModalTab);
+  const levelUpMode = useUIStore((s) => s.levelUpMode);
 
   // Sync tab when modal opens with a specific tab requested
   useEffect(() => {
@@ -1627,12 +1628,19 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
             ) : (
               /* Export Utilities */
               <div className="space-y-4">
+                {!levelUpMode && (
+                  <p className="text-[11px] text-amber-400/90 bg-amber-400/10 border border-amber-400/20 rounded px-2 py-1.5">
+                    This build wasn't planned in a specific leveling order, so the slot levels in
+                    the Mids export and print sheet below are a computed placement, not your
+                    actual leveling history.
+                  </p>
+                )}
                 <div className="flex gap-3">
                   <Button
                     variant="secondary"
                     size="sm"
                     onClick={() => {
-                      const { json, warnings } = exportToMidsWithReport(build);
+                      const { json, warnings } = exportToMidsWithReport(build, levelUpMode);
                       setMidsExportWarnings(warnings);
                       const blob = new Blob([json], { type: 'application/json' });
                       const url = URL.createObjectURL(blob);
@@ -1654,7 +1662,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                   <Button
                     variant="secondary"
                     size="sm"
-                    onClick={() => { openPrintView(build); handleClose(); }}
+                    onClick={() => { openPrintView(build, levelUpMode); handleClose(); }}
                     className="flex-1"
                   >
                     Print Build

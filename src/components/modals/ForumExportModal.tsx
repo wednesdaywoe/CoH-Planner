@@ -6,7 +6,7 @@
  * the forum's WYSIWYG link tag rather than have it embedded inline.
  */
 import { useEffect, useMemo, useState } from 'react';
-import { useBuildStore, useAuthStore } from '@/stores';
+import { useBuildStore, useAuthStore, useUIStore } from '@/stores';
 import type { BuildExport } from '@/types/build';
 import { quickShareBuild } from '@/services/sharedBuilds';
 import { Modal, ModalBody, ModalFooter } from './Modal';
@@ -31,6 +31,7 @@ export function ForumExportModal({ isOpen, onClose }: ForumExportModalProps) {
   const build = useBuildStore((s) => s.build);
   const exportBuild = useBuildStore((s) => s.exportBuild);
   const user = useAuthStore((s) => s.user);
+  const levelUpMode = useUIStore((s) => s.levelUpMode);
 
   const [format, setFormat] = useState<ForumExportFormat>('plain');
   const [includeIncarnates, setIncludeIncarnates] = useState(true);
@@ -48,8 +49,8 @@ export function ForumExportModal({ isOpen, onClose }: ForumExportModalProps) {
   }, [isOpen]);
 
   const output = useMemo(
-    () => generateForumExport(build, format, { includeIncarnates, includeSetBonuses }),
-    [build, format, includeIncarnates, includeSetBonuses],
+    () => generateForumExport(build, format, levelUpMode, { includeIncarnates, includeSetBonuses }),
+    [build, format, levelUpMode, includeIncarnates, includeSetBonuses],
   );
 
   const handleCopyText = async () => {
@@ -152,6 +153,13 @@ export function ForumExportModal({ isOpen, onClose }: ForumExportModalProps) {
               Include incarnates
             </label>
           </div>
+
+          {!levelUpMode && (
+            <p className="text-[11px] text-amber-400/90 bg-amber-400/10 border border-amber-400/20 rounded px-2 py-1.5">
+              This build wasn't planned in a specific leveling order, so the slot levels below are
+              a computed placement, not your actual leveling history.
+            </p>
+          )}
 
           {/* Preview */}
           <div>

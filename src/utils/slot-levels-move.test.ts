@@ -62,11 +62,11 @@ describe('slot-level move — Homecoming', () => {
     const src = { powerName: 'Alpha', slotIndex: 1, category: 'primary' as const };
     const tgt = { powerName: 'Beta', slotIndex: 1, category: 'primary' as const };
 
-    expect(canMoveSlotLevel(b, src, tgt)).toBe(true);
-    const moved = applySlotLevelMove(b, src, tgt);
+    expect(canMoveSlotLevel(b, src, tgt, true)).toBe(true);
+    const moved = applySlotLevelMove(b, src, tgt, true);
     expect(moved).not.toBeNull();
 
-    const after = computeAllSlotLevels(moved!);
+    const after = computeAllSlotLevels(moved!, true);
     expect(after.get(KEY('Alpha'))![1]).toBe(9); // got Beta's level
     expect(after.get(KEY('Beta'))![1]).toBe(5); // got Alpha's level
     expect(after.get(KEY('Alpha'))![2]).toBe(7); // untouched peer slot
@@ -86,7 +86,8 @@ describe('slot-level move — Homecoming', () => {
     const moved = applySlotLevelMove(
       b,
       { powerName: 'Alpha', slotIndex: 1, category: 'primary' },
-      { powerName: 'Beta', slotIndex: 1, category: 'primary' }
+      { powerName: 'Beta', slotIndex: 1, category: 'primary' },
+      true
     );
     expect(moved).not.toBeNull();
 
@@ -104,8 +105,8 @@ describe('slot-level move — Homecoming', () => {
     const src = { powerName: 'Low', slotIndex: 1, category: 'primary' as const };
     const tgt = { powerName: 'High', slotIndex: 1, category: 'primary' as const };
     // Low's level-5 slot can't move onto High (pick level 20).
-    expect(canMoveSlotLevel(b, src, tgt)).toBe(false);
-    expect(applySlotLevelMove(b, src, tgt)).toBeNull();
+    expect(canMoveSlotLevel(b, src, tgt, true)).toBe(false);
+    expect(applySlotLevelMove(b, src, tgt, true)).toBeNull();
   });
 
   it('rejects the free base slot (index 0) as either endpoint', () => {
@@ -117,7 +118,8 @@ describe('slot-level move — Homecoming', () => {
       canMoveSlotLevel(
         b,
         { powerName: 'Alpha', slotIndex: 0, category: 'primary' },
-        { powerName: 'Beta', slotIndex: 1, category: 'primary' }
+        { powerName: 'Beta', slotIndex: 1, category: 'primary' },
+        true
       )
     ).toBe(false);
     expect(isMovableSlot(b, { powerName: 'Alpha', slotIndex: 0, category: 'primary' })).toBe(false);
@@ -127,12 +129,15 @@ describe('slot-level move — Homecoming', () => {
   it('rejects moving a slot onto itself', () => {
     const b = makeBuild([pow('Alpha', 1, 2)], [entry('Alpha', 1, 5)]);
     const same = { powerName: 'Alpha', slotIndex: 1, category: 'primary' as const };
-    expect(canMoveSlotLevel(b, same, same)).toBe(false);
+    expect(canMoveSlotLevel(b, same, same, true)).toBe(false);
   });
 
-  it('works from respec mode (empty slotOrder) by freezing levels first', () => {
+  it('works from respec-computed levels (empty slotOrder) by freezing levels first', () => {
+    // "Respec mode" here means `computeSlotLevelsRespec` — an empty `slotOrder`
+    // within Level Up mode — not SLOT-3's `levelUpMode: false`. This test stays
+    // on `levelUpMode: true` throughout to exercise that internal path.
     const b = makeBuild([pow('Alpha', 1, 3), pow('Beta', 1, 2)], []);
-    const before = computeAllSlotLevels(b);
+    const before = computeAllSlotLevels(b, true);
     const beforeAlpha1 = before.get(KEY('Alpha'))![1];
     const beforeBeta1 = before.get(KEY('Beta'))![1];
     expect(beforeAlpha1).not.toBe(beforeBeta1); // distinct so the swap is observable
@@ -140,12 +145,13 @@ describe('slot-level move — Homecoming', () => {
     const moved = applySlotLevelMove(
       b,
       { powerName: 'Alpha', slotIndex: 1, category: 'primary' },
-      { powerName: 'Beta', slotIndex: 1, category: 'primary' }
+      { powerName: 'Beta', slotIndex: 1, category: 'primary' },
+      true
     );
     expect(moved).not.toBeNull();
     expect(moved!.slotOrder.length).toBeGreaterThan(0); // frozen
 
-    const after = computeAllSlotLevels(moved!);
+    const after = computeAllSlotLevels(moved!, true);
     expect(after.get(KEY('Alpha'))![1]).toBe(beforeBeta1);
     expect(after.get(KEY('Beta'))![1]).toBe(beforeAlpha1);
   });
@@ -159,10 +165,11 @@ describe('slot-level move — Homecoming', () => {
     const moved = applySlotLevelMove(
       b,
       { powerName: 'Alpha', slotIndex: 1 },
-      { powerName: 'Beta', slotIndex: 1 }
+      { powerName: 'Beta', slotIndex: 1 },
+      true
     );
     expect(moved).not.toBeNull();
-    const after = computeAllSlotLevels(moved!);
+    const after = computeAllSlotLevels(moved!, true);
     expect(after.get(KEY('Alpha'))![1]).toBe(9);
     expect(after.get(KEY('Beta'))![1]).toBe(5);
   });

@@ -5,6 +5,7 @@ import { describe, it, expect, beforeAll } from 'vitest';
 import { loadDataset } from '@/data/dataset';
 import { createEmptyBuild } from '@/types/build';
 import { useBuildStore } from '@/stores/buildStore';
+import { useUIStore } from '@/stores/uiStore';
 import { canRelocateSlot } from './slot-levels';
 import { enhancementAllowedInPower } from './enhancement-eligibility';
 
@@ -104,29 +105,32 @@ describe('canRelocateSlot', () => {
       [pow('Alpha', [null, genericIO('Recharge')]), pow('Beta', [null])],
       [entry('Alpha', 1, 5)]
     );
-    expect(canRelocateSlot(b, { powerName: 'Alpha', slotIndex: 1, category: 'primary' }, { powerName: 'Beta', category: 'primary' })).toBe(true);
+    expect(canRelocateSlot(b, { powerName: 'Alpha', slotIndex: 1, category: 'primary' }, { powerName: 'Beta', category: 'primary' }, true)).toBe(true);
   });
 
   it('rejects moving the free base slot (index 0)', () => {
     const b = makeBuild([pow('Alpha', [null]), pow('Beta', [null])], []);
-    expect(canRelocateSlot(b, { powerName: 'Alpha', slotIndex: 0, category: 'primary' }, { powerName: 'Beta', category: 'primary' })).toBe(false);
+    expect(canRelocateSlot(b, { powerName: 'Alpha', slotIndex: 0, category: 'primary' }, { powerName: 'Beta', category: 'primary' }, true)).toBe(false);
   });
 
   it('rejects relocating onto the same power', () => {
     const b = makeBuild([pow('Alpha', [null, null])], [entry('Alpha', 1, 5)]);
-    expect(canRelocateSlot(b, { powerName: 'Alpha', slotIndex: 1, category: 'primary' }, { powerName: 'Alpha', category: 'primary' })).toBe(false);
+    expect(canRelocateSlot(b, { powerName: 'Alpha', slotIndex: 1, category: 'primary' }, { powerName: 'Alpha', category: 'primary' }, true)).toBe(false);
   });
 
   it('rejects a full target (slots.length >= maxSlots)', () => {
     const full = pow('Beta', [null, null, null, null, null, null], { maxSlots: 6 });
     const b = makeBuild([pow('Alpha', [null, genericIO('Recharge')]), full], [entry('Alpha', 1, 5)]);
-    expect(canRelocateSlot(b, { powerName: 'Alpha', slotIndex: 1, category: 'primary' }, { powerName: 'Beta', category: 'primary' })).toBe(false);
+    expect(canRelocateSlot(b, { powerName: 'Alpha', slotIndex: 1, category: 'primary' }, { powerName: 'Beta', category: 'primary' }, true)).toBe(false);
   });
 });
 
 describe('moveSlot store action (homecoming)', () => {
   beforeAll(async () => {
     await loadDataset('homecoming');
+    // SLOT-3: the store action reads live Level Up mode; these tests pin its
+    // schedule-aware (on) behavior.
+    useUIStore.setState({ levelUpMode: true });
   });
 
   const seed = (beta: ReturnType<typeof pow>) => {

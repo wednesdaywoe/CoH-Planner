@@ -695,7 +695,12 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
   // interaction flips slot-level computation into leveling mode with only
   // the touched entry recorded — every other slot collapses to its power's
   // pick level. See `ensureSlotOrderPopulated` for the full diagnosis.
-  ensureSlotOrderPopulated(build);
+  //
+  // This pure parser has no store access and so no opinion on Level Up mode
+  // (SLOT-3) — `false` here is a permanent no-op; the store's own
+  // `importMidsBuild` action re-runs this same call against the live mode
+  // right after, which is the one that can actually populate real levels.
+  ensureSlotOrderPopulated(build, false);
 
   // Counted from the finished build rather than tallied on the way in, so the number the
   // import dialog reports and the number the dashboard's Pwr chip reports are the same

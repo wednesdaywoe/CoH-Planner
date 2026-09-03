@@ -12,7 +12,7 @@ import type { Enhancement } from '@/types/enhancement';
 import type { IncarnateBuildState } from '@/types/incarnate';
 import { INCARNATE_SLOT_ORDER } from '@/types';
 import { calculateCharacterTotals, type GlobalBonuses } from '@/utils/calculations/character-totals';
-import { computeAllSlotLevels, type SlotLevel } from '@/utils/slot-levels';
+import { computeExportSlotLevels, type SlotLevel } from '@/utils/slot-levels';
 import { powerKey, type PowerCategory } from '@/utils/power-key';
 import { getIOSet } from '@/data';
 
@@ -328,10 +328,13 @@ function buildIncarnateHTML(incarnates: IncarnateBuildState | undefined): string
 // MAIN GENERATOR
 // ============================================
 
-export function generatePrintHTML(build: Build): string {
+export function generatePrintHTML(build: Build, levelUpMode: boolean): string {
   const result = calculateCharacterTotals(build);
   const g = result.globalBonuses;
-  const slotLevels = computeAllSlotLevels(build);
+  // Outside Level Up mode a slot carries no real level (SLOT-3); this is a
+  // synthetic, schedule-legal placement for the printed sheet, not a claim
+  // about the build's actual leveling history.
+  const slotLevels = computeExportSlotLevels(build, levelUpMode);
 
   // Build all powerset sections as individual blocks for the column flow
   const allPowersetSections: string[] = [];
@@ -554,8 +557,8 @@ export function generatePrintHTML(build: Build): string {
 /**
  * Open the print HTML in a new browser tab
  */
-export function openPrintView(build: Build): void {
-  const html = generatePrintHTML(build);
+export function openPrintView(build: Build, levelUpMode: boolean): void {
+  const html = generatePrintHTML(build, levelUpMode);
   const blob = new Blob([html], { type: 'text/html' });
   const url = URL.createObjectURL(blob);
   window.open(url, '_blank');

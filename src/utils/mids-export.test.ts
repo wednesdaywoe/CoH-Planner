@@ -78,7 +78,7 @@ describe('mids-export powerset paths', () => {
   beforeAll(async () => { await loadDataset('homecoming'); }, 120000);
 
   it('strips the .ico extension from powerset icons (thermal/water defender)', () => {
-    const mbd = JSON.parse(exportToMids(buildFor('defender/thermal-radiation', 'defender/water-blast')));
+    const mbd = JSON.parse(exportToMids(buildFor('defender/thermal-radiation', 'defender/water-blast'), true));
     // Second segment must be the bare Mids internal name, no extension, no "_set".
     expect(mbd.PowerSets[0]).toBe('Defender_Buff.Thermal_Radiation');
     expect(mbd.PowerSets[1]).toBe('Defender_Ranged.Water_Blast');
@@ -92,7 +92,7 @@ describe('mids-export powerset paths', () => {
   it('still works for .png icons', () => {
     // Force a .png icon through the same path (future-proofing against
     // datasets that keep .png icons).
-    const mbd = JSON.parse(exportToMids(buildFor('defender/thermal-radiation', 'defender/water-blast')));
+    const mbd = JSON.parse(exportToMids(buildFor('defender/thermal-radiation', 'defender/water-blast'), true));
     expect(mbd.PowerSets[0]).not.toMatch(/\.png/);
     expect(mbd.PowerSets[0]).not.toMatch(/\.ico/);
   });
@@ -156,7 +156,7 @@ describe('mids-export enhancement UIDs', () => {
         for (const set of Object.values(getAllIOSets())) {
           for (const [index, piece] of set.pieces.entries()) {
             const enh = createIOSetEnhancement(set, piece, index, { attuned: false, level: 50 });
-            const mbd = JSON.parse(exportToMids(buildWithSlot(enh)));
+            const mbd = JSON.parse(exportToMids(buildWithSlot(enh), true));
             const uid = firstSlottedUid(mbd);
             if (!uid || !known.has(uid)) missing.push(`${set.id} piece ${piece.num}`);
           }
@@ -167,7 +167,7 @@ describe('mids-export enhancement UIDs', () => {
       it('names every common IO with a UID Mids has', () => {
         const known = knownUids();
         const missing = COMMON_IO_TYPES.filter((stat) => {
-          const uid = firstSlottedUid(JSON.parse(exportToMids(buildWithSlot(createGenericIOEnhancement(stat, 50)))));
+          const uid = firstSlottedUid(JSON.parse(exportToMids(buildWithSlot(createGenericIOEnhancement(stat, 50)), true)));
           return !uid || !known.has(uid);
         });
         expect(missing).toEqual([]);
@@ -179,7 +179,7 @@ describe('mids-export enhancement UIDs', () => {
         for (const category of ['hamidon', 'titan', 'hydra', 'd-sync'] as const) {
           for (const [id, def] of Object.entries(getSpecialRegistry(category))) {
             const enh = createSpecialEnhancement(id, def, category);
-            const uid = firstSlottedUid(JSON.parse(exportToMids(buildWithSlot(enh))));
+            const uid = firstSlottedUid(JSON.parse(exportToMids(buildWithSlot(enh), true)));
             if (!uid || !known.has(uid)) missing.push(`${category}/${id}`);
           }
         }
@@ -206,7 +206,7 @@ describe('mids-export → mids-import round trip', () => {
     for (const set of Object.values(getAllIOSets())) {
       for (const [index, piece] of set.pieces.entries()) {
         const enh = createIOSetEnhancement(set, piece, index, { attuned: false, level: 50 });
-        const uid = firstSlottedUid(JSON.parse(exportToMids(buildWithSlot(enh))));
+        const uid = firstSlottedUid(JSON.parse(exportToMids(buildWithSlot(enh), true)));
         if (!uid) continue;
         const back = resolveMidsUid(uid);
         if (back?.setId !== (set.id ?? '').replace(/-/g, '') || back?.pieceNum !== piece.num) {
@@ -250,7 +250,7 @@ describe('mids-export regression: therm/water defender', () => {
   function exported() {
     const raw = readFileSync(new URL('./mids-fixtures/therm-water-defender.skif', import.meta.url), 'utf8');
     const build = hydrateBuild(JSON.parse(raw).build);
-    const { json, warnings } = exportToMidsWithReport(build);
+    const { json, warnings } = exportToMidsWithReport(build, true);
     return { mbd: JSON.parse(json) as MbdFile, warnings };
   }
 
@@ -369,7 +369,7 @@ describe('mids-export origin enhancements', () => {
     for (const tier of ['TO', 'DO', 'SO'] as const) {
       for (const stat of COMMON_IO_TYPES) {
         const enh = createOriginEnhancement(stat, tier);
-        const mbd = JSON.parse(exportToMids(buildWithSlot(enh)));
+        const mbd = JSON.parse(exportToMids(buildWithSlot(enh), true));
         const uid = firstSlottedUid(mbd);
         if (!uid || !known.has(uid)) missing.push(`${tier} ${stat}`);
       }
@@ -378,7 +378,7 @@ describe('mids-export origin enhancements', () => {
   });
 
   it('carries the tier in Grade, where Mids reads it', () => {
-    const mbd = JSON.parse(exportToMids(buildWithSlot(createOriginEnhancement('Accuracy', 'SO'))));
+    const mbd = JSON.parse(exportToMids(buildWithSlot(createOriginEnhancement('Accuracy', 'SO')), true));
     const slot = mbd.PowerEntries.flatMap((pe: { SlotEntries: unknown[] }) => pe.SlotEntries)
       .find((se: { Enhancement: { Grade: string } | null }) => se.Enhancement)!;
     expect(slot.Enhancement.Grade).toBe('SO');
