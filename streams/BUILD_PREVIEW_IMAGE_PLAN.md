@@ -26,6 +26,22 @@ still unfurls with only the generic site-wide card, leaking nothing per-build.
 
 **satisfied-when:** EMBED1..EMBED6 all `[x]`
 
+**Live verification gap, found and closed 2026-09-03:** first real-world test
+(user's own build, `TIZbOh3wV5`) got the per-build title/description but the
+generic site-wide image — Discord screenshot below. Root cause: the frontend
+half (EMBED2/EMBED3) only ever existed as local commits; the Supabase edge
+functions and the Cloudflare Worker deploy independently of git and were
+already live, but `main` was 8 commits behind `origin/main` (this repo
+deploys the frontend via GitHub Actions on push, per `ARCHITECTURE.md`), so
+the deployed site had no `SharePreviewCapture` and never sent
+`preview_image_base64` at all — title/description still updated because
+`shareBuild()` already sent those fields before this feature existed.
+Pushed (user-approved), confirmed the GitHub Pages deploy succeeded, and
+re-verified end-to-end directly against `coh-sidekick.com` (not just
+`localhost`) — a fresh share now gets a real `preview_image_path` and the
+Worker serves the correct `og:image`. The user's original `TIZbOh3wV5` link
+will pick up an image the next time they re-share/update it.
+
 ## Preconditions
 
 Checked now (cheap, code/DNS-derived):
