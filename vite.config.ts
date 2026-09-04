@@ -60,7 +60,8 @@ const CHANGELOG_DATA = getChangelogData()
  *
  * The security-critical directive is `connect-src`: even if a dependency were
  * compromised, the browser blocks it from exfiltrating the Supabase session
- * token to any host not on this list. `frame-src` allows the in-app
+ * token to any host not on this list. `frame-src` allows this origin itself
+ * (the off-screen share-image capture iframe) plus the in-app
  * "Support Sidekick" donation iframe (Buy Me a Coffee), which is cross-origin
  * and therefore already walled off from this origin's storage by the browser.
  *
@@ -104,8 +105,14 @@ function cspPlugin(): Plugin {
           //   wednesdaywoe.github.io — status banner status.json
           //   ...workers.dev — feedback form endpoint
           `connect-src 'self' https://*.supabase.co wss://*.supabase.co https://*.sentry.io https://wednesdaywoe.github.io https://coh-planner-feedback.wedswoe.workers.dev`,
-          // In-app "Support Sidekick" donation iframe.
-          `frame-src https://buymeacoffee.com https://www.buymeacoffee.com`,
+          // 'self' is the hidden preview-capture iframe: BuildDetailPage frames
+          // this same origin at /?previewCapture=<id> to render a build's share
+          // image off-screen (streams/BUILD_PREVIEW_BACKFILL_PLAN.md, PREVBF7).
+          // It was missing until 2026-09-03, so the on-view backfill worked in
+          // dev — where there is no CSP — and was blocked in production for
+          // every build; only the quick-share path ever wrote an image.
+          // The rest is the in-app "Support Sidekick" donation iframe.
+          `frame-src 'self' https://buymeacoffee.com https://www.buymeacoffee.com`,
           `worker-src 'self'`,
           `manifest-src 'self'`,
           `base-uri 'self'`,
