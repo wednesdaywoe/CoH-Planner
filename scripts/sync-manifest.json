@@ -170,7 +170,7 @@
       "path": "docs/DATA-GAP-REGISTER.md",
       "status": "forked",
       "sha256": {
-        "canonical": "3d08d0f15bcc5939bb26d1011610bc032172dc925cbe1353b0d1ea8874b736ff",
+        "canonical": "2b4a61f16952ec7d8404c949929f2880d737b022243ee0f096f3c2e0f4192993",
         "beta": "4ed9208b0a77447bca3de4e35e956e7208bdc4392f1b0159cb9e710a7f53444d"
       },
       "reason": "canonical's register carries the STRIP-1 burn-down (KB-INFO row, lint trims, closure narratives) the beta's copy lacks; beta's copy is the pre-migration register.",
@@ -382,8 +382,14 @@
     },
     {
       "path": "scripts/convert-pool-powers.cjs",
-      "status": "identical",
-      "sha256": "2aef6b2a8512dc7ea42a68c9f378c7f18820ce1fdae8e55ba2b428595db0b72b"
+      "status": "forked",
+      "sha256": {
+        "canonical": "0cfcc009a4d6007dcd5fa51bc1ce0aa0596cdbd84add13c039eec7dfe7ebb91e",
+        "beta": "2aef6b2a8512dc7ea42a68c9f378c7f18820ce1fdae8e55ba2b428595db0b72b"
+      },
+      "reason": "The writer-side `effects` strip changed canonical's converter (it stops emitting the power-level bag and hands the projection to the two Thunderspy guards as a local); beta's copy is pre-strip and stays until the converter mirror carries the migration across. Same fork, same terms, as its two siblings above.",
+      "exit": "the converter mirror (FORK-3 sync:shared) after the STRIP-1 migration lands on the beta side.",
+      "gap": "STRIP-1"
     },
     {
       "path": "scripts/convert-powerset.cjs",
@@ -431,7 +437,7 @@
       "path": "scripts/dsh6-collapse-worklist.json",
       "status": "forked",
       "sha256": {
-        "canonical": "f609cca8ce2ddffabc4f3330c526be11248f02163609e81e74f9bacf9f827524",
+        "canonical": "499c5f93935b03400efc5e64eddd38335584e81faae7a6e85b7b424ba06f837c",
         "beta": "7d7a7bb2589c9924186584dbce6037422c37c86bfba3af4a45456721a6e4431a"
       },
       "reason": "STRIP-1/ENT-22 migration changed canonical's converter (bag strip, pet-parameter hoist); beta's copy is pre-strip and stays until the converter mirror carries the migration across.",
