@@ -58,6 +58,11 @@
   ],
   "betaOnly": [
     {
+      "path": "scripts/beta-bag-supply-census.cjs",
+      "reason": "BPORT1's measurement, and it can only be taken here: it walks the beta's four generated dataset trees, activates the beta's dataset facade to resolve pet entities, and calls the beta's own buildDisplayEffects / withPseudoPetEffects / getBuffPetSources. Canonical stripped its bag on 2026-09-01 and holds none of those inputs, so a copy there would census an empty shelf. Retires with the port: once BPORT7 lands and the beta's bag is gone, the census has nothing left to count and the file goes with it.",
+      "gap": "STRIP-1"
+    },
+    {
       "path": "scripts/delete-user-shared-builds.ts",
       "reason": "Wired into beta's package.json as delete-user-builds. It cleans up shared builds in beta's Supabase backend, which canonical does not have. Canonical's archived copy was still byte-identical and would have drifted the way its sibling did.",
       "gap": "FORK-2",
