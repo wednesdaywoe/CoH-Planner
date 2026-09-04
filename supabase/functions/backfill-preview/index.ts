@@ -26,9 +26,9 @@ const corsHeaders = {
 // and share-build/index.ts's MAX_PREVIEW_IMAGE_BYTES — Deno functions can't
 // import frontend TS, so these are hand-kept duplicates. Bump every copy
 // together whenever BuildPreviewCard's visual template changes.
-const CURRENT_PREVIEW_TEMPLATE_VERSION = 5;
+const CURRENT_PREVIEW_TEMPLATE_VERSION = 6;
 const PREVIEW_CARD_WIDTH = 1200;
-const PREVIEW_CARD_HEIGHT = 800;
+const PREVIEW_CARD_HEIGHT = 880;
 const MAX_PREVIEW_IMAGE_BYTES = 2 * 1024 * 1024;
 
 const PNG_SIGNATURE = [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a];

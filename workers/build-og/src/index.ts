@@ -42,7 +42,7 @@ const BUILD_PATH = /^\/builds\/([^/]+)\/?$/;
  * The rasterized card's real size. The shell's static og:image:width/height
  * describe the site-wide fallback image (1200×630) and are left alone when
  * this Worker has no per-build image to point at — but once it rewrites
- * og:image they have to move with it, or the tags declare 630 for an 800-tall
+ * og:image they have to move with it, or the tags declare 630 for an 880-tall
  * picture and a crawler lays the embed out against the wrong box.
  *
  * Hand-duplicated from PREVIEW_CARD_WIDTH / PREVIEW_CARD_HEIGHT in
@@ -50,7 +50,7 @@ const BUILD_PATH = /^\/builds\/([^/]+)\/?$/;
  * import from the app's path aliases. Update both.
  */
 const PREVIEW_CARD_WIDTH = 1200;
-const PREVIEW_CARD_HEIGHT = 800;
+const PREVIEW_CARD_HEIGHT = 880;
 
 /**
  * Query suffix that makes the og:image URL change whenever the picture behind

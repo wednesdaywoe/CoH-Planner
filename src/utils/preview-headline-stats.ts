@@ -3,6 +3,12 @@
  * detailed-totals model (`computeAllStats`), by canonical stat id — so the
  * card reads the same source of truth as the dashboard and the Export-as-Image
  * poster instead of re-deriving any number itself.
+ *
+ * Down to three from v5's seven: the five defense/resistance ids that used to
+ * be here moved to the bar matrix (`preview-defres-bars.ts`), which shows all
+ * nineteen of them instead of the two that fit in a tile. What is left is the
+ * set with no useful ceiling to draw a bar against, so a number is the only
+ * rendering — plus Recharge, which the tile row previously had no room for.
  */
 
 import type { StatSection, StatRow } from '@/utils/detailed-totals';
@@ -14,11 +20,7 @@ import type { StatSection, StatRow } from '@/utils/detailed-totals';
 const HEADLINE_STAT_IDS = [
   'health',
   'regeneration',
-  'defense_melee',
-  'defense_ranged',
-  'defense_aoe',
-  'res_smashing',
-  'res_lethal',
+  'recharge',
 ] as const;
 
 export type HeadlineStatId = (typeof HEADLINE_STAT_IDS)[number];

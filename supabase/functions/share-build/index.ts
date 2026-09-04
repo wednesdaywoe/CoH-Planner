@@ -41,7 +41,7 @@ const MAX_PREVIEW_IMAGE_BYTES = 2 * 1024 * 1024;
 // CURRENT_PREVIEW_TEMPLATE_VERSION — Deno functions can't import frontend TS,
 // so this is a hand-kept duplicate. Bump both together whenever that file's
 // visual template changes. See streams/BUILD_PREVIEW_BACKFILL_PLAN.md (PREVBF1).
-const CURRENT_PREVIEW_TEMPLATE_VERSION = 5;
+const CURRENT_PREVIEW_TEMPLATE_VERSION = 6;
 
 /**
  * Best-effort: upload a base64-encoded PNG (from the client's off-screen

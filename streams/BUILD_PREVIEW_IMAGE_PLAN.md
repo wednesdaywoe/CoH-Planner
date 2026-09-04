@@ -135,6 +135,51 @@ Content density is the lever, not type size — a card that must survive a 3×
 downscale can only carry so many legible atoms, and the way to make one bigger
 is to remove another.
 
+**Sixth round, 2026-09-04 (`CURRENT_PREVIEW_TEMPLATE_VERSION` 6), from a user's
+mockup:** the first round that buys density back instead of spending it. Rounds
+three through five all paid the toll above by deleting content — v5 was down to
+six stat tiles and had dropped both resistance rows. Two changes, and they are a
+package rather than two independent edits:
+
+- **Def/res as a bar matrix, not tiles** (`src/utils/preview-defres-bars.ts`).
+  A bar carries its value in length, which survives the downscale that
+  four-digit type does not, so all nineteen defense/resistance values now fit
+  in less card than v5's six tiles spent on six numbers. Nothing is recomputed:
+  both the value and the ceiling to scale it against come off the `StatRow`
+  `computeAllStats` already produces, so the archetype's resistance cap and the
+  context defense softcap arrive from the data rather than a constant.
+  A soft-capped bar draws a track 1.4× the cap with a tick at it, because
+  `stat-caps.ts` is explicit that defense past the softcap is real and
+  load-bearing — clamping the bar would make the card lie about the stat this
+  audience reads first. The tick is 2px of near-white; a 1px 40%-opacity rule
+  vanished entirely at embed scale in the first render.
+- **Powers in Mids pick order, 8 to a column.** A build is at most 24 picks, so
+  three columns of eight is exact — no wrapping and no overflow case, and the
+  column break lands on a pick boundary. Reading down a column reads up the
+  levels, so the card now shows what was taken *and when*. What pays for it is
+  laying each power's slots horizontally beside its icon instead of stacked
+  underneath: measured, a row went from ~131px to 46px, and eight stacked rows
+  (1048px) do not fit in any card under Discord's 4:3 turn. Plus a row of
+  inherents, selected by `getSlottedInherents` — having something slotted, not
+  by name, so a Celerity in Sprint shows and Rule 0 keeps power names out of
+  the conditional.
+
+Card grew 800 → 880 to seat the grid, still under the ~900 (4:3) point where
+Discord starts fitting to height. `PREVIEW_CARD_HEIGHT` has three hand-kept
+copies — the card, `backfill-preview`, and the **build-og Worker**, whose
+og:image:height tag has to move with it or crawlers lay the embed out against
+the wrong box.
+
+Measured rather than eyeballed, per the round-two lesson: content height against
+card height and each column's last row against the grid's bottom edge
+(`getBoundingClientRect`), on a real level-50 24-pick build — 20px of margin, no
+clipping — then read back at 400px and 320px. Known residual: the single-letter
+bar labels are ~6px at 400px and are not readable there. They are kept anyway —
+they cost only width, which the three-column layout has spare, and they resolve
+when a viewer opens the image — but the glance-level reading is carried by the
+block shapes and the two hues, not by the letters. **Still needs the round-two
+verification: an actually posted Discord embed, not a local downscale.**
+
 ## Active
 
 - [x] **EMBED1** — Storage bucket + schema: add a `build-previews` Storage
