@@ -6,6 +6,7 @@ import {
   serializeBuildForStorage,
   isKnownServerId,
 } from '@/utils/per-server-builds';
+import { DATASET_IDS } from '@/data/dataset';
 import { createEmptyBuild } from '@/types/build';
 import type { Build } from '@/types/build';
 
@@ -96,10 +97,16 @@ describe('composePersistedState round-trip', () => {
 });
 
 describe('isKnownServerId', () => {
-  it('accepts the three shipped datasets and rejects others', () => {
-    expect(isKnownServerId('homecoming')).toBe(true);
-    expect(isKnownServerId('rebirth')).toBe(true);
-    expect(isKnownServerId('thunderspy')).toBe(true);
+  // Swept from DATASET_IDS rather than listed. This read `homecoming, rebirth, thunderspy`
+  // and called them "the three shipped datasets" for as long as there were four — the
+  // predicate itself was already roster-driven (`isDatasetId`), so Brainstorm was accepted
+  // in the product and unasserted here. A hand list is a second roster, and the second one
+  // is the one that goes stale (BRAIN-12).
+  it('accepts every shipped dataset and rejects others', () => {
+    expect(DATASET_IDS.length).toBeGreaterThan(0);
+    for (const id of DATASET_IDS) {
+      expect(isKnownServerId(id), `${id} is a known server id`).toBe(true);
+    }
     expect(isKnownServerId('bogus')).toBe(false);
     expect(isKnownServerId(undefined)).toBe(false);
   });

@@ -41,9 +41,11 @@ from read_i12 import Reader, read_powers  # noqa: E402
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-# Where each dataset's Mids database lives on a developer machine. Brainstorm is
-# absent on purpose: Mids ships no Brainstorm build, so a Brainstorm .mbd is authored
-# in Mids' Homecoming database and carries Homecoming's namespace. That routing is the
+# Where each dataset's Mids database lives on a developer machine.
+#
+# dataset-absent: brainstorm — Mids ships no Brainstorm build, so a Brainstorm .mbd is
+# authored in Mids' Homecoming database and carries Homecoming's namespace. There is no
+# fourth .mhd to read and a key here could never be satisfied. The routing is the
 # converter's call, not this script's — see scripts/convert-mids-name-map.cjs.
 DEFAULT_MHD = {
     "homecoming": os.path.expanduser(

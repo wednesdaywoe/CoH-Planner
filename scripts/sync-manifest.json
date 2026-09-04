@@ -1100,7 +1100,7 @@
     {
       "path": "tools/mids-oracle/emit_mids_names.py",
       "status": "identical",
-      "sha256": "998a113514fad4c73ff22076ae9cd5be9a51e5bda6a94cb1286727c98e2e42b9"
+      "sha256": "58b36f71469c5904ebe1c450df1ad9397b474c63fe35c026e66701623c9ca737"
     },
     {
       "path": "tools/mids-oracle/emit_mids_uids.py",
