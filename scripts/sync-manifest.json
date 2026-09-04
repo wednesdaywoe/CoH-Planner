@@ -170,10 +170,10 @@
       "path": "docs/DATA-GAP-REGISTER.md",
       "status": "forked",
       "sha256": {
-        "canonical": "2b4a61f16952ec7d8404c949929f2880d737b022243ee0f096f3c2e0f4192993",
+        "canonical": "ae1c1626cb429fbf7eba44cf1629c1e29a85e76f181a7e45ba5f6b43a35d938c",
         "beta": "4ed9208b0a77447bca3de4e35e956e7208bdc4392f1b0159cb9e710a7f53444d"
       },
-      "reason": "canonical's register carries the STRIP-1 burn-down (KB-INFO row, lint trims, closure narratives) the beta's copy lacks; beta's copy is the pre-migration register.",
+      "reason": "canonical's register carries the STRIP-1 burn-down (KB-INFO row, lint trims, closure narratives) and the PERMA-2/PERMA-3 closures the beta's copy lacks; beta's copy is the pre-migration register: a stale snapshot of canonical's own frontier (3 open, TSPY-11/STRIP-1/FORK-4), not an independent beta assessment. Carrying canonical's copy across would advertise `0 open` in the repo where this entry's own exit, the beta-side STRIP-1 port, is still unrun.",
       "exit": "the converter mirror (FORK-3 sync:shared) after the STRIP-1 migration lands on the beta side.",
       "gap": "STRIP-1"
     },
@@ -583,8 +583,14 @@
     },
     {
       "path": "src/data/power-pools.ts",
-      "status": "identical",
-      "sha256": "d991e6ef48454eef1614b5872c9fa7d4e563b4514910fb3341f5eb2e6c5882f2"
+      "status": "forked",
+      "sha256": {
+        "canonical": "1b2f4b5f177a87d3bba4a83dcbbd0e861de54662960c1cbe6afdf38ba4a6be79",
+        "beta": "d991e6ef48454eef1614b5872c9fa7d4e563b4514910fb3341f5eb2e6c5882f2"
+      },
+      "reason": "The reader half of the same writer-side `effects` strip: canonical's pool transform makes the bag optional (`effects?`), destructures it through `legacy.effects ?? {}` so a bagless power cannot throw the way `transformEpicPower` did, and emits `effects` only when the legacy power actually carried one — because the display and toggle paths gate on `if (!power.effects)` and an all-undefined object is truthy. Beta's copy still types `effects` as required and destructures it unguarded, and stays that way until the mirror carries the migration across. Missed by a15949bc49, which declared its `scripts/` sibling `convert-pool-powers.cjs` and not this file; it departs at that same commit and matched at `85af0a1bca`.",
+      "exit": "the converter mirror (FORK-3 sync:shared) after the STRIP-1 migration lands on the beta side.",
+      "gap": "STRIP-1"
     },
     {
       "path": "src/types/archetype.ts",
