@@ -615,7 +615,7 @@ export function BuildDetailPage() {
           // Wide/tall enough for the 1200x630 card to actually lay out and
           // render inside the iframe's own viewport — a 1x1 iframe produced
           // no rendered output at all (found live, not theoretical).
-          style={{ position: 'fixed', left: -100000, top: 0, width: 1300, height: 750, border: 0, opacity: 0 }}
+          style={{ position: 'fixed', left: -100000, top: 0, width: 1300, height: 950, border: 0, opacity: 0 }}
         />
       )}
     </div>

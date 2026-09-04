@@ -39,6 +39,20 @@ interface BuildMeta {
 const BUILD_PATH = /^\/builds\/([^/]+)\/?$/;
 
 /**
+ * The rasterized card's real size. The shell's static og:image:width/height
+ * describe the site-wide fallback image (1200×630) and are left alone when
+ * this Worker has no per-build image to point at — but once it rewrites
+ * og:image they have to move with it, or the tags declare 630 for an 800-tall
+ * picture and a crawler lays the embed out against the wrong box.
+ *
+ * Hand-duplicated from PREVIEW_CARD_WIDTH / PREVIEW_CARD_HEIGHT in
+ * src/components/export-image/BuildPreviewCard.tsx — a Worker bundle can't
+ * import from the app's path aliases. Update both.
+ */
+const PREVIEW_CARD_WIDTH = 1200;
+const PREVIEW_CARD_HEIGHT = 800;
+
+/**
  * Query suffix that makes the og:image URL change whenever the picture behind
  * it does. The stored path is `previews/<id>.png` and never varies, and
  * Discord's media proxy caches by image URL — so without this a regenerated
@@ -134,7 +148,9 @@ export default {
     if (imageUrl) {
       rewriter
         .on('meta[property="og:image"]', new SetAttrHandler('content', imageUrl))
-        .on('meta[name="twitter:image"]', new SetAttrHandler('content', imageUrl));
+        .on('meta[name="twitter:image"]', new SetAttrHandler('content', imageUrl))
+        .on('meta[property="og:image:width"]', new SetAttrHandler('content', String(PREVIEW_CARD_WIDTH)))
+        .on('meta[property="og:image:height"]', new SetAttrHandler('content', String(PREVIEW_CARD_HEIGHT)));
     }
 
     return rewriter.transform(shell);

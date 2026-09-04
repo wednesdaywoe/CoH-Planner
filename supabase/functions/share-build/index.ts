@@ -32,7 +32,7 @@ async function sha256(input: string): Promise<string> {
   return [...new Uint8Array(hashBuffer)].map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
-// Generous headroom over the compact 1200×630 share-preview PNG this is meant
+// Generous headroom over the compact 1200×800 share-preview PNG this is meant
 // for (typically well under 300KB) — just enough to reject an abusive payload
 // without rejecting a legitimate one.
 const MAX_PREVIEW_IMAGE_BYTES = 2 * 1024 * 1024;
@@ -41,7 +41,7 @@ const MAX_PREVIEW_IMAGE_BYTES = 2 * 1024 * 1024;
 // CURRENT_PREVIEW_TEMPLATE_VERSION — Deno functions can't import frontend TS,
 // so this is a hand-kept duplicate. Bump both together whenever that file's
 // visual template changes. See streams/BUILD_PREVIEW_BACKFILL_PLAN.md (PREVBF1).
-const CURRENT_PREVIEW_TEMPLATE_VERSION = 3;
+const CURRENT_PREVIEW_TEMPLATE_VERSION = 4;
 
 /**
  * Best-effort: upload a base64-encoded PNG (from the client's off-screen

@@ -8,7 +8,7 @@
  * it, which is the whole point of "automatic on view". That's bounded on the
  * write side instead — version-gated (never accepts a write when the row's
  * `preview_template_version` is already current) plus a server-side shape
- * check (must decode to exactly 1200×630, under the existing byte cap). See
+ * check (must decode to exactly 1200×800, under the existing byte cap). See
  * the plan doc's "Decision — anonymous-write security".
  *
  * Deploy with: supabase functions deploy backfill-preview
@@ -26,9 +26,9 @@ const corsHeaders = {
 // and share-build/index.ts's MAX_PREVIEW_IMAGE_BYTES — Deno functions can't
 // import frontend TS, so these are hand-kept duplicates. Bump every copy
 // together whenever BuildPreviewCard's visual template changes.
-const CURRENT_PREVIEW_TEMPLATE_VERSION = 3;
+const CURRENT_PREVIEW_TEMPLATE_VERSION = 4;
 const PREVIEW_CARD_WIDTH = 1200;
-const PREVIEW_CARD_HEIGHT = 630;
+const PREVIEW_CARD_HEIGHT = 800;
 const MAX_PREVIEW_IMAGE_BYTES = 2 * 1024 * 1024;
 
 const PNG_SIGNATURE = [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a];

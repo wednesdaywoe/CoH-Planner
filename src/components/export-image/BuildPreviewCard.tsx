@@ -1,5 +1,5 @@
 /**
- * BuildPreviewCard — the compact 1200×630 (OG-image standard) card rasterized
+ * BuildPreviewCard — the compact 1200×800 card rasterized
  * into a build's social share-preview image. Distinct from BuildImageCard (the
  * full "Export as Image" poster): fixed size, headline stats only, and a bare
  * grid of taken-power icons instead of full power tiles with slotting — not
@@ -7,9 +7,17 @@
  * image content").
  *
  * Everything here is sized against a ~400px render, not the 1200px source:
- * Discord scales a 1200×630 og:image to roughly a third in a desktop channel,
- * so a 20px label is 6px on screen. Two rounds of this template shipped type
- * that was fine at full res and unreadable in the embed.
+ * Discord scales the og:image to roughly a third of its width in a desktop
+ * channel, so a 20px label is 6px on screen. Two rounds of this template
+ * shipped type that was fine at full res and unreadable in the embed.
+ *
+ * 800 tall rather than the 1.91:1 (1200×630) OG convention: Discord fits an
+ * embed image to a fixed width and lets it run taller, so height past 630 is
+ * free room that costs no legibility. Past roughly 4:3 it starts fitting to
+ * HEIGHT instead and the card renders narrower — which shrinks the type — so
+ * 800 leaves headroom under that turn. The wider web still assumes 1.91:1:
+ * a platform that crops to it (Twitter/X's summary_large_image) will trim the
+ * title and footer bands. Discord is what this card is for.
  *
  * Pure and prop-driven, same shape as BuildImageCard: takes the build and the
  * already-computed detailed-totals sections, no calculation of its own.
@@ -27,7 +35,7 @@ import { getPreviewPowerRosters } from '@/utils/build-preview-powers';
 import type { Power } from '@/types/power';
 
 export const PREVIEW_CARD_WIDTH = 1200;
-export const PREVIEW_CARD_HEIGHT = 630;
+export const PREVIEW_CARD_HEIGHT = 800;
 
 /**
  * Bump this whenever this file's visual template changes (layout, type
@@ -38,7 +46,7 @@ export const PREVIEW_CARD_HEIGHT = 630;
  * (supabase/functions/share-build, supabase/functions/backfill-preview) —
  * Deno functions can't import frontend TS, so update every copy by hand.
  */
-export const CURRENT_PREVIEW_TEMPLATE_VERSION = 3;
+export const CURRENT_PREVIEW_TEMPLATE_VERSION = 4;
 
 /**
  * Preview-only value formatting, by stat id, where the dashboard's own format
@@ -102,17 +110,16 @@ export const BuildPreviewCard = forwardRef<HTMLDivElement, BuildPreviewCardProps
   const combo = [pri, sec].filter(Boolean).join(' / ');
   const headline = getHeadlineStats(allStats);
   const rosters = getPreviewPowerRosters(build);
-  // Taken powers only, in pick order. The skipped-and-faded roster slots the
-  // earlier template showed are gone: at embed width they rendered as 13px of
+  // Taken powers only, grouped by where they came from. The skipped-and-faded
+  // roster slots the v2 template showed stay gone: at embed width they were
   // indistinguishable mush, and the fade that carried their whole meaning was
-  // invisible. Two rows of 70px icons cost the same height and are recognizable.
-  // A build with more picks than two rows hold is clipped by the wrapper's
-  // overflow-hidden rather than pushing the footer off the card.
-  const takenPowers: Power[] = [
-    ...rosters.primary.filter((p) => p.taken).map((p) => p.power),
-    ...rosters.secondary.filter((p) => p.taken).map((p) => p.power),
-    ...rosters.extras,
-  ];
+  // invisible. Grouping came back with the extra height — v3 ran them together
+  // unlabelled because 630 had no room for a label column.
+  const groups: { label: string; powers: Power[] }[] = [
+    { label: pri ?? 'Primary', powers: rosters.primary.filter((p) => p.taken).map((p) => p.power) },
+    { label: sec ?? 'Secondary', powers: rosters.secondary.filter((p) => p.taken).map((p) => p.power) },
+    { label: 'Pool / Epic', powers: rosters.extras },
+  ].filter((g) => g.powers.length > 0);
   const netEndLabel = `${netEndPerSec >= 0 ? '+' : ''}${netEndPerSec.toFixed(2)}/s`;
   const netEndColor = netEndPerSec < 0 ? 'text-red-400' : 'text-emerald-300';
 
@@ -152,15 +159,23 @@ export const BuildPreviewCard = forwardRef<HTMLDivElement, BuildPreviewCardProps
         ))}
       </div>
 
-      {/* Powers taken — one unlabelled grid. The per-powerset labels are gone
-          with the skipped slots: at embed size they were 5px of tracking-wide
-          grey, and the sets are already named in the header. */}
-      <div className="mt-3 flex-1 min-h-0 overflow-hidden">
-        <div className="flex flex-wrap gap-2 content-start">
-          {takenPowers.map((power) => (
-            <PowerIcon key={power.internalName} power={power} />
-          ))}
-        </div>
+      {/* Powers taken — one labelled row per source. The label column is fixed
+          so the icon runs line up across rows; a set with more picks than one
+          run holds wraps within its own row rather than into the next set's.
+          justify-evenly rather than a top-packed stack: how many rows there are
+          and how many runs each takes varies by build, and spreading the slack
+          keeps a 2-row build from leaving a dead band above the footer. */}
+      <div className="mt-4 flex-1 min-h-0 overflow-hidden flex flex-col justify-evenly gap-3">
+        {groups.map((group) => (
+          <div key={group.label} className="grid grid-cols-[260px_1fr] items-center gap-4">
+            <div className="text-[24px] text-slate-400 uppercase tracking-wide truncate">{group.label}</div>
+            <div className="flex flex-wrap gap-2">
+              {group.powers.map((power) => (
+                <PowerIcon key={power.internalName} power={power} />
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
 
       <div className="pt-2 border-t border-slate-800 text-[20px] text-slate-500">
