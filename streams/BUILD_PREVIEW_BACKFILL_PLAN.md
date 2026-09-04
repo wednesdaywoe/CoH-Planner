@@ -219,6 +219,35 @@ this path last wrote.
       much larger captured build_json).
       needs: PREVBF7
 
+**Correction, 2026-09-03 (found live, after this doc closed): the on-view
+backfill never ran in production.** The site's CSP (built by `cspPlugin` in
+[vite.config.ts](../vite.config.ts)) declared
+`frame-src https://buymeacoffee.com https://www.buymeacoffee.com` with no
+`'self'`, so the browser refused to frame `/?previewCapture=<id>` at all:
+
+    Framing 'https://coh-sidekick.com/?previewCapture=...' violates the
+    following Content Security Policy directive: "frame-src
+    https://buymeacoffee.com https://www.buymeacoffee.com"
+
+Every stored preview came from the quick-share path instead (`share-build`
+captures in-page and needs no frame), which is why builds refreshed on "Copy
+Short Link" and never on view.
+
+PREVBF8's verification is what let it through, and the flaw is in its method,
+not its diligence: it ran the frontend from the **dev server** against the
+production backend. `cspPlugin` is `apply: 'build'`, so dev serves no CSP
+whatsoever — the one policy that governs this mechanism was the one thing the
+test could not see. Every observation in PREVBF8 is true and none of it was
+evidence about production.
+
+*A mechanism gated by a build-time-only policy has to be verified against a
+built artifact.* Backend-is-production is not the same claim as
+frontend-is-production, and this feature's failure lived entirely in the half
+that wasn't. Re-verified against the deployed site after adding `'self'`:
+capture iframe frames, `POST /functions/v1/backfill-preview` returns 200,
+`preview_template_version` advances, and the stored PNG is the current
+template.
+
 ## Out of scope
 
 - Restricting the trigger to owner-only views — decided against in
