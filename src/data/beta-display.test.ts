@@ -14,9 +14,15 @@
  */
 import { describe, it, expect } from 'vitest';
 import { readFileSync, readdirSync } from 'node:fs';
+import { createRequire } from 'node:module';
 import path from 'node:path';
 
 const REPO = path.resolve(__dirname, '../..');
+// Source-scanning only — no dataset walk, so this stays a cheap in-process require rather
+// than the child process the supply census needs.
+const { bagSeams } = createRequire(import.meta.url)(
+  path.join(REPO, 'scripts/beta-bag-reader-census.cjs'),
+) as { bagSeams: (rel: string) => { slot: string; line: number | null; binding: string }[] };
 const read = (rel: string) => readFileSync(path.join(REPO, rel), 'utf8');
 
 /** Every non-test `.ts`/`.tsx` under `src/`, as {rel, src}. */
@@ -140,6 +146,14 @@ describe('BPORT3 — characterStateAdapter.ts reads supplier 2, not the power ba
  * Counts are per-file match counts, not per-file line counts. The first census of this taken
  * by eye read nine files and twenty-two sites, because a line-oriented grep counts a JSX
  * block rendering six fields of the same object once and missed `DamageBlock.tsx` outright.
+ *
+ * BPORT4 added the eleventh, and the reason it was missing is the same class of blindness
+ * this entry found on `resolvePowerMagnitudes`: `PowersetCompareModal` binds the bag to a
+ * local (`const e = power.effects`) and reads `e?.summon` through it, which no
+ * `effects.summon` pattern can see. The roster is therefore no longer taken with a regex —
+ * it comes from the reader census's finders, so an alias, a chained receiver
+ * (`getArchetype(…)?.inherent?.effects`) or a comment cannot move it again without the
+ * finders moving too.
  */
 const SUMMON_BAG_READERS: Record<string, number> = {
   'src/components/info/BuffPetAuraToggle.tsx': 1,
@@ -150,6 +164,7 @@ const SUMMON_BAG_READERS: Record<string, number> = {
   'src/components/info/PowerInfoTooltip.tsx': 15,
   'src/components/info/buildDisplayEffects.ts': 3,
   'src/components/modals/CompareSlottingModal.tsx': 2,
+  'src/components/modals/PowersetCompareModal.tsx': 1,
   'src/data/proc-potential.ts': 2,
   'src/utils/calculations/attack-chain-powers.ts': 2,
 };
@@ -158,7 +173,11 @@ describe('BPORT3 — the summon slot crosses with its writer, or the pets go dar
   it('has exactly these bag readers, and BPORT2 tracked one of them', () => {
     const found: Record<string, number> = {};
     for (const f of FILES) {
-      const n = [...f.src.matchAll(/effects(?:\?)?\.summon\b/g)].length;
+      // `resolvePowerMagnitudes` reads `summon` too, through the registry rather than by
+      // name, and it is BPORT3's own verdict rather than a crossing owed to BPORT7 — the
+      // roster here is the by-name readers, which is what "must move when the writer moves"
+      // means. Roster reads are excluded by asking for a line.
+      const n = bagSeams(f.rel).filter((s) => s.slot === 'summon' && s.line != null).length;
       if (n > 0) found[f.rel] = n;
     }
     expect(found).toEqual(SUMMON_BAG_READERS);

@@ -736,7 +736,14 @@ function report(result) {
   return out.join('\n');
 }
 
-module.exports = { census, report, BUFF_PET_MINTED_SLOTS, DYNAMIC_READ_SITES, declaredSlots };
+// The walk is exported alongside the census because BPORT4's reader census has to ask a
+// question of the same population — "does the `stats` arm of a `stats.x ?? effects.y` seam
+// carry a value where the bag does" — and a second copy of "which modules are a dataset" is
+// how the two censuses would come to disagree about what they measured.
+module.exports = {
+  census, report, BUFF_PET_MINTED_SLOTS, DYNAMIC_READ_SITES, declaredSlots,
+  generatedModules, collectBagCarriers, stubViteOnlyModules,
+};
 
 if (require.main === module) {
   const result = census();

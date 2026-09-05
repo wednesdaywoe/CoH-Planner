@@ -63,6 +63,11 @@
       "gap": "STRIP-1"
     },
     {
+      "path": "scripts/beta-bag-reader-census.cjs",
+      "reason": "BPORT4's measurement, and the same argument as its BPORT1 sibling: it scans the beta's own bag readers and grades them against the beta's supply census, which walks the four generated dataset trees canonical no longer carries. Canonical stripped its bag on 2026-09-01, so a copy there would census reads with nothing behind them. Retires with the port alongside beta-bag-supply-census.cjs.",
+      "gap": "STRIP-1"
+    },
+    {
       "path": "scripts/delete-user-shared-builds.ts",
       "reason": "Wired into beta's package.json as delete-user-builds. It cleans up shared builds in beta's Supabase backend, which canonical does not have. Canonical's archived copy was still byte-identical and would have drifted the way its sibling did.",
       "gap": "FORK-2",
