@@ -28,6 +28,7 @@ import { getPowerPool } from '@/data/power-pools';
 import { getEpicPool } from '@/data/epic-pools';
 import { getPowerset } from '@/data/powersets';
 import { getArchetype } from '@/data/archetypes';
+import { repelProtectionValue } from './repel-protection';
 import type { ArchetypeId } from '@/types';
 import { calculateSetBonuses, getStatBreakdown, trackBonus, createBonusTracking, type AggregatedBonuses, type StatBreakdownItem, type BuildPowers } from './set-bonuses';
 import { createEmptyStats, getBaselineHealth, type CharacterStats } from './stats';
@@ -1302,6 +1303,10 @@ function applyActivePowerBonuses(
       { field: 'confuse', key: 'protConfuse' },
       { field: 'fear', key: 'protFear' },
       { field: 'knockback', key: 'protKnockback' },
+      // Repel protection joins the fold at BPORT11 rather than keeping its own block: it is
+      // read on the same terms (a self-directed protection atom, `|scale| x table`) and it is
+      // its own stat, not knockback — the continuous push rather than the impulse.
+      { field: 'repel', key: 'protRepel' },
       // Knockup is mechanically the same as knockback for protection purposes
       // — powers like Evasive Maneuvers list `kKnockup kKnockback` together in
       // the .powers source and the bin emits separate `knockup`/`knockback`
@@ -1342,7 +1347,9 @@ function applyActivePowerBonuses(
       let isSelfAtom = false;
       const atomVal = isKb
         ? kbProtectionValue(mezSource, field as 'knockback' | 'knockup')
-        : mezSlotValue(mezSource, field as 'hold' | 'stun' | 'sleep' | 'immobilize' | 'confuse' | 'fear');
+        : field === 'repel'
+          ? repelProtectionValue(mezSource)
+          : mezSlotValue(mezSource, field as 'hold' | 'stun' | 'sleep' | 'immobilize' | 'confuse' | 'fear');
       if (atomVal) {
         mez = atomVal as unknown as MezScaled;
         isSelfAtom = true;
@@ -1390,18 +1397,12 @@ function applyActivePowerBonuses(
       });
     }
 
-    // Repel Protection (e.g., Increase Density)
-    if (effects.repel !== undefined) {
-      const mag = Math.abs(resolveScaledEffect(effects.repel, archetypeId, buildLevel));
-      if (mag > 0) {
-        global.protRepel += mag;
-        addToBreakdown(breakdown, 'protRepel', {
-          name: power.name,
-          value: mag,
-          type: 'active-power',
-        });
-      }
-    }
+    // `protRepel` is folded in above (`repelProtectionValue`), and the standalone
+    // `effects.repel` block that used to stand here is gone with it. That read was backwards on
+    // the example it named: `effects.repel` holds the repel a power INFLICTS, so Ki Push, Jet
+    // Stream, Hurricane and Repulsion Field credited the caster with protection equal to the
+    // push they deal out — 71 powers — while Increase Density, the comment's own example, was
+    // one of 15 real repel-protection powers the slot never carried at all.
 
     // Teleport Protection (e.g., Increase Density)
     if (effects.teleport !== undefined) {

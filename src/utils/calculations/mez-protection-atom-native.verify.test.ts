@@ -24,6 +24,11 @@
  *    global, and gains 2: Rebirth Weave's immobilize resistance for the two Kheldian classes,
  *    visible only through the fork resolution;
  *  - Taunt and Placate agree on all 4 and all 15;
+ *  - `protRepel` is the one arm that moves numbers, and it moves them both ways: 202 agree, 71
+ *    lose a credit and 15 gain one. `effects.repel` holds the repel a power INFLICTS, so Ki
+ *    Push, Jet Stream, Hurricane and Repulsion Field were crediting the caster with protection
+ *    equal to the push they deal out, while Increase Density — the example the retired block's
+ *    own comment named — was one of the 15 the slot never carried;
  *  - `effects.protection` has no carrier anywhere, confirming BPORT1's zero-supply verdict from
  *    the data side as well as the supply side.
  *
@@ -46,6 +51,7 @@ import { describe, it, expect } from 'vitest';
 import {
   mezSlotValue, mezResistanceValue, kbProtectionValue, tauntPlacateValue,
 } from '@/data/core/atom-query';
+import { repelProtectionValue } from './repel-protection';
 import { ATOM_TUPLE_FIELDS } from '@/data/core/atomic-effect';
 import { mezSourceFor } from './character-totals';
 import { MODULAR_POWERSETS as HC } from '@/data/datasets/homecoming/powersets';
@@ -235,6 +241,32 @@ describe('BPORT11 cluster 2 — mez protection against the bag it replaces', () 
       expect(t.atomOnly, which).toEqual([]);
       expect(t.agree, which).toBeGreaterThan(0);
     }
+  });
+
+  it('reads repel protection off the atoms, and stops reading the push as protection', () => {
+    // The one arm in this cluster that MOVES numbers, in both directions, and the direction is
+    // the whole verdict. `effects.repel` holds the repel a power INFLICTS.
+    const t = empty();
+    for (const [id, power, source] of views()) {
+      const bv = power.effects?.repel;
+      record(
+        t, id,
+        bv === undefined ? undefined : mag(typeof bv === 'number' ? { scale: bv, table: '' } : bv),
+        (() => { const a = repelProtectionValue(source as never); return a ? mag(a) : undefined; })(),
+      );
+    }
+    expect(t.differ).toEqual([]);
+    expect(t.agree).toBe(202);
+    // Dropped: offensive repel, credited to the caster as protection.
+    expect(t.bagOnly).toHaveLength(71);
+    for (const named of ['Ki Push', 'Jet Stream', 'Hurricane', 'Repulsion Field']) {
+      expect(t.bagOnly.some((s) => s.includes(named)), named).toBe(true);
+    }
+    // Gained: real repel protection, which the slot never carried. Increase Density is the
+    // example the retired block's own comment named.
+    expect(t.atomOnly).toHaveLength(15);
+    expect(t.atomOnly.some((s) => s.includes('Increase Density'))).toBe(true);
+    expect(t.atomOnly.some((s) => s.includes('Vengeance'))).toBe(true);
   });
 
   it('confirms effects.protection is empty from the data side too', () => {

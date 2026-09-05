@@ -350,13 +350,14 @@ describe('BPORT5 — what grades the engine once the bag is gone', () => {
     // source plus the 8 `mezProtTypes` roster keys); 141 after BPORT11's first cluster took
     // accuracy, recharge, maxEnd, endurance-discount, perception, range and elusivity, with
     // their three stacking slots each; 131 once the mez cluster took the six MEZ, KB/KU,
-    // mezResistance, taunt, placate and the empty `effects.protection` object.
+    // mezResistance, taunt, placate and the empty `effects.protection` object; 129 when repel
+    // joined that fold.
     //
     // The carry does NOT count the arms it keeps: `syntheticEffects(power)?.rechargeBuff`
     // names no `effects.` prefix, so the finder cannot see it and does not. That is right —
     // it is the totals pass reading back its own output — but it means this number measures
     // the DATA seams only, which is the population the strip empties.
-    expect(mine).toHaveLength(131);
+    expect(mine).toHaveLength(129);
     expect(mine.every((s) => s.sibling !== 'absent')).toBe(true);
 
     // The residual is derived, not listed — canonical's own copy answers it.
