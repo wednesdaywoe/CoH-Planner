@@ -1049,13 +1049,29 @@ export function maxHPBuffValue(
  *      and maxHP (Replace-collapsed), a resource slot RAW-SUMS its same-table entries and
  *      RESETS on a table change (Obscure Sustenance's recovery: 0.6+0.38+0.1 = 1.08).
  *
- * ONE PUNT remains (return `undefined` → the applier keeps reading the unchanged bag):
- * **any `Expression`-typed resource atom.** The converter's RESOURCES guard drops
- * `Expression` templates whose `tick_chance` is 0 (Rebirth's Gravity/Penumbral armor
- * toggles) and keeps the rest (Gamma Boost, Defibrillate). `tick_chance` is not on the
- * wire, and `Expression ⟺ dropped` is FALSE, so the verdict is unrecoverable. Safe
- * either way: if the bag kept it we fall back to the bag's value; if the bag dropped it
- * the slot is absent and the fallback yields `undefined` too.
+ * ONE PUNT used to remain here and BPORT11 closed it, because the thing that made it safe
+ * was the bag. **Any `Expression`-typed resource atom** returned `undefined`: the converter's
+ * RESOURCES guard drops `Expression` templates whose `tick_chance` is 0 and keeps the rest
+ * (Gamma Boost, Defibrillate), `tick_chance` is not on the wire, and `Expression ⟺ dropped`
+ * is FALSE — so the verdict is genuinely unrecoverable and abstaining was right while there
+ * was something to abstain TO. The stated reason was "safe either way: if the bag kept it we
+ * fall back to the bag's value", and the beta's bag strip is exactly the change that makes
+ * the other way unsafe. Abstention stops meaning "ask the bag" and starts meaning zero.
+ *
+ * Measured over all four forks before closing it. Every Expression resource atom that reaches
+ * this reader — after its own `aspect !== 'Res'`, `!isDebuffAtom` and `!notOnCaster` filters —
+ * belongs to a power whose bag KEPT the slot, and the reconstructed value equals the bag's on
+ * all 36 of them with no divergence. The single corpus power carrying an Expression resource
+ * atom with no bag slot is Thunderspy's Fortify Pack, whose row is `toWho: Target` and
+ * `notOnCaster`, so the reader had already declined it for a reason it can still state. The
+ * powers the punt named as dropped (Rebirth's Gravity/Penumbral armour toggles) carry no
+ * Expression resource atom in the shipped data at all.
+ *
+ * What the closure costs if the data changes: a future export shipping a caster-reaching
+ * Expression row the converter drops would be credited here. That is a smaller and louder
+ * error than the one abstention now guarantees — Gamma Boost's +regen and +recovery reading 0
+ * on all four forks — and `resources-expression-punt` in the verify test pins the population
+ * while the bag is still there to pin it against.
  *
  * A SECOND punt used to live here, on the `StackByAttribAndKey` burst/tail family (Icy
  * Bastion), because the bag answered that shape two different ways: regen's routing
@@ -1084,8 +1100,7 @@ function resourceBuffValue(
     (a) => a.aspect !== 'Res' && !isDebuffAtom(a) && !a.notOnCaster,
   );
   if (!atoms.length) return undefined;
-  // PUNT: the Expression + tick-chance-0 drop is not re-derivable (see above).
-  if (atoms.some((a) => a.attribType === 'Expression')) return undefined;
+  // The Expression punt closed at BPORT11 — see the note above for what was measured.
 
   const increments = atoms.filter((a) => a.perTarget);
   // The flat base must LAND ON THE CASTER to count toward his own totals — the resources

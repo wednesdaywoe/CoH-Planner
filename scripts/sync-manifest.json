@@ -549,7 +549,7 @@
     {
       "path": "src/data/core/atom-query.ts",
       "status": "identical",
-      "sha256": "ddfc64a150e0670ab6e089d58016dffa3c5bd2d9eed68540c55669444069c44d"
+      "sha256": "c26848c67ba79e1da60880ce5b62820571f095e30bb06f649dd431776846f9d8"
     },
     {
       "path": "src/data/core/atomic-effect.ts",
@@ -662,6 +662,11 @@
       "path": "src/utils/calculations/enhancement-values.ts",
       "status": "identical",
       "sha256": "5e2e823ae8c20995f1e887ff65dd75ff7a6a818be4af7c0aacebe4cc20110c5c"
+    },
+    {
+      "path": "src/utils/calculations/repel-protection.ts",
+      "status": "identical",
+      "sha256": "cab2ab8fe2e1521e846cebd3a2ae6241e1ae5c266564e530441769bb7b9f911c"
     },
     {
       "path": "src/utils/mids-import/accolades.test.ts",

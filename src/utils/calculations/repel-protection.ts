@@ -10,15 +10,17 @@ import { baseAtoms, reachesCaster, type AtomSource } from '@/data/core/atom-quer
  *
  * Lives OUTSIDE atom-query.ts because that file is on the shared identical-status manifest, so
  * every edit to it forks the pair and has to be mirrored and re-recorded — the same
- * call-site-hosted precedent as `mezSourceFor` in character-totals.ts.
+ * call-site-hosted precedent as `mezSourceFor` in character-totals.ts. Both repos carry this
+ * module at the same path and the same bytes; the STRIP-1 sweep and the totals import from
+ * here so the "reader must be the SAME one the totals path calls" doctrine holds for the
+ * tripwire.
  *
- * Carried from the canonical fork by BPORT11, byte-identical, so the two repos read repel
- * protection through one reader rather than two that agree today. Measured here against the
- * `effects.repel` read it replaces: 202 powers agree, 71 lose a credit and 15 gain one, and the
- * direction is the point. The 71 are offensive repel — Ki Push, Jet Stream, Hurricane,
- * Repulsion Field — where the bag handed the caster protection equal to the push the power
- * inflicts on everyone else. The 15 are the real thing, including Increase Density, which the
- * retired block named in its own comment as the example and did not actually read.
+ * Measured against the `effects.repel` read it replaces, on the four datasets both repos ship:
+ * 202 powers agree, 71 lose a credit and 15 gain one, and the direction is the point. The 71
+ * are offensive repel — Ki Push, Jet Stream, Hurricane, Repulsion Field — where the bag handed
+ * the caster protection equal to the push the power inflicts on everyone else. The 15 are the
+ * real thing, including Increase Density, which the retired block named in its own comment as
+ * the example and did not actually read.
  *
  * Fork-resolved at the call site (the caller passes the build's {@link mezSource}); the
  * caller's `|scale| × table@50` gate and the non-Res_Boolean self-atom credit rule match

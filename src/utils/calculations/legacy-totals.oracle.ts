@@ -33,7 +33,7 @@ import type { ArchetypeId } from '@/types';
 import { calculateSetBonuses, getStatBreakdown, trackBonus, createBonusTracking, type AggregatedBonuses, type StatBreakdownItem, type BuildPowers } from './set-bonuses';
 import { createEmptyStats, getBaselineHealth, type CharacterStats } from './stats';
 import { combineWithAlphaED, filterAlphaByAllowedEnhancements, BASE_RECOVERY_RATE, BASE_REGEN_RATE, type EnhancementBonuses } from './enhancement-values';
-import { toHitBuffValue, damageBuffValue, resistanceBuffValue, resistanceSelfDebuffValue, defenseBuffValue, defenseBuffSuppressibleValue, defenseBuffIsTeamOnly, maxHPBuffValue, regenBuffValue, recoveryBuffValue, movementBuffValue, kbProtectionValue, accuracyBuffValue, rechargeBuffValue, rangeBuffValue, perceptionBuffValue, enduranceDiscountValue, maxEndBuffValue, elusivityValue, mezSlotValue, mezResistanceValue, tauntPlacateValue, debuffResistanceValue, selfSlowValue, selfMovementCapDebuffValue, movementAxisSubType, stackCapOf, buffStack, DEBUFF_RESISTANCE_STACK } from '@/data/core/atom-query';
+import { toHitBuffValue, damageBuffValue, resistanceBuffValue, resistanceSelfDebuffValue, defenseBuffValue, defenseBuffSuppressibleValue, defenseBuffIsTeamOnly, maxHPBuffValue, regenBuffValue, recoveryBuffValue, movementBuffValue, kbProtectionValue, accuracyBuffValue, rechargeBuffValue, rangeBuffValue, perceptionBuffValue, enduranceDiscountValue, maxEndBuffValue, elusivityValue, mezSlotValue, mezResistanceValue, tauntPlacateValue, debuffResistanceValue, selfSlowValue, selfMovementCapDebuffValue, movementAxisSubType, damageBuffIsDefianceOnly, selfDamageDebuffValue, selfRechargeDebuffValue, stealthValue, stackCapOf, buffStack, DEBUFF_RESISTANCE_STACK } from '@/data/core/atom-query';
 import type { MovementBuffEntry, StackFamily } from '@/data/core/atom-query';
 import type { EncodedAtom } from '@/data/core/atomic-effect';
 import { calculateVigilanceDamageBonus, calculateFuryDamageBonus } from './inherents';
@@ -41,7 +41,7 @@ import { getEffectiveLevel, areIncarnatesSuppressed } from './effective-level';
 import { computeModeSuppression, type ModeCarrier } from '@/utils/mode-suppression';
 import { isCalcDebugEnabled, debugBuildContext, debugSetBonuses, debugAlphaBonuses, debugGroup, debugGroupEnd, debugFormula, debugAccolade, debugHitChance, debugFinalStats, debugNetEndurance, debugEnd } from '@/utils/calc-debug';
 import type { ActivePowerEffect, CalculationOptions, CharacterCalculationResult, DashboardStatBreakdown, GlobalBonuses, MezScaled, PowerWithToggle, ScalarOrScaled, StatSource, StrengthBuffs } from './character-totals';
-import { adjustForStacking, adjustForStackCap, carries_combat_debuff, collectStrengthBuffs, createEmptyGlobalBonuses, emptyStrengthBuffs, getAlphaEdBypassBonuses, getAlphaEnhancementBonuses, mezSourceFor, resolveScaledEffect, syntheticEffects } from './character-totals';
+import { adjustForStackCap, carries_combat_debuff, collectStrengthBuffs, createEmptyGlobalBonuses, emptyStrengthBuffs, getAlphaEdBypassBonuses, getAlphaEnhancementBonuses, mezSourceFor, resolveScaledEffect, syntheticEffects } from './character-totals';
 
 // ============================================
 // STAT NAME MAPPING
@@ -270,10 +270,10 @@ function applyToggleEndCosts(
     if (power.powerType?.toLowerCase() !== 'toggle' || !power.isActive) continue;
     if (power.targetType && ALLY_ONLY_TARGET_TYPES.has(power.targetType.toLowerCase())) continue;
 
+    // `effects.enduranceCost` RETIRED BPORT11: 0 powers on any of the four forks carry it, so
+    // the branch never fired and `stats.endurance / activatePeriod` has always been the source.
     let baseEndPerSec = 0;
-    if (power.effects?.enduranceCost) {
-      baseEndPerSec = power.effects.enduranceCost;
-    } else if (power.stats?.endurance) {
+    if (power.stats?.endurance) {
       const activatePeriod = power.stats.activatePeriod ?? 0.5;
       baseEndPerSec = activatePeriod > 0 ? power.stats.endurance / activatePeriod : 0;
     }
@@ -539,7 +539,11 @@ function applyActivePowerBonuses(
 
     if (!power.effects) continue;
 
-    const effects = power.effects;
+    // The per-power `effects` deref used to back every `?? effects.slot` seam in this pass.
+    // One family still needs it — absorb, whose per-foe increment no reader returns; see the
+    // block below. Every other arm reads the atom-native readers, or the named synthetic
+    // channel ({@link syntheticEffects}) for a contribution the totals built for itself.
+    const effects = power.effects ?? ({} as ActivePowerEffect);
     // BPORT11's stacking selector, for the families that have crossed. The atoms carry the
     // depth a family self-stacks to, so `stackCapOf` answers with one number what the retired
     // `stacksLinear` / `maxStacks` / `stackCaps` triple answered from three bag slots:
@@ -569,13 +573,12 @@ function applyActivePowerBonuses(
     // Enhanced by ToHit enhancements.
     // Plan B Slice 1: sourced from atoms (scale + perTarget reconstructed by
     // `toHitBuffValue`, verified bag-equal by scripts/planb-shadow-pertarget.cjs);
-    // `?? effects.tohitBuff` keeps an atom-less legacy power on the bag. Stacking
-    // meta (`stacksLinear`/`maxStacks`/`stackCaps`) stays a bag read, keyed by
-    // slot name — the deferred axis, not a discriminator Plan B targets.
-    const tohitBuff = toHitBuffValue(power) ?? effects.tohitBuff;
+    // BPORT11: atom-native, synthetic arm kept (25 credited mints — Dual Blades' Blinding
+    // Feint in DD Status Mode 2). All 874 carriers agree with the bag.
+    const tohitBuff = toHitBuffValue(power) ?? syntheticEffects(power)?.tohitBuff;
     if (tohitBuff !== undefined) {
       const enhMultiplier = 1 + (enhBonuses.tohit || 0) + strengthBuffs.toHit;
-      const adjustedBuff = adjustForStacking(tohitBuff as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'tohitBuff', effects.maxStacks, effects.stackCaps);
+      const adjustedBuff = stack(tohitBuff as ScalarOrScaled, buffStack('ToHit', 'enhanceable'));
       const value = resolveScaledEffect(adjustedBuff, archetypeId, buildLevel) * 100 * enhMultiplier;
       global.toHit += value;
       addToBreakdown(breakdown, 'toHit', {
@@ -587,9 +590,12 @@ function applyActivePowerBonuses(
 
     // ToHit buff that ignores strength (IgnoreStrength) — NOT boosted by ToHit
     // enh or global +ToHit (e.g. Bio Armor Environmental Adaptation's +ToHit).
-    const tohitBuffUnenhanced = toHitBuffValue(power, { ignoreStrength: true }) ?? effects.tohitBuffUnenhanced;
+    // Synthetic arm kept: 37 credited mints (Bio Armor's Environmental Modification in
+    // Offensive Adaptation). All 48 real carriers agree.
+    const tohitBuffUnenhanced = toHitBuffValue(power, { ignoreStrength: true })
+      ?? syntheticEffects(power)?.tohitBuffUnenhanced;
     if (tohitBuffUnenhanced !== undefined) {
-      const adjusted = adjustForStacking(tohitBuffUnenhanced as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'tohitBuffUnenhanced', effects.maxStacks, effects.stackCaps);
+      const adjusted = stack(tohitBuffUnenhanced as ScalarOrScaled, buffStack('ToHit', 'unenhanced'));
       const value = resolveScaledEffect(adjusted, archetypeId, buildLevel) * 100;
       global.toHit += value;
       addToBreakdown(breakdown, 'toHit', {
@@ -628,10 +634,20 @@ function applyActivePowerBonuses(
     // per-damage-type explosion and reconstructs perTarget — Soul Drain's per-foe
     // slider, Fulcrum Shift's redirect increment); `?? effects.damageBuff` keeps
     // an atom-less legacy power on the bag. Verified bag-equal by
-    // scripts/planb-shadow-pertarget.cjs. Stacking meta stays a bag read (slot-keyed).
-    const damageBuff = damageBuffValue(power) ?? effects.damageBuff;
+    // scripts/planb-shadow-pertarget.cjs.
+    //
+    // BPORT11: synthetic arm kept (48 credited mints — Devices' Targeting Drone out of combat).
+    // A power whose whole +damage buff is DEFIANCE takes neither path. The atom read already
+    // rejects the tagged atoms, but the bag slot held the same value, and an absent atom read
+    // is indistinguishable from the atom-less case the fallback served — so the rejection has
+    // to be spoken here too or it is undone one line later. Measured: 68 powers carry a
+    // `damageBuff` the reader declines and every single one is defiance-only, all of them
+    // Blaster secondaries whose Defiance the bag was crediting as a permanent +damage buff.
+    const damageBuff = damageBuffIsDefianceOnly(power)
+      ? undefined
+      : (damageBuffValue(power) ?? syntheticEffects(power)?.damageBuff);
     if (damageBuff !== undefined) {
-      const adjustedBuff = adjustForStacking(damageBuff as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'damageBuff', effects.maxStacks, effects.stackCaps);
+      const adjustedBuff = stack(damageBuff as ScalarOrScaled, buffStack('DamageBuff'));
       const value = resolveScaledEffect(adjustedBuff, archetypeId, buildLevel) * 100;
       global.damage += value;
       addToBreakdown(breakdown, 'damage', {
@@ -647,8 +663,12 @@ function applyActivePowerBonuses(
     // boosted by slotted enhancements.
     // Skip crash debuffs: if a power also has damageBuff, the debuff is a crash effect
     // (e.g., Rage: 120s buff + 10s crash) and should not count as sustained damage
-    if (isSelfDirectedEffect(effects.damageDebuff) && damageBuff === undefined) {
-      const value = resolveScaledEffect(effects.damageDebuff as ScalarOrScaled, archetypeId, buildLevel) * -100;
+    // BPORT11: atom-native (`selfDamageDebuffValue` mirrors the converter's self arm, which is
+    // the only arm this pass ever read). All 43 self-tagged carriers agree, and no conditional
+    // mints a self-directed one, so there is no synthetic arm to keep.
+    const selfDmgDebuff = selfDamageDebuffValue(power);
+    if (selfDmgDebuff !== undefined && damageBuff === undefined) {
+      const value = resolveScaledEffect(selfDmgDebuff as ScalarOrScaled, archetypeId, buildLevel) * -100;
       global.damage += value;
       addToBreakdown(breakdown, 'damage', {
         name: power.name,
@@ -1070,8 +1090,12 @@ function applyActivePowerBonuses(
     // Recharge debuff (self-penalty, e.g. Granite Armor -65% recharge)
     // Only applied when the value is self-directed (toWho:'Self') — most
     // rechargeDebuff effects target enemies. Unenhanceable.
-    if (isSelfDirectedEffect(effects.rechargeDebuff)) {
-      const value = resolveScaledEffect(effects.rechargeDebuff as ScalarOrScaled, archetypeId, buildLevel) * -100;
+    // BPORT11: atom-native. All 8 self-tagged carriers agree (Granite Armor's -65% among
+    // them), and the 134 conditional mints of the slot are every one of them foe-facing, which
+    // the self-directed gate has always dropped — so there is no synthetic arm to keep.
+    const selfRechargeDebuff = selfRechargeDebuffValue(power);
+    if (selfRechargeDebuff !== undefined) {
+      const value = resolveScaledEffect(selfRechargeDebuff as ScalarOrScaled, archetypeId, buildLevel) * -100;
       global.recharge += value;
       addToBreakdown(breakdown, 'recharge', {
         name: power.name,
@@ -1095,8 +1119,17 @@ function applyActivePowerBonuses(
     // burst/tail family whose bag value is a suspected latent bug (see atom-query.ts).
     // Each half falls back independently; the shadow gate proves every value the
     // helper DOES return equals the bag's, so a mixed atom/bag pair still sums right.
-    const regenSlot = regenBuffValue(power) ?? effects.regenBuff;
-    const regenUnenhSlot = regenBuffValue(power, { ignoreStrength: true }) ?? effects.regenBuffUnenhanced;
+    // BPORT11: synthetic arms kept on BOTH halves, and the unenhanced one is the larger —
+    // 95 credited mints against the enhanceable half's 20, every one a Bio Armor stance
+    // (Inexhaustible in Rested Adaptation). Canonical dropped that half and lost all 95.
+    //
+    // Retiring the DATA arm drops 43 + 76 credits and every one is a correction: Adrenalin
+    // Boost, Painbringer, Temporal Selection, Speed Boost and their siblings are ALLY buffs
+    // whose toWho-blind bag slot projected the ally's +regen/+recovery onto the caster, which
+    // the game never grants and `reachesCaster` declines.
+    const regenSlot = regenBuffValue(power) ?? syntheticEffects(power)?.regenBuff;
+    const regenUnenhSlot = regenBuffValue(power, { ignoreStrength: true })
+      ?? syntheticEffects(power)?.regenBuffUnenhanced;
     if (regenSlot !== undefined) {
       const regenVal = regenSlot as ScalarOrScaled;
       const regenTable = (typeof regenVal === 'object' && regenVal !== null && 'table' in regenVal)
@@ -1104,11 +1137,11 @@ function applyActivePowerBonuses(
         : '';
       if (!regenTable.toLowerCase().includes('res_boolean')) {
         const enhMultiplier = 1 + (enhBonuses.heal || 0) + ((global.healOther || 0) / 100);
-        const adjustedRegen = adjustForStacking(regenVal, targetsHitValues[power.internalName], effects.stacksLinear, 'regenBuff', effects.maxStacks, effects.stackCaps);
+        const adjustedRegen = stack(regenVal, buffStack('Regeneration', 'enhanceable'));
         const value = resolveScaledEffect(adjustedRegen, archetypeId, buildLevel) * 100 * enhMultiplier;
         // If the power also has an unenhanced portion, combine into one breakdown entry
         const adjustedRegenUnenh = regenUnenhSlot !== undefined
-          ? adjustForStacking(regenUnenhSlot as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'regenBuffUnenhanced', effects.maxStacks, effects.stackCaps)
+          ? stack(regenUnenhSlot as ScalarOrScaled, buffStack('Regeneration', 'unenhanced'))
           : undefined;
         const unenhValue = adjustedRegenUnenh !== undefined
           ? resolveScaledEffect(adjustedRegenUnenh, archetypeId, buildLevel) * 100
@@ -1123,7 +1156,7 @@ function applyActivePowerBonuses(
       }
     } else if (regenUnenhSlot !== undefined) {
       // Power only has unenhanceable regen (no enhanceable portion)
-      const adjustedUnenhOnly = adjustForStacking(regenUnenhSlot as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'regenBuffUnenhanced', effects.maxStacks, effects.stackCaps);
+      const adjustedUnenhOnly = stack(regenUnenhSlot as ScalarOrScaled, buffStack('Regeneration', 'unenhanced'));
       const value = resolveScaledEffect(adjustedUnenhOnly, archetypeId, buildLevel) * 100;
       global.regeneration += value;
       addToBreakdown(breakdown, 'regeneration', {
@@ -1137,7 +1170,9 @@ function applyActivePowerBonuses(
     // Enhanced by Endurance Modification enhancements
     // Skip Res_Boolean tables — those are endurance drain resistance, not recovery buffs
     // Plan B Slice 6: atom-sourced with the same per-half bag fallback as regen above.
-    const recoverySlot = recoveryBuffValue(power) ?? effects.recoveryBuff;
+    // Same shape as regen above, and the same split: 9 credited mints on this half, 110 on the
+    // unenhanced twin below — the biggest synthetic population in the whole carry.
+    const recoverySlot = recoveryBuffValue(power) ?? syntheticEffects(power)?.recoveryBuff;
     if (recoverySlot !== undefined) {
       const recBuff = recoverySlot as ScalarOrScaled;
       const table = (typeof recBuff === 'object' && recBuff !== null && 'table' in recBuff)
@@ -1145,7 +1180,7 @@ function applyActivePowerBonuses(
         : '';
       if (!table.toLowerCase().includes('res_boolean')) {
         const enhMultiplier = 1 + (enhBonuses.enduranceMod || 0);
-        const adjustedRecovery = adjustForStacking(recBuff, targetsHitValues[power.internalName], effects.stacksLinear, 'recoveryBuff', effects.maxStacks, effects.stackCaps);
+        const adjustedRecovery = stack(recBuff, buffStack('Recovery', 'enhanceable'));
         const value = resolveScaledEffect(adjustedRecovery, archetypeId, buildLevel) * 100 * enhMultiplier;
         global.recovery += value;
         addToBreakdown(breakdown, 'recovery', {
@@ -1158,9 +1193,10 @@ function applyActivePowerBonuses(
 
     // Recovery buff that ignores strength (IgnoreStrength) — NOT boosted by End
     // Mod enh or global +recovery (e.g. Bio Armor adaptation's ride-along recovery).
-    const recoveryUnenhSlot = recoveryBuffValue(power, { ignoreStrength: true }) ?? effects.recoveryBuffUnenhanced;
+    const recoveryUnenhSlot = recoveryBuffValue(power, { ignoreStrength: true })
+      ?? syntheticEffects(power)?.recoveryBuffUnenhanced;
     if (recoveryUnenhSlot !== undefined) {
-      const adjusted = adjustForStacking(recoveryUnenhSlot as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'recoveryBuffUnenhanced', effects.maxStacks, effects.stackCaps);
+      const adjusted = stack(recoveryUnenhSlot as ScalarOrScaled, buffStack('Recovery', 'unenhanced'));
       const value = resolveScaledEffect(adjusted, archetypeId, buildLevel) * 100;
       global.recovery += value;
       addToBreakdown(breakdown, 'recovery', {
@@ -1189,7 +1225,10 @@ function applyActivePowerBonuses(
     // bag-equal by scripts/planb-shadow-maxhp.cjs). `?? effects.maxHPBuff` keeps an
     // atom-less legacy power on the bag. Read `.scale` directly (×10, no table
     // resolution) — the atom value carries no perTarget for any MaxHP power.
-    const maxHPBuff = maxHPBuffValue(power) ?? effects.maxHPBuff;
+    // BPORT11: synthetic arms kept on both halves — 1 credited mint on this one (rebirth
+    // Essence Boost in Peacebringer Tanker Mode) and 43 on the unenhanced twin (Bio Armor's
+    // Inexhaustible in Defensive Adaptation). All 293 + 162 real carriers agree with the bag.
+    const maxHPBuff = maxHPBuffValue(power) ?? syntheticEffects(power)?.maxHPBuff;
     if (maxHPBuff !== undefined) {
       const enhMultiplier = 1 + (enhBonuses.heal || 0);
       const scale = typeof maxHPBuff === 'number'
@@ -1210,7 +1249,8 @@ function applyActivePowerBonuses(
     // Pain Tolerance, Dull Pain, …); the atom list carries the IgnoreStrength half
     // as its own atom (`ignoreStrength:true`), which is exactly the twin split the
     // bag re-materialized as a parallel `maxHPBuffUnenhanced` slot.
-    const maxHPBuffUnenhanced = maxHPBuffValue(power, { ignoreStrength: true }) ?? effects.maxHPBuffUnenhanced;
+    const maxHPBuffUnenhanced = maxHPBuffValue(power, { ignoreStrength: true })
+      ?? syntheticEffects(power)?.maxHPBuffUnenhanced;
     if (maxHPBuffUnenhanced !== undefined) {
       const scale = typeof maxHPBuffUnenhanced === 'number'
         ? maxHPBuffUnenhanced
@@ -1251,6 +1291,31 @@ function applyActivePowerBonuses(
     // HP later against the final build Max HP (accolades included — which is
     // why Wild Bastion grows with +HP accolades). Boosted like healing:
     // slotted Heal enhancement + +Strength(Absorb) from Power Boost / Clarion.
+    // ABSORB DOES NOT CROSS IN BPORT11, and it is the only family that does not. The reason is
+    // the per-foe increment, which no reader returns: `absorbValue` folds through
+    // `foldResourceSum`, which keeps `{scale, table}` and drops `perTarget`, and
+    // `absorbMaxHPFractionValue` answers a bare number with nowhere to put one. 34 of the
+    // corpus's 701 Absorb atoms carry a `perTarget` stamp and 21 bag slots state an increment,
+    // and Parasitic Aura's own Expression rows carry none at all while its Regeneration and
+    // Recovery rows beside them do — so the increment is a converter verdict that reached the
+    // bag and not the atom.
+    //
+    // Carrying the arm anyway costs the targets-hit slider on Parasitic Aura and Parasitic
+    // Leech: measured through `serverParity`, the engine's absorb grows 160.6 from N=0 to N=1
+    // and the atom-fed oracle's does not move at all. The only way to land it and stay green
+    // is to excuse those powers in the parity gate, which buys a green suite by making the
+    // gate blind to exactly the thing that broke. Left visible instead — the seams below are
+    // in the reader census, so BPORT7 meets them rather than discovering them.
+    //
+    // What the carry DID measure, and what ABSORB-4 asks for. The flat reader agrees with the
+    // bag on 153 of 171 carriers and multiplies the other 18 by 5-7x, because those powers
+    // state one shield as several byte-identical rows and `absorbValue` sums what the
+    // converter's pre-scan counted once. Keying the fold on `stacking` instead — a `Replace`
+    // row counts ONE application, a `Stack` row sums to its cap — reproduces the bag on 169 of
+    // the 171. One counterexample stands: Frigid Shield's two byte-identical `Replace` rows the
+    // bag SUMS, where Particle Shielding's seven it does not, and those two differ on `aspect`
+    // and `duration` as well as on count. That measurement is only available while the bag is
+    // here to be measured against, which is why it is written down now.
     if (effects.absorb !== undefined && effects.absorb !== null) {
       // Per-foe absorb (Parasitic Aura: +10% MaxHP/foe up to 10) rides the same
       // targets-hit slider as every other buff slot, so run it through
@@ -1259,13 +1324,10 @@ function applyActivePowerBonuses(
       // absorbs (Ablative, Wild Bastion) carry no perTarget and pass through
       // unchanged. adjustForStacking only ever adjusts `scale`, so maxHPFraction/
       // appliesStrength/table survive the spread.
-      const ab = adjustForStacking(
+      const ab = adjustForStackCap(
         effects.absorb as ScalarOrScaled,
         targetsHitValues[power.internalName],
-        effects.stacksLinear,
-        'absorb',
-        effects.maxStacks,
-        effects.stackCaps,
+        stackCapOf(power, buffStack('Absorb')),
       ) as { scale?: number; table?: string; perTarget?: number; maxHPFraction?: number; appliesStrength?: boolean };
       // The MaxHP-fraction form is scaled by strength unless it opts out
       // (appliesStrength:false — ATO procs, which don't reach this path).
@@ -1492,14 +1554,20 @@ function applyActivePowerBonuses(
     // the largest applies; everything else stacks additively. That's why a
     // Stealth IO (its own group) lands on top of a stealth power toward the
     // invisibility cap, while Super Speed + pool Stealth (same group) don't add.
-    if (effects.stealth) {
-      const pve = effects.stealth.stealthPvE !== undefined
-        ? resolveScaledEffect(effects.stealth.stealthPvE, archetypeId, buildLevel) : 0;
-      const pvp = effects.stealth.stealthPvP !== undefined
-        ? resolveScaledEffect(effects.stealth.stealthPvP, archetypeId, buildLevel) : 0;
+    // BPORT11: atom-native (`stealthValue` mirrors the converter's Current-face arm), synthetic
+    // arm kept for the one credited mint (Thunderspy's Primalist's Cloak in Prowler Mode).
+    // All 341 real carriers agree. 106 more carry a bag `stealth` the reader declines, and 105
+    // of those are the teleport family's `{translucency: …}` authoring artifact under a key
+    // this block never reads — 0 credited. The 106th is named in the verify test.
+    const stealthSlot = stealthValue(power) ?? syntheticEffects(power)?.stealth;
+    if (stealthSlot) {
+      const pve = stealthSlot.stealthPvE !== undefined
+        ? resolveScaledEffect(stealthSlot.stealthPvE, archetypeId, buildLevel) : 0;
+      const pvp = stealthSlot.stealthPvP !== undefined
+        ? resolveScaledEffect(stealthSlot.stealthPvP, archetypeId, buildLevel) : 0;
       if (pve > 0 || pvp > 0) {
         stealthContribs.push({
-          stackKey: effects.stealth.stackKey ?? null,
+          stackKey: stealthSlot.stackKey ?? null,
           pve,
           pvp,
           sourceName: power.name,
@@ -2714,8 +2782,11 @@ function applyAccoladeStats(
     }
 
     // +Max Endurance — flat endurance points (scale already absolute, e.g. scale 5 = +5 end).
-    if (power.effects?.maxEndBuff !== undefined) {
-      const value = resolveScaledEffect(power.effects.maxEndBuff, archetypeId, buildLevel);
+    // BPORT11: atom-native, like the accolade's +MaxHP beside it. All 28 accolade carriers
+    // across the four datasets agree with the bag exactly.
+    const accoladeMaxEnd = maxEndBuffValue(power);
+    if (accoladeMaxEnd !== undefined) {
+      const value = resolveScaledEffect(accoladeMaxEnd, archetypeId, buildLevel);
       global.maxEndurance += value;
       addToBreakdown(breakdown, 'maxEndurance', { name: power.name, value, type: 'accolade' });
       if (isCalcDebugEnabled()) debugAccolade(power.name, 'maxEndurance', value);

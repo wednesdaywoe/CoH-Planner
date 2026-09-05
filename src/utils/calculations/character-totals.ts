@@ -360,56 +360,11 @@ function adjustForPerTarget(value: ScalarOrScaled, targetsHit?: number): ScalarO
 }
 
 /**
- * Combined stacking adjustment: applies perTarget AoE math (existing
- * behavior) OR `stacksLinear` self-stack multiplication for powers like
- * Psychokinetic Barrier's debuff resistance — never both.
- *
- * Soul Drain et al. carry both `perTarget` (from AoE per-target detection)
- * AND a `stacksLinear` entry (from self-stack detection, since each per-
- * target tick applies to Self with a stack_limit). They're two views of
- * the same mechanic; running both produced N² scaling.
+ * The bag-shaped `adjustForStacking` stood here until BPORT11 and is gone with its last caller.
+ * It took `stacksLinear`, an effect KEY, `maxStacks` and `stackCaps` — four arguments spelling
+ * one question the atoms answer in one — and the totals oracle was the only thing that called
+ * it. {@link adjustForStackCap} is the same arithmetic keyed on the resolved cap.
  */
-export function adjustForStacking(
-  value: ScalarOrScaled,
-  targetsHit: number | undefined,
-  stacksLinear: readonly string[] | undefined,
-  effectKey: string,
-  maxStacks?: number,
-  stackCaps?: Record<string, number>,
-): ScalarOrScaled {
-  const hasPerTarget = typeof value === 'object' && value !== null
-    && (!!(value as { perTarget?: number }).perTarget
-      || !!(value as { maxHPFractionPerTarget?: number }).maxHPFractionPerTarget);
-  if (hasPerTarget) {
-    // perTarget already drives the scaling; do not also multiply by N.
-    return adjustForPerTarget(value, targetsHit);
-  }
-  // For stacksLinear effects (self-stacking from repeated casts, e.g. Siphon
-  // Speed's +Recharge), the targets-hit slider doubles as a stack-count
-  // slider. Explicit 0 = power whiffed / no stacks active (scale 0); an untouched
-  // slider (undefined) keeps the BASE 1-stack value. Unlike a per-target AoE buff
-  // (where "Off" genuinely means 0 foes hit → 0, see adjustForPerTarget), a
-  // self-stacking recast buff is already applied once when the power is active
-  // (Psychokinetic Barrier's base absorb, Siphon Speed's first +Recharge), so its
-  // default is 1 stack — the slider only adds stacks 2..cap on top.
-  if (targetsHit === 0 && stacksLinear?.includes(effectKey)) {
-    if (typeof value === 'object' && value !== null) {
-      return { ...value, scale: 0 };
-    }
-    return 0;
-  }
-  if (!targetsHit || targetsHit <= 1) return value;
-  if (!stacksLinear || !stacksLinear.includes(effectKey)) return value;
-  if (typeof value !== 'object' || value === null) return value;
-  // Cap stack count at this effect's own limit. Powers whose stacksLinear
-  // effects diverge (Psychokinetic Barrier: absorb cap 2, debuff-res cap 3)
-  // carry a per-effect `stackCaps`; fall back to the power-wide `maxStacks`
-  // (e.g. Siphon Speed maxStacks=2; a slider at 3 must still cap at 2×).
-  const cap = stackCaps?.[effectKey] ?? maxStacks;
-  const cappedStacks = cap && cap > 0 ? Math.min(targetsHit, cap) : targetsHit;
-  const obj = value as { scale: number };
-  return { ...value, scale: obj.scale * cappedStacks };
-}
 
 export interface ActivePowerEffect {
   tohitBuff?: number;
@@ -593,9 +548,8 @@ const STRENGTH_MEZ_KEYS = new Set([
  *
  * `stackCapOf` answers membership and depth together — a number is both "this family
  * self-stacks" and how far — which is what the atoms say directly and what `stacksLinear` +
- * (`stackCaps[key]` ?? `maxStacks`) said in three places. BPORT11 moves the oracle's call
- * sites onto this one family by family; the bag-shaped {@link adjustForStacking} stays only
- * for the sites that have not crossed yet, and goes with the last of them.
+ * (`stackCaps[key]` ?? `maxStacks`) said in three places. BPORT11 moved the oracle's call sites
+ * onto this one family by family, and the bag-shaped helper went with the last of them.
  *
  * The one case with no atom-native spelling is the bag's `stacksLinear`-without-a-cap
  * (stack uncapped), because on the atom side a cap is what admits a row to the family at all.

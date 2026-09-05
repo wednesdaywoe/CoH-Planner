@@ -354,13 +354,20 @@ describe('BPORT5 — what grades the engine once the bag is gone', () => {
     // joined that fold; 127 when the `protTeleport` stat was retired with its read; 107 once
     // defense, defenseBuffSuppressible, resistance, resistanceDebuff and debuffResistance
     // crossed, taking the pet-aura fold's `effects.defense` key with them; 67 once the movement
-    // cluster went — the five empty scalars, the axis map, and the self slow / cap-debuff pair.
+    // cluster went — the five empty scalars, the axis map, and the self slow / cap-debuff pair;
+    // and 17 when the last cluster landed. BPORT5's finish line is the six residual slots
+    // canonical also reads plus the eight `mezProtTypes` roster keys — 14 — and the three over
+    // it are ABSORB, the one family BPORT11 declined to carry. Its per-foe increment reaches
+    // no reader (`foldResourceSum` drops `perTarget`, `absorbMaxHPFractionValue` answers a bare
+    // number), so carrying it kills the targets-hit slider on Parasitic Aura and Parasitic
+    // Leech; left on the bag deliberately so BPORT7 meets the dependency in this census rather
+    // than discovering it after the regen.
     //
     // The carry does NOT count the arms it keeps: `syntheticEffects(power)?.rechargeBuff`
     // names no `effects.` prefix, so the finder cannot see it and does not. That is right —
     // it is the totals pass reading back its own output — but it means this number measures
     // the DATA seams only, which is the population the strip empties.
-    expect(mine).toHaveLength(67);
+    expect(mine).toHaveLength(17);
     expect(mine.every((s) => s.sibling !== 'absent')).toBe(true);
 
     // The residual is derived, not listed — canonical's own copy answers it.
@@ -403,18 +410,24 @@ describe('BPORT5 — what grades the engine once the bag is gone', () => {
     // helpers were called here too. Asserted as a shrinking bound plus the named residue, so
     // a carry that lands removes rows without an edit while a helper going UNCALLED again
     // reds.
-    expect(gap.length).toBeGreaterThan(8);
-    // What is still owed, named rather than counted: absorb, stealth, the self-debuff arms and
-    // the movement pair are the clusters BPORT11 has not reached.
-    for (const named of ['absorbValue', 'stealthValue', 'selfDamageDebuffValue',
-      'selfRechargeDebuffValue', 'damageBuffIsDefianceOnly', 'specialBuffValue']) {
-      expect(gap, named).toContain(named);
-    }
+    // What is left is not a gap in the totals path at all. `specialBuffValue` and
+    // `SPECIAL_BUFF_STACK` are `collectStrengthBuffs`' arms, which live in `character-totals.ts`
+    // on this side and so read as "the oracle does not call them"; `atomsOf` and `isDebuffAtom`
+    // are canonical's `carries_combat_debuff`, which is in that same file here. The gap is an
+    // artifact of PROD7's split, not work owed.
+    // `specialBuffValue` / `SPECIAL_BUFF_STACK` are `collectStrengthBuffs`' arms and `atomsOf` /
+    // `isDebuffAtom` are `carries_combat_debuff`'s; all four live in `character-totals.ts` on
+    // this side, so they read as "the oracle does not call them" and are an artifact of PROD7's
+    // split rather than work owed. The two absorb readers ARE work owed, and are owed to
+    // ABSORB-4 rather than to this row.
+    expect(gap.sort()).toEqual(['SPECIAL_BUFF_STACK', 'absorbMaxHPFractionValue', 'absorbValue',
+      'atomsOf', 'isDebuffAtom', 'specialBuffValue']);
     // And what has landed, which is the half that must not silently come back.
     for (const carried of ['accuracyBuffValue', 'rechargeBuffValue', 'rangeBuffValue',
       'perceptionBuffValue', 'enduranceDiscountValue', 'maxEndBuffValue', 'elusivityValue',
       'mezSlotValue', 'mezResistanceValue', 'tauntPlacateValue', 'debuffResistanceValue',
-      'selfSlowValue', 'selfMovementCapDebuffValue', 'movementAxisSubType']) {
+      'selfSlowValue', 'selfMovementCapDebuffValue', 'movementAxisSubType', 'stealthValue',
+      'selfDamageDebuffValue', 'selfRechargeDebuffValue', 'damageBuffIsDefianceOnly']) {
       expect(gap, carried).not.toContain(carried);
     }
   });
