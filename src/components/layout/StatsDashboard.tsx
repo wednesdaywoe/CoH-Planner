@@ -26,6 +26,7 @@ import type { DashboardStatBreakdown } from '@/hooks/useCalculatedStats';
 import { STAT_DEFINITIONS, resolveStatValue, STAT_CATEGORY } from '@/data/stat-definitions';
 import type { StatDefinition, StatValue, CompoundStatValue, MezStatValue, StatCategory } from '@/data/stat-definitions';
 import { applyMovementBuff, getEffectiveMovementCaps, MOVEMENT_BASES, type MovementCapBump, type MovementStat } from '@/data/core/movement-constants';
+import { movementCapBumpValue } from '@/data/core/atom-query';
 import type { GlobalBonuses } from '@/utils/calculations/character-totals';
 
 // Re-export for any consumers that imported from here
@@ -262,7 +263,36 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
     const collect = (powers: SelectedPower[]) => {
       for (const p of powers) {
         const isAuto = p.powerType?.toLowerCase() === 'auto';
-        if (!(isAuto || p.isActive) || !p.effects?.movementCapBump) continue;
+        if (!(isAuto || p.isActive)) continue;
+        // Atom-first, bag only for a power carrying no movement atom — the seam the movement
+        // maps in character-totals already read on. BPORT7 takes `effects.movementCapBump`
+        // off the powerset layer, and a bare bag read is then a silent zero: the canonical
+        // fork's own note on this seam records Quantum Acceleration on all four forks and
+        // Energy Flight on Homecoming/Brainstorm answering no cap raise at all, with nothing
+        // red to say so. Landed here while both sides still answer, and measured: 28 powers
+        // carry a bump, the two paths agree on all 28, and neither has one the other lacks.
+        //
+        // An EMPTY array is a verdict and not a miss, so the check is on `undefined` rather
+        // than on length — a travel power whose Maximum rows all route elsewhere must not
+        // fall through and read them a second time off the bag.
+        const atomBumps = movementCapBumpValue(p);
+        if (atomBumps) {
+          // The reader emits only capped axes. `routeMovementAtom` is what does it, on the
+          // ASPECT: a cap raise is `Max`-face and positive, so the `Cur`-face FlyMode grant
+          // — the flight-mode row that spends as a speed if anything lets it through — never
+          // reaches this slot, and `Control`/`Friction` are peeled off as capless. The axis
+          // map behind that is a second filter with nothing left to catch today.
+          for (const e of atomBumps) {
+            bumps.push({
+              stat: e.axis as MovementStat,
+              scale: e.scale,
+              stackKey: e.stackKey,
+              suppressible: e.suppressible,
+            });
+          }
+          continue;
+        }
+        if (!p.effects?.movementCapBump) continue;
         for (const [stat, bump] of Object.entries(p.effects.movementCapBump)) {
           if (!bump || typeof bump === 'number' || typeof bump.scale !== 'number') continue;
           const b = bump as { scale: number; stackKey?: string; suppressible?: boolean };

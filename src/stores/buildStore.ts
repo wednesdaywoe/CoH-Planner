@@ -398,10 +398,17 @@ function syncBuildDefinitions(build: Build): void {
   // writer that dropped it — asks the classifier whether an attack is an attack and
   // is told no, which flips the `damageBuff` skip and hands a per-cast Defiance proc
   // a toggle it should never have had.
+  //
+  // `atoms` and `targetsAffected` joined the list when `shouldShowToggle` stopped reading
+  // the bag (BPORT6): the classifier now asks the atoms, and `reachesCaster` needs the
+  // recipient list to answer. A stored power carries neither, so without repairing both
+  // here every rehydrated build would answer the classifier from an empty atom array and
+  // lose every click toggle it had — the same silent one the `damage`/`shortHelp` note
+  // above records, on the field that replaced the one it was written about.
   type DefShape = Pick<
     SelectedPower,
     | 'name' | 'internalName' | 'effects' | 'icon' | 'powerType' | 'targetType' | 'effectArea'
-    | 'damage' | 'shortHelp' | 'available'
+    | 'damage' | 'shortHelp' | 'available' | 'atoms' | 'targetsAffected'
     | 'setsModes' | 'modesRequired' | 'modesDisallowed' | 'modesSuspended' | 'modeVariants'
     | 'allowedEnhancements' | 'allowedSetCategories'
   >;
@@ -491,6 +498,14 @@ function syncBuildDefinitions(build: Build): void {
       // every rehydrate, so an identity check would report "changed" for every
       // power in every build forever.
       const needsDamage = JSON.stringify(currentDef.damage) !== JSON.stringify(power.damage);
+      // Presence, not equality, for the two atom-classifier fields: the atom array is the
+      // largest thing on a power definition, and stringifying both copies of it for every
+      // power of every build on every rehydrate costs more than the repair is worth. A
+      // stored power either carries them or does not — the slim serializer drops both — so
+      // "absent here, present on the def" is the whole population this needs to catch.
+      const needsAtoms = currentDef.atoms !== undefined && power.atoms === undefined;
+      const needsTargetsAffected = currentDef.targetsAffected !== undefined
+        && power.targetsAffected === undefined;
       const needsModeGates =
         JSON.stringify(modeGates(currentDef)) !== JSON.stringify(modeGates(power));
       // The slotting allow-lists, repaired for the same reason as the mode gates:
@@ -506,7 +521,7 @@ function syncBuildDefinitions(build: Build): void {
           !== JSON.stringify([power.allowedEnhancements, power.allowedSetCategories]);
       const metadataChanged = needsInternalName || needsEffects || needsIcon || needsPowerType
         || needsTargetType || needsEffectArea || needsShortHelp || needsAvailable || needsDamage
-        || needsModeGates || needsAllowLists;
+        || needsModeGates || needsAllowLists || needsAtoms || needsTargetsAffected;
       // Judge the toggle on the REPAIRED power, not the stored one — the whole point
       // of the metadata sync above is that the stored copy may be missing the fields
       // `shouldShowToggle` reads.
@@ -522,6 +537,8 @@ function syncBuildDefinitions(build: Build): void {
             ...(needsShortHelp ? { shortHelp: currentDef.shortHelp } : {}),
             ...(needsAvailable ? { available: currentDef.available } : {}),
             ...(needsDamage ? { damage: currentDef.damage } : {}),
+            ...(needsAtoms ? { atoms: currentDef.atoms } : {}),
+            ...(needsTargetsAffected ? { targetsAffected: currentDef.targetsAffected } : {}),
             ...(needsModeGates ? modeGates(currentDef) : {}),
             ...(needsAllowLists
               ? {

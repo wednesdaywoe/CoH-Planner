@@ -4,7 +4,31 @@
  * that were previously duplicated across multiple components.
  */
 
-import { hasSelfDirectedPenalty, type PowerEffects } from '@/types';
+import {
+  type AtomSource,
+  absorbMaxHPFractionValue,
+  absorbValue,
+  baseAtoms,
+  damageBuffValue,
+  debuffResistanceValue,
+  defenseBuffValue,
+  enduranceDiscountValue,
+  enduranceGainValue,
+  isDebuffAtom,
+  maxEndBuffValue,
+  maxHPBuffValue,
+  mezResistanceValue,
+  perceptionBuffValue,
+  rangeBuffValue,
+  rechargeBuffValue,
+  recoveryBuffValue,
+  regenBuffValue,
+  resistanceBuffValue,
+  selfDamageDebuffValue,
+  selfSlowValue,
+  specialBuffValue,
+  toHitBuffValue,
+} from '@/data/core/atom-query';
 
 /**
  * Check if a power has a Heal-type damage entry (one-shot heals/drains).
@@ -19,83 +43,120 @@ export function hasHealingDamage(power: { damage?: unknown }): boolean {
 }
 
 /**
- * Effect keys whose presence implies a persistent buff/effect applied to the caster.
- * Used to gate the toggle UI for click powers — only powers with at least one of these
- * keys (or a self-directed `toWho:'Self'` debuff) get a toggle.
+ * Did the query find anything?
  *
- * Includes the *Buff-suffixed fields plus unsuffixed top-level fields some powers use
- * (Healing Flames stores `resistance.toxic`, not `resistanceBuff`).
+ * Not the same as `!== undefined`. The by-type queries answer with a map and the movement
+ * ones with an array, and both can come back EMPTY when the power carries atoms of that
+ * family but none on the arm asked for — `selfSlowValue` returns `[]` for every foe attack
+ * with a slow rider, which is most of them. Read as presence, that empty answer hands a
+ * toggle to hundreds of attack powers that never had one.
  */
-const CASTER_BUFF_KEYS = [
-  // Standard *Buff fields
-  'tohitBuff', 'tohitBuffUnenhanced', 'damageBuff', 'defenseBuff', 'defenseBuffSuppressible',
-  'rechargeBuff', 'recoveryBuff', 'recoveryBuffUnenhanced', 'regenBuff', 'regenBuffUnenhanced',
-  'speedBuff', 'enduranceBuff', 'enduranceGain', 'maxHPBuff', 'maxEndBuff',
-  'rangeBuff', 'enduranceDiscount', 'threatBuff', 'perceptionBuff', 'absorb',
-  // Unsuffixed top-level fields (used by some powers in place of *Buff)
-  'defense', 'resistance',
-  // +Strength self-buff container (Power Boost family). The whole point of
-  // toggling these is to apply their strength to your other powers, so they
-  // must be activatable even though they carry no flat *Buff fields.
-  'specialBuff',
-  // Movement buffs
-  'runSpeed', 'flySpeed', 'jumpHeight', 'jumpSpeed', 'fly',
-  'movementControl', 'movementFriction',
-  // Stealth
-  'stealthPvE', 'stealthPvP', 'translucency',
-  // Mez/debuff resistance (mezResistance, debuffResistance)
-  'mezResistance', 'debuffResistance',
+function answered(value: unknown): boolean {
+  if (value === undefined || value === null) return false;
+  if (Array.isArray(value)) return value.length > 0;
+  if (typeof value === 'object') return Object.keys(value).length > 0;
+  return true;
+}
+
+/**
+ * The caster-facing buff questions, asked of the atoms.
+ *
+ * Each entry is the atom-native twin of one bag slot this predicate used to test with
+ * `key in power.effects`. BPORT7 empties that object, at which point the old enumeration
+ * would answer false for every click power that has a toggle and each one would lose it
+ * silently — so the port lands here, while the bag is still populated and old-vs-new is
+ * measurable on real data.
+ *
+ * It was measured: over 14,249 powers on all four datasets, in all three partitions, the
+ * two predicates agree on 14,164. Every one of the 85 divergences is adjudicated in
+ * `toggle-roster-atom-native.verify.test.ts`, and none of them is this list being narrower
+ * than it should be.
+ *
+ * The enumeration was 35 keys; 21 survive here. The other 14 reached **no** click power that
+ * could arrive at this predicate, and split three ways:
+ *
+ *  - **Ten names that only ever existed one level down.** `runSpeed`, `flySpeed`,
+ *    `jumpHeight`, `jumpSpeed`, `fly`, `movementControl`, `movementFriction` live under
+ *    `effects.movement` / `effects.slow`; `stealthPvE`, `stealthPvP`, `translucency` under
+ *    `effects.stealth`. `key in effects` reads the top level, so the "Movement buffs" and
+ *    "Stealth" clauses never matched a power — not at the strip, ever. The cast to
+ *    `Record<string, unknown>` is what kept the type from saying so, and the four movement
+ *    names ARE declared on `PowerEffects`, marked `@deprecated Use movement.X instead`.
+ *  - **Two names with no referent at either depth** — `speedBuff` and `enduranceBuff`.
+ *  - **Two that are real but unreachable here** — `defenseBuffSuppressible` and `threatBuff`
+ *    appear on Toggle powers only, which return true above without consulting this
+ *    predicate, and top-level `defense` was never emitted (the converter writes defense
+ *    positions to `defenseBuff`).
+ *
+ * So dropping the 14 changes no power's answer, and the measurement above is the proof
+ * rather than the claim. Restoring the movement and stealth intent would ADD powers, which
+ * is a roster change and not this migration's to make.
+ *
+ * Ordered by how many click powers each reaches, so the common cases short-circuit first.
+ */
+const CASTER_BUFF_QUERIES: readonly ((power: AtomSource) => unknown)[] = [
+  damageBuffValue,            // 1232
+  toHitBuffValue,             // 767
+  resistanceBuffValue,        // 553
+  enduranceGainValue,         // 488
+  debuffResistanceValue,      // 422
+  defenseBuffValue,           // 348
+  recoveryBuffValue,          // 345
+  regenBuffValue,             // 282
+  mezResistanceValue,         // 250
+  rechargeBuffValue,          // 225
+  maxHPBuffValue,             // 205
+  absorbValue,                // 136
+  enduranceDiscountValue,     // 97
+  recoveryBuffUnenhanced,     // 82
+  specialBuffValue,           // 76
+  perceptionBuffValue,        // 73
+  absorbMaxHPFractionValue,   // 69
+  rangeBuffValue,             // 61
+  tohitBuffUnenhanced,        // 48
+  maxEndBuffValue,            // 31
+  regenBuffUnenhanced,        // 26
 ];
+
+/**
+ * The three `*Unenhanced` bag slots were the one `ignoreStrength` axis re-minted as parallel
+ * keys. The atom queries take it as an option, so the twin is the same function asked the
+ * other way — not a second slot.
+ */
+function recoveryBuffUnenhanced(power: AtomSource) {
+  return recoveryBuffValue(power, { ignoreStrength: true });
+}
+function regenBuffUnenhanced(power: AtomSource) {
+  return regenBuffValue(power, { ignoreStrength: true });
+}
+function tohitBuffUnenhanced(power: AtomSource) {
+  return toHitBuffValue(power, { ignoreStrength: true });
+}
+
+/**
+ * The atom twin of `hasSelfDirectedPenalty` — a penalty the caster writes on himself
+ * (Granite Armor's -damage/-recharge, the Kheldian Steps' self movement slow) is a real
+ * caster effect, so such a click power gets a toggle.
+ *
+ * The bag predicate tested four `toWho:'Self'` debuff slots plus a nested `slow` map. Two of
+ * them, `rechargeDebuff` and `accuracyDebuff`, carry no self-directed row anywhere in the
+ * corpus; the other three do. `slow` is the only arm any power depends on ALONE — the
+ * Kheldian Steps, Shadow Step, and the three Team Teleport copies this migration hands a
+ * toggle BACK to — so it is the one whose loss would shrink the roster.
+ *
+ * ToHit has no `self*` query on the atom side, and is asked inline rather than by minting one
+ * for a single call site: a base ToHit atom, aimed at the caster, on the debuff arm.
+ */
+function hasSelfDirectedAtomPenalty(power: AtomSource): boolean {
+  if (answered(selfDamageDebuffValue(power))) return true;
+  if (answered(selfSlowValue(power))) return true;
+  return baseAtoms(power).some(
+    (a) => a.effectType === 'ToHit' && a.toWho === 'Self' && isDebuffAtom(a),
+  );
+}
 
 /** targetType values where the power cannot be cast on self — buffs go to allies only. */
 const ALLY_ONLY_TARGETS = new Set(['ally', 'ally (alive)']);
-
-/**
- * `mezResistance` and `debuffResistance` are sub-keyed containers, so their mere
- * presence proves nothing — the calc routes them per subtype and silently drops
- * subtypes it has no total for. A power whose only "caster buff" is an unrouted
- * subtype gets a toggle that cannot move a single number.
- *
- * Reported 2026-07-30: Fold Space had a toggle that did nothing. Its bag carries
- * `mezResistance.teleport` — which is the *foes'* 15s teleport protection (so they
- * can't be chain-yanked), not a caster buff, and there is no teleport-resistance
- * total for it to reach either. Same for Rebirth's Mass Translocate and
- * Thunderspy's Teleport Foe.
- *
- * These lists mirror `mezResMapping` / `debuffResMapping` in
- * `src/utils/calculations/legacy-totals.oracle.ts` (and their Rust twins in
- * `coh_math`); `power-row-utils.test.ts` pins them in sync. The oracle is frozen, so where the
- * engine routes a subtype the oracle never did, the list follows the ENGINE and the test names
- * the divergence: `accuracy`/`range` are the engine's own (DEBUFFRES-1).
- *
- * Note this is deliberately a routability test, not a `toWho` test: Aid Self also
- * stamps `toWho: 'Target'` on its `mezResistance.stun`, but it is a self-cast
- * single-target power where the target *is* the caster, and `stun` does route.
- */
-export const ROUTED_SUBTYPES: Record<string, Set<string>> = {
-  mezResistance: new Set([
-    'hold', 'stun', 'immobilize', 'sleep', 'confuse', 'fear', 'knockback',
-  ]),
-  debuffResistance: new Set([
-    'movement', 'defense', 'recharge', 'endurance', 'recovery', 'tohit',
-    'regeneration', 'perception', 'accuracy', 'range',
-  ]),
-};
-
-/**
- * True when a caster-buff key carries something the calc can actually consume.
- * Only the sub-keyed resistance containers are scrutinised; every other key is
- * a scalar or `*Buff` field whose presence is itself the signal.
- */
-function keyCarriesUsableEffect(key: string, effects: Record<string, unknown>): boolean {
-  const routed = ROUTED_SUBTYPES[key];
-  if (!routed) return true;
-  const container = effects[key];
-  if (!container || typeof container !== 'object') return false;
-  return Object.keys(container as Record<string, unknown>).some((subtype) =>
-    routed.has(subtype.toLowerCase()),
-  );
-}
 
 function isDamagingAttack(power: { damage?: unknown }): boolean {
   // True when the power directly deals damage to enemies. The shared check
@@ -112,12 +173,8 @@ function isDamagingAttack(power: { damage?: unknown }): boolean {
   });
 }
 
-function hasPersistentBuffEffects(power: { effects?: object; damage?: unknown }, isSelf: boolean): boolean {
-  if (!power.effects) return false;
-  const effects = power.effects as Record<string, unknown>;
-  // A self-directed penalty (Granite Armor's -damage etc., toWho:'Self') is a
-  // real caster effect — such click powers get a toggle.
-  if (hasSelfDirectedPenalty(power.effects as PowerEffects)) return true;
+function hasPersistentBuffEffects(power: AtomSource & { damage?: unknown }): boolean {
+  if (hasSelfDirectedAtomPenalty(power)) return true;
   // Damage attacks: damageBuff is a per-cast Defiance proc, and rangeBuff
   // is the Fast Snipe per-power range bump (gated on ≥22% ToHit buff in
   // game). Neither is a persistent caster buff worth toggling at the
@@ -125,15 +182,18 @@ function hasPersistentBuffEffects(power: { effects?: object; damage?: unknown },
   // range, not a generic active-power flag. Real persistent self-buffs
   // (resistance, defense, mez resistance, etc.) on the same power still
   // trigger the toggle.
-  const skip = isDamagingAttack(power) ? new Set(['damageBuff', 'rangeBuff']) : new Set<string>();
-  // `specialBuff` (the +Strength container) only implies a *caster* buff when
-  // the power is self-targeted. Legacy foe -Special debuffs (Benumb, Weaken,
-  // Time Stop) store a positive `specialBuff` on a Foe-targeted power — those
-  // must not gain a self-buff toggle.
-  if (!isSelf) skip.add('specialBuff');
-  return CASTER_BUFF_KEYS.some(
-    key => key in effects && !skip.has(key) && keyCarriesUsableEffect(key, effects),
-  );
+  //
+  // There is no `specialBuff` skip here, and its absence is deliberate. The bag path had to
+  // drop the whole slot on a non-self-targeted power, because a legacy foe -Special debuff
+  // (Benumb, Weaken, Time Stop) stored its magnitude as a POSITIVE `specialBuff` with nothing
+  // on the slot to say whose strength it was. `specialBuffValue` asks `reachesCaster` of each
+  // ATOM, so the recipient is answered a level down and a power-level skip on top of it is
+  // inert — verified by mutation: removing it changes no power's answer.
+  const attack = isDamagingAttack(power);
+  return CASTER_BUFF_QUERIES.some((query) => {
+    if (attack && (query === damageBuffValue || query === rangeBuffValue)) return false;
+    return answered(query(power));
+  });
 }
 
 function affectsCaster(power: { targetType?: string }): boolean {
@@ -149,17 +209,15 @@ function affectsCaster(power: { targetType?: string }): boolean {
  * - Excluded: ally-only buffs (Speed Boost, Fortitude), one-shot damage/heal-only
  *   clicks (Inferno, Dark Regeneration), interruptible snipes (no persistent caster buff)
  */
-export function shouldShowToggle(power: {
+export function shouldShowToggle(power: AtomSource & {
   powerType?: string;
   targetType?: string;
   shortHelp?: string;
   damage?: unknown;
-  effects?: object;
 }): boolean {
   const powerType = power.powerType?.toLowerCase();
   if (powerType === 'toggle') return true;
   if (powerType !== 'click') return false;
   if (!affectsCaster(power)) return false;
-  const isSelf = !power.targetType || power.targetType.toLowerCase() === 'self';
-  return hasPersistentBuffEffects(power, isSelf);
+  return hasPersistentBuffEffects(power);
 }

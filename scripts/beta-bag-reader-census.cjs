@@ -243,6 +243,11 @@ function seamsIn(rel, declared, root = REPO) {
  * longer exists throw there, so this cannot silently thin out.
  */
 function rosterSeams(declared) {
+  // The register describes code, so check it against the code before minting from it. A site
+  // whose constant has been deleted mints casualties for a read that no longer exists — the
+  // failure BPORT6 hit with `ROUTED_SUBTYPES`, and the one direction a stale roster fails in
+  // that nobody re-reads, because it reports MORE work rather than less.
+  supply.assertSitesLive();
   const seams = [];
   for (const site of supply.DYNAMIC_READ_SITES) {
     const keys = site.derive ? site.derive(declared) : site.keys;
@@ -252,6 +257,33 @@ function rosterSeams(declared) {
     }
   }
   return seams;
+}
+
+/**
+ * What the sibling did with a ROSTER-bound seam, which `seamsIn` alone cannot answer.
+ *
+ * A roster seam names no slot in its own source — `effects[key]` over a `DOMINATION_MEZ_KEYS`
+ * loop — so it is minted from {@link rosterSeams}, a hand-kept register, rather than found by
+ * the finder. The sibling comparison ran the FINDER over canonical and asked whether the slot
+ * came back, which for these seams it never can: the finder is not the thing that produced
+ * them. Every roster seam therefore reported `migrated-there` unconditionally, and BPORT6
+ * caught it the only way it could be caught — by opening canonical's copy. Six of the eight
+ * were wrong: canonical's `getPowerDominationSummary` is byte-identical to this one and reads
+ * `effects[key]` exactly as it does, so "carry canonical's arm" named an arm that does not
+ * exist. The other two (`ROUTED_SUBTYPES`) were right by accident.
+ *
+ * The register's own `symbol` is the decidable question: a roster of bag-slot names has one
+ * purpose, so canonical still declaring it means canonical still reads through it. That is
+ * the limit of this test and it is stated rather than hidden — a sibling that kept the
+ * constant and stopped indexing the bag with it would read as `reads-too` here.
+ */
+function siblingRosterVerdict(seam, siblingRoot) {
+  const symbol = seam.binding.slice('roster:'.length);
+  const theirs = path.join(siblingRoot, seam.file);
+  if (!fs.existsSync(theirs)) return 'absent';
+  const src = stripComments(fs.readFileSync(theirs, 'utf8'));
+  const declares = new RegExp(`(?:const|let|var|function)\\s+${symbol}\\b`).test(src);
+  return declares ? 'reads-too' : 'migrated-there';
 }
 
 /**
@@ -450,7 +482,9 @@ function readerCensus({ siblingRoot = null, datasets } = {}) {
     }
     for (const s of seams) {
       const theirs = theirSeams.get(s.file);
-      s.sibling = theirs === null ? 'absent' : theirs.has(s.slot) ? 'reads-too' : 'migrated-there';
+      s.sibling = theirs === null ? 'absent'
+        : s.binding.startsWith('roster:') ? siblingRosterVerdict(s, siblingRoot)
+        : theirs.has(s.slot) ? 'reads-too' : 'migrated-there';
       s.atomArmGap = theirs === null ? [] : atomArmGap(s.file, siblingRoot);
     }
   }

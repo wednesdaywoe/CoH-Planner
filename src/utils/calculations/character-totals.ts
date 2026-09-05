@@ -20,6 +20,7 @@ import { type AggregatedBonuses, type BonusTracking } from './set-bonuses';
 import { createEmptyStats, type CharacterStats } from './stats';
 import { type EnhancementBonuses } from './enhancement-values';
 import type { EncodedAtom } from '@/data/core/atomic-effect';
+import { SPECIAL_BUFF_STACK, specialBuffValue, stackCapOf } from '@/data/core/atom-query';
 import { warnFallback } from '@/utils/fallback-warnings';
 import { engineCalculate } from '@/engine/engineTotals';
 import { useEngineStore } from '@/engine/engineStore';
@@ -567,17 +568,55 @@ const STRENGTH_MEZ_KEYS = new Set([
 ]);
 
 /**
+ * The stacking adjustment, taking the cap as a resolved number rather than reading it out of
+ * three bag slots.
+ *
+ * `stackCapOf` answers membership and depth together — a number is both "this family
+ * self-stacks" and how far — which is what the atoms say directly and what `stacksLinear` +
+ * (`stackCaps[key]` ?? `maxStacks`) said in three places. Kept beside the bag-shaped
+ * {@link adjustForStacking} rather than replacing it: that one is still the frozen oracle's,
+ * and its `stacksLinear`-without-a-cap case (stack uncapped) has no atom-native spelling,
+ * because on the atom side a cap is what admits a row to the family at all.
+ */
+function adjustForStackCap(
+  value: ScalarOrScaled,
+  targetsHit: number | undefined,
+  stackCap: number | undefined,
+): ScalarOrScaled {
+  const hasPerTarget = typeof value === 'object' && value !== null
+    && (!!(value as { perTarget?: number }).perTarget
+      || !!(value as { maxHPFractionPerTarget?: number }).maxHPFractionPerTarget);
+  if (hasPerTarget) return adjustForPerTarget(value, targetsHit);
+  if (targetsHit === 0 && stackCap !== undefined) {
+    if (typeof value === 'object' && value !== null) return { ...value, scale: 0 };
+    return 0;
+  }
+  if (!targetsHit || targetsHit <= 1) return value;
+  if (stackCap === undefined) return value;
+  if (typeof value !== 'object' || value === null) return value;
+  const obj = value as { scale: number };
+  return { ...value, scale: obj.scale * Math.min(targetsHit, stackCap) };
+}
+
+/**
  * Collect active +Strength self-buffs (Power Boost, Power Build Up, Power Up,
  * Bass Boost, Gather Shadows, Adrenal Booster, …) from the build's active
- * powers. Each `specialBuff` entry is a Strength-aspect buff that multiplies
- * the caster's OWN matching power output — non-ED, additive with enhancement
- * strength, and it adds nothing on its own ("twice nothing is nothing").
+ * powers. Each entry is a Strength-aspect buff that multiplies the caster's OWN
+ * matching power output — non-ED, additive with enhancement strength, and it
+ * adds nothing on its own ("twice nothing is nothing").
+ *
+ * Atom-native via {@link specialBuffValue}, the TS twin of
+ * `coh_math::strength::special_buff_map` — the Rust side's reader since M3, and a half this
+ * file never had. BPORT7 empties `effects.specialBuff`, at which point the bag read below it
+ * would have gone to zero on real data while the engine kept reading the atom, with the
+ * fixture emitter selecting on the same dead slot and reporting a roster gap rather than a
+ * divergence.
  *
  * Within one power the defense (and mez) sub-keys are uniform — the binary
  * simply enumerates every defense/mez attribute — so we take the
  * representative (max) per power rather than summing the ~12 defense keys.
- * Across multiple active strength powers (and self-stacks via maxStacks /
- * stacksLinear) the fractions add. Returns fractions per aspect.
+ * Across multiple active strength powers (and self-stacks) the fractions add.
+ * Returns fractions per aspect.
  */
 export function collectStrengthBuffs(
   powers: PowerWithToggle[],
@@ -589,23 +628,22 @@ export function collectStrengthBuffs(
   for (const power of powers) {
     const isAuto = power.powerType?.toLowerCase() === 'auto';
     if (!(isAuto || power.isActive)) continue;
-    // A +Strength self-buff is, by definition, self-targeted. Legacy data for
-    // foe -Special debuffs (Benumb, Weaken, Time Stop) stores the magnitude as
-    // a positive `specialBuff` on a Foe-targeted power; without this gate they
-    // would be counted as a caster strength buff. (Regenerated powers route
-    // foe -Special to `specialDebuff` instead — see extractEffects.)
-    if (power.targetType && power.targetType.toLowerCase() !== 'self') continue;
-    const special = power.effects?.specialBuff as Record<string, ScalarOrScaled> | undefined;
-    if (!special || typeof special !== 'object') continue;
+    // No power-level target gate: `specialBuffValue` tests each atom's own recipient, which
+    // is strictly narrower than the bag path's whole-power `targetType !== 'self'` skip and
+    // needs no such gate. The skip existed because a legacy foe -Special debuff (Benumb,
+    // Weaken, Time Stop) stored its magnitude as a POSITIVE `specialBuff` on a Foe-targeted
+    // power, with nothing on the slot to say whose strength it was. An atom says so itself.
+    const special = specialBuffValue(power);
+    if (!special) continue;
 
     const targetsHit = targetsHitValues[power.internalName];
-    const stacksLinear = power.effects?.stacksLinear;
-    const maxStacks = power.effects?.maxStacks;
-    const stackCaps = power.effects?.stackCaps;
+    // One cap for the whole map: every entry of a power's `specialBuff` is an `aspect: Str`
+    // atom of the same family, so the depth is the power's, not the key's.
+    const specialCap = stackCapOf(power, SPECIAL_BUFF_STACK);
     let defMax = 0;
     let mezMax = 0;
     for (const [key, raw] of Object.entries(special)) {
-      const adjusted = adjustForStacking(raw, targetsHit, stacksLinear, 'specialBuff', maxStacks, stackCaps);
+      const adjusted = adjustForStackCap(raw, targetsHit, specialCap);
       const frac = resolveScaledEffect(adjusted, archetypeId, buildLevel);
       if (frac <= 0) continue;
       if (STRENGTH_DEFENSE_KEYS.has(key)) defMax = Math.max(defMax, frac);

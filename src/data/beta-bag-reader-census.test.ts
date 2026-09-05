@@ -82,24 +82,45 @@ const COVERED_ARMS = [
  * The stream doc scoped BPORT4 expecting "mostly leave, matching canonical". Per file that
  * reads right — both repos read the bag. Per SLOT it is the opposite: canonical calls
  * `movementCapBumpValue(p)` before it looks at `effects.movementCapBump`, and its
- * `character-totals` has no stack read left at all. So the answer for these is CARRY, not
+ * `character-totals` had no stack read left at all. So the answer for these is CARRY, not
  * leave, and the list is BPORT6's work order rather than a curiosity.
  *
  * A seam joining this map means canonical migrated something else and the beta is now one
  * more behind; a seam leaving it means the beta caught up, or — the case worth catching —
  * canonical grew a bag read back.
+ *
+ * **BPORT6 corrected the list twice before working it, both times downward.** The 33 seams
+ * BPORT4 counted were 21:
+ *
+ *  - **Eight were a defect in the instrument.** A roster-bound seam (`effects[key]` over a
+ *    `DOMINATION_MEZ_KEYS` loop) is minted from a hand-kept register, not found by the
+ *    finder, and the sibling comparison ran the FINDER over canonical — which can never
+ *    return a seam it did not produce. So every roster seam reported `migrated-there`
+ *    unconditionally. Six of the eight were wrong: canonical's `getPowerDominationSummary`
+ *    is byte-identical to this repo's and reads the same bag, so "carry canonical's arm"
+ *    named an arm that does not exist. `siblingRosterVerdict` decides these on the symbol
+ *    now. The other two were right — `ROUTED_SUBTYPES` really was deleted — and the register
+ *    kept minting them anyway, which `assertSitesLive` now refuses.
+ *  - **Four more are already adjudicated elsewhere.** `perma.ts`'s pair is the
+ *    `authoredCycle` arm BPORT2 kept deliberately and pinned by census, and `inherents.ts`'s
+ *    is `getDominationInfo` — canonical reads it off the inherent power through
+ *    `@/data/archetype-inherent`, a module this fork does not have. Both wait on the same
+ *    thing: PARTSTAT-2, the join from an archetype's declared inherent to the
+ *    `Inherent.Inherent` power that holds it, which is canonical-only.
+ *
+ * What was left, and what BPORT6 carried: `power-row-utils` (the whole predicate, atom-native
+ * — see `toggle-roster-atom-native.verify.test.ts`) and `character-totals`
+ * (`collectStrengthBuffs` onto `specialBuffValue` + `stackCapOf`). The `summon` cluster is
+ * BPORT7's by BPORT3's verdict: no summon reader may move until `convert-powerset.cjs` lifts
+ * the slot, so reader and writer cross together.
  */
 const CANONICAL_MIGRATED_FIRST: Record<string, string[]> = {
   'src/components/info/BuffPetAuraToggle.tsx': ['summon'],
   'src/components/info/EnhancementInfoContent.tsx': ['summon'],
   'src/components/info/PowerInfoBlocks.tsx': ['summon'],
   'src/components/modals/CompareSlottingModal.tsx': ['summon'],
-  'src/components/powers/power-row-utils.ts': ['debuffResistance', 'mezResistance'],
   'src/utils/calculations/attack-chain-powers.ts': ['summon'],
-  'src/utils/calculations/character-totals.ts': ['maxStacks', 'specialBuff', 'stackCaps', 'stacksLinear'],
-  'src/utils/calculations/inherents.ts': [
-    'buffDuration', 'confuse', 'fear', 'hold', 'immobilize', 'recharge', 'sleep', 'stun',
-  ],
+  'src/utils/calculations/inherents.ts': ['buffDuration', 'recharge'],
   'src/utils/calculations/perma.ts': ['buffDuration', 'recharge'],
 };
 
@@ -108,15 +129,18 @@ const CANONICAL_MIGRATED_FIRST: Record<string, string[]> = {
  *
  * The complement of the map above, and the reason that map is a LOWER bound. `StatsDashboard`
  * still names `effects.movementCapBump` in both repos, so a per-slot comparison calls it
- * "reads-too" and stops — but canonical calls `movementCapBumpValue(p)` first and only falls
- * back, while this repo calls nothing. Canonical's own comment on that seam records what the
+ * "reads-too" and stops — but canonical called `movementCapBumpValue(p)` first and only fell
+ * back, while this repo called nothing. Canonical's own comment on that seam records what the
  * difference costs: at its strip, "Quantum Acceleration on all four forks and Energy Flight on
  * Homecoming/Brainstorm answered no cap raise at all, with nothing red to say so".
+ *
+ * BPORT6 emptied three of the four. `StatsDashboard` and `character-totals` took their arms;
+ * `power-row-utils` went atom-native outright and imports more than canonical's copy does now
+ * (`absorbMaxHPFractionValue`, which canonical has landed and not yet wired into its own
+ * toggle predicate). `inherents.ts` is the one left, and its two symbols are the
+ * `getDominationInfo` read that waits on PARTSTAT-2 — an entry here, not an omission.
  */
 const ATOM_ARM_BEHIND = [
-  'src/components/layout/StatsDashboard.tsx',
-  'src/components/powers/power-row-utils.ts',
-  'src/utils/calculations/character-totals.ts',
   'src/utils/calculations/inherents.ts',
 ];
 
@@ -182,7 +206,8 @@ describe('BPORT4 census — what the strip costs, per seam', () => {
     const b = census.buckets;
     expect(b.bothRead.length + b.identical.length + b.betaOnly.length + b.migrated.length)
       .toBe(census.sweep.length);
-    expect(b.bothRead).toHaveLength(27);
+    // 27 until BPORT6: `power-row-utils` stopped reading the bag entirely and left the bucket.
+    expect(b.bothRead).toHaveLength(26);
     expect(b.betaOnly).toHaveLength(6);
   });
 
@@ -204,10 +229,26 @@ describe('BPORT4 census — what the strip costs, per seam', () => {
       .filter((s) => (s.atomArmGap ?? []).length > 0)
       .map((s) => s.file))].sort();
     expect(behind).toEqual([...ATOM_ARM_BEHIND].sort());
-    // The one that makes the point: named in both copies, depended on in only one.
+    // The one that made the point, now from the other side: `StatsDashboard` still names
+    // `effects.movementCapBump` in both repos — so the per-slot comparison still calls it
+    // "reads-too" — and the arm gap it reported is closed. A gap re-appearing here is
+    // canonical growing a reader this fork has not taken.
     const dash = census.seams.find((s) => s.file === 'src/components/layout/StatsDashboard.tsx')!;
     expect(dash.sibling).toBe('reads-too');
-    expect(dash.atomArmGap).toContain('movementCapBumpValue');
+    expect(dash.atomArmGap).toEqual([]);
+  });
+
+  it('decides a roster-bound seam on the sibling s own constant, not on the finder', () => {
+    // The instrument defect BPORT6 found. `rosterSeams` mints these; the finder cannot
+    // return them; the sibling comparison asked the finder. Every roster seam therefore read
+    // `migrated-there`, which is the one answer that turns into work — "carry canonical's
+    // arm" — for a file where canonical has no arm. Stated on the six that were wrong.
+    const roster = census.seams.filter((s) => s.binding.startsWith('roster:'));
+    expect(roster.length, 'roster-bound seams found').toBeGreaterThan(0);
+    const domination = roster.filter((s) => s.binding === 'roster:DOMINATION_MEZ_KEYS');
+    expect(domination.map((s) => s.slot).sort())
+      .toEqual(['confuse', 'fear', 'hold', 'immobilize', 'sleep', 'stun']);
+    for (const seam of domination) expect(seam.sibling, seam.slot ?? undefined).toBe('reads-too');
   });
 
   it('finds the two bag readers the file-level sweep cannot see', () => {

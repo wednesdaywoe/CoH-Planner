@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { atomsOfType } from '@/data/core/atom-query';
+import { atomsOfType, defenseBuffValue, defenseBuffSuppressibleValue } from '@/data/core/atom-query';
 import { POWER_POOLS_RAW } from '@/data/datasets/thunderspy/generated/power-pools';
 import { FocusedFighting } from '@/data/datasets/thunderspy/generated/powersets/brute/secondary/super-reflexes/focused-fighting';
 
@@ -23,8 +23,19 @@ function findPoolPower(name: string) {
   return undefined;
 }
 
-const hasDefense = (effects: any) =>
-  !!(effects?.defenseBuff || effects?.defenseBuffSuppressible);
+/**
+ * The defence the calc would spend, read the way the calc reads it.
+ *
+ * Was `!!(effects.defenseBuff || effects.defenseBuffSuppressible)` — the projected bag. The pool
+ * partition kept its bag until the writer-side strip, which is the only reason this assertion
+ * outlived the armor-toggle one below; both now state the same source. `defenseBuffValue` and
+ * `defenseBuffSuppressibleValue` are the readers `character-totals` uses, so a parser regression
+ * that stopped recovering the index-array attribs reds here and zeroes the total together,
+ * rather than one of them going quiet.
+ */
+const hasDefense = (power: unknown) =>
+  defenseBuffValue(power as never) !== undefined
+  || defenseBuffSuppressibleValue(power as never) !== undefined;
 
 describe('Thunderspy defense powers carry their defense magnitude', () => {
   it.each(['Maneuvers', 'Weave', 'Hover'])(
@@ -32,7 +43,7 @@ describe('Thunderspy defense powers carry their defense magnitude', () => {
     (name) => {
       const power = findPoolPower(name);
       expect(power, `${name} should exist in the tspy pools`).toBeDefined();
-      expect(hasDefense(power.effects), `${name} should carry defense`).toBe(true);
+      expect(hasDefense(power), `${name} should carry defense`).toBe(true);
     },
   );
 

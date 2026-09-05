@@ -8,56 +8,58 @@ import { calcThreeTier } from '@/components/info/powerDisplayUtils';
 import { shouldShowToggle } from '@/components/powers/power-row-utils';
 import { getPowerset } from '@/data/powersets';
 import { getTableValue } from '@/data/at-tables';
+import { encodeAtom, type AtomicEffect } from '@/data/core/atomic-effect';
+import {
+  atomsOf, specialBuffValue, damageBuffValue, defenseBuffValue, toHitBuffValue,
+} from '@/data/core/atom-query';
 
 /**
  * Tests for the Power Boost / +Strength mechanic.
  *
- * collectStrengthBuffs is exercised with synthetic powers whose specialBuff
- * entries use the `Melee_Ones` table — resolveScaledEffect returns `scale × 1`
+ * collectStrengthBuffs is exercised with synthetic powers whose +Strength ATOMS
+ * use the `Melee_Ones` table — resolveScaledEffect returns `scale × 1`
  * for *_Ones tables, so the resolved strength fraction equals the raw scale,
  * making assertions deterministic without depending on AT modifier tables.
  */
 
 const ONES = 'Melee_Ones';
-const s = (scale: number) => ({ scale, table: ONES });
 
 // Minimal PowerWithToggle-shaped object (the type is module-private).
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const mk = (over: any) => ({ name: 'P', internalName: 'P', powerType: 'Click', isActive: false, ...over } as any);
 
-// A Power Boost-like specialBuff: defense (all + positional + typed), tohit,
-// mez, heal, absorb, endmod, movement — all at the same scale, mirroring the
-// real binary which enumerates every defense/mez sub-attribute uniformly.
-const powerBoostSpecial = (scale: number) => ({
-  defense: s(scale), melee: s(scale), ranged: s(scale), aoe: s(scale),
-  smashing: s(scale), lethal: s(scale), fire: s(scale),
-  hold: s(scale), stun: s(scale), sleep: s(scale), confuse: s(scale), fear: s(scale), immobilize: s(scale),
-  tohit: s(scale), heal: s(scale), absorb: s(scale), endurance: s(scale), movement: s(scale),
+// A +Strength atom — the `aspect: Str` row `specialBuffValue` folds into one map entry.
+// The tests state ATOMS rather than a `specialBuff` map because the map is no longer an
+// input: it is reconstructed from these, so handing the reader a hand-authored bag would
+// only grade the assertion against itself.
+const strAtom = (over: Partial<AtomicEffect>): AtomicEffect => ({
+  effectType: 'Enhancement', pvMode: 'Any', resistible: true, toWho: 'Self',
+  attribType: 'Magnitude', aspect: 'Str', modifierTable: ONES, scale: 1, magnitude: 1,
+  duration: 10, stacking: 'Replace', baseProbability: 1, ...over,
 });
 
-/**
- * Graded against the TS ORACLE, not the engine, deliberately.
- *
- * These cases feed the calc SYNTHETIC power definitions — hand-authored `atoms` tuples on a
- * power the dataset does not contain — to pin one applier rule in isolation. The engine cannot
- * consume that: it resolves a selected power's effects from its own contract bundle by
- * (powerSet, internalName), so a fabricated def resolves to nothing and the case would grade an
- * empty result rather than the rule it describes. `legacyCalculateCharacterTotals` is the same
- * calculation over the build object, kept as the independent oracle `serverParity` diffs the
- * engine against on all three datasets — so the rule stays graded, and the engine's own
- * agreement with this calc stays graded there, on real powers.
- */
+// A Power Boost-like atom list: defense (aggregate + positional + typed), the six mez
+// kinds, tohit, heal, absorb, endmod, movement — all at the same scale, mirroring the real
+// binary, which enumerates every defense/mez sub-attribute uniformly.
+const powerBoostAtoms = (scale: number) => [
+  ...['All', 'Melee', 'Ranged', 'AoE', 'Smashing', 'Lethal', 'Fire',
+    'Held', 'Stunned', 'Sleep', 'Confused', 'Terrorized', 'Immobilized',
+  ].map((subType) => strAtom({ subType: subType as AtomicEffect['subType'], scale })),
+  ...(['ToHit', 'Heal', 'Absorb', 'Endurance', 'Movement'] as const)
+    .map((effectType) => strAtom({ effectType, scale })),
+].map(encodeAtom);
+
 describe('collectStrengthBuffs', () => {
   it('returns zero when no strength powers are active', () => {
     const sb = collectStrengthBuffs([
-      mk({ internalName: 'PowerBoost', isActive: false, effects: { specialBuff: powerBoostSpecial(1.2) } }),
+      mk({ internalName: 'PowerBoost', isActive: false, atoms: powerBoostAtoms(1.2) }),
     ], 'controller', 50);
     expect(sb).toEqual({ defense: 0, toHit: 0, heal: 0, absorb: 0, endMod: 0, movement: 0, mez: 0 });
   });
 
   it('collapses uniform defense/mez sub-keys to a single representative value (no 12x overcount)', () => {
     const sb = collectStrengthBuffs([
-      mk({ internalName: 'PowerBoost', isActive: true, effects: { specialBuff: powerBoostSpecial(1.2) } }),
+      mk({ internalName: 'PowerBoost', isActive: true, atoms: powerBoostAtoms(1.2) }),
     ], 'controller', 50);
     // defense and mez are the MAX of their sub-keys (uniform 1.2), not the sum
     expect(sb.defense).toBeCloseTo(1.2, 6);
@@ -72,48 +74,67 @@ describe('collectStrengthBuffs', () => {
 
   it('counts Auto powers as active even without an explicit isActive toggle', () => {
     const sb = collectStrengthBuffs([
-      mk({ internalName: 'AutoBuff', powerType: 'Auto', isActive: false, effects: { specialBuff: { defense: s(0.5) } } }),
+      mk({ internalName: 'AutoBuff', powerType: 'Auto', isActive: false, atoms: [strAtom({ subType: 'All', scale: 0.5 })].map(encodeAtom) }),
     ], 'controller', 50);
     expect(sb.defense).toBeCloseTo(0.5, 6);
   });
 
   it('sums strength across multiple active strength powers', () => {
     const sb = collectStrengthBuffs([
-      mk({ internalName: 'PowerBoost', isActive: true, effects: { specialBuff: { defense: s(1.2), tohit: s(1.2) } } }),
-      mk({ internalName: 'PowerBuildUp', isActive: true, effects: { specialBuff: { defense: s(0.66), tohit: s(0.66) } } }),
+      mk({ internalName: 'PowerBoost', isActive: true, atoms: [strAtom({ subType: 'All', scale: 1.2 }), strAtom({ effectType: 'ToHit', scale: 1.2 })].map(encodeAtom) }),
+      mk({ internalName: 'PowerBuildUp', isActive: true, atoms: [strAtom({ subType: 'All', scale: 0.66 }), strAtom({ effectType: 'ToHit', scale: 0.66 })].map(encodeAtom) }),
     ], 'controller', 50);
     expect(sb.defense).toBeCloseTo(1.86, 6);
     expect(sb.toHit).toBeCloseTo(1.86, 6);
   });
 
-  it('honors self-stacking via maxStacks + stacksLinear and the targets-hit slider', () => {
-    const eff = { specialBuff: { defense: s(1.0), hold: s(1.0) }, maxStacks: 2, stacksLinear: ['specialBuff'] };
+  it('honors self-stacking read off the atoms, and the targets-hit slider', () => {
+    // The depth comes from the ATOMS, not from `effects.maxStacks` / `stacksLinear` — those
+    // two slots left the contract with the bag, and STACK-7 took their last reader. A
+    // `Str`-aspect self row stating `Stack` at limit 2 IS the whole answer: membership,
+    // value and depth in one place, now that the value map is read off the same rows.
+    const stacksTwice = (over: Partial<AtomicEffect>): AtomicEffect =>
+      strAtom({ stacking: 'Stack', stackCap: 2, ...over });
+    const pb = () => mk({
+      internalName: 'PB', isActive: true,
+      atoms: [stacksTwice({ subType: 'All' }), stacksTwice({ subType: 'Held' })].map(encodeAtom),
+    });
     // 2 stacks → doubled
-    const two = collectStrengthBuffs(
-      [mk({ internalName: 'PB', isActive: true, effects: eff })],
-      'controller', 50, { PB: 2 },
-    );
+    const two = collectStrengthBuffs([pb()], 'controller', 50, { PB: 2 });
     expect(two.defense).toBeCloseTo(2.0, 6);
     expect(two.mez).toBeCloseTo(2.0, 6);
-    // slider beyond maxStacks is capped at 2
-    const capped = collectStrengthBuffs(
-      [mk({ internalName: 'PB', isActive: true, effects: eff })],
-      'controller', 50, { PB: 5 },
-    );
+    // slider beyond the atom's own cap is clamped to 2
+    const capped = collectStrengthBuffs([pb()], 'controller', 50, { PB: 5 });
     expect(capped.defense).toBeCloseTo(2.0, 6);
+    // and a power whose Str rows do NOT self-stack ignores the slider entirely
+    const flat = mk({
+      internalName: 'PB', isActive: true,
+      atoms: [stacksTwice({ subType: 'All', stacking: 'Replace', stackCap: undefined })].map(encodeAtom),
+    });
+    expect(collectStrengthBuffs([flat], 'controller', 50, { PB: 5 }).defense).toBeCloseTo(1.0, 6);
   });
 
   it('ignores ally-only / non-specialBuff powers and never invents damage', () => {
     const sb = collectStrengthBuffs([
-      mk({ internalName: 'Weave', isActive: true, effects: { defenseBuff: { melee: s(0.5) } } }), // flat def, no specialBuff
+      // A flat +Defense buff: `aspect: Cur`, the CURRENT-value face. Same attrib as the
+      // `All` row above and the same table — only the aspect separates a defense buff from
+      // a defense-STRENGTH buff, which is the collapse the axis exists to prevent.
+      mk({ internalName: 'Weave', isActive: true, atoms: [strAtom({ effectType: 'Defense', subType: 'Melee', aspect: 'Cur', scale: 0.5 })].map(encodeAtom) }),
     ], 'controller', 50);
-    // No specialBuff → no strength at all
+    // Nothing on the `Str` face → no strength at all
     expect(sb).toEqual({ defense: 0, toHit: 0, heal: 0, absorb: 0, endMod: 0, movement: 0, mez: 0 });
   });
 
-  it('excludes Foe-targeted specialBuff (legacy -Special debuffs like Benumb/Time Stop)', () => {
+  it('excludes foe-directed +Strength rows (-Special debuffs like Benumb/Time Stop)', () => {
+    // The recipient is read off each ATOM, not off the power. The bag path had to skip the
+    // whole power on `targetType`, because a foe -Special stored its magnitude as a POSITIVE
+    // `specialBuff` with nothing on the slot to say whose strength it was; `toWho: Target`
+    // on a power that affects no `Self` says it directly.
     const sb = collectStrengthBuffs([
-      mk({ internalName: 'TimeStop', isActive: true, targetType: 'Foe', effects: { specialBuff: { hold: s(1.0), immobilize: s(1.0) } } }),
+      mk({
+        internalName: 'TimeStop', isActive: true, targetType: 'Foe', targetsAffected: ['Enemy'],
+        atoms: [strAtom({ subType: 'Held', toWho: 'Target' }), strAtom({ subType: 'Immobilized', toWho: 'Target' })].map(encodeAtom),
+      }),
     ], 'controller', 50);
     expect(sb.mez).toBe(0);
     expect(sb).toEqual({ defense: 0, toHit: 0, heal: 0, absorb: 0, endMod: 0, movement: 0, mez: 0 });
@@ -121,17 +142,44 @@ describe('collectStrengthBuffs', () => {
 });
 
 describe('shouldShowToggle — Power Boost family is activatable', () => {
-  it('shows a toggle for a self Click with only specialBuff (Power Boost)', () => {
-    expect(shouldShowToggle({ powerType: 'Click', targetType: 'Self', effects: { specialBuff: { defense: s(0.66) } } })).toBe(true);
+  // Stated on ATOMS for the same reason `collectStrengthBuffs` above is: the bag these four
+  // used to hand in (`effects: { specialBuff: ... }`) is not an input to this predicate any
+  // more, and after the bag strip it is not an input to anything. Handed a synthetic bag and
+  // no atoms, all four went on passing or failing for a reason unrelated to the power —
+  // which is how the two positive cases survived a predicate that had gone blind.
+  const selfClick = (atoms: unknown[]) =>
+    ({ powerType: 'Click', targetType: 'Self', targetsAffected: ['Self'], atoms }) as never;
+  // ONLY `Enhancement`/`Str` rows — no ToHit, Heal, Absorb or Endurance riders. The full
+  // `powerBoostAtoms` list carries those too, and each answers a query of its own, so an
+  // input built from it stays green with `specialBuffValue` deleted outright and proves
+  // nothing about the family this block is named for.
+  const specialOnlyAtoms = ['All', 'Melee', 'Ranged', 'Smashing']
+    .map((subType) => strAtom({ subType: subType as AtomicEffect['subType'], scale: 0.66 }))
+    .map(encodeAtom);
+
+  it('shows a toggle for a self Click whose only rows are +Strength (Power Boost)', () => {
+    expect(shouldShowToggle(selfClick(specialOnlyAtoms))).toBe(true);
   });
-  it('still shows a toggle for Build Up (self Click with damageBuff)', () => {
-    expect(shouldShowToggle({ powerType: 'Click', targetType: 'Self', effects: { damageBuff: { scale: 8, table: 'Melee_Buff_Dmg' } } })).toBe(true);
+  it('still shows a toggle for Build Up (self Click with a +Damage strength row)', () => {
+    const buildUp = [strAtom({ effectType: 'DamageBuff', subType: 'Smashing', scale: 8, modifierTable: 'Melee_Buff_Dmg' })].map(encodeAtom);
+    expect(shouldShowToggle(selfClick(buildUp))).toBe(true);
   });
-  it('does NOT show a self toggle for a Foe Click whose only buff-ish field is a legacy specialBuff', () => {
-    expect(shouldShowToggle({ powerType: 'Click', targetType: 'Foe', effects: { specialBuff: { hold: s(1.0) } } })).toBe(false);
+  it('does NOT show a self toggle for a Foe Click whose +Strength rows are foe-directed', () => {
+    // The -Special debuffs (Benumb, Weaken, Time Stop). Stated on the SAME rows the positive
+    // case uses, turned around: the only difference is `toWho`, so this fails the moment the
+    // recipient axis stops being read, and cannot pass for some unrelated declining filter.
+    const foeSpecial = ['All', 'Melee', 'Ranged', 'Smashing']
+      .map((subType) => strAtom({ subType: subType as AtomicEffect['subType'], scale: 0.66, toWho: 'Target' }))
+      .map(encodeAtom);
+    expect(shouldShowToggle({
+      powerType: 'Click', targetType: 'Foe', targetsAffected: ['Enemy'], atoms: foeSpecial,
+    } as never)).toBe(false);
   });
   it('does NOT show a toggle for a plain damage Click', () => {
-    expect(shouldShowToggle({ powerType: 'Click', targetType: 'Foe', damage: { type: 'Smashing', scale: 1 }, effects: {} })).toBe(false);
+    expect(shouldShowToggle({
+      powerType: 'Click', targetType: 'Foe', targetsAffected: ['Enemy'],
+      damage: { type: 'Smashing', scale: 1 }, atoms: [],
+    } as never)).toBe(false);
   });
 });
 
@@ -145,11 +193,20 @@ describe('Power Boost data integrity + endurance regression (rebirth)', () => {
     expect(pool).toBeTruthy();
     const pb = pool!.powers.find(p => p.internalName === 'Power_Boost');
     expect(pb).toBeTruthy();
-    const eff = pb!.effects as Record<string, unknown>;
-    expect(eff.specialBuff).toBeTruthy();
-    expect(eff.damageBuff).toBeUndefined();
-    expect(eff.defenseBuff).toBeUndefined();
-    expect(eff.tohitBuff).toBeUndefined();
+
+    // The positive half FIRST, because the three `toBeUndefined()`s below are silent about
+    // why they are silent: a power whose `atoms` the epic transform failed to carry through
+    // would starve every reader and pass all three. Assert the atoms are there, and that the
+    // reason the other readers decline is the ASPECT — every row is `Str`, the strength face,
+    // which is what "pure strength buff" means on the atom.
+    const atoms = atomsOf(pb!);
+    expect(atoms.length).toBeGreaterThan(0);
+    expect([...new Set(atoms.map(a => a.aspect))]).toEqual(['Str']);
+
+    expect(specialBuffValue(pb!)).toBeTruthy();
+    expect(damageBuffValue(pb!)).toBeUndefined();
+    expect(defenseBuffValue(pb!)).toBeUndefined();
+    expect(toHitBuffValue(pb!)).toBeUndefined();
   });
 
   it('Power Boost (a Click) costs ~9.75 end, not the doubled 19.5', () => {

@@ -1,3 +1,4 @@
+import { movementCapBumpValue } from '@/data/core/atom-query';
 import { describe, it, expect, beforeAll } from 'vitest';
 import { loadDataset } from '@/data/dataset';
 import {
@@ -8,7 +9,6 @@ import {
   getInherentPowerDef,
 } from '@/data';
 import { getEffectiveMovementCaps, MOVEMENT_CAPS, MPH_PER_SCALE } from '@/data/core/movement-constants';
-import type { MovementEffect } from '@/types/power';
 
 /**
  * @Redlynne Rebirth Flight pool report:
@@ -68,7 +68,9 @@ describe('Rebirth Flight pool bonus-power fixes', () => {
   it('Rebirth Afterburner (Fly_Afterburner) bumps the fly-speed cap', () => {
     const flight = getPowerPool('flight');
     const afterburner = flight?.powers.find((p) => p.internalName === 'Fly_Afterburner');
-    const bump = (afterburner?.effects?.movementCapBump as { flySpeed?: MovementEffect } | undefined)?.flySpeed;
+    // `movementCapBumpValue` rather than `effects.movementCapBump`: the pool bag went with the
+    // writer-side strip, and this is the reader the cap resolve uses.
+    const bump = movementCapBumpValue(afterburner!)?.find((e) => e.axis === 'flySpeed');
     expect(bump).toBeDefined();
     expect(bump!.scale).toBeGreaterThan(0);
     const caps = getEffectiveMovementCaps([{ stat: 'flySpeed', scale: bump!.scale, stackKey: bump!.stackKey, suppressible: bump!.suppressible }]);

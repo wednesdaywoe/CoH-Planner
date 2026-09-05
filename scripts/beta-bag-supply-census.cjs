@@ -113,6 +113,12 @@ const BUFF_PET_MINTED_SLOTS = {
  * name something the type does not declare (`SELF_TOTAL_EFFECT_KEYS` names four such), so
  * those are reported under `dynamicKeysUndeclared` rather than thrown on: the roster is
  * the code's own claim about the bag, and a claim the type contradicts is a finding.
+ *
+ * The register is checked against the code by {@link assertSitesLive}, because a hand-kept
+ * roster can go stale in the direction that reads as progress. `ROUTED_SUBTYPES` left this
+ * list at BPORT6: `power-row-utils` went atom-native and deleted the constant, and until the
+ * check landed the site went on minting two seams for a read that no longer existed — two
+ * casualties reported for a migration that had already happened.
  */
 const DYNAMIC_READ_SITES = [
   {
@@ -124,11 +130,6 @@ const DYNAMIC_READ_SITES = [
     file: 'src/utils/calculations/inherents.ts',
     symbol: 'DOMINATION_MEZ_KEYS',
     keys: ['hold', 'stun', 'sleep', 'immobilize', 'confuse', 'fear'],
-  },
-  {
-    file: 'src/components/powers/power-row-utils.ts',
-    symbol: 'ROUTED_SUBTYPES',
-    keys: ['mezResistance', 'debuffResistance'],
   },
   {
     // `resolvePowerMagnitudes` never names a slot. It walks `Object.entries(effects)` and
@@ -157,6 +158,36 @@ const DYNAMIC_READ_SITES = [
     derive: () => setLiteralKeys('src/engine/characterStateAdapter.ts', 'SELF_TOTAL_EFFECT_KEYS'),
   },
 ];
+
+/**
+ * Every site in {@link DYNAMIC_READ_SITES} still declares the constant it names.
+ *
+ * The `derive` sites check themselves — they parse the declaration, and throw when it is
+ * gone. The `keys` sites copy the roster instead, so nothing tied them to the code they
+ * describe: a site whose constant had been deleted kept minting its seams forever, and the
+ * seams it minted were casualties of a strip that could no longer reach them.
+ *
+ * Throws rather than skips, for the same reason the missing-file case throws: a register
+ * that thins out silently reports LESS work, which is the direction a reader will not
+ * question.
+ */
+function assertSitesLive() {
+  for (const site of DYNAMIC_READ_SITES) {
+    const abs = path.join(REPO, site.file);
+    if (!fs.existsSync(abs)) throw new Error(`dynamic read site file missing: ${site.file}`);
+    // Only the copied rosters. A `derive` site parses its constant out of wherever it lives
+    // and throws there when it is gone, and that constant is often imported rather than
+    // declared at the read site — `EFFECT_REGISTRY` is `effect-registry.ts`'s.
+    if (site.derive) continue;
+    const src = fs.readFileSync(abs, 'utf8');
+    if (!new RegExp(`(?:const|let|var|function)\\s+${site.symbol}\\b`).test(src)) {
+      throw new Error(
+        `dynamic read site ${site.symbol} is no longer declared in ${site.file} — `
+        + 'if the read was migrated, drop the entry; if it was renamed, rename it here.',
+      );
+    }
+  }
+}
 
 /**
  * Every key `EFFECT_REGISTRY` registers, plus the `<base>Unenhanced` spelling of each.
@@ -523,6 +554,7 @@ function readSites(slots) {
     });
   }
   const dynamicKeysUndeclared = {};
+  assertSitesLive();
   for (const site of DYNAMIC_READ_SITES) {
     for (const slot of site.derive ? site.derive(declared) : site.keys) {
       if (!declared.has(slot)) {
@@ -741,7 +773,7 @@ function report(result) {
 // carry a value where the bag does" — and a second copy of "which modules are a dataset" is
 // how the two censuses would come to disagree about what they measured.
 module.exports = {
-  census, report, BUFF_PET_MINTED_SLOTS, DYNAMIC_READ_SITES, declaredSlots,
+  census, report, BUFF_PET_MINTED_SLOTS, DYNAMIC_READ_SITES, assertSitesLive, declaredSlots,
   generatedModules, collectBagCarriers, stubViteOnlyModules,
 };
 
