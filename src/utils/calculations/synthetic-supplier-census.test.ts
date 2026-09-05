@@ -22,8 +22,9 @@
  * perceptionBuff / rangeBuff / mezResistance 2 each, maxHPBuff 1 — 359 credited contributions,
  * every one of them a named Bio Armor, Temporal Manipulation, Dual Blades or Kheldian stance.
  * Its pet-aura fold was re-keyed from `effects.defense` to `effects.defenseBuff` so the defence
- * arm kept working; this repo's fold still writes `defense`, so the defence carry owes that
- * decision explicitly rather than by inheritance.
+ * arm kept working. This repo's fold did the same at BPORT11c's defence carry, and it did it
+ * because the pin below went red — `effects.defense` has no converted carrier on any fork, so
+ * the fold was its only supplier and the old key would have gone quiet.
  *
  * So the invariant, checked against the oracle's source: a slot with a credited synthetic
  * supplier is read either through the bag (not carried yet) or through `syntheticEffects`
@@ -231,11 +232,13 @@ describe('BPORT11 — every slot a synthetic still supplies keeps an arm that ca
     const end = src.indexOf('\nfunction ', start + 1);
     const fold = src.slice(start, end === -1 ? src.length : end);
     const mints = [...fold.matchAll(/effects\.(\w+) =/g)].map((m) => m[1]);
-    // `defense`, not `defenseBuff` — canonical re-keyed its own fold when it retired the
-    // `effects.defense` read, and this repo has not. The defence carry has to decide that
-    // deliberately; pinning the spelling here is what makes the decision visible.
+    // `defenseBuff`, not `defense`. This pin is what made the decision visible: the defence
+    // carry went red here the moment it landed, because `effects.defense` had this fold as its
+    // ONLY supplier on any fork — 0 converted powers carry the slot — so retiring the data read
+    // and leaving the fold on the old key would have zeroed every buff-pet defence aura in
+    // silence. Canonical re-keyed its own copy for the same reason.
     expect([...new Set(mints)].sort()).toEqual([
-      'absorb', 'defense', 'rechargeBuff', 'recoveryBuff', 'regenBuff', 'resistance',
+      'absorb', 'defenseBuff', 'rechargeBuff', 'recoveryBuff', 'regenBuff', 'resistance',
       'tohitBuffUnenhanced',
     ]);
   });

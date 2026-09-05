@@ -33,7 +33,7 @@ import type { ArchetypeId } from '@/types';
 import { calculateSetBonuses, getStatBreakdown, trackBonus, createBonusTracking, type AggregatedBonuses, type StatBreakdownItem, type BuildPowers } from './set-bonuses';
 import { createEmptyStats, getBaselineHealth, type CharacterStats } from './stats';
 import { combineWithAlphaED, filterAlphaByAllowedEnhancements, BASE_RECOVERY_RATE, BASE_REGEN_RATE, type EnhancementBonuses } from './enhancement-values';
-import { toHitBuffValue, damageBuffValue, resistanceBuffValue, resistanceSelfDebuffValue, defenseBuffValue, defenseBuffSuppressibleValue, defenseBuffIsTeamOnly, maxHPBuffValue, regenBuffValue, recoveryBuffValue, movementBuffValue, kbProtectionValue, accuracyBuffValue, rechargeBuffValue, rangeBuffValue, perceptionBuffValue, enduranceDiscountValue, maxEndBuffValue, elusivityValue, mezSlotValue, mezResistanceValue, tauntPlacateValue, stackCapOf, buffStack } from '@/data/core/atom-query';
+import { toHitBuffValue, damageBuffValue, resistanceBuffValue, resistanceSelfDebuffValue, defenseBuffValue, defenseBuffSuppressibleValue, defenseBuffIsTeamOnly, maxHPBuffValue, regenBuffValue, recoveryBuffValue, movementBuffValue, kbProtectionValue, accuracyBuffValue, rechargeBuffValue, rangeBuffValue, perceptionBuffValue, enduranceDiscountValue, maxEndBuffValue, elusivityValue, mezSlotValue, mezResistanceValue, tauntPlacateValue, debuffResistanceValue, stackCapOf, buffStack, DEBUFF_RESISTANCE_STACK } from '@/data/core/atom-query';
 import type { MovementBuffEntry, StackFamily } from '@/data/core/atom-query';
 import type { EncodedAtom } from '@/data/core/atomic-effect';
 import { calculateVigilanceDamageBonus, calculateFuryDamageBonus } from './inherents';
@@ -664,20 +664,29 @@ function applyActivePowerBonuses(
     // (`defenseBuffValue` — always-on Defense atoms, `suppressible:false`, restricted
     // to the 11 standard globals; Invincibility's per-foe +Def via the shared perTarget
     // stamp); `?? effects.defenseBuff` keeps an atom-less legacy power on the bag. The
-    // pet-aura/override `effects.defense` still takes precedence.
-    // Verified bag-equal by scripts/planb-shadow-defense.cjs.
+    // BPORT11: atom-native, fork-resolved, synthetic arm kept (64 credited mints — Bio
+    // Armor's Environmental Modification in Defensive Adaptation). 1,143 carrier views agree.
     //
-    // A team-only power (Grant Cover) has to skip the bag fallback as well as the atom
-    // half, or the fallback hands back the number the applier just declined to give.
-    // This reads the `target ≠ source` clause off the atoms; it used to read a
-    // hand-written `defenseBuffExcludesSelf` override flag, which existed on two of the
-    // three forks and so answered wrong on the third (TEAMBUFF-1).
-    const defenseEffects = effects.defense
-      || (defenseBuffIsTeamOnly(power) ? undefined : (defenseBuffValue(power) ?? effects.defenseBuff));
+    // The pet-aura channel moved WITH the arm rather than beside it. `effects.defense` had one
+    // supplier and it was not the converter — 0 powers on any fork carry the slot, and the
+    // only writer is `buffPetAuraEffects` a few hundred lines down. So the fold now mints
+    // `defenseBuff` (canonical re-keyed its own copy the same way) and the two spellings
+    // collapse into the branch that already had to exist for the conditionals.
+    //
+    // A team-only power (Grant Cover) has to skip the synthetic arm as well as the atom half,
+    // or the fallback hands back the number the applier just declined to give. This reads the
+    // `target ≠ source` clause off the atoms; it used to read a hand-written
+    // `defenseBuffExcludesSelf` override flag, which existed on two of the three forks and so
+    // answered wrong on the third (TEAMBUFF-1). It abstains on an atom-less power, so a
+    // synthetic contribution still reaches the gate.
+    // Verified bag-equal by scripts/planb-shadow-defense.cjs.
+    const defenseEffects = defenseBuffIsTeamOnly(power)
+      ? undefined
+      : (defenseBuffValue(mezSource) ?? syntheticEffects(power)?.defenseBuff);
     if (defenseEffects && typeof defenseEffects === 'object') {
       const enhMultiplier = 1 + (enhBonuses.defense || enhBonuses.defenseBuff || 0) + strengthBuffs.defense;
       for (const [type, value] of Object.entries(defenseEffects)) {
-        const adjustedDef = adjustForStacking(value, targetsHitValues[power.internalName], effects.stacksLinear, 'defenseBuff', effects.maxStacks, effects.stackCaps);
+        const adjustedDef = stack(value, buffStack('Defense', 'either', type));
         const percentage = resolveScaledEffect(adjustedDef, archetypeId, buildLevel) * 100 * enhMultiplier;
         const key = `def${capitalizeFirst(type)}` as keyof GlobalBonuses;
         if (key in global) {
@@ -693,14 +702,16 @@ function applyActivePowerBonuses(
 
     // Suppressible defense from stealth/travel powers (skipped in combat mode)
     // Plan B Slice 4: sourced from atoms (`defenseBuffSuppressibleValue` — the
-    // `suppressible:true` complement of the always-on half above); `?? effects.
-    // defenseBuffSuppressible` keeps an atom-less legacy power on the bag. Verified
-    // bag-equal by scripts/planb-shadow-defense.cjs.
-    const suppressibleDefense = defenseBuffSuppressibleValue(power) ?? effects.defenseBuffSuppressible;
+    // `suppressible:true` complement of the always-on half above). BPORT11: atom-only — no
+    // conditional or pet aura mints the slot. 97 carrier views agree and 12 are gains, all of
+    // them Personal Force Field on rebirth and Thunderspy, whose +7.5 suppressible defence the
+    // bag on those forks never carried at all. Verified bag-equal by
+    // scripts/planb-shadow-defense.cjs.
+    const suppressibleDefense = defenseBuffSuppressibleValue(power);
     if (!combatMode && suppressibleDefense && typeof suppressibleDefense === 'object') {
       const enhMultiplier = 1 + (enhBonuses.defense || enhBonuses.defenseBuff || 0) + strengthBuffs.defense;
       for (const [type, value] of Object.entries(suppressibleDefense)) {
-        const adjustedDef = adjustForStacking(value, targetsHitValues[power.internalName], effects.stacksLinear, 'defenseBuff', effects.maxStacks, effects.stackCaps);
+        const adjustedDef = stack(value, buffStack('Defense', 'either', type));
         const percentage = resolveScaledEffect(adjustedDef, archetypeId, buildLevel) * 100 * enhMultiplier;
         const key = `def${capitalizeFirst(type)}` as keyof GlobalBonuses;
         if (key in global) {
@@ -718,14 +729,16 @@ function applyActivePowerBonuses(
     // Enhanced by Resistance enhancements
     // Plan B Slice 3: sourced from atoms (`resistanceBuffValue` rebuilds each
     // damage type's { scale, perTarget } — Bio Armor's per-foe Evolving Armor —
-    // restricted to the 8 standard resistance globals); `?? effects.resistance`
-    // keeps an atom-less legacy power on the bag. Verified bag-equal by
-    // scripts/planb-shadow-resistance.cjs. Stacking meta stays a bag read (slot-keyed).
-    const res = resistanceBuffValue(power) ?? effects.resistance;
+    // restricted to the 8 standard resistance globals). BPORT11: fork-resolved through
+    // {@link mezSource}, so rebirth's unanimous-fork Tough reads its 1.5 smashing/lethal from
+    // the build's own arm instead of falling through; synthetic arm kept (65 credited mints —
+    // Temporal Manipulation's Time Lord). 1,606 carrier views agree with no divergence.
+    // Verified bag-equal by scripts/planb-shadow-resistance.cjs.
+    const res = resistanceBuffValue(mezSource) ?? syntheticEffects(power)?.resistance;
     if (res && typeof res === 'object') {
       const enhMultiplier = 1 + (enhBonuses.resistance || 0);
       for (const [type, value] of Object.entries(res)) {
-        const adjustedRes = adjustForStacking(value, targetsHitValues[power.internalName], effects.stacksLinear, 'resistance', effects.maxStacks, effects.stackCaps);
+        const adjustedRes = stack(value, buffStack('Resistance', 'either', type));
         const percentage = resolveScaledEffect(adjustedRes, archetypeId, buildLevel) * 100 * enhMultiplier;
         const key = `res${capitalizeFirst(type)}` as keyof GlobalBonuses;
         if (key in global) {
@@ -755,19 +768,22 @@ function applyActivePowerBonuses(
     // via `resSelfDebuffContribs` and apply once the totals are complete. An
     // IgnoreResistance (`resistible === false`) self-debuff applies flat.
     // Plan B Slice 3: sourced from atoms (`resistanceSelfDebuffValue` — the
-    // self-directed −Res atoms only, per standard type); `?? effects.resistanceDebuff`
-    // keeps an atom-less legacy power on the bag (where the `isSelfDirectedEffect`
-    // filter still separates the self penalty from co-slotted foe debuffs).
-    const resSelfDebuff = resistanceSelfDebuffValue(power) ?? effects.resistanceDebuff;
+    // self-directed −Res atoms only, per standard type). BPORT11: fork-resolved, synthetic arm
+    // kept (8 credited mints — rebirth's Pain Absorption levels), and the `isSelfDirectedEffect`
+    // filter below still separates the self penalty from co-slotted foe debuffs on either arm.
+    // All 17 self-tagged carrier views agree.
+    const resSelfDebuff = resistanceSelfDebuffValue(mezSource)
+      ?? syntheticEffects(power)?.resistanceDebuff;
     if (resSelfDebuff && typeof resSelfDebuff === 'object') {
       for (const [type, value] of Object.entries(resSelfDebuff)) {
         if (!isSelfDirectedEffect(value)) continue;
         const key = `res${capitalizeFirst(type)}` as keyof GlobalBonuses;
         if (!(key in global)) continue;
         const nominal = resolveScaledEffect(value as ScalarOrScaled, archetypeId, buildLevel) * 100 * -1;
-        // Atom path carries the `resistible` flag; the bag fallback ({scale,toWho})
-        // does not — default resistible (the only known self -Res, Offensive
-        // Adaptation, is resistible, and CoH resists -Res by default).
+        // The atom path carries the `resistible` flag; a SYNTHETIC contribution ({scale,toWho})
+        // does not — default resistible (the only known self -Res, Offensive Adaptation, is
+        // resistible, and CoH resists -Res by default). The default outlives the data seam
+        // because the conditional half still reaches here without the flag.
         const resistible = (typeof value === 'object' && value !== null && 'resistible' in value)
           ? (value as { resistible?: boolean }).resistible !== false
           : true;
@@ -777,8 +793,12 @@ function applyActivePowerBonuses(
 
     // Debuff Resistance from active powers
     // Defense Debuff Resistance is enhanced by Defense enhancements
-    if (effects.debuffResistance && typeof effects.debuffResistance === 'object') {
-      const debuffRes = effects.debuffResistance;
+    // BPORT11: atom-native, fork-resolved (rebirth Acrobatics' movement debuff-resistance rides
+    // the same unanimous fork), synthetic arm kept (8 credited mints — Time Lord again).
+    // 1,319 carrier views agree with no divergence.
+    const debuffResSlot = debuffResistanceValue(mezSource) ?? syntheticEffects(power)?.debuffResistance;
+    if (debuffResSlot && typeof debuffResSlot === 'object') {
+      const debuffRes = debuffResSlot;
       // Map debuff resistance types to global bonus keys
       const debuffResMapping: Record<string, keyof GlobalBonuses> = {
         movement: 'debuffResistSlow',
@@ -799,14 +819,7 @@ function applyActivePowerBonuses(
         const typeLower = type.toLowerCase();
         const enhKey = debuffResEnhMapping[typeLower];
         const enhMultiplier = enhKey ? 1 + (enhBonuses[enhKey] || 0) : 1;
-        const stackedValue = adjustForStacking(
-          value,
-          targetsHitValues[power.internalName],
-          effects.stacksLinear,
-          'debuffResistance',
-          effects.maxStacks,
-          effects.stackCaps,
-        );
+        const stackedValue = stack(value, DEBUFF_RESISTANCE_STACK);
         const percentage = resolveScaledEffect(stackedValue, archetypeId, buildLevel) * 100 * enhMultiplier;
         const key = debuffResMapping[typeLower];
         if (key && key in global) {
@@ -3453,8 +3466,12 @@ function buffPetAuraEffects(sources: BuffPetSource[]): ActivePowerEffect {
       const sc: ScalarOrScaled = { scale: a.scale ?? 0, table: a.table ?? '' };
       switch (a.type) {
         case 'DefenseBuff':
-          effects.defense = effects.defense ?? {};
-          for (const t of a.defenseTypes ?? []) effects.defense[t] = sc;
+          // `defenseBuff`, not `defense`: BPORT11 retired the second spelling, whose only
+          // supplier on any fork was this fold (0 converted powers carry `effects.defense`).
+          // One key means a pet aura and a mode conditional reach the arm the same way, which
+          // is what let the defence read drop its data branch without dropping the pet.
+          effects.defenseBuff = effects.defenseBuff ?? {};
+          for (const t of a.defenseTypes ?? []) effects.defenseBuff[t] = sc;
           break;
         case 'ResistanceBuff':
           effects.resistance = effects.resistance ?? {};

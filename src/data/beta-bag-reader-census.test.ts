@@ -351,13 +351,15 @@ describe('BPORT5 — what grades the engine once the bag is gone', () => {
     // accuracy, recharge, maxEnd, endurance-discount, perception, range and elusivity, with
     // their three stacking slots each; 131 once the mez cluster took the six MEZ, KB/KU,
     // mezResistance, taunt, placate and the empty `effects.protection` object; 129 when repel
-    // joined that fold; 127 when the `protTeleport` stat was retired with its read.
+    // joined that fold; 127 when the `protTeleport` stat was retired with its read; 107 once
+    // defense, defenseBuffSuppressible, resistance, resistanceDebuff and debuffResistance
+    // crossed, taking the pet-aura fold's `effects.defense` key with them.
     //
     // The carry does NOT count the arms it keeps: `syntheticEffects(power)?.rechargeBuff`
     // names no `effects.` prefix, so the finder cannot see it and does not. That is right —
     // it is the totals pass reading back its own output — but it means this number measures
     // the DATA seams only, which is the population the strip empties.
-    expect(mine).toHaveLength(127);
+    expect(mine).toHaveLength(107);
     expect(mine.every((s) => s.sibling !== 'absent')).toBe(true);
 
     // The residual is derived, not listed — canonical's own copy answers it.
@@ -404,13 +406,13 @@ describe('BPORT5 — what grades the engine once the bag is gone', () => {
     // What is still owed, named rather than counted: absorb, stealth, the self-debuff arms and
     // the movement pair are the clusters BPORT11 has not reached.
     for (const named of ['absorbValue', 'stealthValue', 'selfSlowValue', 'selfDamageDebuffValue',
-      'selfMovementCapDebuffValue', 'debuffResistanceValue']) {
+      'selfMovementCapDebuffValue', 'movementAxisSubType']) {
       expect(gap, named).toContain(named);
     }
     // And what has landed, which is the half that must not silently come back.
     for (const carried of ['accuracyBuffValue', 'rechargeBuffValue', 'rangeBuffValue',
       'perceptionBuffValue', 'enduranceDiscountValue', 'maxEndBuffValue', 'elusivityValue',
-      'mezSlotValue', 'mezResistanceValue', 'tauntPlacateValue']) {
+      'mezSlotValue', 'mezResistanceValue', 'tauntPlacateValue', 'debuffResistanceValue']) {
       expect(gap, carried).not.toContain(carried);
     }
   });
