@@ -24,7 +24,10 @@
  * and then renders `coh_math::perma`'s numbers. It is not the same code, though: the engine
  * derives its window from `window_slots`, a mirror of the converter's slot routing, and this
  * reads the atoms. Measured old-rule-vs-new over 21,372 entries on four forks, 0 powers lose
- * eligibility and 57 rows gain it; the two places engine and atoms still disagree are PERMA-4.
+ * eligibility and 57 rows gain it. The two places the mirror could not follow the atoms were
+ * PERMA-4, closed 2026-09-05 in the engine — the redirect stamp below and a self-directed debuff
+ * outside the mirror's four penalty slots — so what remains between the two engines is the
+ * vendored artifact's lag, rostered in `powerProjectionParity`'s `MIRROR_BLIND_ROWS`.
  */
 
 import type { SelectedPower, Power } from '@/types';
@@ -248,19 +251,30 @@ function atomReachesCaster(atom: AtomicEffect, power: Power | SelectedPower): bo
  * Shift is the case that names itself: the parent is `targetsAffected: ['Foe']` and its eight
  * `+Damage` rows arrive from the buff sub-power stamped `['Friend', 'Self']`, so reading the
  * parent's list vetoes a 45s window the caster demonstrably holds — the archetypal Kinetics
- * perma. `coh_math::perma::reaches_caster_for_perma` reads only the parent and loses it: the
- * engine census reports `win 0.0, rust false` on all four Kinetics copies (the power is
- * `Kinetic_Transfer` internally on Controller and Defender), so the ring is off in the planner
- * today. The divergence is filed rather than mirrored. Only Homecoming and Brainstorm stamp
- * `ownerTargets` on those rows; Rebirth and Thunderspy carry a 1s window there and stay
- * ineligible in both engines, which is a fork-side residual and not this rule's business.
+ * perma. Only Homecoming and Brainstorm stamp `ownerTargets` on those rows; Rebirth and
+ * Thunderspy carry a 1s window there and stay ineligible in both engines, which is a fork-side
+ * residual and not this rule's business.
+ *
+ * **The two lists carry different burdens, because they state different things.** The power's
+ * own `targetsAffected` is a union over the whole power, so it says the caster is somewhere in
+ * the target list and never that THIS row lands on him — absence of `Self` proves nothing there,
+ * and only a foe entry is evidence against. A stamped `ownerTargets` is the executed power's own
+ * recipient list, and that list names whom the row lands on outright: the question stops being
+ * "is there evidence against" and becomes {@link reachesCaster}'s ordinary one, is the caster
+ * among them. Reading the stamped list leniently gives Recall Friend and Shadow Recall a 1.5s
+ * ring off the TELEPORTED ally's translucency — the rings PERMA-3 had just removed — and hands
+ * Brainstorm's Adrenalin Boost a 90s window stamped `['DeadPlayerFriend']`, a pure ally buff the
+ * Empath never holds (PERMA-4, and `coh_math::perma::target_recipients_reach_caster` is the twin).
+ * What the surviving leniency on the POWER's list costs — an ally-only buff names `Friend` and no
+ * foe, so the caster inherits the ally's clock on the other three forks — is PERMA-5.
  */
 function reachesCasterForPerma(a: AtomicEffect, power: Power | SelectedPower): boolean {
   if (a.notOnCaster === true) return false;
   // A marker mod attaches to a map marker entity, never to a character.
   if (a.toWho === 'Marker') return false;
   if (a.toWho === 'Target' || a.toWho === 'TargetOnly' || a.toWho === 'TargetOnlyAndPets') {
-    return !affectsFoe(a.ownerTargets ?? power.targetsAffected ?? []);
+    const owner = a.ownerTargets;
+    return owner?.length ? owner.includes('Self') : !affectsFoe(power.targetsAffected ?? []);
   }
   return true;
 }

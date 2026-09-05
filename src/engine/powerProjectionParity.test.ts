@@ -478,10 +478,14 @@ function betaCannotRunTheWindowVeto(power: Power | SelectedPower | undefined): b
 
 /**
  * The whole population, per server, measured 2026-09-04 when the beta's perma window moved onto
- * the atoms. Every row is `engine null vs beta set`. The two Thunderspy pool rows are vendor lag
- * and clear on the next engine vendor; the EM Pulse rows are PERMA-4 and do not. None is a ring
- * a user sees except Thunderspy's Swirl, which is eligible beta-side and would render a Perma
- * Tracker header with no numbers under it.
+ * the atoms. Every row is `engine null vs beta set`, and every row is now VENDOR LAG: the
+ * Thunderspy pool pair since PERMA-3 (2026-09-04) and the EM Pulse rows since PERMA-4
+ * (2026-09-05), which routed the self-directed debuff outside the mirror's four tagged penalty
+ * slots — `perma_eligibility_census` on the 1.0 engine reports `win 15.0` for every EM Pulse
+ * copy that carries the crash row. The whole roster therefore empties at the next engine vendor,
+ * and until then it stays exactly this list. None is a ring a user sees except Thunderspy's
+ * Swirl, which is eligible beta-side and would render a Perma Tracker header with no numbers
+ * under it.
  */
 const MIRROR_BLIND_ROWS: Record<string, string[]> = {
   homecoming: ['epic/electrical_mastery/EM_Pulse'],
@@ -515,8 +519,10 @@ const MIRROR_BLIND = 'perma: [mirror-blind]';
  *  - **A self-directed debuff outside the mirror's four penalty slots.** It routes
  *    `damage`/`recharge`/`tohit`/`accuracyDebuff` and nothing else, so EM Pulse's 15s
  *    `Recovery −1 toWho Self` — the endurance crash, a state the caster demonstrably holds — is
- *    a caster state to the atoms and no slot to the mirror. That one is standing on the current
- *    engine too (`win 0.0` on all four forks) and is filed as PERMA-4.
+ *    a caster state to the atoms and no slot to the mirror. **Also vendor lag as of PERMA-4**
+ *    (2026-09-05): the four slots stayed as they are and the engine asks the ATOMS whether the
+ *    caster takes a lasting penalty at a duration the mirror carries under some other key, so
+ *    the current engine reports `win 15.0` where this roster still records a null.
  *
  * Deliberately narrow: EVERY caster-side atom carrying that duration has to be one of the two,
  * so an ordinary positive self buff on a strength-taking table stays a real delta. The

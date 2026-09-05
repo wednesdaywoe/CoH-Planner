@@ -104,6 +104,28 @@ describe('a Target atom resolves its pronoun through ownerTargets first', () => 
     });
     expect(selfStateWindow(foeAimed)).toBe(0);
   });
+
+  /**
+   * The other half of the stamp, and the half a foe-absence read gets wrong. A stamped list
+   * names whom the row lands on outright, so `Self` has to be in it — read leniently, an ally
+   * buff's own recipients ("no foe here") become the caster's, which is how the teleports get
+   * their 1.5s ring back off the teleported ally's translucency and how Brainstorm's Adrenalin
+   * Boost keeps a 90s window stamped `['DeadPlayerFriend']` (PERMA-4).
+   *
+   * Stated on a power whose own list would otherwise LAND the window: the parent names no foe,
+   * so only the stamp can produce the 0 (a filter that declined everything would pass a probe
+   * whose parent was foe-aimed).
+   */
+  it('a stamped list that names somebody else is a veto, foe or not', () => {
+    const allyBuff = (ownerTargets: string[]) =>
+      power({
+        targetsAffected: ['Friend', 'Self'],
+        stats: { recharge: 300 },
+        atoms: [atom('Defense', 'All', 0.2, 120, 'Melee_Buff_Def', 'Target', ownerTargets)],
+      });
+    expect(selfStateWindow(allyBuff(['DeadPlayerFriend']))).toBe(0);
+    expect(selfStateWindow(allyBuff(['Friend', 'Self']))).toBe(120);
+  });
 });
 
 describe('the authored-cycle arm can only answer for a synthesised power', () => {
