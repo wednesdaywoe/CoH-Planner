@@ -103,6 +103,16 @@ const BUFF_PET_MINTED_SLOTS = {
  * A regex over `effects.slot` cannot see these, and a census that quietly omits them
  * reports "no reader" for a slot eight lines of the totals depend on. Each entry names
  * where the domain is declared so a reader can check the copy against its source.
+ *
+ * A site states its domain one of two ways. `keys` is a literal roster, for the three
+ * places a short list is written out at the read site; a name there that `PowerEffects`
+ * does not declare is a typo and throws. `derive` parses the domain out of its declaring
+ * file, for the two rosters too long to copy — BPORT3's finding was that both of those
+ * had no entry here at all, and the census consequently reported eleven slots the info
+ * panel renders on every power as "bag with no spender". A derived roster may legitimately
+ * name something the type does not declare (`SELF_TOTAL_EFFECT_KEYS` names four such), so
+ * those are reported under `dynamicKeysUndeclared` rather than thrown on: the roster is
+ * the code's own claim about the bag, and a claim the type contradicts is a finding.
  */
 const DYNAMIC_READ_SITES = [
   {
@@ -120,7 +130,71 @@ const DYNAMIC_READ_SITES = [
     symbol: 'ROUTED_SUBTYPES',
     keys: ['mezResistance', 'debuffResistance'],
   },
+  {
+    // `resolvePowerMagnitudes` never names a slot. It walks `Object.entries(effects)` and
+    // keeps whatever `EFFECT_REGISTRY` registers (`groupEffectsByCategory`), so its domain
+    // is the registry's key set.
+    //
+    // It lists as OUTSIDE the display closure below, which is the honest report and not the
+    // answer: the closure is discovered one hop, by import of `buildDisplayEffects`, and
+    // this file imports none. BPORT3 adjudicated the reach question the report defers — its
+    // sole importer is `SharedPowerComponents`, and all three renderers of that component's
+    // `RegistryEffectsDisplay` (InfoPanel, PowerInfoTooltip, CompareSlottingModal) do build
+    // a display bag, so the mint-only slots DO supply it. Pinned in `beta-display.test.ts`
+    // rather than folded into the closure here, because widening the discovery rule to a
+    // transitive one absorbs 21 files including the two (`DamageBlock`, `PowerInfoBlocks`)
+    // this census deliberately leaves undecided.
+    file: 'src/components/info/resolvePowerMagnitudes.ts',
+    symbol: 'EFFECT_REGISTRY',
+    derive: (declared) => registryKeys(declared),
+  },
+  {
+    // `adjusterAffectsSelfTotals` tests a conditional's bag keys against a roster. Its
+    // supplier is #2, never `power.effects`, so a slot with zero `cond` supply is inert
+    // here however well supplied it is elsewhere.
+    file: 'src/engine/characterStateAdapter.ts',
+    symbol: 'SELF_TOTAL_EFFECT_KEYS',
+    derive: () => setLiteralKeys('src/engine/characterStateAdapter.ts', 'SELF_TOTAL_EFFECT_KEYS'),
+  },
 ];
+
+/**
+ * Every key `EFFECT_REGISTRY` registers, plus the `<base>Unenhanced` spelling of each.
+ *
+ * Parsed rather than listed for the reason {@link declaredSlots} is: a registration added
+ * tomorrow joins the census by itself. The split-slot half is part of the domain because
+ * `groupEffectsByCategory` resolves an unregistered `fooUnenhanced` through `foo` — the
+ * converter's IgnoreStrength verdict spelled as a key — so those slots are read by the same
+ * walk without appearing in the registry.
+ */
+function registryKeys(declared) {
+  const src = fs.readFileSync(path.join(REPO, 'src/data/core/effect-registry.ts'), 'utf8');
+  const start = src.indexOf('export const EFFECT_REGISTRY');
+  if (start === -1) throw new Error('EFFECT_REGISTRY not found in src/data/core/effect-registry.ts');
+  const end = src.indexOf('\n};', start);
+  if (end === -1) throw new Error('EFFECT_REGISTRY has no closing brace');
+  const keys = [...src.slice(start, end).matchAll(/^ {2}([A-Za-z_][A-Za-z0-9_]*):\s*\{/gm)].map((m) => m[1]);
+  if (keys.length < 50) {
+    throw new Error(`EFFECT_REGISTRY parse found only ${keys.length} keys -- the shape changed`);
+  }
+  // Only the split halves the type actually declares. `groupEffectsByCategory` would resolve
+  // any `fooUnenhanced` through `foo`, but a spelling `PowerEffects` does not declare is one
+  // no bag carries, so generating all 69 would report sixty-odd inert names as findings.
+  return [...keys, ...keys.map((k) => `${k}Unenhanced`).filter((k) => declared.has(k))];
+}
+
+/** The string members of a `new Set([...])` const, for a roster written out at its read site. */
+function setLiteralKeys(rel, symbol) {
+  const src = fs.readFileSync(path.join(REPO, rel), 'utf8');
+  const start = src.indexOf(`const ${symbol}`);
+  if (start === -1) throw new Error(`${symbol} not found in ${rel}`);
+  const open = src.indexOf('new Set([', start);
+  const close = src.indexOf(']', open);
+  if (open === -1 || close === -1) throw new Error(`${symbol} in ${rel} is not a \`new Set([...])\` literal`);
+  const keys = [...src.slice(open, close).matchAll(/'([A-Za-z_][A-Za-z0-9_]*)'/g)].map((m) => m[1]);
+  if (keys.length === 0) throw new Error(`${symbol} in ${rel} parsed to an empty roster`);
+  return keys;
+}
 
 /**
  * Pre-seed the require cache for the two modules the display path pulls in that cannot load
@@ -448,14 +522,23 @@ function readSites(slots) {
       }
     });
   }
+  const dynamicKeysUndeclared = {};
   for (const site of DYNAMIC_READ_SITES) {
-    for (const slot of site.keys) {
-      if (!declared.has(slot)) throw new Error(`dynamic read site ${site.symbol} names undeclared slot "${slot}"`);
+    for (const slot of site.derive ? site.derive(declared) : site.keys) {
+      if (!declared.has(slot)) {
+        // A hand-written roster naming a slot the type does not declare is a typo. A
+        // derived one is the declaring code's own claim, and a claim the type contradicts
+        // is a finding to report — the roster names a key no bag can ever carry, so that
+        // arm of the reader is inert.
+        if (!site.derive) throw new Error(`dynamic read site ${site.symbol} names undeclared slot "${slot}"`);
+        (dynamicKeysUndeclared[site.symbol] ??= []).push(slot);
+        continue;
+      }
       if (!bySlot.has(slot)) bySlot.set(slot, []);
       bySlot.get(slot).push({ file: site.file, line: null, seam: `dynamic:${site.symbol}` });
     }
   }
-  return { bySlot, readsUndeclared };
+  return { bySlot, readsUndeclared, dynamicKeysUndeclared };
 }
 
 function census({ datasets = ALL_DATASETS } = {}) {
@@ -475,7 +558,7 @@ function census({ datasets = ALL_DATASETS } = {}) {
     for (const [k, v] of Object.entries(r.undeclaredMints)) undeclaredMints.set(k, (undeclaredMints.get(k) ?? 0) + v);
   }
 
-  const { bySlot, readsUndeclared } = readSites(slots);
+  const { bySlot, readsUndeclared, dynamicKeysUndeclared } = readSites(slots);
   const builders = displayBagBuilders();
 
   const rows = slots.map((slot) => {
@@ -516,6 +599,7 @@ function census({ datasets = ALL_DATASETS } = {}) {
     undeclaredInData: Object.fromEntries(undeclared),
     undeclaredMints: Object.fromEntries(undeclaredMints),
     readsUndeclared: Object.fromEntries([...readsUndeclared].map(([k, v]) => [k, v.length])),
+    dynamicKeysUndeclared,
     buffPetMintedSlots: BUFF_PET_MINTED_SLOTS,
     displayBagBuilders: [...builders].sort(),
   };
@@ -611,6 +695,14 @@ function report(result) {
     out.push('');
     out.push(`READ, SUPPLIED, ALL-ZERO (${vacuous.length}) — a credit predicate may still make these dead (BPORT4):`);
     for (const r of vacuous) out.push(`  ${pad(r.slot, 26)} own ${r.own}  cond ${r.cond}`);
+  }
+
+  const dynamicUndeclared = Object.entries(result.dynamicKeysUndeclared);
+  if (dynamicUndeclared.length) {
+    out.push('');
+    out.push(`!!! INERT NAMES IN A DYNAMIC READER'S ROSTER (${dynamicUndeclared.length}) — the reader tests for`);
+    out.push('keys the type does not declare and no bag carries, so those arms never match:');
+    for (const [symbol, keys] of dynamicUndeclared) out.push(`  ${pad(symbol, 26)} ${keys.join(', ')}`);
   }
 
   const undeclaredData = Object.entries(result.undeclaredInData);

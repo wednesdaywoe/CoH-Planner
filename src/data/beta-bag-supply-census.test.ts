@@ -57,6 +57,7 @@ interface Census {
     displayFailures: number;
   }>;
   undeclaredInData: Record<string, number>;
+  dynamicKeysUndeclared: Record<string, string[]>;
   undeclaredMints: Record<string, number>;
   buffPetMintedSlots: Record<string, string>;
   displayBagBuilders: string[];
@@ -69,8 +70,38 @@ interface Census {
  * BPORT3/BPORT4 may make without further evidence. A slot leaving this set has gained a
  * supplier; a slot joining it has lost its last one, which for a converter-supplied slot is
  * exactly the BPORT7 regression this file exists to catch early.
+ *
+ * `speedBuff` and `enduranceCrash` joined at BPORT3, and not because supply moved: both are
+ * registered in `EFFECT_REGISTRY`, which is the domain of a reader the census could not see
+ * until BPORT3 gave it an entry in `DYNAMIC_READ_SITES`. They were dead all along and
+ * counted as unread. A registered display row that no supplier ever fills is dead in the
+ * same way the other four are.
  */
-const ZERO_SUPPLY_SLOTS = ['dot', 'elusivity', 'protection', 'flySpeed'];
+const ZERO_SUPPLY_SLOTS = ['dot', 'elusivity', 'protection', 'flySpeed', 'speedBuff', 'enduranceCrash'];
+
+/**
+ * Slots the converters emit that genuinely nothing spends.
+ *
+ * BPORT1 reported fourteen. Eleven of those were read the whole time by
+ * `resolvePowerMagnitudes`, which names no slot — it walks the bag and keeps whatever the
+ * registry registers — so a census keyed on `effects.<slot>` saw no reader for
+ * `defenseDebuff` (1,623 carriers), `enduranceDrain` (964) and nine more the info panel
+ * renders on every power that has them. Three survive the correction, and they are the only
+ * emitted keys a deletion may take on the "nothing reads it" argument alone.
+ */
+const UNREAD_BUT_SUPPLIED = ['activatePeriod', 'effectArea', 'onlyAffectsSelf'];
+
+/**
+ * Names a dynamic reader's roster claims that `PowerEffects` does not declare.
+ *
+ * A derived roster is the reading code's own statement about what the bag can hold, so a
+ * name the type contradicts is an inert arm of that reader rather than a typo. All four are
+ * `characterStateAdapter`'s: `adjusterAffectsSelfTotals` tests a conditional's keys against
+ * a 32-name set, and these four can never match anything.
+ */
+const DYNAMIC_KEYS_UNDECLARED = {
+  SELF_TOTAL_EFFECT_KEYS: ['regeneration', 'recovery', 'maxEndurance', 'maxHealth'],
+};
 
 /**
  * Slots with no converter supply at all — spent only where a mint reaches.
@@ -218,5 +249,28 @@ describe('BPORT1 census — where the bag and its type disagree', () => {
 
   it('finds exactly the known undeclared keys minted at the display edge', () => {
     expect(Object.keys(census.undeclaredMints).sort()).toEqual([...UNDECLARED_MINTS].sort());
+  });
+
+  it('finds exactly the known inert names in the dynamic readers\' rosters', () => {
+    expect(census.dynamicKeysUndeclared).toEqual(DYNAMIC_KEYS_UNDECLARED);
+  });
+});
+
+describe('BPORT1 census — the slots nothing spends', () => {
+  it('finds exactly these emitted slots with no reader at all', () => {
+    const unread = census.rows.filter((r) => r.readCount === 0 && r.supply > 0).map((r) => r.slot);
+    expect(unread.sort()).toEqual([...UNREAD_BUT_SUPPLIED].sort());
+  });
+
+  it('credits the registry-driven reader for the eleven slots BPORT1 called unread', () => {
+    // The correction itself, pinned. Each of these is emitted by a converter, named by no
+    // `effects.<slot>` read anywhere, and rendered by `RegistryEffectsDisplay` on every power
+    // carrying it. If the registry stops registering one, it rejoins UNREAD_BUT_SUPPLIED and
+    // BPORT7 is once again allowed to delete a live row.
+    for (const slot of ['accuracy', 'threatBuff', 'defenseDebuff', 'regenDebuff', 'recoveryDebuff',
+      'enduranceDrain', 'threatDebuff', 'perceptionDebuff', 'specialDebuff', 'fly', 'untouchable']) {
+      expect(row(slot).readFiles, slot).toContain('src/components/info/resolvePowerMagnitudes.ts');
+      expect(row(slot).supply, slot).toBeGreaterThan(0);
+    }
   });
 });
