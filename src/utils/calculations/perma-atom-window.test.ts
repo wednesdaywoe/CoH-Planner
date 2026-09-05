@@ -74,12 +74,12 @@ describe('a Target atom resolves its pronoun through ownerTargets first', () => 
    * parent deletes a 45s window the caster demonstrably holds, which is the archetypal Kinetics
    * perma target.
    *
-   * `coh_math::perma::reaches_caster_for_perma` reads only the parent's list and loses it —
-   * `perma_eligibility_census` reports `win 0.0, rust false` on all four Kinetics copies. That
-   * divergence is filed, not mirrored; this test is the thing that would notice it being
-   * "reconciled" by taking the window away. Homecoming and Brainstorm are the two forks that
-   * stamp `ownerTargets` here at all; Rebirth and Thunderspy carry a 1s window and are
-   * ineligible either way, which is why they are not in the list.
+   * `coh_math::perma::reaches_caster_for_perma` read only the parent's list until PERMA-4
+   * (2026-09-05) and lost it — `perma_eligibility_census` reported `win 0.0, rust false` on
+   * every Kinetics copy. The two engines agree now, and this test is what would notice the
+   * window being taken away again by a later "reconciliation". Homecoming and Brainstorm are the
+   * two forks that stamp `ownerTargets` here at all; Rebirth and Thunderspy carry a 1s window
+   * and are ineligible either way, which is why they are not in the list.
    */
   const SHIFT_FORKS = ['homecoming', 'brainstorm'] as const;
 
@@ -126,6 +126,58 @@ describe('a Target atom resolves its pronoun through ownerTargets first', () => 
     expect(selfStateWindow(allyBuff(['DeadPlayerFriend']))).toBe(0);
     expect(selfStateWindow(allyBuff(['Friend', 'Self']))).toBe(120);
   });
+});
+
+describe("a Target atom on the power's own list needs the caster named", () => {
+  /**
+   * The other lenient read, and the one that survived PERMA-4. An ally-only buff aims every row
+   * at `Target` and names no foe, so a veto that fires only on an enemy kept the window and
+   * handed the caster the ALLY's clock — 47 power entries over 22 (fork, power) pairs drew a
+   * perma ring on a buff nobody holds (PERMA-5).
+   *
+   * Stated on a pair differing in nothing but the list, and the positive half has to LAND the
+   * window: a rule that declined everything would pass the ally half on its own. The third arm
+   * is the one no corpus can grade — every power in all four bundles states a non-empty
+   * `targetsAffected`, so an absent list exists only here, and it has to keep the window because
+   * this veto deletes rather than credits.
+   */
+  it('an ally-only recipient list times the ally clock, and an absent one keeps the window', () => {
+    const boost = (targetsAffected?: string[]) =>
+      power({
+        ...(targetsAffected ? { targetsAffected } : {}),
+        stats: { recharge: 300 },
+        atoms: [atom('Defense', 'All', 0.2, 120, 'Melee_Buff_Def', 'Target')],
+      });
+    // Accelerate Metabolism's shape: the caster is among the recipients.
+    expect(selfStateWindow(boost(['Friend', 'Self']))).toBe(120);
+    // Adrenalin Boost's: `Friend` and nothing else, no foe to veto on.
+    expect(selfStateWindow(boost(['Friend']))).toBe(0);
+    // Nothing stated at all — no evidence either way, and the window survives.
+    expect(selfStateWindow(boost())).toBe(120);
+  });
+
+  /**
+   * The corpus half, on the power the register's key checks. Adrenalin Boost is an Empathy
+   * ally buff — `targetsAffected: ['Friend']`, eight rows at `toWho: 'Target'`, a 90s window
+   * against a 300s recharge — and the Empath gets nothing from it at all. Brainstorm is the
+   * control PERMA-4 already fixed from the other side: its rows carry
+   * `ownerTargets: ['DeadPlayerFriend']`, so the stamp read vetoes them there.
+   */
+  it.each(['homecoming', 'rebirth', 'thunderspy'] as const)(
+    '%s: Adrenalin Boost draws no ring off the ally window',
+    async (id) => {
+      await loadDataset(id);
+      const found = Object.values(getAllPowersets())
+        .flatMap((set) => set.powers ?? [])
+        .filter((p) => p.internalName === 'Adrenalin_Boost');
+      expect(found.length, `${id}: Adrenalin Boost copies`).toBeGreaterThan(0);
+      for (const p of found) {
+        expect(p.targetsAffected, `${id}: recipients`).not.toContain('Self');
+        expect(selfStateWindow(p), `${id}: window`).toBe(0);
+        expect(isPermaEligible(p, { floor: 0.25, cap: 5 })).toBe(false);
+      }
+    },
+  );
 });
 
 describe('the authored-cycle arm can only answer for a synthesised power', () => {

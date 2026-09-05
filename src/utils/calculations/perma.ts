@@ -184,15 +184,6 @@ export function isPermaEligible(
 }
 
 /**
- * `EntsAffected` words that name an enemy — the converter's `TSPY_MEZ_FOE_TARGETS`
- * (`scripts/convert-powerset.cjs`) and `coh_data::Power::affects_foe`, the one foe vocabulary
- * this repo keeps. Restated here because the perma veto asks it of a power, and the field it
- * asks is `targetsAffected`: `targetType` is where a power is AIMED, and a control aimed at
- * `Any` that puts a 30s `untouchable` on the enemy drew a ring for the foe's window (PERMA-3).
- */
-const FOE_TARGETS = ['Foe', 'DeadFoe', 'DeadOrAliveFoe', 'Any'] as const;
-
-/**
  * Effect families a caster-side state can live in — `coh_math::perma::SELF_BUFF_KEYS` in atom
  * vocabulary, which is the bag slot list this file used to carry (`tohitBuff`, `defense`,
  * `absorb`, `specialBuff`, …) asked one layer up, where the export states it. Deliberately not
@@ -210,11 +201,6 @@ const SELF_STATE_TYPES: ReadonlySet<string> = new Set([
  *  same source string the atom parses, so they agree exactly today. The tolerance degrades a
  *  future rounding change into a missed verdict rather than a wrong badge. */
 const DURATION_MATCH_TOLERANCE = 1e-3;
-
-/** Does this recipient list name an enemy? `coh_data::Power::affects_foe` over {@link FOE_TARGETS}. */
-function affectsFoe(targets: readonly string[]): boolean {
-  return targets.some((t) => (FOE_TARGETS as readonly string[]).includes(t));
-}
 
 /**
  * Whether an atom's effect reaches the caster. `notOnCaster` is explicit and
@@ -240,9 +226,12 @@ function atomReachesCaster(atom: AtomicEffect, power: Power | SelectedPower): bo
  * is why the file carries both. {@link atomReachesCaster} resolves a named recipient through
  * `reachesCaster`'s TARGETS-3 join, because `recastVerdict` is issuing a CLAIM about how a
  * recast combines and a guess there prints a wrong badge. This one decides whether to VETO a
- * window: a `Target` atom only fails to reach the caster when the power reaches an enemy —
- * on a team buff `toWho: 'Target'` is a teammate, the caster among them — and an absent
- * recipient reads as reaching the caster, so missing evidence can never delete a window.
+ * window, so an absent recipient reads as reaching the caster: missing evidence can never
+ * delete a window (Rule 1).
+ *
+ * **One rule over both lists: is the caster named among the recipients**, with an absent list
+ * the only exception. That is why this is not `reachesCaster`'s `affectsCaster`, which answers
+ * false for a list that is not there as readily as for one naming somebody else.
  *
  * Which list resolves the pronoun is `ownerTargets` first and the power's own only after
  * (TARGETS-3, and the same order {@link reachesCaster} reads them in). `ownerTargets` is stamped
@@ -255,18 +244,25 @@ function atomReachesCaster(atom: AtomicEffect, power: Power | SelectedPower): bo
  * Thunderspy carry a 1s window there and stay ineligible in both engines, which is a fork-side
  * residual and not this rule's business.
  *
- * **The two lists carry different burdens, because they state different things.** The power's
- * own `targetsAffected` is a union over the whole power, so it says the caster is somewhere in
- * the target list and never that THIS row lands on him — absence of `Self` proves nothing there,
- * and only a foe entry is evidence against. A stamped `ownerTargets` is the executed power's own
- * recipient list, and that list names whom the row lands on outright: the question stops being
- * "is there evidence against" and becomes {@link reachesCaster}'s ordinary one, is the caster
- * among them. Reading the stamped list leniently gives Recall Friend and Shadow Recall a 1.5s
- * ring off the TELEPORTED ally's translucency — the rings PERMA-3 had just removed — and hands
- * Brainstorm's Adrenalin Boost a 90s window stamped `['DeadPlayerFriend']`, a pure ally buff the
- * Empath never holds (PERMA-4, and `coh_math::perma::target_recipients_reach_caster` is the twin).
- * What the surviving leniency on the POWER's list costs — an ally-only buff names `Friend` and no
- * foe, so the caster inherits the ally's clock on the other three forks — is PERMA-5.
+ * **Why a union answers a per-row question.** Both lists once had their own burden here: the
+ * stamped one named its recipients outright, while the power's own `targetsAffected` is a union
+ * over every row, so the read was lenient — no `Self` proves nothing, only a foe entry is
+ * evidence against. That inverts the one direction a union is sound in. A union is a SUPERSET
+ * of every row's recipients, so `Self` in it does not put THIS row on the caster, but `Self`
+ * missing from it puts no row of the power on him, this one included. The weak direction is the
+ * positive one; the negative direction is a proof.
+ *
+ * Both halves cost a shipped ring. Reading the stamped list leniently gives Recall Friend and
+ * Shadow Recall a 1.5s ring off the TELEPORTED ally's translucency — the rings PERMA-3 had just
+ * removed — and hands Brainstorm's Adrenalin Boost a 90s window stamped `['DeadPlayerFriend']`
+ * (PERMA-4). Reading the power's own list leniently hands the caster every ally-only buff's
+ * clock, because such a power names `Friend` and no foe at all: 47 power entries over 22
+ * (fork, power) pairs drew a ring on a buff nobody holds — Adrenalin Boost, Painbringer, Amp Up,
+ * Fortify Pack, Experimental Injection, Mutation, Elixir of Life, Thunderspy's Motivate and
+ * Discipline Allies and its two teleports (PERMA-5, closed 2026-09-05;
+ * `coh_math::perma::target_recipients_reach_caster` is the twin). The archetypal perma team
+ * buffs are separated by the same field and keep their windows: Accelerate Metabolism and
+ * Chrono Shift state `['Friend', 'Self']`, Farsight `['Teammate', 'Self']`.
  */
 function reachesCasterForPerma(a: AtomicEffect, power: Power | SelectedPower): boolean {
   if (a.notOnCaster === true) return false;
@@ -274,7 +270,9 @@ function reachesCasterForPerma(a: AtomicEffect, power: Power | SelectedPower): b
   if (a.toWho === 'Marker') return false;
   if (a.toWho === 'Target' || a.toWho === 'TargetOnly' || a.toWho === 'TargetOnlyAndPets') {
     const owner = a.ownerTargets;
-    return owner?.length ? owner.includes('Self') : !affectsFoe(power.targetsAffected ?? []);
+    if (owner?.length) return owner.includes('Self');
+    const targets = power.targetsAffected;
+    return targets?.length ? targets.includes('Self') : true;
   }
   return true;
 }
