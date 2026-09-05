@@ -117,13 +117,13 @@ const record = (t: Split, id: string, bag?: string, atom?: string) => {
 
 describe('BPORT11 cluster 3 — defence and resistance against the bag they replace', () => {
   it.each([
-    ['resistance', RES_KEYS, (p: AnyPower, src: AnyPower) => resistanceBuffValue(src as never), 1606],
-    ['debuffResistance', DEBUFF_RES_KEYS, (p: AnyPower, src: AnyPower) => debuffResistanceValue(src as never), 1319],
+    ['resistance', RES_KEYS, (src: AnyPower) => resistanceBuffValue(src as never), 1606],
+    ['debuffResistance', DEBUFF_RES_KEYS, (src: AnyPower) => debuffResistanceValue(src as never), 1319],
   ])('%s: every carrier view the bag holds, the atoms hold identically', (slot, keys, arm, expected) => {
     const t = empty();
     for (const [id, power, source] of views())
       record(t, id, fmtMap(power.effects?.[slot as string], keys as Set<string>),
-        fmtMap((arm as (p: AnyPower, s: AnyPower) => unknown)(power, source), keys as Set<string>));
+        fmtMap((arm as (s: AnyPower) => unknown)(source), keys as Set<string>));
     expect(t.differ, `${slot} differ`).toEqual([]);
     expect(t.bagOnly, `${slot} bag-only`).toEqual([]);
     expect(t.atomOnly, `${slot} atom-only`).toEqual([]);

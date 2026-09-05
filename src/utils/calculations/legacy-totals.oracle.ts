@@ -33,7 +33,7 @@ import type { ArchetypeId } from '@/types';
 import { calculateSetBonuses, getStatBreakdown, trackBonus, createBonusTracking, type AggregatedBonuses, type StatBreakdownItem, type BuildPowers } from './set-bonuses';
 import { createEmptyStats, getBaselineHealth, type CharacterStats } from './stats';
 import { combineWithAlphaED, filterAlphaByAllowedEnhancements, BASE_RECOVERY_RATE, BASE_REGEN_RATE, type EnhancementBonuses } from './enhancement-values';
-import { toHitBuffValue, damageBuffValue, resistanceBuffValue, resistanceSelfDebuffValue, defenseBuffValue, defenseBuffSuppressibleValue, defenseBuffIsTeamOnly, maxHPBuffValue, regenBuffValue, recoveryBuffValue, movementBuffValue, kbProtectionValue, accuracyBuffValue, rechargeBuffValue, rangeBuffValue, perceptionBuffValue, enduranceDiscountValue, maxEndBuffValue, elusivityValue, mezSlotValue, mezResistanceValue, tauntPlacateValue, debuffResistanceValue, stackCapOf, buffStack, DEBUFF_RESISTANCE_STACK } from '@/data/core/atom-query';
+import { toHitBuffValue, damageBuffValue, resistanceBuffValue, resistanceSelfDebuffValue, defenseBuffValue, defenseBuffSuppressibleValue, defenseBuffIsTeamOnly, maxHPBuffValue, regenBuffValue, recoveryBuffValue, movementBuffValue, kbProtectionValue, accuracyBuffValue, rechargeBuffValue, rangeBuffValue, perceptionBuffValue, enduranceDiscountValue, maxEndBuffValue, elusivityValue, mezSlotValue, mezResistanceValue, tauntPlacateValue, debuffResistanceValue, selfSlowValue, selfMovementCapDebuffValue, movementAxisSubType, stackCapOf, buffStack, DEBUFF_RESISTANCE_STACK } from '@/data/core/atom-query';
 import type { MovementBuffEntry, StackFamily } from '@/data/core/atom-query';
 import type { EncodedAtom } from '@/data/core/atomic-effect';
 import { calculateVigilanceDamageBonus, calculateFuryDamageBonus } from './inherents';
@@ -41,7 +41,7 @@ import { getEffectiveLevel, areIncarnatesSuppressed } from './effective-level';
 import { computeModeSuppression, type ModeCarrier } from '@/utils/mode-suppression';
 import { isCalcDebugEnabled, debugBuildContext, debugSetBonuses, debugAlphaBonuses, debugGroup, debugGroupEnd, debugFormula, debugAccolade, debugHitChance, debugFinalStats, debugNetEndurance, debugEnd } from '@/utils/calc-debug';
 import type { ActivePowerEffect, CalculationOptions, CharacterCalculationResult, DashboardStatBreakdown, GlobalBonuses, MezScaled, PowerWithToggle, ScalarOrScaled, StatSource, StrengthBuffs } from './character-totals';
-import { adjustForStacking, adjustForStackCap, collectStrengthBuffs, createEmptyGlobalBonuses, emptyStrengthBuffs, getAlphaEdBypassBonuses, getAlphaEnhancementBonuses, mezSourceFor, resolveScaledEffect, syntheticEffects } from './character-totals';
+import { adjustForStacking, adjustForStackCap, carries_combat_debuff, collectStrengthBuffs, createEmptyGlobalBonuses, emptyStrengthBuffs, getAlphaEdBypassBonuses, getAlphaEnhancementBonuses, mezSourceFor, resolveScaledEffect, syntheticEffects } from './character-totals';
 
 // ============================================
 // STAT NAME MAPPING
@@ -897,73 +897,51 @@ function applyActivePowerBonuses(
       }
     }
 
-    // Movement (top-level scalar form). Stack-aware. All movement attribs —
-    // speed AND jump height — scale by their AT table; see resolveMovementPercent.
-    // Enhanced by slotted Run/Fly/Jump enhancements (and Alpha), mirroring the
-    // fitness-inherent path: resolved percent * (1 + enhBonuses[aspect]). The
-    // enhBonuses object is already filtered to aspects the power accepts, so a
-    // non-enhanceable movement power simply sees a 1.0 multiplier.
-    if (effects.runSpeed !== undefined) {
-      const enhMultiplier = 1 + (enhBonuses.run || 0);
-      const adjusted = adjustForStacking(effects.runSpeed as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'runSpeed', effects.maxStacks, effects.stackCaps);
-      const value = resolveMovementPercent(adjusted, 'runSpeed', archetypeId, buildLevel) * enhMultiplier;
-      movementContribs.push({ stat: 'runSpeed', value, sourceName: power.name, type: 'active-power', ...movementMeta(effects.runSpeed as ScalarOrScaled) });
-    }
-
-    // Unenhanceable run-speed template (IgnoreStrength) — e.g. Sprint's second
-    // RunningSpeed effect. Contributes flat, NO enhancement multiplier.
-    if (effects.runSpeedUnenhanced !== undefined) {
-      const adjusted = adjustForStacking(effects.runSpeedUnenhanced as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'runSpeedUnenhanced', effects.maxStacks, effects.stackCaps);
-      const value = resolveMovementPercent(adjusted, 'runSpeed', archetypeId, buildLevel);
-      movementContribs.push({ stat: 'runSpeed', value, sourceName: power.name, type: 'active-power', ...movementMeta(effects.runSpeedUnenhanced as ScalarOrScaled) });
-    }
-
-    if (effects.flySpeed !== undefined) {
-      const enhMultiplier = 1 + (enhBonuses.fly || 0);
-      const adjusted = adjustForStacking(effects.flySpeed as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'flySpeed', effects.maxStacks, effects.stackCaps);
-      const value = resolveMovementPercent(adjusted, 'flySpeed', archetypeId, buildLevel) * enhMultiplier;
-      movementContribs.push({ stat: 'flySpeed', value, sourceName: power.name, type: 'active-power', ...movementMeta(effects.flySpeed as ScalarOrScaled) });
-    }
-
-    if (effects.jumpHeight !== undefined) {
-      const enhMultiplier = 1 + (enhBonuses.jump || 0);
-      const adjusted = adjustForStacking(effects.jumpHeight as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'jumpHeight', effects.maxStacks, effects.stackCaps);
-      const value = resolveMovementPercent(adjusted, 'jumpHeight', archetypeId, buildLevel) * enhMultiplier;
-      movementContribs.push({ stat: 'jumpHeight', value, sourceName: power.name, type: 'active-power', ...movementMeta(effects.jumpHeight as ScalarOrScaled) });
-    }
-
-    if (effects.jumpSpeed !== undefined) {
-      const enhMultiplier = 1 + (enhBonuses.jump || 0);
-      const adjusted = adjustForStacking(effects.jumpSpeed as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'jumpSpeed', effects.maxStacks, effects.stackCaps);
-      const value = resolveMovementPercent(adjusted, 'jumpSpeed', archetypeId, buildLevel) * enhMultiplier;
-      movementContribs.push({ stat: 'jumpSpeed', value, sourceName: power.name, type: 'active-power', ...movementMeta(effects.jumpSpeed as ScalarOrScaled) });
-    }
+    // The five top-level movement scalars — `runSpeed`, `runSpeedUnenhanced`, `flySpeed`,
+    // `jumpHeight`, `jumpSpeed` — RETIRED BPORT11. Not one power on any of the four forks
+    // carries any of them, so all five blocks were iterating nothing. The comment they carried
+    // named Sprint, Ninja Run and Beast Run as the powers reaching the calc this way; those
+    // hand-authored inherents carry no bag at all, and their movement is atom-native through
+    // the map below. BPORT1 had already filed `flySpeed` as zero-supply; the other four read
+    // `leave` because the supply census could not see that their only supplier was a slot no
+    // converter writes.
 
     // Movement buffs (new format — e.g., Lightning Reflexes, Reaction Time)
     // Skip when the power also has tohitDebuff or damageDebuff — those indicate
     // enemy-targeting debuff auras (e.g., Time's Juncture) where movement is a
     // foe slow, not a self-buff
     //
-    // Plan B Slice 7: sourced from the atom list (`movementBuffValue`, verified
-    // bag-equal corpus-wide by scripts/planb-shadow-movement.cjs), falling back to
-    // the bag for any atom-less power — the hand-authored inherents in levels.ts
-    // (Sprint, Ninja Run, Beast Run) carry no atoms and reach the calc through the
-    // scalar `effects.runSpeed` path above, not this map. The tohitDebuff/damageDebuff
-    // guard stays a BAG read on purpose: it is a power-level heuristic about sibling
-    // slots, not a property of a movement atom, so it is not this slice's to move.
-    // An axis can hold MORE than one entry (`movementBuffValue` keys by axis +
-    // ignoreStrength + suppressible), so this is a list, not a map. The bag
-    // fallback is still one value per axis and normalizes into the same shape.
-    const movementEntries: MovementBuffEntry[] | undefined =
-      movementBuffValue(power) ??
-      (effects.movement
-        ? Object.entries(effects.movement).map(([axis, val]) => ({
-            axis,
-            ...(typeof val === 'number' ? { scale: val, table: '' } : (val as object)),
-          }) as MovementBuffEntry)
-        : undefined);
-    if (movementEntries &&
-        effects.tohitDebuff === undefined && effects.damageDebuff === undefined) {
+    // Plan B Slice 7: sourced from the atom list (`movementBuffValue`, verified bag-equal
+    // corpus-wide by scripts/planb-shadow-movement.cjs). An axis can hold MORE than one entry
+    // (the reader keys by axis + ignoreStrength + suppressible), so this is a list, not a map.
+    //
+    // BPORT11 fork-resolves it, and that is what let the data arm go. The reader returns an
+    // array — often an EMPTY one — for any power with a movement atom, and `??` keeps an empty
+    // array, so the bag branch only ever fired where the reader answered `undefined`. Across
+    // all four forks that was ONE power: rebirth Acrobatics, whose atoms fork by class
+    // (AT-FORK-1) so a build-agnostic read saw none of them. Reading through {@link mezSource}
+    // makes the reader answer it, and the data branch is left with no carrier at all.
+    //
+    // The synthetic arm stays for the 17 credited conditional mints (Stone Armor's Rooted in
+    // Granite Root).
+    //
+    // The combat-debuff gate moved with it. It was `effects.tohitDebuff === undefined &&
+    // effects.damageDebuff === undefined` — a question about two sibling SLOTS standing in for
+    // a question about the power — and `carries_combat_debuff` asks the atoms directly, on the
+    // discriminators that decide it (`aspect` separates a ToHit debuff from ToHit-debuff
+    // resistance; `Str` is what makes a DamageBuff row a debuff to the caster's own output).
+    // The two agree on all 18,239 power×class views, so this is a swap of instrument, not of
+    // verdict.
+    const movementEntries: MovementBuffEntry[] | undefined = movementBuffValue(mezSource)
+      ?? (() => {
+        const m = syntheticEffects(power)?.movement;
+        if (!m) return undefined;
+        return Object.entries(m).map(([axis, val]) => ({
+          axis,
+          ...(typeof val === 'number' ? { scale: val, table: '' } : (val as object)),
+        }) as MovementBuffEntry);
+      })();
+    if (movementEntries && !carries_combat_debuff(power)) {
       // NOTE: the `fly` entry (the kFly attrib) is deliberately NOT mapped.
       // It's the flight-mode grant (magnitude > 0 = "can fly"), not a speed
       // buff — mapping it into flySpeed double-counted Fly (+200% from the
@@ -986,9 +964,6 @@ function applyActivePowerBonuses(
       for (const entry of movementEntries) {
         const key = movementKeyMap[entry.axis];
         if (key && key in global) {
-          // Stack-aware: stacksLinear uses the bare effect key (e.g. 'runSpeed'),
-          // matching what classifyTemplateForStacking produces.
-          //
           // An `ignoreStrength` entry is the half of a two-template axis the
           // caster's Run/Fly/Jump enhancements do not touch — the same rule the
           // `runSpeedUnenhanced` scalar slot above encodes by skipping this
@@ -999,7 +974,13 @@ function applyActivePowerBonuses(
           const paired = movementEntries.filter((e) => e.axis === entry.axis).length > 1;
           const enhMultiplier = entry.ignoreStrength && paired ? 1 : 1 + (enhBonuses[movementAspectMap[key]] || 0);
           const val = entry as unknown as ScalarOrScaled;
-          const adjusted = adjustForStacking(val, targetsHitValues[power.internalName], effects.stacksLinear, entry.axis, effects.maxStacks, effects.stackCaps);
+          // STACK-4: the axis stacks to the depth its OWN sub type reaches, not the movement
+          // family's. Time Wall states Run `Stack` (cap 2) while its Fly and Jump are
+          // `Replace`, and one family-wide cap multiplied all three by 2. An axis naming no
+          // sub type falls through as itself, which no atom names — so the row lands unstacked
+          // at its base value rather than borrowing a sibling axis' depth.
+          const axisSub = movementAxisSubType(entry.axis) ?? entry.axis;
+          const adjusted = stack(val, buffStack('Movement', 'either', axisSub));
           const value = resolveMovementPercent(adjusted, key, archetypeId, buildLevel) * enhMultiplier;
           movementContribs.push({ stat: key, value, sourceName: power.name, type: 'active-power', ...movementMeta(val) });
         }
@@ -1009,17 +990,48 @@ function applyActivePowerBonuses(
     // Movement debuffs / slow (self-penalty, e.g. Granite Armor -70% run speed)
     // Applied PER ENTRY when that entry is self-directed (toWho:'Self') — most
     // slow effects target enemies, and a foe slow can sit in the same `slow` map
-    // as a self slow (Rebirth Granite: self -Run + foe -JumpHeight). Gating
-    // per-entry keeps the foe half off the caster. Unenhanceable.
-    if (effects.slow && typeof effects.slow === 'object') {
-      const slowKeyMap: Record<string, keyof GlobalBonuses> = {
-        runSpeed: 'runSpeed',
-        flySpeed: 'flySpeed',
-        fly: 'flySpeed',
-        jumpHeight: 'jumpHeight',
-        jumpSpeed: 'jumpSpeed',
-      };
-      for (const [type, val] of Object.entries(effects.slow)) {
+    // as a self slow. Gating per-entry keeps the foe half off the caster. Unenhanceable.
+    //
+    // BPORT11 reads BOTH halves of the penalty here, which the bag arm did not. `slow` is the
+    // Current-face debuff and `movementCapDebuff` is the Maximum-face one — Granite's jump
+    // CAP as against its jump SPEED — and they were one slot until ENT-5 split them so a cap
+    // debuff would stop overwriting the speed debuff on the same axis. This block never grew
+    // the second read, so 312 powers carry a `movementCapDebuff` the calc has never spent.
+    // Only 4 of those views are self-tagged and both arms agree on all 4, so nothing moves
+    // today; what changes is that the axis now has a reader on both faces.
+    //
+    // The atom arms move 11 views, and every one is a self penalty the CONVERTER's `toWho`
+    // tagging lost rather than a value the reader invented. Rebirth and Thunderspy's Granite
+    // Armor and Rooted state their jump root as `JumpHeight -500 toWho:Target` on a
+    // Self-target toggle — the "target" of a self-cast toggle IS the caster, which is why
+    // `reachesCaster` consults the power's recipients — and the bag's untagged entry was
+    // dropped by the `isSelfDirectedEffect` gate below. So the root those two powers are named
+    // for was reaching no total on two of the four forks.
+    //
+    // `fly` is in the key map and the atom arm never produces it, and that absence is the fix
+    // rather than an oversight: `fly` is the kFly flight-MODE grant, so a grounding power's
+    // mode kill was being spent as a flight-SPEED percentage.
+    const slowKeyMap: Record<string, keyof GlobalBonuses> = {
+      runSpeed: 'runSpeed',
+      flySpeed: 'flySpeed',
+      fly: 'flySpeed',
+      jumpHeight: 'jumpHeight',
+      jumpSpeed: 'jumpSpeed',
+    };
+    const asSelfMap = (rows: MovementBuffEntry[] | undefined) =>
+      rows && rows.length
+        ? Object.fromEntries(rows.map((e) => [e.axis, { ...e, toWho: 'Self' }]))
+        : undefined;
+    const slowSlots: Array<Record<string, unknown> | undefined> = [
+      asSelfMap(selfSlowValue(power)),
+      asSelfMap(selfMovementCapDebuffValue(power)),
+      // The conditional half: Rooted's Granite Root mode mints `slow` on a synthetic with no
+      // atoms, 12 credited contributions the atom arms cannot answer for.
+      syntheticEffects(power)?.slow as Record<string, unknown> | undefined,
+    ];
+    for (const slot of slowSlots) {
+      if (!slot || typeof slot !== 'object') continue;
+      for (const [type, val] of Object.entries(slot)) {
         if (!isSelfDirectedEffect(val)) continue;
         const key = slowKeyMap[type];
         if (key && key in global) {

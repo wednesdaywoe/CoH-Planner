@@ -196,14 +196,22 @@ describe('BPORT1 census — the verdicts BPORT3 and BPORT4 adjudicate against', 
     }
   });
 
-  it('names the totals oracle as an out-of-display-closure reader of the movement mints', () => {
+  it('has no totals reader left for the movement mints, which is what BPORT11 settled', () => {
     // The four flattened movement axes are minted by `buildDisplayEffects` out of the nested
-    // `movement` container, and read by `legacy-totals.oracle.ts`, which does not build a
-    // display bag. For that reader the slot has no supply — which is why canonical retired
-    // the same four. Pinned so the mint is never mistaken for supply on the totals path.
+    // `movement` container, and the totals oracle used to read them while building no display
+    // bag — so for THAT reader the slot had no supply at all, which is what this test pinned.
+    // BPORT11 retired the four scalar blocks (0 carriers on any fork) and the oracle left the
+    // list. Kept as the inverse assertion, because a reader coming BACK is the regression:
+    // it would be reading a slot the strip does not fill and the mint does not reach.
     for (const slot of ['runSpeed', 'runSpeedUnenhanced', 'jumpHeight', 'jumpSpeed']) {
       expect(row(slot).readFilesOutsideDisplay, slot)
-        .toContain('src/utils/calculations/legacy-totals.oracle.ts');
+        .not.toContain('src/utils/calculations/legacy-totals.oracle.ts');
+      // What remains is BPORT3's verdict, not this row's: the registry walker names no slot,
+      // and the adapter reads supplier 2 only. Named so "nobody reads it" is not assumed.
+      expect(row(slot).readFilesOutsideDisplay, slot).toEqual([
+        'src/components/info/resolvePowerMagnitudes.ts',
+        'src/engine/characterStateAdapter.ts',
+      ]);
     }
     expect(census.displayBagBuilders).not.toContain('src/utils/calculations/legacy-totals.oracle.ts');
   });
