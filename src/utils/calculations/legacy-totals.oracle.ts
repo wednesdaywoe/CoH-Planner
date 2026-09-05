@@ -30,15 +30,15 @@ import { getPowerset } from '@/data/powersets';
 import { calculateSetBonuses, getStatBreakdown, trackBonus, createBonusTracking, type AggregatedBonuses, type StatBreakdownItem, type BuildPowers } from './set-bonuses';
 import { createEmptyStats, getBaselineHealth, type CharacterStats } from './stats';
 import { combineWithAlphaED, filterAlphaByAllowedEnhancements, BASE_RECOVERY_RATE, BASE_REGEN_RATE, type EnhancementBonuses } from './enhancement-values';
-import { toHitBuffValue, damageBuffValue, resistanceBuffValue, resistanceSelfDebuffValue, defenseBuffValue, defenseBuffSuppressibleValue, defenseBuffIsTeamOnly, maxHPBuffValue, regenBuffValue, recoveryBuffValue, movementBuffValue, kbProtectionValue } from '@/data/core/atom-query';
-import type { MovementBuffEntry } from '@/data/core/atom-query';
+import { toHitBuffValue, damageBuffValue, resistanceBuffValue, resistanceSelfDebuffValue, defenseBuffValue, defenseBuffSuppressibleValue, defenseBuffIsTeamOnly, maxHPBuffValue, regenBuffValue, recoveryBuffValue, movementBuffValue, kbProtectionValue, accuracyBuffValue, rechargeBuffValue, rangeBuffValue, perceptionBuffValue, enduranceDiscountValue, maxEndBuffValue, elusivityValue, stackCapOf, buffStack } from '@/data/core/atom-query';
+import type { MovementBuffEntry, StackFamily } from '@/data/core/atom-query';
 import type { EncodedAtom } from '@/data/core/atomic-effect';
 import { calculateVigilanceDamageBonus, calculateFuryDamageBonus } from './inherents';
 import { getEffectiveLevel, areIncarnatesSuppressed } from './effective-level';
 import { computeModeSuppression, type ModeCarrier } from '@/utils/mode-suppression';
 import { isCalcDebugEnabled, debugBuildContext, debugSetBonuses, debugAlphaBonuses, debugGroup, debugGroupEnd, debugFormula, debugAccolade, debugHitChance, debugFinalStats, debugNetEndurance, debugEnd } from '@/utils/calc-debug';
 import type { ActivePowerEffect, CalculationOptions, CharacterCalculationResult, DashboardStatBreakdown, GlobalBonuses, MezScaled, PowerWithToggle, ScalarOrScaled, StatSource, StrengthBuffs } from './character-totals';
-import { adjustForStacking, collectStrengthBuffs, createEmptyGlobalBonuses, emptyStrengthBuffs, getAlphaEdBypassBonuses, getAlphaEnhancementBonuses, resolveScaledEffect } from './character-totals';
+import { adjustForStacking, adjustForStackCap, collectStrengthBuffs, createEmptyGlobalBonuses, emptyStrengthBuffs, getAlphaEdBypassBonuses, getAlphaEnhancementBonuses, resolveScaledEffect, syntheticEffects } from './character-totals';
 
 // ============================================
 // STAT NAME MAPPING
@@ -537,6 +537,15 @@ function applyActivePowerBonuses(
     if (!power.effects) continue;
 
     const effects = power.effects;
+    // BPORT11's stacking selector, for the families that have crossed. The atoms carry the
+    // depth a family self-stacks to, so `stackCapOf` answers with one number what the retired
+    // `stacksLinear` / `maxStacks` / `stackCaps` triple answered from three bag slots:
+    // membership AND depth. Measured over 14,249 powers before the first carry — wherever
+    // both sides say a family stacks they name the same depth, 0 disagreements at any site.
+    // Applied on the far side of an `atom ?? synthetic` seam, so a synthetic contribution
+    // stacks on the same terms a real power's does.
+    const stack = (value: ScalarOrScaled, family: StackFamily): ScalarOrScaled =>
+      adjustForStackCap(value, targetsHitValues[power.internalName], stackCapOf(power, family));
     const _debugEnabled = isCalcDebugEnabled();
     // Snapshot global bonuses before this power for diff logging
     const _debugBefore = _debugEnabled ? { ...global } : null;
@@ -579,8 +588,13 @@ function applyActivePowerBonuses(
     // a decimal). Additive into global.accuracy alongside set bonuses. Not
     // enhanced — accuracy enhancements boost attack-roll accuracy, not the
     // buff power's own +Accuracy (these powers don't slot accuracy-buff enh).
-    if (effects.accuracyBuff !== undefined) {
-      const adjustedBuff = adjustForStacking(effects.accuracyBuff as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'accuracyBuff', effects.maxStacks, effects.stackCaps);
+    // BPORT11: atom-native, with no synthetic arm behind it — `accuracyBuffValue` mirrors the
+    // converter's own gate and agrees with the bag on all 56 carriers of all four forks, and no
+    // reachable conditional or buff-pet aura mints the slot, so there is nothing left to fall
+    // back to.
+    const accuracyBuffSlot = accuracyBuffValue(power);
+    if (accuracyBuffSlot !== undefined) {
+      const adjustedBuff = stack(accuracyBuffSlot as ScalarOrScaled, buffStack('Accuracy'));
       const value = resolveScaledEffect(adjustedBuff, archetypeId, buildLevel) * 100;
       global.accuracy += value;
       addToBreakdown(breakdown, 'accuracy', {
@@ -824,9 +838,15 @@ function applyActivePowerBonuses(
     // Elusivity (Defense Debuff Resistance)
     // Super Reflexes, Shield Defense, etc. — stored as elusivity.all or per-type
     // Enhanced by Defense enhancements
-    if (effects.elusivity && typeof effects.elusivity === 'object') {
+    // BPORT11: atom-native. BPORT1 filed this slot as zero-supply and the carry confirms it
+    // from both sides — no power on any of the four forks carries an `elusivity` bag entry, and
+    // `elusivityValue` returns nothing for any of them either. The block is kept rather than
+    // deleted because the reader is the honest one: the day a fork ships an Elusivity atom this
+    // answers, where a deletion would have to be noticed first.
+    const elusivitySlot = elusivityValue(power);
+    if (elusivitySlot && typeof elusivitySlot === 'object') {
       const enhMultiplier = 1 + (enhBonuses.defense || enhBonuses.defenseBuff || 0);
-      const elusivity = effects.elusivity as Record<string, ScalarOrScaled>;
+      const elusivity = elusivitySlot as Record<string, ScalarOrScaled>;
       for (const [, value] of Object.entries(elusivity)) {
         // Both 'all' and specific types (smashing, lethal, etc.) contribute to defense debuff resistance
         const percentage = resolveScaledEffect(value, archetypeId, buildLevel) * 100 * enhMultiplier;
@@ -981,8 +1001,15 @@ function applyActivePowerBonuses(
     // Recharge buff
     // NOT enhanced by Recharge enhancements — recharge enhancements reduce the
     // power's own recharge time, they don't boost the recharge speed buff value
-    if (effects.rechargeBuff !== undefined) {
-      const adjusted = adjustForStacking(effects.rechargeBuff, targetsHitValues[power.internalName], effects.stacksLinear, 'rechargeBuff', effects.maxStacks, effects.stackCaps);
+    // BPORT11: atom-native. Agrees with the bag on all 309 shared carriers, and answers for 25
+    // more the Thunderspy bag never held (Time Wall's +20% self recharge, Resurgence's +100%) —
+    // the direction the migration exists to recover, and the direction that closes an existing
+    // oracle-vs-engine gap, because Rust has read `recharge_buff_value` since ATOM9.
+    // The synthetic arm STAYS: 20 reachable conditional mints (Time Lord's Temporal Selection)
+    // and the buff-pet aura fold both write this slot, and neither carries an atom to read.
+    const rechargeBuffSlot = rechargeBuffValue(power) ?? syntheticEffects(power)?.rechargeBuff;
+    if (rechargeBuffSlot !== undefined) {
+      const adjusted = stack(rechargeBuffSlot, buffStack('RechargeTime'));
       const value = extractScaleValue(adjusted) * 100;
       global.recharge += value;
       addToBreakdown(breakdown, 'recharge', {
@@ -1152,9 +1179,15 @@ function applyActivePowerBonuses(
     // Max Endurance buff
     // Enhanced by Endurance Modification enhancements
     // Scale values are already in absolute endurance points (e.g., scale 10 = +10 end)
-    if (effects.maxEndBuff !== undefined) {
+    // BPORT11: atom-native, synthetic arm kept (6 reachable mints — Bio Armor's Genomic
+    // Evolution in Rested Adaptation). `maxEndBuffValue` needed the recipient filter its Rust
+    // twin already had before it could carry: without it Soul Consumption's foe drain was
+    // folded into the caster's gain and the reader answered 2 where the bag says 1. With it,
+    // 48/48 carriers agree.
+    const maxEndBuffSlot = maxEndBuffValue(power) ?? syntheticEffects(power)?.maxEndBuff;
+    if (maxEndBuffSlot !== undefined) {
       const enhMultiplier = 1 + (enhBonuses.enduranceMod || 0);
-      const value = resolveScaledEffect(effects.maxEndBuff, archetypeId, buildLevel) * enhMultiplier;
+      const value = resolveScaledEffect(maxEndBuffSlot, archetypeId, buildLevel) * enhMultiplier;
       global.maxEndurance += value;
       addToBreakdown(breakdown, 'maxEndurance', {
         name: power.name,
@@ -1216,8 +1249,12 @@ function applyActivePowerBonuses(
     // Stored as a scaled effect; the resolved value is a decimal (e.g., 0.6 = 60% discount)
     // Routed to global.endurance (canonical EndDisc accumulator) so toggle cost
     // and the dashboard "End Disc" stat see a single unified sum.
-    if (effects.enduranceDiscount !== undefined) {
-      const discount = resolveScaledEffect(effects.enduranceDiscount, archetypeId, buildLevel) * 100;
+    // BPORT11: atom-native, synthetic arm kept — 29 reachable conditional mints, every one a
+    // Bio Armor stance (Hardened Carapace in Rested Adaptation), and a stance conditional has
+    // no atoms of its own for the reader to answer from. 103/103 real carriers agree.
+    const endDiscountSlot = enduranceDiscountValue(power) ?? syntheticEffects(power)?.enduranceDiscount;
+    if (endDiscountSlot !== undefined) {
+      const discount = resolveScaledEffect(endDiscountSlot, archetypeId, buildLevel) * 100;
       if (discount > 0) {
         global.endurance += discount;
         addToBreakdown(breakdown, 'endurance', {
@@ -1444,8 +1481,11 @@ function applyActivePowerBonuses(
     }
 
     // Perception Buff
-    if (effects.perceptionBuff !== undefined) {
-      const val = resolveScaledEffect(effects.perceptionBuff, archetypeId, buildLevel) * 100;
+    // BPORT11: atom-native, synthetic arm kept (2 reachable mints — Bio Armor's Rebuild DNA in
+    // Offensive Adaptation). 256/256 real carriers agree.
+    const perceptionBuffSlot = perceptionBuffValue(power) ?? syntheticEffects(power)?.perceptionBuff;
+    if (perceptionBuffSlot !== undefined) {
+      const val = resolveScaledEffect(perceptionBuffSlot, archetypeId, buildLevel) * 100;
       if (val > 0) {
         global.perceptionRadius += val;
         addToBreakdown(breakdown, 'perceptionRadius', {
@@ -1462,8 +1502,11 @@ function applyActivePowerBonuses(
     // Fast Snipe range bump — gated on a ≥22% ToHit buff in game — not a
     // persistent caster buff, so it must not feed the character's Range total.
     // This mirrors the shouldShowToggle exclusion in power-row-utils.
-    if (effects.rangeBuff !== undefined && power.targetType?.toLowerCase() === 'self') {
-      const adjusted = adjustForStacking(effects.rangeBuff, targetsHitValues[power.internalName], effects.stacksLinear, 'rangeBuff', effects.maxStacks, effects.stackCaps);
+    // BPORT11: atom-native, synthetic arm kept (2 reachable mints — Genomic Evolution in
+    // Offensive Adaptation). 45/45 real carriers agree under the same `targetType: Self` gate.
+    const rangeBuffSlot = rangeBuffValue(power) ?? syntheticEffects(power)?.rangeBuff;
+    if (rangeBuffSlot !== undefined && power.targetType?.toLowerCase() === 'self') {
+      const adjusted = stack(rangeBuffSlot, buffStack('Range'));
       const val = resolveScaledEffect(adjusted, archetypeId, buildLevel) * 100;
       if (val > 0) {
         global.range += val;
@@ -3372,6 +3415,10 @@ function expandActiveConditionals(
         effectArea: power.effectArea,
         isActive: true,
         effects: c.effects as unknown as ActivePowerEffect,
+        // This bag is THIS function's output, not converted data — the conditional carries
+        // no atoms of its own, so the arms below reach it through `syntheticEffects` and
+        // BPORT11's data-seam retirements leave it standing.
+        syntheticContribution: true,
         // Intentionally no slots / allowedEnhancements → unenhanced.
       });
     }
@@ -3475,6 +3522,10 @@ function expandBuffPetAuras(
       effectArea: power.effectArea,
       isActive: true,
       effects,
+      // Minted by `buffPetAuraEffects` one line up, on a synthetic with no atoms — the same
+      // named handoff the conditionals use, and the reason BPORT11 could retire the data
+      // seams underneath it without zeroing every buff-pet aura.
+      syntheticContribution: true,
       // copyBoosts → the pet inherits the summon power's slotted enhancements, so
       // carry them for the enhancement calc; otherwise the aura is unenhanced.
       slots: summon.copyBoosts ? power.slots : undefined,

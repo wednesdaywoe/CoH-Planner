@@ -221,8 +221,14 @@ describe('BPORT4 census — what the strip costs, per seam', () => {
     const b = census.buckets;
     expect(b.bothRead.length + b.identical.length + b.betaOnly.length + b.migrated.length +
       b.renamed.length).toBe(census.sweep.length);
-    // 27 until BPORT6: `power-row-utils` stopped reading the bag entirely and left the bucket.
-    expect(b.bothRead).toHaveLength(26);
+    // 27 until BPORT6, when `power-row-utils` stopped reading the bag entirely and left the
+    // bucket; 27 again at BPORT11, and the new member reads nothing. `character-totals.ts`
+    // declares {@link syntheticEffects}, whose body is `power.effects` — the sweep's grep sees
+    // a bag read, the corrected finder sees no slot, and the asymmetry is BPORT4's whole point
+    // restated. Pinned as a pair so the bucket cannot grow a REAL reader unnoticed.
+    expect(b.bothRead).toHaveLength(27);
+    expect(b.bothRead).toContain('src/utils/calculations/character-totals.ts');
+    expect(bagSeams('src/utils/calculations/character-totals.ts')).toHaveLength(0);
     // 6 until BPORT5. The sixth was the oracle, and it was never beta-only — canonical kept
     // the same file under the name PROD7 renamed away from on this side.
     expect(b.betaOnly).toHaveLength(5);
@@ -339,8 +345,17 @@ describe('BPORT5 — what grades the engine once the bag is gone', () => {
     if (!census.buckets) return; // no sibling: the disposition is unmeasurable, not empty
     const mine = census.seams.filter((s) => s.file === ORACLE);
     // The population, pinned: a finder that narrows here reports LESS work, which reads as
-    // progress. 157 found in source plus the 8 `mezProtTypes` roster keys.
-    expect(mine).toHaveLength(165);
+    // progress, and BPORT11 is the row that legitimately shrinks it — so the number moves
+    // with each carry and the pin is what makes each move deliberate. 165 at BPORT5 (157 in
+    // source plus the 8 `mezProtTypes` roster keys); 141 after BPORT11's first cluster took
+    // accuracy, recharge, maxEnd, endurance-discount, perception, range and elusivity, with
+    // their three stacking slots each.
+    //
+    // The carry does NOT count the arms it keeps: `syntheticEffects(power)?.rechargeBuff`
+    // names no `effects.` prefix, so the finder cannot see it and does not. That is right —
+    // it is the totals pass reading back its own output — but it means this number measures
+    // the DATA seams only, which is the population the strip empties.
+    expect(mine).toHaveLength(141);
     expect(mine.every((s) => s.sibling !== 'absent')).toBe(true);
 
     // The residual is derived, not listed — canonical's own copy answers it.
@@ -379,9 +394,17 @@ describe('BPORT5 — what grades the engine once the bag is gone', () => {
     // still names reads `reads-too` even where it calls an atom query first. The import gap is
     // the other half, and on this file it is the largest in the repo — the oracle calls 12 of
     // `atom-query`'s helpers and canonical's copy of it calls 39.
-    expect(gap.length).toBeGreaterThan(20);
-    for (const named of ['absorbValue', 'accuracyBuffValue', 'rechargeBuffValue', 'stealthValue']) {
+    // BPORT11 shrinks this by construction: 27 at BPORT5, 18 once the first cluster's seven
+    // helpers were called here too. Asserted as a shrinking bound plus the named residue, so
+    // a carry that lands removes rows without an edit while a helper going UNCALLED again
+    // reds.
+    expect(gap.length).toBeGreaterThan(10);
+    for (const named of ['absorbValue', 'stealthValue', 'mezSlotValue', 'tauntPlacateValue']) {
       expect(gap, named).toContain(named);
+    }
+    for (const carried of ['accuracyBuffValue', 'rechargeBuffValue', 'rangeBuffValue',
+      'perceptionBuffValue', 'enduranceDiscountValue', 'maxEndBuffValue', 'elusivityValue']) {
+      expect(gap, carried).not.toContain(carried);
     }
   });
 });

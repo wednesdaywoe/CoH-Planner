@@ -549,7 +549,7 @@
     {
       "path": "src/data/core/atom-query.ts",
       "status": "identical",
-      "sha256": "39574c1317338917f875c7b9f59df033612890db13582feedfba321944e392f8"
+      "sha256": "ddfc64a150e0670ab6e089d58016dffa3c5bd2d9eed68540c55669444069c44d"
     },
     {
       "path": "src/data/core/atomic-effect.ts",

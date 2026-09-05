@@ -1947,10 +1947,24 @@ export function enduranceGainValue(power: AtomSource): { scale: number; table: s
  * `effects.maxEndBuff` (`convert-powerset.cjs:6898`) — the Endurance attrib's `Maximum` face.
  * Unlike the combat-modifier slots this one ACCUMULATES (`addOrAccumulate`), so it uses the
  * same sum-with-reset-on-table-change fold the other resource slots use.
+ *
+ * The recipient test is the Rust twin's, verbatim (`coh_math::appliers::resources::
+ * max_endurance_buff_value`): drop a FOE-facing DEBUFF, keep everything else. It is narrower
+ * than the `reachesCaster` gate `enduranceGainValue` uses one function up, and deliberately
+ * so at both ends — a Target-facing BUFF is the ally half of a team +MaxEnd (Power of the
+ * Depths) and a Self-facing DEBUFF is an end crash (Burnout, Power Surge, Rage), and the bag
+ * counts both.
+ *
+ * Without it {@link foldResourceSum}'s `Math.abs` adds the foe's drain to the caster's gain:
+ * Soul Consumption states `-1 Target` beside its `+1 Self`, and the reader answered 2 where
+ * the bag, the game and the Rust engine all say 1 (four powersets × two forks). BPORT11 found
+ * it by diffing this arm against the bag it is about to replace — the divergence the
+ * migration exists to surface, in the direction that would have doubled a live number.
  */
 export function maxEndBuffValue(power: AtomSource): { scale: number; table: string } | undefined {
   const mine = baseAtoms(power).filter(
-    (a) => a.effectType === 'MaxEndurance' && a.aspect === 'Max' && !!a.modifierTable,
+    (a) => a.effectType === 'MaxEndurance' && a.aspect === 'Max' && !!a.modifierTable
+      && !a.notOnCaster && !(a.toWho === 'Target' && isDebuffAtom(a)),
   );
   if (!mine.length) return undefined;
   return foldResourceSum(mine);

@@ -536,6 +536,27 @@ export interface PowerWithToggle {
    *  (Bio Armor Adaptation, Staff Mastery) — the single source of truth for
    *  which stance is active. Carried through from the stored power. */
   activeSubPower?: string;
+  /** A synthetic power the totals pass built for itself (`expandActiveConditionals`,
+   *  `expandBuffPetAuras`): its `effects` object is that function's own output — a
+   *  stance/mode conditional, or a folded pet aura — rather than converted data. Neither
+   *  synthetic carries `atoms`, so the atom-native arms answer `undefined` for them and
+   *  the bag branch is the only path they have. {@link syntheticEffects} is that branch,
+   *  named, so BPORT11 can retire the DATA seams beside it without also deleting the
+   *  handoff. */
+  syntheticContribution?: boolean;
+}
+
+/**
+ * The `effects` a SYNTHETIC contribution carries, or `undefined` for any real power.
+ *
+ * A writer→reader handoff inside one totals pass, not a data-bag read: the object came from
+ * `expandActiveConditionals` or `buffPetAuraEffects` a few lines earlier and the power it
+ * rides has no atoms to read instead. A converted power never carries the marker, so this is
+ * `undefined` across the whole generated corpus and an arm that keeps it behaves exactly as
+ * one that dropped the bag outright.
+ */
+export function syntheticEffects(power: PowerWithToggle): ActivePowerEffect | undefined {
+  return power.syntheticContribution ? power.effects : undefined;
 }
 
 /**
@@ -573,12 +594,17 @@ const STRENGTH_MEZ_KEYS = new Set([
  *
  * `stackCapOf` answers membership and depth together — a number is both "this family
  * self-stacks" and how far — which is what the atoms say directly and what `stacksLinear` +
- * (`stackCaps[key]` ?? `maxStacks`) said in three places. Kept beside the bag-shaped
- * {@link adjustForStacking} rather than replacing it: that one is still the frozen oracle's,
- * and its `stacksLinear`-without-a-cap case (stack uncapped) has no atom-native spelling,
- * because on the atom side a cap is what admits a row to the family at all.
+ * (`stackCaps[key]` ?? `maxStacks`) said in three places. BPORT11 moves the oracle's call
+ * sites onto this one family by family; the bag-shaped {@link adjustForStacking} stays only
+ * for the sites that have not crossed yet, and goes with the last of them.
+ *
+ * The one case with no atom-native spelling is the bag's `stacksLinear`-without-a-cap
+ * (stack uncapped), because on the atom side a cap is what admits a row to the family at all.
+ * Measured over 14,249 powers before the first carry: wherever both sides say a family
+ * stacks they name the SAME depth — 0 disagreements across every site — so the uncapped case
+ * is a shape the corpus does not hold, not a value being rounded away.
  */
-function adjustForStackCap(
+export function adjustForStackCap(
   value: ScalarOrScaled,
   targetsHit: number | undefined,
   stackCap: number | undefined,

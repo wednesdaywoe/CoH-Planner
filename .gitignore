@@ -122,3 +122,8 @@ tools/bin-crawler/**/static/cache/
 # scripts/verify-sync.cjs scopes its wiring grep — an unscoped grep matched half of
 # scripts/ inside tool scratch and was permanently red.
 .ua/.trash-*/
+
+# Debug scratch (probes, .bak snapshots, test-run logs). Individual probe
+# scripts get force-added and tracked when a committed comment or doc cites
+# them by path as census evidence — same convention as the canonical fork.
+/.scratch/
