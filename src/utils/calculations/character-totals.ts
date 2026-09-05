@@ -20,7 +20,8 @@ import { type AggregatedBonuses, type BonusTracking } from './set-bonuses';
 import { createEmptyStats, type CharacterStats } from './stats';
 import { type EnhancementBonuses } from './enhancement-values';
 import type { EncodedAtom } from '@/data/core/atomic-effect';
-import { SPECIAL_BUFF_STACK, specialBuffValue, stackCapOf } from '@/data/core/atom-query';
+import { SPECIAL_BUFF_STACK, specialBuffValue, stackCapOf, atomsOf, isDebuffAtom, type AtomSource } from '@/data/core/atom-query';
+import { ATOM_TUPLE_FIELDS, decodeAtoms, encodeAtom } from '@/data/core/atomic-effect';
 import { warnFallback } from '@/utils/fallback-warnings';
 import { engineCalculate } from '@/engine/engineTotals';
 import { useEngineStore } from '@/engine/engineStore';
@@ -622,6 +623,57 @@ export function adjustForStackCap(
   if (typeof value !== 'object' || value === null) return value;
   const obj = value as { scale: number };
   return { ...value, scale: obj.scale * Math.min(targetsHit, stackCap) };
+}
+
+/**
+ * Does this power carry a live combat debuff — a `-ToHit` on a combat face, or a `-Damage`
+ * strength debuff?
+ *
+ * The movement-buff arm skips a power that does, because a `-Speed` riding a debuff aura is
+ * the enemy's penalty and not the caster's buff. The bag stated the same test as
+ * `effects.tohitDebuff === undefined && effects.damageDebuff === undefined`, which is a
+ * question about two slots rather than about the power; asking the atoms keeps the answer once
+ * the slots are gone, and keeps it on the same discriminators — `aspect` separates a ToHit
+ * debuff from ToHit-debuff RESISTANCE, and `Str` is what makes a DamageBuff row a debuff to
+ * the caster's own output. Gated atoms are excluded: a mode's debuff is that mode's.
+ */
+export function carries_combat_debuff(power: AtomSource): boolean {
+  return atomsOf(power).some((a) => {
+    if (a.gated || !isDebuffAtom(a)) return false;
+    if (a.effectType === 'ToHit') return a.aspect !== 'Res' && a.aspect !== 'Str';
+    if (a.effectType === 'DamageBuff') return a.aspect === 'Str';
+    return false;
+  });
+}
+
+/**
+ * The power as ONE player class sees it, for the archetype-fork-aware protection reads.
+ *
+ * A forked atom (Rebirth's Combat Jumping immobilize splits on `casterArchetypes`) is base for
+ * one class and absent from every other's, and a build-agnostic reader drops it entirely
+ * (AT-FORK-1). This returns the unforked atoms plus the build's own arms with the stamp
+ * cleared — the same shape the shadow gates' `forkResolvedViews` hand the readers (see
+ * `scripts/planb-shadow-sweep.cjs`) — so a forked protection atom is credited for the classes
+ * it genuinely applies to rather than silently dropped when the bag stops answering.
+ *
+ * No token, or no forked atom on the power: the raw power, which is the conventional
+ * single-class view unchanged. Measured over 213,735 power×class views at BPORT11: the fork
+ * resolution recovers rebirth Weave's immobilize protection for the two Kheldian classes and
+ * changes nothing else.
+ */
+export function mezSourceFor(power: AtomSource, playerClassToken?: string): AtomSource {
+  if (
+    playerClassToken
+    && (power.atoms || []).some((t) => t[ATOM_TUPLE_FIELDS.indexOf('casterArchetypes')])
+  ) {
+    return {
+      targetsAffected: power.targetsAffected,
+      atoms: decodeAtoms(power.atoms)
+        .filter((a) => !a.casterArchetypes || a.casterArchetypes.split(',').includes(playerClassToken))
+        .map((a) => encodeAtom({ ...a, casterArchetypes: undefined })),
+    };
+  }
+  return power;
 }
 
 /**

@@ -27,10 +27,12 @@ import { getBaseToHit, getCombatModifier } from '@/data/purple-patch';
 import { getPowerPool } from '@/data/power-pools';
 import { getEpicPool } from '@/data/epic-pools';
 import { getPowerset } from '@/data/powersets';
+import { getArchetype } from '@/data/archetypes';
+import type { ArchetypeId } from '@/types';
 import { calculateSetBonuses, getStatBreakdown, trackBonus, createBonusTracking, type AggregatedBonuses, type StatBreakdownItem, type BuildPowers } from './set-bonuses';
 import { createEmptyStats, getBaselineHealth, type CharacterStats } from './stats';
 import { combineWithAlphaED, filterAlphaByAllowedEnhancements, BASE_RECOVERY_RATE, BASE_REGEN_RATE, type EnhancementBonuses } from './enhancement-values';
-import { toHitBuffValue, damageBuffValue, resistanceBuffValue, resistanceSelfDebuffValue, defenseBuffValue, defenseBuffSuppressibleValue, defenseBuffIsTeamOnly, maxHPBuffValue, regenBuffValue, recoveryBuffValue, movementBuffValue, kbProtectionValue, accuracyBuffValue, rechargeBuffValue, rangeBuffValue, perceptionBuffValue, enduranceDiscountValue, maxEndBuffValue, elusivityValue, stackCapOf, buffStack } from '@/data/core/atom-query';
+import { toHitBuffValue, damageBuffValue, resistanceBuffValue, resistanceSelfDebuffValue, defenseBuffValue, defenseBuffSuppressibleValue, defenseBuffIsTeamOnly, maxHPBuffValue, regenBuffValue, recoveryBuffValue, movementBuffValue, kbProtectionValue, accuracyBuffValue, rechargeBuffValue, rangeBuffValue, perceptionBuffValue, enduranceDiscountValue, maxEndBuffValue, elusivityValue, mezSlotValue, mezResistanceValue, tauntPlacateValue, stackCapOf, buffStack } from '@/data/core/atom-query';
 import type { MovementBuffEntry, StackFamily } from '@/data/core/atom-query';
 import type { EncodedAtom } from '@/data/core/atomic-effect';
 import { calculateVigilanceDamageBonus, calculateFuryDamageBonus } from './inherents';
@@ -38,7 +40,7 @@ import { getEffectiveLevel, areIncarnatesSuppressed } from './effective-level';
 import { computeModeSuppression, type ModeCarrier } from '@/utils/mode-suppression';
 import { isCalcDebugEnabled, debugBuildContext, debugSetBonuses, debugAlphaBonuses, debugGroup, debugGroupEnd, debugFormula, debugAccolade, debugHitChance, debugFinalStats, debugNetEndurance, debugEnd } from '@/utils/calc-debug';
 import type { ActivePowerEffect, CalculationOptions, CharacterCalculationResult, DashboardStatBreakdown, GlobalBonuses, MezScaled, PowerWithToggle, ScalarOrScaled, StatSource, StrengthBuffs } from './character-totals';
-import { adjustForStacking, adjustForStackCap, collectStrengthBuffs, createEmptyGlobalBonuses, emptyStrengthBuffs, getAlphaEdBypassBonuses, getAlphaEnhancementBonuses, resolveScaledEffect, syntheticEffects } from './character-totals';
+import { adjustForStacking, adjustForStackCap, collectStrengthBuffs, createEmptyGlobalBonuses, emptyStrengthBuffs, getAlphaEdBypassBonuses, getAlphaEnhancementBonuses, mezSourceFor, resolveScaledEffect, syntheticEffects } from './character-totals';
 
 // ============================================
 // STAT NAME MAPPING
@@ -546,6 +548,18 @@ function applyActivePowerBonuses(
     // stacks on the same terms a real power's does.
     const stack = (value: ScalarOrScaled, family: StackFamily): ScalarOrScaled =>
       adjustForStackCap(value, targetsHitValues[power.internalName], stackCapOf(power, family));
+    // The build's `Class_*` token, and the power as this build's class sees it. A protection
+    // atom can fork on `casterArchetypes` (AT-FORK-1), and a build-agnostic read returns
+    // undefined exactly where the build's own arm exists — which the bag used to paper over,
+    // because the converter wrote one slot per power with no fork in it. Absent when no
+    // archetype is selected, which is the raw view and the pre-fork behaviour.
+    // `archetypeId` is a bare string on this signature (it is whatever the build carries), and
+    // the registry lookup answers `undefined` for anything it does not hold — which is the
+    // no-archetype case already handled, so the cast widens nothing.
+    const playerClassToken = archetypeId
+      ? getArchetype(archetypeId as ArchetypeId)?.stats?.className
+      : undefined;
+    const mezSource = mezSourceFor(power, playerClassToken);
     const _debugEnabled = isCalcDebugEnabled();
     // Snapshot global bonuses before this power for diff logging
     const _debugBefore = _debugEnabled ? { ...global } : null;
@@ -808,7 +822,15 @@ function applyActivePowerBonuses(
     // Mez Resistance from active powers (e.g., Acrobatics Hold resistance)
     // Enhanced by the corresponding mez type enhancement (Hold enhancements for Hold resistance, etc.)
     // Stored as mezResistance: { hold: { scale, table }, ... }
-    if (effects.mezResistance && typeof effects.mezResistance === 'object') {
+    // BPORT11: atom-native, read through the fork-resolved {@link mezSource}, synthetic arm
+    // kept (2 credited mints — Super Reflexes' Focused Fighting under Master Brawler).
+    // Measured over 213,735 power×class views on the keys this block actually routes to a
+    // global: 8,760 agreements, 0 divergences, and 2 gains — rebirth Weave's immobilize
+    // resistance for the two Kheldian classes, which only the fork-resolved read can see.
+    // The `taunt`/`placate`/`teleport` keys ride the same bag map and are NOT compared here
+    // because `mezResMapping` never routed them; the taunt/placate block below spends those.
+    const mezResSlot = mezResistanceValue(mezSource) ?? syntheticEffects(power)?.mezResistance;
+    if (mezResSlot && typeof mezResSlot === 'object') {
       const mezResMapping: Record<string, keyof GlobalBonuses> = {
         hold: 'mezResistHold',
         stun: 'mezResistStun',
@@ -818,7 +840,7 @@ function applyActivePowerBonuses(
         fear: 'mezResistFear',
         knockback: 'mezResistKnockback',
       };
-      for (const [type, value] of Object.entries(effects.mezResistance as Record<string, ScalarOrScaled>)) {
+      for (const [type, value] of Object.entries(mezResSlot as Record<string, ScalarOrScaled>)) {
         const typeLower = type.toLowerCase();
         // Mez resistance is enhanced by the matching mez enhancement type
         const enhMultiplier = 1 + (enhBonuses[typeLower] || 0);
@@ -1265,44 +1287,10 @@ function applyActivePowerBonuses(
       }
     }
 
-    // Mez Protection from pool/epic powers (effects.protection = { hold: 1, stun: 1, ... })
-    if (effects.protection && typeof effects.protection === 'object') {
-      const protMapping: Record<string, keyof GlobalBonuses> = {
-        hold: 'protHold',
-        stun: 'protStun',
-        immobilize: 'protImmobilize',
-        sleep: 'protSleep',
-        confuse: 'protConfuse',
-        fear: 'protFear',
-        knockback: 'protKnockback',
-        knockup: 'protKnockback', // knockup maps to KB protection
-      };
-      // Knockback and Knockup map to the same protKnockback stat and must be
-      // counted once per power, not summed (see the mezProtTypes note below).
-      let kbProtFromObj = 0;
-      for (const [type, mag] of Object.entries(effects.protection)) {
-        const key = protMapping[type.toLowerCase()];
-        if (!key || !(key in global)) continue;
-        if (key === 'protKnockback') {
-          kbProtFromObj = Math.max(kbProtFromObj, mag);
-        } else {
-          global[key] += mag;
-          addToBreakdown(breakdown, key, {
-            name: power.name,
-            value: mag,
-            type: 'active-power',
-          });
-        }
-      }
-      if (kbProtFromObj > 0) {
-        global.protKnockback += kbProtFromObj;
-        addToBreakdown(breakdown, 'protKnockback', {
-          name: power.name,
-          value: kbProtFromObj,
-          type: 'active-power',
-        });
-      }
-    }
+    // `effects.protection` RETIRED BPORT11. BPORT1 filed the slot as zero-supply and the carry
+    // confirms it from the data: not one power on any of the four forks carries the object, so
+    // this loop was iterating nothing. Its whole subject is the six-MEZ fold below, which reads
+    // the same protection off the atoms and folds Knockback/Knockup on the same rule.
 
     // Mez Protection from curated armor powers (effects.hold/stun/etc. with Res_Boolean tables)
     // When mez effects use Res_Boolean tables, they represent protection, not offensive mez
@@ -1335,28 +1323,37 @@ function applyActivePowerBonuses(
       // KB/KU protection is atom-native (ATOM15 / PASS2B-1): kbProtectionValue accumulates ONLY the
       // power's SELF-directed KB protection atoms (foe-attack knockback excluded, MezResist included),
       // so a self-atom result is caster protection by construction — the old effectArea+powerType proxy
-      // (which miscredited SingleTarget foe attacks like Battle Axe Gash) is retired. Only Thunderspy
-      // (no KB atoms — TSPY-3) falls to the bag, gated by isResBoolean below. The six MEZ types stay
-      // bag-read (the frozen oracle; the rebuild leads them via ATOM11).
+      // (which miscredited SingleTarget foe attacks like Battle Axe Gash) is retired.
+      //
+      // BPORT11 takes the six MEZ types the same way (`mezSlotValue` mirrors the converter's
+      // makeMezEffect arm and its prefer-PvE / larger-magnitude pick), and reads BOTH through
+      // the fork-resolved {@link mezSource}. Measured over 213,735 power×class views: the six
+      // agree with the bag on all 36,780 carrier views with no divergence and nothing lost on
+      // either side, and the KB/KU bag arm never fired once — every view where it could have
+      // was one the atom arm had already answered, which is what retires it rather than a
+      // decision to drop it.
+      //
+      // The SYNTHETIC branch stays, and it is not the same branch. Quantum Maneuvers grants
+      // its immobilize and knockback protection from a Flight-Active conditional, and a
+      // conditional carries no atoms — 12 credited contributions across the fold that an
+      // atom-only arm answers `undefined` for. It is gated by `isResBoolean` below exactly as
+      // the retired data read was, because a synthetic is not a self-atom.
       let mez: MezScaled | undefined;
-      let kbIsSelfAtom = false;
-      if (isKb) {
-        const atomVal = kbProtectionValue(power, field as 'knockback' | 'knockup');
-        if (atomVal) {
-          mez = atomVal as MezScaled;
-          kbIsSelfAtom = true;
-        } else {
-          const bagVal = effects[field];
-          if (bagVal !== undefined && typeof bagVal !== 'number') mez = bagVal as MezScaled;
-        }
+      let isSelfAtom = false;
+      const atomVal = isKb
+        ? kbProtectionValue(mezSource, field as 'knockback' | 'knockup')
+        : mezSlotValue(mezSource, field as 'hold' | 'stun' | 'sleep' | 'immobilize' | 'confuse' | 'fear');
+      if (atomVal) {
+        mez = atomVal as unknown as MezScaled;
+        isSelfAtom = true;
       } else {
-        const bagVal = effects[field];
-        if (bagVal !== undefined && typeof bagVal !== 'number') mez = bagVal as MezScaled;
+        const synthVal = syntheticEffects(power)?.[field];
+        if (synthVal !== undefined && typeof synthVal !== 'number') mez = synthVal as MezScaled;
       }
       if (!mez || !mez.table) continue;
       const tableLower = mez.table.toLowerCase();
       const isResBoolean = tableLower.includes('res_boolean');
-      if (!(isResBoolean || kbIsSelfAtom)) continue;
+      if (!(isResBoolean || isSelfAtom)) continue;
       // Read at the build level, like every other table read in this pass. This used to be
       // pinned to 50 on the claim that protection magnitude doesn't scale while leveling;
       // both oracles say otherwise — `Res_Boolean` appears nowhere in the game source (no
@@ -1366,8 +1363,10 @@ function applyActivePowerBonuses(
       const tableValue = getTableValue(archetypeId, tableLower, buildLevel);
       if (tableValue === undefined) continue;
       let mag = Math.abs(mez.scale) * tableValue;
-      // Knockback enhancements boost non-Res_Boolean self-KB protection (per Acrobatics description).
-      if (kbIsSelfAtom && !isResBoolean) {
+      // Knockback enhancements boost non-Res_Boolean self-KB protection (per Acrobatics
+      // description). Narrowed to the KB arm when the six MEZ joined it: a non-Res_Boolean
+      // hold-protection atom is not boosted by Knockback enhancement.
+      if (isSelfAtom && isKb && !isResBoolean) {
         mag *= (1 + (enhBonuses.knockback || 0));
       }
       if (key === 'protKnockback') {
@@ -1417,10 +1416,13 @@ function applyActivePowerBonuses(
       }
     }
 
-    // Taunt Resistance (e.g., Leadership: Assault)
-    if (effects.taunt !== undefined) {
-      const mezVal = effects.taunt;
-      if (typeof mezVal !== 'number') {
+    // Taunt Resistance (e.g., Leadership: Assault) — BPORT11: atom-native. `tauntPlacateValue`
+    // reads the caster-facing `MezResist/Taunt` rows the converter parked in the same
+    // `mezResistance` bag map the block above spends, under a key that map never routed. All 4
+    // carriers agree, and no conditional or pet aura mints the slot.
+    {
+      const mezVal = tauntPlacateValue(power, 'Taunt');
+      if (mezVal !== undefined) {
         const mez = mezVal as MezScaled;
         if (mez.table && mez.table.toLowerCase().includes('res_boolean')) {
           const tableValue = getTableValue(archetypeId, mez.table.toLowerCase(), buildLevel);
@@ -1437,10 +1439,11 @@ function applyActivePowerBonuses(
       }
     }
 
-    // Placate Resistance (e.g., Leadership: Assault)
-    if (effects.placate !== undefined) {
-      const mezVal = effects.placate;
-      if (typeof mezVal !== 'number') {
+    // Placate Resistance (e.g., Leadership: Assault) — atom-native, see the Taunt arm above.
+    // All 15 carriers agree.
+    {
+      const mezVal = tauntPlacateValue(power, 'Placate');
+      if (mezVal !== undefined) {
         const mez = mezVal as MezScaled;
         if (mez.table && mez.table.toLowerCase().includes('res_boolean')) {
           const tableValue = getTableValue(archetypeId, mez.table.toLowerCase(), buildLevel);

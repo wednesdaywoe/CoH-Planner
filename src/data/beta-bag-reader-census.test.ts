@@ -349,13 +349,14 @@ describe('BPORT5 — what grades the engine once the bag is gone', () => {
     // with each carry and the pin is what makes each move deliberate. 165 at BPORT5 (157 in
     // source plus the 8 `mezProtTypes` roster keys); 141 after BPORT11's first cluster took
     // accuracy, recharge, maxEnd, endurance-discount, perception, range and elusivity, with
-    // their three stacking slots each.
+    // their three stacking slots each; 131 once the mez cluster took the six MEZ, KB/KU,
+    // mezResistance, taunt, placate and the empty `effects.protection` object.
     //
     // The carry does NOT count the arms it keeps: `syntheticEffects(power)?.rechargeBuff`
     // names no `effects.` prefix, so the finder cannot see it and does not. That is right —
     // it is the totals pass reading back its own output — but it means this number measures
     // the DATA seams only, which is the population the strip empties.
-    expect(mine).toHaveLength(141);
+    expect(mine).toHaveLength(131);
     expect(mine.every((s) => s.sibling !== 'absent')).toBe(true);
 
     // The residual is derived, not listed — canonical's own copy answers it.
@@ -398,12 +399,17 @@ describe('BPORT5 — what grades the engine once the bag is gone', () => {
     // helpers were called here too. Asserted as a shrinking bound plus the named residue, so
     // a carry that lands removes rows without an edit while a helper going UNCALLED again
     // reds.
-    expect(gap.length).toBeGreaterThan(10);
-    for (const named of ['absorbValue', 'stealthValue', 'mezSlotValue', 'tauntPlacateValue']) {
+    expect(gap.length).toBeGreaterThan(8);
+    // What is still owed, named rather than counted: absorb, stealth, the self-debuff arms and
+    // the movement pair are the clusters BPORT11 has not reached.
+    for (const named of ['absorbValue', 'stealthValue', 'selfSlowValue', 'selfDamageDebuffValue',
+      'selfMovementCapDebuffValue', 'debuffResistanceValue']) {
       expect(gap, named).toContain(named);
     }
+    // And what has landed, which is the half that must not silently come back.
     for (const carried of ['accuracyBuffValue', 'rechargeBuffValue', 'rangeBuffValue',
-      'perceptionBuffValue', 'enduranceDiscountValue', 'maxEndBuffValue', 'elusivityValue']) {
+      'perceptionBuffValue', 'enduranceDiscountValue', 'maxEndBuffValue', 'elusivityValue',
+      'mezSlotValue', 'mezResistanceValue', 'tauntPlacateValue']) {
       expect(gap, carried).not.toContain(carried);
     }
   });

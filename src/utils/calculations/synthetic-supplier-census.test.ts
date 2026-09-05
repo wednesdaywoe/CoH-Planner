@@ -197,11 +197,15 @@ describe('BPORT11 — every slot a synthetic still supplies keeps an arm that ca
     for (const [slot, n] of credits) {
       const dataRead = new RegExp(`\\beffects\\.${slot}\\b`).test(block);
       const synthRead = new RegExp(`syntheticEffects\\([^)]*\\)\\?\\.${slot}\\b`).test(block);
-      // `effects[field]` roster reads (the mez fold) name no slot in the source; they are the
-      // uncarried case and the `dataRead` test misses them, so they are named here rather than
-      // silently passing. Each leaves this list when its cluster lands.
-      const rosterRead = ['hold', 'stun', 'sleep', 'immobilize', 'confuse', 'fear',
-        'knockback', 'knockup'].includes(slot) && /effects\[field\]/.test(block);
+      // The mez fold indexes its slot from a roster (`[field]`), so it names none of its eight
+      // slots at the read site and neither the data nor the synthetic pattern above can see
+      // it. That is BPORT6's finder lesson one level down — a roster-bound read is minted from
+      // a register, never found — so it is asked for by shape instead: either arm counts, and
+      // BOTH must disappear together for these eight to become orphans.
+      const ROSTER_SLOTS = ['hold', 'stun', 'sleep', 'immobilize', 'confuse', 'fear',
+        'knockback', 'knockup'];
+      const rosterRead = ROSTER_SLOTS.includes(slot)
+        && (/\beffects\[field\]/.test(block) || /syntheticEffects\([^)]*\)\?\.\[field\]/.test(block));
       if (!dataRead && !synthRead && !rosterRead) orphaned.push(`${slot} (${n} credited)`);
     }
     expect(orphaned.sort()).toEqual([]);

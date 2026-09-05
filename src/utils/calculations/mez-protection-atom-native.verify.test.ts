@@ -1,0 +1,252 @@
+/**
+ * BPORT11 cluster 2 — mez protection, read off the atoms, graded against the bag it replaces.
+ *
+ * The six MEZ types, Knockback/Knockup, `mezResistance`, Taunt and Placate all left the bag in
+ * one pass, because they are one fold and one credit gate. As with cluster 1 the comparison is
+ * only available before BPORT7's regen: the bag is the shadow oracle, and the regen that
+ * empties the slot empties the oracle with it.
+ *
+ * Read PER PLAYER CLASS, which is the part a build-agnostic comparison cannot do. A protection
+ * atom may fork on `casterArchetypes` — Rebirth's pool powers state identical arms per class
+ * (AT-FORK-1) — and a raw read returns `undefined` exactly where the build's own arm exists.
+ * The bag never had to care, because the converter wrote one slot per power with the fork
+ * already collapsed into it; an atom reader has to resolve it or lose the value. So every
+ * assertion here runs through {@link mezSourceFor}, the same resolution the call site uses.
+ *
+ * What the corpus says, measured over 213,735 power×class views:
+ *
+ *  - the six MEZ agree with the bag on all 36,780 carrier views, with nothing held by either
+ *    side alone;
+ *  - the Knockback/Knockup bag arm never fired once — every view it could have answered was
+ *    one `kbProtectionValue` had already answered, which is what retires it, rather than a
+ *    decision to drop it;
+ *  - `mezResistance` agrees on all 8,760 carrier views of the keys this block routes to a
+ *    global, and gains 2: Rebirth Weave's immobilize resistance for the two Kheldian classes,
+ *    visible only through the fork resolution;
+ *  - Taunt and Placate agree on all 4 and all 15;
+ *  - `effects.protection` has no carrier anywhere, confirming BPORT1's zero-supply verdict from
+ *    the data side as well as the supply side.
+ *
+ * Mutation-tested five ways on the readers and the resolution: reversing `mezSlotValue`'s
+ * larger-magnitude pick, dropping its sub-type key, and stopping `mezSourceFor` from resolving
+ * the fork all go red. One does NOT, and it is reported rather than patched — removing
+ * `mezSlotValue`'s `aspect === 'Res' || aspect === 'Str'` guard changes no answer, because 0 of
+ * the corpus's 11,784 `Mez` atoms carry either face. Mez RESISTANCE is a `MezResist` row and
+ * mez STRENGTH is a `specialBuff` row; both are separate effect types, not separate faces of
+ * `Mez`, so that clause is a second filter over an empty population. It is correct to keep and
+ * wrong to claim as tested.
+ *
+ * The cost of the per-class read is why the sweep below narrows: a power with no forked atom
+ * answers identically for every class by construction, so it is measured once and the class
+ * loop runs only for the powers that actually carry a `casterArchetypes` stamp. The narrowing
+ * is asserted, not assumed — {@link forkedPowers} must be non-empty, or the whole fork axis
+ * would be silently untested.
+ */
+import { describe, it, expect } from 'vitest';
+import {
+  mezSlotValue, mezResistanceValue, kbProtectionValue, tauntPlacateValue,
+} from '@/data/core/atom-query';
+import { ATOM_TUPLE_FIELDS } from '@/data/core/atomic-effect';
+import { mezSourceFor } from './character-totals';
+import { MODULAR_POWERSETS as HC } from '@/data/datasets/homecoming/powersets';
+import { MODULAR_POWERSETS as RB } from '@/data/datasets/rebirth/powersets';
+import { MODULAR_POWERSETS as TSPY } from '@/data/datasets/thunderspy/powersets';
+import { MODULAR_POWERSETS as BS } from '@/data/datasets/brainstorm/powersets';
+import { POWER_POOLS_RAW as HCP } from '@/data/datasets/homecoming/power-pools-raw';
+import { EPIC_POOLS_RAW as HCE } from '@/data/datasets/homecoming/epic-pools-raw';
+import { POWER_POOLS_RAW as RBP } from '@/data/datasets/rebirth/power-pools-raw';
+import { EPIC_POOLS_RAW as RBE } from '@/data/datasets/rebirth/epic-pools-raw';
+import { POWER_POOLS_RAW as TSP } from '@/data/datasets/thunderspy/power-pools-raw';
+import { EPIC_POOLS_RAW as TSE } from '@/data/datasets/thunderspy/epic-pools-raw';
+import { POWER_POOLS_RAW as BSP } from '@/data/datasets/brainstorm/power-pools-raw';
+import { EPIC_POOLS_RAW as BSE } from '@/data/datasets/brainstorm/epic-pools-raw';
+import { ARCHETYPES as HCA } from '@/data/datasets/homecoming/archetypes';
+import { ARCHETYPES as RBA } from '@/data/datasets/rebirth/archetypes';
+import { ARCHETYPES as TSA } from '@/data/datasets/thunderspy/archetypes';
+import { ARCHETYPES as BSA } from '@/data/datasets/brainstorm/archetypes';
+
+type AnyPower = Record<string, unknown> & { name?: string; atoms?: unknown[]; effects?: Record<string, unknown> };
+type Tree = Record<string, { powers?: AnyPower[] }>;
+type Fork = { fork: string; trees: (readonly [string, Tree])[]; tokens: string[] };
+
+const classTokens = (reg: unknown): string[] => [...new Set(
+  Object.values(reg as Record<string, { stats?: { className?: string } }>)
+    .map((a) => a?.stats?.className)
+    .filter((t): t is string => !!t),
+)];
+
+const FORKS: Fork[] = [
+  {
+    fork: 'homecoming', tokens: classTokens(HCA),
+    trees: [['set', HC as unknown as Tree], ['pool', HCP as unknown as Tree], ['epic', HCE as unknown as Tree]],
+  },
+  {
+    fork: 'rebirth', tokens: classTokens(RBA),
+    trees: [['set', RB as unknown as Tree], ['pool', RBP as unknown as Tree], ['epic', RBE as unknown as Tree]],
+  },
+  {
+    fork: 'thunderspy', tokens: classTokens(TSA),
+    trees: [['set', TSPY as unknown as Tree], ['pool', TSP as unknown as Tree], ['epic', TSE as unknown as Tree]],
+  },
+  {
+    fork: 'brainstorm', tokens: classTokens(BSA),
+    trees: [['set', BS as unknown as Tree], ['pool', BSP as unknown as Tree], ['epic', BSE as unknown as Tree]],
+  },
+];
+
+const FORK_IDX = ATOM_TUPLE_FIELDS.indexOf('casterArchetypes');
+const isForked = (p: AnyPower) =>
+  (p.atoms ?? []).some((t) => !!(t as unknown[])[FORK_IDX]);
+
+/**
+ * Every (power, class-view) the readers can distinguish: one view per power, plus the full
+ * class fan-out for the powers whose atoms actually fork. A power with no `casterArchetypes`
+ * stamp is returned unchanged by `mezSourceFor` for every token, so the extra views are the
+ * same comparison repeated — 213,735 of them where 14,249 + the forked fan-out will do.
+ */
+function* views(): Generator<[string, AnyPower, AnyPower]> {
+  for (const { fork, trees, tokens } of FORKS)
+    for (const [label, tree] of trees)
+      for (const [setId, set] of Object.entries(tree))
+        for (const p of set?.powers ?? []) {
+          const at = `${fork}/${label}/${setId}/${p.name}`;
+          if (!isForked(p)) { yield [at, p, mezSourceFor(p as never, undefined) as AnyPower]; continue; }
+          for (const tok of tokens) yield [`${at} [${tok}]`, p, mezSourceFor(p as never, tok) as AnyPower];
+        }
+}
+
+const forkedPowers = () => {
+  const out: string[] = [];
+  for (const { fork, trees } of FORKS)
+    for (const [label, tree] of trees)
+      for (const [setId, set] of Object.entries(tree))
+        for (const p of set?.powers ?? []) if (isForked(p)) out.push(`${fork}/${label}/${setId}/${p.name}`);
+  return out;
+};
+
+const isRes = (m: unknown) => {
+  const t = (m && typeof m === 'object' && typeof (m as { table?: unknown }).table === 'string')
+    ? (m as { table: string }).table.toLowerCase() : '';
+  return t.includes('res_boolean');
+};
+/** The magnitude a Res_Boolean protection row resolves to, before the AT table is applied. */
+const mag = (m: unknown) => (m && typeof m === 'object')
+  ? `${Math.abs((m as { scale: number }).scale)}@${((m as { table?: string }).table ?? '').toLowerCase()}`
+  : undefined;
+
+const MEZ6 = ['hold', 'stun', 'immobilize', 'sleep', 'confuse', 'fear'] as const;
+
+type Split = { agree: number; differ: string[]; bagOnly: string[]; atomOnly: string[] };
+const empty = (): Split => ({ agree: 0, differ: [], bagOnly: [], atomOnly: [] });
+const record = (t: Split, id: string, bag?: string, atom?: string) => {
+  if (bag === undefined && atom === undefined) return;
+  if (bag !== undefined && atom !== undefined) {
+    if (bag === atom) t.agree++; else t.differ.push(`${id} bag=${bag} atom=${atom}`);
+  } else if (bag !== undefined) t.bagOnly.push(`${id} bag=${bag}`);
+  else t.atomOnly.push(`${id} atom=${atom}`);
+};
+
+describe('BPORT11 cluster 2 — mez protection against the bag it replaces', () => {
+  it('measures the fork axis it narrows on, rather than assuming it is empty', () => {
+    const forked = forkedPowers();
+    expect(forked.length).toBeGreaterThan(0);
+    // Rebirth is where the unanimous per-class forks live; if this stops being true the
+    // narrowing above stops being a narrowing and this file needs the full fan-out back.
+    expect(forked.some((f) => f.startsWith('rebirth/'))).toBe(true);
+  });
+
+  it('reads the six MEZ types exactly as the bag stated them', () => {
+    const per = new Map(MEZ6.map((f) => [f as string, empty()]));
+    for (const [id, power, source] of views())
+      for (const field of MEZ6) {
+        const bv = power.effects?.[field];
+        record(
+          per.get(field)!, id,
+          (bv !== undefined && typeof bv !== 'number' && isRes(bv)) ? mag(bv) : undefined,
+          (() => { const a = mezSlotValue(source as never, field); return a && isRes(a) ? mag(a) : undefined; })(),
+        );
+      }
+    for (const [field, t] of per) {
+      expect(t.differ, `${field} differ`).toEqual([]);
+      expect(t.bagOnly, `${field} bag-only`).toEqual([]);
+      expect(t.atomOnly, `${field} atom-only`).toEqual([]);
+      expect(t.agree, `${field} carriers`).toBeGreaterThan(0);
+    }
+  });
+
+  it('never once needed the Knockback/Knockup bag arm it retires', () => {
+    const stranded: string[] = [];
+    let atomAnswers = 0;
+    for (const [id, power, source] of views())
+      for (const field of ['knockback', 'knockup'] as const) {
+        if (kbProtectionValue(source as never, field)) { atomAnswers++; continue; }
+        // The arm that just went: a non-number bag value on a Res_Boolean table, credited only
+        // because the atom read declined. If this list is ever non-empty the retirement drops
+        // a real number and the arm has to come back.
+        const bv = power.effects?.[field];
+        if (bv !== undefined && typeof bv !== 'number' && isRes(bv)) stranded.push(`${id}/${field}`);
+      }
+    expect(stranded).toEqual([]);
+    expect(atomAnswers).toBeGreaterThan(0);
+  });
+
+  it('agrees on mez resistance, and recovers what only a fork-resolved read can see', () => {
+    // `mezResMapping`'s keys, and only those: `taunt`/`placate`/`teleport` ride the same bag map
+    // under keys it never routed, so comparing the raw map would compare values no arm spends.
+    const MAPPED = new Set(['hold', 'stun', 'immobilize', 'sleep', 'confuse', 'fear', 'knockback']);
+    const fmt = (o: unknown) => {
+      if (!o || typeof o !== 'object') return undefined;
+      const rows = Object.entries(o as Record<string, unknown>)
+        .filter(([k]) => MAPPED.has(k.toLowerCase()))
+        .map(([k, v]) => `${k.toLowerCase()}=${mag(typeof v === 'number' ? { scale: v, table: '' } : v)}`)
+        .sort();
+      return rows.length ? rows.join(',') : undefined;
+    };
+    const t = empty();
+    for (const [id, power, source] of views())
+      record(t, id, fmt(power.effects?.mezResistance), fmt(mezResistanceValue(source as never)));
+    expect(t.differ).toEqual([]);
+    expect(t.bagOnly).toEqual([]);
+    expect(t.agree).toBeGreaterThan(0);
+    // The gain, named. Rebirth's Weave forks its protection atoms by class and the Kheldian
+    // arms were invisible to a raw read — the same shape as the rebirth Weave defence bug
+    // canonical hit from the other direction.
+    expect(t.atomOnly).toHaveLength(2);
+    expect(t.atomOnly.every((s) => s.includes('rebirth/pool/fighting/Weave'))).toBe(true);
+    expect(t.atomOnly.map((s) => s.match(/\[(\w+)\]/)?.[1]).sort())
+      .toEqual(['Class_Peacebringer', 'Class_Warshade']);
+  });
+
+  it('agrees on taunt and placate resistance', () => {
+    const per = new Map([['Taunt', empty()], ['Placate', empty()]]);
+    for (const [id, power] of views())
+      for (const which of ['Taunt', 'Placate'] as const) {
+        const bv = power.effects?.[which.toLowerCase()];
+        const av = tauntPlacateValue(power as never, which);
+        record(
+          per.get(which)!, id,
+          (bv !== undefined && typeof bv !== 'number' && isRes(bv)) ? mag(bv) : undefined,
+          (av && isRes(av)) ? mag(av) : undefined,
+        );
+      }
+    for (const [which, t] of per) {
+      expect(t.differ, which).toEqual([]);
+      expect(t.bagOnly, which).toEqual([]);
+      expect(t.atomOnly, which).toEqual([]);
+      expect(t.agree, which).toBeGreaterThan(0);
+    }
+  });
+
+  it('confirms effects.protection is empty from the data side too', () => {
+    // BPORT1 called it zero-supply from the supply census. This is the other direction: not one
+    // power in any dataset carries the object, so the block that read it was iterating nothing
+    // and its removal moves no number.
+    const carriers: string[] = [];
+    for (const { fork, trees } of FORKS)
+      for (const [label, tree] of trees)
+        for (const [setId, set] of Object.entries(tree))
+          for (const p of set?.powers ?? [])
+            if (p.effects?.protection !== undefined) carriers.push(`${fork}/${label}/${setId}/${p.name}`);
+    expect(carriers).toEqual([]);
+  });
+});
