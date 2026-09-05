@@ -7,7 +7,7 @@
  * hand-built silo that used to live here is removed).
  *
  * The toggle set is DERIVED, not a curated name list: a stat toggle is an `Auto` power
- * whose effects carry a +Max HP / +Max End buff. Click/travel/summon accolades (Eye of
+ * whose atoms carry a +Max HP / +Max End buff. Click/travel/summon accolades (Eye of
  * the Magus, Long Range Teleport, …) carry no such buff and drop out. Deriving surfaces
  * the four the silo wrongly dropped (Iron Man, Super Patriot, Labyrinth Conqueror,
  * Mazebreaker) and carries each buff's real magnitude from its atoms — the silo
@@ -19,6 +19,7 @@
  */
 
 import type { Power } from '@/types';
+import { maxEndBuffValue, maxHPBuffValue } from './core/atom-query';
 import { getActiveDataset, type DatasetId } from './dataset';
 import { ACCOLADES_POWERSET as HOMECOMING_ACCOLADES } from './datasets/homecoming/generated/accolades';
 import { ACCOLADES_POWERSET as REBIRTH_ACCOLADES } from './datasets/rebirth/generated/accolades';
@@ -48,17 +49,25 @@ function activeAccoladePowerset(): { powers: AccoladePower[] } {
 }
 
 /**
- * A stat toggle carries a permanent +Max HP / +Max End buff — the same effect keys the
- * totals calc reads off the power (`maxEndBuff` / `maxHPBuff` / `maxHPBuffUnenhanced`).
- * Deriving the toggle set from that buff (not a name list) keeps it in step with the data.
+ * A stat toggle carries a permanent +Max HP / +Max End buff, asked of the atoms.
+ *
+ * The three queries are the three bag slots this used to read (`maxEndBuff`,
+ * `maxHPBuff`, `maxHPBuffUnenhanced`), and both MaxHP halves are asked because
+ * `ignoreStrength` is the axis the bag minted a second slot for. Every accolade in
+ * all four datasets carries the IgnoreStrength half, so the enhanceable query is the
+ * one that costs nothing and catches a fork that ships the other.
+ *
+ * Reading the bag here is what emptied the roster: the bag strip left accolades with
+ * 0 slots and 20-28 atoms per fork, `isStatToggle` returned false for all 96, and the
+ * accolade fold at `character-totals.ts` never ran at all. A dead reader upstream of
+ * the calc, not a wrong number in it.
  */
 function isStatToggle(power: AccoladePower): boolean {
   if (power.powerType !== 'Auto') return false;
-  const effects = power.effects ?? {};
   return (
-    effects.maxEndBuff !== undefined ||
-    effects.maxHPBuff !== undefined ||
-    effects.maxHPBuffUnenhanced !== undefined
+    maxEndBuffValue(power) !== undefined ||
+    maxHPBuffValue(power) !== undefined ||
+    maxHPBuffValue(power, { ignoreStrength: true }) !== undefined
   );
 }
 

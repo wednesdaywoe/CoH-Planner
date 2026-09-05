@@ -86,11 +86,12 @@ describe('calculatePermaInfo honors the recharge locks', () => {
     allowedEnhancements: [],
     description: '',
     powerType: 'Click',
-    // Hasten-shaped, and the self-buff slot is load-bearing: the perma window is
-    // the CASTER-side state's own duration, so a bare `buffDuration` with nothing
-    // landing on the caster is no window at all and yields null. These cases are
-    // about the recharge LOCKS, so the power has to hold something first.
-    effects: { recharge: 300, buffDuration: 120, rechargeBuff: 0.7 },
+    // A T9's shape after the atom port: the recharge is `stats`, and the 120s window is an
+    // ATOM the caster holds. The bag spelling this fixture used to carry (`effects.recharge` /
+    // `effects.buffDuration`) is what a power looks like when the PLANNER made it up, and it
+    // would take these cases through `authoredCycle` instead of the rule they are about.
+    stats: { recharge: 300 },
+    atoms: [['Defense', 'All', 0.2, 1, 120, 'Melee_Buff_Def', 'Cur', 'Magnitude', 'Self', 'Any']],
   } as unknown as Power;
 
   it('unflagged power: slotted + global recharge both apply', () => {

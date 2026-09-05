@@ -4,8 +4,9 @@
  * A power is "perma" when its effective recharge time is equal to or less than
  * its duration, meaning it can be reactivated immediately when it expires.
  *
- * "Its duration" is the CASTER-SIDE window (`selfStateWindow`), not the bag's
- * `buffDuration` — see that function for why the two are different questions.
+ * "Its duration" is the CASTER-SIDE window (`selfStateWindow`) — the longest state the
+ * caster is actually keeping up, never the bag's `buffDuration`, which is a plurality
+ * vote over every timed effect and on a debuffing power reports the FOE's clock.
  *
  * Formula:
  *   duration       = the longest caster-side state's own duration
@@ -14,12 +15,21 @@
  *   netStrength    = clamp(1 + totalRecharge, bounds.floor, bounds.cap)
  *   permaPercent   = (netStrength - 1) / rechargeNeeded * 100  (0% = no bonuses, 100% = perma)
  *   effectiveRecharge = baseRecharge / netStrength
+ *
+ * Every input comes from the atom stream (PERMA-2, ported from the 1.0 fork 2026-09-04).
+ * The window used to be read off the `effects` bag — a `durations` map keyed by bag slot,
+ * gated behind `if (!power.effects) return false` — so it answered "not eligible" for every
+ * bagless power, which is what the whole corpus becomes once the writer-side strip lands here
+ * (BPORT7). Agreeing with the engine is the point, because the panel gates on this predicate
+ * and then renders `coh_math::perma`'s numbers. It is not the same code, though: the engine
+ * derives its window from `window_slots`, a mirror of the converter's slot routing, and this
+ * reads the atoms. Measured old-rule-vs-new over 21,372 entries on four forks, 0 powers lose
+ * eligibility and 57 rows gain it; the two places engine and atoms still disagree are PERMA-4.
  */
 
-import type { SelectedPower, Power, PowerEffects } from '@/types';
-import { hasSelfDirectedPenalty } from '@/types';
-import { atomsOf, reachesCaster } from '@/data/core/atom-query';
-import type { AtomicEffect } from '@/data/core/atomic-effect';
+import type { SelectedPower, Power } from '@/types';
+import { atomsOf, baseAtoms, reachesCaster } from '@/data/core/atom-query';
+import { landsOnCaster, type AtomicEffect } from '@/data/core/atomic-effect';
 import type { EnhancementBonuses } from './enhancement-values';
 
 /**
@@ -158,13 +168,10 @@ export function isPermaEligible(
   power: Power | SelectedPower,
   bounds?: RechargeBounds,
 ): boolean {
-  const effects = power.effects;
-  if (!effects) return false;
-
   if (power.powerType === 'Toggle' || power.powerType === 'Auto') return false;
 
-  const recharge = getRecharge(effects, power);
-  const duration = selfStateWindow(power, effects);
+  const recharge = getRecharge(power);
+  const duration = selfStateWindow(power);
   if (recharge <= 0 || duration <= 0) return false;
 
   if (bounds && recharge / bounds.cap > duration) return false;
@@ -174,37 +181,37 @@ export function isPermaEligible(
 }
 
 /**
- * Effect-bag keys a CASTER-side buff can occupy. Presence alone does not make one
- * the caster's: the converter's buff branches emit `{scale, table}` and stamp
- * `toWho` only on the self-penalty branches, so not one of these slots carries a
- * target, and `Math.abs` has already dropped the sign. A foe-directed effect
- * lands in them too — Sonic Melee's `debuffResistance` is `Target kTarget` in the
- * authored def, reducing the FOE's resistance to debuffs, and a foe slow lands in
- * `movement`.
- *
- * The export is not missing the answer, only this projection of it: the atom
- * array carries `toWho` on every atom, and `casterHoldsStateAt` joins back to it
- * on the duration.
+ * `EntsAffected` words that name an enemy — the converter's `TSPY_MEZ_FOE_TARGETS`
+ * (`scripts/convert-powerset.cjs`) and `coh_data::Power::affects_foe`, the one foe vocabulary
+ * this repo keeps. Restated here because the perma veto asks it of a power, and the field it
+ * asks is `targetsAffected`: `targetType` is where a power is AIMED, and a control aimed at
+ * `Any` that puts a 30s `untouchable` on the enemy drew a ring for the foe's window (PERMA-3).
  */
-const SELF_BUFF_KEYS = [
-  'tohitBuff', 'damageBuff', 'defenseBuff', 'defenseBuffSuppressible', 'rechargeBuff',
-  'recoveryBuff', 'regenBuff', 'regenBuffUnenhanced', 'speedBuff', 'enduranceBuff',
-  'enduranceGain', 'maxHPBuff', 'maxEndBuff', 'rangeBuff', 'enduranceDiscount',
-  'perceptionBuff', 'specialBuff', 'absorb', 'defense', 'resistance', 'elusivity', 'movement', 'stealth',
-  'debuffResistance', 'mezResistance', 'protection', 'untouchable', 'fly',
-] as const;
+const FOE_TARGETS = ['Foe', 'DeadFoe', 'DeadOrAliveFoe', 'Any'] as const;
 
 /**
- * Debuff slots the converter's self-penalty branches tag, and so the only ones
- * that can carry a penalty the CASTER takes. Each still has to prove it with
- * `toWho: 'Self'` — the same slot on another power is an ordinary foe debuff.
+ * Effect families a caster-side state can live in — `coh_math::perma::SELF_BUFF_KEYS` in atom
+ * vocabulary, which is the bag slot list this file used to carry (`tohitBuff`, `defense`,
+ * `absorb`, `specialBuff`, …) asked one layer up, where the export states it. Deliberately not
+ * the whole enum: applied control, damage and the instantaneous heal are things that happen TO
+ * someone, not states the caster holds.
  */
-const SELF_PENALTY_KEYS = ['damageDebuff', 'rechargeDebuff', 'tohitDebuff', 'accuracyDebuff'] as const;
+const SELF_STATE_TYPES: ReadonlySet<string> = new Set([
+  'ToHit', 'DamageBuff', 'Defense', 'Resistance', 'Elusivity', 'RechargeTime', 'Recovery',
+  'Regeneration', 'Endurance', 'EnduranceDiscount', 'MaxHP', 'MaxEndurance', 'Range',
+  'Perception', 'Stealth', 'Movement', 'Absorb', 'MezResist', 'Enhancement', 'Accuracy',
+]);
 
-/** The bag rounds its duration out of the same source string the atom parses, so the two agree
- *  exactly today; the tolerance degrades a future rounding change into a missed veto rather
- *  than a wrong window. */
+/** `recastVerdict` joins atoms back to a window someone else computed — the engine's `duration`
+ *  at the call site in `InfoPanel`, {@link selfStateWindow}'s here — and both round out of the
+ *  same source string the atom parses, so they agree exactly today. The tolerance degrades a
+ *  future rounding change into a missed verdict rather than a wrong badge. */
 const DURATION_MATCH_TOLERANCE = 1e-3;
+
+/** Does this recipient list name an enemy? `coh_data::Power::affects_foe` over {@link FOE_TARGETS}. */
+function affectsFoe(targets: readonly string[]): boolean {
+  return targets.some((t) => (FOE_TARGETS as readonly string[]).includes(t));
+}
 
 /**
  * Whether an atom's effect reaches the caster. `notOnCaster` is explicit and
@@ -223,149 +230,124 @@ function atomReachesCaster(atom: AtomicEffect, power: Power | SelectedPower): bo
 }
 
 /**
- * Does the caster hold anything for `seconds`? `false` only when the power's
- * atoms positively account for that duration and every one of them lands on the
- * target; `undefined` when no atom carries it — the "no evidence" case, which is
- * not a negative answer.
+ * Does this atom's effect reach the caster, for the purpose of the WINDOW?
+ * `coh_math::perma::reaches_caster_for_perma`.
  *
- * This is the target check the bag cannot answer for `SELF_BUFF_KEYS`: those
- * slots ship no `toWho`, but the atoms do, so the duration is the join key back
- * to them. A power whose self buff and foe debuff happen to share a duration
- * passes the veto — this can fail to remove a foe window, never remove a
- * caster's own.
+ * The sibling above and this one ask the same question under opposite burdens of proof, which
+ * is why the file carries both. {@link atomReachesCaster} resolves a named recipient through
+ * `reachesCaster`'s TARGETS-3 join, because `recastVerdict` is issuing a CLAIM about how a
+ * recast combines and a guess there prints a wrong badge. This one decides whether to VETO a
+ * window: a `Target` atom only fails to reach the caster when the power reaches an enemy —
+ * on a team buff `toWho: 'Target'` is a teammate, the caster among them — and an absent
+ * recipient reads as reaching the caster, so missing evidence can never delete a window.
+ *
+ * Which list resolves the pronoun is `ownerTargets` first and the power's own only after
+ * (TARGETS-3, and the same order {@link reachesCaster} reads them in). `ownerTargets` is stamped
+ * by the collectors exactly when a template was pulled out of ANOTHER power's file, so on a
+ * redirect it carries the executed power's recipients rather than the caster's aim. Fulcrum
+ * Shift is the case that names itself: the parent is `targetsAffected: ['Foe']` and its eight
+ * `+Damage` rows arrive from the buff sub-power stamped `['Friend', 'Self']`, so reading the
+ * parent's list vetoes a 45s window the caster demonstrably holds — the archetypal Kinetics
+ * perma. `coh_math::perma::reaches_caster_for_perma` reads only the parent and loses it: the
+ * engine census reports `win 0.0, rust false` on all four Kinetics copies (the power is
+ * `Kinetic_Transfer` internally on Controller and Defender), so the ring is off in the planner
+ * today. The divergence is filed rather than mirrored. Only Homecoming and Brainstorm stamp
+ * `ownerTargets` on those rows; Rebirth and Thunderspy carry a 1s window there and stay
+ * ineligible in both engines, which is a fork-side residual and not this rule's business.
  */
-function casterHoldsStateAt(power: Power | SelectedPower, seconds: number): boolean | undefined {
-  let accounted = false;
-  let caster = false;
-  for (const atom of atomsOf(power)) {
-    if (!atom.duration) continue;
-    if (Math.abs(atom.duration - seconds) > DURATION_MATCH_TOLERANCE) continue;
-    accounted = true;
-    caster = caster || atomReachesCaster(atom, power);
+function reachesCasterForPerma(a: AtomicEffect, power: Power | SelectedPower): boolean {
+  if (a.notOnCaster === true) return false;
+  // A marker mod attaches to a map marker entity, never to a character.
+  if (a.toWho === 'Marker') return false;
+  if (a.toWho === 'Target' || a.toWho === 'TargetOnly' || a.toWho === 'TargetOnlyAndPets') {
+    return !affectsFoe(a.ownerTargets ?? power.targetsAffected ?? []);
   }
-  return accounted ? caster : undefined;
+  return true;
 }
 
 /**
- * Whether `key`'s entry in `durations` times a state the CASTER keeps up — the
- * same routes `selfStateWindow` walks, asked one key at a time. `seconds` is that
- * entry's own value, which the `SELF_BUFF_KEYS` route needs to reach the atoms.
+ * Is this atom a state the caster is in, rather than one applied to someone else?
+ *
+ * Two tests, and the second is the one the family alone can't answer. A DEBUFF row routes to a
+ * `*Debuff` slot, and of those only the four the converter's self-penalty branches tag
+ * (damage / recharge / tohit / accuracy) are ever the caster's — each still having to prove
+ * `toWho: 'Self'`, which is Granite Armor's −damage and Burnout's endurance crash. Everything
+ * else that routes to a debuff slot is the FOE's state. That is the same partition the deleted
+ * `SELF_BUFF_KEYS` / `SELF_PENALTY_KEYS` pair drew, minus the slot names.
+ *
+ * The debuff face is spelled two ways and both have to be read: a negative scale, and the
+ * table. A foe slow is a POSITIVE scale on `*_Slow` (Spin's 0.2 on `Melee_Slow`), and reading
+ * only the sign hands the caster every PBAoE's slow window.
  */
-function timesACasterState(
-  power: Power | SelectedPower,
-  effects: PowerEffects,
-  key: string,
-  seconds: number,
-): boolean {
-  const bag = effects as unknown as Record<string, unknown>;
-  // The converter can record an absorb as a duration and nothing else (Wild
-  // Bastion's magnitude arrives via an Expression template), so this key does not
-  // require its own bag slot.
-  if (key === 'absorb') return casterHoldsStateAt(power, seconds) ?? true;
-  if ((SELF_BUFF_KEYS as readonly string[]).includes(key)) {
-    return bag[key] !== undefined && (casterHoldsStateAt(power, seconds) ?? true);
-  }
-  if ((SELF_PENALTY_KEYS as readonly string[]).includes(key)) {
-    return isSelfDirectedSlot(bag[key]);
-  }
-  return key === 'slow'
-    && typeof effects.slow === 'object' && effects.slow !== null
-    && Object.values(effects.slow as Record<string, unknown>).some(isSelfDirectedSlot);
-}
-
-/** A debuff the CASTER suffers: the object-shaped `{scale, table}` carrying `toWho: 'Self'`.
- *  A bare-number debuff slot is foe/display-only by construction. */
-function isSelfDirectedSlot(value: unknown): boolean {
-  if (typeof value !== 'object' || value === null) return false;
-  const obj = value as Record<string, unknown>;
-  return 'scale' in obj && 'table' in obj && obj.toWho === 'Self';
+function carriesCasterState(a: AtomicEffect): boolean {
+  const family = SELF_STATE_TYPES.has(a.effectType)
+    // Mez at aspect `Res` is protection — a caster state. Applied mez is not.
+    || (a.effectType === 'Mez' && a.aspect === 'Res')
+    // Healing STRENGTH routes to `specialBuff` and holds a window (Field Medic's 60s); the heal
+    // itself is `Abs`, a heal-over-time tick window rather than a state.
+    || ((a.effectType === 'Heal' || a.effectType === 'HealResistance') && a.aspect !== 'Abs');
+  if (!family) return false;
+  const table = (a.modifierTable ?? '').toLowerCase();
+  const debuff = (a.scale ?? 0) < 0 || table.includes('debuff') || table.includes('slow');
+  return !debuff || landsOnCaster(a);
 }
 
 /**
- * The caster-side window in seconds — the longest-lived state the caster is
- * keeping up, and 0 when the power leaves none. Every route that can qualify a
- * power names its own duration: a summon its lifetime, a self buff /
- * self-directed penalty / absorb its own entry in `durations`.
+ * The recharge-and-window cycle a PLANNER-SYNTHESISED power states by hand — the one shape the
+ * atom rule cannot answer for, and the only one this file still reads a bag for.
  *
- * Deliberately NOT the bag's `buffDuration`. `convert-powerset.cjs` derives that
- * field as a plurality vote over every entry in `durations`, foe effects
- * included, so on a power that debuffs its target it reports the DEBUFF's
- * lifetime: Melt Armor read 40s (the −Resistance on the foe) against the 9s self
- * +Damage the caster actually holds, Thunderspy Hide read 20s (the foe's −ToHit)
- * against a 10s stealth, and Ki Push read the target's 2s hold against an 8.33s
- * self buff. It is a fine display default for "how long does this row last",
- * which is what the info panel uses it for, but the perma ring asks a different
- * question and was never entitled to that answer. Measured across the three
- * forks, 21 / 20 / 24 then-eligible powers had a window matching NO self-side
- * effect at all.
+ * `createArchetypeInherentPower` builds the archetype cards out of `archetypes.ts` metadata:
+ * a hand-authored `effects` bag, no atoms and no `stats`. Domination is the only Click among
+ * the fourteen, and its 200s / 90s cycle is written there rather than read from the export,
+ * because this fork carries no join from an archetype's declared inherent to the
+ * `Inherent.Inherent` power holding it. (The 1.0 fork closed that join under PARTSTAT-2 and its
+ * card now carries the twin's own stats and atoms; until the same join lands here, an
+ * atom-only window would take Domination's perma ring away.)
  *
- * The longest window wins when several qualify — perma tracking is about the
- * state that has to survive the recharge gap, and a shorter buff riding along
- * re-applies with the power either way.
- *
- * A present `durations` map is authoritative, because the converter writes one
- * entry per timed effect: a self key missing from it is instantaneous, not
- * undated (the endurance an Electric Blast attack returns). Only an ABSENT map
- * lets the power-level `buffDuration` stand in, which is what keeps Rest — a real
- * +Recovery/+Regen click whose per-effect durations the export never recorded —
- * from losing its ring.
- *
- * Both arms take the bag's answer and let the atoms veto it, never the reverse:
- * the bag names WHICH state, the atom array is the only place the export records
- * WHOSE it is.
+ * Scoped on "no atoms at all", which is checkable and self-retiring rather than a preference:
+ * measured over all four contract bundles and the generated powerset layer, **every** exported
+ * power carries atoms — 0 of 3417 / 2855 / 2884 / 3498 are atom-less — so this arm can only
+ * ever answer for something the planner made up. It is emphatically NOT a fallback for a power
+ * whose atoms carry no caster-side window: that answer is 0, and it stays 0.
  */
-function selfStateWindow(power: Power | SelectedPower, effects: PowerEffects): number {
-  const summonLifetime = effects.summon?.duration && effects.summon.duration > 0
-    ? effects.summon.duration
-    : 0;
+function authoredCycle(power: Power | SelectedPower): { recharge: number; window: number } | undefined {
+  if (atomsOf(power).length > 0) return undefined;
+  const bag = power.effects;
+  if (!bag) return undefined;
+  const recharge = typeof bag.recharge === 'number' && bag.recharge > 0 ? bag.recharge : 0;
+  const window = typeof bag.buffDuration === 'number' && bag.buffDuration > 0 ? bag.buffDuration : 0;
+  return recharge > 0 && window > 0 ? { recharge, window } : undefined;
+}
 
-  const perEffect = effects.durations;
-  if (!perEffect || Object.keys(perEffect).length === 0) {
-    if (!hasCasterState(power, effects)) return summonLifetime;
-    const powerLevel = typeof effects.buffDuration === 'number' && effects.buffDuration > 0
-      ? effects.buffDuration
-      : 0;
-    return Math.max(summonLifetime, powerLevel);
+/**
+ * How long the caster holds something worth keeping up, in seconds; 0 when there is no such
+ * state, which is what makes eligibility one test rather than two
+ * (`coh_math::perma::self_state_window_from_atoms`).
+ *
+ * Two sources. A summon's lifetime rides `summonWindow`, stamped by the converter's own summon
+ * resolution on the row it read — which `EntCreate` row IS the power's window is a question no
+ * rule over `duration` can answer (ENT-14). Gated rows count there: Soul Extraction's ghosts are
+ * tier-gated and exactly one materializes, so the stamp is the admission and the gate is not.
+ * Everything else is the longest window a base caster-state atom holds open.
+ *
+ * The longest window wins when several qualify — perma tracking is about the state that has to
+ * survive the recharge gap, and a shorter buff riding along re-applies with the power either way.
+ */
+export function selfStateWindow(power: Power | SelectedPower): number {
+  const authored = authoredCycle(power);
+  if (authored) return authored.window;
+
+  let window = 0;
+  for (const a of atomsOf(power)) {
+    if (a.summonWindow !== undefined && a.summonWindow > 0) window = Math.max(window, a.summonWindow);
   }
-
-  let window = summonLifetime;
-  for (const [key, seconds] of Object.entries(perEffect)) {
-    if (typeof seconds !== 'number' || seconds <= 0) continue;
-    if (!timesACasterState(power, effects, key, seconds)) continue;
-    window = Math.max(window, seconds);
+  for (const a of baseAtoms(power)) {
+    if (!(a.duration > 0)) continue;
+    if (!carriesCasterState(a)) continue;
+    if (!reachesCasterForPerma(a, power)) continue;
+    window = Math.max(window, a.duration);
   }
   return window;
-}
-
-/**
- * The power lands SOMETHING on the caster. Only used to decide whether the
- * power-level `buffDuration` may stand in as the window, so it deliberately asks
- * nothing about durations. The atoms get the same veto they get on the per-effect
- * arm, minus the duration join, since this arm runs precisely when there is no
- * per-effect duration to join on: a power whose every atom is aimed at the target
- * holds nothing, however self-shaped its bag slots look.
- */
-function hasCasterState(power: Power | SelectedPower, effects: PowerEffects): boolean {
-  if (!hasSelfStateSlot(effects)) return false;
-  const atoms = atomsOf(power);
-  return atoms.length === 0 || atoms.some((atom) => atomReachesCaster(atom, power));
-}
-
-/**
- * True when the power occupies a self-buff slot or carries a self-directed
- * penalty — the bag-shaped half of the question, with no target check.
- */
-function hasSelfStateSlot(effects: PowerEffects): boolean {
-  const bag = effects as unknown as Record<string, unknown>;
-  if (SELF_BUFF_KEYS.some((key) => bag[key] !== undefined)) return true;
-
-  // Self-penalty powers (Granite Armor's -damage, Defensive Adaptation's
-  // -recharge) carry a caster-side downside — a self-state whose uptime is
-  // worth perma-tracking. Detected per-effect via `toWho:'Self'`.
-  return hasSelfDirectedPenalty(effects);
-  // NB the absorb-duration route lives in `timesACasterState`, on the per-effect
-  // arm where `durations.absorb` actually exists. This function only runs when
-  // that map is absent entirely, so testing it here could never fire.
 }
 
 /**
@@ -381,14 +363,11 @@ export function calculatePermaInfo(
   globalRecharge: number,
   bounds?: RechargeBounds,
 ): PermaInfo | null {
-  const effects = power.effects;
-  if (!effects) return null;
-
   // Toggles and autos don't have a perma cycle (see isPermaEligible).
   if (power.powerType === 'Toggle' || power.powerType === 'Auto') return null;
 
-  const baseRecharge = getRecharge(effects, power);
-  const duration = selfStateWindow(power, effects);
+  const baseRecharge = getRecharge(power);
+  const duration = selfStateWindow(power);
   if (baseRecharge <= 0 || duration <= 0) return null;
 
   // StrengthsDisallowed('RechargeTime'): the game applies NO recharge strength
@@ -429,10 +408,17 @@ export function calculatePermaInfo(
   };
 }
 
-/** Extract recharge time from effects, falling back to power.stats */
-function getRecharge(effects: PowerEffects, power: Power | SelectedPower): number {
-  if (typeof effects.recharge === 'number' && effects.recharge > 0) return effects.recharge;
+/**
+ * Base recharge, from `power.stats` — the one place the export states it.
+ *
+ * The `effects.recharge` arm that stood first here read a bag slot the converter writes from
+ * the same source `stats.recharge` comes from — measured across the four bundles it is present
+ * on 475 / 443 / 433 / 475 powers, agrees with `stats` on every one and is never the only
+ * source — so it dies with the bag. What survives it is {@link authoredCycle}, which is a
+ * different claim: a synthesised card states a recharge no export row holds.
+ */
+function getRecharge(power: Power | SelectedPower): number {
   if (power.stats?.recharge && power.stats.recharge > 0) return power.stats.recharge;
-  return 0;
+  return authoredCycle(power)?.recharge ?? 0;
 }
 

@@ -44,7 +44,8 @@ import { areIncarnatesSuppressed, INCARNATE_MIN_LEVEL } from '@/utils/calculatio
 import { getIncarnateTrees } from '@/data/incarnates';
 import { calculatePermaInfo, type PermaInfo } from '@/utils/calculations/perma';
 import { getRechargeBounds } from '@/data/at-tables';
-import { atomsOf } from '@/data/core/atom-query';
+import { atomsOf, baseAtoms } from '@/data/core/atom-query';
+import { landsOnCaster } from '@/data/core/atomic-effect';
 import { calculateArcanaTime } from '@/utils/calculations/damage';
 import { calcThreeTier, convertGlobalBonusesToAspects, withStrengthBonuses, type ThreeTierValues } from '@/components/info/powerDisplayUtils';
 import { resolvePowerMagnitudes, type ResolvedMagnitude } from '@/components/info/resolvePowerMagnitudes';
@@ -475,6 +476,62 @@ function betaCannotRunTheWindowVeto(power: Power | SelectedPower | undefined): b
   return power !== undefined && atomsOf(power).length === 0;
 }
 
+/**
+ * The whole population, per server, measured 2026-09-04 when the beta's perma window moved onto
+ * the atoms. Every row is `engine null vs beta set`. The two Thunderspy pool rows are vendor lag
+ * and clear on the next engine vendor; the EM Pulse rows are PERMA-4 and do not. None is a ring
+ * a user sees except Thunderspy's Swirl, which is eligible beta-side and would render a Perma
+ * Tracker header with no numbers under it.
+ */
+const MIRROR_BLIND_ROWS: Record<string, string[]> = {
+  homecoming: ['epic/electrical_mastery/EM_Pulse'],
+  rebirth: ['epic/charge_mastery/EM_Pulse', 'epic/electrical_mastery/EM_Pulse'],
+  thunderspy: [
+    'epic/charge_mastery/EM_Pulse',
+    'epic/electrical_mastery/EM_Pulse',
+    'pool/fighting/Cross_Punch',
+    'pool/fighting/Swirl',
+  ],
+  brainstorm: ['epic/electrical_mastery/EM_Pulse'],
+};
+
+/** The marker the mirror-blind class carries, so the roster below can pick it out of the bucket. */
+const MIRROR_BLIND = 'perma: [mirror-blind]';
+
+/**
+ * Is the window the beta found one the ENGINE this repo vendors has no slot for?
+ *
+ * The two sides answer "how long does the caster hold something" from different places. The beta
+ * reads the atoms (BPORT2); `coh_math::perma::self_state_window_from_atoms` reads
+ * `window_slots`, a converter MIRROR that rebuilds the bag's slot map and joins back to the
+ * atoms. Two kinds of caster-side atom fall through that map, and they have different lifetimes:
+ *
+ *  - **An IgnoreStrength self-buff** lands in a `*Unenhanced` twin slot, and the engine's
+ *    `SELF_BUFF_KEYS` held one of the four until PERMA-3 (2026-09-04) added the rest. Thunderspy
+ *    Cross Punch and Swirl hold a real 6s self +Recharge/+ToHit on `Melee_Ones`, both
+ *    `ignoreStrength`. **This is vendor lag, not a gap**: `perma_eligibility_census` on the 1.0
+ *    engine reports `win 6.0` for both today, and these rows leave this roster when the beta
+ *    re-vendors at PERMA-3 or later.
+ *  - **A self-directed debuff outside the mirror's four penalty slots.** It routes
+ *    `damage`/`recharge`/`tohit`/`accuracyDebuff` and nothing else, so EM Pulse's 15s
+ *    `Recovery −1 toWho Self` — the endurance crash, a state the caster demonstrably holds — is
+ *    a caster state to the atoms and no slot to the mirror. That one is standing on the current
+ *    engine too (`win 0.0` on all four forks) and is filed as PERMA-4.
+ *
+ * Deliberately narrow: EVERY caster-side atom carrying that duration has to be one of the two,
+ * so an ordinary positive self buff on a strength-taking table stays a real delta. The
+ * population is pinned by name below rather than left to this predicate, because a predicate
+ * alone would quietly absorb the next power that joins the class.
+ */
+function engineMirrorCannotSeeTheWindow(power: Power | SelectedPower | undefined, betaDuration: number): boolean {
+  if (!power) return false;
+  const carriers = baseAtoms(power).filter(
+    (a) => Math.abs(a.duration - betaDuration) < 1e-6 && landsOnCaster(a),
+  );
+  if (!carriers.length) return false;
+  return carriers.every((a) => a.ignoreStrength === true || (a.scale ?? 0) < 0);
+}
+
 function permaDelta(
   engine: PermaInfo | null,
   beta: PermaInfo | null,
@@ -503,6 +560,9 @@ function permaDelta(
     if ((authored?.buffDuration ?? authored?.effectDuration) == null) {
       return { real: [], adjudicated: [`perma: beta computes a ${beta.duration}s window from a duration the engine's dataset does not author → engine null`] };
     }
+  }
+  if (engine === null && beta !== null && engineMirrorCannotSeeTheWindow(betaPower, beta.duration)) {
+    return { real: [], adjudicated: [`${MIRROR_BLIND} the beta's ${beta.duration}s window rides an atom the engine's window mirror has no slot for → engine null`] };
   }
   if (engine === null || beta === null) return { real: [`perma: engine ${engine ? 'set' : 'null'} vs beta ${beta ? 'set' : 'null'}`], adjudicated: [] };
   const real: string[] = [];
@@ -1426,6 +1486,17 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
       shared,
       `${server}: no epic internal name is published by two masteries — this sweep cannot detect an unscoped pool/epic lookup`,
     ).toBeGreaterThan(0);
+    // The mirror-blind class is adjudicated rather than real, and pinned by name: an
+    // adjudication with no roster is a bucket, and the next power to join the class would join
+    // it in silence. Exits when the engine's window mirror sees both faces — the `*_Ones` rows
+    // the converter strips, and a self-directed debuff outside its four penalty slots.
+    expect(
+      adjudicated
+        .filter((d) => d.includes(MIRROR_BLIND))
+        .map((d) => d.slice(0, d.indexOf(`.${MIRROR_BLIND}`)))
+        .sort(),
+      `${server}: powers whose window only the atoms carry`,
+    ).toEqual(MIRROR_BLIND_ROWS[server]);
     expect(deltas).toEqual([]);
   }, 180000);
 

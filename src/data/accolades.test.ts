@@ -2,16 +2,18 @@ import { describe, it, expect, beforeAll } from 'vitest';
 import type { DatasetId } from '@/data/dataset';
 import { loadDataset, isHomecomingGame } from './dataset';
 import { getAccolades, accoladeId, accoladeFaction, accoladeRequiredModes } from './accolades';
-import { maxHPBuffValue } from './core/atom-query';
+import { maxEndBuffValue, maxHPBuffValue } from './core/atom-query';
 import type { AccoladePower } from './accolades';
 
 // The derived +Max HP (% — 10 per scale point, IgnoreStrength) and +Max End (flat) an
 // accolade grants, read off the power exactly as the totals calc reads it. This is the
 // fidelity claim: the values come from the exported atoms, not the removed hand-built silo.
+// Both halves ask the atoms. `endFlat` read `effects.maxEndBuff` until the bag strip, which
+// left it 0 on every row while the expected table below stayed right.
 function statOf(power: AccoladePower): { hpPct: number; endFlat: number } {
   const hp = maxHPBuffValue(power, { ignoreStrength: true });
   const hpPct = hp === undefined ? 0 : (typeof hp === 'number' ? hp : hp.scale) * 10;
-  const end = power.effects?.maxEndBuff;
+  const end = maxEndBuffValue(power);
   const endFlat = end === undefined ? 0 : (typeof end === 'number' ? end : end.scale);
   return { hpPct, endFlat };
 }
