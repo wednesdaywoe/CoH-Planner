@@ -50,7 +50,7 @@ export const DETAILED_STATS: string[] = [
   'defense_melee', 'defense_ranged', 'defense_aoe',
   'def_smashing', 'def_lethal', 'def_fire', 'def_cold', 'def_energy', 'def_negative', 'def_psionic', 'def_toxic',
   'res_smashing', 'res_lethal', 'res_fire', 'res_cold', 'res_energy', 'res_negative', 'res_psionic', 'res_toxic',
-  'prot_hold', 'prot_stun', 'prot_immob', 'prot_sleep', 'prot_confuse', 'prot_fear', 'prot_kb', 'prot_repel', 'prot_teleport',
+  'prot_hold', 'prot_stun', 'prot_immob', 'prot_sleep', 'prot_confuse', 'prot_fear', 'prot_kb', 'prot_repel',
   'mezres_hold', 'mezres_stun', 'mezres_immob', 'mezres_sleep', 'mezres_confuse', 'mezres_fear', 'mezres_kb', 'mezres_taunt', 'mezres_placate',
   'debuff_slow', 'debuff_defense', 'debuff_recharge', 'debuff_endurance', 'debuff_recovery', 'debuff_tohit', 'debuff_regen', 'debuff_perception',
   'debuff_accuracy', 'debuff_range',

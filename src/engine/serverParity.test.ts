@@ -222,7 +222,7 @@ const SWEEP_LEVEL = 25;
 // here rather than under ADJUDICATED; the engine side is graded in the rebuild by
 // `route_sweep::accuracy_and_range_debuff_resistance_reach_their_totals`.
 const UNMAPPED = new Set([
-  'threatLevel', 'protRepel', 'protTeleport', 'enduranceDiscount',
+  'threatLevel', 'protRepel', 'enduranceDiscount',
   'debuffResistAccuracy', 'debuffResistRange',
 ]);
 

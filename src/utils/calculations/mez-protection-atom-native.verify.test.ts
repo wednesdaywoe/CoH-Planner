@@ -30,7 +30,11 @@
  *    equal to the push they deal out, while Increase Density — the example the retired block's
  *    own comment named — was one of the 15 the slot never carried;
  *  - `effects.protection` has no carrier anywhere, confirming BPORT1's zero-supply verdict from
- *    the data side as well as the supply side.
+ *    the data side as well as the supply side;
+ *  - and `protTeleport` is gone, stat and read together (user decision, matching canonical). Its
+ *    read was `effects.teleport` × 100 on a slot holding the teleport a power PERFORMS, so all
+ *    127 credited carriers were teleport powers credited with protection equal to their own
+ *    range. No power carries the protection-spelled row a corrected read would have needed.
  *
  * Mutation-tested five ways on the readers and the resolution: reversing `mezSlotValue`'s
  * larger-magnitude pick, dropping its sub-type key, and stopping `mezSourceFor` from resolving
@@ -52,6 +56,16 @@ import {
   mezSlotValue, mezResistanceValue, kbProtectionValue, tauntPlacateValue,
 } from '@/data/core/atom-query';
 import { repelProtectionValue } from './repel-protection';
+import { baseAtoms } from '@/data/core/atom-query';
+import { readFileSync } from 'node:fs';
+import { createRequire } from 'node:module';
+import path from 'node:path';
+
+/** The census's own comment scanner, so a retirement NOTE naming a slot is not read as a read
+ *  of it — the first thing BPORT4's file-level grep got wrong, one level down. */
+const { stripComments } = createRequire(import.meta.url)(
+  path.resolve(__dirname, '../../../scripts/beta-bag-reader-census.cjs'),
+) as { stripComments: (src: string) => string };
 import { ATOM_TUPLE_FIELDS } from '@/data/core/atomic-effect';
 import { mezSourceFor } from './character-totals';
 import { MODULAR_POWERSETS as HC } from '@/data/datasets/homecoming/powersets';
@@ -267,6 +281,31 @@ describe('BPORT11 cluster 2 — mez protection against the bag it replaces', () 
     expect(t.atomOnly).toHaveLength(15);
     expect(t.atomOnly.some((s) => s.includes('Increase Density'))).toBe(true);
     expect(t.atomOnly.some((s) => s.includes('Vengeance'))).toBe(true);
+  });
+
+  it('keeps protTeleport retired, stat and read together', () => {
+    // A retirement with no tripwire is a comment. The read was `effects.teleport` × 100 and the
+    // slot holds the teleport a power PERFORMS, so every one of its 127 credited carriers was a
+    // teleport power being credited with protection equal to its own range — Wormhole at +410%.
+    // Two things have to stay gone or it comes back by halves: the stat, and any read of the
+    // slot that could be pointed at it again.
+    const oracle = stripComments(readFileSync(path.resolve(__dirname, 'legacy-totals.oracle.ts'), 'utf8'));
+    const totals = stripComments(readFileSync(path.resolve(__dirname, 'character-totals.ts'), 'utf8'));
+    expect(/\bprotTeleport\b/.test(oracle)).toBe(false);
+    expect(/\bprotTeleport\b/.test(totals)).toBe(false);
+    expect(/\beffects\.teleport\b/.test(oracle)).toBe(false);
+
+    // And the data that made it wrong, so the verdict is checkable rather than remembered: no
+    // power carries a protection-spelled `Mez/Teleport` row, which is what a corrected read
+    // would have needed. The honest family is `MezResist/Teleport` — resistance, not
+    // protection — and it belongs with mez resistance, not here.
+    const protectionSpelled: string[] = [];
+    for (const [id, , source] of views())
+      for (const a of baseAtoms(source as never))
+        if (a.effectType === 'Mez' && a.subType === 'Teleport' && (a.scale ?? 0) < 0) {
+          protectionSpelled.push(id);
+        }
+    expect(protectionSpelled).toEqual([]);
   });
 
   it('confirms effects.protection is empty from the data side too', () => {

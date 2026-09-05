@@ -1404,18 +1404,17 @@ function applyActivePowerBonuses(
     // push they deal out — 71 powers — while Increase Density, the comment's own example, was
     // one of 15 real repel-protection powers the slot never carried at all.
 
-    // Teleport Protection (e.g., Increase Density)
-    if (effects.teleport !== undefined) {
-      const val = resolveScaledEffect(effects.teleport, archetypeId, buildLevel) * 100;
-      if (val > 0) {
-        global.protTeleport += val;
-        addToBreakdown(breakdown, 'protTeleport', {
-          name: power.name,
-          value: val,
-          type: 'active-power',
-        });
-      }
-    }
+    // `protTeleport` RETIRED BPORT11 (user decision), stat and all. The read was
+    // `effects.teleport` x 100, and that slot holds the teleport a power PERFORMS: all 127
+    // credited carriers are teleport powers — Burst of Speed, Lightning Rod, Shield Charge,
+    // Wormhole at +410% — being credited with protection equal to their own range. No power on
+    // any fork carries a protection-spelled (negative Cur) `Mez/Teleport` row, so there was
+    // nothing for a corrected read to answer with. The honest family is the caster-facing
+    // `MezResist/Teleport` rows (98 of them: Static Shield, Personal Force Field, Increase
+    // Density, Entropic Aura), which is RESISTANCE rather than protection and belongs with the
+    // mez-resistance family, not here. The engine never had a source for the stat either
+    // (engineTotals.ts left it 0), so the live dashboard row has shown 0 since the engine swap
+    // and only this oracle ever produced the wrong number. Canonical retired it the same way.
 
     // Taunt Resistance (e.g., Leadership: Assault) — BPORT11: atom-native. `tauntPlacateValue`
     // reads the caster-facing `MezResist/Taunt` rows the converter parked in the same

@@ -5,7 +5,7 @@
  * The engine owns the numbers; this only reshapes keys. Movement lives in the engine's
  * `GlobalBonuses` (not its `CharacterStats`), so the beta `stats.runspeed…` fields are
  * pulled from `bonuses`. A handful of beta fields have no engine source (`threatLevel`,
- * `protRepel`/`protTeleport`, `enduranceDiscount`) and are left 0 — none feed the totals
+ * `protRepel`, `enduranceDiscount`) and are left 0 — none feed the totals
  * dashboard. `toggleEndCost`/`netEndPerSec` DID feed it (the Survival & Mobility card's END
  * COST and NET END) and were wrongly in that list: they read 0 for every build from the
  * engine swap until the engine grew them (Step 9.7, `projection::toggle_endurance_total`).

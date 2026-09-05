@@ -260,7 +260,6 @@ export const TRACKED_STATS_WITHOUT_SET_BONUSES: readonly string[] = [
   'protConfuse',
   'protFear',
   'protRepel',
-  'protTeleport',
   // Mez resistance types outside the "(All)" umbrella
   'mezResistTaunt',
   'mezResistPlacate',

@@ -1113,15 +1113,6 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     breakdownKey: 'protRepel',
     breakdownUnit: 'Mag',
   },
-  prot_teleport: {
-    id: 'prot_teleport',
-    label: 'Teleport',
-    getValue: () => 0, // Requires globalBonuses
-    format: (v) => `${Number(v).toFixed(0)}%`,
-    color: STAT_COLORS.defense,
-    tooltip: 'Teleport protection',
-    breakdownKey: 'protTeleport',
-  },
   mezres_taunt: {
     id: 'mezres_taunt',
     label: 'Taunt',
@@ -1190,7 +1181,6 @@ export const GLOBAL_BONUS_OVERRIDES: Record<string, keyof GlobalBonuses> = {
   stealth_pvp: 'stealthRadiusPvP',
   perception_bonus: 'perceptionRadius',
   prot_repel: 'protRepel',
-  prot_teleport: 'protTeleport',
   mezres_taunt: 'mezResistTaunt',
   mezres_placate: 'mezResistPlacate',
   level_shift: 'levelShift',
@@ -1250,7 +1240,7 @@ export const STAT_SECTIONS: { category: StatCategory; stats: string[] }[] = [
   { category: 'stealth-perception', stats: ['stealth_pve', 'stealth_pvp', 'perception_bonus'] },
   { category: 'defense', stats: ['defense_melee', 'defense_ranged', 'defense_aoe', 'def_smashing', 'def_lethal', 'def_fire', 'def_cold', 'def_energy', 'def_negative', 'def_psionic', 'def_toxic'] },
   { category: 'resistance', stats: ['res_smashing', 'res_lethal', 'res_fire', 'res_cold', 'res_energy', 'res_negative', 'res_psionic', 'res_toxic'] },
-  { category: 'status-protection', stats: ['mez_hold', 'mez_stun', 'mez_immob', 'mez_sleep', 'mez_confuse', 'mez_fear', 'mez_kb', 'prot_hold', 'prot_stun', 'prot_immob', 'prot_sleep', 'prot_confuse', 'prot_fear', 'prot_kb', 'prot_repel', 'prot_teleport'] },
+  { category: 'status-protection', stats: ['mez_hold', 'mez_stun', 'mez_immob', 'mez_sleep', 'mez_confuse', 'mez_fear', 'mez_kb', 'prot_hold', 'prot_stun', 'prot_immob', 'prot_sleep', 'prot_confuse', 'prot_fear', 'prot_kb', 'prot_repel'] },
   { category: 'status-resistance', stats: ['mezres_hold', 'mezres_stun', 'mezres_immob', 'mezres_sleep', 'mezres_confuse', 'mezres_fear', 'mezres_kb', 'mezres_taunt', 'mezres_placate'] },
   { category: 'debuff-resistance', stats: ['debuff_slow', 'debuff_defense', 'debuff_recharge', 'debuff_endurance', 'debuff_recovery', 'debuff_tohit', 'debuff_regen', 'debuff_perception', 'debuff_accuracy', 'debuff_range'] },
 ];

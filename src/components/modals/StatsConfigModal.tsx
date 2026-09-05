@@ -217,7 +217,6 @@ const SETTINGS_STATS: StatToggle[] = [
   { stat: 'mez_fear', label: 'Fear' },
   { stat: 'mez_kb', label: 'KB' },
   { stat: 'prot_repel', label: 'Repel' },
-  { stat: 'prot_teleport', label: 'Teleport' },
   { stat: 'mezres_hold', label: 'Hold' },
   { stat: 'mezres_stun', label: 'Stun' },
   { stat: 'mezres_immob', label: 'Immob' },

@@ -119,7 +119,6 @@ export interface GlobalBonuses {
   perceptionRadius: number;
   // Additional mez protection
   protRepel: number;
-  protTeleport: number;
   // Additional mez resistance
   mezResistTaunt: number;
   mezResistPlacate: number;
@@ -291,7 +290,6 @@ export function createEmptyGlobalBonuses(): GlobalBonuses {
     stealthRadiusPvP: 0,
     perceptionRadius: 0,
     protRepel: 0,
-    protTeleport: 0,
     mezResistTaunt: 0,
     mezResistPlacate: 0,
     levelShift: 0,

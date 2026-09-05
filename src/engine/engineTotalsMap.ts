@@ -738,7 +738,7 @@ export function mapGlobal(b: EngineBonuses, s: EngineStats): GlobalBonuses {
     debuffResistAccuracy: b.debuff_resist_accuracy, debuffResistRange: b.debuff_resist_range,
     healOther: b.heal_other, healReceived: b.heal_received, threatLevel: 0,
     stealthRadiusPvE: b.stealth_radius_pve, stealthRadiusPvP: b.stealth_radius_pvp, perceptionRadius: b.perception_radius,
-    protRepel: 0, protTeleport: 0,
+    protRepel: 0,
     mezResistTaunt: b.mez_resist_taunt, mezResistPlacate: b.mez_resist_placate,
     levelShift: b.level_shift,
     // `enduranceDiscount` stays 0 on BOTH sides: the beta field of that name is vestigial and
