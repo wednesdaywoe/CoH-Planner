@@ -13,18 +13,28 @@
  */
 import { describe, it, expect, beforeAll } from 'vitest';
 import { execFileSync } from 'node:child_process';
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
 import { createRequire } from 'node:module';
 import path from 'node:path';
 
 const REPO = path.resolve(__dirname, '../..');
 const SCRIPT = path.join(REPO, 'scripts/beta-bag-reader-census.cjs');
+const SIBLING = path.resolve(REPO, '../coh-sidekick-1.0');
+const ORACLE = 'src/utils/calculations/legacy-totals.oracle.ts';
+/** Where canonical kept the same file. PROD7 renamed it on this side only. */
+const ORACLE_TWIN = 'src/utils/calculations/character-totals.ts';
 const read = (rel: string) => readFileSync(path.join(REPO, rel), 'utf8');
 const require_ = createRequire(import.meta.url);
-const { bagSeams, stripComments, guardExpr } = require_(SCRIPT) as {
+const {
+  bagSeams, stripComments, guardExpr, siblingSeams, counterpartOf, assertCounterpartsLive,
+} = require_(SCRIPT) as {
   bagSeams: (rel: string) => Seam[];
   stripComments: (src: string) => string;
   guardExpr: (before: string) => string | null;
+  siblingSeams: (rel: string, siblingRoot: string) => Seam[];
+  counterpartOf: (rel: string) => string;
+  assertCounterpartsLive: (siblingRoot: string) => void;
 };
 
 interface Seam {
@@ -48,7 +58,9 @@ interface Census {
   seams: Seam[];
   readerFiles: string[];
   sweep: string[];
-  buckets: { bothRead: string[]; identical: string[]; betaOnly: string[]; migrated: string[] } | null;
+  buckets: {
+    bothRead: string[]; identical: string[]; betaOnly: string[]; migrated: string[]; renamed: string[];
+  } | null;
   builders: string[];
   feeds: Record<string, string[]>;
   coverage: { powers: number; tally: Record<string, { stats: number; bag: number; bagOnly: number }> };
@@ -142,6 +154,10 @@ const CANONICAL_MIGRATED_FIRST: Record<string, string[]> = {
  */
 const ATOM_ARM_BEHIND = [
   'src/utils/calculations/inherents.ts',
+  // BPORT5's, and the largest gap in the repo: 27 atom queries canonical's copy of this file
+  // calls and the oracle does not. It reads `absent` — no arm gap at all — until the rename
+  // register resolves the counterpart, which is how the gap stayed invisible.
+  ORACLE,
 ];
 
 /** Files handed a display bag as a prop — the hop BPORT1 could not see by import edge. */
@@ -154,8 +170,7 @@ const PROP_FED = [
 let census: Census;
 
 beforeAll(() => {
-  const sibling = path.resolve(REPO, '../coh-sidekick-1.0');
-  const args = [SCRIPT, '--json', ...(existsSync(sibling) ? ['--sibling', sibling] : [])];
+  const args = [SCRIPT, '--json', ...(existsSync(SIBLING) ? ['--sibling', SIBLING] : [])];
   census = JSON.parse(execFileSync('node', args, {
     cwd: REPO, encoding: 'utf8', maxBuffer: 256 * 1024 * 1024,
   })) as Census;
@@ -200,21 +215,27 @@ describe('BPORT4 census — what the strip costs, per seam', () => {
     if (!census.buckets) {
       // Stated rather than silent: without the sibling checkout there is nothing to
       // partition against, and a skipped assertion that says so is not a passing one.
-      expect(existsSync(path.resolve(REPO, '../coh-sidekick-1.0'))).toBe(false);
+      expect(existsSync(SIBLING)).toBe(false);
       return;
     }
     const b = census.buckets;
-    expect(b.bothRead.length + b.identical.length + b.betaOnly.length + b.migrated.length)
-      .toBe(census.sweep.length);
+    expect(b.bothRead.length + b.identical.length + b.betaOnly.length + b.migrated.length +
+      b.renamed.length).toBe(census.sweep.length);
     // 27 until BPORT6: `power-row-utils` stopped reading the bag entirely and left the bucket.
     expect(b.bothRead).toHaveLength(26);
-    expect(b.betaOnly).toHaveLength(6);
+    // 6 until BPORT5. The sixth was the oracle, and it was never beta-only — canonical kept
+    // the same file under the name PROD7 renamed away from on this side.
+    expect(b.betaOnly).toHaveLength(5);
+    expect(b.renamed).toEqual([ORACLE]);
   });
 
   it('names the seams canonical migrated first, which the beta owes BPORT6', () => {
     if (!census.buckets) return; // no sibling: the disposition is unmeasurable, not empty
     const carried: Record<string, string[]> = {};
     for (const s of census.seams) {
+      // The oracle's carry is BPORT5's whole work order and is pinned on its own below —
+      // folding 150 seams into BPORT6's map would bury the seven files BPORT6 was scoped on.
+      if (s.file === ORACLE) continue;
       if (s.sibling !== 'migrated-there') continue;
       if (s.verdict !== 'dies' && s.verdict !== 'caller-decides') continue;
       (carried[s.file] ??= []).push(s.slot!);
@@ -261,6 +282,107 @@ describe('BPORT4 census — what the strip costs, per seam', () => {
       'src/components/info/SharedPowerComponents.tsx',
       'src/types/power.ts',
     ]);
+  });
+});
+
+/**
+ * BPORT5 — the oracle's carry, and the lookup that hid it.
+ *
+ * The stream doc scoped BPORT5 as a choice between two ways to FREEZE `legacy-totals.oracle.ts`:
+ * a frozen pre-strip dataset as its input, or its output frozen into fixtures. Both were priced
+ * against "this file has no migrated twin to carry" — and it has one. PROD7 quarantined the
+ * legacy calc under a new name on this side only; canonical never split its copy and migrated it
+ * in place through its own STRIP-1. Every sibling question here is keyed by path, so the twin
+ * answered `absent` 165 times and the census reported the strongest verdict available without
+ * ever performing the lookup.
+ *
+ * What the resolved lookup says: canonical's copy is the same file (31 of the oracle's 34
+ * declarations), it is the oracle behind `emit-totals-fixtures.ts` -> `totals_gate.rs`, and post
+ * strip it reads the bag at six seams. So the answer is CARRY, on the BPORT6 pattern, and the
+ * two freezes are the fallback nobody needs.
+ *
+ * These assertions are written as identities rather than as literals wherever the carry will
+ * move them: the residual is "the slots canonical still reads", derived from canonical's own
+ * source, so a family landing removes its rows here without an edit and canonical growing a bag
+ * read back reds instead of passing.
+ */
+describe('BPORT5 — what grades the engine once the bag is gone', () => {
+  it('resolves the oracle onto the twin canonical kept under the old name', () => {
+    expect(counterpartOf(ORACLE)).toBe(ORACLE_TWIN);
+    // Unmapped paths pass straight through — the register is an exception list, not a routing
+    // table, and a file whose name both repos share must not go near it.
+    expect(counterpartOf('src/utils/calculations/perma.ts')).toBe('src/utils/calculations/perma.ts');
+    if (!census.buckets) return; // no sibling: the disposition is unmeasurable, not empty
+    expect(census.buckets.renamed).toEqual([ORACLE]);
+    expect(census.buckets.betaOnly).not.toContain(ORACLE);
+  });
+
+  it('refuses a rename that has stopped naming the same file', () => {
+    if (!existsSync(SIBLING)) return; // nothing to compare the register against
+    expect(() => assertCounterpartsLive(SIBLING)).not.toThrow();
+    // The register is a claim about LINEAGE, and lineage rots without deleting anything: the
+    // day canonical splits its copy the way PROD7 split this one, the mapping starts grading
+    // two unrelated modules and reports the difference as work. Both failure directions are
+    // exercised, because a check that only catches deletion catches the easy half.
+    const tmp = mkdtempSync(path.join(tmpdir(), 'bport5-'));
+    try {
+      expect(() => assertCounterpartsLive(tmp)).toThrow(/absent/);
+      mkdirSync(path.dirname(path.join(tmp, ORACLE_TWIN)), { recursive: true });
+      writeFileSync(path.join(tmp, ORACLE_TWIN), 'export function somethingElse() { return 1; }\n');
+      expect(() => assertCounterpartsLive(tmp)).toThrow(/stopped being the same file/);
+    } finally {
+      rmSync(tmp, { recursive: true, force: true });
+    }
+  });
+
+  it('splits the oracle s seams into carry and residual on canonical s own reads', () => {
+    if (!census.buckets) return; // no sibling: the disposition is unmeasurable, not empty
+    const mine = census.seams.filter((s) => s.file === ORACLE);
+    // The population, pinned: a finder that narrows here reports LESS work, which reads as
+    // progress. 157 found in source plus the 8 `mezProtTypes` roster keys.
+    expect(mine).toHaveLength(165);
+    expect(mine.every((s) => s.sibling !== 'absent')).toBe(true);
+
+    // The residual is derived, not listed — canonical's own copy answers it.
+    const residual = new Set(siblingSeams(ORACLE, SIBLING).map((s) => s.slot));
+    for (const s of mine) {
+      if (s.binding.startsWith('roster:')) continue; // decided on the symbol, not the finder
+      expect(s.sibling, `${s.slot} @${s.line}`)
+        .toBe(residual.has(s.slot!) ? 'reads-too' : 'migrated-there');
+    }
+
+    // What canonical kept: four guarded proc-PPM reads (`stats.x ?? effects.x`) and the two
+    // slots its conditional expansion mints onto a synthesized bag. Nothing else survived its
+    // strip, which is the shape this carry lands on.
+    expect([...residual].sort()).toEqual(
+      ['arc', 'castTime', 'defenseBuff', 'radius', 'recharge', 'resistance'],
+    );
+  });
+
+  it('leaves the mez roster with canonical, which still reads it', () => {
+    if (!census.buckets) return; // no sibling: the disposition is unmeasurable, not empty
+    // The BPORT6 correction applied to this file: a roster seam names no slot at the read site,
+    // so the finder can never return it and the sibling comparison must ask the symbol instead.
+    // Answered `reads-too` — canonical's `mezProtTypes` loop is still there — so these eight are
+    // NOT part of the carry, and a finder-based verdict would have made them work.
+    const roster = census.seams.filter((s) => s.file === ORACLE && s.binding === 'roster:mezProtTypes');
+    expect(roster.map((s) => s.slot).sort()).toEqual(
+      ['confuse', 'fear', 'hold', 'immobilize', 'knockback', 'knockup', 'sleep', 'stun'],
+    );
+    for (const s of roster) expect(s.sibling, s.slot ?? undefined).toBe('reads-too');
+  });
+
+  it('measures the carry as an arm gap, not only as a bag read', () => {
+    if (!census.buckets) return; // no sibling: the disposition is unmeasurable, not empty
+    const gap = census.seams.find((s) => s.file === ORACLE)!.atomArmGap ?? [];
+    // The per-slot comparison is a lower bound (the `StatsDashboard` lesson): a slot canonical
+    // still names reads `reads-too` even where it calls an atom query first. The import gap is
+    // the other half, and on this file it is the largest in the repo — the oracle calls 12 of
+    // `atom-query`'s helpers and canonical's copy of it calls 39.
+    expect(gap.length).toBeGreaterThan(20);
+    for (const named of ['absorbValue', 'accuracyBuffValue', 'rechargeBuffValue', 'stealthValue']) {
+      expect(gap, named).toContain(named);
+    }
   });
 });
 

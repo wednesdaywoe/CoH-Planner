@@ -37,6 +37,13 @@
  * {@link propFeeds} finds every `<Component effects={…}>` JSX attribute, resolves the component
  * to the file that declares it, and reports whether EVERY feeder is a display-bag builder.
  *
+ * THE SIBLING COMPARISON HAS ITS OWN BLIND SPOT, and BPORT5 walked into it. Every question this
+ * script asks the other repo is keyed by PATH, so a file canonical kept under a different name
+ * answers "no counterpart" — which is the strongest verdict available, reached without a lookup.
+ * PROD7 renamed this repo's legacy calc and canonical's copy stayed put, so the oracle's 165
+ * seams all read `absent` and its migrated twin was invisible. {@link RENAMED_COUNTERPART} is
+ * the register that resolves those, and it is checked against the code before it is believed.
+ *
  * Run: `node scripts/beta-bag-reader-census.cjs` (`--json` for the dump, `--sibling <path>` to
  * partition the population against the other repo the way the stream doc did).
  */
@@ -144,10 +151,73 @@ function fileSweep() {
   return sourceFiles().filter((f) => /\.effects\b/.test(fs.readFileSync(path.join(REPO, f), 'utf8')));
 }
 
-/** Partition the sweep against the other repo: the stream doc's four buckets. */
+/**
+ * Counterparts the fork renamed on ONE side, and the register that has to earn its keep.
+ *
+ * Every sibling comparison here is path-keyed, so a file the other repo kept under a different
+ * name reads as "beta-only, no counterpart" — the strongest possible claim, made by a lookup
+ * that never happened. PROD7 quarantined this repo's legacy calc into `legacy-totals.oracle.ts`
+ * and left canonical's copy where it was; canonical then migrated that copy in place through its
+ * own STRIP-1. So the oracle's 165 seams all reported `absent`, and BPORT5 was scoped as a
+ * choice between two ways to FREEZE the oracle — because the census said the migrated twin it
+ * could carry did not exist.
+ *
+ * A hand-kept map earns the same distrust as {@link rosterSeams}' register, and for the same
+ * reason: it describes code, so it is checked against the code. {@link assertCounterpartsLive}
+ * refuses a mapping whose target is gone or has stopped being the same file.
+ */
+const RENAMED_COUNTERPART = {
+  'src/utils/calculations/legacy-totals.oracle.ts': 'src/utils/calculations/character-totals.ts',
+};
+
+/** Top-level `function` names, which is all the lineage check needs and the cheapest to read. */
+function declNames(abs) {
+  const src = stripComments(fs.readFileSync(abs, 'utf8'));
+  return new Set([...src.matchAll(/^(?:export\s+)?(?:async\s+)?function\s+(\w+)/gm)].map((m) => m[1]));
+}
+
+/**
+ * The register is only usable while its two files are still the same file.
+ *
+ * A rename map is a claim about lineage, and lineage rots quietly: the day canonical splits
+ * `character-totals.ts` the way PROD7 split this one, the mapping starts grading two unrelated
+ * modules and reports the difference as work. So the door is shared declarations — 31 of the
+ * oracle's 34 functions are in canonical's copy today — and anything under two-thirds throws
+ * rather than answers.
+ */
+function assertCounterpartsLive(siblingRoot) {
+  for (const [mine, theirs] of Object.entries(RENAMED_COUNTERPART)) {
+    const abs = path.join(siblingRoot, theirs);
+    if (!fs.existsSync(abs)) throw new Error(`RENAMED_COUNTERPART: ${mine} -> ${theirs} is absent in ${siblingRoot}`);
+    const ours = declNames(path.join(REPO, mine));
+    const theirNames = declNames(abs);
+    const shared = [...ours].filter((n) => theirNames.has(n)).length;
+    const ratio = ours.size ? shared / ours.size : 0;
+    if (ratio < 2 / 3) {
+      throw new Error(
+        `RENAMED_COUNTERPART: ${mine} -> ${theirs} shares only ${shared}/${ours.size} declarations; ` +
+        'the two have stopped being the same file and the mapping must be re-adjudicated',
+      );
+    }
+  }
+}
+
+/** Where the sibling keeps this file, following a one-sided rename. */
+function counterpartOf(rel) {
+  return RENAMED_COUNTERPART[rel] ?? rel;
+}
+
+/**
+ * Partition the sweep against the other repo: the stream doc's four buckets, plus `renamed`.
+ *
+ * The fifth is not a subdivision of the others — it is the population `betaOnly` was wrong
+ * about. BPORT3 adjudicated five beta-only readers and named the oracle as a sixth it was not
+ * taking; the sixth was never beta-only, it was renamed.
+ */
 function partition(files, siblingRoot) {
-  const buckets = { bothRead: [], identical: [], betaOnly: [], migrated: [] };
+  const buckets = { bothRead: [], identical: [], betaOnly: [], migrated: [], renamed: [] };
   for (const f of files) {
+    if (RENAMED_COUNTERPART[f]) { buckets.renamed.push(f); continue; }
     const theirs = path.join(siblingRoot, f);
     if (!fs.existsSync(theirs)) { buckets.betaOnly.push(f); continue; }
     const mine = fs.readFileSync(path.join(REPO, f));
@@ -279,7 +349,7 @@ function rosterSeams(declared) {
  */
 function siblingRosterVerdict(seam, siblingRoot) {
   const symbol = seam.binding.slice('roster:'.length);
-  const theirs = path.join(siblingRoot, seam.file);
+  const theirs = path.join(siblingRoot, counterpartOf(seam.file));
   if (!fs.existsSync(theirs)) return 'absent';
   const src = stripComments(fs.readFileSync(theirs, 'utf8'));
   const declares = new RegExp(`(?:const|let|var|function)\\s+${symbol}\\b`).test(src);
@@ -329,7 +399,7 @@ function propFeeds(files) {
  */
 function atomArmGap(rel, siblingRoot) {
   const imports = (root) => {
-    const p = path.join(root, rel);
+    const p = path.join(root, root === REPO ? rel : counterpartOf(rel));
     if (!fs.existsSync(p)) return new Set();
     const src = stripComments(fs.readFileSync(p, 'utf8'));
     const out = new Set();
@@ -458,6 +528,7 @@ function readerCensus({ siblingRoot = null, datasets } = {}) {
 
   const readerFiles = [...new Set(seams.map((s) => s.file))].sort();
   const sweep = fileSweep();
+  if (siblingRoot) assertCounterpartsLive(siblingRoot);
   const buckets = siblingRoot ? partition(sweep, siblingRoot) : null;
 
   // What the other repo did with the SAME seam. "Both repos read it" was the stream doc's
@@ -475,7 +546,7 @@ function readerCensus({ siblingRoot = null, datasets } = {}) {
     const theirSeams = new Map();
     for (const s of seams) {
       if (theirSeams.has(s.file)) continue;
-      const theirs = path.join(siblingRoot, s.file);
+      const theirs = path.join(siblingRoot, counterpartOf(s.file));
       theirSeams.set(s.file, fs.existsSync(theirs)
         ? new Set(seamsIn(path.relative(siblingRoot, theirs), declared, siblingRoot).map((t) => t.slot))
         : null);
@@ -500,7 +571,9 @@ function report(c) {
   if (c.buckets) {
     const b = c.buckets;
     out.push(`  both-read ${b.bothRead.length} | identical ${b.identical.length} | ` +
-             `beta-only ${b.betaOnly.length} | migrated-in-canonical ${b.migrated.length}`);
+             `beta-only ${b.betaOnly.length} | migrated-in-canonical ${b.migrated.length} | ` +
+             `renamed ${b.renamed.length}`);
+    for (const f of b.renamed) out.push(`      ${f}  ->  ${counterpartOf(f)}`);
   }
   const proseOnly = c.sweep.filter((f) => !c.readerFiles.includes(f));
   out.push(`  ${proseOnly.length} of those carry NO bag seam — their \`.effects\` is a set-bonus tier,`);
@@ -611,4 +684,18 @@ function bagSeams(rel) {
   return seamsIn(rel, new Set(supply.declaredSlots()));
 }
 
-module.exports = { readerCensus, report, stripComments, seamsIn, bagSeams, propFeeds, fileSweep, partition, guardExpr };
+/**
+ * The same finder pointed at the other repo's copy, following a one-sided rename.
+ *
+ * The slot vocabulary stays THIS repo's: canonical's `PowerEffects` has moved on, and the
+ * question here is what canonical did with the slots the beta still reads, not what its own
+ * declaration says today.
+ */
+function siblingSeams(rel, siblingRoot) {
+  return seamsIn(counterpartOf(rel), new Set(supply.declaredSlots()), siblingRoot);
+}
+
+module.exports = {
+  readerCensus, report, stripComments, seamsIn, bagSeams, siblingSeams, propFeeds, fileSweep,
+  partition, guardExpr, RENAMED_COUNTERPART, counterpartOf, assertCounterpartsLive,
+};
