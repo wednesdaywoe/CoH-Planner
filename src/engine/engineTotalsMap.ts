@@ -123,7 +123,17 @@ interface EnginePerma {
  *  PROD6B-1). Each execution aspect is `null` when the power lacks that base stat; `perma` is
  *  `null` for a non-perma-eligible power. */
 export interface EngineGrantedQuantity {
-  kind: 'value' | 'mez_duration' | 'distance';
+  /** All seven members of the engine's `GrantedQuantity`. This used to declare three, which
+   *  made an exhaustive reader on this side accept four wire values it had no arm for
+   *  (ATTRTYPE-1: widening a wire enum obliges every exhaustive reader). */
+  kind:
+    | 'value'
+    | 'mez_duration'
+    | 'mez_magnitude'
+    | 'mez_expression'
+    | 'mez_constant'
+    | 'mez_unstated'
+    | 'distance';
   /** Present only on `mez_duration`: the mez rank the effect grabs, shown beside the
    *  duration the tier carries. */
   magnitude?: number;

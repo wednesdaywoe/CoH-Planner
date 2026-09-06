@@ -8,7 +8,8 @@ import { useEffect, useLayoutEffect, useRef, useState, useCallback, useMemo } fr
 import { createPortal } from 'react-dom';
 import { useUIStore, useBuildStore, useDominationActive, useScourgeActive, useFuryLevel, useSupremacyActive, useVigilanceTeamSize, useCriticalHitsActive, useStalkerHidden, useStalkerTeamSize, useStalkerCritActive, useContainmentActive, useSentinelCritActive, useGlobalAdjuster } from '@/stores';
 import { getBaseToHit } from '@/data/purple-patch';
-import { useGlobalBonuses, usePowerDamageVsRank } from '@/hooks/useCalculatedStats';
+import { useGlobalBonuses, usePowerDamageVsRank, usePowerProjection } from '@/hooks/useCalculatedStats';
+import { magnitudesFromProjection } from './magnitudesFromProjection';
 import { critBranchSummary, critComponents, VS_HIGHER_RANK_SEGMENT, VS_MINION_RANK_SEGMENT } from '@/utils/calculations/power-at-mechanics';
 import { useBuildMaxAttackDamage } from '@/hooks/useBuildMaxAttackDamage';
 import { lookupPower, getIOSet, getPowerset } from '@/data';
@@ -101,6 +102,15 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   const wantEngineCrit = archetypeId === 'scrapper' && isScrapperAttackPower(powerSet) && criticalHitsActive;
   const damageVsHigher = usePowerDamageVsRank(wantEngineCrit ? powerSet : undefined, powerName, VS_HIGHER_RANK_SEGMENT);
   const damageVsMinion = usePowerDamageVsRank(wantEngineCrit ? powerSet : undefined, powerName, VS_MINION_RANK_SEGMENT);
+
+  // The effect rows, from the engine rather than resolved off the display bag (ENGLAG-1) — the
+  // same swap the InfoPanel takes, and for the same reason: STRIP-1 left the bag holding only
+  // the keys `buildDisplayEffects` mints, so the local path renders no authored effect at all.
+  const projection = usePowerProjection(powerSet, powerName);
+  const effectRows = useMemo(
+    () => (projection ? magnitudesFromProjection(projection.grantedMagnitudes) : undefined),
+    [projection],
+  );
 
   // Check if Fiery Embrace is active in the build
   const isFieryEmbraceActive = useMemo(() => {
@@ -518,6 +528,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
         archetypeId={archetypeId ?? undefined}
         level={build.level}
         targetsAffected={basePower?.targetsAffected}
+        rows={effectRows}
         categories={['execution', 'buff', 'debuff', 'control', 'protection', 'movement']}
         dominationActive={dominationActive}
         compact={true}

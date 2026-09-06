@@ -8,7 +8,11 @@ import type { PowerEffects, SpecialEffect } from '@/types';
 import type { ExtraInstance } from './powerDisplayUtils';
 import { isScaledEffect } from '@/types';
 import { AT_INHERENT_CONDITIONAL_IDS } from './powerDisplayUtils';
-import { resolvePowerMagnitudes, type MagnitudeQuantity } from './resolvePowerMagnitudes';
+import {
+  resolvePowerMagnitudes,
+  type MagnitudeQuantity,
+  type ResolvedMagnitude,
+} from './resolvePowerMagnitudes';
 import type { ThreeTierValues } from './powerDisplayUtils';
 import { abbreviateDamageType, type PowerDamageResult } from '@/utils/calculations';
 import {
@@ -222,6 +226,9 @@ interface DisplayableEffect {
   quantity: MagnitudeQuantity;
   byTypeLabel?: string;
   expandedLabel?: string;
+  /** The mez FACE, when the row's producer already took that verdict. Set on an engine row,
+   *  absent on a resolved one; see [`isProtectionMez`]. */
+  mezFace?: 'protection' | 'self';
   /** Dominator inherent bonus for this mez — the extra stacking mez the power's
    *  `domination` conditionalEffect grants while Domination is active (sourced
    *  from the matching `extraInstances` collision). Present only on powers that
@@ -623,6 +630,23 @@ interface RegistryEffectsDisplayProps {
   /** The power's `targets_affected` — needed to read the mez FACE off the value's own
    *  protection spelling instead of sniffing table names (MEZFACE-1). */
   targetsAffected?: string[];
+  /**
+   * Already-resolved rows, used INSTEAD of resolving `effects` here (ENGLAG-1).
+   *
+   * A surface that holds an engine projection passes `magnitudesFromProjection(...)` and gets
+   * the rows the engine resolved from the atom stream. A surface that does not keeps the
+   * `effects` path, which resolves whatever the display bag still carries — and since
+   * STRIP-1 that is the keys `buildDisplayEffects` mints for itself, so a power whose effects
+   * were authored on the wire renders nothing at all through it.
+   *
+   * The two row sources differ in one respect the render sites have to tolerate: an engine
+   * row carries no `rawValue`, because no authored value stands behind it. Every consumer of
+   * that field guards with `isMezEffect` / `isScaledEffect` and so declines rather than
+   * breaking, which costs the `durationVariants` annotation and the Domination substitution
+   * on an engine row. `effects` is still read for `durations` and the header, so a surviving
+   * bag annotates its rows exactly as before.
+   */
+  rows?: ResolvedMagnitude[];
 }
 
 /** Get con-colored arrow symbol for target level offset (matches in-game con system) */
@@ -662,6 +686,7 @@ export function RegistryEffectsDisplay({
   specialEffects,
   extraInstances,
   targetsAffected,
+  rows,
 }: RegistryEffectsDisplayProps) {
   const allowedSet = new Set(allowedEnhancements);
 
@@ -722,10 +747,11 @@ export function RegistryEffectsDisplay({
     return allowedSet.has(enhType);
   };
 
-  // Resolve every row's numbers. The resolution itself lives in `resolvePowerMagnitudes`
-  // so the engine's `granted.rs` can be graded against the code path this component
-  // actually renders (PROD6B-2); everything below is display policy.
-  const resolved = resolvePowerMagnitudes({
+  // Every row's numbers, already resolved. A caller holding an engine projection supplies
+  // them; otherwise they resolve here from the display bag, and `resolvePowerMagnitudes` is
+  // a module of its own so the engine's `granted.rs` can be graded against the code path
+  // this component actually renders (PROD6B-2). Everything below is display policy.
+  const resolved = rows ?? resolvePowerMagnitudes({
     effects,
     archetypeId,
     level,
@@ -751,6 +777,7 @@ export function RegistryEffectsDisplay({
       quantity: row.quantity,
       byTypeLabel: row.byTypeLabel,
       expandedLabel: row.expandedLabel,
+      mezFace: row.mezFace,
       dominationBonus,
     });
   }
@@ -801,6 +828,11 @@ export function RegistryEffectsDisplay({
   const FOE_TARGETS = ['Foe', 'DeadFoe', 'DeadOrAliveFoe', 'Any'];
   const powerAffectsFoe = (targetsAffected ?? []).some((t) => FOE_TARGETS.includes(t));
   const isProtectionMez = (item: DisplayableEffect): boolean => {
+    // An engine row already carries the verdict: `mez_face_label` took it from the same
+    // spelling-plus-recipient pair, on the power rather than on a `targetsAffected` the
+    // caller had to remember to pass. Sniffing it again off a `rawValue` that row does not
+    // have would read every protection mez as applied control.
+    if (item.mezFace) return item.mezFace === 'protection';
     const v = item.effect.value as
       | { scale?: number; mag?: number; attribType?: string }
       | number
@@ -1086,7 +1118,9 @@ export function RegistryEffectsDisplay({
           // A mez the data does not value: an expression reads live character state (Inner
           // Will takes whatever is mezzing you), and an unstated one lost its `attribType`
           // on the way to the bag — a converter regression, worded so it reads as one.
-          if (quantity.kind === 'mez_expression' || quantity.kind === 'mez_unstated') {
+          if (quantity.kind === 'mez_expression'
+            || quantity.kind === 'mez_constant'
+            || quantity.kind === 'mez_unstated') {
             return (
               <div key={key} className={`grid ${gridCols} gap-1 items-baseline ${fontSize}`}>
                 <span className={colorClass}>{label}</span>
@@ -1100,7 +1134,10 @@ export function RegistryEffectsDisplay({
           }
 
           // Duration-based mez (stun, hold, etc.) — magnitude is fixed, duration is enhanceable
-          if (quantity.kind === 'mez_duration' && isMezEffect(rawValue) && archetypeId && level) {
+          // `quantity` is the classification; the raw value is not consulted again. It used
+          // to be re-tested here, which dropped the row for any producer that resolves the
+          // quantity without carrying an authored value (ENGLAG-1's engine rows).
+          if (quantity.kind === 'mez_duration' && archetypeId && level) {
             // Under Domination the effective hold is the tagged bonus (it stacks
             // onto the base with a longer duration), so display uses its scale/table.
             // Undominated, the resolved tier IS the duration, so it is read rather than

@@ -71,6 +71,7 @@ import {
   calcThreeTier,
 } from './powerDisplayUtils';
 import { resolveEffectivePower, effectiveGlobalAdjusters, isCasterHidden, currentToHitFraction, isQuickSnipeActive } from './resolveEffectivePower';
+import { magnitudesFromProjection } from './magnitudesFromProjection';
 import {
   RegistryEffectsDisplay,
 } from './SharedPowerComponents';
@@ -208,6 +209,16 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   // perma, and the magnitudes it grants (PROD6C). Covers a power the build has not picked too,
   // which is what the panel shows while you browse the picker.
   const projection = usePowerProjection(powerSet, powerName);
+
+  // The effect rows themselves, taken from that projection rather than resolved here
+  // (ENGLAG-1). The engine seeds its display bag from the power's ATOMS, so it resolves the
+  // rows of a power whose authored `effects` STRIP-1 removed; resolving locally would render
+  // only the keys `buildDisplayEffects` mints for itself. `null` until the dataset loads,
+  // which is the one window the local path still covers.
+  const effectRows = useMemo(
+    () => (projection ? magnitudesFromProjection(projection.grantedMagnitudes) : undefined),
+    [projection],
+  );
 
   // Get Alpha incarnate enhancement bonuses (apply to all powers)
   const alphaBonuses = useMemo<EnhancementBonuses>(() => {
@@ -922,6 +933,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         archetypeId={archetypeId ?? undefined}
         level={build.level}
         targetsAffected={power?.targetsAffected}
+        rows={effectRows}
         categories={['execution', 'buff', 'debuff', 'control', 'protection', 'movement']}
         executionKeys={['accuracy', 'enduranceCost', 'recharge', 'healing']}
         dominationActive={dominationActive}

@@ -62,12 +62,19 @@ import {
  * six break-free templates read whatever is mezzing you right now), so no static tier states
  * it. `mez_unstated`: the discriminator never reached the bag — a converter regression, not
  * a state the game has, which `mezAttribTypeStamped` fails on.
+ *
+ * `mez_constant`: `mod_Fill`'s `kModType_Constant` arm assigns the template's own magnitude
+ * and duration straight across, so `scale x table` is the number that row DISCARDS. No mez
+ * attrib carries one in any fork, and the engine's gate keeps it that way, so this member
+ * exists to route the value rather than to render a number. It is declared here because the
+ * engine declares it (ATTRTYPE-1), not because the corpus reaches it.
  */
 export type MagnitudeQuantity =
   | { kind: 'value' }
   | { kind: 'mez_duration'; magnitude: number }
   | { kind: 'mez_magnitude' }
   | { kind: 'mez_expression' }
+  | { kind: 'mez_constant' }
   | { kind: 'mez_unstated' }
   | { kind: 'distance' };
 
@@ -86,6 +93,16 @@ export interface ResolvedMagnitude {
   quantity: MagnitudeQuantity;
   /** Abbreviated type summary for a COLLAPSED by-type row. */
   byTypeLabel?: string;
+  /**
+   * Which FACE a mez row wears (MEZFACE-1), when the producer already knows.
+   *
+   * This resolver never sets it: the face is a fact about the POWER (does it affect a foe?)
+   * and the resolver is handed a bag, not a power. Its consumer therefore keeps its own
+   * `targetsAffected` sniff as the fallback. The engine, which has the power, resolves the
+   * face into the row's `label` — so [`magnitudesFromProjection`] reads it back off that
+   * label and states it here rather than re-deriving a verdict the engine already took.
+   */
+  mezFace?: 'protection' | 'self';
 }
 
 export interface ResolveMagnitudesParams {
@@ -353,6 +370,7 @@ function classifyMagQuantity(value: unknown, config: EffectDisplayConfig): Magni
       case 'Duration': return { kind: 'mez_duration', magnitude: value.mag };
       case 'Magnitude': return { kind: 'mez_magnitude' };
       case 'Expression': return { kind: 'mez_expression' };
+      case 'Constant': return { kind: 'mez_constant' };
       default: return { kind: 'mez_unstated' };
     }
   }
@@ -452,7 +470,9 @@ export function resolvePowerMagnitudes({
       // the surface says so in words — because the alternatives are both worse: a fabricated
       // one is the soft-wrong MEZDUR-1 was filed for, and dropping the row is the silent
       // omission ENT-6 measured, where a power's card simply lacked an effect the game shows.
-      if (quantity.kind === 'mez_expression' || quantity.kind === 'mez_unstated') {
+      if (quantity.kind === 'mez_expression'
+        || quantity.kind === 'mez_constant'
+        || quantity.kind === 'mez_unstated') {
         push({
           rowKey: key,
           effectKey,

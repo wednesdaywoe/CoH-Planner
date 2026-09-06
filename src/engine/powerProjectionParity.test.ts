@@ -49,11 +49,13 @@ import { landsOnCaster } from '@/data/core/atomic-effect';
 import { calculateArcanaTime } from '@/utils/calculations/damage';
 import { calcThreeTier, convertGlobalBonusesToAspects, withStrengthBonuses, type ThreeTierValues } from '@/components/info/powerDisplayUtils';
 import { resolvePowerMagnitudes, type ResolvedMagnitude } from '@/components/info/resolvePowerMagnitudes';
+import { magnitudesFromProjection } from '@/components/info/magnitudesFromProjection';
+import { EFFECT_REGISTRY } from '@/data/core/effect-registry';
 import { buildDisplayEffects, getStackingInfo, withPseudoPetEffects, withTargetsHit } from '@/components/info/buildDisplayEffects';
 import { resolveEffectivePower, effectiveGlobalAdjusters, isCasterHidden, currentToHitFraction, type EffectivePowerState } from '@/components/info/resolveEffectivePower';
 import { selectableModes } from '@/utils/mode-suppression';
 import { toCharacterStateJson, type AdapterCalcContext } from './characterStateAdapter';
-import { mapGlobal, mapOnePowerProjection, mapPowerProjection, projectionKey, type EngineTotals, type GrantedMagnitude, type PowerProjection } from './engineTotalsMap';
+import { mapGlobal, mapOnePowerProjection, mapPowerProjection, projectionKey, type EnginePowerProjection, type EngineTotals, type GrantedMagnitude, type PowerProjection } from './engineTotalsMap';
 import type { Build } from '@/types/build';
 import type { Power, PowerEffects, SelectedPower } from '@/types/power';
 import type { SelectedIncarnatePower } from '@/types/incarnate';
@@ -1229,6 +1231,175 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
         `vacuous. Add them to the set.`,
     ).toEqual([]);
   }, 120000);
+
+  // ENGLAG-1 — the display renders the ENGINE's rows now, mapped by `magnitudesFromProjection`.
+  //
+  // The population is every powerset power of every standard archetype, each projected through
+  // `project_power` — the call `usePowerProjection` makes for a power you hover in the picker,
+  // which is where the InfoPanel gets these rows. The 18-power fixture build is not the corpus
+  // here: it carries no by-type expansion and no protection mez, and a fixture-scoped version of
+  // this test passed with the expansion join and the face read both deliberately broken.
+  //
+  // Two oracles, because neither covers the other's population:
+  //
+  // - The ENGINE's own row, for the `row_key` -> expansion verdict and the label. The resolver
+  //   cannot grade these: a by-type value lives in the authored bag STRIP-1 removed, so every
+  //   expanded row is engine-only and a resolver diff sees none of them. What is available is a
+  //   JOIN between two fields the engine states independently — an expanded row is keyed
+  //   `{effect_key}_{type_key}` AND labelled off the family label, so each checks the other.
+  // - The RESOLVER, for the registry join (color, category, quantity), over the rows both
+  //   still produce.
+  //
+  // Then the recovery floor, which is what makes the swap load-bearing: the rows the engine
+  // resolves and the display bag no longer carries. Re-point the display at the resolver and it
+  // reads zero.
+  it.each(SERVERS)('%s: the engine rows map onto the display shape, and recover the bagless powers', async (server) => {
+    await loadDataset(server);
+    const handle = engineHandle(server);
+    const deltas: string[] = [];
+    const census = { projected: 0, rows: 0, expanded: 0, faced: 0, qualified: 0, compared: 0, recovered: 0 };
+    const lost: string[] = [];
+    const lostMinted: string[] = [];
+
+    for (const atId of STANDARD_ARCHETYPE_IDS) {
+      const build = buildFor(server, atId, 50, false);
+      const state = toCharacterStateJson(withoutIllegalSlots(build), CTX);
+      for (const set of getPowersetsForArchetype(atId)) {
+        for (const power of set.powers as Power[]) {
+          const json = handle.project_power(state, set.id!, power.internalName);
+          const raw = json ? (JSON.parse(json) as EnginePowerProjection | null) : null;
+          if (!raw) continue;
+          census.projected += 1;
+          const engineRows = mapOnePowerProjection(raw).grantedMagnitudes;
+          const adapted = magnitudesFromProjection(engineRows);
+          const byKey = new Map(engineRows.map((r) => [r.rowKey, r]));
+          const shown = { ...power, powerSet: set.id! } as unknown as SelectedPower;
+          // Unslotted on both sides, so neither enhancement nor global reaches either. The tiers
+          // are base numbers and the comparison below is shape, not arithmetic.
+          const beta = betaMagnitudes(shown, build, atId, {}, {});
+
+          // Every expanded row of one key has to share ONE config object, or the component's
+          // reference-equality check stops collapsing the group into its summary row.
+          const configs = new Map<string, object>();
+
+          for (const row of adapted) {
+            const engine = byKey.get(row.rowKey)!;
+            const base = EFFECT_REGISTRY[row.effectKey];
+            const where = `${set.id}.${power.internalName}.${row.rowKey}`;
+            census.rows += 1;
+
+            if (row.expandedLabel) {
+              census.expanded += 1;
+              const seen = configs.get(row.effectKey);
+              if (seen && seen !== row.config) deltas.push(`${where}: expanded rows of one key hold two config objects`);
+              configs.set(row.effectKey, row.config);
+              // An expanded row's label is the family label, a `"<family>: <type>"` entry, or
+              // the collapsed `"<family> (All)"`. Anything else means `isExpanded` said yes to a
+              // row the engine did not expand.
+              const ok = engine.label === base.label
+                || engine.label.startsWith(`${base.label}: `)
+                || engine.label === `${base.label} (All)`;
+              if (!ok) deltas.push(`${where}: marked expanded, but label "${engine.label}" is not off "${base.label}"`);
+              if (row.config.label !== base.label) deltas.push(`${where}: expanded row's config lost the family label`);
+            } else {
+              // A row that is NOT an expansion renders `config.label`, so that has to BE the
+              // engine's label — including the mez face and the percent-form qualifier the
+              // engine folds into it.
+              if (row.config.label !== engine.label) {
+                deltas.push(`${where}: config.label "${row.config.label}" is not the engine's "${engine.label}"`);
+              }
+              if (engine.label !== base.label) census.qualified += 1;
+            }
+
+            // The face rides on the label, so the label decides whether one is owed.
+            const owed = engine.label.endsWith(' Prot') ? 'protection'
+              : engine.label.endsWith(' (Self)') ? 'self' : undefined;
+            if (owed) census.faced += 1;
+            if (row.mezFace !== owed) deltas.push(`${where}: mezFace ${row.mezFace} on label "${engine.label}"`);
+
+            if (row.config.format !== engine.format) deltas.push(`${where}: format ${row.config.format} vs ${engine.format}`);
+            if (row.quantity.kind !== engine.quantity.kind) deltas.push(`${where}: quantity ${row.quantity.kind} vs ${engine.quantity.kind}`);
+            if (row.byTypeLabel !== (engine.byTypeLabel ?? undefined)) deltas.push(`${where}: byTypeLabel ${row.byTypeLabel} vs ${engine.byTypeLabel}`);
+
+            // …and the REGISTRY join, on the rows the resolver still produces: both sides look
+            // the config up by effect key, so a row they share has to come out drawn the same.
+            // Only what the registry owns — the engine's own values are graded above, and
+            // against the resolver they carry `magnitudeDeltas`' known data divergences.
+            const ref = beta.get(row.rowKey);
+            if (!ref) continue;
+            census.compared += 1;
+            if (row.config.colorClass !== ref.config.colorClass) deltas.push(`${where}: colorClass ${row.config.colorClass} vs ${ref.config.colorClass}`);
+            if (row.config.category !== ref.config.category) deltas.push(`${where}: category ${row.config.category} vs ${ref.config.category}`);
+          }
+
+          if (atomsOf(power).length === 0) continue;
+          census.recovered += adapted.filter((r) => !beta.has(r.rowKey)).length;
+          for (const [key, ref] of beta) {
+            if (adapted.some((r) => r.rowKey === key)) continue;
+            // A MINTED key is not an authored effect the swap dropped: both sides derive it
+            // for themselves (`buildDisplayEffects` here, `atom_seed`'s power-level fallbacks
+            // there), so a delta is those two derivations disagreeing, which is
+            // `magnitudeDeltas`' subject. Counted rather than failed, with a ceiling so the
+            // population cannot grow unnoticed.
+            const where = `${set.id}.${power.internalName}.${key}`;
+            if (DISPLAY_MINTED_KEYS.has(ref.effectKey)) lostMinted.push(where);
+            else lost.push(where);
+          }
+        }
+      }
+    }
+
+    // eslint-disable-next-line no-console
+    console.warn(`[ENGLAG-1 adapter] ${server}: ${census.projected} powers, ${census.rows} rows (${census.expanded} expanded, ${census.faced} faced, ${census.qualified} qualified), ${census.compared} cross-checked, ${census.recovered} recovered, ${lost.length} lost (+${lostMinted.length} minted)`);
+
+    // Every rule above is graded only where the corpus carries its shape, so each population is
+    // named. The first version of this test asserted none of them and was blind to two.
+    expect(census.projected, `${server}: nothing projected`).toBeGreaterThan(500);
+    expect(census.expanded, `${server}: no EXPANDED row — the row_key join is ungraded`).toBeGreaterThan(100);
+    expect(census.faced, `${server}: no mez FACE — the face read is ungraded`).toBeGreaterThan(10);
+    expect(census.qualified, `${server}: no row whose engine label differs from the registry's — the label carry is ungraded`).toBeGreaterThan(10);
+    expect(census.compared, `${server}: no row cross-checked against the resolver`).toBeGreaterThan(500);
+    expect(deltas.slice(0, 20), `${server}: ${deltas.length} adapter shape deltas`).toEqual([]);
+    expect(
+      census.recovered,
+      `${server}: the engine path recovered no row the display bag has lost. Either the bag is ` +
+        `no longer stripped (retire this arm), or the projection stopped seeding from atoms.`,
+    ).toBeGreaterThan(5000);
+    expect(
+      lost.slice(0, 20),
+      `${server}: ${lost.length} AUTHORED rows resolve from the display bag and NOT from the ` +
+        `engine — the swap DROPS them. Each is a bag key carrying an effect no atom states.`,
+    ).toEqual([]);
+    // One when this landed (`Assassins_Strike.buffDuration` on homecoming), and it is the two
+    // buffDuration derivations disagreeing rather than a lost effect. Ceiling, not zero: the
+    // arm exists to notice the population growing.
+    expect(
+      lostMinted.slice(0, 20).length,
+      `${server}: ${lostMinted.length} minted rows the engine does not derive: ${lostMinted.slice(0, 5).join(', ')}`,
+    ).toBeLessThan(3);
+  }, 900000);
+
+  // …and that the surfaces actually PASS those rows. Every arm above grades
+  // `magnitudesFromProjection` directly, so deleting the one prop that reaches the component
+  // would leave all of them green while the panel went back to rendering minted keys only.
+  // There is no render harness in this repo, so this reads the call sites (ENGLAG-1).
+  //
+  // `CompareSlottingModal` is the third caller and is deliberately absent: its subject is a
+  // HYPOTHETICAL slotting, and `project_power` resolves the build's own, so engine rows would
+  // answer a question that modal is not asking. It renders minted keys only until either the
+  // engine can project a proposed slotting or the display bag gets a TS-side atom seed.
+  it.each([
+    ['components/info/InfoPanel.tsx'],
+    ['components/info/PowerInfoTooltip.tsx'],
+  ])('%s feeds the projection rows to RegistryEffectsDisplay', (relative) => {
+    const source = readFileSync(join(__dirname, '..', ...relative.split('/')), 'utf8');
+    expect(source, `${relative} no longer adapts the projection`).toContain('magnitudesFromProjection(projection.grantedMagnitudes)');
+    const call = source.slice(source.indexOf('<RegistryEffectsDisplay'));
+    expect(
+      call.slice(0, call.indexOf('/>')),
+      `${relative} stopped passing \`rows\`, so it resolves the stripped display bag again`,
+    ).toContain('rows={effectRows}');
+  });
 
   it.each(SERVERS)('%s: every selected power projects to the beta calculators', async (server) => {
     await loadDataset(server); // activates this dataset for the beta calculators
