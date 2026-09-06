@@ -322,21 +322,66 @@ export function createEmptyGlobalBonuses(): GlobalBonuses {
 export type ScalarOrScaled = number | { scale: number; table?: string };
 export type MezScaled = { mag?: number; scale: number; table: string };
 
+/** `maxTargets` sentinel for an unbounded AoE — a team-wide spread with no axis to count. */
+const UNBOUNDED_MAX_TARGETS = 255;
+
+/**
+ * Is the caster himself one of the entities his own AoE counts — so that N is never 0?
+ *
+ * Both terms are the ones `computeAoePerTargetPatches` reads to mint the `perTarget` stamp in the
+ * first place, and reading them back is what keeps the floor and the value it floors on one story:
+ *
+ *  - The geometry — a sphere or cone with a bounded `maxTargets` — is that pass's own
+ *    `isAoEWithTargets` gate. It matters because `perTarget` also reaches atoms from the
+ *    `Execute_Power` redirect branch, where the increment counts something else entirely
+ *    (Reactive Regeneration's stacks count how recently you were hit, on a `SingleTarget` toggle
+ *    with no sphere at all), and a floor there would assert a combat state rather than a seat in
+ *    a sphere.
+ *  - The recipient list — the converter's `selfIsCountedTarget`, `Power::affects_caster` in the
+ *    engine — is what makes the caster one of those seats. It is the same term
+ *    `firstTargetExcluded` uses to decide the value AT one target, so the two halves of "N = 1 is
+ *    solo" answer from one field instead of one of them being left unsaid.
+ *
+ * `maxTargets` is read under `stats`, which is where every per-target power in all four forks
+ * carries it (109/102/114/109, none at the power level). The pseudo-pet ability records that
+ * spell it a second way are not powers and never reach this path.
+ *
+ * Absent reads false on both terms: no list is not a licence to credit the caster with a slot.
+ */
+export function casterOccupiesATargetSlot(power: PowerWithToggle): boolean {
+  if (!power.targetsAffected?.includes('Self')) return false;
+  if (power.effectArea !== 'AoE' && power.effectArea !== 'Cone') return false;
+  const maxTargets = power.stats?.maxTargets;
+  return typeof maxTargets === 'number' && maxTargets > 1 && maxTargets !== UNBOUNDED_MAX_TARGETS;
+}
+
 /**
  * Adjust a scaled effect for per-target stacking. The `scale` field on a
  * perTarget-flagged effect stores the value at N=1 (base + 1 × per-target
  * contribution); each additional target adds `perTarget` to it.
  *
  * Semantics with respect to the targets-hit slider:
- *   - N undefined → no slider input; reads as 0, same as an explicit 0.
- *   - N = 0       → power whiffed; the buff doesn't fire. Return scale 0.
+ *   - N undefined → no slider input; reads the same as an explicit 0, which is the axis' floor
+ *                   (0 for a foe aura, 1 where the caster holds a seat — see below).
+ *   - N = 0       → the sphere landed on nobody; the buff doesn't fire. Return scale 0.
  *   - N = 1       → original value.
  *   - N ≥ 2       → scale + perTarget × (N − 1).
  *
  * Effects without `perTarget` metadata (always-on buffs) are unaffected
  * by the slider regardless of N.
+ *
+ * `casterIsCounted` ({@link casterOccupiesATargetSlot}) decides whether N = 0 is a state the
+ * power can be in at all. A foe aura reaches its caster only through a target, so with nobody in
+ * radius no block runs and zero is honest. A power that lists the caster among the entities its
+ * own sphere lands on is the other shape: he fills the first of its `maxTargets` slots for as
+ * long as it is running, so the count floors at one and the slider only ever adds to it
+ * (PERFOE-3, Phalanx Fighting — 5% melee/ranged/AoE defence with no ally in sight).
  */
-function adjustForPerTarget(value: ScalarOrScaled, targetsHit?: number): ScalarOrScaled {
+function adjustForPerTarget(
+  value: ScalarOrScaled,
+  targetsHit: number | undefined,
+  casterIsCounted: boolean,
+): ScalarOrScaled {
   if (typeof value !== 'object' || value === null) return value;
   const obj = value as Record<string, unknown>;
   // A MaxHP-fraction absorb carries its per-foe growth as `maxHPFractionPerTarget`
@@ -348,12 +393,11 @@ function adjustForPerTarget(value: ScalarOrScaled, targetsHit?: number): ScalarO
   const increment = obj[incrementKey];
   const magnitude = obj[magnitudeKey];
   if (typeof increment !== 'number' || !increment || typeof magnitude !== 'number') return value;
-  // An untouched slider (no map entry ⇒ `undefined`) reads as "Off" in the UI
-  // (InfoPanel coerces the absent value to 0 and renders "Off"), so the calc must
-  // treat it as 0 targets too — otherwise the power silently computes its N=1
-  // value while the slider says Off (the "defaults to 1-target values despite
-  // showing Off" bug). Coerce absent → 0.
-  const n = targetsHit ?? 0;
+  // An untouched slider must read as whatever the CONTROL shows, or the power computes one number
+  // while the UI states another (the "defaults to 1-target values despite showing Off" bug). Both
+  // sides now start the axis at the same place: `getStackingInfo` gives the slider its
+  // `minStacks`, and `casterOccupiesATargetSlot` gives the calc the same floor.
+  const n = Math.max(targetsHit ?? 0, casterIsCounted ? 1 : 0);
   if (n <= 0) return { ...value, [magnitudeKey]: 0 } as ScalarOrScaled;
   if (n === 1) return value;
   return { ...value, [magnitudeKey]: magnitude + increment * (n - 1) } as ScalarOrScaled;
@@ -471,6 +515,10 @@ export interface PowerWithToggle {
   internalName: string;
   powerType?: string;
   targetType?: string;
+  /** `EntsAffected` — who this power's effects land on, which `targetType` (where it is AIMED)
+   *  does not answer. Read by the atom-native appliers through `reachesCaster`, and by
+   *  {@link casterOccupiesATargetSlot} for the AoE target count. */
+  targetsAffected?: string[];
   effectArea?: string;
   isActive?: boolean;
   effects?: ActivePowerEffect;
@@ -556,16 +604,22 @@ const STRENGTH_MEZ_KEYS = new Set([
  * Measured over 14,249 powers before the first carry: wherever both sides say a family
  * stacks they name the SAME depth — 0 disagreements across every site — so the uncapped case
  * is a shape the corpus does not hold, not a value being rounded away.
+ *
+ * `power` is here for the per-target arm alone: whether an absent count means zero targets or one
+ * is a question about the power, not about the value ({@link casterOccupiesATargetSlot}).
  */
 export function adjustForStackCap(
   value: ScalarOrScaled,
   targetsHit: number | undefined,
   stackCap: number | undefined,
+  power: PowerWithToggle,
 ): ScalarOrScaled {
   const hasPerTarget = typeof value === 'object' && value !== null
     && (!!(value as { perTarget?: number }).perTarget
       || !!(value as { maxHPFractionPerTarget?: number }).maxHPFractionPerTarget);
-  if (hasPerTarget) return adjustForPerTarget(value, targetsHit);
+  if (hasPerTarget) return adjustForPerTarget(value, targetsHit, casterOccupiesATargetSlot(power));
+  // The floor reaches the AoE path alone. N on a stacking self-buff counts casts, and a click
+  // the build has not fired is at zero stacks however the power addresses its caster.
   if (targetsHit === 0 && stackCap !== undefined) {
     if (typeof value === 'object' && value !== null) return { ...value, scale: 0 };
     return 0;
@@ -673,7 +727,7 @@ export function collectStrengthBuffs(
     let defMax = 0;
     let mezMax = 0;
     for (const [key, raw] of Object.entries(special)) {
-      const adjusted = adjustForStackCap(raw, targetsHit, specialCap);
+      const adjusted = adjustForStackCap(raw, targetsHit, specialCap, power);
       const frac = resolveScaledEffect(adjusted, archetypeId, buildLevel);
       if (frac <= 0) continue;
       if (STRENGTH_DEFENSE_KEYS.has(key)) defMax = Math.max(defMax, frac);

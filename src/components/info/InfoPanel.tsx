@@ -772,7 +772,11 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
 
   // Per-target buff scaling (stored in UI store so it persists across power switches)
   const stackingInfo = useMemo(() => power ? getStackingInfo(power) : null, [power]);
-  const targetsHit = useUIStore((s) => s.targetsHitValues[powerName] ?? 0);
+  // An untouched slider reads as its axis' FLOOR, not as zero: on a power whose caster fills one
+  // of its own target seats there is no zero-target state to default to (PERFOE-3). The engine
+  // floors the count the same way from the same two fields, so the control and the number agree.
+  const storedTargetsHit = useUIStore((s) => s.targetsHitValues[powerName]);
+  const targetsHit = storedTargetsHit ?? stackingInfo?.minStacks ?? 0;
   const setTargetsHit = useUIStore((s) => s.setTargetsHit);
 
   if (!power || !effectivePower) {
@@ -876,14 +880,15 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         const isToggleOff = selectedPower &&
           (selectedPower.powerType === 'Toggle' || selectedPower.powerType === 'Auto') &&
           selectedPower.isActive === false;
-        const effectiveTargets = isToggleOff ? 0 : targetsHit;
+        // Toggled off, the power is not running and even a caster-counted seat is empty.
+        const effectiveTargets = isToggleOff ? 0 : Math.max(targetsHit, stackingInfo.minStacks);
 
         return (
           <div className={`flex items-center gap-2 bg-slate-800/50 rounded px-2 py-1.5 ${isToggleOff ? 'opacity-50' : ''}`}>
             <span className="text-xs text-slate-300 whitespace-nowrap">{stackingInfo.label}</span>
             <input
               type="range"
-              min={0}
+              min={stackingInfo.minStacks}
               max={stackingInfo.maxStacks}
               value={effectiveTargets}
               onChange={(e) => setTargetsHit(powerName, Number(e.target.value))}

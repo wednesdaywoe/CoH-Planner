@@ -142,8 +142,20 @@ export function hasPerTargetField(value: unknown): boolean {
  * Data-driven detection: show stacking slider for either per-target AoE
  * scaling (perTarget metadata + maxTargets) or linear self-stacking
  * (`effects.maxStacks` set explicitly, e.g. Psychokinetic Barrier).
+ *
+ * `minStacks` is where the axis STARTS, and it is 0 for every case but one. A power whose
+ * `targetsAffected` names the caster lands on him as well as on whoever else is in radius, so he
+ * fills the first of its `maxTargets` seats for as long as it is running and the count cannot be
+ * zero — Phalanx Fighting gives its 5% melee/ranged/AoE defence solo, and a slider reading "Off"
+ * there described a state the power is never in (PERFOE-3). The engine floors the same count with
+ * the same two terms (`casterOccupiesATargetSlot` / `caster_occupies_a_target_slot`); this is what
+ * keeps the control honest about it.
+ *
+ * The stacks arm keeps 0: N there counts casts, and a click the build has not fired is off.
  */
-export function getStackingInfo(power: Power): { maxStacks: number; label: string } | null {
+export function getStackingInfo(
+  power: Power,
+): { maxStacks: number; minStacks: number; label: string } | null {
   if (!power.effects) return null;
 
   // AoE per-target powers (Soul Drain, Eclipse, Power Sink, etc.) — when
@@ -156,7 +168,8 @@ export function getStackingInfo(power: Power): { maxStacks: number; label: strin
   if (hasPerTarget) {
     const maxTargets = power.stats?.maxTargets;
     if (maxTargets && maxTargets > 1 && maxTargets !== 255) {
-      return { maxStacks: maxTargets, label: 'Targets Hit' };
+      const minStacks = power.targetsAffected?.includes('Self') ? 1 : 0;
+      return { maxStacks: maxTargets, minStacks, label: 'Targets Hit' };
     }
   }
 
@@ -172,7 +185,7 @@ export function getStackingInfo(power: Power): { maxStacks: number; label: strin
     const label = power.effects.stackInterval && power.effects.stackInterval > 0
       ? `Stacks (every ${power.effects.stackInterval}s)`
       : 'Stacks';
-    return { maxStacks: power.effects.maxStacks, label };
+    return { maxStacks: power.effects.maxStacks, minStacks: 0, label };
   }
 
   return null;

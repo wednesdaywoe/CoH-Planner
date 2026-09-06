@@ -552,7 +552,7 @@ function applyActivePowerBonuses(
     // Applied on the far side of an `atom ?? synthetic` seam, so a synthetic contribution
     // stacks on the same terms a real power's does.
     const stack = (value: ScalarOrScaled, family: StackFamily): ScalarOrScaled =>
-      adjustForStackCap(value, targetsHitValues[power.internalName], stackCapOf(power, family));
+      adjustForStackCap(value, targetsHitValues[power.internalName], stackCapOf(power, family), power);
     // The build's `Class_*` token, and the power as this build's class sees it. A protection
     // atom can fork on `casterArchetypes` (AT-FORK-1), and a build-agnostic read returns
     // undefined exactly where the build's own arm exists — which the bag used to paper over,
@@ -1325,6 +1325,7 @@ function applyActivePowerBonuses(
         absorbSlot as ScalarOrScaled,
         targetsHitValues[power.internalName],
         stackCapOf(power, buffStack('Absorb')),
+        power,
       ) as { scale?: number; table?: string; perTarget?: number; maxHPFraction?: number; appliesStrength?: boolean };
       // The MaxHP-fraction form is scaled by strength unless it opts out
       // (appliesStrength:false — ATO procs, which don't reach this path).
