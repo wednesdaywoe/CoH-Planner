@@ -33,7 +33,7 @@ import type { ArchetypeId } from '@/types';
 import { calculateSetBonuses, getStatBreakdown, trackBonus, createBonusTracking, type AggregatedBonuses, type StatBreakdownItem, type BuildPowers } from './set-bonuses';
 import { createEmptyStats, getBaselineHealth, type CharacterStats } from './stats';
 import { combineWithAlphaED, filterAlphaByAllowedEnhancements, BASE_RECOVERY_RATE, BASE_REGEN_RATE, type EnhancementBonuses } from './enhancement-values';
-import { toHitBuffValue, damageBuffValue, resistanceBuffValue, resistanceSelfDebuffValue, defenseBuffValue, defenseBuffSuppressibleValue, defenseBuffIsTeamOnly, maxHPBuffValue, regenBuffValue, recoveryBuffValue, movementBuffValue, kbProtectionValue, accuracyBuffValue, rechargeBuffValue, rangeBuffValue, perceptionBuffValue, enduranceDiscountValue, maxEndBuffValue, elusivityValue, mezSlotValue, mezResistanceValue, tauntPlacateValue, debuffResistanceValue, selfSlowValue, selfMovementCapDebuffValue, movementAxisSubType, damageBuffIsDefianceOnly, selfDamageDebuffValue, selfRechargeDebuffValue, stealthValue, stackCapOf, buffStack, DEBUFF_RESISTANCE_STACK } from '@/data/core/atom-query';
+import { toHitBuffValue, damageBuffValue, resistanceBuffValue, resistanceSelfDebuffValue, defenseBuffValue, defenseBuffSuppressibleValue, defenseBuffIsTeamOnly, maxHPBuffValue, regenBuffValue, recoveryBuffValue, movementBuffValue, kbProtectionValue, accuracyBuffValue, rechargeBuffValue, rangeBuffValue, perceptionBuffValue, enduranceDiscountValue, maxEndBuffValue, elusivityValue, mezSlotValue, mezResistanceValue, tauntPlacateValue, debuffResistanceValue, selfSlowValue, selfMovementCapDebuffValue, movementAxisSubType, damageBuffIsDefianceOnly, selfDamageDebuffValue, selfRechargeDebuffValue, stealthValue, absorbValue, absorbMaxHPFractionValue, stackCapOf, buffStack, DEBUFF_RESISTANCE_STACK } from '@/data/core/atom-query';
 import type { MovementBuffEntry, StackFamily } from '@/data/core/atom-query';
 import type { EncodedAtom } from '@/data/core/atomic-effect';
 import { calculateVigilanceDamageBonus, calculateFuryDamageBonus } from './inherents';
@@ -1291,41 +1291,38 @@ function applyActivePowerBonuses(
     // HP later against the final build Max HP (accolades included — which is
     // why Wild Bastion grows with +HP accolades). Boosted like healing:
     // slotted Heal enhancement + +Strength(Absorb) from Power Boost / Clarion.
-    // ABSORB DOES NOT CROSS IN BPORT11, and it is the only family that does not. The reason is
-    // the per-foe increment, which no reader returns: `absorbValue` folds through
-    // `foldResourceSum`, which keeps `{scale, table}` and drops `perTarget`, and
-    // `absorbMaxHPFractionValue` answers a bare number with nowhere to put one. 34 of the
-    // corpus's 701 Absorb atoms carry a `perTarget` stamp and 21 bag slots state an increment,
-    // and Parasitic Aura's own Expression rows carry none at all while its Regeneration and
-    // Recovery rows beside them do — so the increment is a converter verdict that reached the
-    // bag and not the atom.
+    // BPORT7 A2 carries the arm BPORT11 declined, on the shape canonical's own strip settled on:
+    // the MaxHP-fraction probe answers the fraction carriers first, the flat fold the rest, and
+    // the pet-aura mint is the last resort. What the decline got right, and what the carry keeps
+    // named rather than silent: neither reader returns `perTarget`, so the per-foe increment no
+    // longer reaches this slot.
     //
-    // Carrying the arm anyway costs the targets-hit slider on Parasitic Aura and Parasitic
-    // Leech: measured through `serverParity`, the engine's absorb grows 160.6 from N=0 to N=1
-    // and the atom-fed oracle's does not move at all. The only way to land it and stay green
-    // is to excuse those powers in the parity gate, which buys a green suite by making the
-    // gate blind to exactly the thing that broke. Left visible instead — the seams below are
-    // in the reader census, so BPORT7 meets them rather than discovering them.
+    // The per-foe ABSORB channel is the third item of the ABSORB-4 residual. The engine stays
+    // atom-fed for every per-foe family, not just absorb — measured with the bag deleted, absorb
+    // reads 0 / 133.86208 / 669.3104 at N = absent / 1 / 5, and Soul Drain's tohit 0 / 12 / 20 and
+    // damage 0 / 60 / 100, all unchanged — so the channel survives the regen on the engine side.
+    // This oracle reads it flat: Parasitic Aura's +10% MaxHP/foe (the atom's `perTarget` stamp)
+    // and Parasitic Leech's +14.3%/foe (derived from the bundle's `stats.maxTargets`, which the
+    // legacy power does not carry) both move on the engine and not here. `serverParity` excludes
+    // the absorb key for those powers and logs them unverified, so the residual is watched, not
+    // hidden.
     //
-    // What the carry DID measure, and what ABSORB-4 asks for. The flat reader agrees with the
-    // bag on 153 of 171 carriers and multiplies the other 18 by 5-7x, because those powers
-    // state one shield as several byte-identical rows and `absorbValue` sums what the
-    // converter's pre-scan counted once. Keying the fold on `stacking` instead — a `Replace`
-    // row counts ONE application, a `Stack` row sums to its cap — reproduces the bag on 169 of
-    // the 171. One counterexample stands: Frigid Shield's two byte-identical `Replace` rows the
-    // bag SUMS, where Particle Shielding's seven it does not, and those two differ on `aspect`
-    // and `duration` as well as on count. That measurement is only available while the bag is
-    // here to be measured against, which is why it is written down now.
-    if (effects.absorb !== undefined && effects.absorb !== null) {
-      // Per-foe absorb (Parasitic Aura: +10% MaxHP/foe up to 10) rides the same
-      // targets-hit slider as every other buff slot, so run it through
-      // adjustForStacking like tohit/damage/defense/resistance do — the block
-      // used to resolve absorb flat, ignoring `perTarget` entirely. Non-AoE
-      // absorbs (Ablative, Wild Bastion) carry no perTarget and pass through
-      // unchanged. adjustForStacking only ever adjusts `scale`, so maxHPFraction/
-      // appliesStrength/table survive the spread.
+    // Two more named edges of the same carry. The 18 repeated-row powers state one shield as
+    // several byte-identical rows: this fold sums them (N×) where the engine's `absorb_flat_value`
+    // dedupes to one, so the oracle reads high and the engine the deduped value — ungraded. And
+    // the 9 probe-undefined fraction carriers (Tough Hide, Unstoppable, Reinforced Exoskeleton,
+    // Thunderspy) read 0 on both sides post-regen, the mirrored probe gate answering nothing with
+    // the bag gone — both wrong against the bag, named, ungraded.
+    const absorbFrac = absorbMaxHPFractionValue(power);
+    const absorbSlot = absorbFrac != null
+      ? { maxHPFraction: absorbFrac }
+      : (absorbValue(power) ?? syntheticEffects(power)?.absorb);
+    if (absorbSlot !== undefined && absorbSlot !== null) {
+      // The slot is flat now — neither reader returns `perTarget` — so the targets-hit slider
+      // moves nothing here; the per-foe channel is the residual above, not this path.
+      // adjustForStackCap only ever adjusts `scale`, so maxHPFraction/table survive the spread.
       const ab = adjustForStackCap(
-        effects.absorb as ScalarOrScaled,
+        absorbSlot as ScalarOrScaled,
         targetsHitValues[power.internalName],
         stackCapOf(power, buffStack('Absorb')),
       ) as { scale?: number; table?: string; perTarget?: number; maxHPFraction?: number; appliesStrength?: boolean };

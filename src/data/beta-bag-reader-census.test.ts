@@ -357,17 +357,17 @@ describe('BPORT5 — what grades the engine once the bag is gone', () => {
     // cluster went — the five empty scalars, the axis map, and the self slow / cap-debuff pair;
     // and 17 when the last cluster landed. BPORT5's finish line is the six residual slots
     // canonical also reads plus the eight `mezProtTypes` roster keys — 14 — and the three over
-    // it are ABSORB, the one family BPORT11 declined to carry. Its per-foe increment reaches
-    // no reader (`foldResourceSum` drops `perTarget`, `absorbMaxHPFractionValue` answers a bare
-    // number), so carrying it kills the targets-hit slider on Parasitic Aura and Parasitic
-    // Leech; left on the bag deliberately so BPORT7 meets the dependency in this census rather
-    // than discovering it after the regen.
+    // it are ABSORB, the one family BPORT11 declined to carry. BPORT7 A2 carried it: the oracle
+    // resolves the MaxHP-fraction probe first, the flat fold second, the pet-aura mint last —
+    // the shape canonical's own strip settled on — and the per-foe increment neither reader can
+    // express is the named ABSORB-4 residual, which `serverParity` excludes by key and logs
+    // unverified rather than letting it red the walk.
     //
     // The carry does NOT count the arms it keeps: `syntheticEffects(power)?.rechargeBuff`
     // names no `effects.` prefix, so the finder cannot see it and does not. That is right —
     // it is the totals pass reading back its own output — but it means this number measures
     // the DATA seams only, which is the population the strip empties.
-    expect(mine).toHaveLength(17);
+    expect(mine).toHaveLength(14);
     expect(mine.every((s) => s.sibling !== 'absent')).toBe(true);
 
     // The residual is derived, not listed — canonical's own copy answers it.
@@ -404,10 +404,11 @@ describe('BPORT5 — what grades the engine once the bag is gone', () => {
     const gap = census.seams.find((s) => s.file === ORACLE)!.atomArmGap ?? [];
     // The per-slot comparison is a lower bound (the `StatsDashboard` lesson): a slot canonical
     // still names reads `reads-too` even where it calls an atom query first. The import gap is
-    // the other half, and on this file it is the largest in the repo — the oracle calls 12 of
-    // `atom-query`'s helpers and canonical's copy of it calls 39.
+    // the other half, and on this file it is the largest in the repo — the oracle imported 12 of
+    // `atom-query`'s helpers at BPORT5 and imports 35 now; canonical's copy of it imports 39.
     // BPORT11 shrinks this by construction: 27 at BPORT5, 18 once the first cluster's seven
-    // helpers were called here too. Asserted as a shrinking bound plus the named residue, so
+    // helpers were called here too, and 4 once BPORT7 A2 called the two absorb readers.
+    // Asserted as a shrinking bound plus the named residue, so
     // a carry that lands removes rows without an edit while a helper going UNCALLED again
     // reds.
     // What is left is not a gap in the totals path at all. `specialBuffValue` and
@@ -418,16 +419,16 @@ describe('BPORT5 — what grades the engine once the bag is gone', () => {
     // `specialBuffValue` / `SPECIAL_BUFF_STACK` are `collectStrengthBuffs`' arms and `atomsOf` /
     // `isDebuffAtom` are `carries_combat_debuff`'s; all four live in `character-totals.ts` on
     // this side, so they read as "the oracle does not call them" and are an artifact of PROD7's
-    // split rather than work owed. The two absorb readers ARE work owed, and are owed to
-    // ABSORB-4 rather than to this row.
-    expect(gap.sort()).toEqual(['SPECIAL_BUFF_STACK', 'absorbMaxHPFractionValue', 'absorbValue',
-      'atomsOf', 'isDebuffAtom', 'specialBuffValue']);
+    // split rather than work owed. The two absorb readers that stood in this gap until now are
+    // carried by BPORT7 A2 — the per-foe channel they cannot express is the ABSORB-4 residual.
+    expect(gap.sort()).toEqual(['SPECIAL_BUFF_STACK', 'atomsOf', 'isDebuffAtom', 'specialBuffValue']);
     // And what has landed, which is the half that must not silently come back.
     for (const carried of ['accuracyBuffValue', 'rechargeBuffValue', 'rangeBuffValue',
       'perceptionBuffValue', 'enduranceDiscountValue', 'maxEndBuffValue', 'elusivityValue',
       'mezSlotValue', 'mezResistanceValue', 'tauntPlacateValue', 'debuffResistanceValue',
       'selfSlowValue', 'selfMovementCapDebuffValue', 'movementAxisSubType', 'stealthValue',
-      'selfDamageDebuffValue', 'selfRechargeDebuffValue', 'damageBuffIsDefianceOnly']) {
+      'selfDamageDebuffValue', 'selfRechargeDebuffValue', 'damageBuffIsDefianceOnly',
+      'absorbValue', 'absorbMaxHPFractionValue']) {
       expect(gap, carried).not.toContain(carried);
     }
   });
