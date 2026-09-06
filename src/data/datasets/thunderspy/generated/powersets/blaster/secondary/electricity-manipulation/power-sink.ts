@@ -40,31 +40,6 @@ export const PowerSink: Power = {
     "Endurance Modification"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 9.53,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.048,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "damageBuff": 9.53,
-      "recoveryDebuff": 4
-    },
-    "enduranceDrain": {
-      "scale": 0.35,
-      "table": "Melee_Ones"
-    },
-    "enduranceGain": {
-      "scale": 25,
-      "table": "Melee_Ones",
-      "perTarget": 25
-    },
-    "recoveryDebuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Endurance",null,-0.35,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones"],
     ["Recovery",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],

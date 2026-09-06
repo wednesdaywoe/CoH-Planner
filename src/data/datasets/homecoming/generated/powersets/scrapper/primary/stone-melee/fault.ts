@@ -78,18 +78,6 @@ export const Fault: Power = {
     "scale": 0.7824,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 2,
-      "scale": 8,
-      "table": "Melee_Stun"
-    }
-  },
   "atoms": [
     ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
     ["Mez","Stunned",8,2,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],

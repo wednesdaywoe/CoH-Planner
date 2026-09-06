@@ -56,35 +56,11 @@ export const SummonWolves: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 2,
-    "durations": {
-      "stealth": 2
-    },
-    "immobilize": {
-      "attribType": "Duration",
-      "ignoreStrength": true,
-      "mag": 500,
-      "scale": 3,
-      "table": "Melee_Ones",
-      "toWho": "Self"
-    },
-    "stealth": {
-      "translucency": {
-        "scale": 0,
-        "table": "Ranged_Ones"
-      }
-    },
-    "summon": {
-      "copyBoosts": true,
-      "duration": 99999,
-      "entity": "MastermindPets_Howler_Wolf",
-      "isPseudoPet": false
-    },
-    "teleport": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    }
+  "summon": {
+    "copyBoosts": true,
+    "duration": 99999,
+    "entity": "MastermindPets_Howler_Wolf",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,-1,1,99999,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,2,null,null,null,null,null,99999],

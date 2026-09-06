@@ -62,37 +62,6 @@ export const EssenceDrain: Power = {
       "table": "Melee_HealSelf"
     }
   ],
-  "effects": {
-    "buffDuration": 6,
-    "durations": {
-      "rechargeDebuff": 6,
-      "slow": 6
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.2,
-      "table": "Melee_Slow"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Constant","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kWarshade_Blaster_Mode","source.Mode?","!","kWarshade_Tanker_Mode","source.Mode?","!","&&"],null,null,null,null,null,null,null,null,null,"Ones",null,"power_redirect"],
     ["Damage","Negative",1.96,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
@@ -128,37 +97,6 @@ export const EssenceDrain: Power = {
           "table": "Ranged_HealSelf"
         }
       ],
-      "effects": {
-        "buffDuration": 6,
-        "durations": {
-          "rechargeDebuff": 6,
-          "slow": 6
-        },
-        "rechargeDebuff": {
-          "ignoreStrength": true,
-          "scale": 0.2,
-          "table": "Melee_Slow"
-        },
-        "slow": {
-          "flySpeed": {
-            "scale": 0.2,
-            "table": "Melee_Slow"
-          },
-          "jumpHeight": {
-            "ignoreStrength": true,
-            "scale": 0.2,
-            "table": "Melee_Slow"
-          },
-          "jumpSpeed": {
-            "scale": 0.2,
-            "table": "Melee_Slow"
-          },
-          "runSpeed": {
-            "scale": 0.2,
-            "table": "Melee_Slow"
-          }
-        }
-      },
       "shortHelp": "Ranged, High DMG(Negative), Foe -Recharge, -SPD; Self +HP",
       "description": "You tap the primal forces of your Nictus power to create an Essence Draining conduit between a foe and yourself. This will transfer Hit Points from your enemy to you. Foes drained in this manner have their attack rate and movement speed reduced. This power can be used while in Dark Nova or Black Dwarf form. While in Dark Nova, this power becomes a ranged attack with a quicker recharge and higher damage. While in Black Dwarf form, this power remains a melee attack, but taunts its target and deals lower damage. Damage: Superior, Recharge: Slow",
       "effectArea": "SingleTarget",
@@ -195,41 +133,6 @@ export const EssenceDrain: Power = {
           "table": "Melee_SSHealSelf"
         }
       ],
-      "effects": {
-        "buffDuration": 6,
-        "durations": {
-          "rechargeDebuff": 6,
-          "slow": 6
-        },
-        "rechargeDebuff": {
-          "ignoreStrength": true,
-          "scale": 0.2,
-          "table": "Melee_Slow"
-        },
-        "slow": {
-          "flySpeed": {
-            "scale": 0.2,
-            "table": "Melee_Slow"
-          },
-          "jumpHeight": {
-            "ignoreStrength": true,
-            "scale": 0.2,
-            "table": "Melee_Slow"
-          },
-          "jumpSpeed": {
-            "scale": 0.2,
-            "table": "Melee_Slow"
-          },
-          "runSpeed": {
-            "scale": 0.2,
-            "table": "Melee_Slow"
-          }
-        },
-        "taunt": {
-          "scale": 1,
-          "table": "Melee_InherentTaunt"
-        }
-      },
       "shortHelp": "Melee, Superior DMG(Negative), Foe -Recharge, -SPD; Self +HP",
       "description": "You tap the primal forces of your Nictus power to create an Essence Draining conduit between a foe and yourself. This will transfer Hit Points from your enemy to yourself. Foes drained in this manner have their attack and movement speed reduced. This power is only available while in Black Dwarf Form. Damage: Superior, Recharge: Slow",
       "effectArea": "SingleTarget",

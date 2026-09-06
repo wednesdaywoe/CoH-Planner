@@ -32,18 +32,6 @@ export const ShadowSlipping: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
-  "effects": {
-    "buffDuration": 5,
-    "durations": {
-      "stealth": 5
-    },
-    "stealth": {
-      "translucency": {
-        "scale": 0,
-        "table": "Melee_Ones"
-      }
-    }
-  },
   "atoms": [
     ["Meta",null,1,8,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode",null,null,null,null,null,null,"OnActivate"],
     ["Meta",null,1,9,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode",null,null,null,null,null,null,"OnActivate"],

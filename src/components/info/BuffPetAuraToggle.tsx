@@ -33,7 +33,7 @@ const AURA_SHORT_LABEL: Record<string, string> = {
 };
 
 export function BuffPetAuraToggle({ power }: { power: Power }) {
-  const summon = power.effects?.summon;
+  const summon = power.summon;
   const sources = useMemo(() => getBuffPetSources(summon), [summon]);
   const active = useMechanicAdjuster(power.internalName, BUFF_PET_TOGGLE_ID, false);
   const setMechanicAdjuster = useUIStore((s) => s.setMechanicAdjuster);

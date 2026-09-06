@@ -62,16 +62,6 @@ export const ProtonStream: Power = {
       "tickRate": 0.12999999523162842
     }
   ],
-  "effects": {
-    "buffDuration": 12,
-    "defenseDebuff": {
-      "scale": 3,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 12
-    }
-  },
   "atoms": [
     ["Damage","Energy",0.57,1,0.41,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.12999999523162842,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Energy",0.57,1,0.41,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.12999999523162842,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],

@@ -45,21 +45,10 @@ export const Caltrops: Power = {
     "Universal Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 8.57,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.071,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 8.57
-    },
-    "summon": {
-      "duration": 45,
-      "entity": "Pets_Caltrops",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "duration": 45,
+    "entity": "Pets_Caltrops",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,1,1,45,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,45],

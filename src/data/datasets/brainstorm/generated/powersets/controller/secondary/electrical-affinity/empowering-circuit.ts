@@ -66,22 +66,6 @@ export const EmpoweringCircuit: Power = {
     "To Hit Buff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 60,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 3,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "durations": {
-      "damageBuff": 60,
-      "tohitBuff": 60
-    },
-    "tohitBuff": {
-      "scale": 1.2,
-      "table": "Ranged_Buff_ToHit"
-    }
-  },
   "atoms": [
     ["DamageBuff","Smashing",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,true],
     ["DamageBuff","Lethal",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,true],

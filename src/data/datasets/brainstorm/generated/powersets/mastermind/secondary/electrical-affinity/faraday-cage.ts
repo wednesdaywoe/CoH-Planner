@@ -44,107 +44,105 @@ export const FaradayCage: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "displayName": "Faraday Cage",
-      "duration": 240,
-      "isPseudoPet": true,
-      "powers": [
-        "Redirects.Shock_Therapy.FaradayCage",
-        "Redirects.Shock_Therapy.FaradayCageFx",
-        "Redirects.Shock_Therapy.FaradayStatic"
-      ],
-      "resolvedEntities": [
-        {
-          "displayName": "Faraday Cage",
-          "duration": 240,
-          "copyCreatorMods": true,
-          "abilities": [
-            {
-              "name": "FaradayCage",
-              "displayName": "Faraday Cage",
-              "type": "Auto",
-              "damage": [],
-              "effects": [
-                {
-                  "type": "ResistanceBuff",
-                  "resistanceTypes": [
-                    "smashing",
-                    "lethal",
-                    "fire",
-                    "cold",
-                    "energy",
-                    "negative",
-                    "psionic"
-                  ],
-                  "scale": 1.5,
-                  "table": "Ranged_Res_Dmg"
-                },
-                {
-                  "type": "EndDrainResist",
-                  "scale": 0.7,
-                  "table": "Ranged_Res_Boolean",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "RecoveryDebuffResist",
-                  "scale": 0.7,
-                  "table": "Ranged_Res_Boolean",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "RechargeDebuffResist",
-                  "scale": 0.7,
-                  "table": "Ranged_Res_Boolean",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "ImmobilizeProtection",
-                  "scale": 15,
-                  "table": "Ranged_Res_Boolean"
-                },
-                {
-                  "type": "HoldProtection",
-                  "scale": 30,
-                  "table": "Ranged_Res_Boolean"
-                },
-                {
-                  "type": "StunProtection",
-                  "scale": 30,
-                  "table": "Ranged_Res_Boolean"
-                },
-                {
-                  "type": "SleepProtection",
-                  "scale": 30,
-                  "table": "Ranged_Res_Boolean"
-                },
-                {
-                  "type": "KnockupProtection",
-                  "scale": 10,
-                  "table": "Ranged_Ones"
-                },
-                {
-                  "type": "KnockbackProtection",
-                  "scale": 10,
-                  "table": "Ranged_Ones"
-                }
-              ],
-              "recharge": 35,
-              "castTime": 0,
-              "activatePeriod": 0.2,
-              "effectArea": "Sphere",
-              "targetsAffected": [
-                "Friend"
-              ],
-              "radius": 25,
-              "maxTargets": 255
-            }
-          ]
-        }
-      ],
-      "entity": "PL_StaticObject"
-    }
+  "summon": {
+    "copyBoosts": true,
+    "displayName": "Faraday Cage",
+    "duration": 240,
+    "isPseudoPet": true,
+    "powers": [
+      "Redirects.Shock_Therapy.FaradayCage",
+      "Redirects.Shock_Therapy.FaradayCageFx",
+      "Redirects.Shock_Therapy.FaradayStatic"
+    ],
+    "resolvedEntities": [
+      {
+        "displayName": "Faraday Cage",
+        "duration": 240,
+        "copyCreatorMods": true,
+        "abilities": [
+          {
+            "name": "FaradayCage",
+            "displayName": "Faraday Cage",
+            "type": "Auto",
+            "damage": [],
+            "effects": [
+              {
+                "type": "ResistanceBuff",
+                "resistanceTypes": [
+                  "smashing",
+                  "lethal",
+                  "fire",
+                  "cold",
+                  "energy",
+                  "negative",
+                  "psionic"
+                ],
+                "scale": 1.5,
+                "table": "Ranged_Res_Dmg"
+              },
+              {
+                "type": "EndDrainResist",
+                "scale": 0.7,
+                "table": "Ranged_Res_Boolean",
+                "ignoreStrength": true
+              },
+              {
+                "type": "RecoveryDebuffResist",
+                "scale": 0.7,
+                "table": "Ranged_Res_Boolean",
+                "ignoreStrength": true
+              },
+              {
+                "type": "RechargeDebuffResist",
+                "scale": 0.7,
+                "table": "Ranged_Res_Boolean",
+                "ignoreStrength": true
+              },
+              {
+                "type": "ImmobilizeProtection",
+                "scale": 15,
+                "table": "Ranged_Res_Boolean"
+              },
+              {
+                "type": "HoldProtection",
+                "scale": 30,
+                "table": "Ranged_Res_Boolean"
+              },
+              {
+                "type": "StunProtection",
+                "scale": 30,
+                "table": "Ranged_Res_Boolean"
+              },
+              {
+                "type": "SleepProtection",
+                "scale": 30,
+                "table": "Ranged_Res_Boolean"
+              },
+              {
+                "type": "KnockupProtection",
+                "scale": 10,
+                "table": "Ranged_Ones"
+              },
+              {
+                "type": "KnockbackProtection",
+                "scale": 10,
+                "table": "Ranged_Ones"
+              }
+            ],
+            "recharge": 35,
+            "castTime": 0,
+            "activatePeriod": 0.2,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "Friend"
+            ],
+            "radius": 25,
+            "maxTargets": 255
+          }
+        ]
+      }
+    ],
+    "entity": "PL_StaticObject"
   },
   "atoms": [
     ["EntCreate",null,1,1,240,"Melee_Level","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240]

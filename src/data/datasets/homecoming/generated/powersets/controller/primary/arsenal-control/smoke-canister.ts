@@ -45,59 +45,57 @@ export const SmokeCanister: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "displayName": "Smoke Grenade",
-      "duration": 30,
-      "isPseudoPet": true,
-      "powers": [
-        "Pets.ResistAll.ResistAll",
-        "Redirects.Assault_Rifle.Smoke_Grenade",
-        "Redirects.Assault_Rifle.Smoke_Confusion"
-      ],
-      "resolvedEntities": [
-        {
-          "displayName": "Smoke Grenade",
-          "duration": 30,
-          "copyCreatorMods": true,
-          "abilities": [
-            {
-              "name": "Smoke_Confusion",
-              "displayName": "Smoke Canister",
-              "type": "Auto",
-              "damage": [],
-              "effects": [
-                {
-                  "type": "Confuse",
-                  "magnitude": 3,
-                  "attribType": "Duration",
-                  "scale": 2,
-                  "table": "Ranged_Fear",
-                  "conditional": true
-                },
-                {
-                  "type": "ToHitDebuff",
-                  "scale": 1.5,
-                  "table": "Ranged_Debuff_ToHit",
-                  "conditional": true
-                }
-              ],
-              "recharge": 0,
-              "castTime": 0,
-              "activatePeriod": 2,
-              "effectArea": "Sphere",
-              "targetsAffected": [
-                "Foe"
-              ],
-              "radius": 25,
-              "maxTargets": 10
-            }
-          ]
-        }
-      ],
-      "entity": "PL_StaticObject"
-    }
+  "summon": {
+    "copyBoosts": true,
+    "displayName": "Smoke Grenade",
+    "duration": 30,
+    "isPseudoPet": true,
+    "powers": [
+      "Pets.ResistAll.ResistAll",
+      "Redirects.Assault_Rifle.Smoke_Grenade",
+      "Redirects.Assault_Rifle.Smoke_Confusion"
+    ],
+    "resolvedEntities": [
+      {
+        "displayName": "Smoke Grenade",
+        "duration": 30,
+        "copyCreatorMods": true,
+        "abilities": [
+          {
+            "name": "Smoke_Confusion",
+            "displayName": "Smoke Canister",
+            "type": "Auto",
+            "damage": [],
+            "effects": [
+              {
+                "type": "Confuse",
+                "magnitude": 3,
+                "attribType": "Duration",
+                "scale": 2,
+                "table": "Ranged_Fear",
+                "conditional": true
+              },
+              {
+                "type": "ToHitDebuff",
+                "scale": 1.5,
+                "table": "Ranged_Debuff_ToHit",
+                "conditional": true
+              }
+            ],
+            "recharge": 0,
+            "castTime": 0,
+            "activatePeriod": 2,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "Foe"
+            ],
+            "radius": 25,
+            "maxTargets": 10
+          }
+        ]
+      }
+    ],
+    "entity": "PL_StaticObject"
   },
   "atoms": [
     ["EntCreate",null,1,1,30,"Melee_Level","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,30]

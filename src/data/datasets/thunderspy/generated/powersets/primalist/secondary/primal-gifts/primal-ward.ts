@@ -44,43 +44,6 @@ export const PrimalWard: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "debuffResistance": {
-      "endurance": {
-        "ignoreStrength": true,
-        "scale": 0.4,
-        "table": "Melee_Res_Boolean"
-      },
-      "recovery": {
-        "ignoreStrength": true,
-        "scale": 0.4,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "durations": {
-      "debuffResistance": 0.75,
-      "resistance": 0.75
-    },
-    "resistance": {
-      "cold": {
-        "scale": 1,
-        "table": "Melee_Res_DMG"
-      },
-      "energy": {
-        "scale": 2.5,
-        "table": "Melee_Res_DMG"
-      },
-      "fire": {
-        "scale": 2.5,
-        "table": "Melee_Res_DMG"
-      },
-      "negative": {
-        "scale": 2.5,
-        "table": "Melee_Res_DMG"
-      }
-    }
-  },
   "atoms": [
     ["Resistance","Energy",2.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Res_DMG"],
     ["Resistance","Negative",2.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Res_DMG"],

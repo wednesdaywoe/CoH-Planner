@@ -44,47 +44,6 @@ export const VolcanicArmor: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "durations": {
-      "hold": 0.75,
-      "resistance": 0.75,
-      "sleep": 0.75,
-      "stun": 0.75
-    },
-    "effectDuration": 0.75,
-    "hold": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": -30,
-      "table": "Melee_Res_Boolean",
-      "toWho": "Self"
-    },
-    "resistance": {
-      "cold": {
-        "scale": 2.5,
-        "table": "Melee_Res_DMG"
-      },
-      "fire": {
-        "scale": 2.5,
-        "table": "Melee_Res_DMG"
-      }
-    },
-    "sleep": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": -30,
-      "table": "Melee_Res_Boolean",
-      "toWho": "Self"
-    },
-    "stun": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": -30,
-      "table": "Melee_Res_Boolean",
-      "toWho": "Self"
-    }
-  },
   "atoms": [
     ["Resistance","Fire",2.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Res_DMG"],
     ["Resistance","Cold",2.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Res_DMG"],

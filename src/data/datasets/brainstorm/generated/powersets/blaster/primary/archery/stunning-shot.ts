@@ -50,27 +50,6 @@ export const StunningShot: Power = {
     "scale": 0.25,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 8.5,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.066,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 8.5
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 10,
-      "table": "Ranged_Stun"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff"
-    ]
-  },
   "atoms": [
     ["Damage","Smashing",0.25,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["DamageBuff","Smashing",0.066,1,8.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],

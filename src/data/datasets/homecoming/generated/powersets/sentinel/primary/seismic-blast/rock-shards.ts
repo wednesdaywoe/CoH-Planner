@@ -70,16 +70,6 @@ export const RockShards: Power = {
       "table": "Ranged_InherentDamage"
     }
   ],
-  "effects": {
-    "buffDuration": 8,
-    "defenseDebuff": {
-      "scale": 0.5,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 8
-    }
-  },
   "atoms": [
     ["Damage","Lethal",0.7593,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
     ["Damage","Lethal",0.0759,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0.8,true,null,null,null,["Foe"],1],
@@ -111,20 +101,6 @@ export const RockShards: Power = {
           "table": "Ranged_InherentDamage"
         }
       ],
-      "effects": {
-        "buffDuration": 8,
-        "defenseDebuff": {
-          "scale": 0.5,
-          "table": "Ranged_Debuff_Def"
-        },
-        "durations": {
-          "defenseDebuff": 8
-        },
-        "knockback": {
-          "scale": 0.67,
-          "table": "Melee_Ones"
-        }
-      },
       "shortHelp": "Ranged Cone, DMG(Smash), -Defense, Special",
       "description": "You launch a volley of stone shards at your target in a sweeping cone. These shards stab into the target, causing lethal damage. They will also continue to suffer aditional lethal damage over time.\n\nIf affected by Seismic Shockwaves, this power will halt the shockwaves, the up front damage will be increased and damage over time accelerated, foes will be knocked down, range will be increased to 60ft and arc to 40 degrees.\n\nRock Shards grants one stack of Seismic Pressure.",
       "effectArea": "Cone",

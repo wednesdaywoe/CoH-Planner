@@ -43,21 +43,6 @@ export const RegenerationAura: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 60,
-    "durations": {
-      "recoveryBuff": 60,
-      "regenBuff": 60
-    },
-    "recoveryBuff": {
-      "scale": 2,
-      "table": "Ranged_Ones"
-    },
-    "regenBuff": {
-      "scale": 5,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Regeneration",null,5,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["Recovery",null,2,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]

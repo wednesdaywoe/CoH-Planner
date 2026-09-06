@@ -43,14 +43,12 @@ export const TripMine: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "duration": 90,
-      "entity": "Pets_Turret",
-      "entityCount": 2,
-      "isPseudoPet": false
-    }
+  "summon": {
+    "copyBoosts": true,
+    "duration": 90,
+    "entity": "Pets_Turret",
+    "entityCount": 2,
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,1,1,90,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,90],

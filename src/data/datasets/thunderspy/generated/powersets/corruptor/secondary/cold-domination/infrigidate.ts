@@ -44,56 +44,6 @@ export const Infrigidate: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 20,
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 3,
-      "table": "Ranged_Debuff_Dam"
-    },
-    "defenseDebuff": {
-      "scale": 2.5,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "damageDebuff": 20,
-      "defenseDebuff": 20,
-      "movementCapDebuff": 20,
-      "rechargeDebuff": 20,
-      "slow": 20
-    },
-    "movementCapDebuff": {
-      "runSpeed": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
-      }
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.7,
-      "table": "Ranged_Slow"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.7,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.7,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.7,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.7,
-        "table": "Ranged_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Movement","Run",0.7,1,20,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
     ["RechargeTime",null,0.7,1,20,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],

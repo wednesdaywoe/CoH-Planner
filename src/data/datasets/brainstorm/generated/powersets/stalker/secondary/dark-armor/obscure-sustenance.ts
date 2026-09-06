@@ -45,34 +45,6 @@ export const ObscureSustenance: Power = {
     "scale": 2.5,
     "table": "Melee_HealSelf"
   },
-  "effects": {
-    "buffDuration": 60,
-    "debuffResistance": {
-      "regeneration": {
-        "ignoreStrength": true,
-        "scale": 0.75,
-        "table": "Melee_Res_Boolean"
-      },
-      "tohit": {
-        "ignoreStrength": true,
-        "scale": 0.75,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "durations": {
-      "debuffResistance": 60,
-      "recoveryBuff": 60,
-      "regenBuff": 60
-    },
-    "recoveryBuff": {
-      "scale": 1.08,
-      "table": "Melee_Ones"
-    },
-    "regenBuff": {
-      "scale": 4.4399999999999995,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Heal",null,2.5,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1],
     ["Regeneration",null,1.72,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],

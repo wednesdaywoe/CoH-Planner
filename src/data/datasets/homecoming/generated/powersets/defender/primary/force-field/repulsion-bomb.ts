@@ -54,64 +54,6 @@ export const RepulsionBomb: Power = {
     "scale": 0.6,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 30,
-    "durations": {
-      "resistanceDebuff": 30
-    },
-    "knockback": {
-      "scale": 9,
-      "table": "Ranged_Ones"
-    },
-    "resistanceDebuff": {
-      "cold": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "energy": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "fire": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "lethal": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "negative": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "psionic": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "smashing": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "toxic": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      }
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 2,
-      "scale": 8,
-      "table": "Ranged_Stun"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.6,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Mez","Knockback",9,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

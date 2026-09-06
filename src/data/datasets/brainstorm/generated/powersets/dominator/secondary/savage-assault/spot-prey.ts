@@ -38,32 +38,6 @@ export const SpotPrey: Power = {
     "To Hit Buff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 10,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 5,
-      "table": "Melee_Buff_Dmg"
-    },
-    "durations": {
-      "damageBuff": 10,
-      "perceptionBuff": 10,
-      "tohitBuff": 10
-    },
-    "perceptionBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "tohitBuff": {
-      "scale": 5,
-      "table": "Melee_Buff_ToHit"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff",
-      "tohitBuff"
-    ]
-  },
   "atoms": [
     ["ToHit",null,5,1,10,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["DamageBuff","Smashing",5,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],

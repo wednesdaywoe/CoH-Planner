@@ -37,27 +37,6 @@ export const AgainstallOdds: Power = {
     "Recharge"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 1.25,
-    "damageBuff": {
-      "scale": 1.55,
-      "table": "Melee_Buff_Dmg",
-      "perTarget": 0.55
-    },
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 1,
-      "table": "Melee_Debuff_Dam"
-    },
-    "durations": {
-      "damageBuff": 1.25,
-      "damageDebuff": 1
-    },
-    "taunt": {
-      "scale": 1.25,
-      "table": "Melee_InherentTaunt"
-    }
-  },
   "atoms": [
     ["Mez","Taunt",1.25,3,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","!","enttype","target>","critter","eq","&&"],null,null,null,null,null,null,null,null,null,"InherentTaunt"],
     ["DamageBuff","Smashing",1,1,1.25,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Dmg"],

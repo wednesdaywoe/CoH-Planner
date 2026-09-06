@@ -66,32 +66,6 @@ export const MidnightGrasp: Power = {
       "tickRate": 0.75
     }
   ],
-  "effects": {
-    "buffDuration": 20,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.137,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "damageBuff": 9.57,
-      "tohitDebuff": 20
-    },
-    "immobilize": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 15,
-      "table": "Melee_Immobilize"
-    },
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Melee_DeBuff_ToHit"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff"
-    ]
-  },
   "atoms": [
     ["Damage","Negative",2.74,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Mez","Immobilized",15,3,0,"Melee_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Immobilize"],

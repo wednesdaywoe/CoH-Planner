@@ -38,55 +38,6 @@ export const WhiteDwarfStep: Power = {
     "Universal Travel"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 4,
-    "durations": {
-      "movement": 4,
-      "slow": 4,
-      "stealth": 1.5
-    },
-    "movement": {
-      "fly": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Ranged_Ones"
-      }
-    },
-    "slow": {
-      "flySpeed": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Ranged_Ones",
-        "toWho": "Self"
-      },
-      "movementControl": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Ranged_Ones",
-        "toWho": "Self"
-      },
-      "movementFriction": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Ranged_Ones",
-        "toWho": "Self"
-      }
-    },
-    "stealth": {
-      "translucency": {
-        "scale": 0,
-        "table": "Ranged_Ones"
-      }
-    },
-    "teleport": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "movement"
-    ]
-  },
   "atoms": [
     ["Stealth","Translucency",0,1,1.5,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,1.17],

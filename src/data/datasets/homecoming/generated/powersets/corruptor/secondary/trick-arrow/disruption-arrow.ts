@@ -40,55 +40,53 @@ export const DisruptionArrow: Power = {
     "Endurance Modification"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "displayName": "Disruption Arrow",
-      "duration": 45,
-      "isPseudoPet": true,
-      "powers": [
-        "Redirects.Trick_Arrow.Disruption_Arrow",
-        "Pets.ResistAll.ResistAll"
-      ],
-      "resolvedEntities": [
-        {
-          "displayName": "Disruption Arrow",
-          "duration": 45,
-          "copyCreatorMods": true,
-          "abilities": [
-            {
-              "name": "Disruption_Arrow",
-              "displayName": "Disruption Arrow",
-              "type": "Auto",
-              "damage": [],
-              "effects": [
-                {
-                  "type": "ResistanceDebuff",
-                  "scale": 4,
-                  "table": "Ranged_Res_Dmg",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "EndDrain",
-                  "scale": 5,
-                  "table": "Ranged_EndDrain"
-                }
-              ],
-              "recharge": 0,
-              "castTime": 0,
-              "activatePeriod": 1,
-              "effectArea": "Sphere",
-              "targetsAffected": [
-                "Foe"
-              ],
-              "radius": 25,
-              "maxTargets": 16
-            }
-          ]
-        }
-      ],
-      "entity": "PL_StaticObject"
-    }
+  "summon": {
+    "copyBoosts": true,
+    "displayName": "Disruption Arrow",
+    "duration": 45,
+    "isPseudoPet": true,
+    "powers": [
+      "Redirects.Trick_Arrow.Disruption_Arrow",
+      "Pets.ResistAll.ResistAll"
+    ],
+    "resolvedEntities": [
+      {
+        "displayName": "Disruption Arrow",
+        "duration": 45,
+        "copyCreatorMods": true,
+        "abilities": [
+          {
+            "name": "Disruption_Arrow",
+            "displayName": "Disruption Arrow",
+            "type": "Auto",
+            "damage": [],
+            "effects": [
+              {
+                "type": "ResistanceDebuff",
+                "scale": 4,
+                "table": "Ranged_Res_Dmg",
+                "ignoreStrength": true
+              },
+              {
+                "type": "EndDrain",
+                "scale": 5,
+                "table": "Ranged_EndDrain"
+              }
+            ],
+            "recharge": 0,
+            "castTime": 0,
+            "activatePeriod": 1,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "Foe"
+            ],
+            "radius": 25,
+            "maxTargets": 16
+          }
+        ]
+      }
+    ],
+    "entity": "PL_StaticObject"
   },
   "atoms": [
     ["EntCreate",null,1,1,45,"Melee_Level","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,45]

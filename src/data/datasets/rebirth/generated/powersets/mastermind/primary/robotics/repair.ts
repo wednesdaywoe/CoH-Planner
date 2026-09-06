@@ -40,12 +40,6 @@ export const Repair: Power = {
     "Endurance Modification"
   ],
   "maxSlots": 6,
-  "effects": {
-    "enduranceGain": {
-      "scale": 0.25,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Endurance",null,0.25,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["Heal",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["MastermindPets_Droid","target.VillainName>","MastermindPets_Protector_Bot","target.VillainName>","||","MastermindPets_Assault_Bot","target.VillainName>","||"],true,null,null,null,null,null,null,null,null,"Ones"]

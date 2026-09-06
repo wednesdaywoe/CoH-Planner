@@ -36,16 +36,6 @@ export const BuildUp: Power = {
     "ToHit"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 5.25,
-    "durations": {
-      "tohitBuff": 5.25
-    },
-    "tohitBuff": {
-      "scale": 1,
-      "table": "Melee_Buff_ToHit"
-    }
-  },
   "atoms": [
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["ToHit",null,1,1,5.25,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_ToHit"]

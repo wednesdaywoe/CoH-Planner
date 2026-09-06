@@ -58,21 +58,6 @@ export const ThunderousBlast: Power = {
       "table": "Ranged_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 11.2,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.051,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 11.2
-    },
-    "enduranceDrain": {
-      "scale": 1.05,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Energy",3,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],

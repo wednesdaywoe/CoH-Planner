@@ -65,16 +65,6 @@ export const Smite: Power = {
       "table": "Melee_InherentDamage"
     }
   ],
-  "effects": {
-    "buffDuration": 10,
-    "durations": {
-      "tohitDebuff": 10
-    },
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Melee_DeBuff_ToHit"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.32,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

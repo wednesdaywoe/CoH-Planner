@@ -38,26 +38,6 @@ export const Hoarfrost: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "absorb": {
-      "scale": 0.075,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 30,
-    "durations": {
-      "absorb": 5,
-      "regenBuff": 30
-    },
-    "maxStacks": 7,
-    "regenBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "stackInterval": 5,
-    "stacksLinear": [
-      "absorb"
-    ]
-  },
   "atoms": [
     ["Regeneration",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["Absorb",null,0.075,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],

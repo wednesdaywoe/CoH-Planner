@@ -44,64 +44,6 @@ export const ExplosiveBouquet: Power = {
     "Holds"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 5,
-    "durations": {
-      "resistanceDebuff": 5
-    },
-    "hold": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Immobilize"
-    },
-    "knockback": {
-      "scale": 20,
-      "table": "Ranged_Ones"
-    },
-    "resistanceDebuff": {
-      "cold": {
-        "ignoreStrength": true,
-        "scale": 1.2,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "energy": {
-        "ignoreStrength": true,
-        "scale": 1.2,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "fire": {
-        "ignoreStrength": true,
-        "scale": 1.2,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "lethal": {
-        "ignoreStrength": true,
-        "scale": 1.2,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "negative": {
-        "ignoreStrength": true,
-        "scale": 1.2,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "psionic": {
-        "ignoreStrength": true,
-        "scale": 1.2,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "smashing": {
-        "ignoreStrength": true,
-        "scale": 1.2,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "toxic": {
-        "ignoreStrength": true,
-        "scale": 1.2,
-        "table": "Ranged_Debuff_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["Mez","Knockback",20,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Ignore",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
     ["Resistance","Smashing",-1.2,1,5,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],

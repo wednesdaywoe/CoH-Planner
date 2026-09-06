@@ -46,49 +46,6 @@ export const WebGrenade: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 30,
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 2,
-      "table": "Ranged_Debuff_Dam"
-    },
-    "durations": {
-      "damageDebuff": 30,
-      "rechargeDebuff": 30,
-      "repel": 0.75,
-      "slow": 30
-    },
-    "immobilize": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.5,
-      "table": "Ranged_Slow"
-    },
-    "repel": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "scale": 500,
-        "table": "Ranged_Ones"
-      },
-      "runSpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Mez","Repel",1,1,0.75,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["RechargeTime",null,0.5,1,30,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],

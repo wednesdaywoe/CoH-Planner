@@ -69,12 +69,6 @@ export const M30Grenade: Power = {
       "table": "Ranged_InherentDamage"
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 2,
-      "table": "Ranged_Knockback"
-    }
-  },
   "atoms": [
     ["Damage","Fire",0.45,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Lethal",0.45,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

@@ -43,26 +43,6 @@ export const PowerSink: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 45,
-    "durations": {
-      "regenBuff": 45
-    },
-    "enduranceDrain": {
-      "scale": 0.35,
-      "table": "Melee_Ones"
-    },
-    "enduranceGain": {
-      "scale": 15,
-      "table": "Melee_Ones",
-      "perTarget": 15
-    },
-    "regenBuff": {
-      "scale": 0.35,
-      "table": "Melee_Ones",
-      "perTarget": 0.175
-    }
-  },
   "atoms": [
     ["Endurance",null,15,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,15,null,null,null,null,null,null,null,null,null,null,null,0.25],
     ["Regeneration",null,0.175,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.175],

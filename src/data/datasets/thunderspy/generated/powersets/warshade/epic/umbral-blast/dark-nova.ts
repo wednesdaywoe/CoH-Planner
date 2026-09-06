@@ -46,59 +46,6 @@ export const DarkNova: Power = {
     "Universal Travel"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 2,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 5,
-      "table": "Melee_Buff_Dmg"
-    },
-    "durations": {
-      "damageBuff": 2,
-      "movement": 2,
-      "recoveryBuff": 2,
-      "resistance": 2,
-      "tohitBuff": 2
-    },
-    "movement": {
-      "fly": {
-        "scale": 4,
-        "table": "Melee_Ones"
-      },
-      "flySpeed": {
-        "scale": 1.5,
-        "table": "Melee_SpeedFlying"
-      },
-      "movementControl": {
-        "scale": 2,
-        "table": "Melee_Control"
-      },
-      "movementFriction": {
-        "scale": 2,
-        "table": "Melee_Friction"
-      }
-    },
-    "recoveryBuff": {
-      "scale": 0.15,
-      "table": "Melee_Ones"
-    },
-    "resistance": {
-      "energy": {
-        "ignoreStrength": true,
-        "scale": 0.15,
-        "table": "Melee_Ones"
-      },
-      "negative": {
-        "ignoreStrength": true,
-        "scale": 0.15,
-        "table": "Melee_Ones"
-      }
-    },
-    "tohitBuff": {
-      "scale": 1,
-      "table": "Melee_Buff_ToHit"
-    }
-  },
   "atoms": [
     ["Movement","FlyMode",4,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["Recovery",null,0.15,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],

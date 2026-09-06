@@ -36,39 +36,6 @@ export const Invisibility: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
-  "effects": {
-    "buffDuration": 0.75,
-    "defenseBuff": {
-      "melee": {
-        "scale": 0,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 0.75,
-      "stealth": 120,
-      "threatDebuff": 0.75
-    },
-    "stealth": {
-      "stealthPvE": {
-        "scale": 200,
-        "table": "Melee_Ones"
-      },
-      "stealthPvP": {
-        "scale": 1000,
-        "table": "Melee_Ones"
-      },
-      "translucency": {
-        "scale": 0.8,
-        "table": "Ranged_Ones"
-      }
-    },
-    "threatDebuff": {
-      "ignoreStrength": true,
-      "scale": 1,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Stealth","RadiusPvE",200,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,null,null,null,null,null,"Ones"],
     ["Stealth","RadiusPvP",1000,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,null,null,null,null,null,"Ones"],

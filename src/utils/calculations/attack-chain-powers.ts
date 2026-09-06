@@ -710,7 +710,7 @@ export function buildChainPowers(
       // owns the roll CLOCK as well as the footprint. Both come off the summon.
       const directRadiusP = powerRadius(p);
       const { radius: radiusP, arcDegrees: arcP } = resolveProcAreaGeometry(
-        directRadiusP, arcToDegrees(powerArc(p)) || undefined, p.effects?.summon);
+        directRadiusP, arcToDegrees(powerArc(p)) || undefined, p.summon);
       const procDmg = calculateSlottedProcDamagePerCast({
         slots: p.slots,
         baseRecharge,
@@ -724,7 +724,7 @@ export function buildChainPowers(
         procsAllowed: p.procsAllowed,
         procRollSites: p.procRollSites,
         powerType: p.powerType,
-        patchDuration: resolveProcPatchDuration(directRadiusP, p.effects?.summon),
+        patchDuration: resolveProcPatchDuration(directRadiusP, p.summon),
       });
       const dot = dotData && !dotInCast
         ? {

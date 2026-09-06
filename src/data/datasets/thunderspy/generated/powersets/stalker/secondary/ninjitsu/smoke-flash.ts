@@ -39,36 +39,6 @@ export const SmokeFlash: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 20,
-    "durations": {
-      "stealth": 10,
-      "tohitDebuff": 20
-    },
-    "placate": {
-      "scale": 8,
-      "table": "Melee_Taunt"
-    },
-    "stealth": {
-      "stealthPvE": {
-        "scale": 150,
-        "table": "Melee_Ones"
-      },
-      "stealthPvP": {
-        "scale": 380,
-        "table": "Melee_Ones"
-      },
-      "translucency": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      }
-    },
-    "tohitDebuff": {
-      "scale": 1,
-      "table": "Melee_DeBuff_ToHit"
-    }
-  },
   "atoms": [
     ["ToHit",null,1,1,20,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"DeBuff_ToHit"],
     ["Mez","Placate",8,3,0,"Melee_Taunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Taunt"],

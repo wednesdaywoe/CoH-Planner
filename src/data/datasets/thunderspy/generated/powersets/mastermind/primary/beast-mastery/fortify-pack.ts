@@ -42,7 +42,6 @@ export const FortifyPack: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {},
   "atoms": [
     ["Defense","Melee",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["cur.kMeter","source>",".1","*",".05","+","@Strength","*"],null,null,null,"Buff_Def"],
     ["Defense","Ranged",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["cur.kMeter","source>",".1","*",".05","+","@Strength","*"],null,null,null,"Buff_Def"],

@@ -61,23 +61,6 @@ export const SmashingBlow: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 10,
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.7,
-      "table": "Melee_Debuff_Dam"
-    },
-    "durations": {
-      "damageDebuff": 10
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 6,
-      "table": "Melee_Stun"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.48,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

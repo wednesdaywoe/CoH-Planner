@@ -60,21 +60,6 @@ export const SniperBlast: Power = {
       "table": "Ranged_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 8.83,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.044,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 8.83
-    },
-    "knockback": {
-      "scale": 0.7,
-      "table": "Ranged_Knockback"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.76,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage",null,null,["Foe"]],
     ["Damage","Energy",2,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage",null,null,["Foe"]],

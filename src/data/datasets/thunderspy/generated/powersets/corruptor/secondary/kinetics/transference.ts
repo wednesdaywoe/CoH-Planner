@@ -41,12 +41,6 @@ export const Transference: Power = {
     "Endurance Modification"
   ],
   "maxSlots": 6,
-  "effects": {
-    "enduranceDrain": {
-      "scale": 0.6,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Endurance",null,-0.6,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones"],
     ["ExecutePower",null,0,0,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],

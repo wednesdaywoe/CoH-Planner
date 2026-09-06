@@ -53,14 +53,6 @@ export const Terrify: Power = {
     "scale": 1,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "fear": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Fear"
-    }
-  },
   "atoms": [
     ["Mez","Terrorized",15,3,0,"Ranged_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,0.25],
     ["Damage","Psionic",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

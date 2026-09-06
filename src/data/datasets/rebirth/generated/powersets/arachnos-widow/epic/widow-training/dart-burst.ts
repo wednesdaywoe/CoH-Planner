@@ -64,16 +64,6 @@ export const DartBurst: Power = {
       "cancelOnMiss": true
     }
   ],
-  "effects": {
-    "buffDuration": 15,
-    "durations": {
-      "regenDebuff": 15
-    },
-    "regenDebuff": {
-      "scale": 0.25,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Damage","Lethal",0.255005,1,0.8,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.33000001311302185,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Regeneration",null,-0.25,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],

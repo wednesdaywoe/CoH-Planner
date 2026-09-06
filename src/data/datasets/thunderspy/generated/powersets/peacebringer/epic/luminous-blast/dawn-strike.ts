@@ -60,20 +60,6 @@ export const DawnStrike: Power = {
       "table": "Ranged_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 20,
-    "defenseDebuff": {
-      "scale": 2,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 20
-    },
-    "knockback": {
-      "scale": 10,
-      "table": "Ranged_Knockback"
-    }
-  },
   "atoms": [
     ["Damage","Energy",4,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Energy",2.096842,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.75,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],

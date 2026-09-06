@@ -53,29 +53,6 @@ export const PsychicShockwave: Power = {
     "scale": 1.1,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 20,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.04,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 9.47,
-      "rechargeDebuff": 20
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.5,
-      "table": "Ranged_Slow"
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 2,
-      "scale": 5,
-      "table": "Ranged_Stun"
-    }
-  },
   "atoms": [
     ["Damage","Psionic",1.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Mez","Stunned",5,2,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

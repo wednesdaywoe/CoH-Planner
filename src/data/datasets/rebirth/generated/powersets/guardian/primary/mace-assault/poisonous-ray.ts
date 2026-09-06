@@ -54,16 +54,6 @@ export const PoisonousRay: Power = {
     "duration": 2.1,
     "tickRate": 0.5
   },
-  "effects": {
-    "buffDuration": 15,
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 15
-    }
-  },
   "atoms": [
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"StackThenIgnore",3,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["Damage","Toxic",0.4,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],

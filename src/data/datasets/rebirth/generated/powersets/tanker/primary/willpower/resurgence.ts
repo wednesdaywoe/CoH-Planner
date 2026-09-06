@@ -49,54 +49,6 @@ export const Resurgence: Power = {
     "duration": 0.5,
     "tickRate": 1
   },
-  "effects": {
-    "buffDuration": 90,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 4,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 4,
-      "table": "Ranged_Debuff_Dam"
-    },
-    "durations": {
-      "damageBuff": 90,
-      "damageDebuff": 45,
-      "rechargeBuff": 90,
-      "recoveryBuff": 90,
-      "tohitBuff": 90,
-      "tohitDebuff": 45
-    },
-    "enduranceGain": {
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    },
-    "rechargeBuff": {
-      "ignoreStrength": true,
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 2,
-      "table": "Ranged_Ones"
-    },
-    "tohitBuff": {
-      "scale": 3,
-      "table": "Ranged_Buff_ToHit"
-    },
-    "tohitDebuff": {
-      "ignoreStrength": true,
-      "scale": 3,
-      "table": "Ranged_Debuff_ToHit"
-    },
-    "untouchable": {
-      "ignoreStrength": true,
-      "scale": 15,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Heal",null,0.8,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["Endurance",null,0.5,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],

@@ -38,27 +38,6 @@ export const BloodThirst: Power = {
     "To Hit Buff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 15,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 3.333,
-      "table": "Melee_Buff_Dmg"
-    },
-    "durations": {
-      "damageBuff": 15,
-      "tohitBuff": 15
-    },
-    "tohitBuff": {
-      "scale": 1,
-      "table": "Melee_Buff_ToHit"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff",
-      "tohitBuff"
-    ]
-  },
   "atoms": [
     ["ToHit",null,1,1,15,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["DamageBuff","Smashing",3.333,1,15,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],

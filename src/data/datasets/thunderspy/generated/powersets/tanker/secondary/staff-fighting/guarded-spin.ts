@@ -59,28 +59,6 @@ export const GuardedSpin: Power = {
     "duration": 1.5,
     "tickRate": 0.30000001192092896
   },
-  "effects": {
-    "buffDuration": 10,
-    "defenseBuff": {
-      "lethal": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def",
-        "perTarget": 1.5
-      },
-      "melee": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def",
-        "perTarget": 1.5
-      }
-    },
-    "durations": {
-      "defenseBuff": 10
-    },
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.231667,1,1.5,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Fire",0.10425,1,1.5,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,"FieryEmbrace"],

@@ -52,17 +52,6 @@ export const RangedShot: Power = {
     "scale": 4.5,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 10,
-    "durations": {
-      "rangeBuff": 10
-    },
-    "rangeBuff": {
-      "ignoreStrength": true,
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Damage","Lethal",4.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
     ["Range",null,0.5,1,10,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],

@@ -63,41 +63,6 @@ export const BlackDwarfDrain: Power = {
       "table": "Melee_HealSelf"
     }
   ],
-  "effects": {
-    "buffDuration": 6,
-    "durations": {
-      "rechargeDebuff": 6,
-      "slow": 6
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.2,
-      "table": "Melee_Slow"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      }
-    },
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    }
-  },
   "atoms": [
     ["Damage","Negative",1,1,0,"Melee_SSDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"SSDamage"],
     ["Heal",null,1.75,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf",null,null,null,0.5],

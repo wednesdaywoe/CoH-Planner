@@ -43,58 +43,6 @@ export const DisruptionAura: Power = {
     "Recharge"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 2.25,
-    "durations": {
-      "resistanceDebuff": 2.25
-    },
-    "resistanceDebuff": {
-      "cold": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "energy": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "fire": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "lethal": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "negative": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "psionic": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "smashing": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "toxic": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Melee_Debuff_Res_Dmg"
-      }
-    },
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    }
-  },
   "atoms": [
     ["Resistance","Smashing",-2,1,2.25,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.5],
     ["Resistance","Lethal",-2,1,2.25,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.5],

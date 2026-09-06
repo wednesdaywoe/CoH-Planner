@@ -49,12 +49,6 @@ export const StoneSpears: Power = {
     "scale": 1,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "knockup": {
-      "scale": 0.67,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Damage","Lethal",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Mez","Knockup",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0.8,null,"Ones"],

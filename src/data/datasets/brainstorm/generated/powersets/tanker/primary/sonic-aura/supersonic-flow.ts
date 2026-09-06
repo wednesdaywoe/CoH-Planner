@@ -36,51 +36,6 @@ export const SupersonicFlow: Power = {
     "Endurance Modification"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 10.25,
-    "debuffResistance": {
-      "movement": {
-        "ignoreStrength": true,
-        "scale": 0.4,
-        "table": "Melee_Ones"
-      },
-      "recharge": {
-        "ignoreStrength": true,
-        "scale": 0.4,
-        "table": "Melee_Ones"
-      },
-      "recovery": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "debuffResistance": 10.25,
-      "movement": 10.25,
-      "rechargeBuff": 10.25,
-      "recoveryBuff": 10.25
-    },
-    "movement": {
-      "flySpeed": {
-        "scale": 0.1,
-        "table": "Melee_SpeedFlying"
-      },
-      "runSpeed": {
-        "scale": 0.1,
-        "table": "Melee_SpeedRunning"
-      }
-    },
-    "rechargeBuff": {
-      "ignoreStrength": true,
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 0.15,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["RechargeTime",null,0.2,1,10.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Movement","Run",0.1,1,10.25,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],

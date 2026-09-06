@@ -59,21 +59,6 @@ export const DisruptingTorrent: Power = {
       "table": "Ranged_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 15,
-    "durations": {
-      "regenBuffUnenhanced": 15
-    },
-    "knockback": {
-      "scale": 0.67,
-      "table": "Ranged_Ones"
-    },
-    "regenBuffUnenhanced": {
-      "ignoreStrength": true,
-      "scale": 1,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.819,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Energy",0.441,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],

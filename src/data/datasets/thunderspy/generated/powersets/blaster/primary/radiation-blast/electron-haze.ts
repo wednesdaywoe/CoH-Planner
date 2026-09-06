@@ -63,26 +63,6 @@ export const ElectronHaze: Power = {
       "table": "Ranged_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 9.87,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.072,
-      "table": "Ranged_Ones"
-    },
-    "defenseDebuff": {
-      "scale": 2,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "damageBuff": 9.87,
-      "defenseDebuff": 8
-    },
-    "knockback": {
-      "scale": 1,
-      "table": "Ranged_Knockback"
-    }
-  },
   "atoms": [
     ["Damage","Energy",0.945,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Toxic",0.405,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],

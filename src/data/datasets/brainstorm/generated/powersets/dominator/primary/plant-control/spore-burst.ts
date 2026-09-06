@@ -44,14 +44,6 @@ export const SporeBurst: Power = {
     "Sleep"
   ],
   "maxSlots": 6,
-  "effects": {
-    "sleep": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 12,
-      "table": "Ranged_Sleep"
-    }
-  },
   "atoms": [
     ["Mez","Sleep",12,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Raid","target.HasTag?","!","&&"]],
     ["Mez","Sleep",12,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

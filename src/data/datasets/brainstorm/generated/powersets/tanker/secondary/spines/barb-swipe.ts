@@ -65,43 +65,6 @@ export const BarbSwipe: Power = {
       "cancelOnMiss": true
     }
   ],
-  "effects": {
-    "buffDuration": 4,
-    "durations": {
-      "rechargeDebuff": 2,
-      "slow": 4
-    },
-    "immobilize": {
-      "attribType": "Duration",
-      "mag": 0.33000001311302185,
-      "scale": 8,
-      "table": "Melee_Immobilize"
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.1,
-      "table": "Melee_Slow"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Damage","Lethal",0.84,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Mez","Immobilized",8,0.33000001311302185,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

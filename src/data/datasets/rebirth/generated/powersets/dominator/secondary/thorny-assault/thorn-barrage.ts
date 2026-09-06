@@ -62,21 +62,6 @@ export const ThornBarrage: Power = {
       "cancelOnMiss": true
     }
   ],
-  "effects": {
-    "buffDuration": 12,
-    "defenseDebuff": {
-      "scale": 3,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 12,
-      "knockback": 1.75
-    },
-    "knockback": {
-      "scale": 1,
-      "table": "Ranged_Knockback"
-    }
-  },
   "atoms": [
     ["Damage","Lethal",0.53,1,1.75,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Toxic",0.1,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0.800000011920929,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.8,true,"Damage",null,null,null,0.5],

@@ -46,39 +46,6 @@ export const ParasiticAura: Power = {
     "Taunt"
   ],
   "maxSlots": 6,
-  "effects": {
-    "absorb": {
-      "scale": 0.1,
-      "table": "Melee_Ones",
-      "perTarget": 0.1
-    },
-    "buffDuration": 45,
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 2,
-      "table": "Melee_Debuff_Dam"
-    },
-    "durations": {
-      "absorb": 45,
-      "damageDebuff": 30,
-      "recoveryBuff": 45,
-      "regenBuff": 45
-    },
-    "recoveryBuff": {
-      "scale": 0.3,
-      "table": "Melee_Ones",
-      "perTarget": 0.3
-    },
-    "regenBuff": {
-      "scale": 0.5,
-      "table": "Melee_Ones",
-      "perTarget": 0.5
-    },
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    }
-  },
   "atoms": [
     ["Recovery",null,0.3,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.3,null,null,null,null,null,null,null,"Ones"],
     ["Regeneration",null,0.5,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.5,null,null,null,null,null,null,null,"Ones"],

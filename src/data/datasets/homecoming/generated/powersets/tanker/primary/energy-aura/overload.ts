@@ -49,64 +49,6 @@ export const Overload: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 30,
-    "debuffResistance": {
-      "defense": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "defenseBuff": {
-      "cold": {
-        "scale": 2.5,
-        "table": "Melee_Buff_Def"
-      },
-      "energy": {
-        "scale": 2.5,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
-        "scale": 2.5,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 2.5,
-        "table": "Melee_Buff_Def"
-      },
-      "negative": {
-        "scale": 2.5,
-        "table": "Melee_Buff_Def"
-      },
-      "psionic": {
-        "scale": 2,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 2.5,
-        "table": "Melee_Buff_Def"
-      },
-      "toxic": {
-        "scale": 2,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "debuffResistance": 30,
-      "defenseBuff": 30,
-      "maxHPBuff": 30,
-      "recoveryBuff": 30
-    },
-    "maxHPBuff": {
-      "scale": 3,
-      "table": "Melee_HealSelf"
-    },
-    "recoveryBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Defense","Smashing",2.5,1,30,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Defense","Lethal",2.5,1,30,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],

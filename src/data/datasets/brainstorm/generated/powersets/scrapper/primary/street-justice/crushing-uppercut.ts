@@ -61,18 +61,6 @@ export const CrushingUppercut: Power = {
       "combo_level_3"
     ]
   },
-  "effects": {
-    "knockup": {
-      "scale": 3,
-      "table": "Melee_Knockback"
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 7.5,
-      "table": "Melee_Stun"
-    }
-  },
   "atoms": [
     ["Mez","Knockup",3,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Smashing",3.18,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Combo_Level_1","source.ownPower?","!","Temporary_Powers.Temporary_Powers.Combo_Level_2","source.ownPower?","!","&&","Temporary_Powers.Temporary_Powers.Combo_Level_3","source.ownPower?","!","&&","&&"]],

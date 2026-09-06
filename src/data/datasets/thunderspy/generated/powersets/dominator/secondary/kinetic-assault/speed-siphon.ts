@@ -55,50 +55,6 @@ export const SpeedSiphon: Power = {
     "scale": 0.11,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 5,
-    "durations": {
-      "movement": 10,
-      "movementCapDebuff": 5,
-      "slow": 5
-    },
-    "movement": {
-      "flySpeed": {
-        "scale": 0.05,
-        "table": "Melee_Ones"
-      },
-      "jumpSpeed": {
-        "scale": 0.05,
-        "table": "Melee_Ones"
-      },
-      "runSpeed": {
-        "scale": 0.05,
-        "table": "Melee_Ones"
-      }
-    },
-    "movementCapDebuff": {
-      "runSpeed": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Melee_SpeedRunning"
-      }
-    },
-    "slow": {
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.5,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.5,
-        "table": "Melee_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.5,
-        "table": "Melee_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Movement","Run",0.05,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"StackThenIgnore",10,null,null,1],
     ["Movement","Jump",0.05,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"StackThenIgnore",10,null,null,1],

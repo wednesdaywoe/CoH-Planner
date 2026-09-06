@@ -65,42 +65,6 @@ export const TidalWave: Power = {
       "table": "Ranged_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 15,
-    "durations": {
-      "slow": 15
-    },
-    "knockback": {
-      "ignoreStrength": true,
-      "scale": 3,
-      "table": "Ranged_Ones"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.35,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.35,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.35,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.35,
-        "table": "Ranged_Slow"
-      }
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Stun"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.2,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Cold",0.6,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],

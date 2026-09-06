@@ -46,43 +46,6 @@ export const Revive: Power = {
     "duration": 0.5,
     "tickRate": 1
   },
-  "effects": {
-    "buffDuration": 90,
-    "durations": {
-      "recoveryBuff": 90,
-      "regenBuff": 90,
-      "untouchable": 15
-    },
-    "enduranceGain": {
-      "scale": 50,
-      "table": "Melee_Ones"
-    },
-    "immobilize": {
-      "attribType": "Duration",
-      "ignoreStrength": true,
-      "mag": 50,
-      "scale": 4,
-      "table": "Melee_Ones",
-      "toWho": "Self"
-    },
-    "recoveryBuff": {
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    },
-    "regenBuff": {
-      "scale": 2.5,
-      "table": "Melee_Ones"
-    },
-    "untouchable": {
-      "ignoreStrength": true,
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "enduranceGain"
-    ]
-  },
   "atoms": [
     ["Heal",null,7.5,1,0.5,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf"],
     ["Endurance",null,50,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,0.125],

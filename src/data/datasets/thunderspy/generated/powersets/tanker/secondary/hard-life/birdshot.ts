@@ -50,47 +50,6 @@ export const Birdshot: Power = {
     "Taunt"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 15,
-    "durations": {
-      "rechargeDebuff": 10,
-      "slow": 15
-    },
-    "immobilize": {
-      "attribType": "Duration",
-      "mag": 1.5,
-      "scale": 15,
-      "table": "Melee_Immobilize"
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.4,
-      "table": "Melee_Slow"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.4,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.4,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.4,
-        "table": "Melee_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.4,
-        "table": "Melee_Slow"
-      }
-    },
-    "taunt": {
-      "scale": 5,
-      "table": "Melee_Taunt"
-    }
-  },
   "atoms": [
     ["Mez","Taunt",20,4,0,"Melee_Taunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Taunt"],
     ["Mez","Taunt",5,4,0,"Melee_Taunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Taunt"],

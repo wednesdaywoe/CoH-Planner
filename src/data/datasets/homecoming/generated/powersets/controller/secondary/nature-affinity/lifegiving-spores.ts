@@ -43,48 +43,46 @@ export const LifegivingSpores: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "displayName": "LIfegiving Spores",
-      "duration": 99999,
-      "isPseudoPet": true,
-      "powers": [
-        "Pets.ResistAll.ResistAll",
-        "Pets.Lifegiving_Spores.Lifegiving_Spores"
-      ],
-      "resolvedEntities": [
-        {
-          "displayName": "LIfegiving Spores",
-          "duration": 99999,
-          "copyCreatorMods": true,
-          "abilities": [
-            {
-              "name": "Lifegiving_Spores",
-              "displayName": "Lifegiving Spores",
-              "type": "Auto",
-              "damage": [
-                {
-                  "damageType": "Heal",
-                  "scale": 0.25,
-                  "table": "Ranged_Heal"
-                }
-              ],
-              "recharge": 0,
-              "castTime": 0,
-              "activatePeriod": 4,
-              "effectArea": "Sphere",
-              "targetsAffected": [
-                "Friend"
-              ],
-              "radius": 15,
-              "maxTargets": 255
-            }
-          ]
-        }
-      ],
-      "entity": "PL_StaticObject"
-    }
+  "summon": {
+    "copyBoosts": true,
+    "displayName": "LIfegiving Spores",
+    "duration": 99999,
+    "isPseudoPet": true,
+    "powers": [
+      "Pets.ResistAll.ResistAll",
+      "Pets.Lifegiving_Spores.Lifegiving_Spores"
+    ],
+    "resolvedEntities": [
+      {
+        "displayName": "LIfegiving Spores",
+        "duration": 99999,
+        "copyCreatorMods": true,
+        "abilities": [
+          {
+            "name": "Lifegiving_Spores",
+            "displayName": "Lifegiving Spores",
+            "type": "Auto",
+            "damage": [
+              {
+                "damageType": "Heal",
+                "scale": 0.25,
+                "table": "Ranged_Heal"
+              }
+            ],
+            "recharge": 0,
+            "castTime": 0,
+            "activatePeriod": 4,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "Friend"
+            ],
+            "radius": 15,
+            "maxTargets": 255
+          }
+        ]
+      }
+    ],
+    "entity": "PL_StaticObject"
   },
   "atoms": [
     ["EntCreate",null,-1,1,99999,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1.5,null,null,null,null,"OnActivate",99999]

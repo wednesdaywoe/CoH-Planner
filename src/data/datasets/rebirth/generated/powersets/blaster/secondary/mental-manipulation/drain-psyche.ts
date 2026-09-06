@@ -44,39 +44,6 @@ export const DrainPsyche: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 30,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.035,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "damageBuff": 8.83,
-      "recoveryBuff": 30,
-      "recoveryDebuff": 30,
-      "regenBuff": 30,
-      "regenDebuff": 30
-    },
-    "recoveryBuff": {
-      "scale": 0.75,
-      "table": "Melee_Ones",
-      "perTarget": 0.75
-    },
-    "recoveryDebuff": {
-      "scale": 2.5,
-      "table": "Melee_Ones"
-    },
-    "regenBuff": {
-      "scale": 0.75,
-      "table": "Melee_Ones",
-      "perTarget": 0.75
-    },
-    "regenDebuff": {
-      "scale": 2.5,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Regeneration",null,0.75,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.75,null,null,null,null,null,null,null,"Ones"],
     ["Regeneration",null,-2.5,1,30,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones"],

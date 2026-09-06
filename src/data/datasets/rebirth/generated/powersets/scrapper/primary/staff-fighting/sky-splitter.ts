@@ -58,18 +58,6 @@ export const SkySplitter: Power = {
     "duration": 1.9,
     "tickRate": 1
   },
-  "effects": {
-    "knockup": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 5,
-      "table": "Melee_Stun"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",1.38,1,1.9,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Mez","Stunned",5,3,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Stun",null,null,null,1.8],

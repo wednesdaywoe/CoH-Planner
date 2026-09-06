@@ -41,14 +41,6 @@ export const ParalyticPoison: Power = {
     "Holds"
   ],
   "maxSlots": 6,
-  "effects": {
-    "hold": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Immobilize"
-    }
-  },
   "atoms": [
     ["Mez","Held",8,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Immobilize"],
     ["Mez","Held",4,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"]

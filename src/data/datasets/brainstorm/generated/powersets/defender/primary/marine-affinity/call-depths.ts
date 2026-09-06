@@ -43,32 +43,6 @@ export const CallDepths: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 60,
-    "durations": {
-      "maxEndBuff": 60,
-      "maxHPBuff": 60,
-      "rangeBuff": 60,
-      "regenBuff": 60
-    },
-    "maxEndBuff": {
-      "scale": 20,
-      "table": "Ranged_Ones"
-    },
-    "maxHPBuff": {
-      "scale": 2,
-      "table": "Ranged_Heal"
-    },
-    "rangeBuff": {
-      "ignoreStrength": true,
-      "scale": 0.375,
-      "table": "Melee_Stun"
-    },
-    "regenBuff": {
-      "scale": 4,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["MaxHP",null,2,1,60,"Ranged_Heal","Max","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["MaxEndurance",null,10,1,60,"Ranged_Ones","Max","Magnitude","Target","Any",false,"Replace",2,null,null,1],

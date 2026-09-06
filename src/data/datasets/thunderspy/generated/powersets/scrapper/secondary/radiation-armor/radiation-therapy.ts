@@ -68,17 +68,6 @@ export const RadiationTherapy: Power = {
       "table": "Melee_HealSelf"
     }
   ],
-  "effects": {
-    "buffDuration": 30,
-    "durations": {
-      "regenDebuff": 30
-    },
-    "regenDebuff": {
-      "ignoreStrength": true,
-      "scale": 1.5,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Damage","Energy",0.1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Toxic",0.05,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],

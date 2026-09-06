@@ -65,20 +65,6 @@ export const GroundZero: Power = {
       "tickRate": 1
     }
   ],
-  "effects": {
-    "buffDuration": 10,
-    "defenseDebuff": {
-      "scale": 2,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    }
-  },
   "atoms": [
     ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!","target.isFriend?","!","&&"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Toxic",0.1,1,9.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!","target.isFriend?","!","&&"],null,null,null,null,null,null,null,null,null,"Damage",null,null,null,1],

@@ -52,16 +52,6 @@ export const LightningField: Power = {
     "scale": 0.2,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "enduranceDrain": {
-      "scale": 0.03,
-      "table": "Melee_Ones"
-    },
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    }
-  },
   "atoms": [
     ["Damage","Energy",0.2,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
     ["Endurance",null,-0.03,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones"],

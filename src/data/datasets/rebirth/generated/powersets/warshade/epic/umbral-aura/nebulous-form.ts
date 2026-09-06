@@ -44,51 +44,6 @@ export const NebulousForm: Power = {
     "Universal Travel"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "durations": {
-      "movement": 0.75,
-      "stealth": 0.75,
-      "threatDebuff": 0.75
-    },
-    "movement": {
-      "jumpHeight": {
-        "scale": 0.5,
-        "table": "Melee_Leap"
-      },
-      "jumpSpeed": {
-        "scale": 0.5,
-        "table": "Melee_SpeedJumping"
-      },
-      "movementControl": {
-        "scale": 10,
-        "table": "Melee_Ones"
-      },
-      "movementFriction": {
-        "scale": 2,
-        "table": "Melee_Ones"
-      }
-    },
-    "stealth": {
-      "stealthPvE": {
-        "scale": 20,
-        "table": "Melee_Ones"
-      },
-      "stealthPvP": {
-        "scale": 222,
-        "table": "Melee_Ones"
-      },
-      "translucency": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      }
-    },
-    "threatDebuff": {
-      "ignoreStrength": true,
-      "scale": 1,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Meta",null,1,8,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode",null,null,null,null,null,null,"OnActivate"],
     ["Meta",null,1,9,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode",null,null,null,null,null,null,"OnActivate"],

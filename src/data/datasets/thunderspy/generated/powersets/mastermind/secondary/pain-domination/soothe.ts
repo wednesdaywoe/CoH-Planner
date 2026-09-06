@@ -56,21 +56,6 @@ export const Soothe: Power = {
       "table": "Melee_Ones"
     }
   ],
-  "effects": {
-    "buffDuration": 10,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 3,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "durations": {
-      "damageBuff": 10
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff"
-    ]
-  },
   "atoms": [
     ["Damage","Psionic",1.32,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["target.isFriend?","!"]],
     ["Damage","Psionic",0.1,1,0,"Melee_Ones","Abs","Expression","Self","Any",false,"StackThenIgnore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,["@Scale","Max.kHitPoints","source>","*","negate"]],

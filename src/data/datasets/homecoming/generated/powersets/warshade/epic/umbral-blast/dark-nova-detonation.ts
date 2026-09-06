@@ -54,41 +54,6 @@ export const DarkNovaDetonation: Power = {
     "scale": 0.9,
     "table": "Ranged_InherentDamage"
   },
-  "effects": {
-    "buffDuration": 10,
-    "durations": {
-      "rechargeDebuff": 10,
-      "slow": 10
-    },
-    "knockback": {
-      "scale": 2,
-      "table": "Ranged_Knockback"
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.2,
-      "table": "Ranged_Slow"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Damage","Negative",0.9,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"SSDamage"],
     ["Mez","Knockback",2,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

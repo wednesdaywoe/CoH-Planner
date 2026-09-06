@@ -52,27 +52,6 @@ export const FuturePain: Power = {
     "scale": 3.24,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "buffDuration": 9.17,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.11,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "damageBuff": 9.17
-    },
-    "fear": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 5,
-      "table": "Melee_Fear"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff"
-    ]
-  },
   "atoms": [
     ["Damage","Psionic",3.24,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Mez","Terrorized",5,3,0,"Melee_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

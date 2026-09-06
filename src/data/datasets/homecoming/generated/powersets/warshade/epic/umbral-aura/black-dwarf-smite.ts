@@ -63,51 +63,6 @@ export const BlackDwarfSmite: Power = {
       "table": "Melee_InherentDamage"
     }
   ],
-  "effects": {
-    "buffDuration": 10,
-    "durations": {
-      "rechargeDebuff": 10,
-      "slow": 10
-    },
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.2,
-      "table": "Melee_Slow"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      }
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 2,
-      "scale": 6,
-      "table": "Melee_Immobilize"
-    },
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.32,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"SSDamage"],
     ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"SSDamage"],

@@ -52,23 +52,6 @@ export const PhotonGrenade: Power = {
     "scale": 0.8985,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 30,
-    "durations": {
-      "regenDebuff": 30
-    },
-    "regenDebuff": {
-      "ignoreStrength": true,
-      "scale": 2,
-      "table": "Ranged_Ones"
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 2,
-      "scale": 4,
-      "table": "Ranged_Stun"
-    }
-  },
   "atoms": [
     ["Damage","Energy",0.8985,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Regeneration",null,-2,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"]],

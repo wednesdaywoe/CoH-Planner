@@ -51,30 +51,6 @@ export const ShadowBolt: Power = {
     "scale": 0.68,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 4,
-    "durations": {
-      "rechargeDebuff": 4,
-      "slow": 4
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.2,
-      "table": "Ranged_Slow"
-    },
-    "slow": {
-      "flySpeed": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Constant","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kWarshade_Blaster_Mode","source.Mode?","!"],null,null,null,null,null,null,null,null,null,"Ones",null,"power_redirect"],
     ["Damage","Negative",0.68,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
@@ -99,37 +75,6 @@ export const ShadowBolt: Power = {
         "type": "Negative",
         "scale": 0.68,
         "table": "Ranged_SSDamage"
-      },
-      "effects": {
-        "buffDuration": 3,
-        "durations": {
-          "rechargeDebuff": 3,
-          "slow": 3
-        },
-        "rechargeDebuff": {
-          "ignoreStrength": true,
-          "scale": 0.2,
-          "table": "Ranged_Slow"
-        },
-        "slow": {
-          "flySpeed": {
-            "scale": 0.2,
-            "table": "Ranged_Slow"
-          },
-          "jumpHeight": {
-            "ignoreStrength": true,
-            "scale": 0.2,
-            "table": "Ranged_Slow"
-          },
-          "jumpSpeed": {
-            "scale": 0.2,
-            "table": "Ranged_Slow"
-          },
-          "runSpeed": {
-            "scale": 0.2,
-            "table": "Ranged_Slow"
-          }
-        }
       },
       "shortHelp": "Ranged, Minor DMG(Negative), Foe -Recharge, -SPD",
       "description": "A very quick, but low damage attack that lowers your target's attack and movement speed. This power is only available while in Dark Nova Form. Damage: Minor, Recharge: Very Fast",
@@ -158,34 +103,6 @@ export const ShadowBolt: Power = {
         "type": "Negative",
         "scale": 0.68,
         "table": "Melee_SSDamage"
-      },
-      "effects": {
-        "buffDuration": 4,
-        "durations": {
-          "rechargeDebuff": 4,
-          "slow": 4
-        },
-        "rechargeDebuff": {
-          "ignoreStrength": true,
-          "scale": 0.2,
-          "table": "Ranged_Slow"
-        },
-        "slow": {
-          "flySpeed": {
-            "ignoreStrength": true,
-            "scale": 0.2,
-            "table": "Ranged_Slow"
-          },
-          "runSpeed": {
-            "ignoreStrength": true,
-            "scale": 0.2,
-            "table": "Ranged_Slow"
-          }
-        },
-        "taunt": {
-          "scale": 1,
-          "table": "Melee_InherentTaunt"
-        }
       },
       "shortHelp": "Ranged, Minor DMG(Negative), Foe -Recharge, -SPD",
       "description": "A very quick, but low damage attack that can lower your target's attack rate and movement speed. This power can be used while in Dark Nova or Black Dwarf form.  While in Dark Nova, this power has increased range and higher damage. While in Black Dwarf form, this power taunts its target but has shorter range and deals slightly more damage. Damage: Minor, Recharge: Very Fast",

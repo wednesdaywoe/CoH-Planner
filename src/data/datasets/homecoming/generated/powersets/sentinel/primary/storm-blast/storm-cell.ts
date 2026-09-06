@@ -48,172 +48,170 @@ export const StormCell: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "displayName": "Storm Cell",
-      "duration": 60,
-      "isPseudoPet": true,
-      "powers": [
-        "Pets.ResistAll_NoFly.ResistAll",
-        "Redirects.Storm_Blast.StormCell_Tempest_Sentinel",
-        "Redirects.Storm_Blast.StormCell_SelfDestruct",
-        "Redirects.Storm_Blast.Lightning_Proc"
-      ],
-      "resolvedEntities": [
-        {
-          "displayName": "Storm Cell",
-          "duration": 60,
-          "copyCreatorMods": true,
-          "abilities": [
-            {
-              "name": "StormCell_Tempest_Sentinel",
-              "displayName": "Tempest",
-              "type": "Auto",
-              "damage": [],
-              "effects": [
-                {
-                  "type": "RechargeDebuff",
-                  "scale": 0.07,
-                  "table": "Melee_Slow",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "Slow",
-                  "axis": "jumpHeight",
-                  "scale": 0.14,
-                  "table": "Melee_Slow",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "Slow",
-                  "axis": "runSpeed",
-                  "scale": 0.14,
-                  "table": "Melee_Slow",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "Slow",
-                  "axis": "flySpeed",
-                  "scale": 0.14,
-                  "table": "Melee_Slow",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "Slow",
-                  "axis": "jumpSpeed",
-                  "scale": 0.14,
-                  "table": "Melee_Slow",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "ToHitDebuff",
-                  "scale": 0.7,
-                  "table": "Ranged_Debuff_ToHit",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "MovementCapDebuff",
-                  "axis": "runSpeed",
-                  "scale": 0.4,
-                  "table": "Melee_SpeedRunning",
-                  "ignoreStrength": true
-                }
-              ],
-              "recharge": 0,
-              "castTime": 0,
-              "activatePeriod": 0.2,
-              "effectArea": "Sphere",
-              "targetsAffected": [
-                "Foe"
-              ],
-              "radius": 35,
-              "maxTargets": 10,
-              "poweredUpEffects": [
-                {
-                  "type": "MovementCapDebuff",
-                  "axis": "runSpeed",
-                  "scale": 0.8,
-                  "table": "Melee_SpeedRunning",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "RechargeDebuff",
-                  "scale": 0.14,
-                  "table": "Melee_Slow",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "Slow",
-                  "axis": "jumpHeight",
-                  "scale": 0.28,
-                  "table": "Melee_Slow",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "ToHitDebuff",
-                  "scale": 1.4,
-                  "table": "Ranged_Debuff_ToHit",
-                  "ignoreStrength": true
-                }
-              ]
-            },
-            {
-              "name": "Lightning_Proc",
-              "displayName": "Lightning Proc",
-              "type": "Auto",
-              "damage": [
-                {
-                  "damageType": "Energy",
-                  "scale": 0.5,
-                  "table": "Ranged_Damage"
-                }
-              ],
-              "effects": [
-                {
-                  "type": "EndDrain",
-                  "scale": 0.025,
-                  "table": "Ranged_EndDrain"
-                },
-                {
-                  "type": "Stun",
-                  "magnitude": 3,
-                  "attribType": "Duration",
-                  "scale": 4,
-                  "table": "Ranged_Stun",
-                  "chance": 0.33
-                },
-                {
-                  "type": "Knockback",
-                  "magnitude": 1,
-                  "attribType": "Magnitude",
-                  "scale": 1,
-                  "table": "Ranged_Knockback",
-                  "chance": 0.17
-                }
-              ],
-              "recharge": 0,
-              "castTime": 0,
-              "activatePeriod": 1,
-              "effectArea": "Sphere",
-              "targetsAffected": [
-                "Foe"
-              ],
-              "radius": 35,
-              "maxTargets": 1,
-              "poweredUpDamage": [
-                {
-                  "damageType": "Energy",
-                  "scale": 1,
-                  "table": "Ranged_Damage"
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "entity": "PL_StaticObject"
-    }
+  "summon": {
+    "copyBoosts": true,
+    "displayName": "Storm Cell",
+    "duration": 60,
+    "isPseudoPet": true,
+    "powers": [
+      "Pets.ResistAll_NoFly.ResistAll",
+      "Redirects.Storm_Blast.StormCell_Tempest_Sentinel",
+      "Redirects.Storm_Blast.StormCell_SelfDestruct",
+      "Redirects.Storm_Blast.Lightning_Proc"
+    ],
+    "resolvedEntities": [
+      {
+        "displayName": "Storm Cell",
+        "duration": 60,
+        "copyCreatorMods": true,
+        "abilities": [
+          {
+            "name": "StormCell_Tempest_Sentinel",
+            "displayName": "Tempest",
+            "type": "Auto",
+            "damage": [],
+            "effects": [
+              {
+                "type": "RechargeDebuff",
+                "scale": 0.07,
+                "table": "Melee_Slow",
+                "ignoreStrength": true
+              },
+              {
+                "type": "Slow",
+                "axis": "jumpHeight",
+                "scale": 0.14,
+                "table": "Melee_Slow",
+                "ignoreStrength": true
+              },
+              {
+                "type": "Slow",
+                "axis": "runSpeed",
+                "scale": 0.14,
+                "table": "Melee_Slow",
+                "ignoreStrength": true
+              },
+              {
+                "type": "Slow",
+                "axis": "flySpeed",
+                "scale": 0.14,
+                "table": "Melee_Slow",
+                "ignoreStrength": true
+              },
+              {
+                "type": "Slow",
+                "axis": "jumpSpeed",
+                "scale": 0.14,
+                "table": "Melee_Slow",
+                "ignoreStrength": true
+              },
+              {
+                "type": "ToHitDebuff",
+                "scale": 0.7,
+                "table": "Ranged_Debuff_ToHit",
+                "ignoreStrength": true
+              },
+              {
+                "type": "MovementCapDebuff",
+                "axis": "runSpeed",
+                "scale": 0.4,
+                "table": "Melee_SpeedRunning",
+                "ignoreStrength": true
+              }
+            ],
+            "recharge": 0,
+            "castTime": 0,
+            "activatePeriod": 0.2,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "Foe"
+            ],
+            "radius": 35,
+            "maxTargets": 10,
+            "poweredUpEffects": [
+              {
+                "type": "MovementCapDebuff",
+                "axis": "runSpeed",
+                "scale": 0.8,
+                "table": "Melee_SpeedRunning",
+                "ignoreStrength": true
+              },
+              {
+                "type": "RechargeDebuff",
+                "scale": 0.14,
+                "table": "Melee_Slow",
+                "ignoreStrength": true
+              },
+              {
+                "type": "Slow",
+                "axis": "jumpHeight",
+                "scale": 0.28,
+                "table": "Melee_Slow",
+                "ignoreStrength": true
+              },
+              {
+                "type": "ToHitDebuff",
+                "scale": 1.4,
+                "table": "Ranged_Debuff_ToHit",
+                "ignoreStrength": true
+              }
+            ]
+          },
+          {
+            "name": "Lightning_Proc",
+            "displayName": "Lightning Proc",
+            "type": "Auto",
+            "damage": [
+              {
+                "damageType": "Energy",
+                "scale": 0.5,
+                "table": "Ranged_Damage"
+              }
+            ],
+            "effects": [
+              {
+                "type": "EndDrain",
+                "scale": 0.025,
+                "table": "Ranged_EndDrain"
+              },
+              {
+                "type": "Stun",
+                "magnitude": 3,
+                "attribType": "Duration",
+                "scale": 4,
+                "table": "Ranged_Stun",
+                "chance": 0.33
+              },
+              {
+                "type": "Knockback",
+                "magnitude": 1,
+                "attribType": "Magnitude",
+                "scale": 1,
+                "table": "Ranged_Knockback",
+                "chance": 0.17
+              }
+            ],
+            "recharge": 0,
+            "castTime": 0,
+            "activatePeriod": 1,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "Foe"
+            ],
+            "radius": 35,
+            "maxTargets": 1,
+            "poweredUpDamage": [
+              {
+                "damageType": "Energy",
+                "scale": 1,
+                "table": "Ranged_Damage"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "entity": "PL_StaticObject"
   },
   "atoms": [
     ["EntCreate",null,1,1,60,"Melee_Level","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,60],

@@ -40,67 +40,6 @@ export const PracticedBrawler: Power = {
     "Recharge"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 120,
-    "durations": {
-      "hold": 120,
-      "immobilize": 120,
-      "knockback": 120,
-      "knockup": 120,
-      "mezResistance": 120,
-      "sleep": 120,
-      "stun": 120
-    },
-    "effectDuration": 120,
-    "hold": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": -30,
-      "table": "Melee_Res_Boolean",
-      "toWho": "Self"
-    },
-    "immobilize": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": -30,
-      "table": "Melee_Res_Boolean",
-      "toWho": "Self"
-    },
-    "knockback": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "knockup": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "mezResistance": {
-      "knockback": {
-        "ignoreStrength": true,
-        "scale": 100,
-        "table": "Melee_Ones"
-      },
-      "knockup": {
-        "ignoreStrength": true,
-        "scale": 100,
-        "table": "Melee_Ones"
-      }
-    },
-    "sleep": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": -30,
-      "table": "Melee_Res_Boolean",
-      "toWho": "Self"
-    },
-    "stun": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": -30,
-      "table": "Melee_Res_Boolean",
-      "toWho": "Self"
-    }
-  },
   "atoms": [
     ["MezResist","Knockup",100,1,120,"Melee_Ones","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["MezResist","Knockback",100,1,120,"Melee_Ones","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],

@@ -66,20 +66,6 @@ export const Flay: Power = {
       "tickRate": 0.4000000059604645
     }
   ],
-  "effects": {
-    "buffDuration": 15,
-    "durations": {
-      "regenDebuff": 15
-    },
-    "regenDebuff": {
-      "scale": 0.2,
-      "table": "Ranged_Ones"
-    },
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    }
-  },
   "atoms": [
     ["Damage","Lethal",0.1,1,0.6,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage",null,null,null,0.125],
     ["Damage","Toxic",0.12,1,0.6,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage",null,null,null,0.125],

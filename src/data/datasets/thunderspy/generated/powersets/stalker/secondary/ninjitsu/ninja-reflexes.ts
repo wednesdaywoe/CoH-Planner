@@ -44,26 +44,6 @@ export const NinjaReflexes: Power = {
     "Defense Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "debuffResistance": {
-      "defense": {
-        "ignoreStrength": true,
-        "scale": 0.5,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "defenseBuff": {
-      "melee": {
-        "scale": 2,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "debuffResistance": 0.75,
-      "defenseBuff": 0.75
-    }
-  },
   "atoms": [
     ["Defense","Melee",2,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Defense","All",0.5,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_Boolean"],

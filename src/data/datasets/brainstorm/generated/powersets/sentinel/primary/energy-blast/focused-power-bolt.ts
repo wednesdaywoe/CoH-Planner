@@ -67,12 +67,6 @@ export const FocusedPowerBolt: Power = {
       "table": "Ranged_InherentDamage"
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 0.7,
-      "table": "Ranged_Knockback"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.584,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Energy",2.336,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

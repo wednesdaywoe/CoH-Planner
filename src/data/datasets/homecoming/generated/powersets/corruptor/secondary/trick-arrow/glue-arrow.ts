@@ -42,69 +42,67 @@ export const GlueArrow: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "displayName": "Glue Arrow",
-      "duration": 60,
-      "isPseudoPet": true,
-      "powers": [
-        "Redirects.Trick_Arrow.GlueArrow"
-      ],
-      "resolvedEntities": [
-        {
-          "displayName": "Glue Arrow",
-          "duration": 60,
-          "copyCreatorMods": true,
-          "abilities": [
-            {
-              "name": "GlueArrow",
-              "displayName": "Glue Arrow",
-              "type": "Auto",
-              "damage": [],
-              "effects": [
-                {
-                  "type": "Slow",
-                  "axis": "runSpeed",
-                  "scale": 0.72,
-                  "table": "Ranged_Slow"
-                },
-                {
-                  "type": "RechargeDebuff",
-                  "scale": 0.32,
-                  "table": "Ranged_Slow",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "MovementCapDebuff",
-                  "axis": "runSpeed",
-                  "scale": 1,
-                  "table": "Ranged_SpeedRunning",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "Slow",
-                  "axis": "jumpHeight",
-                  "scale": 500,
-                  "table": "Ranged_Ones",
-                  "ignoreStrength": true
-                }
-              ],
-              "recharge": 0,
-              "castTime": 0,
-              "activatePeriod": 1,
-              "effectArea": "Sphere",
-              "targetsAffected": [
-                "Foe"
-              ],
-              "radius": 25,
-              "maxTargets": 16
-            }
-          ]
-        }
-      ],
-      "entity": "PL_StaticObject"
-    }
+  "summon": {
+    "copyBoosts": true,
+    "displayName": "Glue Arrow",
+    "duration": 60,
+    "isPseudoPet": true,
+    "powers": [
+      "Redirects.Trick_Arrow.GlueArrow"
+    ],
+    "resolvedEntities": [
+      {
+        "displayName": "Glue Arrow",
+        "duration": 60,
+        "copyCreatorMods": true,
+        "abilities": [
+          {
+            "name": "GlueArrow",
+            "displayName": "Glue Arrow",
+            "type": "Auto",
+            "damage": [],
+            "effects": [
+              {
+                "type": "Slow",
+                "axis": "runSpeed",
+                "scale": 0.72,
+                "table": "Ranged_Slow"
+              },
+              {
+                "type": "RechargeDebuff",
+                "scale": 0.32,
+                "table": "Ranged_Slow",
+                "ignoreStrength": true
+              },
+              {
+                "type": "MovementCapDebuff",
+                "axis": "runSpeed",
+                "scale": 1,
+                "table": "Ranged_SpeedRunning",
+                "ignoreStrength": true
+              },
+              {
+                "type": "Slow",
+                "axis": "jumpHeight",
+                "scale": 500,
+                "table": "Ranged_Ones",
+                "ignoreStrength": true
+              }
+            ],
+            "recharge": 0,
+            "castTime": 0,
+            "activatePeriod": 1,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "Foe"
+            ],
+            "radius": 25,
+            "maxTargets": 16
+          }
+        ]
+      }
+    ],
+    "entity": "PL_StaticObject"
   },
   "atoms": [
     ["EntCreate",null,1,1,60,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,60]

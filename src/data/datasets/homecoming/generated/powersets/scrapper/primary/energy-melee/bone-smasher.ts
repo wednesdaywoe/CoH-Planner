@@ -59,14 +59,6 @@ export const BoneSmasher: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "stun": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 8,
-      "table": "Melee_Stun"
-    }
-  },
   "atoms": [
     ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Smashing",0.64,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

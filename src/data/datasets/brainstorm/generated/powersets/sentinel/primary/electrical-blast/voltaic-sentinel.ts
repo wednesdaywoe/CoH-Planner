@@ -48,53 +48,51 @@ export const VoltaicSentinel: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "displayName": "Voltaic Sentinel",
-      "duration": 99999,
-      "isPseudoPet": true,
-      "powers": [
-        "Pets.ResistAll_NoFly.ResistAll",
-        "Pets.VoltaicSentinel_PseudoPet.Electrical_Bolt",
-        "Pets.VoltaicSentinel_PseudoPet.Electrical_Field"
-      ],
-      "resolvedEntities": [
-        {
-          "displayName": "Voltaic Sentinel",
-          "duration": 99999,
-          "copyCreatorMods": true,
-          "abilities": [
-            {
-              "name": "Electrical_Bolt",
-              "displayName": "Electrical Bolt",
-              "type": "Click",
-              "damage": [
-                {
-                  "damageType": "Energy",
-                  "scale": 0.56,
-                  "table": "Ranged_Damage"
-                }
-              ],
-              "effects": [
-                {
-                  "type": "EndDrain",
-                  "scale": 0.04,
-                  "table": "Ranged_EndDrain"
-                }
-              ],
-              "recharge": 1.25,
-              "castTime": 1,
-              "effectArea": "SingleTarget",
-              "targetsAffected": [
-                "Foe"
-              ]
-            }
-          ]
-        }
-      ],
-      "entity": "PL_Untargetable_FightPreferRanged"
-    }
+  "summon": {
+    "copyBoosts": true,
+    "displayName": "Voltaic Sentinel",
+    "duration": 99999,
+    "isPseudoPet": true,
+    "powers": [
+      "Pets.ResistAll_NoFly.ResistAll",
+      "Pets.VoltaicSentinel_PseudoPet.Electrical_Bolt",
+      "Pets.VoltaicSentinel_PseudoPet.Electrical_Field"
+    ],
+    "resolvedEntities": [
+      {
+        "displayName": "Voltaic Sentinel",
+        "duration": 99999,
+        "copyCreatorMods": true,
+        "abilities": [
+          {
+            "name": "Electrical_Bolt",
+            "displayName": "Electrical Bolt",
+            "type": "Click",
+            "damage": [
+              {
+                "damageType": "Energy",
+                "scale": 0.56,
+                "table": "Ranged_Damage"
+              }
+            ],
+            "effects": [
+              {
+                "type": "EndDrain",
+                "scale": 0.04,
+                "table": "Ranged_EndDrain"
+              }
+            ],
+            "recharge": 1.25,
+            "castTime": 1,
+            "effectArea": "SingleTarget",
+            "targetsAffected": [
+              "Foe"
+            ]
+          }
+        ]
+      }
+    ],
+    "entity": "PL_Untargetable_FightPreferRanged"
   },
   "atoms": [
     ["EntCreate",null,-1,1,99999,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Ignore",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1.5,null,null,null,null,"OnActivate",99999]

@@ -53,29 +53,6 @@ export const Breathless: Power = {
     "scale": 0.3,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 15,
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 2,
-      "table": "Ranged_Debuff_Dam"
-    },
-    "durations": {
-      "damageDebuff": 15,
-      "rechargeDebuff": 15
-    },
-    "immobilize": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.3,
-      "table": "Ranged_Slow"
-    }
-  },
   "atoms": [
     ["Damage","Lethal",0.3,1,0,"Ranged_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,["@Scale","0.02","Temporary_Powers.Temporary_Powers.Wind_Control_Pressure","source.ownPowerNum?","*","+","@Value","*","@Effectiveness","*","@Strength","*"],null,null,null,"Damage"],
     ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Immobilize"],

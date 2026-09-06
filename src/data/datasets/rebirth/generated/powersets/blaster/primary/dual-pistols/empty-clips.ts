@@ -77,26 +77,6 @@ export const EmptyClips: Power = {
       "tickRate": 1
     }
   ],
-  "effects": {
-    "buffDuration": 9.17,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.051,
-      "table": "Ranged_Ones"
-    },
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "damageBuff": 9.17,
-      "defenseDebuff": 8
-    },
-    "knockback": {
-      "scale": 0.4,
-      "table": "Ranged_Knockback"
-    }
-  },
   "atoms": [
     ["Damage","Lethal",0.182,1,1.6,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Lethal",0.078,1,1.6,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kLethal","Source.Mode?","!","&&"],null,null,null,null,null,null,null,null,null,"Lethal"],

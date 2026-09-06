@@ -53,32 +53,6 @@ export const MetabolicAura: Power = {
     "Running"
   ],
   "maxSlots": 6,
-  "effects": {
-    "absorb": {
-      "scale": 0.333,
-      "table": "Melee_HealSelf"
-    },
-    "buffDuration": 2.25,
-    "durations": {
-      "absorb": 2.25,
-      "movement": 2.25,
-      "recoveryBuff": 2.25
-    },
-    "movement": {
-      "flySpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Ones"
-      },
-      "runSpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Ones"
-      }
-    },
-    "recoveryBuff": {
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Absorb",null,0.333,1,2.25,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf"],
     ["Recovery",null,0.5,1,2.25,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],

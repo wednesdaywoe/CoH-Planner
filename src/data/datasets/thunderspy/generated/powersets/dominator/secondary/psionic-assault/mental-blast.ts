@@ -55,23 +55,6 @@ export const MentalBlast: Power = {
       "table": "Ranged_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 6,
-    "durations": {
-      "resistanceDebuff": 6
-    },
-    "knockback": {
-      "scale": 4,
-      "table": "Ranged_Knockback"
-    },
-    "resistanceDebuff": {
-      "psionic": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.82,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Psionic",0.82,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],

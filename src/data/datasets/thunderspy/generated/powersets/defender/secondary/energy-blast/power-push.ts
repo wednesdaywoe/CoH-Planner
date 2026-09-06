@@ -57,12 +57,6 @@ export const PowerPush: Power = {
       "table": "Ranged_Damage"
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 8,
-      "table": "Ranged_Knockback"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.12,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Energy",0.28,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],

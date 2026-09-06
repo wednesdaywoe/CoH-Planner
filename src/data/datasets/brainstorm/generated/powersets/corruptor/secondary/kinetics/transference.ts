@@ -41,17 +41,6 @@ export const Transference: Power = {
     "Endurance Modification"
   ],
   "maxSlots": 6,
-  "effects": {
-    "enduranceDrain": {
-      "scale": 0.45,
-      "table": "Ranged_EndDrain"
-    },
-    "enduranceGain": {
-      "scale": 40,
-      "table": "Ranged_EndDrain",
-      "perTarget": 40
-    }
-  },
   "atoms": [
     ["Endurance",null,40,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,40,null,null,null,null,null,null,null,null,null,null,["Friend","Self"]],
     ["Endurance",null,-0.45,1,0,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

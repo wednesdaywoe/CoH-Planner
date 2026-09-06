@@ -49,83 +49,6 @@ export const TimeWall: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 20,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.106,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 9.1,
-      "movement": 10,
-      "movementCapDebuff": 20,
-      "rechargeDebuff": 20,
-      "regenDebuff": 20,
-      "slow": 20
-    },
-    "immobilize": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
-    "movement": {
-      "flySpeed": {
-        "scale": 0.1,
-        "table": "Melee_SpeedFlying"
-      },
-      "jumpSpeed": {
-        "scale": 0.1,
-        "table": "Melee_SpeedJumping"
-      },
-      "runSpeed": {
-        "scale": 0.1,
-        "table": "Melee_SpeedRunning"
-      }
-    },
-    "movementCapDebuff": {
-      "runSpeed": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
-      }
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.6,
-      "table": "Ranged_Slow"
-    },
-    "regenDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.25,
-      "table": "Ranged_Ones"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      }
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff",
-      "movement"
-    ]
-  },
   "atoms": [
     ["Movement","Run",0.5,1,20,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
     ["RechargeTime",null,0.6,1,20,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
@@ -134,7 +57,7 @@ export const TimeWall: Power = {
     ["Movement","Fly",0.5,1,20,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
     ["GrantPower",null,1,1,10,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["Meta",null,1,1,20,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"null"],
-    ["RechargeTime",null,0.2,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["RechargeTime",null,0.2,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,true,null,null,null,null,null,"Ones"],
     ["Movement","Run",-1,1,20,"Ranged_SpeedRunning","Max","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"SpeedRunning"],
     ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Immobilize"],
     ["Regeneration",null,-0.25,1,20,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones"],

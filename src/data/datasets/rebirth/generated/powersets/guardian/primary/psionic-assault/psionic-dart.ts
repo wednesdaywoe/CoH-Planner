@@ -48,17 +48,6 @@ export const PsionicDart: Power = {
     "scale": 0.84,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 5,
-    "durations": {
-      "rechargeDebuff": 5
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.3,
-      "table": "Ranged_Slow"
-    }
-  },
   "atoms": [
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"StackThenIgnore",3,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.08888889104127884,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight","source.ownPower?","!","Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight_Lockout","source.ownPower?","!","&&","Temporary_Powers.Temporary_Powers.Boggled","target.ownPower?","!","&&"],null,null,null,null,null,null,null,0.09,null,"Ones"],

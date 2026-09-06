@@ -51,28 +51,14 @@ export const RiseofthePhoenix: Power = {
     "scale": 5,
     "table": "Melee_HealSelf"
   },
-  "effects": {
-    "buffDuration": 30,
-    "durations": {
-      "maxHPBuff": 30
-    },
-    "enduranceGain": {
-      "scale": 50,
-      "table": "Melee_Ones"
-    },
-    "maxHPBuff": {
-      "scale": 3,
-      "table": "Melee_HealSelf"
-    },
-    "summon": {
-      "copyBoosts": true,
-      "displayName": "Phoenix Rising (Resurecting)",
-      "duration": 10,
-      "isPseudoPet": true,
-      "powers": [
-        "Redirects.Fiery_Aura.Phoenix"
-      ]
-    }
+  "summon": {
+    "copyBoosts": true,
+    "displayName": "Phoenix Rising (Resurecting)",
+    "duration": 10,
+    "isPseudoPet": true,
+    "powers": [
+      "Redirects.Fiery_Aura.Phoenix"
+    ]
   },
   "atoms": [
     ["EntCreate",null,1,1,10,"Melee_Level","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Self"],null,null,null,null,null,null,10],

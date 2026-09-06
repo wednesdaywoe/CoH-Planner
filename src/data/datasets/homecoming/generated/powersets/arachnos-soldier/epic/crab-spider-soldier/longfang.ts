@@ -53,16 +53,6 @@ export const Longfang: Power = {
     "duration": 0.7,
     "tickRate": 0.30000001192092896
   },
-  "effects": {
-    "buffDuration": 10,
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    }
-  },
   "atoms": [
     ["Damage","Lethal",0.66,1,0.7,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Defense","All",1,1,10,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],

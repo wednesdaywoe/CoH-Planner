@@ -47,67 +47,6 @@ export const ConduitofPain: Power = {
     "duration": 0.5,
     "tickRate": 1
   },
-  "effects": {
-    "buffDuration": 60,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 3,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 3,
-      "table": "Ranged_Debuff_Dam",
-      "toWho": "Self"
-    },
-    "durations": {
-      "damageBuff": 60,
-      "damageDebuff": 30,
-      "rechargeBuff": 60,
-      "recoveryBuff": 60,
-      "stealth": 15,
-      "tohitBuffUnenhanced": 60,
-      "tohitDebuff": 30
-    },
-    "enduranceGain": {
-      "ignoreStrength": true,
-      "scale": 4,
-      "table": "Ranged_Ones"
-    },
-    "rechargeBuff": {
-      "ignoreStrength": true,
-      "scale": 0.75,
-      "table": "Ranged_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 1.75,
-      "table": "Ranged_Ones"
-    },
-    "stealth": {
-      "stealthPvE": {
-        "scale": 300,
-        "table": "Melee_Ones"
-      }
-    },
-    "tohitBuffUnenhanced": {
-      "ignoreStrength": true,
-      "scale": 2,
-      "table": "Ranged_Buff_ToHit"
-    },
-    "tohitDebuff": {
-      "ignoreStrength": true,
-      "scale": 2,
-      "table": "Ranged_Debuff_ToHit",
-      "toWho": "Self"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff",
-      "rechargeBuff",
-      "recoveryBuff",
-      "tohitBuffUnenhanced"
-    ]
-  },
   "atoms": [
     ["Heal",null,4,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,1,1],
     ["Endurance",null,4,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.25],

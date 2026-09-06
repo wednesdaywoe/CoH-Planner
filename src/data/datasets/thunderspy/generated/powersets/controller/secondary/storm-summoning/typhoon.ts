@@ -48,20 +48,6 @@ export const Typhoon: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 5,
-    "durations": {
-      "tohitDebuff": 5
-    },
-    "knockback": {
-      "scale": 0.02,
-      "table": "Ranged_Knockback"
-    },
-    "tohitDebuff": {
-      "scale": 1.5,
-      "table": "Ranged_DeBuff_ToHit"
-    }
-  },
   "atoms": [
     ["Range",null,-0.3,1,5,"Ranged_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["ToHit",null,1.5,1,5,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"DeBuff_ToHit"],

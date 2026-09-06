@@ -60,12 +60,6 @@ export const SpinningStrike: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.77,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Smashing",0.77,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage",null,null,null,0.4],

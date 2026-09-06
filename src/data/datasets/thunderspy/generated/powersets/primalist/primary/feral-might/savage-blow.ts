@@ -90,17 +90,6 @@ export const SavageBlow: Power = {
       "damageTypes": [
         "Lethal"
       ],
-      "effects": {
-        "buffDuration": 8,
-        "damageDebuff": {
-          "ignoreStrength": true,
-          "scale": 3.75,
-          "table": "Melee_Debuff_Dam"
-        },
-        "durations": {
-          "damageDebuff": 8
-        }
-      },
       "shortHelp": "Melee, Extreme DMG(Special), Special",
       "description": "Before delivering an absolutely punishing blow you concentrate and channel the forces of nature into your strike to cause Extreme damage. In primal (human) form you will deal smashing damage and will heal yourself and up to 3 nearby allies for a moderate amount of health. In Hunter form you'll deal lethal damage and significantly reduce the target's damage. In Prowler form you'll deal lethal damage, cause moderate lethal damage over time and stun the target. This power builds 2 primal energy. Damage: Extreme, Recharge: Slow",
       "effectArea": "SingleTarget",

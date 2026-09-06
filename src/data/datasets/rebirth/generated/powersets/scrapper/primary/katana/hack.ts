@@ -54,16 +54,6 @@ export const Hack: Power = {
     "scale": 1.16,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "buffDuration": 10,
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    }
-  },
   "atoms": [
     ["Damage","Lethal",1.16,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Defense","All",1,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Debuff_Def"],

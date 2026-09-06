@@ -44,69 +44,6 @@ export const MetabolicAcceleration: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "debuffResistance": {
-      "endurance": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Res_Boolean"
-      },
-      "recovery": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "durations": {
-      "debuffResistance": 0.75,
-      "mezResistance": 0.75,
-      "rechargeBuff": 0.75,
-      "recoveryBuff": 0.75,
-      "regenBuff": 0.75,
-      "regenBuffUnenhanced": 0.75
-    },
-    "mezResistance": {
-      "hold": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Res_Boolean"
-      },
-      "immobilize": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Res_Boolean"
-      },
-      "sleep": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Res_Boolean"
-      },
-      "stun": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "rechargeBuff": {
-      "ignoreStrength": true,
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 0.5,
-      "table": "Melee_Ones"
-    },
-    "regenBuff": {
-      "scale": 1.125,
-      "table": "Melee_Ones"
-    },
-    "regenBuffUnenhanced": {
-      "ignoreStrength": true,
-      "scale": 1.125,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Regeneration",null,1.125,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Regeneration",null,1.125,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],

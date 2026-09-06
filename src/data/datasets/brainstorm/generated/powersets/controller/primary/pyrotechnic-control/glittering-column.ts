@@ -47,75 +47,73 @@ export const GlitteringColumn: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "displayName": "Glittering Column",
-      "duration": 7,
-      "isPseudoPet": true,
-      "powers": [
-        "Redirects.Pyrotechnic_Control.GlitteringColumn_Skin",
-        "Redirects.Pyrotechnic_Control.GlitteringColumn_Aura",
-        "Redirects.Pyrotechnic_Control.GlitteringColumn_ToHitAura",
-        "Redirects.Pyrotechnic_Control.GlitteringColumn_SelfDestruct"
-      ],
-      "resolvedEntities": [
-        {
-          "displayName": "Glittering Column",
-          "duration": 7,
-          "copyCreatorMods": true,
-          "abilities": [
-            {
-              "name": "GlitteringColumn_Aura",
-              "displayName": "Glittering Column Aura",
-              "type": "Auto",
-              "damage": [],
-              "effects": [
-                {
-                  "type": "Taunt",
-                  "magnitude": 4,
-                  "attribType": "Duration",
-                  "scale": 7,
-                  "table": "Melee_Ones"
-                }
-              ],
-              "recharge": 0,
-              "castTime": 0,
-              "activatePeriod": 10,
-              "effectArea": "Sphere",
-              "targetsAffected": [
-                "Foe"
-              ],
-              "radius": 40,
-              "maxTargets": 5
-            },
-            {
-              "name": "GlitteringColumn_ToHitAura",
-              "displayName": "Glittering Column Aura",
-              "type": "Auto",
-              "damage": [],
-              "effects": [
-                {
-                  "type": "ToHitDebuff",
-                  "scale": 3,
-                  "table": "Ranged_Debuff_ToHit"
-                }
-              ],
-              "recharge": 0,
-              "castTime": 0,
-              "activatePeriod": 2,
-              "effectArea": "Sphere",
-              "targetsAffected": [
-                "Foe"
-              ],
-              "radius": 15,
-              "maxTargets": 16
-            }
-          ]
-        }
-      ],
-      "entity": "PL_FightPreferMelee"
-    }
+  "summon": {
+    "copyBoosts": true,
+    "displayName": "Glittering Column",
+    "duration": 7,
+    "isPseudoPet": true,
+    "powers": [
+      "Redirects.Pyrotechnic_Control.GlitteringColumn_Skin",
+      "Redirects.Pyrotechnic_Control.GlitteringColumn_Aura",
+      "Redirects.Pyrotechnic_Control.GlitteringColumn_ToHitAura",
+      "Redirects.Pyrotechnic_Control.GlitteringColumn_SelfDestruct"
+    ],
+    "resolvedEntities": [
+      {
+        "displayName": "Glittering Column",
+        "duration": 7,
+        "copyCreatorMods": true,
+        "abilities": [
+          {
+            "name": "GlitteringColumn_Aura",
+            "displayName": "Glittering Column Aura",
+            "type": "Auto",
+            "damage": [],
+            "effects": [
+              {
+                "type": "Taunt",
+                "magnitude": 4,
+                "attribType": "Duration",
+                "scale": 7,
+                "table": "Melee_Ones"
+              }
+            ],
+            "recharge": 0,
+            "castTime": 0,
+            "activatePeriod": 10,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "Foe"
+            ],
+            "radius": 40,
+            "maxTargets": 5
+          },
+          {
+            "name": "GlitteringColumn_ToHitAura",
+            "displayName": "Glittering Column Aura",
+            "type": "Auto",
+            "damage": [],
+            "effects": [
+              {
+                "type": "ToHitDebuff",
+                "scale": 3,
+                "table": "Ranged_Debuff_ToHit"
+              }
+            ],
+            "recharge": 0,
+            "castTime": 0,
+            "activatePeriod": 2,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "Foe"
+            ],
+            "radius": 15,
+            "maxTargets": 16
+          }
+        ]
+      }
+    ],
+    "entity": "PL_FightPreferMelee"
   },
   "atoms": [
     ["EntCreate",null,1,1,7,"Melee_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,7]

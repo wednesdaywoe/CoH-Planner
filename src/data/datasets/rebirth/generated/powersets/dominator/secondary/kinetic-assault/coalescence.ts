@@ -38,22 +38,6 @@ export const Coalescence: Power = {
     "To Hit Buff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 15,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 4,
-      "table": "Melee_Buff_Dmg"
-    },
-    "durations": {
-      "damageBuff": 15,
-      "tohitBuff": 15
-    },
-    "tohitBuff": {
-      "scale": 4,
-      "table": "Melee_Buff_ToHit"
-    }
-  },
   "atoms": [
     ["DamageBuff","Smashing",4,1,15,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Dmg"],
     ["DamageBuff","Lethal",4,1,15,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Dmg"],

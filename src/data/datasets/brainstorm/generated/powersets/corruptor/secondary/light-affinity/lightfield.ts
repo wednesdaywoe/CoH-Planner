@@ -47,66 +47,6 @@ export const Lightfield: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "absorb": {
-      "scale": 0.25,
-      "table": "Ranged_Heal"
-    },
-    "buffDuration": 15,
-    "debuffResistance": {
-      "accuracy": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "perception": {
-        "ignoreStrength": true,
-        "scale": 0.6,
-        "table": "Melee_Ones"
-      },
-      "tohit": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      }
-    },
-    "durations": {
-      "absorb": 15,
-      "debuffResistance": 15,
-      "hold": 15,
-      "immobilize": 15,
-      "perceptionBuff": 15,
-      "regenBuff": 15,
-      "stun": 15
-    },
-    "effectDuration": 15,
-    "hold": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": -20,
-      "table": "Ranged_Res_Boolean"
-    },
-    "immobilize": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": -20,
-      "table": "Ranged_Res_Boolean"
-    },
-    "perceptionBuff": {
-      "scale": 0.6,
-      "table": "Melee_Ones"
-    },
-    "regenBuff": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "stun": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": -20,
-      "table": "Ranged_Res_Boolean"
-    }
-  },
   "atoms": [
     ["Regeneration",null,1,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["Absorb",null,0.25,1,15,"Ranged_Heal","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1],

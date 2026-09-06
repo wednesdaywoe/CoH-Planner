@@ -44,51 +44,6 @@ export const Shiver: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 18,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.028,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "damageBuff": 9.67,
-      "movementCapDebuff": 18,
-      "rechargeDebuff": 18,
-      "slow": 18
-    },
-    "movementCapDebuff": {
-      "runSpeed": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_SpeedRunning"
-      }
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.65,
-      "table": "Melee_Slow"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.65,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.65,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.65,
-        "table": "Melee_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.65,
-        "table": "Melee_Slow"
-      }
-    }
-  },
   "atoms": [
     ["RechargeTime",null,0.65,1,18,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
     ["Movement","Run",0.65,1,18,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],

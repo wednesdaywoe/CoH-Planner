@@ -80,20 +80,6 @@ export const GoldenDragonfly: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 10,
-    "defenseDebuff": {
-      "scale": 0.6,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"StackThenIgnore",3,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["Damage","Lethal",2.6,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"NinjaAssault_BoostOff"],

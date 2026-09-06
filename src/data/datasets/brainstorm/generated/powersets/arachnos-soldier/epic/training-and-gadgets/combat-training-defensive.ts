@@ -35,18 +35,6 @@ export const CombatTrainingDefensive: Power = {
     "Defense Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "defenseBuff": {
-      "ranged": {
-        "scale": 0.75,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 0.75
-    }
-  },
   "atoms": [
     ["Defense","Ranged",0.75,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1]
   ],

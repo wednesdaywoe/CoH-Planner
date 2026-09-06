@@ -92,54 +92,6 @@ export const ViciousStrike: Power = {
       "damageTypes": [
         "Lethal"
       ],
-      "effects": {
-        "buffDuration": 6,
-        "durations": {
-          "resistanceDebuff": 6
-        },
-        "resistanceDebuff": {
-          "cold": {
-            "ignoreStrength": true,
-            "scale": 1.5,
-            "table": "Melee_Res_DMG"
-          },
-          "energy": {
-            "ignoreStrength": true,
-            "scale": 1.5,
-            "table": "Melee_Res_DMG"
-          },
-          "fire": {
-            "ignoreStrength": true,
-            "scale": 1.5,
-            "table": "Melee_Res_DMG"
-          },
-          "lethal": {
-            "ignoreStrength": true,
-            "scale": 1.5,
-            "table": "Melee_Res_DMG"
-          },
-          "negative": {
-            "ignoreStrength": true,
-            "scale": 1.5,
-            "table": "Melee_Res_DMG"
-          },
-          "psionic": {
-            "ignoreStrength": true,
-            "scale": 1.5,
-            "table": "Melee_Res_DMG"
-          },
-          "smashing": {
-            "ignoreStrength": true,
-            "scale": 1.5,
-            "table": "Melee_Res_DMG"
-          },
-          "toxic": {
-            "ignoreStrength": true,
-            "scale": 1.5,
-            "table": "Melee_Res_DMG"
-          }
-        }
-      },
       "shortHelp": "Melee, Moderate DMG(Special), Special",
       "description": "You strike a foe dealing Moderate damage. In primal (human) form you will deal smashing damage and will heal yourself and up to 3 nearby allies for a small amount of health. In Hunter form you'll deal lethal damage and reduce the target's damage resistance. In Prowler form you'll deal lethal damage, cause minor lethal damage over time and have a fair chance to stun. This power builds 1 primal energy. Damage: Moderate, Recharge: Fast",
       "effectArea": "SingleTarget",

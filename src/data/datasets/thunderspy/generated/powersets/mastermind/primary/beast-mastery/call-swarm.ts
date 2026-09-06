@@ -54,36 +54,6 @@ export const CallSwarm: Power = {
     "duration": 1.5,
     "tickRate": 0.375
   },
-  "effects": {
-    "buffDuration": 8,
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 8,
-      "slow": 8
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Damage","Lethal",0.264,1,1.5,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.375,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage",null,null,null,0.5],
     ["Defense","All",1,1,8,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Debuff_Def"],

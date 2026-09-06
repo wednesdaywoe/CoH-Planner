@@ -52,16 +52,6 @@ export const GlintingEye: Power = {
     "scale": 1.32,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 6,
-    "defenseDebuff": {
-      "scale": 2,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 6
-    }
-  },
   "atoms": [
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Constant","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kPeacebringer_Blaster_Mode","source.Mode?","!","kPeacebringer_Tanker_Mode","source.Mode?","!","&&"],null,null,null,null,null,null,null,null,null,"Ones",null,"power_redirect"],
     ["Damage","Energy",1.32,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
@@ -84,16 +74,6 @@ export const GlintingEye: Power = {
         "type": "Energy",
         "scale": 1.32,
         "table": "Ranged_SSDamage"
-      },
-      "effects": {
-        "buffDuration": 6,
-        "defenseDebuff": {
-          "scale": 2,
-          "table": "Ranged_Debuff_Def"
-        },
-        "durations": {
-          "defenseDebuff": 6
-        }
       },
       "shortHelp": "Ranged, Moderate DMG(Energy), Foe -DEF",
       "description": "You can emit a beam of Kheldian energy from your eyes, dealing moderate Energy damage and reducing a target's Defense. This power can be used while in Bright Nova or White Dwarf form. While in Bright Nova, this power has increased range and higher damage. While in White Dwarf form, this power taunts its target but has shorter range and deals slightly more damage. Damage: Moderate, Recharge: Fast",
@@ -118,20 +98,6 @@ export const GlintingEye: Power = {
         "type": "Energy",
         "scale": 1.32,
         "table": "Melee_SSDamage"
-      },
-      "effects": {
-        "buffDuration": 6,
-        "defenseDebuff": {
-          "scale": 2,
-          "table": "Ranged_Debuff_Def"
-        },
-        "durations": {
-          "defenseDebuff": 6
-        },
-        "taunt": {
-          "scale": 1,
-          "table": "Melee_InherentTaunt"
-        }
       },
       "shortHelp": "Ranged, Moderate DMG(Energy), Foe -DEF",
       "description": "You can emit a beam of Kheldian energy from your eyes, dealing moderate Energy damage and reducing a target's Defense. This power can be used while in Bright Nova or White Dwarf form. While in Bright Nova, this power has increased range and higher damage. While in White Dwarf form, this power taunts its target but has shorter range and deals slightly more damage. Damage: Moderate, Recharge: Fast",

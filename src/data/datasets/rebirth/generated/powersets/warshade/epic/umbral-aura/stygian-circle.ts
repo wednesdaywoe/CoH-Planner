@@ -42,13 +42,6 @@ export const StygianCircle: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "enduranceGain": {
-      "scale": 20,
-      "table": "Melee_Ones",
-      "perTarget": 20
-    }
-  },
   "atoms": [
     ["Meta",null,1,1,5,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"null"],
     ["Endurance",null,20,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,20,null,null,null,null,null,null,null,"Ones",null,null,null,0.25],

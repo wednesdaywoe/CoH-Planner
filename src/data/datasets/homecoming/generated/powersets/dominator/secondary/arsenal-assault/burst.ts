@@ -52,16 +52,6 @@ export const Burst: Power = {
     "duration": 0.91,
     "tickRate": 0.30000001192092896
   },
-  "effects": {
-    "buffDuration": 8,
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 8
-    }
-  },
   "atoms": [
     ["Damage","Lethal",0.27,1,0.91,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Defense","All",1,1,8,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],

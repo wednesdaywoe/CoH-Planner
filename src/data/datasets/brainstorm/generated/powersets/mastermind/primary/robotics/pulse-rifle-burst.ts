@@ -50,21 +50,6 @@ export const PulseRifleBurst: Power = {
     "scale": 1.64,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 30,
-    "durations": {
-      "regenDebuff": 30
-    },
-    "knockback": {
-      "scale": 1.5,
-      "table": "Ranged_Knockback"
-    },
-    "regenDebuff": {
-      "ignoreStrength": true,
-      "scale": 2,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Damage","Energy",1.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Regeneration",null,-2,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"]],

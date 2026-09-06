@@ -60,12 +60,6 @@ export const Placate: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.9,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Smashing",0.9,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kMeter","source>",".9","<","&&"],null,null,null,null,null,["30","source.TeamSize>","0.03","*","0.07","+","rand",">=","@StdResult","*"],null,null,null,"Damage"],

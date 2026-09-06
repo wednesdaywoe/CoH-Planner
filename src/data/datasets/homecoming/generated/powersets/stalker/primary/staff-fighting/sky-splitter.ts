@@ -64,18 +64,6 @@ export const SkySplitter: Power = {
       "table": "Melee_InherentDamage"
     }
   ],
-  "effects": {
-    "knockup": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 5,
-      "table": "Melee_Stun"
-    }
-  },
   "atoms": [
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
     ["Damage","Smashing",1.38,1,1.9,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

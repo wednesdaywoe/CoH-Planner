@@ -35,57 +35,6 @@ export const GroundingShield: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 10.25,
-    "debuffResistance": {
-      "endurance": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "durations": {
-      "debuffResistance": 10.25,
-      "immobilize": 10.25,
-      "knockback": 10.25,
-      "knockup": 10.25,
-      "resistance": 10.25
-    },
-    "effectDuration": 10.25,
-    "immobilize": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": -6,
-      "table": "Melee_Ones",
-      "toWho": "Self"
-    },
-    "knockback": {
-      "scale": 6,
-      "table": "Melee_Knockback"
-    },
-    "knockup": {
-      "scale": 6,
-      "table": "Melee_Knockback"
-    },
-    "resistance": {
-      "cold": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 2.75,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["Resistance","Energy",2.75,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_Dmg"],
     ["Resistance","Negative",3,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_Dmg"],

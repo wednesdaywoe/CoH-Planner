@@ -44,45 +44,6 @@ export const HardenedCarapace: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "durations": {
-      "resistance": 0.75,
-      "sleep": 0.75,
-      "stun": 0.75
-    },
-    "effectDuration": 0.75,
-    "resistance": {
-      "lethal": {
-        "scale": 2.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "smashing": {
-        "scale": 2.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 2.5,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "sleep": {
-      "attribType": "Magnitude",
-      "ignoreStrength": true,
-      "mag": 1,
-      "scale": -30,
-      "table": "Melee_Res_Boolean",
-      "toWho": "Self"
-    },
-    "stun": {
-      "attribType": "Magnitude",
-      "ignoreStrength": true,
-      "mag": 1,
-      "scale": -30,
-      "table": "Melee_Res_Boolean",
-      "toWho": "Self"
-    }
-  },
   "atoms": [
     ["Resistance","Smashing",2.5,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_Dmg"],
     ["Resistance","Lethal",2.5,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_Dmg"],

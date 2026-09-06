@@ -36,18 +36,6 @@ export const EnergyFlightQuantumAcceleration: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
-  "effects": {
-    "buffDuration": 0.75,
-    "durations": {
-      "movementCapBump": 0.75
-    },
-    "movementCapBump": {
-      "flySpeed": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      }
-    }
-  },
   "atoms": [
     ["Meta",null,1,128,0.75,"Melee_Ones","Cur","Constant","Self","Any",false,"Ignore",2,null,1,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode",null,30],
     ["Movement","Fly",1,1,0.75,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],

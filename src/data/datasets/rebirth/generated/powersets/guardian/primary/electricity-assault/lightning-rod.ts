@@ -45,16 +45,10 @@ export const LightningRod: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "duration": 4,
-      "entity": "Pets_Lightning_Rod_Brute",
-      "isPseudoPet": false
-    },
-    "teleport": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    }
+  "summon": {
+    "duration": 4,
+    "entity": "Pets_Lightning_Rod_Brute",
+    "isPseudoPet": false
   },
   "atoms": [
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"StackThenIgnore",3,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],

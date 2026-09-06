@@ -56,32 +56,6 @@ export const LowKick: Power = {
     "scale": 1.64,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "buffDuration": 10,
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10,
-      "slow": 8
-    },
-    "slow": {
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.5,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.5,
-        "table": "Melee_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.5,
-        "table": "Melee_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Movement","Run",0.5,1,8,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","Jump",0.5,1,8,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],

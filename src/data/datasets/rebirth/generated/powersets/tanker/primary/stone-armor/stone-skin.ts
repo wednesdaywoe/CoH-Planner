@@ -34,22 +34,6 @@ export const StoneSkin: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 10.25,
-    "durations": {
-      "resistance": 10.25
-    },
-    "resistance": {
-      "lethal": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "smashing": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["Resistance","Smashing",1,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_Dmg"],
     ["Resistance","Lethal",1,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_Dmg"]

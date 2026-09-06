@@ -60,21 +60,6 @@ export const EnergyTorrent: Power = {
       "table": "Ranged_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 8.57,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.03,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 8.57
-    },
-    "knockback": {
-      "scale": 3,
-      "table": "Ranged_Knockback"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.288,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Energy",0.672,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],

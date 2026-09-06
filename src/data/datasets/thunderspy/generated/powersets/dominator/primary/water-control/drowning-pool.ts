@@ -47,22 +47,6 @@ export const DrowningPool: Power = {
     "Holds"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 15,
-    "defenseDebuff": {
-      "scale": 2,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 15
-    },
-    "hold": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 10,
-      "table": "Ranged_Immobilize"
-    }
-  },
   "atoms": [
     ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Immobilize"],
     ["Defense","All",2,1,15,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Water_Control_Drowning","target.ownPower?","!"],null,null,null,null,null,null,null,null,null,"Debuff_Def"],

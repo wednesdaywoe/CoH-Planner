@@ -38,12 +38,10 @@ export const TriageBeacon: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "duration": 90,
-      "entity": "Pets_Traps_Triage_Beacon",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "duration": 90,
+    "entity": "Pets_Traps_Triage_Beacon",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,-1,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,90]

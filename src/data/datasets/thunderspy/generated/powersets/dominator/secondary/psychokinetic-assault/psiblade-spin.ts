@@ -57,13 +57,11 @@ export const PsiBladeSpin: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "duration": 15,
-      "entity": "Pets_Telekinetic_Sword",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "copyBoosts": true,
+    "duration": 15,
+    "entity": "Pets_Telekinetic_Sword",
+    "isPseudoPet": false
   },
   "atoms": [
     ["Damage","Energy",0.5,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],

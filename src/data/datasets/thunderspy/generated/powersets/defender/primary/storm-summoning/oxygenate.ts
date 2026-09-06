@@ -47,37 +47,6 @@ export const Oxygenate: Power = {
     "scale": 1,
     "table": "Ranged_Heal"
   },
-  "effects": {
-    "buffDuration": 60,
-    "debuffResistance": {
-      "endurance": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "recovery": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      }
-    },
-    "durations": {
-      "debuffResistance": 60,
-      "mezResistance": 60
-    },
-    "mezResistance": {
-      "sleep": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "stun": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      }
-    }
-  },
   "atoms": [
     ["Heal",null,1,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Heal"],
     ["MezResist","Stunned",2,1,60,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_Boolean"],

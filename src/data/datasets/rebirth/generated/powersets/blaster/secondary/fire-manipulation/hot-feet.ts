@@ -52,25 +52,6 @@ export const HotFeet: Power = {
     "scale": 0.25,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "buffDuration": 2.3,
-    "durations": {
-      "slow": 2.3
-    },
-    "fear": {
-      "attribType": "Duration",
-      "ignoreStrength": true,
-      "mag": 3,
-      "scale": 4,
-      "table": "Melee_Ones"
-    },
-    "slow": {
-      "runSpeed": {
-        "scale": 0.7,
-        "table": "Melee_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Damage","Fire",0.25,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","@ToHitRoll","@ToHit","<","@ForceHit","||","&&"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Mez","Afraid",4,3,0,"Melee_Ones","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],

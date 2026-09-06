@@ -55,6 +55,12 @@ export function buildDisplayEffects(
   const stats = power.stats;
   const bag: Record<string, unknown> = { ...effects };
 
+  // STRIP-1: the writer lifts summon out of the bag to the top level, so the
+  // bag spread above no longer carries it. Mint it from the top level so the
+  // display surfaces that read the bag (DamageBlock, the tooltip's pet block)
+  // keep their contract.
+  if (power.summon) bag.summon = power.summon;
+
   // Execution stats live on `stats` for primary/secondary powers and in the bag itself for
   // pool/epic ones. A zero is no stat (the surfaces' own `&&` truthiness), so it leaves any
   // authored bag value standing.
@@ -81,8 +87,8 @@ export function buildDisplayEffects(
   }
 
   // A summon with no duration effect of its own displays the pet's lifespan.
-  if (!effects.buffDuration && !effects.effectDuration && effects.summon?.duration) {
-    bag.buffDuration = effects.summon.duration;
+  if (!effects.buffDuration && !effects.effectDuration && power.summon?.duration) {
+    bag.buffDuration = power.summon.duration;
   }
 
   // The nested movement object (Super Jump, Fly, Sprint) carries the registry's per-axis
@@ -286,6 +292,6 @@ export function withTargetsHit(power: Power, effects: PowerEffects, targetsHit: 
  * `perTarget` metadata for the slider to grow.
  */
 export function withPseudoPetEffects(power: Power, effects: PowerEffects): PowerEffects {
-  const pseudo = synthesizePseudoPetEffects(power.effects?.summon);
+  const pseudo = synthesizePseudoPetEffects(power.summon);
   return pseudo ? { ...pseudo, ...effects } : effects;
 }

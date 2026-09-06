@@ -48,27 +48,6 @@ export const BetaDecay: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 1,
-    "defenseDebuff": {
-      "scale": 1.5,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 1,
-      "rechargeBuff": 1,
-      "tohitDebuff": 1.25
-    },
-    "rechargeBuff": {
-      "scale": 0.125,
-      "table": "Melee_Ones",
-      "perTarget": 0.025
-    },
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Melee_DeBuff_ToHit"
-    }
-  },
   "atoms": [
     ["ToHit",null,0.75,1,1.25,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Defense","All",1.5,1,1,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],

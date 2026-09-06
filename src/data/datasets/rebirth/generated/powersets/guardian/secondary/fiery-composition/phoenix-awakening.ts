@@ -55,26 +55,19 @@ export const PhoenixAwakening: Power = {
     "duration": 10.1,
     "tickRate": 1
   },
-  "effects": {
-    "enduranceDrain": {
-      "ignoreStrength": true,
-      "scale": 24,
-      "table": "Melee_Ones"
-    },
-    "summon": {
-      "duration": 5,
-      "entities": [
-        {
-          "count": 1,
-          "entity": "Pets_Phoenix"
-        },
-        {
-          "count": 1,
-          "entity": "Pets_Guardian_FieryComposition_PhoenixAwakening"
-        }
-      ],
-      "isPseudoPet": false
-    }
+  "summon": {
+    "duration": 5,
+    "entities": [
+      {
+        "count": 1,
+        "entity": "Pets_Phoenix"
+      },
+      {
+        "count": 1,
+        "entity": "Pets_Guardian_FieryComposition_PhoenixAwakening"
+      }
+    ],
+    "isPseudoPet": false
   },
   "atoms": [
     ["Heal",null,0.54,1,10.1,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["Cur.kHitPoints","target>","0",">"],null,null,null,null,null,null,null,null,null,"Heal"],

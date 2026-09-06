@@ -58,26 +58,6 @@ export const DarkBlast: Power = {
     "scale": 1,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 8.5,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.066,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 8.5,
-      "tohitDebuff": 6
-    },
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_DeBuff_ToHit"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff"
-    ]
-  },
   "atoms": [
     ["Damage","Negative",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["ToHit",null,0.75,1,6,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"DeBuff_ToHit"],

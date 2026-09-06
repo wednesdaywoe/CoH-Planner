@@ -347,7 +347,7 @@ const EXPECTED_CASTER_RECOVERIES = {
 const PINNED_DATASETS = [...new Set(Object.keys(EXPECTED_SPLITS).map((k) => k.split('|')[0]))];
 const FULL_RUN = !POWER_FILTER && PINNED_DATASETS.every((d) => DATASETS.includes(d));
 
-const stats = { powers: 0, slots: 0, agree: 0, forkResolved: 0, split: 0, abstain: 0, slow: 0,
+const stats = { powers: 0, noBag: 0, slots: 0, agree: 0, forkResolved: 0, split: 0, abstain: 0, slow: 0,
   allyOnly: 0, recovered: 0 };
 const perDataset = {};
 const findings = [];
@@ -365,6 +365,8 @@ function checkPower(dataset, power, genPath) {
   stats.powers++;
   perDataset[dataset] = perDataset[dataset] || { powers: 0, slots: 0 };
   perDataset[dataset].powers++;
+  // STRIP-1 (BPORT7) removed the bag this gate compares against; bag-less powers are vacuous rows, named in the tail.
+  if (!power.effects || !Object.keys(power.effects).length) { stats.noBag++; return; }
 
   // Before the movement map's own early return: a grounding power (Hibernate, Icy
   // Bastion, Geode, Homecoming's Granite Armor) states a self slow and no movement buff
@@ -495,6 +497,10 @@ function checkSlow(dataset, name, power) {
 
 for (const ds of DATASETS) sweepDataset(ds, (power, rel) => checkPower(ds, power, rel));
 
+// Every swept power bag-less: the run checks nothing, the tail names it, and the
+// bag-derived split census below is waived.
+const VACUOUS = stats.powers > 0 && stats.noBag === stats.powers;
+
 console.log('\nPlan B Slice 7 — movement-buff reconstruction (effects.movement)');
 console.log(`  powers swept:  ${stats.powers}`);
 console.log(`  axis slots:    ${stats.slots}`);
@@ -523,7 +529,7 @@ if (totalDiverge > 60) console.log(`\n  ... and ${totalDiverge - 60} more`);
 // The split census, checked against its pin. A filtered run sees only part of the
 // corpus, so it prints the census and asserts nothing about it.
 const pinFailures = [];
-if (FULL_RUN) {
+if (FULL_RUN && !VACUOUS) {
   for (const [key, n] of Object.entries(splitsSeen)) {
     if (EXPECTED_SPLITS[key] === undefined) pinFailures.push(`NEW split, never read: ${key} (${n} entries)`);
     else if (EXPECTED_SPLITS[key] !== n) pinFailures.push(`split changed size: ${key} — pinned ${EXPECTED_SPLITS[key]}, found ${n}`);
@@ -590,7 +596,12 @@ if (totalDiverge || pinFailures.length) {
   }
   process.exit(1);
 }
-console.log('\nOK — every bag movement entry is reproduced by an atom entry on its axis.');
-console.log(FULL_RUN
-  ? '   The axes the atom side splits are exactly the pinned ones.'
-  : '   The split pin was NOT checked — this run swept part of the corpus.');
+if (VACUOUS) {
+  console.log(`\nVACUOUS — bag absent: ${stats.noBag} powers swept, 0 checks — vacuous post-STRIP-1.`);
+  console.log('   The atom side is graded by the converter gates, not here.');
+} else {
+  console.log('\nOK — every bag movement entry is reproduced by an atom entry on its axis.');
+  console.log(FULL_RUN
+    ? '   The axes the atom side splits are exactly the pinned ones.'
+    : '   The split pin was NOT checked — this run swept part of the corpus.');
+}

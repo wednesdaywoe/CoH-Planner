@@ -53,35 +53,6 @@ export const PsychicShockwave: Power = {
     "scale": 0.55,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "buffDuration": 20,
-    "durations": {
-      "rechargeDebuff": 20,
-      "resistanceDebuff": 20
-    },
-    "knockback": {
-      "scale": 0.01,
-      "table": "Ranged_Knockback"
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.5,
-      "table": "Melee_Slow"
-    },
-    "resistanceDebuff": {
-      "psionic": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      }
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 2,
-      "scale": 6,
-      "table": "Melee_Stun"
-    }
-  },
   "atoms": [
     ["Damage","Psionic",0.55,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Smashing",0.55,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],

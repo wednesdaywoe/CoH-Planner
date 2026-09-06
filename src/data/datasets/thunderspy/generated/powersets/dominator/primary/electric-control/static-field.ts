@@ -45,13 +45,11 @@ export const StaticField: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "duration": 25,
-      "entity": "Pets_Static_Field_Dominator",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "copyBoosts": true,
+    "duration": 25,
+    "entity": "Pets_Static_Field_Dominator",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,1,1,25,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,25]

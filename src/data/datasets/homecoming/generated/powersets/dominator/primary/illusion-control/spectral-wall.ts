@@ -55,22 +55,6 @@ export const SpectralWall: Power = {
     "duration": 9.2,
     "tickRate": 2
   },
-  "effects": {
-    "buffDuration": 15,
-    "durations": {
-      "tohitDebuff": 15
-    },
-    "immobilize": {
-      "attribType": "Duration",
-      "mag": 4,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_Debuff_ToHit"
-    }
-  },
   "atoms": [
     ["Mez","Immobilized",15,4,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Psionic",0.2,1,9.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

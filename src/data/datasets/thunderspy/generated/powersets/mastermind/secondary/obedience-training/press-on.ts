@@ -46,27 +46,6 @@ export const PressOn: Power = {
     "duration": 0.5,
     "tickRate": 1
   },
-  "effects": {
-    "buffDuration": 59,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 4.5,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "durations": {
-      "damageBuff": 59,
-      "tohitBuff": 59
-    },
-    "enduranceGain": {
-      "ignoreStrength": true,
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "tohitBuff": {
-      "scale": 2.5,
-      "table": "Ranged_Buff_ToHit"
-    }
-  },
   "atoms": [
     ["Heal",null,1,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["Endurance",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,0.25],

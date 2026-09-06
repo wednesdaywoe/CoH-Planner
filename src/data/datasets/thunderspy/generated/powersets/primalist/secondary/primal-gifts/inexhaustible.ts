@@ -34,34 +34,6 @@ export const Inexhaustible: Power = {
     "Endurance Modification"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 10.25,
-    "debuffResistance": {
-      "endurance": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Melee_Res_Boolean"
-      },
-      "movement": {
-        "ignoreStrength": true,
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      },
-      "recharge": {
-        "ignoreStrength": true,
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "debuffResistance": 10.25,
-      "recoveryBuff": 10.25
-    },
-    "recoveryBuff": {
-      "scale": 0.3,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Recovery",null,0.3,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["Movement","Run",0.3,1,10.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],

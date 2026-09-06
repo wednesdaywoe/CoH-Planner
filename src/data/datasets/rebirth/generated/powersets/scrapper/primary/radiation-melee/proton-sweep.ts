@@ -69,16 +69,6 @@ export const ProtonSweep: Power = {
       "tickRate": 1
     }
   ],
-  "effects": {
-    "buffDuration": 10,
-    "defenseDebuff": {
-      "scale": 1.2,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    }
-  },
   "atoms": [
     ["Damage","Energy",0.089375,1,3.1,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage",null,null,null,0.5],
     ["Damage","Toxic",0.268125,1,3.1,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage",null,null,null,0.5],

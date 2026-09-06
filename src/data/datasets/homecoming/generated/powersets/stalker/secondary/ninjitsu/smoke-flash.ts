@@ -34,58 +34,6 @@ export const SmokeFlash: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 10.25,
-    "durations": {
-      "knockback": 10.25,
-      "knockup": 10.25,
-      "resistance": 10.25
-    },
-    "knockback": {
-      "ignoreStrength": true,
-      "scale": 20,
-      "table": "Melee_Res_Boolean"
-    },
-    "knockup": {
-      "ignoreStrength": true,
-      "scale": 20,
-      "table": "Melee_Res_Boolean"
-    },
-    "resistance": {
-      "cold": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "smashing": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["MezResist","Knockup",5,1,10.25,"Melee_Res_Boolean","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
     ["MezResist","Knockback",5,1,10.25,"Melee_Res_Boolean","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],

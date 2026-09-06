@@ -54,20 +54,6 @@ export const BrightNovaBlast: Power = {
     "scale": 1.64,
     "table": "Ranged_SSDamage"
   },
-  "effects": {
-    "buffDuration": 6,
-    "defenseDebuff": {
-      "scale": 2,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 6
-    },
-    "knockback": {
-      "scale": 1,
-      "table": "Ranged_Knockback"
-    }
-  },
   "atoms": [
     ["Damage","Energy",1.64,1,0,"Ranged_SSDamage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"SSDamage"],
     ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0.1,null,"Knockback"],

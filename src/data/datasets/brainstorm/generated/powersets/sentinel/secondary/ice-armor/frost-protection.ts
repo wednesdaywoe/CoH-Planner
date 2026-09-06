@@ -35,35 +35,6 @@ export const FrostProtection: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 10.3,
-    "debuffResistance": {
-      "movement": {
-        "ignoreStrength": true,
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      },
-      "recharge": {
-        "ignoreStrength": true,
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "debuffResistance": 10.3,
-      "maxHPBuff": 10.3,
-      "maxHPBuffUnenhanced": 10.3
-    },
-    "maxHPBuff": {
-      "scale": 0.5,
-      "table": "Melee_HealSelf"
-    },
-    "maxHPBuffUnenhanced": {
-      "ignoreStrength": true,
-      "scale": 0.5,
-      "table": "Melee_HealSelf"
-    }
-  },
   "atoms": [
     ["MaxHP",null,0.5,1,10.3,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["MaxHP",null,0.5,1,10.3,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],

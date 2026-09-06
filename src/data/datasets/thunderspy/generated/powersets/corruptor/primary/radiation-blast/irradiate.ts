@@ -62,16 +62,6 @@ export const Irradiate: Power = {
       "tickRate": 0.5
     }
   ],
-  "effects": {
-    "buffDuration": 10,
-    "defenseDebuff": {
-      "scale": 3,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    }
-  },
   "atoms": [
     ["Damage","Energy",0.07,1,4.6,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Toxic",0.03,1,4.6,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],

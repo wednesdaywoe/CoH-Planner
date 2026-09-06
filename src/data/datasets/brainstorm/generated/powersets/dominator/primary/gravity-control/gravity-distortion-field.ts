@@ -48,146 +48,144 @@ export const GravityDistortionField: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "displayName": "Gravity Distortion Field",
-      "duration": 60,
-      "isPseudoPet": true,
-      "powers": [
-        "Redirects.Gravity_Control.Gravity_Distortion_Field_Pulse",
-        "Redirects.Gravity_Control.Gravity_Distortion_Field_Slow",
-        "Redirects.Gravity_Control.Gravity_Distortion_Field_Oneshot",
-        "Redirects.Gravity_Control.Self_Destruct"
-      ],
-      "resolvedEntities": [
-        {
-          "displayName": "Gravity Distortion Field",
-          "duration": 60,
-          "copyCreatorMods": true,
-          "abilities": [
-            {
-              "name": "Gravity_Distortion_Field_Pulse",
-              "displayName": "Gravity Distortion Field",
-              "type": "Auto",
-              "damage": [
-                {
-                  "damageType": "Smashing",
-                  "scale": 0.3,
-                  "table": "Ranged_Damage"
-                }
-              ],
-              "conditionalDamage": true,
-              "effects": [
-                {
-                  "type": "Hold",
-                  "magnitude": 3,
-                  "attribType": "Duration",
-                  "scale": 5,
-                  "table": "Ranged_Immobilize"
-                }
-              ],
-              "recharge": 240,
-              "castTime": 0,
-              "activatePeriod": 4,
-              "effectArea": "Sphere",
-              "targetsAffected": [
-                "Foe"
-              ],
-              "radius": 20,
-              "maxTargets": 5
-            },
-            {
-              "name": "Gravity_Distortion_Field_Slow",
-              "displayName": "Gravity Distortion Field",
-              "type": "Auto",
-              "damage": [],
-              "effects": [
-                {
-                  "type": "Slow",
-                  "axis": "runSpeed",
-                  "scale": 0.5,
-                  "table": "Ranged_Slow"
-                },
-                {
-                  "type": "Slow",
-                  "axis": "flySpeed",
-                  "scale": 0.5,
-                  "table": "Ranged_Slow"
-                },
-                {
-                  "type": "Slow",
-                  "axis": "jumpSpeed",
-                  "scale": 0.5,
-                  "table": "Ranged_Slow"
-                },
-                {
-                  "type": "Slow",
-                  "axis": "jumpHeight",
-                  "scale": 0.5,
-                  "table": "Ranged_Slow",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "KnockupResist",
-                  "scale": 1,
-                  "table": "Ranged_Ones",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "KnockbackResist",
-                  "scale": 1,
-                  "table": "Ranged_Ones",
-                  "ignoreStrength": true
-                }
-              ],
-              "recharge": 240,
-              "castTime": 0,
-              "activatePeriod": 0.1,
-              "effectArea": "Sphere",
-              "targetsAffected": [
-                "Foe"
-              ],
-              "radius": 20,
-              "maxTargets": 16
-            },
-            {
-              "name": "Gravity_Distortion_Field_Oneshot",
-              "displayName": "Gravity Distortion Field",
-              "type": "Auto",
-              "damage": [],
-              "effects": [
-                {
-                  "type": "Hold",
-                  "magnitude": 3,
-                  "attribType": "Duration",
-                  "scale": 8,
-                  "table": "Ranged_Immobilize"
-                },
-                {
-                  "type": "Hold",
-                  "magnitude": 1,
-                  "attribType": "Duration",
-                  "scale": 4,
-                  "table": "Ranged_Immobilize",
-                  "chance": 0.2
-                }
-              ],
-              "recharge": 240,
-              "castTime": 0,
-              "activatePeriod": 1000,
-              "effectArea": "Sphere",
-              "targetsAffected": [
-                "Foe"
-              ],
-              "radius": 20,
-              "maxTargets": 16
-            }
-          ]
-        }
-      ],
-      "entity": "PL_StaticObject"
-    }
+  "summon": {
+    "copyBoosts": true,
+    "displayName": "Gravity Distortion Field",
+    "duration": 60,
+    "isPseudoPet": true,
+    "powers": [
+      "Redirects.Gravity_Control.Gravity_Distortion_Field_Pulse",
+      "Redirects.Gravity_Control.Gravity_Distortion_Field_Slow",
+      "Redirects.Gravity_Control.Gravity_Distortion_Field_Oneshot",
+      "Redirects.Gravity_Control.Self_Destruct"
+    ],
+    "resolvedEntities": [
+      {
+        "displayName": "Gravity Distortion Field",
+        "duration": 60,
+        "copyCreatorMods": true,
+        "abilities": [
+          {
+            "name": "Gravity_Distortion_Field_Pulse",
+            "displayName": "Gravity Distortion Field",
+            "type": "Auto",
+            "damage": [
+              {
+                "damageType": "Smashing",
+                "scale": 0.3,
+                "table": "Ranged_Damage"
+              }
+            ],
+            "conditionalDamage": true,
+            "effects": [
+              {
+                "type": "Hold",
+                "magnitude": 3,
+                "attribType": "Duration",
+                "scale": 5,
+                "table": "Ranged_Immobilize"
+              }
+            ],
+            "recharge": 240,
+            "castTime": 0,
+            "activatePeriod": 4,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "Foe"
+            ],
+            "radius": 20,
+            "maxTargets": 5
+          },
+          {
+            "name": "Gravity_Distortion_Field_Slow",
+            "displayName": "Gravity Distortion Field",
+            "type": "Auto",
+            "damage": [],
+            "effects": [
+              {
+                "type": "Slow",
+                "axis": "runSpeed",
+                "scale": 0.5,
+                "table": "Ranged_Slow"
+              },
+              {
+                "type": "Slow",
+                "axis": "flySpeed",
+                "scale": 0.5,
+                "table": "Ranged_Slow"
+              },
+              {
+                "type": "Slow",
+                "axis": "jumpSpeed",
+                "scale": 0.5,
+                "table": "Ranged_Slow"
+              },
+              {
+                "type": "Slow",
+                "axis": "jumpHeight",
+                "scale": 0.5,
+                "table": "Ranged_Slow",
+                "ignoreStrength": true
+              },
+              {
+                "type": "KnockupResist",
+                "scale": 1,
+                "table": "Ranged_Ones",
+                "ignoreStrength": true
+              },
+              {
+                "type": "KnockbackResist",
+                "scale": 1,
+                "table": "Ranged_Ones",
+                "ignoreStrength": true
+              }
+            ],
+            "recharge": 240,
+            "castTime": 0,
+            "activatePeriod": 0.1,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "Foe"
+            ],
+            "radius": 20,
+            "maxTargets": 16
+          },
+          {
+            "name": "Gravity_Distortion_Field_Oneshot",
+            "displayName": "Gravity Distortion Field",
+            "type": "Auto",
+            "damage": [],
+            "effects": [
+              {
+                "type": "Hold",
+                "magnitude": 3,
+                "attribType": "Duration",
+                "scale": 8,
+                "table": "Ranged_Immobilize"
+              },
+              {
+                "type": "Hold",
+                "magnitude": 1,
+                "attribType": "Duration",
+                "scale": 4,
+                "table": "Ranged_Immobilize",
+                "chance": 0.2
+              }
+            ],
+            "recharge": 240,
+            "castTime": 0,
+            "activatePeriod": 1000,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "Foe"
+            ],
+            "radius": 20,
+            "maxTargets": 16
+          }
+        ]
+      }
+    ],
+    "entity": "PL_StaticObject"
   },
   "atoms": [
     ["EntCreate",null,1,1,60,"Melee_Level","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,60],

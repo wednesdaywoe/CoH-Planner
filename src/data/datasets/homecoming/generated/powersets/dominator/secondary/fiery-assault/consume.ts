@@ -52,29 +52,6 @@ export const Consume: Power = {
     "scale": 0.4,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "buffDuration": 120,
-    "debuffResistance": {
-      "endurance": {
-        "scale": 0.5,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "debuffResistance": 120,
-      "recoveryBuff": 15
-    },
-    "enduranceGain": {
-      "scale": 20,
-      "table": "Melee_Ones",
-      "perTarget": 20
-    },
-    "recoveryBuff": {
-      "scale": 0.05,
-      "table": "Melee_Ones",
-      "perTarget": 0.05
-    }
-  },
   "atoms": [
     ["Endurance",null,20,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,20,null,null,null,null,null,null,null,null,null,null,null,0.25],
     ["Recovery",null,0.05,1,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.05,null,null,null,null,null,null,null,null,null,null,null,0.25],

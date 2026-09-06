@@ -54,37 +54,6 @@ export const GravityDistortion: Power = {
     "duration": 4.2,
     "tickRate": 1
   },
-  "effects": {
-    "buffDuration": 12,
-    "durations": {
-      "slow": 12
-    },
-    "hold": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 12,
-      "table": "Ranged_Immobilize"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Mez","Held",12,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Smashing",0.22,1,4.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

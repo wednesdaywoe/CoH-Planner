@@ -41,23 +41,6 @@ export const FrozenAura: Power = {
     "Sleep"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 9.6,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.055,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 9.6
-    },
-    "sleep": {
-      "attribType": "Duration",
-      "mag": 2,
-      "scale": 20,
-      "table": "Ranged_Sleep"
-    }
-  },
   "atoms": [
     ["Mez","Sleep",20,2,0,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Sleep"],
     ["DamageBuff","Smashing",0.055,1,9.6,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],

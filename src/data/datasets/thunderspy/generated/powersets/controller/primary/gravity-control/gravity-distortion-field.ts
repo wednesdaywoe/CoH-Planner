@@ -46,37 +46,6 @@ export const GravityDistortionField: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 12,
-    "durations": {
-      "slow": 12
-    },
-    "hold": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 10,
-      "table": "Ranged_Immobilize"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Immobilize"],
     ["Mez","Held",7.5,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Immobilize"],

@@ -38,51 +38,6 @@ export const ShadowStep: Power = {
     "Universal Travel"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 1,
-    "durations": {
-      "movement": 15,
-      "stealth": 1,
-      "untouchable": 1
-    },
-    "movement": {
-      "fly": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Ranged_Ones"
-      },
-      "flySpeed": {
-        "ignoreStrength": true,
-        "scale": 500,
-        "table": "Melee_SpeedFlying"
-      },
-      "movementControl": {
-        "ignoreStrength": true,
-        "scale": 8,
-        "table": "Melee_Ones"
-      },
-      "movementFriction": {
-        "ignoreStrength": true,
-        "scale": 8,
-        "table": "Melee_Ones"
-      }
-    },
-    "stealth": {
-      "translucency": {
-        "scale": 0.25,
-        "table": "Ranged_Ones"
-      }
-    },
-    "teleport": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "untouchable": {
-      "ignoreStrength": true,
-      "scale": 1000,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Stealth","Translucency",0,1,0.6,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Self"]],
     ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Self"],0.6],
@@ -114,51 +69,6 @@ export const ShadowStep: Power = {
         "range": 350,
         "endurance": 7.8,
         "castTime": 1.67
-      },
-      "effects": {
-        "buffDuration": 1,
-        "durations": {
-          "movement": 15,
-          "stealth": 1,
-          "untouchable": 1
-        },
-        "movement": {
-          "fly": {
-            "ignoreStrength": true,
-            "scale": 1,
-            "table": "Ranged_Ones"
-          },
-          "flySpeed": {
-            "ignoreStrength": true,
-            "scale": 500,
-            "table": "Melee_SpeedFlying"
-          },
-          "movementControl": {
-            "ignoreStrength": true,
-            "scale": 8,
-            "table": "Melee_Ones"
-          },
-          "movementFriction": {
-            "ignoreStrength": true,
-            "scale": 8,
-            "table": "Melee_Ones"
-          }
-        },
-        "stealth": {
-          "translucency": {
-            "scale": 0.25,
-            "table": "Ranged_Ones"
-          }
-        },
-        "teleport": {
-          "scale": 1,
-          "table": "Ranged_Ones"
-        },
-        "untouchable": {
-          "ignoreStrength": true,
-          "scale": 1000,
-          "table": "Ranged_Ones"
-        }
       },
       "shortHelp": "Ranged (Location), Self Teleport",
       "description": "You can Teleport long distances. Shadow Step has no recharge time, and can be reactivated without pause, as long as you have Endurance.",

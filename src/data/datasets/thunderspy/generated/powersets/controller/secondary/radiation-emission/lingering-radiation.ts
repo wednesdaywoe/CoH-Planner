@@ -43,51 +43,6 @@ export const Lingeringradiation: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 30,
-    "durations": {
-      "movementCapDebuff": 30,
-      "rechargeDebuff": 30,
-      "regenDebuff": 30,
-      "slow": 30
-    },
-    "movementCapDebuff": {
-      "runSpeed": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
-      }
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.6,
-      "table": "Ranged_Slow"
-    },
-    "regenDebuff": {
-      "ignoreStrength": true,
-      "scale": 5,
-      "table": "Ranged_Ones"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.6,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.6,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.6,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.6,
-        "table": "Ranged_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Movement","Run",0.6,1,30,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
     ["RechargeTime",null,0.6,1,30,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],

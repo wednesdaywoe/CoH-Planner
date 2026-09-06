@@ -61,14 +61,6 @@ export const SweepingCross: Power = {
       "combo_level_3"
     ]
   },
-  "effects": {
-    "stun": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 6,
-      "table": "Melee_Stun"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",1.5,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Combo_Level_1","source.ownPower?","!","Temporary_Powers.Temporary_Powers.Combo_Level_2","source.ownPower?","!","&&","Temporary_Powers.Temporary_Powers.Combo_Level_3","source.ownPower?","!","&&","enttype","target>","critter","eq","&&"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Mez","Stunned",6,3,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Combo_Level_1","source.ownPower?","!","&&","Temporary_Powers.Temporary_Powers.Combo_Level_2","source.ownPower?","!","&&","Temporary_Powers.Temporary_Powers.Combo_Level_3","source.ownPower?","!","&&"],null,null,null,null,null,null,null,0.2,null,"Stun"],

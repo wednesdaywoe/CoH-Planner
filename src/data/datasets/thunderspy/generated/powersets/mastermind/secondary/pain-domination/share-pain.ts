@@ -46,28 +46,6 @@ export const SharePain: Power = {
     "scale": 0.025,
     "table": "Melee_Ones"
   },
-  "effects": {
-    "buffDuration": 2,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 15,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 2.5,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "durations": {
-      "damageBuff": 2,
-      "damageDebuff": 2,
-      "tohitBuff": 2
-    },
-    "tohitBuff": {
-      "scale": 1,
-      "table": "Ranged_Buff_ToHit"
-    }
-  },
   "atoms": [
     ["Damage","Psionic",0.025,1,0,"Melee_Ones","Abs","Expression","Self","Any",false,"StackThenIgnore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,["@Scale","Max.kHitPoints","source>","*","negate"]],
     ["DamageBuff","Smashing",15,1,2,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],

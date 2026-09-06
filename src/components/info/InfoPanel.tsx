@@ -349,7 +349,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   // SummonsBlock — those are entities the player commands.
   const pseudoPetDamage = useMemo(() => {
     if (calculatedDamage) return null;
-    const summon = effectivePower?.effects?.summon;
+    const summon = effectivePower?.summon;
     if (!summon) return null;
 
     const entityList = summon.entities && summon.entities.length > 0
@@ -569,7 +569,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     const directRadius = effectivePower?.stats?.radius ?? effectivePower?.effects?.radius ?? 0;
     const directArc = effectivePower?.stats?.arc ?? effectivePower?.effects?.arc;
     const { radius, arcDegrees } = resolveProcAreaGeometry(
-      directRadius, arcToDegrees(directArc) || undefined, effectivePower?.effects?.summon);
+      directRadius, arcToDegrees(directArc) || undefined, effectivePower?.summon);
     // Propel & co.: procs are main-target-only despite the power's AoE radius
     // (that radius is a secondary knockback), so score them single-target.
     const { radius: procRadius, arcDegrees: procArc } =
@@ -582,7 +582,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
       powerType: effectivePower?.powerType,
       baseRecharge,
       castTime,
-      patchDuration: resolveProcPatchDuration(directRadius, effectivePower?.effects?.summon),
+      patchDuration: resolveProcPatchDuration(directRadius, effectivePower?.summon),
     });
 
     // Cycle time uses the *enhanced* recharge (slotted + global) and
@@ -747,7 +747,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     const directRadius = effectivePower.stats?.radius ?? effectivePower.effects?.radius ?? 0;
     const directArc = effectivePower.stats?.arc ?? effectivePower.effects?.arc;
     const { radius, arcDegrees } = resolveProcAreaGeometry(
-      directRadius, arcToDegrees(directArc) || undefined, effectivePower.effects?.summon);
+      directRadius, arcToDegrees(directArc) || undefined, effectivePower.summon);
     if (!baseRecharge && !castTime) return 0;
     const procs = getActiveIncarnateDamageProcs(build.incarnates, {
       hybrid: !!incarnateActive?.hybrid,
@@ -1012,7 +1012,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
             enduranceCost: effects?.enduranceCost,
             radius: effects?.radius,
             arc: effects?.arc,
-            summon: effectivePower.effects?.summon,
+            summon: effectivePower.summon,
           }}
           archetypeId={archetypeId ?? undefined}
           buildLevel={build.level}

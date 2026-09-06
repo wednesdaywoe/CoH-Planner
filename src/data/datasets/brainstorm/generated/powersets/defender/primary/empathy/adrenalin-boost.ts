@@ -47,51 +47,6 @@ export const AdrenalinBoost: Power = {
     "scale": 5,
     "table": "Ranged_Heal"
   },
-  "effects": {
-    "buffDuration": 90,
-    "debuffResistance": {
-      "movement": {
-        "ignoreStrength": true,
-        "scale": 0.8,
-        "table": "Ranged_Ones"
-      },
-      "recharge": {
-        "ignoreStrength": true,
-        "scale": 0.8,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "debuffResistance": 90,
-      "rechargeBuff": 90,
-      "recoveryBuff": 90,
-      "regenBuff": 90,
-      "stealth": 15
-    },
-    "enduranceGain": {
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    },
-    "rechargeBuff": {
-      "ignoreStrength": true,
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 8,
-      "table": "Ranged_Ones"
-    },
-    "regenBuff": {
-      "scale": 5,
-      "table": "Ranged_Ones"
-    },
-    "stealth": {
-      "stealthPvE": {
-        "scale": 300,
-        "table": "Melee_Ones"
-      }
-    }
-  },
   "atoms": [
     ["Heal",null,5,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["DeadPlayerFriend"]],
     ["Endurance",null,0.5,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["DeadPlayerFriend"]],

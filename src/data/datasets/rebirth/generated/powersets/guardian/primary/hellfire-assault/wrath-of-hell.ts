@@ -53,60 +53,6 @@ export const WrathOfHell: Power = {
     "duration": 3.26,
     "tickRate": 0.6499999761581421
   },
-  "effects": {
-    "buffDuration": 7,
-    "durations": {
-      "resistanceDebuff": 7
-    },
-    "hold": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 4,
-      "table": "Ranged_Immobilize"
-    },
-    "resistanceDebuff": {
-      "cold": {
-        "ignoreStrength": true,
-        "scale": 1.25,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
-        "ignoreStrength": true,
-        "scale": 1.25,
-        "table": "Ranged_Res_Dmg"
-      },
-      "fire": {
-        "ignoreStrength": true,
-        "scale": 1.25,
-        "table": "Ranged_Res_Dmg"
-      },
-      "lethal": {
-        "ignoreStrength": true,
-        "scale": 1.25,
-        "table": "Ranged_Res_Dmg"
-      },
-      "negative": {
-        "ignoreStrength": true,
-        "scale": 1.25,
-        "table": "Ranged_Res_Dmg"
-      },
-      "psionic": {
-        "ignoreStrength": true,
-        "scale": 1.25,
-        "table": "Ranged_Res_Dmg"
-      },
-      "smashing": {
-        "ignoreStrength": true,
-        "scale": 1.25,
-        "table": "Ranged_Res_Dmg"
-      },
-      "toxic": {
-        "ignoreStrength": true,
-        "scale": 1.25,
-        "table": "Ranged_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"StackThenIgnore",3,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["Damage","Fire",0.872,1,3.26,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.6499999761581421,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],

@@ -63,39 +63,6 @@ export const TelekineticPulse: Power = {
       "tickRate": 2
     }
   ],
-  "effects": {
-    "buffDuration": 5,
-    "durations": {
-      "movementCapDebuff": 5,
-      "slow": 5
-    },
-    "knockback": {
-      "scale": 0.01,
-      "table": "Ranged_Knockback"
-    },
-    "movementCapDebuff": {
-      "runSpeed": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Melee_SpeedRunning"
-      }
-    },
-    "slow": {
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.5,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.5,
-        "table": "Melee_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.5,
-        "table": "Melee_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Mez","Knockback",0.01,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Knockback"],
     ["Damage","Energy",0.055,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],

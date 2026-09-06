@@ -46,12 +46,6 @@ export const Repel: Power = {
     "Knockback"
   ],
   "maxSlots": 6,
-  "effects": {
-    "knockback": {
-      "scale": 3,
-      "table": "Ranged_Knockback"
-    }
-  },
   "atoms": [
     ["Mez","Knockback",3,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1.100000023841858,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"SummerIOTornado"],
     ["Mez","Knockback",3,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Knockback"],

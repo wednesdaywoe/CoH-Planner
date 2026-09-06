@@ -69,29 +69,6 @@ export const BlazingBlast: Power = {
       "table": "Ranged_InherentDamage"
     }
   ],
-  "effects": {
-    "buffDuration": 0.61,
-    "durations": {
-      "hold": 0.61,
-      "repel": 0.61
-    },
-    "effectDuration": 0.61,
-    "hold": {
-      "attribType": "Magnitude",
-      "ignoreStrength": true,
-      "mag": 1,
-      "scale": 4,
-      "table": "Ranged_Ones"
-    },
-    "knockback": {
-      "scale": 2,
-      "table": "Ranged_Knockback"
-    },
-    "repel": {
-      "scale": 8,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Mez","Repel",8,1,0.61,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Mez","Held",4,1,0.61,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"]],

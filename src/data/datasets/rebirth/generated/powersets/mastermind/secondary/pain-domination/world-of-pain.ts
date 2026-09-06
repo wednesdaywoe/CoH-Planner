@@ -42,62 +42,6 @@ export const WorldofPain: Power = {
     "To Hit Buff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 90,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 1.6,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "durations": {
-      "damageBuff": 90,
-      "placate": 90,
-      "resistance": 90,
-      "tohitBuff": 90
-    },
-    "placate": {
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "resistance": {
-      "cold": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "fire": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "smashing": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      }
-    },
-    "tohitBuff": {
-      "scale": 1,
-      "table": "Ranged_Buff_ToHit"
-    }
-  },
   "atoms": [
     ["ToHit",null,1,1,90,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_ToHit"],
     ["Mez","Placate",-30,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_Boolean"],

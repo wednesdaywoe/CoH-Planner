@@ -71,63 +71,6 @@ export const Whitecap: Power = {
       "table": "Ranged_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 30,
-    "durations": {
-      "resistanceDebuff": 30
-    },
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
-    "resistanceDebuff": {
-      "cold": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "fire": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "lethal": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "negative": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "psionic": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "smashing": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "toxic": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      }
-    },
-    "teleport": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "maxStacks": 2
-  },
   "atoms": [
     ["Resistance","Smashing",-1.5,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"],0.85],
     ["Resistance","Lethal",-1.5,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"],0.85],

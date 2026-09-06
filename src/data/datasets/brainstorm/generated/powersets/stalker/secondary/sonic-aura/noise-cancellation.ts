@@ -47,64 +47,6 @@ export const NoiseCancellation: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 2.25,
-    "debuffResistance": {
-      "perception": {
-        "ignoreStrength": true,
-        "scale": 0.6,
-        "table": "Melee_Ones"
-      },
-      "tohit": {
-        "ignoreStrength": true,
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "debuffResistance": 2.25,
-      "perceptionBuff": 2.25,
-      "resistance": 2.25
-    },
-    "perceptionBuff": {
-      "scale": 0.6,
-      "table": "Melee_Ones"
-    },
-    "resistance": {
-      "cold": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "smashing": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["Resistance","Smashing",1,1,2.25,"Melee_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["Resistance","Lethal",1,1,2.25,"Melee_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],

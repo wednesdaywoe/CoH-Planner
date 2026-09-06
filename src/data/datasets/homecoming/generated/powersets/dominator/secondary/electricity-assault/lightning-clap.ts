@@ -53,24 +53,6 @@ export const LightningClap: Power = {
     "scale": 4.5,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 4,
-    "durations": {
-      "recoveryDebuff": 4
-    },
-    "enduranceDrain": {
-      "scale": 0.15,
-      "table": "Ranged_Ones"
-    },
-    "enduranceGain": {
-      "scale": 7.2,
-      "table": "Ranged_Ones"
-    },
-    "recoveryDebuff": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Damage","Energy",4.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
     ["Endurance",null,-0.15,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],

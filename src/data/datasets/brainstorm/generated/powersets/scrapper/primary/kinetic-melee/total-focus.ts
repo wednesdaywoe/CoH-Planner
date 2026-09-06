@@ -67,23 +67,6 @@ export const TotalFocus: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 12,
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.7,
-      "table": "Melee_Debuff_Dam"
-    },
-    "durations": {
-      "damageDebuff": 12
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 10,
-      "table": "Melee_Immobilize"
-    }
-  },
   "atoms": [
     ["Damage","Energy",0.6,1,2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.100000023841858,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,0.2],
     ["Damage","Energy",1.36,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

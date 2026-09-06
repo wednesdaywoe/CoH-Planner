@@ -40,69 +40,67 @@ export const TarPatch: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "displayName": "Tar Patch",
-      "duration": 45,
-      "isPseudoPet": true,
-      "powers": [
-        "Redirects.Dark_Miasma.Tar"
-      ],
-      "resolvedEntities": [
-        {
-          "displayName": "Tar Patch",
-          "duration": 45,
-          "copyCreatorMods": true,
-          "abilities": [
-            {
-              "name": "Tar",
-              "displayName": "Tar",
-              "type": "Auto",
-              "damage": [],
-              "effects": [
-                {
-                  "type": "Slow",
-                  "axis": "runSpeed",
-                  "scale": 0.72,
-                  "table": "Ranged_Slow"
-                },
-                {
-                  "type": "Slow",
-                  "axis": "jumpHeight",
-                  "scale": 500,
-                  "table": "Ranged_Ones",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "ResistanceDebuff",
-                  "scale": 3,
-                  "table": "Ranged_Debuff_Res_Dmg",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "MovementCapDebuff",
-                  "axis": "runSpeed",
-                  "scale": 1,
-                  "table": "Ranged_SpeedRunning",
-                  "ignoreStrength": true
-                }
-              ],
-              "recharge": 0,
-              "castTime": 0,
-              "activatePeriod": 0.5,
-              "effectArea": "Sphere",
-              "targetsAffected": [
-                "Foe"
-              ],
-              "radius": 25,
-              "maxTargets": 16
-            }
-          ]
-        }
-      ],
-      "entity": "PL_StaticObject"
-    }
+  "summon": {
+    "copyBoosts": true,
+    "displayName": "Tar Patch",
+    "duration": 45,
+    "isPseudoPet": true,
+    "powers": [
+      "Redirects.Dark_Miasma.Tar"
+    ],
+    "resolvedEntities": [
+      {
+        "displayName": "Tar Patch",
+        "duration": 45,
+        "copyCreatorMods": true,
+        "abilities": [
+          {
+            "name": "Tar",
+            "displayName": "Tar",
+            "type": "Auto",
+            "damage": [],
+            "effects": [
+              {
+                "type": "Slow",
+                "axis": "runSpeed",
+                "scale": 0.72,
+                "table": "Ranged_Slow"
+              },
+              {
+                "type": "Slow",
+                "axis": "jumpHeight",
+                "scale": 500,
+                "table": "Ranged_Ones",
+                "ignoreStrength": true
+              },
+              {
+                "type": "ResistanceDebuff",
+                "scale": 3,
+                "table": "Ranged_Debuff_Res_Dmg",
+                "ignoreStrength": true
+              },
+              {
+                "type": "MovementCapDebuff",
+                "axis": "runSpeed",
+                "scale": 1,
+                "table": "Ranged_SpeedRunning",
+                "ignoreStrength": true
+              }
+            ],
+            "recharge": 0,
+            "castTime": 0,
+            "activatePeriod": 0.5,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "Foe"
+            ],
+            "radius": 25,
+            "maxTargets": 16
+          }
+        ]
+      }
+    ],
+    "entity": "PL_StaticObject"
   },
   "atoms": [
     ["EntCreate",null,1,1,45,"Melee_Level","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,45]

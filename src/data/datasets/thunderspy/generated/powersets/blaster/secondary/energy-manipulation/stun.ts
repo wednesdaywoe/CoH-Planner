@@ -59,27 +59,6 @@ export const Stun: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 9.3,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.119,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "damageBuff": 9.3
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 10,
-      "table": "Melee_Stun"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff"
-    ]
-  },
   "atoms": [
     ["Damage","Smashing",0.075,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Energy",0.175,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],

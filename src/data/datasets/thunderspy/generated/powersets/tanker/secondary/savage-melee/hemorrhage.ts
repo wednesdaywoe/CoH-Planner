@@ -64,12 +64,6 @@ export const Hemorrhage: Power = {
       "tickRate": 1
     }
   ],
-  "effects": {
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    }
-  },
   "atoms": [
     ["Damage","Lethal",0.81,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Lethal",1.11,1,4.1,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy","source.ownPowerNum?","5","<","&&"],null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy","source.ownPowerNum?",".04","*",".33","+","@StdResult","*"],null,null,null,"Damage",null,null,null,1],

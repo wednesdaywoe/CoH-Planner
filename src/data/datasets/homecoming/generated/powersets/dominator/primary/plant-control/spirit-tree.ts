@@ -42,44 +42,42 @@ export const SpiritTree: Power = {
     "Threat Duration"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "duration": 60,
-      "entity": "Pets_Spirit_Tree",
-      "isPseudoPet": false,
-      "resolvedEntities": [
-        {
-          "displayName": "Spirit Tree",
-          "duration": 60,
-          "copyCreatorMods": true,
-          "abilities": [
-            {
-              "name": "Spirit_Tree",
-              "displayName": "Spirit Tree",
-              "type": "Auto",
-              "damage": [],
-              "effects": [
-                {
-                  "type": "RegenBuff",
-                  "scale": 1.5,
-                  "table": "Ranged_Ones"
-                }
-              ],
-              "recharge": 0,
-              "castTime": 0,
-              "activatePeriod": 0.5,
-              "effectArea": "Sphere",
-              "targetsAffected": [
-                "Friend"
-              ],
-              "radius": 40,
-              "maxTargets": 16
-            }
-          ]
-        }
-      ]
-    }
+  "summon": {
+    "copyBoosts": true,
+    "duration": 60,
+    "entity": "Pets_Spirit_Tree",
+    "isPseudoPet": false,
+    "resolvedEntities": [
+      {
+        "displayName": "Spirit Tree",
+        "duration": 60,
+        "copyCreatorMods": true,
+        "abilities": [
+          {
+            "name": "Spirit_Tree",
+            "displayName": "Spirit Tree",
+            "type": "Auto",
+            "damage": [],
+            "effects": [
+              {
+                "type": "RegenBuff",
+                "scale": 1.5,
+                "table": "Ranged_Ones"
+              }
+            ],
+            "recharge": 0,
+            "castTime": 0,
+            "activatePeriod": 0.5,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "Friend"
+            ],
+            "radius": 40,
+            "maxTargets": 16
+          }
+        ]
+      }
+    ]
   },
   "atoms": [
     ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,60],

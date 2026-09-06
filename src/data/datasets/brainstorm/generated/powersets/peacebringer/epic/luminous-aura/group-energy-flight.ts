@@ -46,33 +46,6 @@ export const GroupEnergyFlight: Power = {
     "Universal Travel"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 2.25,
-    "durations": {
-      "movement": 2.25
-    },
-    "movement": {
-      "fly": {
-        "scale": 2,
-        "table": "Melee_Ones"
-      },
-      "flySpeed": {
-        "scale": 0.5,
-        "stackKey": "TravelBuff",
-        "table": "Melee_SpeedFlying"
-      },
-      "movementControl": {
-        "scale": 10,
-        "stackKey": "TravelBuff",
-        "table": "Melee_Control"
-      },
-      "movementFriction": {
-        "scale": 10,
-        "stackKey": "TravelBuff",
-        "table": "Melee_Friction"
-      }
-    }
-  },
   "atoms": [
     ["Movement","FlyMode",2,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Power_DisallowGroupFly","target.TokenOwned?","!"],null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
     ["Movement","Fly",0.5,1,10,"Melee_SpeedFlying","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Power_DisallowGroupFly","target.TokenOwned?","!"],null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],

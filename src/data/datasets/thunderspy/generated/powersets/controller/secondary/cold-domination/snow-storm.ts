@@ -42,51 +42,6 @@ export const SnowStorm: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 5,
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 3,
-      "table": "Ranged_Debuff_Dam"
-    },
-    "durations": {
-      "damageDebuff": 5,
-      "movementCapDebuff": 5,
-      "rechargeDebuff": 5,
-      "slow": 5
-    },
-    "movementCapDebuff": {
-      "runSpeed": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
-      }
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.5,
-      "table": "Ranged_Slow"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      }
-    }
-  },
   "atoms": [
     ["DamageBuff","Smashing",3,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Lethal",3,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],

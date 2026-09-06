@@ -57,60 +57,6 @@ export const DreadfulWail: Power = {
       "table": "Ranged_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 20,
-    "durations": {
-      "resistanceDebuff": 20
-    },
-    "resistanceDebuff": {
-      "cold": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "energy": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "fire": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "lethal": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "negative": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "psionic": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "smashing": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "toxic": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      }
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 10,
-      "table": "Ranged_Stun"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",2,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,0.5],
     ["Damage","Energy",2,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,0.5],

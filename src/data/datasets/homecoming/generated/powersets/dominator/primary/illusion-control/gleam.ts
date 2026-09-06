@@ -53,14 +53,6 @@ export const Gleam: Power = {
     "scale": 0.25,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "stun": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Stun"
-    }
-  },
   "atoms": [
     ["Mez","Stunned",8,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Psionic",0.25,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

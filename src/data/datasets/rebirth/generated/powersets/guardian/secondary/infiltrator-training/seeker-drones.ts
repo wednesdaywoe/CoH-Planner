@@ -50,21 +50,19 @@ export const SeekerDrones: Power = {
     "Universal Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "duration": 240,
-      "entities": [
-        {
-          "count": 1,
-          "entity": "Pets_Traps_Seeker1"
-        },
-        {
-          "count": 1,
-          "entity": "Pets_Traps_Seeker2"
-        }
-      ],
-      "isPseudoPet": false
-    }
+  "summon": {
+    "duration": 240,
+    "entities": [
+      {
+        "count": 1,
+        "entity": "Pets_Traps_Seeker1"
+      },
+      {
+        "count": 1,
+        "entity": "Pets_Traps_Seeker2"
+      }
+    ],
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,1,1,240,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,240],

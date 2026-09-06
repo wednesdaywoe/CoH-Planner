@@ -34,16 +34,6 @@ export const Hide: Power = {
     "Endurance Modification"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 10.25,
-    "durations": {
-      "recoveryBuff": 10.25
-    },
-    "recoveryBuff": {
-      "scale": 0.3,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Recovery",null,0.3,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
   ],

@@ -44,13 +44,11 @@ export const CallArcher: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "duration": 99999,
-      "entity": "MastermindPets_Knight_Minion",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "copyBoosts": true,
+    "duration": 99999,
+    "entity": "MastermindPets_Knight_Minion",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,1,1,99999,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,2,null,null,null,null,null,99999],

@@ -52,29 +52,6 @@ export const AbsorbPain: Power = {
       "table": "Ranged_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 20,
-    "durations": {
-      "regenDebuff": 20,
-      "resistance": 20
-    },
-    "regenDebuff": {
-      "ignoreStrength": true,
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "resistance": {
-      "heal": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Ranged_Ones"
-      }
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "resistance"
-    ]
-  },
   "atoms": [
     ["Heal",null,5,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Heal",null,null,null,0.5],
     ["Damage","Special",3,1,0,"Ranged_Damage","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],

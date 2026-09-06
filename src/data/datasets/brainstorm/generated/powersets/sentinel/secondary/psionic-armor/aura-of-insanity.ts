@@ -58,53 +58,6 @@ export const AuraofInsanity: Power = {
     "scale": -0.05,
     "table": "Melee_HealSelf"
   },
-  "effects": {
-    "buffDuration": 4,
-    "confuse": {
-      "attribType": "Magnitude",
-      "mag": 2,
-      "scale": 2,
-      "table": "Melee_Ones"
-    },
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 1.995,
-      "table": "Melee_Debuff_Dam"
-    },
-    "durations": {
-      "confuse": 4,
-      "damageDebuff": 4,
-      "fear": 4,
-      "hold": 4,
-      "sleep": 4,
-      "stun": 4
-    },
-    "effectDuration": 4,
-    "fear": {
-      "attribType": "Magnitude",
-      "mag": 2,
-      "scale": 2,
-      "table": "Melee_Ones"
-    },
-    "hold": {
-      "attribType": "Magnitude",
-      "mag": 2,
-      "scale": 2,
-      "table": "Melee_Ones"
-    },
-    "sleep": {
-      "attribType": "Magnitude",
-      "mag": 2,
-      "scale": 2,
-      "table": "Melee_Ones"
-    },
-    "stun": {
-      "attribType": "Magnitude",
-      "mag": 2,
-      "scale": 2,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Damage","Special",-0.05,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Smashing",1.995,1,4,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],

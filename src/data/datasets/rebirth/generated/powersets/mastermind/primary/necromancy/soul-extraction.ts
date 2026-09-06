@@ -49,26 +49,24 @@ export const SoulExtraction: Power = {
     "Universal Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "mutuallyExclusive": true,
-      "entities": [
-        {
-          "entity": "MastermindPets_Ghost_Minion",
-          "count": 1
-        },
-        {
-          "entity": "MastermindPets_Ghost_Lt",
-          "count": 1
-        },
-        {
-          "entity": "MastermindPets_Ghost_Boss",
-          "count": 1
-        }
-      ],
-      "duration": 300
-    }
+  "summon": {
+    "isPseudoPet": false,
+    "mutuallyExclusive": true,
+    "entities": [
+      {
+        "entity": "MastermindPets_Ghost_Minion",
+        "count": 1
+      },
+      {
+        "entity": "MastermindPets_Ghost_Lt",
+        "count": 1
+      },
+      {
+        "entity": "MastermindPets_Ghost_Boss",
+        "count": 1
+      }
+    ],
+    "duration": 300
   },
   "atoms": [
     ["Heal",null,0,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,1,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],

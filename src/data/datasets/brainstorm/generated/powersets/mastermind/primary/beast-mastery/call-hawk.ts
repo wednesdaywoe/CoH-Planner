@@ -55,25 +55,6 @@ export const CallHawk: Power = {
     "duration": 1.3,
     "tickRate": 0.30000001192092896
   },
-  "effects": {
-    "buffDuration": 30,
-    "durations": {
-      "maxHPBuff": 30,
-      "tohitDebuff": 10
-    },
-    "knockback": {
-      "scale": 0.67,
-      "table": "Ranged_Ones"
-    },
-    "maxHPBuff": {
-      "scale": 0.4,
-      "table": "Melee_HealSelf"
-    },
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_Debuff_ToHit"
-    }
-  },
   "atoms": [
     ["Damage","Lethal",0.3256,1,1.3,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,0.25],
     ["ToHit",null,0.75,1,10,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],

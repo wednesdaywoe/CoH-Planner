@@ -75,12 +75,6 @@ export const Combustion: Power = {
       "tickRate": 1
     }
   ],
-  "effects": {
-    "knockup": {
-      "scale": 0.75,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Damage","Fire",1.64,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Mez","Knockup",0.75,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

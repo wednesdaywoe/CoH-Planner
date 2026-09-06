@@ -51,60 +51,6 @@ export const Elude: Power = {
     "Universal Travel"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 180,
-    "debuffResistance": {
-      "defense": {
-        "scale": 1,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "defenseBuff": {
-      "aoe": {
-        "scale": 6,
-        "table": "Melee_Buff_Def"
-      },
-      "melee": {
-        "scale": 6,
-        "table": "Melee_Buff_Def"
-      },
-      "ranged": {
-        "scale": 6,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "debuffResistance": 180,
-      "defenseBuff": 180,
-      "movement": 180,
-      "recoveryBuff": 180,
-      "recoveryDebuff": 20
-    },
-    "enduranceDrain": {
-      "ignoreStrength": true,
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "movement": {
-      "jumpHeight": {
-        "scale": 2,
-        "table": "Melee_Ones"
-      },
-      "runSpeed": {
-        "scale": 0.5,
-        "table": "Melee_SpeedRunning"
-      }
-    },
-    "recoveryBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "recoveryDebuff": {
-      "ignoreStrength": true,
-      "scale": 100,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Defense","Ranged",6,1,180,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Defense","Melee",6,1,180,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],

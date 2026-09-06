@@ -45,22 +45,6 @@ export const ShadowRecall: Power = {
     "Universal Travel"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 1.5,
-    "durations": {
-      "stealth": 1.5
-    },
-    "stealth": {
-      "translucency": {
-        "scale": 0,
-        "table": "Ranged_Ones"
-      }
-    },
-    "teleport": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Stealth","Translucency",0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["DeadOrAliveLeaguemate"]],
     ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["DeadOrAliveLeaguemate"],1.17]
@@ -81,27 +65,11 @@ export const ShadowRecall: Power = {
         "interruptTime": 2,
         "timeToRoot": 1.8667
       },
-      "effects": {
-        "buffDuration": 1.5,
-        "durations": {
-          "stealth": 1.5
-        },
-        "stealth": {
-          "translucency": {
-            "scale": 0,
-            "table": "Ranged_Ones"
-          }
-        },
-        "summon": {
-          "copyBoosts": true,
-          "duration": 1,
-          "entity": "Pets_TPFoeTaunt",
-          "isPseudoPet": false
-        },
-        "teleport": {
-          "scale": 2.1,
-          "table": "Ranged_Ones"
-        }
+      "summon": {
+        "copyBoosts": true,
+        "duration": 1,
+        "entity": "Pets_TPFoeTaunt",
+        "isPseudoPet": false
       },
       "shortHelp": "Ranged, Teleport Foe",
       "description": "You can Teleport a single foe through a dark matter wormhole directly next to you. A successful hit must be made in order to Teleport the target, and some powerful foes cannot be Teleported. This power can be interrupted.",

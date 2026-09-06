@@ -69,20 +69,6 @@ export const ShadowMaul: Power = {
       "tickRate": 0.625
     }
   ],
-  "effects": {
-    "buffDuration": 10,
-    "durations": {
-      "tohitDebuff": 10
-    },
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    },
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Melee_DeBuff_ToHit"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.16,1,2,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.625,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Negative",0.38,1,2,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.625,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],

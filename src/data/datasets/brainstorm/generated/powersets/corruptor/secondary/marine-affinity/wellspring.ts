@@ -42,13 +42,11 @@ export const Wellspring: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "duration": 240,
-      "entity": "Pets_Wellspring",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "copyBoosts": true,
+    "duration": 240,
+    "entity": "Pets_Wellspring",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,1,1,240,"Melee_Level","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240]

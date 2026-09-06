@@ -55,16 +55,6 @@ export const Moonbeam: Power = {
     "scale": 4.5,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 10,
-    "durations": {
-      "tohitDebuff": 10
-    },
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_Debuff_ToHit"
-    }
-  },
   "atoms": [
     ["Damage","Negative",4.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
     ["ToHit",null,0.75,1,10,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]]

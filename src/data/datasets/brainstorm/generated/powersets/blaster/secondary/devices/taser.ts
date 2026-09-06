@@ -49,14 +49,6 @@ export const Taser: Power = {
     "scale": 1.96,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "stun": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 5,
-      "table": "Melee_Stun"
-    }
-  },
   "atoms": [
     ["Mez","Stunned",5,3,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Energy",1.96,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

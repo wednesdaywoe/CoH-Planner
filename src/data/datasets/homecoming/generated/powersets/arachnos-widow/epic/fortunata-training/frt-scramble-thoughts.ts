@@ -51,14 +51,6 @@ export const FRTScrambleThoughts: Power = {
     "duration": 4.1,
     "tickRate": 1
   },
-  "effects": {
-    "stun": {
-      "attribType": "Duration",
-      "mag": 4,
-      "scale": 10,
-      "table": "Ranged_Stun"
-    }
-  },
   "atoms": [
     ["Mez","Stunned",10,4,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Psionic",0.25,1,4.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

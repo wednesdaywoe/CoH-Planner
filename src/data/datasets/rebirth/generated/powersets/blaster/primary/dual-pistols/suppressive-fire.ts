@@ -60,27 +60,6 @@ export const SuppressiveFire: Power = {
       "table": "Ranged_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 9.17,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.11,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 9.17
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Sleep"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff"
-    ]
-  },
   "atoms": [
     ["Damage","Lethal",0.05,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Lethal",0.05,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kLethal","Source.Mode?","!","&&"],null,null,null,null,null,null,null,null,null,"Lethal"],

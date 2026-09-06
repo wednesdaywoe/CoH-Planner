@@ -50,20 +50,6 @@ export const LashingLife: Power = {
     "scale": 0.16,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 8,
-    "defenseDebuff": {
-      "scale": 1.25,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 8
-    },
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    }
-  },
   "atoms": [
     ["Damage","Lethal",0.16,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
     ["Defense","All",1.25,1,8,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Debuff_Def"],

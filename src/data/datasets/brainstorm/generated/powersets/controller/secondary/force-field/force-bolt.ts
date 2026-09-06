@@ -49,58 +49,6 @@ export const ForceBolt: Power = {
     "scale": 1,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 30,
-    "durations": {
-      "resistanceDebuff": 30
-    },
-    "knockback": {
-      "scale": 9,
-      "table": "Ranged_Knockback"
-    },
-    "resistanceDebuff": {
-      "cold": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "energy": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "fire": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "lethal": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "negative": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "psionic": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "smashing": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "toxic": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Debuff_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["Damage","Smashing",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Mez","Knockback",9,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

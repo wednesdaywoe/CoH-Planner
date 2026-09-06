@@ -55,12 +55,6 @@ export const StormKick: Power = {
     "scale": 1.4,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",1.4,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Fire",0.594,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],

@@ -60,36 +60,6 @@ export const Deluge: Power = {
       "table": "Ranged_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 15,
-    "durations": {
-      "slow": 15
-    },
-    "knockback": {
-      "ignoreStrength": true,
-      "scale": 0.67,
-      "table": "Ranged_Ones"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.35,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.35,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.35,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.35,
-        "table": "Ranged_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.33,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Cold",0.99,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],

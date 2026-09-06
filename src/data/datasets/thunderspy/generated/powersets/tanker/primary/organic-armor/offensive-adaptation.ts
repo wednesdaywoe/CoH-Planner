@@ -36,62 +36,6 @@ export const OffensiveAdaptation: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
-  "effects": {
-    "buffDuration": 1.1,
-    "durations": {
-      "resistanceDebuff": 1.1
-    },
-    "resistanceDebuff": {
-      "cold": {
-        "ignoreStrength": true,
-        "scale": 0.075,
-        "table": "Melee_Ones",
-        "toWho": "Self"
-      },
-      "energy": {
-        "ignoreStrength": true,
-        "scale": 0.075,
-        "table": "Melee_Ones",
-        "toWho": "Self"
-      },
-      "fire": {
-        "ignoreStrength": true,
-        "scale": 0.075,
-        "table": "Melee_Ones",
-        "toWho": "Self"
-      },
-      "lethal": {
-        "ignoreStrength": true,
-        "scale": 0.075,
-        "table": "Melee_Ones",
-        "toWho": "Self"
-      },
-      "negative": {
-        "ignoreStrength": true,
-        "scale": 0.075,
-        "table": "Melee_Ones",
-        "toWho": "Self"
-      },
-      "psionic": {
-        "ignoreStrength": true,
-        "scale": 0.075,
-        "table": "Melee_Ones",
-        "toWho": "Self"
-      },
-      "smashing": {
-        "ignoreStrength": true,
-        "scale": 0.075,
-        "table": "Melee_Ones",
-        "toWho": "Self"
-      },
-      "toxic": {
-        "ignoreStrength": true,
-        "scale": 0.075,
-        "table": "Melee_Ones",
-        "toWho": "Self"
-      }
-    }
-  },
   "atoms": [
     ["Meta",null,1,107,1.1,"Melee_Ones","Cur","Constant","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,"OnActivate"],

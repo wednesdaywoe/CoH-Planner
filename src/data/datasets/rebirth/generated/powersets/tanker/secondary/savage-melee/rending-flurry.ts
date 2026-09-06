@@ -64,12 +64,6 @@ export const RendingFlurry: Power = {
       "cancelOnMiss": true
     }
   ],
-  "effects": {
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    }
-  },
   "atoms": [
     ["Meta",null,1,1,0,"Melee_Ones","Cur","Constant","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["1"],null,null,null,null,null,null,null,null,null,"Ones",null,"power_redirect"],
     ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy","source.ownPowerNum?",".06","*","1.18","+","@StdResult","*"],null,null,null,"Damage"],
@@ -124,12 +118,6 @@ export const RendingFlurry: Power = {
           "cancelOnMiss": true
         }
       ],
-      "effects": {
-        "taunt": {
-          "scale": 1,
-          "table": "Melee_InherentTaunt"
-        }
-      },
       "shortHelp": "PBAoE, Moderate DMG(Lethal), Foe Minor DoT(Lethal), -Blood Frenzy",
       "description": "You wildly slash at nearby foes to deal moderate lethal damage and cause minor lethal damage over time. This power consumes all Blood Frenzy and will deal additional damage per stack of Blood Frenzy consumed. If you have 5 stacks of Blood Frenzy while activating this power, its radius is greatly increased, but causes you to become Exhausted for a short time. While exhausted you cannot gain Blood Frenzy. Damage: Moderate, Minor DoT, Recharge: Long",
       "effectArea": "AoE",

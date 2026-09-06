@@ -45,19 +45,6 @@ export const Alkaloid: Power = {
     "scale": 1.73,
     "table": "Ranged_Heal"
   },
-  "effects": {
-    "buffDuration": 60,
-    "durations": {
-      "resistance": 60
-    },
-    "resistance": {
-      "toxic": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["Heal",null,1.73,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Heal"],
     ["Resistance","Toxic",2,1,60,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_Dmg"]

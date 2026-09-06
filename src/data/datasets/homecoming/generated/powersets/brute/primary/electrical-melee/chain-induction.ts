@@ -56,20 +56,6 @@ export const ChainInduction: Power = {
     "scale": 1.32,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "buffDuration": 4,
-    "durations": {
-      "recoveryDebuff": 4
-    },
-    "enduranceDrain": {
-      "scale": 0.1,
-      "table": "Melee_Ones"
-    },
-    "recoveryDebuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Damage","Energy",1.32,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Fire",0.594,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"FieryEmbrace"],

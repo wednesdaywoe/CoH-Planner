@@ -58,26 +58,6 @@ export const NeutrinoBolt: Power = {
     "scale": 1,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 8.5,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.066,
-      "table": "Ranged_Ones"
-    },
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "damageBuff": 8.5,
-      "defenseDebuff": 3
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff"
-    ]
-  },
   "atoms": [
     ["Damage","Energy",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Defense","All",1,1,3,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Debuff_Def"],

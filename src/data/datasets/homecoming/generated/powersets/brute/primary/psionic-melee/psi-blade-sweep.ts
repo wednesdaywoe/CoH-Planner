@@ -64,23 +64,6 @@ export const PsiBladeSweep: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 6,
-    "durations": {
-      "rechargeDebuff": 6
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.15,
-      "table": "Melee_Slow"
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 2,
-      "scale": 5,
-      "table": "Melee_Stun"
-    }
-  },
   "atoms": [
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.19040000438690186,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight","source.ownPower?","!","Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight_Lockout","source.ownPower?","!","&&","Temporary_Powers.Temporary_Powers.Boggled","target.ownPower?","!","&&"]],
     ["Damage","Lethal",0.36,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

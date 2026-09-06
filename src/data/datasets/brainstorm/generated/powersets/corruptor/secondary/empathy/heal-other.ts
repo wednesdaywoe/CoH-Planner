@@ -45,12 +45,6 @@ export const HealOther: Power = {
     "scale": 1.96,
     "table": "Ranged_Heal"
   },
-  "effects": {
-    "buffDuration": 10,
-    "durations": {
-      "absorb": 10
-    }
-  },
   "atoms": [
     ["Absorb",null,1.96,1,10,"Ranged_Heal","Max","Expression","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["@StdResult","Cur.kHitPoints","target>","Max.kHitPoints","target>","-","+","0","@StdResult","minmax","0.5","*"]],
     ["Heal",null,1.96,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1]

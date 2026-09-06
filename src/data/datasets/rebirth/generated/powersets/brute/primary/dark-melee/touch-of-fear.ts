@@ -50,22 +50,6 @@ export const TouchofFear: Power = {
     "Universal Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 20,
-    "durations": {
-      "tohitDebuff": 20
-    },
-    "fear": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 15,
-      "table": "Melee_Fear"
-    },
-    "tohitDebuff": {
-      "scale": 1.5,
-      "table": "Melee_DeBuff_ToHit"
-    }
-  },
   "atoms": [
     ["Mez","Terrorized",15,3,0,"Melee_Fear","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Fear"],
     ["Mez","Terrorized",7,1,0,"Melee_Fear","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0.3,null,"Fear"],

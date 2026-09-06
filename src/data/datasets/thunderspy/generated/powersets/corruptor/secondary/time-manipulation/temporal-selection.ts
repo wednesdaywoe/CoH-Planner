@@ -40,28 +40,6 @@ export const TemporalSelection: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 120,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 2.5,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "durations": {
-      "damageBuff": 120,
-      "rechargeBuff": 120,
-      "regenBuff": 120
-    },
-    "rechargeBuff": {
-      "ignoreStrength": true,
-      "scale": 0.3,
-      "table": "Ranged_Ones"
-    },
-    "regenBuff": {
-      "scale": 1.5,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["RechargeTime",null,0.3,1,120,"Ranged_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["Regeneration",null,1.5,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],

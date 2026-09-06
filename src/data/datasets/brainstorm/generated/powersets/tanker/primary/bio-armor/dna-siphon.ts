@@ -75,34 +75,6 @@ export const DNASiphon: Power = {
       "table": "Melee_HealSelf"
     }
   ],
-  "effects": {
-    "buffDuration": 30,
-    "durations": {
-      "recoveryBuff": 30,
-      "regenBuff": 30,
-      "regenDebuff": 30
-    },
-    "enduranceGain": {
-      "scale": 5,
-      "table": "Melee_Ones",
-      "perTarget": 5
-    },
-    "recoveryBuff": {
-      "scale": 0.125,
-      "table": "Melee_Ones",
-      "perTarget": 0.125
-    },
-    "regenBuff": {
-      "scale": 0.2,
-      "table": "Melee_Ones",
-      "perTarget": 0.2
-    },
-    "regenDebuff": {
-      "ignoreStrength": true,
-      "scale": 1,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Damage","Lethal",0.2,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Cur.kHitPoints","target>","0",">"]],
     ["Damage","Toxic",0.1,1,2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["Cur.kHitPoints","target>","0",">"],null,null,null,null,null,null,null,0.8,true],

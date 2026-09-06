@@ -54,16 +54,6 @@ export const BrightNovaScatter: Power = {
     "scale": 0.99,
     "table": "Ranged_InherentDamage"
   },
-  "effects": {
-    "buffDuration": 8,
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 8
-    }
-  },
   "atoms": [
     ["Damage","Energy",0.99,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"SSDamage"],
     ["Defense","All",1,1,8,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],

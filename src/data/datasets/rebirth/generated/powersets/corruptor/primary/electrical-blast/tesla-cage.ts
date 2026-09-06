@@ -53,34 +53,6 @@ export const TeslaCage: Power = {
     "scale": 0.15,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 8,
-    "durations": {
-      "recoveryDebuff": 8
-    },
-    "enduranceDrain": {
-      "scale": 0.07,
-      "table": "Ranged_Ones"
-    },
-    "enduranceGain": {
-      "scale": 3.43,
-      "table": "Ranged_Ones"
-    },
-    "hold": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Ones"
-    },
-    "recoveryDebuff": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "enduranceGain"
-    ]
-  },
   "atoms": [
     ["Mez","Held",8,3,0,"Ranged_Ones","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones"],
     ["Damage","Energy",0.15,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],

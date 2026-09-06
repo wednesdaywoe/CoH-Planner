@@ -47,18 +47,6 @@ export const EMPArrow: Power = {
     "Stuns"
   ],
   "maxSlots": 6,
-  "effects": {
-    "enduranceDrain": {
-      "scale": 0.55,
-      "table": "Ranged_Ones"
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 2,
-      "scale": 8,
-      "table": "Ranged_Immobilize"
-    }
-  },
   "atoms": [
     ["Mez","Stunned",8,2,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Mez","Stunned",5,1,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

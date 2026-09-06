@@ -38,22 +38,6 @@ export const InstantHealing: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 90,
-    "durations": {
-      "regenBuff": 90,
-      "regenBuffUnenhanced": 90
-    },
-    "regenBuff": {
-      "scale": 2,
-      "table": "Melee_Ones"
-    },
-    "regenBuffUnenhanced": {
-      "ignoreStrength": true,
-      "scale": 6,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Regeneration",null,6,1,90,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
     ["Regeneration",null,2,1,90,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],

@@ -45,62 +45,10 @@ export const FuturePain: Power = {
     "Universal Travel"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 10,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.11,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "damageBuff": 9.17,
-      "movement": 10,
-      "stealth": 1.5
-    },
-    "knockback": {
-      "scale": 0.4,
-      "table": "Ranged_Knockback"
-    },
-    "movement": {
-      "flySpeed": {
-        "scale": 0.15,
-        "table": "Melee_SpeedFlying"
-      },
-      "jumpSpeed": {
-        "scale": 0.1,
-        "table": "Melee_SpeedJumping"
-      },
-      "runSpeed": {
-        "scale": 0.1,
-        "table": "Melee_SpeedRunning"
-      }
-    },
-    "stealth": {
-      "translucency": {
-        "scale": 0,
-        "table": "Ranged_Ones"
-      }
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Stun"
-    },
-    "teleport": {
-      "scale": 10,
-      "table": "Ranged_Ones"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff",
-      "movement"
-    ]
-  },
   "atoms": [
     ["Stealth","Translucency",0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,1.4],
     ["Mez","Teleport",10,10,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,2.6],
-    ["RechargeTime",null,0.2,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["RechargeTime",null,0.2,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,true,null,null,null,null,null,"Ones"],
     ["Mez","Stunned",8,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Stun",null,null,null,1.7],
     ["Mez","Knockback",0.4,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Knockback",null,null,null,2.7],
     ["Movement","Run",0.1,1,10,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"SpeedRunning"],

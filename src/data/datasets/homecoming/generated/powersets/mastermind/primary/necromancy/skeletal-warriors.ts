@@ -50,13 +50,11 @@ export const SkeletalWarriors: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "duration": 99999,
-      "entity": "MastermindPets_Skeletal_Warrior",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "copyBoosts": true,
+    "duration": 99999,
+    "entity": "MastermindPets_Skeletal_Warrior",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,-1,1,99999,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1,null,null,null,null,null,99999],

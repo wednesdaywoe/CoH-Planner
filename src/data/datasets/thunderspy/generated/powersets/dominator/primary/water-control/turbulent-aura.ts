@@ -60,12 +60,6 @@ export const TurbulentAura: Power = {
       "water_control_drowning"
     ]
   },
-  "effects": {
-    "knockback": {
-      "scale": 0.2,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Damage","Cold",0.15,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Water_Control_Drowning","target.ownPower?","!","@ToHitRoll","@ToHit","<","@ForceHit","||","&&"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Mez","Knockback",0.2,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Water_Control_Drowning","target.ownPower?","!","&&"],null,null,null,null,null,null,null,null,null,"Ones"],

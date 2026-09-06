@@ -52,14 +52,6 @@ export const Char: Power = {
     "duration": 4.2,
     "tickRate": 1
   },
-  "effects": {
-    "hold": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 12,
-      "table": "Ranged_Immobilize"
-    }
-  },
   "atoms": [
     ["Mez","Held",12,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Immobilize"],
     ["Damage","Fire",0.22,1,4.2,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],

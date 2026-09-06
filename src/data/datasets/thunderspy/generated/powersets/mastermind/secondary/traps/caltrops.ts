@@ -45,22 +45,20 @@ export const Caltrops: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "duration": 45,
-      "entities": [
-        {
-          "count": 1,
-          "entity": "Pets_Caltrops"
-        },
-        {
-          "count": 1,
-          "entity": "Pets_Traps_Mine"
-        }
-      ],
-      "isPseudoPet": false
-    }
+  "summon": {
+    "copyBoosts": true,
+    "duration": 45,
+    "entities": [
+      {
+        "count": 1,
+        "entity": "Pets_Caltrops"
+      },
+      {
+        "count": 1,
+        "entity": "Pets_Traps_Mine"
+      }
+    ],
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,1,1,45,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,45],

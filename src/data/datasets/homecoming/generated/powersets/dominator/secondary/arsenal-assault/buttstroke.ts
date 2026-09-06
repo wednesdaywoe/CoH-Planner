@@ -52,14 +52,6 @@ export const Buttstroke: Power = {
     "scale": 1.64,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "stun": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 8,
-      "table": "Melee_Stun"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",1.64,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Mez","Stunned",8,3,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

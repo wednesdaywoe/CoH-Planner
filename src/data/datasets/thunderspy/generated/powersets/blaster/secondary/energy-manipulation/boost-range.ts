@@ -34,17 +34,6 @@ export const BoostRange: Power = {
     "Recharge"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 30,
-    "durations": {
-      "rangeBuff": 30
-    },
-    "rangeBuff": {
-      "ignoreStrength": true,
-      "scale": 0.5,
-      "table": "Melee_Stun"
-    }
-  },
   "atoms": [
     ["Range",null,0.5,1,30,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Stun"]
   ]

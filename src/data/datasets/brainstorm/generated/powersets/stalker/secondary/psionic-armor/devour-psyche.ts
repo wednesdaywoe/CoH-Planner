@@ -44,48 +44,6 @@ export const DevourPsyche: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 45,
-    "durations": {
-      "recoveryBuff": 45,
-      "recoveryDebuff": 45,
-      "regenBuff": 45,
-      "regenDebuff": 45,
-      "resistance": 45
-    },
-    "recoveryBuff": {
-      "scale": 0.15000000000000002,
-      "table": "Melee_Ones",
-      "perTarget": 0.05
-    },
-    "recoveryDebuff": {
-      "durationVariants": [
-        {
-          "duration": 10,
-          "scale": 0.8
-        }
-      ],
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
-    "regenBuff": {
-      "scale": 0.85,
-      "table": "Melee_Ones",
-      "perTarget": 0.35
-    },
-    "regenDebuff": {
-      "ignoreStrength": true,
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "resistance": {
-      "heal": {
-        "ignoreStrength": true,
-        "scale": 0.25,
-        "table": "Melee_Ones"
-      }
-    }
-  },
   "atoms": [
     ["Regeneration",null,0.5,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
     ["Recovery",null,0.1,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],

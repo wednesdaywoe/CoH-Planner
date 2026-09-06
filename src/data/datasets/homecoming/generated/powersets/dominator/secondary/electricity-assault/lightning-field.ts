@@ -49,28 +49,6 @@ export const LightningField: Power = {
     "scale": 1.64,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 4,
-    "durations": {
-      "recoveryDebuff": 4
-    },
-    "enduranceDrain": {
-      "scale": 0.1,
-      "table": "Ranged_Ones"
-    },
-    "enduranceGain": {
-      "scale": 4.265,
-      "table": "Ranged_Ones"
-    },
-    "recoveryDebuff": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "enduranceGain"
-    ]
-  },
   "atoms": [
     ["Damage","Energy",1.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Endurance",null,-0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

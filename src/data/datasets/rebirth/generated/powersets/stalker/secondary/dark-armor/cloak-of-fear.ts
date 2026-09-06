@@ -47,22 +47,6 @@ export const CloakofFear: Power = {
     "Universal Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 5,
-    "durations": {
-      "tohitDebuff": 5
-    },
-    "fear": {
-      "attribType": "Duration",
-      "mag": 2,
-      "scale": 5,
-      "table": "Melee_Fear"
-    },
-    "tohitDebuff": {
-      "scale": 0.05,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Mez","Terrorized",5,2,0,"Melee_Fear","Cur","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Fear"],
     ["ToHit",null,-0.05,1,5,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],

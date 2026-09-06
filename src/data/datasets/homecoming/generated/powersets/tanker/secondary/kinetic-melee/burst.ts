@@ -72,21 +72,6 @@ export const Burst: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 15,
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 1.2,
-      "table": "Melee_Debuff_Dam"
-    },
-    "durations": {
-      "damageDebuff": 15
-    },
-    "knockback": {
-      "scale": 0.4467,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Damage","Energy",0.1254,1,1.9,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,0.5],
     ["Damage","Smashing",0.6272,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

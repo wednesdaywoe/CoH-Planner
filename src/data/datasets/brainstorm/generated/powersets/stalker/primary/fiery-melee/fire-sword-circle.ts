@@ -70,16 +70,6 @@ export const FireSwordCircle: Power = {
       "cancelOnMiss": true
     }
   ],
-  "effects": {
-    "buffDuration": 10,
-    "defenseDebuff": {
-      "scale": 0.5,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    }
-  },
   "atoms": [
     ["Damage","Fire",1.424,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Fire",1.424,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,["enttype","target>","critter","eq","enttype","target>","critter","eq","kMeter","source>",".9","<","&&","&&"],null,null,null,null,null,null,null,null,null,"ASTeamCrit"],

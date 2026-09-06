@@ -58,22 +58,6 @@ export const LivingShadows: Power = {
     "duration": 5.2,
     "tickRate": 2
   },
-  "effects": {
-    "buffDuration": 8,
-    "durations": {
-      "tohitDebuff": 8
-    },
-    "immobilize": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_Debuff_ToHit"
-    }
-  },
   "atoms": [
     ["Damage","Negative",0.13,1,5.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,1],
     ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

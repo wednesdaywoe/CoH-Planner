@@ -47,14 +47,6 @@ export const RagingTempest: Power = {
     "Holds"
   ],
   "maxSlots": 6,
-  "effects": {
-    "hold": {
-      "attribType": "Duration",
-      "mag": 2,
-      "scale": 4,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Mez","Held",4,2,0,"Ranged_Ones","Cur","Duration","Target","PvE",true,"Replace",2,null,null,0.5,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones"],
     ["Mez","Held",4,1,0,"Ranged_Ones","Cur","Duration","Target","PvE",true,"Replace",2,null,null,0.800000011920929,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones"],

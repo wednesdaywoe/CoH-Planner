@@ -55,12 +55,6 @@ export const Swoop: Power = {
     "scale": 2.28,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "knockup": {
-      "scale": 3,
-      "table": "Melee_Knockback"
-    }
-  },
   "atoms": [
     ["Damage","Lethal",2.28,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Mez","Knockup",3,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.699999988079071,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

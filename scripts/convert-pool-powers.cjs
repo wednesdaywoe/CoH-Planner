@@ -420,13 +420,18 @@ function convertPoolPower(rawJson, rank, availableLevel) {
     }
   }
 
-  power.effects = effects;
+  // The bag is NOT emitted. `effects` stays a local: it is still the projection the two
+  // Thunderspy guards read and the object `summon` and `damage` are lifted out of, but nothing
+  // downstream reads it off the power any more. Every scalar it held has a second address the
+  // consumers already prefer — `power.stats` (minted by `powerStats`, the same object an
+  // archetype power publishes) and the atoms — so the slot no longer has a reader to starve.
+  // The three sibling converters bound it to a local `guardBag` when they stopped emitting;
+  // this is the same move, reusing the object already built rather than extracting twice.
+  // REBUILD-PROGRESS `effects` bag removal, writer side.
 
-  // The pets, at the address every partition now answers on. This converter still ships the
-  // whole legacy bag, so its summons were never strip casualties — but a reader that has to ask
+  // The pets, at the address every partition now answers on. A reader that has to ask
   // `power.summon ?? power.effects.summon` is two rules, and which one answers would depend on
-  // which partition the power came from, which is the shape ENT-22 was. One writer, one address;
-  // the bag's copy is the same object and dies with the rest of the legacy shape.
+  // which partition the power came from, which is the shape ENT-22 was. One writer, one address.
   if (effects.summon) power.summon = effects.summon;
 
   // Conditional bonus effects (Mechanic Adjusters) — the positive state gates the base
@@ -456,8 +461,12 @@ function convertPoolPower(rawJson, rank, availableLevel) {
     // needs are missing from every fork-6 power alike. The applied-mez half was called only by
     // convert-powerset.cjs, so Rest, Hibernate and Rise of the Phoenix shipped 15 foe-control
     // slots on self-only powers (TWIN-2).
-    guardThunderspyOnesBuffs(power, rawJson.targets_affected);
-    guardThunderspyAppliedMez(power, rawJson.targets_affected);
+    // Passed explicitly now that the bag is not on the power: both guards default their third
+    // argument to `power.effects`, which is gone, and a guard handed `undefined` returns without
+    // stamping. What survives the call is `stampNotOnCaster` on the atoms — the durable half —
+    // so the local carries exactly what the emitted bag used to.
+    guardThunderspyOnesBuffs(power, rawJson.targets_affected, effects);
+    guardThunderspyAppliedMez(power, rawJson.targets_affected, effects);
   }
 
   return power;

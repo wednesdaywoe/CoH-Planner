@@ -56,18 +56,6 @@ export const KnockoutBlow: Power = {
     "scale": 3.56,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "hold": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 10,
-      "table": "Melee_Stun"
-    },
-    "knockup": {
-      "scale": 3,
-      "table": "Melee_Knockback"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",3.56,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Mez","Held",10,3,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

@@ -56,43 +56,6 @@ export const Chilblain: Power = {
     "duration": 9.2,
     "tickRate": 2
   },
-  "effects": {
-    "buffDuration": 18,
-    "durations": {
-      "rechargeDebuff": 18,
-      "slow": 18
-    },
-    "immobilize": {
-      "attribType": "Duration",
-      "mag": 4,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.2,
-      "table": "Ranged_Slow"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Damage","Cold",0.2,1,9.2,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,2,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Mez","Immobilized",15,4,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Immobilize"],

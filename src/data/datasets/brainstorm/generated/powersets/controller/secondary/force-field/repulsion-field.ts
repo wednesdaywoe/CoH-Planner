@@ -46,20 +46,6 @@ export const RepulsionField: Power = {
     "Knockback"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.25,
-    "durations": {
-      "repel": 0.25
-    },
-    "knockback": {
-      "scale": 3,
-      "table": "Ranged_Knockback"
-    },
-    "repel": {
-      "scale": 16,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Mez","Knockback",3,0,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1.100000023841858,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"ReduceIfKD,RepulsionField"],
     ["Mez","Repel",10,1,0.25,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Repel,ReduceIfKD"],

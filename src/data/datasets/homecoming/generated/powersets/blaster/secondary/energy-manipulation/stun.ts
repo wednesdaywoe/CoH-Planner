@@ -59,14 +59,6 @@ export const Stun: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "stun": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 10,
-      "table": "Melee_Stun"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.15,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
     ["Damage","Energy",0.1,0,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
@@ -111,14 +103,6 @@ export const Stun: Power = {
           "table": "Ranged_Damage"
         }
       ],
-      "effects": {
-        "stun": {
-          "attribType": "Duration",
-          "mag": 2,
-          "scale": 6.25,
-          "table": "Ranged_Stun"
-        }
-      },
       "shortHelp": "Melee, Minor DMG(Energy/Smashing), Foe Disorient",
       "description": "Stun deals a little bit of damage, but Disorients its target a great deal. This attack can Disorient most opponents. Note that Stun is unaffected by Range changes. Note that Stun (Expanded) is unaffected by Range changes.\n\nNotes: Stun (Extended+Expanded) is unaffected by Range changes.\n\nDamage: Minor.\nRecharge: Long.",
       "effectArea": "AoE",
@@ -596,14 +580,6 @@ export const Stun: Power = {
           "table": "Ranged_Damage"
         }
       ],
-      "effects": {
-        "stun": {
-          "attribType": "Duration",
-          "mag": 2,
-          "scale": 10,
-          "table": "Ranged_Stun"
-        }
-      },
       "shortHelp": "Melee, Minor DMG(Energy/Smashing), Foe Disorient",
       "description": "Stun deals a little bit of damage, but Disorients its target a great deal. This attack can Disorient most opponents. Note that Stun is unaffected by Range changes. Note that Stun (Ranged) is unaffected by Range changes.\n\nNotes: Stun (Extended) is unaffected by Range changes.\n\nDamage: Minor.\nRecharge: Slow.",
       "effectArea": "SingleTarget",
@@ -1079,14 +1055,6 @@ export const Stun: Power = {
           "table": "Melee_Damage"
         }
       ],
-      "effects": {
-        "stun": {
-          "attribType": "Duration",
-          "mag": 2,
-          "scale": 6.25,
-          "table": "Melee_Stun"
-        }
-      },
       "shortHelp": "Melee, Minor DMG(Energy/Smashing), Foe Disorient",
       "description": "Stun deals a little bit of damage, but Disorients its target a great deal. This attack can Disorient most opponents.\n\nDamage: Minor.\nRecharge: Long.",
       "effectArea": "AoE",

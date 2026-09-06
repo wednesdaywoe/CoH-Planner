@@ -40,54 +40,6 @@ export const DisruptionStrike: Power = {
     "Recharge"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 5,
-    "durations": {
-      "resistanceDebuff": 5
-    },
-    "resistanceDebuff": {
-      "cold": {
-        "ignoreStrength": true,
-        "scale": 2.5,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "energy": {
-        "ignoreStrength": true,
-        "scale": 2.5,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "fire": {
-        "ignoreStrength": true,
-        "scale": 2.5,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "lethal": {
-        "ignoreStrength": true,
-        "scale": 2.5,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "negative": {
-        "ignoreStrength": true,
-        "scale": 2.5,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "psionic": {
-        "ignoreStrength": true,
-        "scale": 2.5,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "smashing": {
-        "ignoreStrength": true,
-        "scale": 2.5,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "toxic": {
-        "ignoreStrength": true,
-        "scale": 2.5,
-        "table": "Melee_Debuff_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"ResDebuffProc",null,null,null,null,null,null,null,null,"OnActivate"],
     ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"ResDebuffProc",null,"revoke_power",null,null,null,null,null,null,"OnDeactivate"],

@@ -44,43 +44,6 @@ export const AttenuationBlanket: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 10.25,
-    "debuffResistance": {
-      "endurance": {
-        "ignoreStrength": true,
-        "scale": 0.25,
-        "table": "Melee_Ones"
-      },
-      "recovery": {
-        "ignoreStrength": true,
-        "scale": 0.25,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "debuffResistance": 10.25,
-      "resistance": 0.75
-    },
-    "resistance": {
-      "cold": {
-        "scale": 3.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 3.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 3.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 3.5,
-        "table": "Melee_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["Resistance","Fire",3.5,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
     ["Resistance","Cold",3.5,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],

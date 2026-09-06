@@ -60,46 +60,6 @@ export const ElectrifiedNetArrow: Power = {
     "duration": 8.2,
     "tickRate": 2
   },
-  "effects": {
-    "buffDuration": 15,
-    "durations": {
-      "movementCapDebuff": 0.75,
-      "rechargeDebuff": 15,
-      "slow": 15
-    },
-    "immobilize": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
-    "movementCapDebuff": {
-      "runSpeed": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
-      }
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.1,
-      "table": "Ranged_Slow"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.1,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "scale": 500,
-        "table": "Ranged_Ones"
-      },
-      "runSpeed": {
-        "scale": 0.1,
-        "table": "Ranged_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Movement","Run",-1,1,0.75,"Ranged_SpeedRunning","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"]],

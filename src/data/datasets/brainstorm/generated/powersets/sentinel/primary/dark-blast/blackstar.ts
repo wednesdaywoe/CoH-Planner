@@ -63,16 +63,6 @@ export const Blackstar: Power = {
       "table": "Ranged_InherentDamage"
     }
   ],
-  "effects": {
-    "buffDuration": 20,
-    "durations": {
-      "tohitDebuff": 20
-    },
-    "tohitDebuff": {
-      "scale": 5,
-      "table": "Ranged_Debuff_ToHit"
-    }
-  },
   "atoms": [
     ["Damage","Negative",2.253,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Negative",0.928,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

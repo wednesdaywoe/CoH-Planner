@@ -48,139 +48,137 @@ export const Fog: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "displayName": "Freezing Rain",
-      "duration": 15,
-      "isPseudoPet": true,
-      "powers": [
-        "Pets.Freezing_Rain.FreezingRain",
-        "Pets.Freezing_Rain.Avoid"
-      ],
-      "resolvedEntities": [
-        {
-          "displayName": "Freezing Rain",
-          "duration": 15,
-          "copyCreatorMods": true,
-          "abilities": [
-            {
-              "name": "FreezingRain",
-              "displayName": "FreezingRain",
-              "type": "Auto",
-              "damage": [
-                {
-                  "damageType": "Cold",
-                  "scale": 0.009,
-                  "table": "Ranged_Damage"
-                }
-              ],
-              "effects": [
-                {
-                  "type": "Slow",
-                  "axis": "runSpeed",
-                  "scale": 0.56,
-                  "table": "Ranged_Slow"
-                },
-                {
-                  "type": "Slow",
-                  "axis": "jumpSpeed",
-                  "scale": 0.56,
-                  "table": "Ranged_Slow"
-                },
-                {
-                  "type": "RechargeDebuff",
-                  "scale": 0.4,
-                  "table": "Ranged_Slow",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "Slow",
-                  "axis": "flySpeed",
-                  "scale": 0.48,
-                  "table": "Ranged_Slow"
-                },
-                {
-                  "type": "Slow",
-                  "axis": "jumpHeight",
-                  "scale": 0.56,
-                  "table": "Ranged_Slow",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "Slow",
-                  "axis": "runSpeed",
-                  "scale": 0.24,
-                  "table": "Ranged_Slow"
-                },
-                {
-                  "type": "Slow",
-                  "axis": "flySpeed",
-                  "scale": 0.24,
-                  "table": "Ranged_Slow"
-                },
-                {
-                  "type": "Slow",
-                  "axis": "jumpSpeed",
-                  "scale": 0.24,
-                  "table": "Ranged_Slow"
-                },
-                {
-                  "type": "Slow",
-                  "axis": "jumpHeight",
-                  "scale": 0.24,
-                  "table": "Ranged_Slow",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "RechargeDebuff",
-                  "scale": 0.24,
-                  "table": "Ranged_Slow",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "DefenseDebuff",
-                  "scale": 2.4,
-                  "table": "Ranged_Debuff_Def"
-                },
-                {
-                  "type": "MovementCapDebuff",
-                  "axis": "runSpeed",
-                  "scale": 1,
-                  "table": "Ranged_SpeedRunning",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "ResistanceDebuff",
-                  "scale": 4,
-                  "table": "Ranged_Debuff_Res_Dmg",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "Knockback",
-                  "magnitude": 1,
-                  "attribType": "Magnitude",
-                  "scale": 0.1,
-                  "table": "Ranged_Ones",
-                  "ignoreStrength": true,
-                  "chance": 0.05
-                }
-              ],
-              "recharge": 0,
-              "castTime": 0,
-              "activatePeriod": 0.2,
-              "effectArea": "Sphere",
-              "targetsAffected": [
-                "Foe"
-              ],
-              "radius": 20,
-              "maxTargets": 16
-            }
-          ]
-        }
-      ],
-      "entity": "PL_StaticObject"
-    }
+  "summon": {
+    "copyBoosts": true,
+    "displayName": "Freezing Rain",
+    "duration": 15,
+    "isPseudoPet": true,
+    "powers": [
+      "Pets.Freezing_Rain.FreezingRain",
+      "Pets.Freezing_Rain.Avoid"
+    ],
+    "resolvedEntities": [
+      {
+        "displayName": "Freezing Rain",
+        "duration": 15,
+        "copyCreatorMods": true,
+        "abilities": [
+          {
+            "name": "FreezingRain",
+            "displayName": "FreezingRain",
+            "type": "Auto",
+            "damage": [
+              {
+                "damageType": "Cold",
+                "scale": 0.009,
+                "table": "Ranged_Damage"
+              }
+            ],
+            "effects": [
+              {
+                "type": "Slow",
+                "axis": "runSpeed",
+                "scale": 0.56,
+                "table": "Ranged_Slow"
+              },
+              {
+                "type": "Slow",
+                "axis": "jumpSpeed",
+                "scale": 0.56,
+                "table": "Ranged_Slow"
+              },
+              {
+                "type": "RechargeDebuff",
+                "scale": 0.4,
+                "table": "Ranged_Slow",
+                "ignoreStrength": true
+              },
+              {
+                "type": "Slow",
+                "axis": "flySpeed",
+                "scale": 0.48,
+                "table": "Ranged_Slow"
+              },
+              {
+                "type": "Slow",
+                "axis": "jumpHeight",
+                "scale": 0.56,
+                "table": "Ranged_Slow",
+                "ignoreStrength": true
+              },
+              {
+                "type": "Slow",
+                "axis": "runSpeed",
+                "scale": 0.24,
+                "table": "Ranged_Slow"
+              },
+              {
+                "type": "Slow",
+                "axis": "flySpeed",
+                "scale": 0.24,
+                "table": "Ranged_Slow"
+              },
+              {
+                "type": "Slow",
+                "axis": "jumpSpeed",
+                "scale": 0.24,
+                "table": "Ranged_Slow"
+              },
+              {
+                "type": "Slow",
+                "axis": "jumpHeight",
+                "scale": 0.24,
+                "table": "Ranged_Slow",
+                "ignoreStrength": true
+              },
+              {
+                "type": "RechargeDebuff",
+                "scale": 0.24,
+                "table": "Ranged_Slow",
+                "ignoreStrength": true
+              },
+              {
+                "type": "DefenseDebuff",
+                "scale": 2.4,
+                "table": "Ranged_Debuff_Def"
+              },
+              {
+                "type": "MovementCapDebuff",
+                "axis": "runSpeed",
+                "scale": 1,
+                "table": "Ranged_SpeedRunning",
+                "ignoreStrength": true
+              },
+              {
+                "type": "ResistanceDebuff",
+                "scale": 4,
+                "table": "Ranged_Debuff_Res_Dmg",
+                "ignoreStrength": true
+              },
+              {
+                "type": "Knockback",
+                "magnitude": 1,
+                "attribType": "Magnitude",
+                "scale": 0.1,
+                "table": "Ranged_Ones",
+                "ignoreStrength": true,
+                "chance": 0.05
+              }
+            ],
+            "recharge": 0,
+            "castTime": 0,
+            "activatePeriod": 0.2,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "Foe"
+            ],
+            "radius": 20,
+            "maxTargets": 16
+          }
+        ]
+      }
+    ],
+    "entity": "PL_StaticObject"
   },
   "atoms": [
     ["EntCreate",null,1,1,15,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,15]

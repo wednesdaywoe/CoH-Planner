@@ -42,30 +42,6 @@ export const FireShield: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 240,
-    "durations": {
-      "resistance": 240
-    },
-    "resistance": {
-      "cold": {
-        "scale": 0.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "fire": {
-        "scale": 1,
-        "table": "Ranged_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 1,
-        "table": "Ranged_Res_Dmg"
-      },
-      "smashing": {
-        "scale": 1,
-        "table": "Ranged_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["Resistance","Smashing",2,1,240,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
     ["Resistance","Lethal",2,1,240,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],

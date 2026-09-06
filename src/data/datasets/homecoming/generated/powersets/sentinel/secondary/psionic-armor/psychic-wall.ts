@@ -44,26 +44,6 @@ export const PsychicWall: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "durations": {
-      "resistance": 0.75
-    },
-    "resistance": {
-      "lethal": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      },
-      "smashing": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["Resistance","Smashing",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
     ["Resistance","Psionic",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],

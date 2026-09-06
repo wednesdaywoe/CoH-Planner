@@ -59,63 +59,6 @@ export const ShatterArmor: Power = {
     "scale": 3.212,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "buffDuration": 10,
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10,
-      "resistanceDebuff": 8
-    },
-    "resistanceDebuff": {
-      "cold": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "psionic": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "smashing": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    }
-  },
   "atoms": [
     ["Meta",null,1,1,0,"Melee_Ones","Cur","Constant","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["1"],null,null,null,null,null,null,null,null,null,"Ones",null,"power_redirect"],
     ["Damage","Smashing",3.212,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
@@ -153,63 +96,6 @@ export const ShatterArmor: Power = {
         "type": "Smashing",
         "scale": 3.212,
         "table": "Melee_Damage"
-      },
-      "effects": {
-        "buffDuration": 10,
-        "defenseDebuff": {
-          "scale": 1,
-          "table": "Melee_Debuff_Def"
-        },
-        "durations": {
-          "defenseDebuff": 10,
-          "resistanceDebuff": 8
-        },
-        "resistanceDebuff": {
-          "cold": {
-            "ignoreStrength": true,
-            "scale": 1,
-            "table": "Melee_Res_Dmg"
-          },
-          "energy": {
-            "ignoreStrength": true,
-            "scale": 1,
-            "table": "Melee_Res_Dmg"
-          },
-          "fire": {
-            "ignoreStrength": true,
-            "scale": 1,
-            "table": "Melee_Res_Dmg"
-          },
-          "lethal": {
-            "ignoreStrength": true,
-            "scale": 1,
-            "table": "Melee_Res_Dmg"
-          },
-          "negative": {
-            "ignoreStrength": true,
-            "scale": 1,
-            "table": "Melee_Res_Dmg"
-          },
-          "psionic": {
-            "ignoreStrength": true,
-            "scale": 1,
-            "table": "Melee_Res_Dmg"
-          },
-          "smashing": {
-            "ignoreStrength": true,
-            "scale": 1,
-            "table": "Melee_Res_Dmg"
-          },
-          "toxic": {
-            "ignoreStrength": true,
-            "scale": 1,
-            "table": "Melee_Res_Dmg"
-          }
-        },
-        "taunt": {
-          "scale": 1,
-          "table": "Melee_InherentTaunt"
-        }
       },
       "shortHelp": "Melee, Extreme DMG(Smashing), Foe -Def(All), -Res(All)",
       "description": "You batter your enemy with your mighty weapon dealing Extreme Smashing damage and reducing their resistance to damage as well as their defense to all types of attacks for a short time. Damage: Extreme, Recharge: Long",

@@ -34,25 +34,10 @@ export const IcePatch: Power = {
     "Recharge"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 10.97,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.229,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "damageBuff": 10.97
-    },
-    "summon": {
-      "duration": 30,
-      "entity": "Pets_IcePatch",
-      "isPseudoPet": false
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff"
-    ]
+  "summon": {
+    "duration": 30,
+    "entity": "Pets_IcePatch",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,1,1,30,"Melee_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,30],

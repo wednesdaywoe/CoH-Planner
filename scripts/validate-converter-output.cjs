@@ -17,9 +17,10 @@
  *   resistible + an IgnoreResistance template that are otherwise identical
  *   (attrib/aspect/table/scale/duration). Both apply in game; the bag-of-slots
  *   model would drop or double one. The converter detects these twins and stamps
- *   the survivor `unresistable: true` (convert-powerset.cjs:3403-3452). This gate
+ *   the survivor with resistible=false (convert-powerset.cjs:6305). This gate
  *   mirrors that EXACT detection on the input: if a power has a debuff twin, its
- *   generated output MUST contain `unresistable` — else the fix regressed. This is
+ *   generated output MUST carry the unresistable disposition in the atom model
+ *   (a tuple with resistible=false at index 10) — else the fix regressed. This is
  *   the precise class fixed 2026-07-05; the gate keeps it fixed.
  *
  *   REPORT (informational, never fails) — COLLAPSE RISK. Per power, sibling
@@ -85,7 +86,7 @@ const GATED_ARCHETYPES = new Set([
 const archOfCategory = (fullName) => (fullName || '').split('.')[0].split('_')[0].toLowerCase();
 const archOfOutputPath = (rel) => rel.replace(/\\/g, '/').match(/(?:^|\/)powersets\/([^/]+)\//)?.[1] || '';
 
-// ---- twin detection — mirrors extractEffects (convert-powerset.cjs:3422-3452) ----
+// ---- twin detection — mirrors extractEffects (convert-powerset.cjs:6305) ----
 const isTwinDebuff = (t) =>
   (t.scale || 0) < 0 || (t.table || '').toLowerCase().includes('debuff');
 const twinSig = (t) =>
@@ -323,7 +324,9 @@ for (const f of walk(GENERATED_ROOT)) {
   if (!internal) continue;
   const rel = path.relative(path.dirname(GENERATED_ROOT), f).replace(/\\/g, '/');
   outputIndex.set(`${archOfOutputPath(rel)}|${norm(internal)}`, {
-    hasUnresistable: text.includes('"unresistable"'),
+    // Atom model encodes unresistable disposition positionally: resistible=false at tuple index 10,
+    // immediately followed by "Replace" at index 11. The old bag string "unresistable" is gone.
+    hasUnresistable: /"Any",false,"Replace"/.test(text),
     rel,
     abs: f,
     sourceRel,
@@ -411,7 +414,7 @@ if (!GATE) {
 
   console.log(`=== GATE: resistible-twin regressions (${twinRegressions.length}) ===`);
   if (twinRegressions.length === 0) {
-    console.log('  none — every input debuff twin is represented as `unresistable` in output.');
+    console.log('  none — every input debuff twin carries its unresistable disposition in the atom output.');
   } else {
     for (const r of twinRegressions) console.log(`  COLLAPSE  ${r.name}  (${r.rel})`);
   }

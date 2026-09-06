@@ -57,21 +57,6 @@ export const BlazingArrow: Power = {
       "tickRate": 1
     }
   ],
-  "effects": {
-    "buffDuration": 9.33,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.121,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 9.33
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff"
-    ]
-  },
   "atoms": [
     ["Damage","Lethal",1.96,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Fire",0.125,1,4.125,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage",null,null,null,0.5],

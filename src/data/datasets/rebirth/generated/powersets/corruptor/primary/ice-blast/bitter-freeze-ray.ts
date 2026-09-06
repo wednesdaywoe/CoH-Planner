@@ -54,43 +54,6 @@ export const BitterFreezeRay: Power = {
     "scale": 1.32,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 18,
-    "durations": {
-      "rechargeDebuff": 18,
-      "slow": 18
-    },
-    "hold": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Immobilize"
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.2,
-      "table": "Ranged_Slow"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Damage","Cold",1.32,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
     ["RechargeTime",null,0.2,1,18,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],

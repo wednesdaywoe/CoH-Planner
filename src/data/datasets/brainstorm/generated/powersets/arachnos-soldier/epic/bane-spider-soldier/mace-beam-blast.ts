@@ -52,12 +52,6 @@ export const MaceBeamBlast: Power = {
     "scale": 0.784,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "knockback": {
-      "scale": 1,
-      "table": "Ranged_Knockback"
-    }
-  },
   "atoms": [
     ["Damage","Energy",0.784,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

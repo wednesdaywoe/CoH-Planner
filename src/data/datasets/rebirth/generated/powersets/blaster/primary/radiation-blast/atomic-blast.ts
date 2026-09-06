@@ -59,28 +59,6 @@ export const AtomicBlast: Power = {
       "table": "Ranged_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 20,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.041,
-      "table": "Ranged_Ones"
-    },
-    "defenseDebuff": {
-      "scale": 4,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "damageBuff": 10.43,
-      "defenseDebuff": 20
-    },
-    "hold": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 10,
-      "table": "Ranged_Stun"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Energy",3,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],

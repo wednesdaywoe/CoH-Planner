@@ -45,24 +45,6 @@ export const StarlessStep: Power = {
     "Universal Travel"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 5,
-    "durations": {
-      "tohitBuff": 5
-    },
-    "teleport": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "tohitBuff": {
-      "scale": 1,
-      "table": "Melee_Buff_ToHit"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "tohitBuff"
-    ]
-  },
   "atoms": [
     ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.3],
     ["ToHit",null,1,1,5,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.5],

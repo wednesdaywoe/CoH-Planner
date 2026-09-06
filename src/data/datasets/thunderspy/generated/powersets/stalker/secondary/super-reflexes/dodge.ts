@@ -34,60 +34,6 @@ export const Dodge: Power = {
     "Defense Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 2.5,
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.6,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "defenseBuff": {
-      "aoe": {
-        "scale": 0.75,
-        "table": "Melee_Buff_Def"
-      },
-      "melee": {
-        "scale": 0.75,
-        "table": "Melee_Buff_Def"
-      },
-      "ranged": {
-        "scale": 0.75,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "debuffResistance": 2.5,
-      "defenseBuff": 2.5,
-      "resistance": 2.5
-    },
-    "resistance": {
-      "cold": {
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "energy": {
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "fire": {
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "lethal": {
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "negative": {
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "smashing": {
-        "scale": 0,
-        "table": "Melee_Ones"
-      }
-    }
-  },
   "atoms": [
     ["Defense","Melee",0.75,1,2.5,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Def"],
     ["Defense","Ranged",0.75,1,2.5,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Def"],

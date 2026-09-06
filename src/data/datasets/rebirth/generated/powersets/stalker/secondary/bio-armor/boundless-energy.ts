@@ -36,50 +36,6 @@ export const BoundlessEnergy: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 5.25,
-    "debuffResistance": {
-      "endurance": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Melee_Res_Boolean"
-      },
-      "movement": {
-        "ignoreStrength": true,
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      },
-      "recharge": {
-        "ignoreStrength": true,
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "debuffResistance": 5.25,
-      "maxHPBuff": 5.25,
-      "maxHPBuffUnenhanced": 5.25,
-      "recoveryBuff": 5.25,
-      "regenBuff": 5.25
-    },
-    "maxHPBuff": {
-      "scale": 0.625,
-      "table": "Melee_HealSelf"
-    },
-    "maxHPBuffUnenhanced": {
-      "ignoreStrength": true,
-      "scale": 0.625,
-      "table": "Melee_HealSelf"
-    },
-    "recoveryBuff": {
-      "scale": 0.325,
-      "table": "Melee_Ones"
-    },
-    "regenBuff": {
-      "scale": 0.65,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["MaxHP",null,0.625,1,5.25,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf"],
     ["MaxHP",null,0.625,1,5.25,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf"],

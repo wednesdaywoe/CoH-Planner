@@ -45,58 +45,6 @@ export const QuantumAcceleration: Power = {
     "Universal Travel"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.2,
-    "defenseBuffSuppressible": {
-      "aoe": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      },
-      "cold": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      },
-      "energy": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      },
-      "melee": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      },
-      "negative": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      },
-      "psionic": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      },
-      "ranged": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      },
-      "toxic": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuffSuppressible": 0.2
-    }
-  },
   "atoms": [
     ["Defense","Ranged",1.5,1,0.2,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
     ["Defense","Melee",1.5,1,0.2,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,null,null,null,null,null,null,null,null,true],

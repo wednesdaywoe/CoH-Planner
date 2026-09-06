@@ -48,56 +48,6 @@ export const ChillingEmbrace: Power = {
     "Threat Duration"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 5,
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 2,
-      "table": "Melee_Debuff_Dam"
-    },
-    "durations": {
-      "damageDebuff": 5,
-      "movementCapDebuff": 5,
-      "rechargeDebuff": 5,
-      "slow": 5
-    },
-    "movementCapDebuff": {
-      "runSpeed": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_SpeedRunning"
-      }
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.4,
-      "table": "Melee_Slow"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.7,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.7,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.7,
-        "table": "Melee_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.7,
-        "table": "Melee_Slow"
-      }
-    },
-    "taunt": {
-      "ignoreStrength": true,
-      "scale": 1.1,
-      "table": "Melee_InherentTaunt"
-    }
-  },
   "atoms": [
     ["Movement","Run",0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Movement","Fly",0.7,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],

@@ -50,37 +50,6 @@ export const IceBolt: Power = {
     "scale": 1,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 6,
-    "durations": {
-      "rechargeDebuff": 6,
-      "slow": 6
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.2,
-      "table": "Ranged_Slow"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Damage","Cold",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Movement","Run",0.2,1,6,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],

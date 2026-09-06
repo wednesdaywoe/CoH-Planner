@@ -59,26 +59,6 @@ export const AgingTouch: Power = {
       "tickRate": 1
     }
   ],
-  "effects": {
-    "buffDuration": 8.5,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.066,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "damageBuff": 8.5,
-      "enduranceDrain": 2.1
-    },
-    "enduranceDrain": {
-      "scale": 0.028,
-      "table": "Melee_Ones"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff"
-    ]
-  },
   "atoms": [
     ["Damage","Psionic",1.02,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Psionic",0.1,1,2.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.5],

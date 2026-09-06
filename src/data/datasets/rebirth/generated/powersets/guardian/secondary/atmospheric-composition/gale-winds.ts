@@ -56,18 +56,6 @@ export const GaleWinds: Power = {
     "scale": 0.1,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "knockback": {
-      "scale": 10,
-      "table": "Ranged_Knockback"
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 2,
-      "scale": 10,
-      "table": "Melee_Stun"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
     ["Mez","Knockback",5,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Knockback"],

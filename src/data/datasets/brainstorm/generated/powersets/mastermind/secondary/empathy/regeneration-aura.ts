@@ -38,29 +38,6 @@ export const RegenerationAura: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 90,
-    "debuffResistance": {
-      "regeneration": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Res_Boolean"
-      }
-    },
-    "durations": {
-      "debuffResistance": 90,
-      "maxHPBuff": 90,
-      "regenBuff": 90
-    },
-    "maxHPBuff": {
-      "scale": 1,
-      "table": "Ranged_Heal"
-    },
-    "regenBuff": {
-      "scale": 3.75,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Regeneration",null,3.75,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["MaxHP",null,1,1,90,"Ranged_Heal","Max","Magnitude","Target","Any",false,"Replace",2,null,null,1],

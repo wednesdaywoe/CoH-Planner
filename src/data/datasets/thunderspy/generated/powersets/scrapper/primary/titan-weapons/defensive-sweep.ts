@@ -55,22 +55,6 @@ export const DefensiveSweep: Power = {
     "scale": 0.679,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "buffDuration": 10,
-    "defenseBuff": {
-      "melee": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 10
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.679,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage",null,null,["Foe"]],
     ["Defense","Melee",1.5,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Def",null,null,["Foe"]],
@@ -98,24 +82,6 @@ export const DefensiveSweep: Power = {
       "damageTypes": [
         "Smashing"
       ],
-      "effects": {
-        "buffDuration": 10,
-        "defenseBuff": {
-          "melee": {
-            "scale": 1.5,
-            "table": "Melee_Buff_Def",
-            "perTarget": 1.5
-          },
-          "smashing": {
-            "scale": 1.5,
-            "table": "Melee_Buff_Def",
-            "perTarget": 1.5
-          }
-        },
-        "durations": {
-          "defenseBuff": 10
-        }
-      },
       "shortHelp": "Melee(Cone), Light DMG(Smashing), Self +DEF(Melee, Smash)",
       "description": "You take a defensive stance and strike your opponents.  Successfully executing this attack will cause light smashing damage to nearby foes, while giving you increased defense against their melee and smashing attacks. Damage: Light, Recharge: Fast",
       "effectArea": "Cone",

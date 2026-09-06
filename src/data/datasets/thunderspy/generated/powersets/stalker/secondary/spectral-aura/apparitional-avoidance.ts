@@ -48,40 +48,6 @@ export const ApparitionalAvoidance: Power = {
     "Universal Travel"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "debuffResistance": {
-      "defense": {
-        "ignoreStrength": true,
-        "scale": 0.5,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "defenseBuff": {
-      "melee": {
-        "scale": 2,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "debuffResistance": 0.75,
-      "defenseBuff": 0.75,
-      "movement": 0.75,
-      "resistance": 0.75
-    },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.1,
-        "table": "Melee_SpeedRunning"
-      }
-    },
-    "resistance": {
-      "negative": {
-        "scale": 2,
-        "table": "Melee_Res_DMG"
-      }
-    }
-  },
   "atoms": [
     ["Defense","Melee",2,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Def"],
     ["Defense","All",0.5,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_Boolean"],

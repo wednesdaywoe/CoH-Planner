@@ -78,64 +78,6 @@ export const SparklingField: Power = {
       "tickRate": 2
     }
   ],
-  "effects": {
-    "buffDuration": 5,
-    "durations": {
-      "resistanceDebuff": 5
-    },
-    "immobilize": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
-    "knockback": {
-      "scale": 20,
-      "table": "Ranged_Ones"
-    },
-    "resistanceDebuff": {
-      "cold": {
-        "ignoreStrength": true,
-        "scale": 1.2,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "energy": {
-        "ignoreStrength": true,
-        "scale": 1.2,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "fire": {
-        "ignoreStrength": true,
-        "scale": 1.2,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "lethal": {
-        "ignoreStrength": true,
-        "scale": 1.2,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "negative": {
-        "ignoreStrength": true,
-        "scale": 1.2,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "psionic": {
-        "ignoreStrength": true,
-        "scale": 1.2,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "smashing": {
-        "ignoreStrength": true,
-        "scale": 1.2,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "toxic": {
-        "ignoreStrength": true,
-        "scale": 1.2,
-        "table": "Ranged_Debuff_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["Meta",null,1,1,1.1,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
     ["Meta",null,1,1,2.1,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],

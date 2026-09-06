@@ -38,27 +38,6 @@ export const ParticleShielding: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "absorb": {
-      "scale": 3,
-      "table": "Melee_HealSelf"
-    },
-    "buffDuration": 60,
-    "durations": {
-      "absorb": 60,
-      "recoveryBuffUnenhanced": 60,
-      "regenBuff": 30
-    },
-    "recoveryBuffUnenhanced": {
-      "ignoreStrength": true,
-      "scale": 0.5,
-      "table": "Melee_Ones"
-    },
-    "regenBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Absorb",null,3,1,60,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"Replace",2,null,null,1],
     ["Regeneration",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],

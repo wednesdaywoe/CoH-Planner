@@ -44,51 +44,6 @@ export const ObsidianShield: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "durations": {
-      "fear": 0.75,
-      "hold": 0.75,
-      "resistance": 0.75,
-      "sleep": 0.75,
-      "stun": 0.75
-    },
-    "effectDuration": 0.75,
-    "fear": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": -30,
-      "table": "Melee_Res_Boolean",
-      "toWho": "Self"
-    },
-    "hold": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": -30,
-      "table": "Melee_Res_Boolean",
-      "toWho": "Self"
-    },
-    "resistance": {
-      "psionic": {
-        "scale": 5,
-        "table": "Melee_Res_DMG"
-      }
-    },
-    "sleep": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": -30,
-      "table": "Melee_Res_Boolean",
-      "toWho": "Self"
-    },
-    "stun": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": -30,
-      "table": "Melee_Res_Boolean",
-      "toWho": "Self"
-    }
-  },
   "atoms": [
     ["Resistance","Psionic",5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
     ["Mez","Stunned",-30,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Res_Boolean"],

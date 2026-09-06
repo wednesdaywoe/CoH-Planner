@@ -62,12 +62,6 @@ export const ArcofDestruction: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",2.41728,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage",null,null,["Foe"]],
     ["Damage","Smashing",2.41728,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.15000000596046448,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"BossCrit",null,null,["Foe"]],
@@ -102,12 +96,6 @@ export const ArcofDestruction: Power = {
       "damageTypes": [
         "Smashing"
       ],
-      "effects": {
-        "knockback": {
-          "scale": 0.67,
-          "table": "Melee_Ones"
-        }
-      },
       "shortHelp": "Melee (Cone), Superior DMG(Smashing), Foe Knockback",
       "description": "You swing your weapon in a devastating Arc of Destruction that deals Superior Smashing damage and has a good chance to knock foes down.  Arc of Destruction may only be used while on the ground.  Damage: Superior, Recharge: Slow",
       "effectArea": "Cone",

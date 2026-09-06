@@ -70,35 +70,6 @@ export const Geyser: Power = {
       "tickRate": 0.5
     }
   ],
-  "effects": {
-    "buffDuration": 10,
-    "durations": {
-      "slow": 10
-    },
-    "knockup": {
-      "scale": 1.5,
-      "table": "Ranged_Ones"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.33,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.33,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.33,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.33,
-        "table": "Ranged_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Fire",1.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

@@ -45,14 +45,6 @@ export const Confuse: Power = {
     "Dominator Archetype Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "confuse": {
-      "attribType": "Duration",
-      "mag": 4,
-      "scale": 4,
-      "table": "Ranged_Immobilize"
-    }
-  },
   "atoms": [
     ["Mez","Confused",4,4,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Immobilize"],
     ["Mez","Confused",4,2,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Immobilize"],

@@ -60,23 +60,6 @@ export const EnergeticStrike: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 10,
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 1,
-      "table": "Melee_Debuff_Dam"
-    },
-    "durations": {
-      "damageDebuff": 10
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 10,
-      "table": "Melee_Immobilize"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",2.314,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Energy",1.246,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],

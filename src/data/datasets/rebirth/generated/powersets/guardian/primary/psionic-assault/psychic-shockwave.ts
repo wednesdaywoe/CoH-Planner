@@ -54,23 +54,6 @@ export const PsychicShockwave: Power = {
     "scale": 1.21,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "buffDuration": 20,
-    "durations": {
-      "rechargeDebuff": 20
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.5,
-      "table": "Melee_Slow"
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 2,
-      "scale": 6,
-      "table": "Melee_Stun"
-    }
-  },
   "atoms": [
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"StackThenIgnore",3,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.20000000298023224,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight","source.ownPower?","!","Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight_Lockout","source.ownPower?","!","&&","Temporary_Powers.Temporary_Powers.Boggled","target.ownPower?","!","&&"],null,null,null,null,null,null,null,0.2,null,"Ones"],

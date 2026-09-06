@@ -46,21 +46,10 @@ export const VoltaicSentinel: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 10.6,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.205,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 10.6
-    },
-    "summon": {
-      "duration": 60,
-      "entity": "Pets_VoltaicSentinel",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "duration": 60,
+    "entity": "Pets_VoltaicSentinel",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,1,1,60,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,60],

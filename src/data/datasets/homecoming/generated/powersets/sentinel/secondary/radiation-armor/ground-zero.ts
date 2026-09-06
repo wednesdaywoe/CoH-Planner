@@ -77,16 +77,6 @@ export const GroundZero: Power = {
       "tickRate": 1
     }
   ],
-  "effects": {
-    "buffDuration": 10,
-    "defenseDebuff": {
-      "scale": 2,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    }
-  },
   "atoms": [
     ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1],
     ["Heal",null,1,1,0,"Melee_HealSelf","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Teammate"]],

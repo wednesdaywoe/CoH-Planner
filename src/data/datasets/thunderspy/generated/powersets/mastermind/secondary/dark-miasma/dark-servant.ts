@@ -48,13 +48,11 @@ export const DarkServant: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "duration": 99999,
-      "entity": "Pets_V_DarkServant",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "copyBoosts": true,
+    "duration": 99999,
+    "entity": "Pets_V_DarkServant",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,-1,1,99999,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,99999]

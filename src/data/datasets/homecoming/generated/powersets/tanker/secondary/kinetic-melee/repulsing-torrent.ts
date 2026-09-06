@@ -70,21 +70,6 @@ export const RepulsingTorrent: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 6,
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.7,
-      "table": "Melee_Debuff_Dam"
-    },
-    "durations": {
-      "damageDebuff": 6
-    },
-    "knockback": {
-      "scale": 1,
-      "table": "Melee_Knockback"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.32,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Energy",0.97,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

@@ -62,48 +62,6 @@ export const SoulTransfer: Power = {
       "tickRate": 1
     }
   ],
-  "effects": {
-    "buffDuration": 90,
-    "durations": {
-      "recoveryBuff": 90,
-      "regenBuff": 90,
-      "untouchable": 15
-    },
-    "enduranceGain": {
-      "scale": 30,
-      "table": "Melee_Ones",
-      "perTarget": 30
-    },
-    "immobilize": {
-      "attribType": "Duration",
-      "ignoreStrength": true,
-      "mag": 50,
-      "scale": 4,
-      "table": "Melee_Ones",
-      "toWho": "Self"
-    },
-    "recoveryBuff": {
-      "scale": 0.05,
-      "table": "Ranged_Ones",
-      "perTarget": 0.05
-    },
-    "regenBuff": {
-      "scale": 0.15,
-      "table": "Melee_Ones",
-      "perTarget": 0.15
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 30,
-      "scale": 10,
-      "table": "Melee_Stun"
-    },
-    "untouchable": {
-      "ignoreStrength": true,
-      "scale": 10,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
     ["Mez","Stunned",10,30,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Stun"],

@@ -44,30 +44,6 @@ export const StoneArmor: Power = {
     "Defense Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "debuffResistance": {
-      "defense": {
-        "ignoreStrength": true,
-        "scale": 0.4,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "defenseBuff": {
-      "lethal": {
-        "scale": 1.6,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 1.6,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "debuffResistance": 0.75,
-      "defenseBuff": 0.75
-    }
-  },
   "atoms": [
     ["Defense","Smashing",1.6,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
     ["Defense","Lethal",1.6,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],

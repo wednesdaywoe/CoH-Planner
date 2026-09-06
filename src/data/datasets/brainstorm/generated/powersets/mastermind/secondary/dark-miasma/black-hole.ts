@@ -39,37 +39,6 @@ export const BlackHole: Power = {
     "Accuracy"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 30,
-    "durations": {
-      "immobilize": 30,
-      "repel": 0.75,
-      "stealth": 30,
-      "threatDebuff": 30
-    },
-    "effectDuration": 30,
-    "immobilize": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": 3,
-      "table": "Ranged_Ones"
-    },
-    "repel": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "stealth": {
-      "translucency": {
-        "ignoreStrength": true,
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      }
-    },
-    "threatDebuff": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Mez","Repel",1,1,0.75,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Mez","Immobilized",3,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

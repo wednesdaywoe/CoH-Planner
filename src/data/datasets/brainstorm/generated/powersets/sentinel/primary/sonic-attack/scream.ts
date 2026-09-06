@@ -73,54 +73,6 @@ export const Scream: Power = {
       "tickRate": 0.25
     }
   ],
-  "effects": {
-    "buffDuration": 8,
-    "durations": {
-      "resistanceDebuff": 8
-    },
-    "resistanceDebuff": {
-      "cold": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "energy": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "fire": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "lethal": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "negative": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "psionic": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "smashing": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "toxic": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.132,1,1.05,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Energy",0.132,1,1.05,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

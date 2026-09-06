@@ -44,25 +44,6 @@ export const Evasion: Power = {
     "Defense Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.4,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "defenseBuff": {
-      "aoe": {
-        "scale": 1.85,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "debuffResistance": 0.75,
-      "defenseBuff": 0.75
-    }
-  },
   "atoms": [
     ["Defense","AoE",1.85,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Buff_Def"],
     ["Defense","All",0.4,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_Boolean"],

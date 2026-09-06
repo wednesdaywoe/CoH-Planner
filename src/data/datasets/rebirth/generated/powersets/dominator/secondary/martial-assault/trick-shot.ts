@@ -50,12 +50,10 @@ export const TrickShot: Power = {
     "scale": 1.4,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "summon": {
-      "duration": 1,
-      "entity": "Pets_Trick_Shot_Jump1",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "duration": 1,
+    "entity": "Pets_Trick_Shot_Jump1",
+    "isPseudoPet": false
   },
   "atoms": [
     ["Damage","Lethal",1.4,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],

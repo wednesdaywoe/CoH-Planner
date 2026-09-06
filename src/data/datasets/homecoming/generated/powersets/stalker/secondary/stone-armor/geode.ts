@@ -46,72 +46,14 @@ export const Geode: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "accuracyDebuff": {
-      "ignoreStrength": true,
-      "scale": 999,
-      "table": "Melee_Ones",
-      "toWho": "Self"
-    },
-    "buffDuration": 0.2,
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 999,
-      "table": "Melee_Ones",
-      "toWho": "Self"
-    },
-    "durations": {
-      "accuracyDebuff": 0.2,
-      "damageDebuff": 0.2,
-      "knockback": 0.2,
-      "knockup": 0.2,
-      "mezResistance": 0.2,
-      "recoveryBuff": 0.2,
-      "regenBuff": 0.2,
-      "untouchable": 0.2
-    },
-    "knockback": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "knockup": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "mezResistance": {
-      "knockback": {
-        "ignoreStrength": true,
-        "scale": 10,
-        "table": "Melee_Ones"
-      },
-      "knockup": {
-        "ignoreStrength": true,
-        "scale": 10,
-        "table": "Melee_Ones"
-      }
-    },
-    "recoveryBuff": {
-      "scale": 4,
-      "table": "Melee_Ones"
-    },
-    "regenBuff": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "summon": {
-      "displayName": "Geode",
-      "duration": 99999,
-      "isPseudoPet": false,
-      "powers": [
-        "Redirects.Stone_Armor.Geode",
-        "Redirects.Stone_Armor.Geode_Scaling"
-      ]
-    },
-    "untouchable": {
-      "ignoreStrength": true,
-      "scale": 1000,
-      "table": "Melee_Ones"
-    }
+  "summon": {
+    "displayName": "Geode",
+    "duration": 99999,
+    "isPseudoPet": false,
+    "powers": [
+      "Redirects.Stone_Armor.Geode",
+      "Redirects.Stone_Armor.Geode_Scaling"
+    ]
   },
   "atoms": [
     ["Regeneration",null,2.5,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Self"]],

@@ -69,31 +69,6 @@ export const MaimingSlash: Power = {
       "cancelOnMiss": true
     }
   ],
-  "effects": {
-    "buffDuration": 10,
-    "durations": {
-      "slow": 10
-    },
-    "slow": {
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.7,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.7,
-        "table": "Melee_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.7,
-        "table": "Melee_Slow"
-      }
-    },
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    }
-  },
   "atoms": [
     ["Damage","Lethal",1.16,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Lethal",0.0928,1,3.1,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,0.800000011920929,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0.8,true,"Damage",null,null,null,1],

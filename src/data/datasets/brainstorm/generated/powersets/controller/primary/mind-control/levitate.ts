@@ -50,12 +50,6 @@ export const Levitate: Power = {
     "scale": 1.32,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "knockup": {
-      "scale": 6,
-      "table": "Ranged_Knockback"
-    }
-  },
   "atoms": [
     ["Movement","FlyMode",-1.6,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,2],
     ["Mez","Knockup",6,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

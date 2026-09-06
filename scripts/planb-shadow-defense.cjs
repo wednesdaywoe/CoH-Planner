@@ -100,6 +100,7 @@ const eq = (a, b) => (!a && !b) || (a && b && a.scale === b.scale && a.perTarget
 
 const stats = {
   powers: 0,
+  noBag: 0,
   buffTypes: 0, buffAgree: 0, buffPerTarget: 0, buffForkResolved: 0, buffTeamOnly: 0,
   suppTypes: 0, suppAgree: 0, suppPerTarget: 0, scalarAllExpanded: 0,
 };
@@ -131,6 +132,8 @@ function checkPower(dataset, power, genPath) {
   const name = power.name || genPath;
   if (POWER_FILTER && !name.toLowerCase().includes(POWER_FILTER.toLowerCase())) return;
   stats.powers++;
+  // STRIP-1 (BPORT7) removed the bag this gate compares against; bag-less powers are vacuous rows, named in the tail.
+  if (!power.effects || !Object.keys(power.effects).length) { stats.noBag++; return; }
   const eff = power.effects || {};
   const bagBuff = expandScalarAll(name, typeof eff.defenseBuff === 'object' ? eff.defenseBuff : {});
   const bagSupp = expandScalarAll(name, typeof eff.defenseBuffSuppressible === 'object' ? eff.defenseBuffSuppressible : {});
@@ -174,6 +177,9 @@ function sweep(dataset) {
 
 for (const ds of DATASETS) sweep(ds);
 
+// Every swept power bag-less: the run checks nothing and the tail names it.
+const VACUOUS = stats.powers > 0 && stats.noBag === stats.powers;
+
 console.log(`\nPlan B Slice 4 — defense reconstruction (buff + suppressible)`);
 console.log(`  powers swept:        ${stats.powers}`);
 console.log(`  buff type-slots:     ${stats.buffTypes}  (of which per-target: ${stats.buffPerTarget})`);
@@ -194,4 +200,9 @@ if (findings.length) {
   console.log('\nFAIL — atom-derived defense diverges from the bag. Fix before migrating the applier.');
   process.exit(1);
 }
-console.log('\nOK — atom-derived defense buff + suppressible reproduce the bag corpus-wide (11 standard globals).');
+if (VACUOUS) {
+  console.log(`\nVACUOUS — bag absent: ${stats.noBag} powers swept, 0 checks — vacuous post-STRIP-1.`);
+  console.log('   The atom side is graded by the converter gates, not here.');
+} else {
+  console.log('\nOK — atom-derived defense buff + suppressible reproduce the bag corpus-wide (11 standard globals).');
+}

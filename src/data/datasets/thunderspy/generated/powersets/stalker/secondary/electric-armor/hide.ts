@@ -41,41 +41,6 @@ export const Hide: Power = {
     "Endurance Modification"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 15,
-    "durations": {
-      "regenDebuff": 15,
-      "stealth": 10
-    },
-    "enduranceDrain": {
-      "scale": 50,
-      "table": "Ranged_EndDrain"
-    },
-    "placate": {
-      "scale": 8,
-      "table": "Melee_Taunt"
-    },
-    "regenDebuff": {
-      "ignoreStrength": true,
-      "scale": 10,
-      "table": "Ranged_Ones"
-    },
-    "stealth": {
-      "stealthPvE": {
-        "scale": 150,
-        "table": "Melee_Ones"
-      },
-      "stealthPvP": {
-        "scale": 380,
-        "table": "Melee_Ones"
-      },
-      "translucency": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      }
-    }
-  },
   "atoms": [
     ["Endurance",null,-50,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"EndDrain"],
     ["Regeneration",null,-10,1,15,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones"],

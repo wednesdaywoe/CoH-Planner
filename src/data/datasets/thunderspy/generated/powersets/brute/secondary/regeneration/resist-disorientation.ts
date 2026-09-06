@@ -34,63 +34,6 @@ export const ResistDisorientation: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 10.25,
-    "durations": {
-      "mezResistance": 10.25,
-      "resistance": 10.25,
-      "stun": 10.25
-    },
-    "effectDuration": 10.25,
-    "mezResistance": {
-      "stun": {
-        "ignoreStrength": true,
-        "scale": 5,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "resistance": {
-      "cold": {
-        "scale": 1.25,
-        "table": "Melee_Res_DMG"
-      },
-      "energy": {
-        "scale": 1.25,
-        "table": "Melee_Res_DMG"
-      },
-      "fire": {
-        "scale": 1.25,
-        "table": "Melee_Res_DMG"
-      },
-      "lethal": {
-        "scale": 1.25,
-        "table": "Melee_Res_DMG"
-      },
-      "negative": {
-        "scale": 1.25,
-        "table": "Melee_Res_DMG"
-      },
-      "psionic": {
-        "scale": 1.25,
-        "table": "Melee_Res_DMG"
-      },
-      "smashing": {
-        "scale": 1.25,
-        "table": "Melee_Res_DMG"
-      },
-      "toxic": {
-        "scale": 1.25,
-        "table": "Melee_Res_DMG"
-      }
-    },
-    "stun": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": -15,
-      "table": "Melee_Res_Boolean",
-      "toWho": "Self"
-    }
-  },
   "atoms": [
     ["MezResist","Stunned",5,1,10.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Res_Boolean"],
     ["Mez","Stunned",-15,1,10.25,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Res_Boolean"],

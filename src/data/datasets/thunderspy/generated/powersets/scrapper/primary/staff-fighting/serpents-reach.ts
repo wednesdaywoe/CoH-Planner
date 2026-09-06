@@ -54,12 +54,6 @@ export const SerpentsReach: Power = {
     "scale": 1.8,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",1.8,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Fire",0.81,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],

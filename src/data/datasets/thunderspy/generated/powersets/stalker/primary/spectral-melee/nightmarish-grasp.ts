@@ -66,20 +66,6 @@ export const NightmarishGrasp: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "fear": {
-      "attribType": "Duration",
-      "mag": 0.75,
-      "scale": 20,
-      "table": "Melee_Fear"
-    },
-    "immobilize": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 15,
-      "table": "Melee_Immobilize"
-    }
-  },
   "atoms": [
     ["Damage","Negative",0.98,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Psionic",0.98,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],

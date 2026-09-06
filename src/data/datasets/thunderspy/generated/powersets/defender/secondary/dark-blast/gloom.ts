@@ -53,16 +53,6 @@ export const Gloom: Power = {
     "duration": 1.5,
     "tickRate": 0.20000000298023224
   },
-  "effects": {
-    "buffDuration": 10,
-    "durations": {
-      "tohitDebuff": 10
-    },
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_DeBuff_ToHit"
-    }
-  },
   "atoms": [
     ["Damage","Negative",0.22,1,1.5,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.20000000298023224,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["ToHit",null,0.75,1,10,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"DeBuff_ToHit"],

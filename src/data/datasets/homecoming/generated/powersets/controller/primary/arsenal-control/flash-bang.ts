@@ -55,22 +55,6 @@ export const FlashBang: Power = {
     "scale": 0.25,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 20,
-    "durations": {
-      "tohitDebuff": 20
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 10,
-      "table": "Ranged_Stun"
-    },
-    "tohitDebuff": {
-      "scale": 0.5,
-      "table": "Ranged_Debuff_ToHit"
-    }
-  },
   "atoms": [
     ["ToHit",null,0.5,1,20,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Damage","Energy",0.25,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],

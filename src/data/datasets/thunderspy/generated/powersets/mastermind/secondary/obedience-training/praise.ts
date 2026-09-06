@@ -51,46 +51,6 @@ export const Praise: Power = {
     "duration": 5,
     "tickRate": 1
   },
-  "effects": {
-    "buffDuration": 60,
-    "durations": {
-      "resistance": 60
-    },
-    "resistance": {
-      "cold": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "fire": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 2.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "smashing": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["Heal",null,0.35,1,5,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Heal"],
     ["Resistance","Smashing",1.5,1,60,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],

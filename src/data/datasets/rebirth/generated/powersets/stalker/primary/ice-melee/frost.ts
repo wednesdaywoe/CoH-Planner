@@ -63,37 +63,6 @@ export const Frost: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 8,
-    "durations": {
-      "rechargeDebuff": 8,
-      "slow": 8
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.2,
-      "table": "Melee_Slow"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Damage","Cold",0.27,1,2.6,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Cold",1.62,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kMeter","source>",".9","<","&&"],null,null,null,null,null,["30","source.TeamSize>","0.03","*","0.07","+","rand",">=","@StdResult","*"],null,null,null,"Damage"],

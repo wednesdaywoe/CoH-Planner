@@ -47,13 +47,11 @@ export const Sleet: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "duration": 15,
-      "entity": "Pets_Sleet_Defender",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "copyBoosts": true,
+    "duration": 15,
+    "entity": "Pets_Sleet_Defender",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,-1,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,15]

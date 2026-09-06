@@ -53,49 +53,6 @@ export const SunlessMire: Power = {
     "scale": 1,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "buffDuration": 30,
-    "damageBuff": {
-      "scale": 1.25,
-      "table": "Melee_Buff_Dmg",
-      "perTarget": 1.25
-    },
-    "durations": {
-      "damageBuff": 30,
-      "rechargeDebuff": 6,
-      "slow": 6,
-      "tohitBuff": 30
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.2,
-      "table": "Melee_Slow"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      }
-    },
-    "tohitBuff": {
-      "scale": 0.5,
-      "table": "Melee_Buff_ToHit",
-      "perTarget": 0.5
-    }
-  },
   "atoms": [
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Constant","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kWarshade_Blaster_Mode","source.Mode?","!","kWarshade_Tanker_Mode","source.Mode?","!","&&"],null,null,null,null,null,null,null,null,null,"Ones",null,"power_redirect"],
     ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
@@ -142,49 +99,6 @@ export const SunlessMire: Power = {
         "scale": 1,
         "table": "Ranged_SSDamage"
       },
-      "effects": {
-        "buffDuration": 30,
-        "damageBuff": {
-          "scale": 1.25,
-          "table": "Melee_Buff_Dmg",
-          "perTarget": 1.25
-        },
-        "durations": {
-          "damageBuff": 30,
-          "rechargeDebuff": 6,
-          "slow": 6,
-          "tohitBuff": 30
-        },
-        "rechargeDebuff": {
-          "ignoreStrength": true,
-          "scale": 0.2,
-          "table": "Melee_Slow"
-        },
-        "slow": {
-          "flySpeed": {
-            "scale": 0.2,
-            "table": "Melee_Slow"
-          },
-          "jumpHeight": {
-            "ignoreStrength": true,
-            "scale": 0.2,
-            "table": "Melee_Slow"
-          },
-          "jumpSpeed": {
-            "scale": 0.2,
-            "table": "Melee_Slow"
-          },
-          "runSpeed": {
-            "scale": 0.2,
-            "table": "Melee_Slow"
-          }
-        },
-        "tohitBuff": {
-          "scale": 0.5,
-          "table": "Melee_Buff_ToHit",
-          "perTarget": 0.5
-        }
-      },
       "shortHelp": "PBAoE, Moderate DMG(Negative), Foe -Recharge, -SPD; Self +DMG, +ACC",
       "description": "Black Dwarf Mire can drain the essence of all nearby foes, thus increasing your own strength. Each affected foe will lose some Hit Points and add to your Damage and Accuracy. Damage: Moderate, Recharge: Very Long",
       "effectArea": "AoE",
@@ -225,53 +139,6 @@ export const SunlessMire: Power = {
         "type": "Negative",
         "scale": 1,
         "table": "Melee_SSDamage"
-      },
-      "effects": {
-        "buffDuration": 10,
-        "damageBuff": {
-          "scale": 1.25,
-          "table": "Melee_Buff_Dmg",
-          "perTarget": 1.25
-        },
-        "durations": {
-          "damageBuff": 10,
-          "rechargeDebuff": 6,
-          "slow": 6,
-          "tohitBuff": 10
-        },
-        "rechargeDebuff": {
-          "ignoreStrength": true,
-          "scale": 0.2,
-          "table": "Melee_Slow"
-        },
-        "slow": {
-          "flySpeed": {
-            "scale": 0.2,
-            "table": "Melee_Slow"
-          },
-          "jumpHeight": {
-            "ignoreStrength": true,
-            "scale": 0.2,
-            "table": "Melee_Slow"
-          },
-          "jumpSpeed": {
-            "scale": 0.2,
-            "table": "Melee_Slow"
-          },
-          "runSpeed": {
-            "scale": 0.2,
-            "table": "Melee_Slow"
-          }
-        },
-        "taunt": {
-          "scale": 1,
-          "table": "Melee_InherentTaunt"
-        },
-        "tohitBuff": {
-          "scale": 0.5,
-          "table": "Melee_Buff_ToHit",
-          "perTarget": 0.5
-        }
       },
       "shortHelp": "PBAoE, Moderate DMG(Negative), Foe -Recharge, -SPD; Self +DMG, +ACC",
       "description": "Black Dwarf Mire can drain the essence of all nearby foes, thus increasing your own strength. Each affected foe will lose some Hit Points and add to your Damage and Accuracy. Damage: Moderate, Recharge: Very Long",

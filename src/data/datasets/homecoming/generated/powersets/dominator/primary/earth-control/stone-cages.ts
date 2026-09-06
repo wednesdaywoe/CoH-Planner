@@ -54,22 +54,6 @@ export const StoneCages: Power = {
     "duration": 5.2,
     "tickRate": 2
   },
-  "effects": {
-    "buffDuration": 12,
-    "defenseDebuff": {
-      "scale": 2,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 12
-    },
-    "immobilize": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.1,1,5.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

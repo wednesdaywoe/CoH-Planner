@@ -45,26 +45,6 @@ export const ParalyzingBlast: Power = {
     "Holds"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 8,
-    "durations": {
-      "recoveryDebuff": 8
-    },
-    "enduranceDrain": {
-      "scale": 0.07,
-      "table": "Ranged_Ones"
-    },
-    "hold": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 10,
-      "table": "Ranged_Immobilize"
-    },
-    "recoveryDebuff": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Immobilize"],
     ["Mez","Held",7.5,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Immobilize"],

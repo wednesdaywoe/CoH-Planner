@@ -241,7 +241,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
 
   // Calculate aggregate pet damage (supports multi-entity summons)
   const petDamageAggregate = useMemo<{ results: PetDamageResult[]; base: number; enhanced: number; final: number } | null>(() => {
-    const summon = effectivePower?.effects?.summon;
+    const summon = effectivePower?.summon;
     if (!summon) return null;
 
     // Build entity list
@@ -298,7 +298,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
     }
 
     return results.length > 0 ? { results, base, enhanced, final: final_ } : null;
-  }, [effectivePower?.effects?.summon, effectivePower?.internalName, build, enhancementBonuses.damage, globalBonusesForCalc.damage, archetypeId, stormCellActive, mechanicAdjusters]);
+  }, [effectivePower?.summon, effectivePower?.internalName, build, enhancementBonuses.damage, globalBonusesForCalc.damage, archetypeId, stormCellActive, mechanicAdjusters]);
 
   // Calculate archetype-specific damage bonuses
   const damageDisplayInfo = useMemo(() => {

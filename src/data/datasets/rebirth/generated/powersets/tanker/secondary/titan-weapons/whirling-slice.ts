@@ -66,16 +66,6 @@ export const WhirlingSlice: Power = {
       "cancelOnMiss": true
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",1.15,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Lethal",0.1,1,2.1,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,0.8500000238418579,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0.85,true,"Damage"],

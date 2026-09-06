@@ -56,12 +56,6 @@ export const BulletRain: Power = {
     "duration": 1.1,
     "tickRate": 0.5
   },
-  "effects": {
-    "knockback": {
-      "scale": 2,
-      "table": "Ranged_Knockback"
-    }
-  },
   "atoms": [
     ["Damage","Lethal",0.3323,1,1.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kFireAmmo","Source.Mode?","kIceAmmo","Source.Mode?","||","kToxicAmmo","Source.Mode?","||","!","&&"],null,null,null,null,null,null,null,null,null,"Lethal"],
     ["Mez","Knockback",2,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"LethalKB50"],

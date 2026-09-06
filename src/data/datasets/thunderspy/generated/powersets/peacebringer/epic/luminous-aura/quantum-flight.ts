@@ -39,51 +39,6 @@ export const QuantumFlight: Power = {
     "Recharge"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "durations": {
-      "movement": 0.75,
-      "stealth": 0.75,
-      "threatDebuff": 0.75
-    },
-    "movement": {
-      "fly": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      },
-      "flySpeed": {
-        "scale": 5,
-        "table": "Melee_SpeedFlying"
-      },
-      "movementControl": {
-        "scale": 3,
-        "table": "Melee_Control"
-      },
-      "movementFriction": {
-        "scale": 3,
-        "table": "Melee_Friction"
-      }
-    },
-    "stealth": {
-      "stealthPvE": {
-        "scale": 20,
-        "table": "Melee_Ones"
-      },
-      "stealthPvP": {
-        "scale": 222,
-        "table": "Melee_Ones"
-      },
-      "translucency": {
-        "scale": 0.8,
-        "table": "Melee_Ones"
-      }
-    },
-    "threatDebuff": {
-      "ignoreStrength": true,
-      "scale": 1,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Movement","FlyMode",1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Extend",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],

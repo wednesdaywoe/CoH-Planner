@@ -48,56 +48,6 @@ export const EtherealElusion: Power = {
     "Universal Travel"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "debuffResistance": {
-      "defense": {
-        "ignoreStrength": true,
-        "scale": 0.5,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "defenseBuff": {
-      "aoe": {
-        "scale": 2,
-        "table": "Melee_Buff_Def"
-      },
-      "ranged": {
-        "scale": 2,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "debuffResistance": 0.75,
-      "defenseBuff": 0.75,
-      "movement": 0.75,
-      "resistance": 0.75
-    },
-    "movement": {
-      "jumpHeight": {
-        "scale": 2,
-        "table": "Melee_Ones"
-      },
-      "jumpSpeed": {
-        "scale": 0.01,
-        "table": "Melee_Ones"
-      },
-      "movementControl": {
-        "scale": 10,
-        "table": "Melee_Control"
-      },
-      "movementFriction": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      }
-    },
-    "resistance": {
-      "negative": {
-        "scale": 2,
-        "table": "Melee_Res_DMG"
-      }
-    }
-  },
   "atoms": [
     ["Defense","Ranged",2,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Def"],
     ["Defense","AoE",2,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Def"],

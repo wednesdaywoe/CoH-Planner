@@ -66,42 +66,6 @@ export const Impale: Power = {
       "cancelOnMiss": true
     }
   ],
-  "effects": {
-    "buffDuration": 15,
-    "defenseDebuff": {
-      "scale": 3,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 15,
-      "slow": 15
-    },
-    "immobilize": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Damage","Lethal",1.96,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

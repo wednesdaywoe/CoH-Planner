@@ -63,40 +63,6 @@ export const ThunderStrike: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 10.8,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.078,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "damageBuff": 10.8,
-      "recoveryDebuff": 4
-    },
-    "enduranceDrain": {
-      "scale": 0.07,
-      "table": "Melee_Ones"
-    },
-    "knockback": {
-      "scale": 0.64,
-      "table": "Melee_Ones"
-    },
-    "recoveryDebuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 5,
-      "table": "Melee_Stun"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff"
-    ]
-  },
   "atoms": [
     ["Endurance",null,-0.07,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Energy",2.98,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

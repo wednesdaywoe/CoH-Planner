@@ -46,13 +46,11 @@ export const PoisonTrap: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "duration": 260,
-      "entity": "Pets_Poison_Trap",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "copyBoosts": true,
+    "duration": 260,
+    "entity": "Pets_Poison_Trap",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,1,1,260,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,260]

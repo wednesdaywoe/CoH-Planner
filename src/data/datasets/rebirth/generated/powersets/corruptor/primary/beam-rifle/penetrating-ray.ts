@@ -53,12 +53,6 @@ export const PenetratingRay: Power = {
     "scale": 2.76,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "knockback": {
-      "scale": 0.7,
-      "table": "Ranged_Knockback"
-    }
-  },
   "atoms": [
     ["Damage","Energy",2.76,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Mez","Knockback",0.7,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.44999998807907104,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0.45,null,"Knockback"],

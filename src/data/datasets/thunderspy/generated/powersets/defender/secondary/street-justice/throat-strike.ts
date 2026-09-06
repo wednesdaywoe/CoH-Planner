@@ -50,60 +50,6 @@ export const ThroatStrike: Power = {
     "scale": 1.32,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "buffDuration": 5,
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 1.5,
-      "table": "Melee_Debuff_Dam"
-    },
-    "durations": {
-      "damageDebuff": 5,
-      "resistanceDebuff": 5
-    },
-    "resistanceDebuff": {
-      "cold": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Res_DMG"
-      },
-      "energy": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Res_DMG"
-      },
-      "fire": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Res_DMG"
-      },
-      "lethal": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Res_DMG"
-      },
-      "negative": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Res_DMG"
-      },
-      "psionic": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Res_DMG"
-      },
-      "smashing": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Res_DMG"
-      },
-      "toxic": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Res_DMG"
-      }
-    }
-  },
   "atoms": [
     ["Damage","Smashing",1.32,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["DamageBuff","Smashing",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Debuff_Dam"],

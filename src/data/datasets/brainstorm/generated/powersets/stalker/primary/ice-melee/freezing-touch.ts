@@ -61,14 +61,6 @@ export const FreezingTouch: Power = {
       "table": "Melee_InherentDamage"
     }
   ],
-  "effects": {
-    "hold": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 10,
-      "table": "Melee_Immobilize"
-    }
-  },
   "atoms": [
     ["Damage","Cold",0.265,1,2.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Mez","Held",10,3,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

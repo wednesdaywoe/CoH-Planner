@@ -56,20 +56,6 @@ export const Thundergust: Power = {
     "scale": 0.24,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 12,
-    "durations": {
-      "tohitDebuff": 12
-    },
-    "knockback": {
-      "scale": 0.67,
-      "table": "Ranged_Ones"
-    },
-    "tohitDebuff": {
-      "scale": 1.5,
-      "table": "Ranged_Debuff_ToHit"
-    }
-  },
   "atoms": [
     ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","SelfAndPets","Any",false,"Stack",2,null,null,1,null,true],

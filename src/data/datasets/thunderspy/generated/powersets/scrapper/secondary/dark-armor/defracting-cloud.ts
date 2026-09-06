@@ -44,43 +44,6 @@ export const Defractingcloud: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "debuffResistance": {
-      "endurance": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Melee_Res_Boolean"
-      },
-      "recovery": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "durations": {
-      "debuffResistance": 0.75,
-      "resistance": 0.75
-    },
-    "resistance": {
-      "cold": {
-        "scale": 3,
-        "table": "Melee_Res_DMG"
-      },
-      "energy": {
-        "scale": 2,
-        "table": "Melee_Res_DMG"
-      },
-      "fire": {
-        "scale": 3,
-        "table": "Melee_Res_DMG"
-      },
-      "negative": {
-        "scale": 2,
-        "table": "Melee_Res_DMG"
-      }
-    }
-  },
   "atoms": [
     ["Resistance","Fire",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
     ["Resistance","Cold",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],

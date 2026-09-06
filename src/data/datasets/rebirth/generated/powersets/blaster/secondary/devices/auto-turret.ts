@@ -42,25 +42,10 @@ export const AutoTurret: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 7.5,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.066,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 7.5
-    },
-    "summon": {
-      "duration": 90,
-      "entity": "Pets_Turret",
-      "isPseudoPet": false
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff"
-    ]
+  "summon": {
+    "duration": 90,
+    "entity": "Pets_Turret",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,1,1,90,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,90],

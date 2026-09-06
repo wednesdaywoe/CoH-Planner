@@ -40,48 +40,6 @@ export const PainAbsorption: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "absorb": {
-      "scale": 2,
-      "table": "Melee_HealSelf"
-    },
-    "buffDuration": 20,
-    "durations": {
-      "absorb": 20,
-      "regenBuffUnenhanced": 20,
-      "resistance": 60,
-      "resistanceDebuff": 20
-    },
-    "enduranceDrain": {
-      "ignoreStrength": true,
-      "scale": 5,
-      "table": "Melee_Ones"
-    },
-    "regenBuffUnenhanced": {
-      "ignoreStrength": true,
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "resistance": {
-      "toxic": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "resistanceDebuff": {
-      "heal": {
-        "ignoreStrength": true,
-        "scale": 0.25,
-        "table": "Melee_Ones",
-        "toWho": "Self"
-      }
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "absorb",
-      "resistance"
-    ]
-  },
   "atoms": [
     ["Resistance","Toxic",2,1,60,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_Dmg"],
     ["Absorb",null,2,1,20,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_1","source.ownPower?","!","Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_2","source.ownPower?","!","&&"],null,null,null,null,null,null,null,null,null,"Heal"],

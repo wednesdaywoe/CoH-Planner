@@ -62,37 +62,6 @@ export const Frost: Power = {
       "table": "Melee_InherentDamage"
     }
   ],
-  "effects": {
-    "buffDuration": 8,
-    "durations": {
-      "rechargeDebuff": 8,
-      "slow": 8
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.2,
-      "table": "Melee_Slow"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Damage","Cold",0.27,1,1.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.20000000298023224,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Cold",1.404,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,["enttype","target>","critter","eq","enttype","target>","critter","eq","kMeter","source>",".9","<","&&","&&"],null,null,null,null,null,null,null,null,null,"ASTeamCrit"],

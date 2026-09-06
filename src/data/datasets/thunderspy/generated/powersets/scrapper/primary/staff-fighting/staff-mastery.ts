@@ -38,27 +38,6 @@ export const StaffMastery: Power = {
     "To Hit Buff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 10,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 8,
-      "table": "Melee_Buff_Dmg"
-    },
-    "durations": {
-      "damageBuff": 10,
-      "tohitBuff": 10
-    },
-    "tohitBuff": {
-      "scale": 2,
-      "table": "Melee_Buff_ToHit"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff",
-      "tohitBuff"
-    ]
-  },
   "atoms": [
     ["ToHit",null,2,1,10,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_ToHit"],
     ["DamageBuff","Smashing",8,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Dmg"],

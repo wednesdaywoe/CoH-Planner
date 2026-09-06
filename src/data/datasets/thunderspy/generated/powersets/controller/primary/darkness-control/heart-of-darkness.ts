@@ -55,22 +55,6 @@ export const HeartofDarkness: Power = {
     "duration": 4.1,
     "tickRate": 1
   },
-  "effects": {
-    "buffDuration": 10,
-    "durations": {
-      "tohitDebuff": 10
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Stun"
-    },
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_DeBuff_ToHit"
-    }
-  },
   "atoms": [
     ["Damage","Negative",0.07,1,4.1,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["ToHit",null,0.75,1,10,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"DeBuff_ToHit"],

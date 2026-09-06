@@ -41,42 +41,6 @@ export const IceShield: Power = {
     "Defense Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 240,
-    "defenseBuff": {
-      "aoe": {
-        "scale": 0.75,
-        "table": "Ranged_Buff_Def"
-      },
-      "energy": {
-        "scale": 0.75,
-        "table": "Ranged_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.75,
-        "table": "Ranged_Buff_Def"
-      },
-      "melee": {
-        "scale": 0.75,
-        "table": "Ranged_Buff_Def"
-      },
-      "negative": {
-        "scale": 0.75,
-        "table": "Ranged_Buff_Def"
-      },
-      "ranged": {
-        "scale": 0.75,
-        "table": "Ranged_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0.75,
-        "table": "Ranged_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 240
-    }
-  },
   "atoms": [
     ["Defense","Melee",1.5,1,240,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["Defense","Ranged",1.5,1,240,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],

@@ -48,58 +48,6 @@ export const WilloftheWild: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 120,
-    "durations": {
-      "regenBuff": 120,
-      "resistance": 120,
-      "specialBuff": 120
-    },
-    "regenBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "resistance": {
-      "cold": {
-        "scale": 2.5,
-        "table": "Melee_Res_DMG"
-      },
-      "energy": {
-        "scale": 2.5,
-        "table": "Melee_Res_DMG"
-      },
-      "fire": {
-        "scale": 2.5,
-        "table": "Melee_Res_DMG"
-      },
-      "lethal": {
-        "scale": 2.5,
-        "table": "Melee_Res_DMG"
-      },
-      "negative": {
-        "scale": 2.5,
-        "table": "Melee_Res_DMG"
-      },
-      "psionic": {
-        "scale": 2.5,
-        "table": "Melee_Res_DMG"
-      },
-      "smashing": {
-        "scale": 2.5,
-        "table": "Melee_Res_DMG"
-      },
-      "toxic": {
-        "scale": 2.5,
-        "table": "Melee_Res_DMG"
-      }
-    },
-    "specialBuff": {
-      "heal": {
-        "scale": 0.5,
-        "table": "Melee_Ones"
-      }
-    }
-  },
   "atoms": [
     ["Resistance","Smashing",2.5,1,120,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
     ["Resistance","Lethal",2.5,1,120,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],

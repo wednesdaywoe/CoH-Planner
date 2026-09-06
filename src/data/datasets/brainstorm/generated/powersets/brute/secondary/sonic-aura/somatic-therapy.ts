@@ -46,16 +46,6 @@ export const SomaticTherapy: Power = {
     "duration": 30,
     "tickRate": 2
   },
-  "effects": {
-    "absorb": {
-      "scale": 3,
-      "table": "Melee_HealSelf"
-    },
-    "buffDuration": 30,
-    "durations": {
-      "absorb": 30
-    }
-  },
   "atoms": [
     ["Absorb",null,3,1,30,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"Replace",2,null,null,1],
     ["Heal",null,0.25,1,30,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"Replace",2,null,2,1]

@@ -55,12 +55,10 @@ export const ProtectorBots: Power = {
     "Universal Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "duration": 99999,
-      "entity": "MastermindPets_Protector_Bot",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "duration": 99999,
+    "entity": "MastermindPets_Protector_Bot",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,1,1,99999,"Ranged_Levelminus","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Levelminus",null,null,null,2,null,null,null,null,null,99999],

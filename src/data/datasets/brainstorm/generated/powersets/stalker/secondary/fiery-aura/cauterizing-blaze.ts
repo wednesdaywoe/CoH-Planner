@@ -49,21 +49,6 @@ export const CauterizingBlaze: Power = {
     "scale": 0.075,
     "table": "Melee_HealSelf"
   },
-  "effects": {
-    "buffDuration": 2.2,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 1,
-      "table": "Melee_Buff_Dmg"
-    },
-    "durations": {
-      "damageBuff": 2.2
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff"
-    ]
-  },
   "atoms": [
     ["Heal",null,0.075,1,0,"Melee_HealSelf","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["DamageBuff","Fire",2,1,2.2,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],

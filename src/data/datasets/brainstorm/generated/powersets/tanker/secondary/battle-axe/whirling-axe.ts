@@ -63,20 +63,6 @@ export const WhirlingAxe: Power = {
     "scale": 1,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "buffDuration": 0.15,
-    "durations": {
-      "repel": 0.15
-    },
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
-    "repel": {
-      "scale": 2,
-      "table": "Ones"
-    }
-  },
   "atoms": [
     ["Mez","Repel",2,3,0.15,"Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,1.2],

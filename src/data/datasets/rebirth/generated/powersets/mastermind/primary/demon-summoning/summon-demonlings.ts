@@ -45,12 +45,10 @@ export const SummonDemonlings: Power = {
     "Universal Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "duration": 99999,
-      "entity": "MastermindPets_Fiery_Demonling",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "duration": 99999,
+    "entity": "MastermindPets_Fiery_Demonling",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,1,1,99999,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Levelminus2",null,null,null,3.33,null,null,null,null,null,99999],

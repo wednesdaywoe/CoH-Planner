@@ -52,41 +52,6 @@ export const MudPots: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 5,
-    "durations": {
-      "movementCapDebuff": 5,
-      "slow": 5
-    },
-    "immobilize": {
-      "attribType": "Duration",
-      "mag": 2,
-      "scale": 2.25,
-      "table": "Melee_Ones"
-    },
-    "movementCapDebuff": {
-      "runSpeed": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Melee_SpeedRunning"
-      }
-    },
-    "slow": {
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.5,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.5,
-        "table": "Melee_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.5,
-        "table": "Melee_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Movement","Run",0.5,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
     ["Movement","Jump",0.5,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],

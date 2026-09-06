@@ -92,40 +92,6 @@ export const HailofBullets: Power = {
       "tickRate": 0.30000001192092896
     }
   ],
-  "effects": {
-    "buffDuration": 7.5,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.058,
-      "table": "Ranged_Ones"
-    },
-    "defenseBuff": {
-      "aoe": {
-        "ignoreStrength": true,
-        "scale": 3,
-        "table": "Ranged_Buff_Def"
-      },
-      "melee": {
-        "ignoreStrength": true,
-        "scale": 3,
-        "table": "Ranged_Buff_Def"
-      },
-      "ranged": {
-        "ignoreStrength": true,
-        "scale": 3,
-        "table": "Ranged_Buff_Def"
-      }
-    },
-    "durations": {
-      "damageBuff": 7.5,
-      "defenseBuff": 5,
-      "knockback": 3.5
-    },
-    "knockback": {
-      "scale": 0.8,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Damage","Lethal",0.227,1,3.5,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0.6,null,"Damage"],
     ["Damage","Lethal",0.227,1,3.5,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0.6,null,"HailofBulletsLethal"],

@@ -44,22 +44,6 @@ export const ThermalShield: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "durations": {
-      "resistance": 0.75
-    },
-    "resistance": {
-      "cold": {
-        "scale": 3,
-        "table": "Melee_Res_DMG"
-      },
-      "fire": {
-        "scale": 3,
-        "table": "Melee_Res_DMG"
-      }
-    }
-  },
   "atoms": [
     ["Resistance","Fire",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kPeacebringer_Blaster_Mode","Source.Mode?","!"],null,null,null,null,null,null,null,null,null,"Res_DMG"],
     ["Resistance","Cold",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kPeacebringer_Blaster_Mode","Source.Mode?","!"],null,null,null,null,null,null,null,null,null,"Res_DMG"]

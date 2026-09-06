@@ -57,38 +57,6 @@ export const CripplingAxeKick: Power = {
     "scale": 2.12,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "buffDuration": 10,
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10,
-      "slow": 8
-    },
-    "immobilize": {
-      "attribType": "Duration",
-      "mag": 2,
-      "scale": 10,
-      "table": "Melee_Immobilize"
-    },
-    "slow": {
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.5,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.5,
-        "table": "Melee_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.5,
-        "table": "Melee_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Damage","Smashing",2.12,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Mez","Immobilized",10,2,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

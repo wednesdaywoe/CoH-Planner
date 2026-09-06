@@ -70,14 +70,6 @@ export const WhirlingHands: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "stun": {
-      "attribType": "Duration",
-      "mag": 2,
-      "scale": 5,
-      "table": "Melee_Stun"
-    }
-  },
   "atoms": [
     ["Damage","Energy",0.4964,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Smashing",0.6855,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

@@ -53,12 +53,6 @@ export const Jawbreaker: Power = {
     "scale": 1.96,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "knockup": {
-      "scale": 2,
-      "table": "Melee_Knockback"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",1.96,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Mez","Knockup",2,1,0,"Melee_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.75,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0.75,null,"Knockback"],

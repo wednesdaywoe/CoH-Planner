@@ -43,68 +43,6 @@ export const Eclipse: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 90,
-    "durations": {
-      "recoveryDebuff": 10,
-      "resistance": 90
-    },
-    "enduranceDrain": {
-      "scale": 0.33,
-      "table": "Melee_Ones"
-    },
-    "enduranceGain": {
-      "scale": 25,
-      "table": "Melee_Ones",
-      "perTarget": 25
-    },
-    "recoveryDebuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "resistance": {
-      "cold": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg",
-        "perTarget": 1.5
-      },
-      "energy": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg",
-        "perTarget": 1.5
-      },
-      "fire": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg",
-        "perTarget": 1.5
-      },
-      "lethal": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg",
-        "perTarget": 1.5
-      },
-      "negative": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg",
-        "perTarget": 1.5
-      },
-      "psionic": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg",
-        "perTarget": 1.5
-      },
-      "smashing": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg",
-        "perTarget": 1.5
-      },
-      "toxic": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg",
-        "perTarget": 1.5
-      }
-    }
-  },
   "atoms": [
     ["Endurance",null,-0.33,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Recovery",null,-1,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],

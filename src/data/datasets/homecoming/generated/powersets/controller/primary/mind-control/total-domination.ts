@@ -44,14 +44,6 @@ export const TotalDomination: Power = {
     "Holds"
   ],
   "maxSlots": 6,
-  "effects": {
-    "hold": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Immobilize"
-    }
-  },
   "atoms": [
     ["Mez","Held",8,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Mez","Held",6,1,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Overpower"],

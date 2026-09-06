@@ -36,39 +36,6 @@ export const GammaBoost: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 1.25,
-    "debuffResistance": {
-      "endurance": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Melee_Res_Boolean"
-      },
-      "recovery": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Melee_Res_Boolean"
-      },
-      "regeneration": {
-        "ignoreStrength": true,
-        "scale": 0.5,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "durations": {
-      "debuffResistance": 1.25,
-      "recoveryBuff": 1.25,
-      "regenBuff": 1.25
-    },
-    "recoveryBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "regenBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Regeneration",null,1,1,1.25,"Melee_Ones","Cur","Expression","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["75","kHitPoints%","source>","-","30","+","100","/","@StdResult","*"],null,null,null,"Ones"],
     ["Recovery",null,1,1,1.25,"Melee_Ones","Cur","Expression","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["1.2","kHitPoints%","source>","*","100","/",".3","*","@StdResult","*"],null,null,null,"Ones"],

@@ -64,14 +64,6 @@ export const HauntingStrike: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "fear": {
-      "attribType": "Duration",
-      "mag": 0.75,
-      "scale": 6,
-      "table": "Melee_Fear"
-    }
-  },
   "atoms": [
     ["Damage","Negative",0.42,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Psionic",0.42,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],

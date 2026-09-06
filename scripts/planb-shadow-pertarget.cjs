@@ -94,7 +94,7 @@ function isExpressionValued(power, slotKey) {
   return baseAtoms(power).some((a) => a.effectType === effectType && a.attribType === 'Expression');
 }
 
-const stats = { powers: 0, withToHit: 0, agree: 0, perTargetPowers: 0, defianceRejected: 0, recoveredN1: 0 };
+const stats = { powers: 0, noBag: 0, withToHit: 0, agree: 0, perTargetPowers: 0, defianceRejected: 0, recoveredN1: 0 };
 const recoveredSeen = {};
 const findings = [];
 
@@ -102,6 +102,8 @@ function checkPower(dataset, power, genPath) {
   const name = power.name || genPath;
   if (POWER_FILTER && !name.toLowerCase().includes(POWER_FILTER.toLowerCase())) return;
   stats.powers++;
+  // STRIP-1 (BPORT7) removed the bag this gate compares against; bag-less powers are vacuous rows, named in the tail.
+  if (!power.effects || !Object.keys(power.effects).length) { stats.noBag++; return; }
 
   for (const slot of SLOTS) {
     // Expression-valued buffs (Fury's Rage_Buff) carry no static scale/perTarget — the calc derives
@@ -169,6 +171,10 @@ function sweep(dataset) {
 
 for (const ds of DATASETS) sweep(ds);
 
+// Every swept power bag-less: the run checks nothing, the tail names it, and the
+// bag-derived pins below are waived.
+const VACUOUS = stats.powers > 0 && stats.noBag === stats.powers;
+
 console.log(`\nPlan B Slices 1-2 — perTarget reconstruction (tohitBuff + damageBuff)`);
 console.log(`  powers swept:        ${stats.powers}`);
 console.log(`  buff slots checked:  ${stats.withToHit}`);
@@ -186,7 +192,7 @@ const EXPECTED_N1_RECOVERIES = [
   'homecoming|Fulcrum Shift',
   'brainstorm|Fulcrum Shift',
 ];
-const n1PinFailures = [
+const n1PinFailures = VACUOUS ? [] : [
   ...Object.keys(recoveredSeen).filter((k) => !EXPECTED_N1_RECOVERIES.includes(k))
     .map((k) => `NEW N=1 recovery, never read: ${k}`),
   // Only datasets this run actually swept can be reported lost. Without the guard a
@@ -219,9 +225,14 @@ if (n1PinFailures.length) {
 // carry the tag (Parse6 has no effect group to hang one on), so a zero there means the
 // rejection stopped happening — the arm would then be waiving a class that no longer
 // exists while reporting the same green as a corpus it actually checked.
-if (DATASETS.includes('homecoming') && stats.defianceRejected === 0) {
+if (!VACUOUS && DATASETS.includes('homecoming') && stats.defianceRejected === 0) {
   console.log('\nFAIL — no Defiance-only damageBuff found in homecoming. The reader-side '
     + 'rejection this gate grades has vanished; re-measure before trusting the green.');
   process.exit(1);
 }
-console.log('\nOK — atom-derived tohitBuff + damageBuff (scale + perTarget) reproduce the bag corpus-wide.');
+if (VACUOUS) {
+  console.log(`\nVACUOUS — bag absent: ${stats.noBag} powers swept, 0 checks — vacuous post-STRIP-1.`);
+  console.log('   The atom side is graded by the converter gates, not here.');
+} else {
+  console.log('\nOK — atom-derived tohitBuff + damageBuff (scale + perTarget) reproduce the bag corpus-wide.');
+}

@@ -52,18 +52,6 @@ export const Slug: Power = {
     "scale": 2.28,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "knockback": {
-      "scale": 0.75,
-      "table": "Ranged_Knockback"
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Stun"
-    }
-  },
   "atoms": [
     ["Damage","Lethal",2.28,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Mez","Knockback",0.75,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Knockback"],

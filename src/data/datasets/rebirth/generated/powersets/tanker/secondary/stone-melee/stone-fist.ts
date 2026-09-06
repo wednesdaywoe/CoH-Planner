@@ -58,18 +58,6 @@ export const StoneFist: Power = {
     "scale": 1,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "stun": {
-      "attribType": "Duration",
-      "mag": 2,
-      "scale": 8,
-      "table": "Melee_Stun"
-    },
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Mez","Stunned",8,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0.1,null,"Stun"],

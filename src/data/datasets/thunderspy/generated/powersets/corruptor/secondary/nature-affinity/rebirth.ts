@@ -56,12 +56,6 @@ export const Rebirth: Power = {
       "tickRate": 1
     }
   ],
-  "effects": {
-    "enduranceGain": {
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Heal",null,5,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Heal",null,null,["DeadPlayerFriend"]],
     ["Heal",null,0.454545,1,10.1,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Heal",null,null,["DeadPlayerFriend"],1],

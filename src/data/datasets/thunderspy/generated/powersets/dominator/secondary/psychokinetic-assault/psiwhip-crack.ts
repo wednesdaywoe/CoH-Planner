@@ -56,17 +56,11 @@ export const PsiWhipCrack: Power = {
       "table": "Ranged_Damage"
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 0.3,
-      "table": "Ranged_Knockback"
-    },
-    "summon": {
-      "copyBoosts": true,
-      "duration": 15,
-      "entity": "Pets_Telekinetic_Sword",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "copyBoosts": true,
+    "duration": 15,
+    "entity": "Pets_Telekinetic_Sword",
+    "isPseudoPet": false
   },
   "atoms": [
     ["Damage","Energy",0.82,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],

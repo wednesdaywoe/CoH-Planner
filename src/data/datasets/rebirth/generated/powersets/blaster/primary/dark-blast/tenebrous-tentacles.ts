@@ -67,28 +67,6 @@ export const TenebrousTentacles: Power = {
       "table": "Ranged_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 9.17,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.048,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 9.17,
-      "tohitDebuff": 8
-    },
-    "immobilize": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_DeBuff_ToHit"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.1,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage",null,null,null,1],
     ["Damage","Negative",0.135,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],

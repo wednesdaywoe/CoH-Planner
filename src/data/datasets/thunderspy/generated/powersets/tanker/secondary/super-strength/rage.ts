@@ -39,28 +39,6 @@ export const Rage: Power = {
     "To Hit Buff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 90,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 8,
-      "table": "Melee_Buff_Dmg"
-    },
-    "durations": {
-      "damageBuff": 90,
-      "maxEndBuff": 90,
-      "tohitBuff": 90
-    },
-    "maxEndBuff": {
-      "ignoreStrength": true,
-      "scale": 15,
-      "table": "Melee_Ones"
-    },
-    "tohitBuff": {
-      "scale": 2,
-      "table": "Melee_Buff_ToHit"
-    }
-  },
   "atoms": [
     ["ToHit",null,2,1,90,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Buff_ToHit"],
     ["DamageBuff","Smashing",8,1,90,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Dmg"],

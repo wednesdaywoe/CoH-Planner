@@ -43,44 +43,6 @@ export const TRWebSpitter: Power = {
     "Immobilize"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 15,
-    "durations": {
-      "rechargeDebuff": 15,
-      "slow": 15
-    },
-    "hold": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 10,
-      "table": "Ranged_Immobilize"
-    },
-    "immobilize": {
-      "attribType": "Duration",
-      "mag": 2,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.2,
-      "table": "Ranged_Slow"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "scale": 500,
-        "table": "Ranged_Ones"
-      },
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Immobilize"],
     ["Mez","Immobilized",15,2,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Immobilize"],

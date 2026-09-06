@@ -46,29 +46,6 @@ export const ActiveDefense: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "defenseBuff": {
-      "melee": {
-        "scale": 1.65,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 0.75,
-      "resistance": 0.75
-    },
-    "resistance": {
-      "lethal": {
-        "scale": 1.65,
-        "table": "Melee_Res_DMG"
-      },
-      "smashing": {
-        "scale": 1.65,
-        "table": "Melee_Res_DMG"
-      }
-    }
-  },
   "atoms": [
     ["Defense","Melee",1.65,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Def"],
     ["Resistance","Smashing",1.65,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],

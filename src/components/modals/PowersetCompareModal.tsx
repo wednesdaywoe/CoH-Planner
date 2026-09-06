@@ -90,7 +90,7 @@ function classifyPower(power: Power): PowerCategory | null {
   }
 
   const e = power.effects;
-  if (e?.summon) return 'pet';
+  if (power.summon) return 'pet';
   if (e?.hold || e?.stun || e?.immobilize || e?.sleep || e?.confuse || e?.fear) return 'control';
 
   if (power.powerType === 'Passive') return 'passive';

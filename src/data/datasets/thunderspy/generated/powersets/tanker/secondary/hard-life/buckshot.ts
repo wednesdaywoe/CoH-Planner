@@ -55,12 +55,6 @@ export const Buckshot: Power = {
     "scale": 0.7,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Damage","Lethal",0.7,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Fire",0.297,1,0.3,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,"FieryEmbrace"],

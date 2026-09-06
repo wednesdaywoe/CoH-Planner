@@ -44,56 +44,54 @@ export const Bonfire: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "displayName": "Bonfire",
-      "duration": 45,
-      "isPseudoPet": true,
-      "powers": [
-        "Pets.Bonfire.Bonfire"
-      ],
-      "resolvedEntities": [
-        {
-          "displayName": "Bonfire",
-          "duration": 45,
-          "copyCreatorMods": true,
-          "abilities": [
-            {
-              "name": "Bonfire",
-              "displayName": "Bonfire",
-              "type": "Auto",
-              "damage": [
-                {
-                  "damageType": "Fire",
-                  "scale": 0.055,
-                  "table": "Ranged_Damage"
-                }
-              ],
-              "effects": [
-                {
-                  "type": "Knockback",
-                  "magnitude": 1,
-                  "attribType": "Magnitude",
-                  "scale": 3,
-                  "table": "Melee_Knockback"
-                }
-              ],
-              "recharge": 0,
-              "castTime": 0,
-              "activatePeriod": 1,
-              "effectArea": "Sphere",
-              "targetsAffected": [
-                "Foe"
-              ],
-              "radius": 25,
-              "maxTargets": 16
-            }
-          ]
-        }
-      ],
-      "entity": "PL_StaticObject"
-    }
+  "summon": {
+    "copyBoosts": true,
+    "displayName": "Bonfire",
+    "duration": 45,
+    "isPseudoPet": true,
+    "powers": [
+      "Pets.Bonfire.Bonfire"
+    ],
+    "resolvedEntities": [
+      {
+        "displayName": "Bonfire",
+        "duration": 45,
+        "copyCreatorMods": true,
+        "abilities": [
+          {
+            "name": "Bonfire",
+            "displayName": "Bonfire",
+            "type": "Auto",
+            "damage": [
+              {
+                "damageType": "Fire",
+                "scale": 0.055,
+                "table": "Ranged_Damage"
+              }
+            ],
+            "effects": [
+              {
+                "type": "Knockback",
+                "magnitude": 1,
+                "attribType": "Magnitude",
+                "scale": 3,
+                "table": "Melee_Knockback"
+              }
+            ],
+            "recharge": 0,
+            "castTime": 0,
+            "activatePeriod": 1,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "Foe"
+            ],
+            "radius": 25,
+            "maxTargets": 16
+          }
+        ]
+      }
+    ],
+    "entity": "PL_StaticObject"
   },
   "atoms": [
     ["EntCreate",null,1,1,45,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,45]

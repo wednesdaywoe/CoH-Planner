@@ -64,26 +64,6 @@ export const JacobsLadder: Power = {
       "table": "Melee_InherentDamage"
     }
   ],
-  "effects": {
-    "buffDuration": 2,
-    "durations": {
-      "recoveryDebuff": 2
-    },
-    "enduranceDrain": {
-      "scale": 0.07,
-      "table": "Melee_Ones"
-    },
-    "recoveryDebuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "sleep": {
-      "attribType": "Duration",
-      "mag": 2,
-      "scale": 6,
-      "table": "Melee_Sleep"
-    }
-  },
   "atoms": [
     ["Damage","Energy",1.5233,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Energy",1.5233,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,["enttype","target>","critter","eq","enttype","target>","critter","eq","kMeter","source>",".9","<","&&","&&"],null,null,null,null,null,null,null,null,null,"ASTeamCrit"],

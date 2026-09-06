@@ -53,18 +53,10 @@ export const Blind: Power = {
     "scale": 1,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "hold": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 10,
-      "table": "Ranged_Immobilize"
-    },
-    "summon": {
-      "duration": 1,
-      "entity": "Pets_Blind",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "duration": 1,
+    "entity": "Pets_Blind",
+    "isPseudoPet": false
   },
   "atoms": [
     ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Immobilize"],

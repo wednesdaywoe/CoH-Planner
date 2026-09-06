@@ -44,99 +44,72 @@ export const Burn: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 100,
-    "durations": {
-      "immobilize": 100,
-      "knockback": 100,
-      "knockup": 100
-    },
-    "effectDuration": 100,
-    "immobilize": {
-      "attribType": "Magnitude",
-      "ignoreStrength": true,
-      "mag": 1,
-      "scale": -30,
-      "table": "Melee_Res_Boolean",
-      "toWho": "Self"
-    },
-    "knockback": {
-      "ignoreStrength": true,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "knockup": {
-      "ignoreStrength": true,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "summon": {
-      "copyBoosts": true,
-      "displayName": "Burn Flames",
-      "duration": 10,
-      "isPseudoPet": true,
-      "powers": [
-        "Redirects.Fiery_Aura.Burn",
-        "Redirects.Fiery_Aura.Burn_FrontDamage"
-      ],
-      "resolvedEntities": [
-        {
-          "displayName": "Burn Flames",
-          "duration": 10,
-          "copyCreatorMods": true,
-          "abilities": [
-            {
-              "name": "Burn",
-              "displayName": "Burn",
-              "type": "Auto",
-              "damage": [
-                {
-                  "damageType": "Fire",
-                  "scale": 0.14,
-                  "table": "Melee_Damage"
-                }
-              ],
-              "recharge": 0,
-              "castTime": 0,
-              "activatePeriod": 0.8,
-              "effectArea": "Sphere",
-              "targetsAffected": [
-                "Foe"
-              ],
-              "radius": 15,
-              "maxTargets": 10
-            },
-            {
-              "name": "Burn_FrontDamage",
-              "displayName": "Burn",
-              "type": "Auto",
-              "damage": [
-                {
-                  "damageType": "Fire",
-                  "scale": 1,
-                  "table": "Melee_Damage"
-                },
-                {
-                  "damageType": "Fire",
-                  "scale": 0.44,
-                  "table": "Melee_Damage"
-                }
-              ],
-              "recharge": 0,
-              "castTime": 0,
-              "activatePeriod": 100,
-              "effectArea": "Sphere",
-              "targetsAffected": [
-                "Foe"
-              ],
-              "radius": 15,
-              "maxTargets": 10
-            }
-          ]
-        }
-      ],
-      "entity": "PL_StaticObject"
-    }
+  "summon": {
+    "copyBoosts": true,
+    "displayName": "Burn Flames",
+    "duration": 10,
+    "isPseudoPet": true,
+    "powers": [
+      "Redirects.Fiery_Aura.Burn",
+      "Redirects.Fiery_Aura.Burn_FrontDamage"
+    ],
+    "resolvedEntities": [
+      {
+        "displayName": "Burn Flames",
+        "duration": 10,
+        "copyCreatorMods": true,
+        "abilities": [
+          {
+            "name": "Burn",
+            "displayName": "Burn",
+            "type": "Auto",
+            "damage": [
+              {
+                "damageType": "Fire",
+                "scale": 0.14,
+                "table": "Melee_Damage"
+              }
+            ],
+            "recharge": 0,
+            "castTime": 0,
+            "activatePeriod": 0.8,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "Foe"
+            ],
+            "radius": 15,
+            "maxTargets": 10
+          },
+          {
+            "name": "Burn_FrontDamage",
+            "displayName": "Burn",
+            "type": "Auto",
+            "damage": [
+              {
+                "damageType": "Fire",
+                "scale": 1,
+                "table": "Melee_Damage"
+              },
+              {
+                "damageType": "Fire",
+                "scale": 0.44,
+                "table": "Melee_Damage"
+              }
+            ],
+            "recharge": 0,
+            "castTime": 0,
+            "activatePeriod": 100,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "Foe"
+            ],
+            "radius": 15,
+            "maxTargets": 10
+          }
+        ]
+      }
+    ],
+    "entity": "PL_StaticObject"
   },
   "atoms": [
     ["Mez","Immobilized",-30,1,100,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],

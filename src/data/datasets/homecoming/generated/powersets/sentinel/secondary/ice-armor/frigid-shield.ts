@@ -44,29 +44,6 @@ export const FrigidShield: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "absorb": {
-      "scale": 0.5,
-      "table": "Melee_HealSelf"
-    },
-    "buffDuration": 20,
-    "debuffResistance": {
-      "movement": {
-        "ignoreStrength": true,
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      },
-      "recharge": {
-        "ignoreStrength": true,
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "absorb": 20,
-      "debuffResistance": 4
-    }
-  },
   "atoms": [
     ["Absorb",null,0.25,1,20,"Melee_HealSelf","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Absorb",null,0.25,1,20,"Melee_HealSelf","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],

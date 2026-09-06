@@ -51,14 +51,6 @@ export const Telekinesis: Power = {
     "Immobilize"
   ],
   "maxSlots": 6,
-  "effects": {
-    "immobilize": {
-      "attribType": "Duration",
-      "mag": 4,
-      "scale": 5,
-      "table": "Ranged_Immobilize"
-    }
-  },
   "atoms": [
     ["Mez","Immobilized",5,4,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kHitPoints%","target>","0",">","&&"]],
     ["Meta",null,1,175,1.5,"Melee_Ones","Cur","Constant","Target","Any",false,"RefreshToCount",1,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Telekinesis",null,"set_mode"],

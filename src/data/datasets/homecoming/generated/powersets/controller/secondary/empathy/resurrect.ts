@@ -43,23 +43,6 @@ export const Resurrect: Power = {
     "duration": 0.5,
     "tickRate": 1
   },
-  "effects": {
-    "buffDuration": 15,
-    "durations": {
-      "stealth": 15
-    },
-    "enduranceGain": {
-      "ignoreStrength": true,
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "stealth": {
-      "stealthPvE": {
-        "scale": 300,
-        "table": "Melee_Ones"
-      }
-    }
-  },
   "atoms": [
     ["Heal",null,1,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,1,1],
     ["Endurance",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.25],

@@ -64,45 +64,6 @@ export const HavokPunch: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 9,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.099,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "damageBuff": 9,
-      "recoveryDebuff": 4
-    },
-    "enduranceDrain": {
-      "scale": 0.1,
-      "table": "Melee_Ones"
-    },
-    "enduranceGain": {
-      "scale": 6.76,
-      "table": "Melee_Ones"
-    },
-    "knockback": {
-      "scale": 0.75,
-      "table": "Melee_Knockback"
-    },
-    "recoveryDebuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "sleep": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 15,
-      "table": "Melee_Sleep"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff",
-      "enduranceGain"
-    ]
-  },
   "atoms": [
     ["Damage","Smashing",2,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Energy",0.6,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],

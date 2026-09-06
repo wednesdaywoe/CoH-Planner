@@ -81,16 +81,6 @@ export const SteamSpray: Power = {
       "tickRate": 1
     }
   ],
-  "effects": {
-    "buffDuration": 8,
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 8
-    }
-  },
   "atoms": [
     ["Damage","Fire",0.835,1,0.6,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Fire",0.835,1,0.6,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0,null,"SentCrit,SentCritAoE"],

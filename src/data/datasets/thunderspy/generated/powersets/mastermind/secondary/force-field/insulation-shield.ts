@@ -42,51 +42,6 @@ export const InsulationShield: Power = {
     "Defense Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 240,
-    "debuffResistance": {
-      "endurance": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Ranged_Res_Boolean"
-      },
-      "recovery": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Ranged_Res_Boolean"
-      }
-    },
-    "defenseBuff": {
-      "aoe": {
-        "scale": 0.75,
-        "table": "Ranged_Buff_Def"
-      },
-      "cold": {
-        "scale": 0.75,
-        "table": "Ranged_Buff_Def"
-      },
-      "energy": {
-        "scale": 0.75,
-        "table": "Ranged_Buff_Def"
-      },
-      "fire": {
-        "scale": 0.75,
-        "table": "Ranged_Buff_Def"
-      },
-      "negative": {
-        "scale": 0.75,
-        "table": "Ranged_Buff_Def"
-      },
-      "ranged": {
-        "scale": 0.75,
-        "table": "Ranged_Buff_Def"
-      }
-    },
-    "durations": {
-      "debuffResistance": 240,
-      "defenseBuff": 240
-    }
-  },
   "atoms": [
     ["Defense","Fire",1.5,1,240,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Def"],
     ["Defense","Cold",1.5,1,240,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Def"],

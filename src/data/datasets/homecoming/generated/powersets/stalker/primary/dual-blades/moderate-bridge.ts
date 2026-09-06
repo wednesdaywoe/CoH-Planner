@@ -63,17 +63,6 @@ export const ModerateBridge: Power = {
       "table": "Melee_InherentDamage"
     }
   ],
-  "effects": {
-    "buffDuration": 10,
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "maxStacks": 2
-  },
   "atoms": [
     ["Damage","Lethal",0.66,1,0.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,0.125],
     ["Damage","Lethal",1.32,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,["enttype","target>","critter","eq","enttype","target>","critter","eq","kMeter","source>",".9","<","&&","&&"],null,null,null,null,null,null,null,null,null,"ASTeamCrit",null,null,null,0.125],

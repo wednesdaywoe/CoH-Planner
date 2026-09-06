@@ -59,12 +59,6 @@ export const TelekineticBlow: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "knockup": {
-      "scale": 1,
-      "table": "Melee_Knockback"
-    }
-  },
   "atoms": [
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"StackThenIgnore",3,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.23266667127609253,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight","source.ownPower?","!","Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight_Lockout","source.ownPower?","!","&&","Temporary_Powers.Temporary_Powers.Boggled","target.ownPower?","!","&&"],null,null,null,null,null,null,null,0.23,null,"Ones"],

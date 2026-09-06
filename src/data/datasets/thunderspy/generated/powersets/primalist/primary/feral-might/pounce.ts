@@ -68,14 +68,6 @@ export const Pounce: Power = {
       "cancelOnMiss": true
     }
   ],
-  "effects": {
-    "stun": {
-      "attribType": "Duration",
-      "mag": 4,
-      "scale": 4,
-      "table": "Melee_Stun"
-    }
-  },
   "atoms": [
     ["Damage","Lethal",2.76,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Lethal",1.38,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","critter","eq","kProwlerCloakMode","Source.Mode?","!","&&"],null,null,null,null,null,null,null,null,null,"NBProwlerCritActive"],

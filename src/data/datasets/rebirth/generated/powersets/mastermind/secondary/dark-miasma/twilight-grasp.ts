@@ -46,32 +46,10 @@ export const TwilightGrasp: Power = {
     "Universal Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 20,
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 1,
-      "table": "Ranged_Debuff_Dam"
-    },
-    "durations": {
-      "damageDebuff": 20,
-      "regenDebuff": 20,
-      "tohitDebuff": 20
-    },
-    "regenDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    },
-    "summon": {
-      "duration": 1,
-      "entity": "Pets_MMTwilight",
-      "isPseudoPet": false
-    },
-    "tohitDebuff": {
-      "scale": 0.5,
-      "table": "Ranged_Debuff_ToHit"
-    }
+  "summon": {
+    "duration": 1,
+    "entity": "Pets_MMTwilight",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,-1,1,1,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,1],

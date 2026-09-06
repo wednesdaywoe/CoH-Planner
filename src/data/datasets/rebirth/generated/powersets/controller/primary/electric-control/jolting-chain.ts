@@ -51,29 +51,11 @@ export const JoltingChain: Power = {
     "scale": 0.3,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 8,
-    "durations": {
-      "recoveryDebuff": 8
-    },
-    "enduranceDrain": {
-      "scale": 0.1,
-      "table": "Ranged_Ones"
-    },
-    "knockback": {
-      "scale": 0.66,
-      "table": "Ranged_Ones"
-    },
-    "recoveryDebuff": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "summon": {
-      "duration": 1,
-      "entity": "Pets_Chain_Jolt_Controller_Jump1",
-      "entityCount": 2,
-      "isPseudoPet": false
-    }
+  "summon": {
+    "duration": 1,
+    "entity": "Pets_Chain_Jolt_Controller_Jump1",
+    "entityCount": 2,
+    "isPseudoPet": false
   },
   "atoms": [
     ["Mez","Knockback",0.66,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],

@@ -45,55 +45,6 @@ export const O2Boost: Power = {
     "scale": 1.32,
     "table": "Ranged_Heal"
   },
-  "effects": {
-    "buffDuration": 60,
-    "debuffResistance": {
-      "endurance": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "perception": {
-        "scale": 2.5,
-        "table": "Ranged_Res_Boolean"
-      },
-      "recovery": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      }
-    },
-    "durations": {
-      "debuffResistance": 60,
-      "mezResistance": 60,
-      "perceptionBuff": 60,
-      "sleep": 60,
-      "stun": 60
-    },
-    "effectDuration": 60,
-    "mezResistance": {
-      "sleep": {
-        "scale": 4,
-        "table": "Ranged_Res_Boolean"
-      }
-    },
-    "perceptionBuff": {
-      "scale": 2.5,
-      "table": "Ranged_Res_Boolean"
-    },
-    "sleep": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": -20,
-      "table": "Ranged_Res_Boolean"
-    },
-    "stun": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": -20,
-      "table": "Ranged_Res_Boolean"
-    }
-  },
   "atoms": [
     ["Heal",null,1.32,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Endurance",null,2,1,60,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],

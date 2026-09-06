@@ -54,23 +54,6 @@ export const EaglesClaw: Power = {
     "scale": 2.28,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "buffDuration": 3,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 3.3,
-      "table": "Melee_Buff_Dmg"
-    },
-    "durations": {
-      "damageBuff": 3
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 4,
-      "table": "Melee_Stun"
-    }
-  },
   "atoms": [
     ["DamageBuff","Smashing",3.3,1,3,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,2.5],
     ["DamageBuff","Lethal",3.3,1,3,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,2.5],

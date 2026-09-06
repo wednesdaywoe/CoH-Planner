@@ -68,18 +68,6 @@ export const CrushingUppercut: Power = {
       "table": "Melee_InherentDamage"
     }
   ],
-  "effects": {
-    "knockup": {
-      "scale": 3,
-      "table": "Melee_Knockback"
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 7.5,
-      "table": "Melee_Stun"
-    }
-  },
   "atoms": [
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
     ["Mez","Knockup",3,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

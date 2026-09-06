@@ -39,39 +39,6 @@ export const ConduitofPain: Power = {
     "To Hit Buff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 60,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 3,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "durations": {
-      "damageBuff": 60,
-      "rechargeBuff": 60,
-      "tohitBuff": 60
-    },
-    "enduranceGain": {
-      "ignoreStrength": true,
-      "scale": 4,
-      "table": "Ranged_Ones"
-    },
-    "rechargeBuff": {
-      "ignoreStrength": true,
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    },
-    "tohitBuff": {
-      "scale": 1.5,
-      "table": "Ranged_Buff_ToHit"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff",
-      "rechargeBuff",
-      "tohitBuff"
-    ]
-  },
   "atoms": [
     ["Endurance",null,4,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,0.25],
     ["Meta",null,1,1,60,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"xpdebtprotection"],

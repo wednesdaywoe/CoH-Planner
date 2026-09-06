@@ -59,46 +59,6 @@ export const IceSword: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 8,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.088,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "damageBuff": 8.83,
-      "rechargeDebuff": 8,
-      "slow": 8
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.1,
-      "table": "Melee_Slow"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.1,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.1,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.1,
-        "table": "Melee_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.1,
-        "table": "Melee_Slow"
-      }
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff"
-    ]
-  },
   "atoms": [
     ["Damage","Lethal",0.588,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Cold",1.372,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],

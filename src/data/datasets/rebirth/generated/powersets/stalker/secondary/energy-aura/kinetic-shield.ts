@@ -44,34 +44,6 @@ export const KineticShield: Power = {
     "Defense Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "debuffResistance": {
-      "defense": {
-        "ignoreStrength": true,
-        "scale": 0.5,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "defenseBuff": {
-      "energy": {
-        "scale": 0.35,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 2.2,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 2.2,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "debuffResistance": 0.75,
-      "defenseBuff": 0.75
-    }
-  },
   "atoms": [
     ["Defense","Smashing",2.2,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Buff_Def"],
     ["Defense","Lethal",2.2,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Buff_Def"],

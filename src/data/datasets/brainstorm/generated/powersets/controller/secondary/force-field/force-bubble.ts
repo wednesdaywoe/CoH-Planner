@@ -39,140 +39,138 @@ export const ForceBubble: Power = {
     "Defense Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "displayName": "Dampening Bubble",
-      "duration": 45,
-      "isPseudoPet": true,
-      "powers": [
-        "Redirects.Force_Field.Dampening_Bubble",
-        "Redirects.Force_Field.Dampening_Bubble_Debuff",
-        "Redirects.Force_Field.Dampening_BubbleFX"
-      ],
-      "resolvedEntities": [
-        {
-          "displayName": "Dampening Bubble",
-          "duration": 45,
-          "copyCreatorMods": true,
-          "abilities": [
-            {
-              "name": "Dampening_Bubble",
-              "displayName": "Damping Bubble",
-              "type": "Auto",
-              "damage": [],
-              "effects": [
-                {
-                  "type": "ToHitDebuffResist",
-                  "scale": 1,
-                  "table": "Ranged_Res_Boolean",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "RegenDebuffResist",
-                  "scale": 1,
-                  "table": "Ranged_Res_Boolean",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "RechargeDebuffResist",
-                  "scale": 1,
-                  "table": "Ranged_Res_Boolean",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "DefenseDebuffResist",
-                  "scale": 0.5,
-                  "table": "Ranged_Res_Boolean"
-                },
-                {
-                  "type": "Absorb",
-                  "absorbAspect": "Maximum",
-                  "scale": 0.1,
-                  "table": "Melee_HealSelf"
-                }
-              ],
-              "recharge": 0,
-              "castTime": 0,
-              "activatePeriod": 0.5,
-              "effectArea": "Sphere",
-              "targetsAffected": [
-                "Friend"
-              ],
-              "radius": 55,
-              "maxTargets": 255
-            },
-            {
-              "name": "Dampening_Bubble_Debuff",
-              "displayName": "Damping Bubble",
-              "type": "Auto",
-              "damage": [],
-              "effects": [
-                {
-                  "type": "Slow",
-                  "axis": "runSpeed",
-                  "scale": 1.5,
-                  "table": "Ranged_Res_Boolean",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "Slow",
-                  "axis": "flySpeed",
-                  "scale": 1.5,
-                  "table": "Ranged_Res_Boolean",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "Slow",
-                  "axis": "jumpSpeed",
-                  "scale": 1.5,
-                  "table": "Ranged_Res_Boolean",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "ToHitDebuff",
-                  "scale": 0.5,
-                  "table": "Ranged_Debuff_ToHit"
-                },
-                {
-                  "type": "Slow",
-                  "axis": "runSpeed",
-                  "scale": 0.1,
-                  "table": "Ranged_Slow"
-                },
-                {
-                  "type": "Slow",
-                  "axis": "flySpeed",
-                  "scale": 0.1,
-                  "table": "Ranged_Slow"
-                },
-                {
-                  "type": "Slow",
-                  "axis": "jumpSpeed",
-                  "scale": 0.1,
-                  "table": "Ranged_Slow"
-                },
-                {
-                  "type": "DefenseDebuff",
-                  "scale": 0.5,
-                  "table": "Ranged_Debuff_Def"
-                }
-              ],
-              "recharge": 0,
-              "castTime": 0,
-              "activatePeriod": 0.5,
-              "effectArea": "Sphere",
-              "targetsAffected": [
-                "Foe"
-              ],
-              "radius": 55,
-              "maxTargets": 16
-            }
-          ]
-        }
-      ],
-      "entity": "PL_StaticObject"
-    }
+  "summon": {
+    "copyBoosts": true,
+    "displayName": "Dampening Bubble",
+    "duration": 45,
+    "isPseudoPet": true,
+    "powers": [
+      "Redirects.Force_Field.Dampening_Bubble",
+      "Redirects.Force_Field.Dampening_Bubble_Debuff",
+      "Redirects.Force_Field.Dampening_BubbleFX"
+    ],
+    "resolvedEntities": [
+      {
+        "displayName": "Dampening Bubble",
+        "duration": 45,
+        "copyCreatorMods": true,
+        "abilities": [
+          {
+            "name": "Dampening_Bubble",
+            "displayName": "Damping Bubble",
+            "type": "Auto",
+            "damage": [],
+            "effects": [
+              {
+                "type": "ToHitDebuffResist",
+                "scale": 1,
+                "table": "Ranged_Res_Boolean",
+                "ignoreStrength": true
+              },
+              {
+                "type": "RegenDebuffResist",
+                "scale": 1,
+                "table": "Ranged_Res_Boolean",
+                "ignoreStrength": true
+              },
+              {
+                "type": "RechargeDebuffResist",
+                "scale": 1,
+                "table": "Ranged_Res_Boolean",
+                "ignoreStrength": true
+              },
+              {
+                "type": "DefenseDebuffResist",
+                "scale": 0.5,
+                "table": "Ranged_Res_Boolean"
+              },
+              {
+                "type": "Absorb",
+                "absorbAspect": "Maximum",
+                "scale": 0.1,
+                "table": "Melee_HealSelf"
+              }
+            ],
+            "recharge": 0,
+            "castTime": 0,
+            "activatePeriod": 0.5,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "Friend"
+            ],
+            "radius": 55,
+            "maxTargets": 255
+          },
+          {
+            "name": "Dampening_Bubble_Debuff",
+            "displayName": "Damping Bubble",
+            "type": "Auto",
+            "damage": [],
+            "effects": [
+              {
+                "type": "Slow",
+                "axis": "runSpeed",
+                "scale": 1.5,
+                "table": "Ranged_Res_Boolean",
+                "ignoreStrength": true
+              },
+              {
+                "type": "Slow",
+                "axis": "flySpeed",
+                "scale": 1.5,
+                "table": "Ranged_Res_Boolean",
+                "ignoreStrength": true
+              },
+              {
+                "type": "Slow",
+                "axis": "jumpSpeed",
+                "scale": 1.5,
+                "table": "Ranged_Res_Boolean",
+                "ignoreStrength": true
+              },
+              {
+                "type": "ToHitDebuff",
+                "scale": 0.5,
+                "table": "Ranged_Debuff_ToHit"
+              },
+              {
+                "type": "Slow",
+                "axis": "runSpeed",
+                "scale": 0.1,
+                "table": "Ranged_Slow"
+              },
+              {
+                "type": "Slow",
+                "axis": "flySpeed",
+                "scale": 0.1,
+                "table": "Ranged_Slow"
+              },
+              {
+                "type": "Slow",
+                "axis": "jumpSpeed",
+                "scale": 0.1,
+                "table": "Ranged_Slow"
+              },
+              {
+                "type": "DefenseDebuff",
+                "scale": 0.5,
+                "table": "Ranged_Debuff_Def"
+              }
+            ],
+            "recharge": 0,
+            "castTime": 0,
+            "activatePeriod": 0.5,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "Foe"
+            ],
+            "radius": 55,
+            "maxTargets": 16
+          }
+        ]
+      }
+    ],
+    "entity": "PL_StaticObject"
   },
   "atoms": [
     ["EntCreate",null,1,1,45,"Melee_Level","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,45]

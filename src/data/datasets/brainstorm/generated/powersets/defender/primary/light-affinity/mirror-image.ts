@@ -45,30 +45,6 @@ export const MirrorImage: Power = {
     "To Hit Buff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 20,
-    "defenseDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 20,
-      "tohitBuff": 20,
-      "tohitDebuff": 20
-    },
-    "enduranceGain": {
-      "scale": 20,
-      "table": "Melee_Ones"
-    },
-    "tohitBuff": {
-      "scale": 3,
-      "table": "Melee_Buff_ToHit"
-    },
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_Debuff_ToHit"
-    }
-  },
   "atoms": [
     ["Endurance",null,20,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff"],
     ["ExecutePower",null,0,0,0,"Ranged_Ones","Abs","Magnitude","Self","Any",true,"Replace",2,null,null,1],

@@ -64,22 +64,6 @@ export const AbyssalGaze: Power = {
       "tickRate": 1
     }
   ],
-  "effects": {
-    "buffDuration": 10,
-    "durations": {
-      "tohitDebuff": 10
-    },
-    "hold": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 4.4,
-      "table": "Ranged_Immobilize"
-    },
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_Debuff_ToHit"
-    }
-  },
   "atoms": [
     ["Damage","Negative",0.707,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Negative",0.707,1,2.1,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],

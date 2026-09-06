@@ -34,9 +34,6 @@ export const FieryEmbrace: Power = {
     "Recharge"
   ],
   "maxSlots": 6,
-  "effects": {
-    "maxStacks": 2
-  },
   "atoms": [
     ["GlobalChanceMod",null,1,1,20,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Ones"],
     ["DamageBuff","Fire",10,1,20,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Buff_Dmg"],

@@ -1323,8 +1323,15 @@ function classifyModeRedirect(conditionExpression) {
  * the converted variant, and the variant's atom list is deliberately the narrower one (see
  * `extractModeVariants`). Adding the key here would take the wrong list.
  */
+// `summon` replaced `effects` here when the bag was retired, and the swap is the whole reason
+// four form-variant records ship a pet again: a variant is converted by `convertPower` like any
+// power, and only the fields named here are copied off it, so a field the list does not name is
+// silently dropped. Homecoming's Starless Step and the Teleportation pool's Teleport Foe both
+// carry their `Pets_TPFoeTaunt` marker in a variant and nowhere else — they were casualties of
+// this list, not of the strip, and the census found them only because the frozen corpus still
+// held the bag copy (ENT-22).
 const MODE_VARIANT_FIELDS = [
-  'stats', 'damage', 'damageTypes', 'effects',
+  'stats', 'damage', 'damageTypes', 'summon',
   'shortHelp', 'description', 'effectArea', 'targetType', 'powerType',
 ];
 
@@ -3919,7 +3926,9 @@ function _splitCamelOrUnderscore(s) {
   // like AoE / DoT — naive (lower)(upper) split would yield "Ao E Mode")
   return s
     .replace(/_/g, ' ')
-    .replace(/([a-z\d])([A-Z])/g, '$1 $2')        // bonusAoE → bonus AoE? wait — see next
+    // First split breaks `bonusAoE` → `bonus AoE`; the acronym split below is what keeps the
+    // embedded all-caps tokens (AoE / DoT) intact rather than yielding "Ao E Mode".
+    .replace(/([a-z\d])([A-Z])/g, '$1 $2')
     .replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2')    // splits the END of an acronym from the next CamelWord
     .replace(/\s+/g, ' ')
     .trim();
@@ -7332,6 +7341,24 @@ function extractEffects(templates, powerName, targetsAffected) {
 }
 
 /**
+ * The summon for a power converted OUTSIDE `convertPower` — the epic, pool and inherent
+ * partitions, which each assemble their own record.
+ *
+ * They used to reach `extractSummon` through `extractEffects`, so retiring the bag took their
+ * pets with it: 50 epic-pool summons per fork went dark and nothing counted them (ENT-22).
+ * This is that same call with the same `_bagTemplates` filter, named so a partition can ask for
+ * the summon without asking for a bag it no longer emits.
+ *
+ * NB the whole-power resolution passes `convertPower` runs afterwards — `normalizeSummonEntities`,
+ * `resolvePhashSiblings`, `rebuildTierConditionalSummon`, `attachResolvedPseudoPets`, the ENT-16
+ * redirect join — are NOT run here, and were not run for these partitions before the strip either.
+ * A partition that needs one has to call it; this restores what it had, no more.
+ */
+function extractPowerSummon(templates, powerName) {
+  return extractSummon(_bagTemplates(templates), powerName);
+}
+
+/**
  * ENTITY CREATION — template-owned summon extraction (verbatim port of the
  * legacy extractEffects EntCreate section + its phash/ignited epilogue).
  * Returns the summon object or null.
@@ -8490,20 +8517,54 @@ const TSPY_APPLIED_MEZ_KEYS = ['hold', 'stun', 'immobilize', 'sleep', 'confuse',
  * appliers (`regenBuffValue` / `recoveryBuffValue`) read the atom list, not the
  * bag, so a slot deleted here would otherwise silently reappear in their totals.
  *
- * `ignoreStrength: false` matters: the guard drops only `regenBuff`/`recoveryBuff`,
- * never the `*Unenhanced` twins, so a trapped power keeping an IgnoreStrength half
- * must keep the atom behind it too.
+ * Each entry is the predicate picking the atoms that FED the named slot, so the stamp
+ * lands on exactly what the deletion removed and nothing else. A predicate rather than a
+ * field/value pair because the arms differ in what discriminates them: regen/recovery split
+ * on `ignoreStrength`, `rechargeBuff` splits on the buff/debuff face, and the mez slots split
+ * on `subType`.
  *
- * Only regen/recovery are listed. The guard also drops `rechargeBuff`,
- * `enduranceGain` and `defenseBuff`, but no atom-native applier reads those from a
- * trapped power today (defense migrated in Slice 4 and its shadow is green — the
- * pet-only `defenseBuff` drops reconstruct to nothing on the atom side). Adding a
- * slot here is the required step when one of those migrates.
+ * The regen/recovery `ignoreStrength` test matters: the guard drops only
+ * `regenBuff`/`recoveryBuff`, never the `*Unenhanced` twins, so a trapped power keeping an
+ * IgnoreStrength half must keep the atom behind it too.
+ *
+ * `rechargeBuff` deliberately does NOT test `ignoreStrength`: the rechargeTime branch has no
+ * `*Unenhanced` arm, so both halves land in the one slot and both must be stamped (TSPY-10 —
+ * Nuclear Mutation's row is IgnoreStrength and a `false` test would have missed it).
+ *
+ * `enduranceGain` and `defenseBuff` are still absent: the guard drops those too, but no
+ * atom-native applier reads them from a trapped power today (defense migrated in Slice 4 and
+ * its shadow is green — the pet-only `defenseBuff` drops reconstruct to nothing on the atom
+ * side). Adding a slot here remains the required step when one of those migrates.
  */
-const NOT_ON_CASTER_SLOTS = {
-  regenBuff: { effectType: 'Regeneration', ignoreStrength: false },
-  recoveryBuff: { effectType: 'Recovery', ignoreStrength: false },
+const _rechargeIsDebuffArm = (t) => {
+  const table = (_atomField(t, 'modifierTable') || '').toLowerCase();
+  return (_atomField(t, 'scale') || 0) < 0 || table.includes('debuff') || table.includes('slow');
 };
+const NOT_ON_CASTER_SLOTS = {
+  regenBuff: (t) =>
+    _atomField(t, 'effectType') === 'Regeneration' && !_atomField(t, 'ignoreStrength'),
+  recoveryBuff: (t) =>
+    _atomField(t, 'effectType') === 'Recovery' && !_atomField(t, 'ignoreStrength'),
+  // The converter's rechargeTime buff arm: not the `resistance` face (the bridge types that
+  // `MezResist`-style into its own slot), and not the debuff/slow face that routes to
+  // `rechargeDebuff`. Time Wall carries both faces, and only the buff row is dropped.
+  rechargeBuff: (t) =>
+    _atomField(t, 'effectType') === 'RechargeTime'
+    && (_atomField(t, 'aspect') || '').toLowerCase() !== 'res'
+    && !_rechargeIsDebuffArm(t),
+};
+// The applied-mez slots `guardThunderspyAppliedMez` drops. The atom bridge already routes the
+// `Res` face to `MezResist` and the `Str` face to `Enhancement`, so `effectType === 'Mez'` IS
+// the applied face — no aspect test needed. Keyed through the same
+// `MEZ_TYPES`/`KNOCKBACK_TYPES` vocabulary `protectionBackedMezKeys` reads, so the stamp and
+// the guard's protection carve-out cannot drift apart.
+for (const slot of TSPY_APPLIED_MEZ_KEYS) {
+  NOT_ON_CASTER_SLOTS[slot] = (t) => {
+    if (_atomField(t, 'effectType') !== 'Mez') return false;
+    const sub = (_atomField(t, 'subType') || '').toLowerCase();
+    return (MEZ_TYPES[sub] || KNOCKBACK_TYPES[sub]) === slot;
+  };
+}
 
 /**
  * Mark the emitted atoms behind a target-trapped slot `notOnCaster`, so the
@@ -8519,17 +8580,24 @@ const NOT_ON_CASTER_SLOTS = {
  * appliers only ever consider base atoms.
  */
 function stampNotOnCaster(power, slot) {
-  const spec = NOT_ON_CASTER_SLOTS[slot];
-  if (!spec || !power.atoms) return;
+  const matches = NOT_ON_CASTER_SLOTS[slot];
+  if (!matches || !power.atoms) return;
   power.atoms = power.atoms.map((t) => {
     if (_atomField(t, 'gated') === true) return t;
-    if (_atomField(t, 'effectType') !== spec.effectType) return t;
-    if (!!_atomField(t, 'ignoreStrength') !== spec.ignoreStrength) return t;
+    if (!matches(t)) return t;
     return _withAtomField(t, 'notOnCaster', true);
   });
 }
-function guardThunderspyOnesBuffs(power, targetsAffected) {
-  const e = power.effects;
+/**
+ * `effects` defaults to `power.effects` so the callers that still emit a bag need not change.
+ * A caller that computes the projection WITHOUT emitting it (the converters that stopped
+ * writing `power.effects`) must pass it explicitly: reading the absent field silently turned
+ * this guard into a no-op and left the atoms carrying the rows it exists to remove — 23
+ * Thunderspy recharge phantoms and 9 applied-mez self-roots reached the engine that way
+ * (TSPY-10). The projection passed must be the one the ATOMS came from.
+ */
+function guardThunderspyOnesBuffs(power, targetsAffected, effects = power.effects) {
+  const e = effects;
   if (!e) return;
   let changed = false;
   const drop = (k) => {
@@ -8637,8 +8705,9 @@ function protectionBackedMezKeys(atoms) {
   return keys;
 }
 
-function guardThunderspyAppliedMez(power, targetsAffected) {
-  const e = power.effects;
+/** See {@link guardThunderspyOnesBuffs} for why `effects` is a parameter. */
+function guardThunderspyAppliedMez(power, targetsAffected, effects = power.effects) {
+  const e = effects;
   if (!e) return;
   const ta = targetsAffected || [];
   // Empty/unknown recipient list → keep (the vast majority of mez is foe control;
@@ -8652,6 +8721,10 @@ function guardThunderspyAppliedMez(power, targetsAffected) {
     if (e[k] !== undefined) {
       delete e[k];
       if (e.durations) delete e.durations[k];
+      // Mirror the deletion onto the atoms (TSPY-10). Without this the slot is gone from the
+      // bag and still live on the wire, so every atom-native mez reader re-credits the caster
+      // with the control this guard just judged a parse artifact.
+      stampNotOnCaster(power, k);
       changed = true;
     }
   }
@@ -8662,7 +8735,11 @@ function guardThunderspyAppliedMez(power, targetsAffected) {
   // hollow effects object — mirrors the Swap-Ammo META_ONLY cleanup below.
   if (e.durations && Object.keys(e.durations).length === 0) delete e.durations;
   const META_ONLY = new Set(['durations', 'buffDuration', 'effectDuration', 'maxStacks', 'stacksLinear']);
-  if (Object.keys(e).every((k) => META_ONLY.has(k))) delete power.effects;
+  if (Object.keys(e).every((k) => META_ONLY.has(k))) {
+    // Only meta left. The bag is not emitted any more, so there is no `power.effects` to drop;
+    // clear the projection in place instead, which is what the summon epilogue below reads.
+    for (const k of Object.keys(e)) delete e[k];
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -9028,6 +9105,9 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType, provena
   // below must not claim it a second time — the two would fight over the displayed cast.
   const meterForms = extractAssassinStrikeDamage(powerJson);
 
+  // Captured so the summon projection stays reachable after this block closes.
+  let effectsRef;
+
   if (allTemplates.length > 0) {
     let damage = extractDamage(allTemplates, powerJson);
     // The `*_Info` display power explicitly declares the power's damage types, so
@@ -9046,6 +9126,7 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType, provena
     }
 
     const effects = extractEffects(allTemplates, powerJson.name, powerJson.targets_affected);
+    effectsRef = effects;
 
     // Detect per-target stacking (Stack/Continuous/RefreshToCount templates,
     // Execute_Power redirects). For redirect-only powers (Consume/Devour Psyche:
@@ -9118,12 +9199,13 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType, provena
       }
     }
 
-    if (Object.keys(effects).length) power.effects = effects;
-
     // Resolve location pseudo-pet redirect lists into synthesized ability lists
     // (Storm Cell, Category Five, Freezing Rain, …) so the runtime can surface
     // their DoT + debuffs. See PSEUDO-PET-POWER-RESOLUTION.md.
-    attachResolvedPseudoPets(powerJson, power.effects);
+    // attachResolvedPseudoPets reads the summon off this local projection now that the
+    // top-level effects bag is no longer emitted; it is the same object that used to be
+    // power.effects.
+    attachResolvedPseudoPets(powerJson, effects);
 
     // LAST, deliberately: only a summon that still has no pointer of any kind gets one from
     // the entity that declares its redirect powers (ENT-16).
@@ -9140,7 +9222,7 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType, provena
     // Fourteen such summons on Homecoming, eighteen on Brainstorm, none on Rebirth or
     // Thunderspy; of those, only Brainstorm's four Poison Traps resolve, because the rest
     // redirect to powers no entity declares.
-    const summon = power.effects?.summon;
+    const summon = effects?.summon;
     if (summon && !summon.entity && !summon.entities) {
       const resolvedEntity = resolveEntityFromRedirects(summon.powers);
       if (resolvedEntity) summon.entity = resolvedEntity;
@@ -9160,7 +9242,7 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType, provena
   // failure would be silent — Soul Extraction's window would simply be absent from the
   // wire. Nothing in the atom block reads `power.effects`, so the order is free.
   {
-    const eff = power.effects || {};
+    const eff = effectsRef || {};
     normalizeSummonEntities(powerJson, eff);
     // Merge a P-hash entity that resolves (via its priority_list) to one of its
     // named siblings — Fire Imps' first imp, Gremlins' first gremlin. See fn doc.
@@ -9168,8 +9250,31 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType, provena
     // Surface a tier-conditional summon the gate filter dropped (Soul Extraction
     // → one Ghost, tier matches the sacrificed henchman). See fn doc.
     rebuildTierConditionalSummon(powerJson, eff);
-    if (eff.summon && !power.effects) power.effects = eff;
+    // A summon this block MINTED belongs to the power as much as one `extractSummon` found.
+    // `effectsRef` is only assigned where the power had base templates, and Gang War has none —
+    // its create-entity rows are dropped by the activation_effects buff filter (ENT-15), so the
+    // rebuild is its only summon. Re-pointing here is what carries it to the emit below and to
+    // the two conditional-toggle reads further down.
+    if (eff.summon) effectsRef = eff;
   }
+
+  // ENTITY CREATION — the pet parameters' own home on the power record.
+  //
+  // `extractSummon`'s value used to ride in the `effects` bag and had no other address, so the
+  // atom1-13 strip took it with the bag and 400+ summoners per fork lost their pets outright:
+  // no pet rows on the display, and the buff-pet aura fold at zero on all four forks
+  // (DATA-GAP-REGISTER ENT-22). Nothing replaced it because nothing else was writing it.
+  //
+  // Top-level rather than back in a bag, and not re-derived from the atoms either. The value is
+  // a WHOLE-POWER verdict — which `EntCreate` row is the window (ENT-14), the entity/count
+  // aggregation, the P-hash and redirect resolutions (ENT-16), the tier-conditional rebuild —
+  // and this function is where every one of those was decided. A consumer re-deriving it from
+  // the atom stream would be a second implementation of rules that took four entries to get
+  // right, and the epic/pool partitions would each need a third.
+  //
+  // Emitted AFTER the resolution passes above and after `attachResolvedPseudoPets`, so the
+  // object is complete; it is the same object those passes mutated, not a copy.
+  if (effectsRef?.summon) power.summon = effectsRef.summon;
 
   // The conditional→atom join, stamped ahead of the atom emit because that is the only
   // order in which it can reach an atom: `extractConditionalEffects` stamps `_conditionalId`
@@ -9334,7 +9439,9 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType, provena
   // Gate on a `poweredUpEffects` ability — that WindSpeed link is unique to Storm
   // Cell, so Category Five (always at max strength) and other gated pseudo-pets
   // (Tide Pool) don't get a mislabeled toggle.
-  const resolvedEnts = power.effects?.summon?.resolvedEntities;
+  // Read the summon off the local projection (the top-level effects bag is no longer
+  // emitted; it used to be the same object). Surfaces the Storm Cell Active toggle.
+  const resolvedEnts = effectsRef?.summon?.resolvedEntities;
   if (resolvedEnts && resolvedEnts.some(ent => ent.abilities.some(a => a.poweredUpEffects))) {
     const exists = (power.conditionalEffects || []).some(c => c.id === 'stormblast_instormcell');
     if (!exists) {
@@ -9347,7 +9454,7 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType, provena
 
   // Conditional summon entities (Oil Slick Arrow's ignited burn patch) — surface
   // a per-power toggle so the InfoPanel can fold the triggered entity's damage in.
-  for (const ce of power.effects?.summon?.conditionalEntities ?? []) {
+  for (const ce of effectsRef?.summon?.conditionalEntities ?? []) {
     const exists = (power.conditionalEffects || []).some(c => c.id === ce.toggleId);
     if (!exists) {
       power.conditionalEffects = [
@@ -9435,8 +9542,8 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType, provena
     // set, never stamped onto atoms. Omit when empty (non-damage powers).
     const damageTypes = damageTypeSetFromPower(powerJson);
     if (damageTypes.length) power.damageTypes = damageTypes;
-    guardThunderspyOnesBuffs(power, powerJson.targets_affected);
-    guardThunderspyAppliedMez(power, powerJson.targets_affected);
+    guardThunderspyOnesBuffs(power, powerJson.targets_affected, effectsRef);
+    guardThunderspyAppliedMez(power, powerJson.targets_affected, effectsRef);
   }
 
   return power;
@@ -9773,6 +9880,7 @@ module.exports = {
   guardThunderspyAppliedMez,
   resolveThunderspyMovementTargets,
   extractEffects,
+  extractPowerSummon,
   templatesToAtoms,
   projectAtomsToEffects,
   mixedIgnoreStrengthSlotCount: () => mixedIgnoreStrengthSlots,

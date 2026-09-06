@@ -50,14 +50,6 @@ export const ImpassionedSerenade: Power = {
     "scale": 0.65,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "confuse": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 20,
-      "table": "Ranged_Immobilize"
-    }
-  },
   "atoms": [
     ["Damage","Psionic",0.65,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Mez","Confused",20,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"],0.25],

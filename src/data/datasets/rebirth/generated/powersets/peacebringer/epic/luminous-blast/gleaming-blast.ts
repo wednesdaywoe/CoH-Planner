@@ -54,20 +54,6 @@ export const GleamingBlast: Power = {
     "scale": 1.64,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 6,
-    "defenseDebuff": {
-      "scale": 2,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 6
-    },
-    "knockback": {
-      "scale": 1,
-      "table": "Ranged_Knockback"
-    }
-  },
   "atoms": [
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Constant","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kPeacebringer_Blaster_Mode","source.Mode?","!"],null,null,null,null,null,null,null,null,null,"Ones",null,"power_redirect"],
     ["Damage","Energy",1.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
@@ -98,20 +84,6 @@ export const GleamingBlast: Power = {
         "type": "Energy",
         "scale": 1.64,
         "table": "Ranged_SSDamage"
-      },
-      "effects": {
-        "buffDuration": 6,
-        "defenseDebuff": {
-          "scale": 2,
-          "table": "Ranged_Debuff_Def"
-        },
-        "durations": {
-          "defenseDebuff": 6
-        },
-        "knockback": {
-          "scale": 1,
-          "table": "Ranged_Knockback"
-        }
       },
       "shortHelp": "Ranged, High DMG(Energy), Foe -DEF, Knockback",
       "description": "A much more powerful, yet slower version of Bright Nova Bolt. Bright Nova Blast sends a focused blast of Kheldian energy at a foe that can knock him back and reduce his defense. This power is only available while in Bright Nova Form. Damage: High, Recharge: Moderate",

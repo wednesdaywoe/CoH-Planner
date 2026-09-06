@@ -45,60 +45,58 @@ export const Meteor: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "displayName": "Meteor",
-      "duration": 10,
-      "isPseudoPet": true,
-      "powers": [
-        "Pets.ResistAll.ResistAll",
-        "Redirects.Seismic_Blast.Meteor"
-      ],
-      "resolvedEntities": [
-        {
-          "displayName": "Meteor",
-          "duration": 10,
-          "copyCreatorMods": true,
-          "abilities": [
-            {
-              "name": "Meteor",
-              "displayName": "Meteor",
-              "type": "Auto",
-              "damage": [
-                {
-                  "damageType": "Fire",
-                  "scale": 1,
-                  "table": "Ranged_Damage"
-                },
-                {
-                  "damageType": "Smashing",
-                  "scale": 3,
-                  "table": "Ranged_Damage"
-                }
-              ],
-              "effects": [
-                {
-                  "type": "Knockback",
-                  "magnitude": 1,
-                  "attribType": "Magnitude",
-                  "scale": 10,
-                  "table": "Ranged_Knockback"
-                }
-              ],
-              "recharge": 0,
-              "castTime": 0,
-              "activatePeriod": 999,
-              "effectArea": "SingleTarget",
-              "targetsAffected": [
-                "Self"
-              ]
-            }
-          ]
-        }
-      ],
-      "entity": "PL_StaticObject"
-    }
+  "summon": {
+    "copyBoosts": true,
+    "displayName": "Meteor",
+    "duration": 10,
+    "isPseudoPet": true,
+    "powers": [
+      "Pets.ResistAll.ResistAll",
+      "Redirects.Seismic_Blast.Meteor"
+    ],
+    "resolvedEntities": [
+      {
+        "displayName": "Meteor",
+        "duration": 10,
+        "copyCreatorMods": true,
+        "abilities": [
+          {
+            "name": "Meteor",
+            "displayName": "Meteor",
+            "type": "Auto",
+            "damage": [
+              {
+                "damageType": "Fire",
+                "scale": 1,
+                "table": "Ranged_Damage"
+              },
+              {
+                "damageType": "Smashing",
+                "scale": 3,
+                "table": "Ranged_Damage"
+              }
+            ],
+            "effects": [
+              {
+                "type": "Knockback",
+                "magnitude": 1,
+                "attribType": "Magnitude",
+                "scale": 10,
+                "table": "Ranged_Knockback"
+              }
+            ],
+            "recharge": 0,
+            "castTime": 0,
+            "activatePeriod": 999,
+            "effectArea": "SingleTarget",
+            "targetsAffected": [
+              "Self"
+            ]
+          }
+        ]
+      }
+    ],
+    "entity": "PL_StaticObject"
   },
   "atoms": [
     ["EntCreate",null,1,1,10,"Melee_Level","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,10]

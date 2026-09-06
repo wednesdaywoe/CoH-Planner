@@ -53,14 +53,6 @@ export const CobraStrike: Power = {
     "scale": 1.96,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "stun": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 10,
-      "table": "Melee_Stun"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",1.96,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
     ["Mez","Stunned",10,3,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.75,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0.75,null,"Stun"],

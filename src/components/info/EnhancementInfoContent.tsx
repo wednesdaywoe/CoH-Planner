@@ -328,14 +328,14 @@ export function EnhancementInfoContent({ powerName, powerSet, slotIndex }: Enhan
                       // `rolls` checks rather than one. See resolveProcRollSchedule.
                       const patchDuration = resolveProcPatchDuration(
                         base?.effects?.radius || selected.effects?.radius || 0,
-                        base?.effects?.summon ?? selected.effects?.summon,
+                        base?.summon ?? selected.summon,
                       );
                       if (isAutoOrToggle || patchDuration != null) {
                         const togArcRaw = base?.effects?.arc ?? selected.effects?.arc;
                         const patchArea = resolveProcAreaGeometry(
                           base?.effects?.radius || selected.effects?.radius || 0,
                           arcToDegrees(togArcRaw) || undefined,
-                          base?.effects?.summon ?? selected.effects?.summon,
+                          base?.summon ?? selected.summon,
                         );
                         const { radius: togRadius, arcDegrees: togArc } = resolveProcRollGeometry(
                           procsOnlyOnMainTarget,

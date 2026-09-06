@@ -41,51 +41,6 @@ export const TimeCrawl: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 20,
-    "durations": {
-      "movementCapDebuff": 20,
-      "rechargeDebuff": 20,
-      "regenDebuff": 20,
-      "slow": 20
-    },
-    "movementCapDebuff": {
-      "runSpeed": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
-      }
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.6,
-      "table": "Ranged_Slow"
-    },
-    "regenDebuff": {
-      "ignoreStrength": true,
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Movement","Run",0.5,1,20,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
     ["RechargeTime",null,0.6,1,20,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],

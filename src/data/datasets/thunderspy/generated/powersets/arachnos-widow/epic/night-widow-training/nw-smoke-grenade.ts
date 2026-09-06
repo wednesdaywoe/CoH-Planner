@@ -41,41 +41,6 @@ export const NWSmokeGrenade: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 60,
-    "durations": {
-      "perceptionDebuff": 60,
-      "stealth": 10,
-      "tohitDebuff": 60
-    },
-    "perceptionDebuff": {
-      "scale": 0.9,
-      "table": "Melee_Ones"
-    },
-    "placate": {
-      "scale": 10,
-      "table": "Melee_Taunt"
-    },
-    "stealth": {
-      "stealthPvE": {
-        "scale": 150,
-        "table": "Melee_Ones"
-      },
-      "stealthPvP": {
-        "scale": 380,
-        "table": "Melee_Ones"
-      },
-      "translucency": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      }
-    },
-    "tohitDebuff": {
-      "scale": 0.5,
-      "table": "Melee_DeBuff_ToHit"
-    }
-  },
   "atoms": [
     ["Perception",null,-0.9,1,60,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["Stealth","RadiusPvE",150,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],

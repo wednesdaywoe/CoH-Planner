@@ -51,23 +51,6 @@ export const PsychicScream: Power = {
     "scale": 1.04,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 10.17,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.064,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 10.17,
-      "rechargeDebuff": 10
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.5,
-      "table": "Ranged_Slow"
-    }
-  },
   "atoms": [
     ["Damage","Psionic",1.04,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["RechargeTime",null,0.5,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],

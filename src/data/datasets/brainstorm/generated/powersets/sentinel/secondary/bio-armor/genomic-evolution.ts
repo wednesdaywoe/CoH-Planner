@@ -34,46 +34,6 @@ export const GenomicEvolution: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 5.25,
-    "durations": {
-      "resistance": 5.25
-    },
-    "resistance": {
-      "cold": {
-        "scale": 0.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 0.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 0.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 0.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 0.6,
-        "table": "Melee_Res_Dmg"
-      },
-      "smashing": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["Resistance","Smashing",0.75,1,5.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Resistance","Lethal",0.75,1,5.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],

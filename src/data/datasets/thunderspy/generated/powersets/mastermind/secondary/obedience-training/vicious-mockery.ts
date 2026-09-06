@@ -43,12 +43,6 @@ export const ViciousMockery: Power = {
     "Knockback"
   ],
   "maxSlots": 6,
-  "effects": {
-    "knockback": {
-      "scale": 0.1,
-      "table": "Melee_Knockback"
-    }
-  },
   "atoms": [
     ["Mez","Knockback",0.1,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Knockback"]
   ],

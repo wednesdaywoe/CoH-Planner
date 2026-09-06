@@ -45,22 +45,6 @@ export const DullPain: Power = {
     "scale": 4,
     "table": "Melee_HealSelf"
   },
-  "effects": {
-    "buffDuration": 120,
-    "durations": {
-      "maxHPBuff": 120,
-      "maxHPBuffUnenhanced": 120
-    },
-    "maxHPBuff": {
-      "scale": 1,
-      "table": "Melee_HealSelf"
-    },
-    "maxHPBuffUnenhanced": {
-      "ignoreStrength": true,
-      "scale": 1,
-      "table": "Melee_HealSelf"
-    }
-  },
   "atoms": [
     ["Meta",null,1,1,120,"Melee_Ones","Cur","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null",["Self"]],
     ["MaxHP",null,1,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Self"]],

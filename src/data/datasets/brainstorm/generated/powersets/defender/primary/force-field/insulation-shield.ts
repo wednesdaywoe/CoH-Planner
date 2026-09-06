@@ -42,51 +42,6 @@ export const InsulationShield: Power = {
     "Defense Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 240,
-    "debuffResistance": {
-      "endurance": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "recovery": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      }
-    },
-    "defenseBuff": {
-      "aoe": {
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "cold": {
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "energy": {
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "fire": {
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "negative": {
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "ranged": {
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      }
-    },
-    "durations": {
-      "debuffResistance": 240,
-      "defenseBuff": 240
-    }
-  },
   "atoms": [
     ["Defense","Ranged",1.5,1,240,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["Defense","AoE",1.5,1,240,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],

@@ -54,12 +54,6 @@ export const LightOpening: Power = {
     "duration": 0.5,
     "tickRate": 0.33000001311302185
   },
-  "effects": {
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    }
-  },
   "atoms": [
     ["Damage","Lethal",0.42,1,0.5,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.33000001311302185,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage",null,null,null,0.125],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","!","enttype","target>","critter","eq","&&"],null,null,null,null,null,null,null,null,null,"InherentTaunt"],

@@ -59,37 +59,6 @@ export const Tranquilizer: Power = {
       "table": "Ranged_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 5,
-    "durations": {
-      "slow": 5
-    },
-    "sleep": {
-      "attribType": "Duration",
-      "mag": 3.5,
-      "scale": 30,
-      "table": "Ranged_Sleep"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.1,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.1,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.1,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.1,
-        "table": "Ranged_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Mez","Sleep",30,3.5,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Raid","target.HasTag?","!","&&"],null,null,null,null,null,null,null,null,null,null,null,null,null,0.25],
     ["Mez","Sleep",15,1,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","critter","eq","Raid","target.HasTag?","!","&&"],null,null,null,null,null,null,null,null,null,"Overpower",null,null,null,0.25],

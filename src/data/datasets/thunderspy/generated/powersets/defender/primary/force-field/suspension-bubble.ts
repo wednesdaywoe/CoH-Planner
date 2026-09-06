@@ -40,39 +40,6 @@ export const SuspensionBubble: Power = {
     "Knockback"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 1,
-    "durations": {
-      "movement": 1,
-      "slow": 1
-    },
-    "knockback": {
-      "ignoreStrength": true,
-      "scale": 0.1,
-      "table": "Ranged_Ones"
-    },
-    "movement": {
-      "fly": {
-        "scale": 4,
-        "table": "Melee_Ones"
-      },
-      "movementControl": {
-        "scale": 25,
-        "table": "Melee_Control"
-      },
-      "movementFriction": {
-        "scale": 25,
-        "table": "Melee_Friction"
-      }
-    },
-    "slow": {
-      "flySpeed": {
-        "ignoreStrength": true,
-        "scale": 1.01,
-        "table": "Melee_Ones"
-      }
-    }
-  },
   "atoms": [
     ["Mez","Knockback",0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,true,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones"],
     ["Movement","FlyMode",4,1,1,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],

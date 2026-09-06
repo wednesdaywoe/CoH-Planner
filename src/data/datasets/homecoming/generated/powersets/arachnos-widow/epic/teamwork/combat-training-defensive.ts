@@ -35,51 +35,6 @@ export const CombatTrainingDefensive: Power = {
     "Defense Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "defenseBuff": {
-      "melee": {
-        "scale": 0.75,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 0.75,
-      "resistance": 0.75
-    },
-    "resistance": {
-      "cold": {
-        "ignoreStrength": true,
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "energy": {
-        "ignoreStrength": true,
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "fire": {
-        "ignoreStrength": true,
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "lethal": {
-        "ignoreStrength": true,
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "negative": {
-        "ignoreStrength": true,
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "smashing": {
-        "ignoreStrength": true,
-        "scale": 0,
-        "table": "Melee_Ones"
-      }
-    }
-  },
   "atoms": [
     ["Defense","Melee",0.75,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Resistance","Smashing",0,1,0.75,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,["75","kHitPoints%","source>","-","0","100","minmax","60","/","0.25","*"]],

@@ -42,54 +42,6 @@ export const Brine: Power = {
     "Accurate Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 60,
-    "durations": {
-      "resistanceDebuff": 60
-    },
-    "resistanceDebuff": {
-      "cold": {
-        "ignoreStrength": true,
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
-        "ignoreStrength": true,
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "fire": {
-        "ignoreStrength": true,
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "lethal": {
-        "ignoreStrength": true,
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "negative": {
-        "ignoreStrength": true,
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "psionic": {
-        "ignoreStrength": true,
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "smashing": {
-        "ignoreStrength": true,
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "toxic": {
-        "ignoreStrength": true,
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["Resistance","Smashing",-3,1,60,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Resistance","Lethal",-3,1,60,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],

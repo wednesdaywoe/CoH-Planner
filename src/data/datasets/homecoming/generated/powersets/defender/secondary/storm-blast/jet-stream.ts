@@ -53,16 +53,6 @@ export const JetStream: Power = {
     "scale": 0.8,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 2,
-    "durations": {
-      "repel": 2
-    },
-    "repel": {
-      "scale": 4,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.8,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1],
     ["Mez","Repel",4,1,2,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["temporary_powers.temporary_powers.StormBlast_InStormCell","target.ownPower?","!"],null,null,null,null,null,null,null,null,null,"ReduceIfKD"],

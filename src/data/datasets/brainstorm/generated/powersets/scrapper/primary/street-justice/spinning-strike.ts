@@ -56,12 +56,6 @@ export const SpinningStrike: Power = {
     "duration": 0.45,
     "tickRate": 0.4000000059604645
   },
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.77,1,0.45,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Combo_Level_1","source.ownPower?","!","Temporary_Powers.Temporary_Powers.Combo_Level_2","source.ownPower?","!","&&","Temporary_Powers.Temporary_Powers.Combo_Level_3","source.ownPower?","!","&&","&&"]],
     ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Combo_Level_1","source.ownPower?","!","Temporary_Powers.Temporary_Powers.Combo_Level_2","source.ownPower?","!","&&","Temporary_Powers.Temporary_Powers.Combo_Level_3","source.ownPower?","!","&&","&&"],null,null,null,null,null,null,null,null,null,null,null,null,null,0.4],

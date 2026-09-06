@@ -45,45 +45,6 @@ export const Shiver: Power = {
     "Universal Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 18,
-    "durations": {
-      "movementCapDebuff": 18,
-      "rechargeDebuff": 18,
-      "slow": 18
-    },
-    "movementCapDebuff": {
-      "runSpeed": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
-      }
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.65,
-      "table": "Ranged_Slow"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.65,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.65,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.65,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.65,
-        "table": "Ranged_Slow"
-      }
-    }
-  },
   "atoms": [
     ["RechargeTime",null,0.65,1,18,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
     ["Movement","JumpHeight",0.65,1,18,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],

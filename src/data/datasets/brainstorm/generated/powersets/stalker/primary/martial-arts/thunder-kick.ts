@@ -59,14 +59,6 @@ export const ThunderKick: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "stun": {
-      "attribType": "Duration",
-      "mag": 2,
-      "scale": 6,
-      "table": "Melee_Stun"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.84,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Smashing",0.84,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,["enttype","target>","critter","eq","enttype","target>","critter","eq","kMeter","source>",".9","<","&&","&&"],null,null,null,null,null,null,null,null,null,"ASTeamCrit"],

@@ -56,22 +56,6 @@ export const ShiftingTides: Power = {
     "scale": 0.5,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.24,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "rechargeBuff": {
-      "ignoreStrength": true,
-      "scale": 0.02,
-      "table": "Melee_Ones"
-    },
-    "tohitBuff": {
-      "scale": 0.08,
-      "table": "Ranged_Buff_ToHit"
-    }
-  },
   "atoms": [
     ["Meta",null,1,1,2,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],
     ["Damage","Cold",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,null,null,null,null,0.5],

@@ -43,66 +43,64 @@ export const TripMine: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "displayName": "Trip Mine",
-      "duration": 260,
-      "isPseudoPet": true,
-      "powers": [
-        "Villain_Pets.Traps_Trip_Mine.Resistance",
-        "Villain_Pets.Traps_Trip_Mine.Self_Destruct"
-      ],
-      "resolvedEntities": [
-        {
-          "displayName": "Trip Mine",
-          "duration": 260,
-          "copyCreatorMods": true,
-          "abilities": [
-            {
-              "name": "Self_Destruct",
-              "displayName": "Self Destruct",
-              "type": "Click",
-              "damage": [
-                {
-                  "damageType": "Fire",
-                  "scale": 2,
-                  "table": "Melee_Damage"
-                },
-                {
-                  "damageType": "Lethal",
-                  "scale": 1,
-                  "table": "Melee_Damage"
-                },
-                {
-                  "damageType": "Fire",
-                  "scale": 1,
-                  "table": "Melee_Damage"
-                }
-              ],
-              "effects": [
-                {
-                  "type": "Knockup",
-                  "magnitude": 1,
-                  "attribType": "Magnitude",
-                  "scale": 1,
-                  "table": "Melee_Knockback",
-                  "chance": 0.5
-                }
-              ],
-              "recharge": 30,
-              "castTime": 0,
-              "effectArea": "SingleTarget",
-              "targetsAffected": [
-                "Foe"
-              ],
-              "maxTargets": 1
-            }
-          ]
-        }
-      ],
-      "entity": "PL_Untargetable_FightPreferRanged"
-    }
+  "summon": {
+    "copyBoosts": true,
+    "displayName": "Trip Mine",
+    "duration": 260,
+    "isPseudoPet": true,
+    "powers": [
+      "Villain_Pets.Traps_Trip_Mine.Resistance",
+      "Villain_Pets.Traps_Trip_Mine.Self_Destruct"
+    ],
+    "resolvedEntities": [
+      {
+        "displayName": "Trip Mine",
+        "duration": 260,
+        "copyCreatorMods": true,
+        "abilities": [
+          {
+            "name": "Self_Destruct",
+            "displayName": "Self Destruct",
+            "type": "Click",
+            "damage": [
+              {
+                "damageType": "Fire",
+                "scale": 2,
+                "table": "Melee_Damage"
+              },
+              {
+                "damageType": "Lethal",
+                "scale": 1,
+                "table": "Melee_Damage"
+              },
+              {
+                "damageType": "Fire",
+                "scale": 1,
+                "table": "Melee_Damage"
+              }
+            ],
+            "effects": [
+              {
+                "type": "Knockup",
+                "magnitude": 1,
+                "attribType": "Magnitude",
+                "scale": 1,
+                "table": "Melee_Knockback",
+                "chance": 0.5
+              }
+            ],
+            "recharge": 30,
+            "castTime": 0,
+            "effectArea": "SingleTarget",
+            "targetsAffected": [
+              "Foe"
+            ],
+            "maxTargets": 1
+          }
+        ]
+      }
+    ],
+    "entity": "PL_Untargetable_FightPreferRanged"
   },
   "atoms": [
     ["EntCreate",null,1,1,260,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,260],

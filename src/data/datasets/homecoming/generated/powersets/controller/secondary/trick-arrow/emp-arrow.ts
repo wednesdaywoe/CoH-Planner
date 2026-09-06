@@ -46,261 +46,105 @@ export const EMPArrow: Power = {
     "Holds"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 45,
-    "durations": {
-      "regenDebuff": 45,
-      "slow": 45,
-      "specialBuff": 45,
-      "specialDebuff": 45
-    },
-    "enduranceDrain": {
-      "scale": 0.4,
-      "table": "Ranged_Ones"
-    },
-    "hold": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 7,
-      "table": "Ranged_Immobilize"
-    },
-    "regenDebuff": {
-      "durationVariants": [
-        {
-          "duration": 15,
-          "scale": 5
-        }
-      ],
-      "ignoreStrength": true,
-      "scale": 5,
-      "table": "Ranged_Ones"
-    },
-    "slow": {
-      "flySpeed": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "runSpeed": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
+  "summon": {
+    "copyBoosts": true,
+    "displayName": "EMP Field",
+    "duration": 240,
+    "isPseudoPet": true,
+    "powers": [
+      "Redirects.Trick_Arrow.EMP_Arrow",
+      "Redirects.Trick_Arrow.EMP_Arrow_Fx"
+    ],
+    "resolvedEntities": [
+      {
+        "displayName": "EMP Field",
+        "duration": 240,
+        "copyCreatorMods": true,
+        "abilities": [
+          {
+            "name": "EMP_Arrow",
+            "displayName": "EMP Field",
+            "type": "Auto",
+            "damage": [],
+            "effects": [
+              {
+                "type": "ResistanceBuff",
+                "resistanceTypes": [
+                  "smashing",
+                  "lethal",
+                  "fire",
+                  "cold",
+                  "energy",
+                  "negative",
+                  "psionic"
+                ],
+                "scale": 1.5,
+                "table": "Ranged_Res_Dmg",
+                "ignoreStrength": true
+              },
+              {
+                "type": "EndDrainResist",
+                "scale": 0.7,
+                "table": "Ranged_Res_Boolean",
+                "ignoreStrength": true
+              },
+              {
+                "type": "RecoveryDebuffResist",
+                "scale": 0.7,
+                "table": "Ranged_Res_Boolean",
+                "ignoreStrength": true
+              },
+              {
+                "type": "ImmobilizeProtection",
+                "scale": 15,
+                "table": "Ranged_Res_Boolean",
+                "ignoreStrength": true
+              },
+              {
+                "type": "HoldProtection",
+                "scale": 30,
+                "table": "Ranged_Res_Boolean",
+                "ignoreStrength": true
+              },
+              {
+                "type": "StunProtection",
+                "scale": 30,
+                "table": "Ranged_Res_Boolean",
+                "ignoreStrength": true
+              },
+              {
+                "type": "SleepProtection",
+                "scale": 30,
+                "table": "Ranged_Res_Boolean",
+                "ignoreStrength": true
+              },
+              {
+                "type": "KnockupProtection",
+                "scale": 10,
+                "table": "Ranged_Ones",
+                "ignoreStrength": true
+              },
+              {
+                "type": "KnockbackProtection",
+                "scale": 10,
+                "table": "Ranged_Ones",
+                "ignoreStrength": true
+              }
+            ],
+            "recharge": 0,
+            "castTime": 0,
+            "activatePeriod": 0.2,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "Friend"
+            ],
+            "radius": 25,
+            "maxTargets": 16
+          }
+        ]
       }
-    },
-    "specialBuff": {
-      "absorb": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "confuse": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "endurance": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "fear": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "heal": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "hold": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "immobilize": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "sleep": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "stun": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "tohit": {
-        "ignoreStrength": true,
-        "scale": 1.2,
-        "table": "Ranged_Res_Boolean"
-      }
-    },
-    "specialDebuff": {
-      "aoe": {
-        "ignoreStrength": true,
-        "scale": 1.2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "cold": {
-        "ignoreStrength": true,
-        "scale": 1.2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "defense": {
-        "ignoreStrength": true,
-        "scale": 1.2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "energy": {
-        "ignoreStrength": true,
-        "scale": 1.2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "fire": {
-        "ignoreStrength": true,
-        "scale": 1.2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "lethal": {
-        "ignoreStrength": true,
-        "scale": 1.2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "melee": {
-        "ignoreStrength": true,
-        "scale": 1.2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "negative": {
-        "ignoreStrength": true,
-        "scale": 1.2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "psionic": {
-        "ignoreStrength": true,
-        "scale": 1.2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "ranged": {
-        "ignoreStrength": true,
-        "scale": 1.2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "smashing": {
-        "ignoreStrength": true,
-        "scale": 1.2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "toxic": {
-        "ignoreStrength": true,
-        "scale": 1.2,
-        "table": "Ranged_Res_Boolean"
-      }
-    },
-    "summon": {
-      "copyBoosts": true,
-      "displayName": "EMP Field",
-      "duration": 240,
-      "isPseudoPet": true,
-      "powers": [
-        "Redirects.Trick_Arrow.EMP_Arrow",
-        "Redirects.Trick_Arrow.EMP_Arrow_Fx"
-      ],
-      "resolvedEntities": [
-        {
-          "displayName": "EMP Field",
-          "duration": 240,
-          "copyCreatorMods": true,
-          "abilities": [
-            {
-              "name": "EMP_Arrow",
-              "displayName": "EMP Field",
-              "type": "Auto",
-              "damage": [],
-              "effects": [
-                {
-                  "type": "ResistanceBuff",
-                  "resistanceTypes": [
-                    "smashing",
-                    "lethal",
-                    "fire",
-                    "cold",
-                    "energy",
-                    "negative",
-                    "psionic"
-                  ],
-                  "scale": 1.5,
-                  "table": "Ranged_Res_Dmg",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "EndDrainResist",
-                  "scale": 0.7,
-                  "table": "Ranged_Res_Boolean",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "RecoveryDebuffResist",
-                  "scale": 0.7,
-                  "table": "Ranged_Res_Boolean",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "ImmobilizeProtection",
-                  "scale": 15,
-                  "table": "Ranged_Res_Boolean",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "HoldProtection",
-                  "scale": 30,
-                  "table": "Ranged_Res_Boolean",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "StunProtection",
-                  "scale": 30,
-                  "table": "Ranged_Res_Boolean",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "SleepProtection",
-                  "scale": 30,
-                  "table": "Ranged_Res_Boolean",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "KnockupProtection",
-                  "scale": 10,
-                  "table": "Ranged_Ones",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "KnockbackProtection",
-                  "scale": 10,
-                  "table": "Ranged_Ones",
-                  "ignoreStrength": true
-                }
-              ],
-              "recharge": 0,
-              "castTime": 0,
-              "activatePeriod": 0.2,
-              "effectArea": "Sphere",
-              "targetsAffected": [
-                "Friend"
-              ],
-              "radius": 25,
-              "maxTargets": 16
-            }
-          ]
-        }
-      ],
-      "entity": "PL_StaticObject"
-    }
+    ],
+    "entity": "PL_StaticObject"
   },
   "atoms": [
     ["EntCreate",null,1,1,240,"Melee_Level","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240],

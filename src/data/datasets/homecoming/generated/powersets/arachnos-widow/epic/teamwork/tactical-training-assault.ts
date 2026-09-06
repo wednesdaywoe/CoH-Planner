@@ -43,28 +43,6 @@ export const TacticalTrainingAssault: Power = {
     "Recharge"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 2.25,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 1.5,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "durations": {
-      "damageBuff": 2.25,
-      "mezResistance": 2.25
-    },
-    "mezResistance": {
-      "placate": {
-        "scale": 1.75,
-        "table": "Ranged_Res_Boolean"
-      },
-      "taunt": {
-        "scale": 1.75,
-        "table": "Ranged_Res_Boolean"
-      }
-    }
-  },
   "atoms": [
     ["DamageBuff","Smashing",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Lethal",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],

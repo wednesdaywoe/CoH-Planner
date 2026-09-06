@@ -2,7 +2,7 @@
   "schema": "dsh6-collapse-worklist/1",
   "scope": {
     "byTypeGate": "by-type sibling collapse (multi-type explosion) over Defense/Resistance/Elusivity/Mez/MezResist/Movement — an input sub-type with no output slot while the effectType is present. FP-free (5 traced fixes). Finding: clean by-type collapse does not occur in HC; residual is target-directed / conditional. 2026-07-05: ally/team MOVEMENT buffs are now emitted (converter movement branch routes non-Self aspect=Current buffs to effects.movement — Speed Boost/Accelerate Metabolism +run/fly, Inertial Reduction +jump, Group Fly team fly; calc ALLY_ONLY_TARGET_TYPES gate keeps ally-only powers off caster totals), clearing the Movement flags. isPVPMap? PvP-map atoms now filtered like `player eq` (Enforced Morale mez-RESIST is PvP-map-only; its PvE sleep-resist + full mez PROTECTION already render). Remaining 2 collapses = display-name aggregation across NPC variants (Focused Fighting/ESD Arrow), not player last-write-wins; class-absent = control/ combo/self-conditional edge cases (Telekinesis, Genetic Corruption, Savage Leap).",
-    "scalarGate": "site-A table-variant collapse over scalar effectTypes (ToHit/Recovery/Regen/Endurance/…): two same-(effectType,sign) templates on DIFFERENT tables where last-write-wins keeps one. resistible folded OUT (buffs have no twin; DSH3 gates debuff twins); the PvP `enttype target> player eq` variant is dropped exactly as the converter does (mirrors convert-powerset.cjs:667). NOW AT ZERO: this surfaced one real bug — the conditional pipeline (collectConditionalsGrouped) omitted that PvP-drop, so Beam Rifle Disintegrate kept the PvP -3/Ranged_Res_Boolean regen over the PvE -0.75/Ranged_Ones (Mids-confirmed). Fixed 2026-07-05 → gate green (0).",
+    "scalarGate": "site-A table-variant collapse over scalar effectTypes (ToHit/Recovery/Regen/Endurance/…): two same-(effectType,sign) templates on DIFFERENT tables where last-write-wins keeps one. resistible folded OUT (buffs have no twin; DSH3 gates debuff twins); the PvP `enttype target> player eq` variant is dropped exactly as the converter does (mirrors convert-powerset.cjs:1068). NOW AT ZERO: this surfaced one real bug — the conditional pipeline (collectConditionalsGrouped) omitted that PvP-drop, so Beam Rifle Disintegrate kept the PvP -3/Ranged_Res_Boolean regen over the PvE -0.75/Ranged_Ones (Mids-confirmed). Fixed 2026-07-05 → gate green (0).",
     "excluded": "aspect=Str (→specialBuff Enhancement), aspect=Res (→debuffResistance), PvP-only, scale-0 markers, Expression phantoms, exotic resist types, KB protection.",
     "signRule": "sign follows the converter (scale<0 OR table matches /debuff/), not scale alone."
   },
@@ -15,263 +15,22 @@
     "scalarChecked": 1231
   },
   "summary": {
-    "highConfidenceCollapses": 1,
-    "distinctCollapseGroups": 1,
-    "classAbsent": 20,
+    "highConfidenceCollapses": 0,
+    "distinctCollapseGroups": 0,
+    "classAbsent": 0,
     "scalarCollapses": 0,
     "scalarDistinctGroups": 0,
-    "scalarClassAbsent": 87,
-    "discriminatorCollapses": 1,
-    "discriminatorGroups": 1,
-    "discriminatorClassAbsent": 4
+    "scalarClassAbsent": 0,
+    "discriminatorCollapses": 0,
+    "discriminatorGroups": 0,
+    "discriminatorClassAbsent": 0
   },
-  "collapseGroups": [
-    {
-      "et": "Mez",
-      "sub": "immobilize",
-      "sign": null,
-      "count": 1,
-      "powers": [
-        "Focused Fighting"
-      ]
-    }
-  ],
-  "classAbsentGroups": [
-    {
-      "et": "Mez",
-      "sub": "teleport",
-      "sign": null,
-      "count": 5,
-      "powers": [
-        "tanker_melee/savage_melee/savage_leap.json",
-        "stalker_melee/savage_melee/savage_leap.json",
-        "scrapper_melee/savage_melee/savage_leap.json",
-        "dominator_assault/savage_assault/feral_charge.json",
-        "brute_melee/savage_melee/savage_leap.json"
-      ]
-    },
-    {
-      "et": "Defense",
-      "sub": "all",
-      "sign": "-",
-      "count": 3,
-      "powers": [
-        "tanker_melee/dual_blades/aoe_bridge.json",
-        "scrapper_melee/dual_blades/aoe_bridge.json",
-        "brute_melee/dual_blades/aoe_bridge.json"
-      ]
-    },
-    {
-      "et": "Resistance",
-      "sub": "smashing",
-      "sign": "+",
-      "count": 1,
-      "powers": [
-        "Genetic Corruption"
-      ]
-    },
-    {
-      "et": "Resistance",
-      "sub": "lethal",
-      "sign": "+",
-      "count": 1,
-      "powers": [
-        "Genetic Corruption"
-      ]
-    },
-    {
-      "et": "Resistance",
-      "sub": "toxic",
-      "sign": "+",
-      "count": 1,
-      "powers": [
-        "Genetic Corruption"
-      ]
-    },
-    {
-      "et": "Resistance",
-      "sub": "fire",
-      "sign": "+",
-      "count": 1,
-      "powers": [
-        "Genetic Corruption"
-      ]
-    },
-    {
-      "et": "Resistance",
-      "sub": "cold",
-      "sign": "+",
-      "count": 1,
-      "powers": [
-        "Genetic Corruption"
-      ]
-    },
-    {
-      "et": "Resistance",
-      "sub": "energy",
-      "sign": "+",
-      "count": 1,
-      "powers": [
-        "Genetic Corruption"
-      ]
-    },
-    {
-      "et": "Resistance",
-      "sub": "negative",
-      "sign": "+",
-      "count": 1,
-      "powers": [
-        "Genetic Corruption"
-      ]
-    },
-    {
-      "et": "Resistance",
-      "sub": "psionic",
-      "sign": "+",
-      "count": 1,
-      "powers": [
-        "Genetic Corruption"
-      ]
-    },
-    {
-      "et": "Mez",
-      "sub": "hold",
-      "sign": null,
-      "count": 1,
-      "powers": [
-        "Focused Senses"
-      ]
-    },
-    {
-      "et": "Mez",
-      "sub": "stun",
-      "sign": null,
-      "count": 1,
-      "powers": [
-        "Focused Senses"
-      ]
-    },
-    {
-      "et": "Mez",
-      "sub": "sleep",
-      "sign": null,
-      "count": 1,
-      "powers": [
-        "Focused Senses"
-      ]
-    },
-    {
-      "et": "Mez",
-      "sub": "confuse",
-      "sign": null,
-      "count": 1,
-      "powers": [
-        "blaster_support/mental_manipulation/world_of_confusion.json"
-      ]
-    }
-  ],
+  "collapseGroups": [],
+  "classAbsentGroups": [],
   "scalarCollapseGroups": [],
-  "scalarClassAbsentGroups": [
-    {
-      "et": "Range",
-      "sign": "-",
-      "count": 75,
-      "powers": [
-        "Black Dwarf Antagonize",
-        "Taunt",
-        "Taunt",
-        "Taunt",
-        "Taunt",
-        "Taunt",
-        "Taunt",
-        "Taunt"
-      ]
-    },
-    {
-      "et": "MaxHP",
-      "sign": "-",
-      "count": 4,
-      "powers": [
-        "Brine",
-        "Brine",
-        "Brine",
-        "Brine"
-      ]
-    },
-    {
-      "et": "ToHit",
-      "sign": "-",
-      "count": 3,
-      "powers": [
-        "tanker_melee/dual_blades/aoe_bridge.json",
-        "scrapper_melee/dual_blades/aoe_bridge.json",
-        "brute_melee/dual_blades/aoe_bridge.json"
-      ]
-    },
-    {
-      "et": "ToHit",
-      "sign": "+",
-      "count": 2,
-      "powers": [
-        "dominator_control/wind_control/clear_skies.json",
-        "controller_control/wind_control/clear_skies.json"
-      ]
-    },
-    {
-      "et": "Recovery",
-      "sign": "+",
-      "count": 2,
-      "powers": [
-        "dominator_control/wind_control/clear_skies.json",
-        "controller_control/wind_control/clear_skies.json"
-      ]
-    },
-    {
-      "et": "Regeneration",
-      "sign": "+",
-      "count": 1,
-      "powers": [
-        "Genetic Corruption"
-      ]
-    }
-  ],
+  "scalarClassAbsentGroups": [],
   "scalarCollapses": [],
-  "discriminatorCollapseGroups": [
-    {
-      "kind": "self-penalty",
-      "et": "Movement",
-      "count": 1,
-      "powers": [
-        "Reaction Time"
-      ]
-    }
-  ],
-  "discriminatorClassAbsentGroups": [
-    {
-      "kind": "self-penalty",
-      "et": "Movement",
-      "count": 3,
-      "powers": [
-        "Geode",
-        "Geode",
-        "Geode"
-      ]
-    },
-    {
-      "kind": "twin-unenhanced",
-      "et": "Regeneration",
-      "count": 1,
-      "powers": [
-        "Genetic Corruption"
-      ]
-    }
-  ],
-  "discriminatorCollapses": [
-    {
-      "power": "Reaction Time",
-      "source": "blaster_support/martial_manipulation/reaction_time.json",
-      "kind": "self-penalty",
-      "et": "Movement"
-    }
-  ]
+  "discriminatorCollapseGroups": [],
+  "discriminatorClassAbsentGroups": [],
+  "discriminatorCollapses": []
 }

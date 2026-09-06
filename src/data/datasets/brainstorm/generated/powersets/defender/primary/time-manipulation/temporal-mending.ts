@@ -61,29 +61,6 @@ export const TemporalMending: Power = {
       ]
     }
   ],
-  "effects": {
-    "buffDuration": 30,
-    "debuffResistance": {
-      "movement": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Ranged_Ones"
-      },
-      "recharge": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Ranged_Ones"
-      },
-      "regeneration": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Ranged_Res_Boolean"
-      }
-    },
-    "durations": {
-      "debuffResistance": 30
-    }
-  },
   "atoms": [
     ["Movement","Run",0.2,1,30,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Movement","Fly",0.2,1,30,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],

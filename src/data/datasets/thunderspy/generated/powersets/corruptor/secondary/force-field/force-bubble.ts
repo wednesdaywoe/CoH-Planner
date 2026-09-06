@@ -37,21 +37,6 @@ export const ForceBubble: Power = {
     "Recharge"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.25,
-    "durations": {
-      "repel": 0.25
-    },
-    "knockback": {
-      "ignoreStrength": true,
-      "scale": 0.1,
-      "table": "Ranged_Ones"
-    },
-    "repel": {
-      "scale": 10,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Mez","Repel",10,1,0.25,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones"],
     ["Mez","Knockback",0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.009999999776482582,null,true,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones"],

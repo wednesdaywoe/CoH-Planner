@@ -65,55 +65,6 @@ export const StridentEcho: Power = {
       "tickRate": 0.4000000059604645
     }
   ],
-  "effects": {
-    "buffDuration": 15,
-    "debuffResistance": {
-      "defense": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "endurance": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "movement": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "recharge": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "recovery": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "regeneration": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "tohit": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      }
-    },
-    "durations": {
-      "debuffResistance": 15
-    },
-    "hold": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 5,
-      "table": "Melee_Immobilize"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.11,1,2.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Energy",0.11,1,2.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

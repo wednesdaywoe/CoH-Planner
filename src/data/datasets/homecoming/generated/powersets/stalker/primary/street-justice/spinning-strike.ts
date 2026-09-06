@@ -63,12 +63,6 @@ export const SpinningStrike: Power = {
       "table": "Melee_InherentDamage"
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
     ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Combo_Level_1","source.ownPower?","!","Temporary_Powers.Temporary_Powers.Combo_Level_2","source.ownPower?","!","&&","Temporary_Powers.Temporary_Powers.Combo_Level_3","source.ownPower?","!","&&","&&"],null,null,null,null,null,null,null,null,null,null,null,null,null,0.4],

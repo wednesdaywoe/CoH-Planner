@@ -46,13 +46,11 @@ export const CallGenin: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "duration": 99999,
-      "entity": "MastermindPets_Genin",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "copyBoosts": true,
+    "duration": 99999,
+    "entity": "MastermindPets_Genin",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,1,1,99999,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,1,null,null,null,null,null,99999],

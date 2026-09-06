@@ -53,17 +53,6 @@ export const Flamethrower: Power = {
     "duration": 7.1,
     "tickRate": 1
   },
-  "effects": {
-    "buffDuration": 9.83,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.065,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 9.83
-    }
-  },
   "atoms": [
     ["Damage","Fire",0.242,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["DamageBuff","Smashing",0.065,1,9.83,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],

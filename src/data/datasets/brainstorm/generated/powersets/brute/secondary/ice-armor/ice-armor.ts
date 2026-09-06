@@ -44,41 +44,6 @@ export const IceArmor: Power = {
     "Defense Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "debuffResistance": {
-      "defense": {
-        "ignoreStrength": true,
-        "scale": 0.4,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "defenseBuff": {
-      "lethal": {
-        "scale": 1.7,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 1.7,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "debuffResistance": 0.75,
-      "defenseBuff": 0.75,
-      "resistance": 0.75
-    },
-    "resistance": {
-      "cold": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 1.25,
-        "table": "Melee_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["Defense","Smashing",1.7,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
     ["Defense","Lethal",1.7,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],

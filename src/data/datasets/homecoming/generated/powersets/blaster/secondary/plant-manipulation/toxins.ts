@@ -38,20 +38,6 @@ export const Toxins: Power = {
     "To Hit Buff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 10,
-    "durations": {
-      "tohitBuff": 10
-    },
-    "tohitBuff": {
-      "scale": 2,
-      "table": "Melee_Buff_ToHit"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "tohitBuff"
-    ]
-  },
   "atoms": [
     ["ToHit",null,2,1,10,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]

@@ -39,22 +39,6 @@ export const Telekinesis: Power = {
     "Recharge"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "durations": {
-      "repel": 0.75
-    },
-    "hold": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 0.75,
-      "table": "Melee_Immobilize"
-    },
-    "repel": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Mez","Held",0.75,3,0,"Melee_Immobilize","Cur","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Immobilize"],
     ["Mez","Repel",1,1,0.75,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones"],

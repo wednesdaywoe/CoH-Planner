@@ -51,16 +51,6 @@ export const GlintingEye: Power = {
     "scale": 1,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 6,
-    "defenseDebuff": {
-      "scale": 2,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 6
-    }
-  },
   "atoms": [
     ["Damage","Energy",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
     ["Defense","All",2,1,6,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]]
@@ -79,16 +69,6 @@ export const GlintingEye: Power = {
         "type": "Energy",
         "scale": 1.16,
         "table": "Ranged_InherentDamage"
-      },
-      "effects": {
-        "buffDuration": 6,
-        "defenseDebuff": {
-          "scale": 2,
-          "table": "Ranged_Debuff_Def"
-        },
-        "durations": {
-          "defenseDebuff": 6
-        }
       },
       "shortHelp": "Ranged, Moderate DMG(Energy), Foe -DEF",
       "description": "You can emit a beam of Kheldian energy from your eyes, dealing moderate Energy damage and reducing a target's Defense. Damage: Moderate",

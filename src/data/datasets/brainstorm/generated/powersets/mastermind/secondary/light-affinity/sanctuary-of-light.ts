@@ -47,155 +47,153 @@ export const SanctuaryofLight: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "displayName": "Prismatic Shield",
-      "duration": 30,
-      "isPseudoPet": true,
-      "powers": [
-        "Pets.ResistAll.ResistAll",
-        "Redirects.Light_Affinity.SanctuaryPatch_SanctuaryAura",
-        "Redirects.Light_Affinity.SanctuaryPatch_SanctuaryAura_Debuff"
-      ],
-      "resolvedEntities": [
-        {
-          "displayName": "Prismatic Shield",
-          "duration": 30,
-          "copyCreatorMods": true,
-          "abilities": [
-            {
-              "name": "SanctuaryPatch_SanctuaryAura",
-              "displayName": "Prismatic Shield",
-              "type": "Auto",
-              "damage": [],
-              "effects": [
-                {
-                  "type": "DefenseBuff",
-                  "defenseTypes": [
-                    "ranged",
-                    "melee",
-                    "aoe",
-                    "smashing",
-                    "lethal",
-                    "fire",
-                    "cold",
-                    "energy",
-                    "negative",
-                    "psionic",
-                    "toxic"
-                  ],
-                  "scale": 1.5,
-                  "table": "Ranged_Buff_Def"
-                },
-                {
-                  "type": "ResistanceBuff",
-                  "resistanceTypes": [
-                    "smashing",
-                    "lethal",
-                    "fire",
-                    "cold",
-                    "energy",
-                    "negative",
-                    "psionic",
-                    "toxic"
-                  ],
-                  "scale": 2,
-                  "table": "Ranged_Res_Dmg"
-                },
-                {
-                  "type": "DefenseDebuffResist",
-                  "scale": 1,
-                  "table": "Ranged_Res_Boolean"
-                },
-                {
-                  "type": "ConfuseProtection",
-                  "scale": 50,
-                  "table": "Melee_Res_Boolean",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "FearProtection",
-                  "scale": 50,
-                  "table": "Melee_Res_Boolean",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "HoldProtection",
-                  "scale": 50,
-                  "table": "Melee_Res_Boolean",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "ImmobilizeProtection",
-                  "scale": 50,
-                  "table": "Melee_Res_Boolean",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "StunProtection",
-                  "scale": 50,
-                  "table": "Melee_Res_Boolean",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "SleepProtection",
-                  "scale": 50,
-                  "table": "Melee_Res_Boolean",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "KnockupProtection",
-                  "scale": 50,
-                  "table": "Melee_Res_Boolean",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "KnockbackProtection",
-                  "scale": 50,
-                  "table": "Melee_Res_Boolean",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "KnockupProtection",
-                  "scale": 1,
-                  "table": "Melee_Ones",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "KnockbackProtection",
-                  "scale": 1,
-                  "table": "Melee_Ones",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "KnockupResist",
-                  "scale": 1,
-                  "table": "Melee_Ones",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "KnockbackResist",
-                  "scale": 1,
-                  "table": "Melee_Ones",
-                  "ignoreStrength": true
-                }
-              ],
-              "recharge": 0,
-              "castTime": 0,
-              "activatePeriod": 0.2,
-              "effectArea": "Sphere",
-              "targetsAffected": [
-                "Teammate"
-              ],
-              "radius": 25,
-              "maxTargets": 255
-            }
-          ]
-        }
-      ],
-      "entity": "PL_StaticObject"
-    }
+  "summon": {
+    "copyBoosts": true,
+    "displayName": "Prismatic Shield",
+    "duration": 30,
+    "isPseudoPet": true,
+    "powers": [
+      "Pets.ResistAll.ResistAll",
+      "Redirects.Light_Affinity.SanctuaryPatch_SanctuaryAura",
+      "Redirects.Light_Affinity.SanctuaryPatch_SanctuaryAura_Debuff"
+    ],
+    "resolvedEntities": [
+      {
+        "displayName": "Prismatic Shield",
+        "duration": 30,
+        "copyCreatorMods": true,
+        "abilities": [
+          {
+            "name": "SanctuaryPatch_SanctuaryAura",
+            "displayName": "Prismatic Shield",
+            "type": "Auto",
+            "damage": [],
+            "effects": [
+              {
+                "type": "DefenseBuff",
+                "defenseTypes": [
+                  "ranged",
+                  "melee",
+                  "aoe",
+                  "smashing",
+                  "lethal",
+                  "fire",
+                  "cold",
+                  "energy",
+                  "negative",
+                  "psionic",
+                  "toxic"
+                ],
+                "scale": 1.5,
+                "table": "Ranged_Buff_Def"
+              },
+              {
+                "type": "ResistanceBuff",
+                "resistanceTypes": [
+                  "smashing",
+                  "lethal",
+                  "fire",
+                  "cold",
+                  "energy",
+                  "negative",
+                  "psionic",
+                  "toxic"
+                ],
+                "scale": 2,
+                "table": "Ranged_Res_Dmg"
+              },
+              {
+                "type": "DefenseDebuffResist",
+                "scale": 1,
+                "table": "Ranged_Res_Boolean"
+              },
+              {
+                "type": "ConfuseProtection",
+                "scale": 50,
+                "table": "Melee_Res_Boolean",
+                "ignoreStrength": true
+              },
+              {
+                "type": "FearProtection",
+                "scale": 50,
+                "table": "Melee_Res_Boolean",
+                "ignoreStrength": true
+              },
+              {
+                "type": "HoldProtection",
+                "scale": 50,
+                "table": "Melee_Res_Boolean",
+                "ignoreStrength": true
+              },
+              {
+                "type": "ImmobilizeProtection",
+                "scale": 50,
+                "table": "Melee_Res_Boolean",
+                "ignoreStrength": true
+              },
+              {
+                "type": "StunProtection",
+                "scale": 50,
+                "table": "Melee_Res_Boolean",
+                "ignoreStrength": true
+              },
+              {
+                "type": "SleepProtection",
+                "scale": 50,
+                "table": "Melee_Res_Boolean",
+                "ignoreStrength": true
+              },
+              {
+                "type": "KnockupProtection",
+                "scale": 50,
+                "table": "Melee_Res_Boolean",
+                "ignoreStrength": true
+              },
+              {
+                "type": "KnockbackProtection",
+                "scale": 50,
+                "table": "Melee_Res_Boolean",
+                "ignoreStrength": true
+              },
+              {
+                "type": "KnockupProtection",
+                "scale": 1,
+                "table": "Melee_Ones",
+                "ignoreStrength": true
+              },
+              {
+                "type": "KnockbackProtection",
+                "scale": 1,
+                "table": "Melee_Ones",
+                "ignoreStrength": true
+              },
+              {
+                "type": "KnockupResist",
+                "scale": 1,
+                "table": "Melee_Ones",
+                "ignoreStrength": true
+              },
+              {
+                "type": "KnockbackResist",
+                "scale": 1,
+                "table": "Melee_Ones",
+                "ignoreStrength": true
+              }
+            ],
+            "recharge": 0,
+            "castTime": 0,
+            "activatePeriod": 0.2,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "Teammate"
+            ],
+            "radius": 25,
+            "maxTargets": 255
+          }
+        ]
+      }
+    ],
+    "entity": "PL_StaticObject"
   },
   "atoms": [
     ["EntCreate",null,1,1,30,"Melee_Level","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,30]

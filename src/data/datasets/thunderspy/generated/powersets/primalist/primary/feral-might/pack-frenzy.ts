@@ -41,22 +41,6 @@ export const PackFrenzy: Power = {
     "To Hit Buff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 15,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.5,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "damageBuff": 15,
-      "tohitBuff": 15
-    },
-    "tohitBuff": {
-      "scale": 0.1,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["ToHit",null,0.1,1,15,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kHunterMode","Source.Mode?","!","kProwlerMode","Source.Mode?","!","&&"],null,null,null,null,null,null,null,null,null,"Ones"],
     ["DamageBuff","Smashing",0.5,1,15,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],

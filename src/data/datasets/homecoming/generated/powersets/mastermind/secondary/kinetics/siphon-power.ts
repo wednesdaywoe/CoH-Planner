@@ -37,23 +37,6 @@ export const SiphonPower: Power = {
     "Accuracy"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 30,
-    "damageBuff": {
-      "scale": 2,
-      "table": "Ranged_Buff_Dmg",
-      "perTarget": 0
-    },
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 2,
-      "table": "Ranged_Debuff_Dam"
-    },
-    "durations": {
-      "damageBuff": 30,
-      "damageDebuff": 30
-    }
-  },
   "atoms": [
     ["DamageBuff","Smashing",2,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Lethal",2,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],

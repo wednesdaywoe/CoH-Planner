@@ -55,16 +55,6 @@ export const HurlBoulder: Power = {
     "scale": 1.8,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "knockback": {
-      "scale": 3,
-      "table": "Melee_Knockback"
-    },
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",1.8,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Mez","Knockback",3,1,0,"Melee_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0.5,null,"Knockback"],

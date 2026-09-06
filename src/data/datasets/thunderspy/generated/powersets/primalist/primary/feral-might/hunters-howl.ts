@@ -47,41 +47,6 @@ export const HuntersHowl: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 30,
-    "durations": {
-      "rechargeDebuff": 30,
-      "slow": 30,
-      "tohitDebuff": 30
-    },
-    "rechargeDebuff": {
-      "scale": 1,
-      "table": "Melee_Slow"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 1,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 1,
-        "table": "Melee_Slow"
-      },
-      "runSpeed": {
-        "scale": 1,
-        "table": "Melee_Slow"
-      }
-    },
-    "tohitDebuff": {
-      "scale": 1,
-      "table": "Melee_DeBuff_ToHit"
-    }
-  },
   "atoms": [
     ["Movement","Run",1,1,30,"Melee_Slow","Cur","Expression","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["cur.kMeter","source>",".3","*",".3","+","@StdResult","*"],null,null,null,"NBInactive"],
     ["RechargeTime",null,1,1,30,"Melee_Slow","Str","Expression","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["cur.kMeter","source>",".3","*",".3","+","@StdResult","*"],null,null,null,"NBInactive"],

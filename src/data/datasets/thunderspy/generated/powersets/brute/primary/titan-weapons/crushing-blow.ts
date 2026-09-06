@@ -55,20 +55,6 @@ export const CrushingBlow: Power = {
     "scale": 1.7548,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "buffDuration": 10,
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",1.7548,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage",null,null,["Foe"]],
     ["Defense","All",1,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Debuff_Def",null,null,["Foe"]],
@@ -93,20 +79,6 @@ export const CrushingBlow: Power = {
       "damageTypes": [
         "Smashing"
       ],
-      "effects": {
-        "buffDuration": 10,
-        "defenseDebuff": {
-          "scale": 1,
-          "table": "Melee_Debuff_Def"
-        },
-        "durations": {
-          "defenseDebuff": 10
-        },
-        "taunt": {
-          "scale": 1,
-          "table": "Melee_InherentTaunt"
-        }
-      },
       "shortHelp": "Melee, High DMG(Smashing), -DEF",
       "description": "You swing a mighty crushing blow at your opponent dealing High Smashing damage and reducing their defense.  Damage: High, Recharge: Moderate",
       "effectArea": "SingleTarget",

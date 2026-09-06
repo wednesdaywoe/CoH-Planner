@@ -45,13 +45,11 @@ export const ShadowField: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "duration": 45,
-      "entity": "Pets_Shadow_Field_Dominator",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "copyBoosts": true,
+    "duration": 45,
+    "entity": "Pets_Shadow_Field_Dominator",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,1,1,45,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,45],

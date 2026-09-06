@@ -43,12 +43,10 @@ export const SpectralTerror: Power = {
     "Universal Control Duration Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "duration": 45,
-      "entity": "Pets_Terror",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "duration": 45,
+    "entity": "Pets_Terror",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,-1,1,45,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,45]

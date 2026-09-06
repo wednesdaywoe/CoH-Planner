@@ -64,24 +64,6 @@ export const GuardedSpin: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 10,
-    "defenseBuff": {
-      "lethal": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def",
-        "perTarget": 1.5
-      },
-      "melee": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def",
-        "perTarget": 1.5
-      }
-    },
-    "durations": {
-      "defenseBuff": 10
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.231667,1,1.5,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Defense","Melee",1.5,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1.5,null,null,null,null,null,null,null,"Buff_Def"],

@@ -59,14 +59,6 @@ export const EnergyTransfer: Power = {
       "table": "Melee_HealSelf"
     }
   ],
-  "effects": {
-    "stun": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 8,
-      "table": "Melee_Stun"
-    }
-  },
   "atoms": [
     ["Damage","Energy",4.56,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
     ["Mez","Stunned",8,3,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
@@ -98,14 +90,6 @@ export const EnergyTransfer: Power = {
           "table": "Melee_HealSelf"
         }
       ],
-      "effects": {
-        "stun": {
-          "attribType": "Duration",
-          "mag": 3,
-          "scale": 8,
-          "table": "Melee_Stun"
-        }
-      },
       "shortHelp": "Melee, DMG(Energy), Foe Disorient, Self -HP, Special",
       "description": "Mastery of Energy Melee culminates with the ability to transfer your own Hit Points into a punch that deals extreme damage. Energy Transfer has a good chance of Disorienting the target. This power will execute extremely quickly if under Energy Focus mode.\n\nDamage: Extreme.\nRecharge: Moderate.",
       "effectArea": "SingleTarget",

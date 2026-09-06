@@ -52,30 +52,6 @@ export const Tombstone: Power = {
     "scale": 4.5,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 16,
-    "durations": {
-      "movementCapDebuff": 16,
-      "rangeBuff": 10
-    },
-    "movementCapDebuff": {
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Ranged_Slow"
-      }
-    },
-    "rangeBuff": {
-      "ignoreStrength": true,
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Movement","FlyMode",-1.6,1,16,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
     ["Meta",null,-1.6,1,16,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"jump pack",["Foe"]],

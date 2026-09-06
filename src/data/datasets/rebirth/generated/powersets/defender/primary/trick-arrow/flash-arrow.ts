@@ -45,25 +45,10 @@ export const FlashArrow: Power = {
     "Universal Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 60,
-    "durations": {
-      "perceptionDebuff": 60,
-      "tohitDebuff": 60
-    },
-    "perceptionDebuff": {
-      "scale": 0.9,
-      "table": "Ranged_Ones"
-    },
-    "summon": {
-      "duration": 5,
-      "entity": "Pets_OilSlickLighter",
-      "isPseudoPet": false
-    },
-    "tohitDebuff": {
-      "scale": 1,
-      "table": "Ranged_DeBuff_ToHit"
-    }
+  "summon": {
+    "duration": 5,
+    "entity": "Pets_OilSlickLighter",
+    "isPseudoPet": false
   },
   "atoms": [
     ["Perception",null,-0.9,1,60,"Ranged_Ones","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones"],

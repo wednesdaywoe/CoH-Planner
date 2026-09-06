@@ -44,22 +44,6 @@ export const ShiningShield: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "durations": {
-      "resistance": 0.75
-    },
-    "resistance": {
-      "lethal": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      },
-      "smashing": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["Resistance","Smashing",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
     ["Resistance","Lethal",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],

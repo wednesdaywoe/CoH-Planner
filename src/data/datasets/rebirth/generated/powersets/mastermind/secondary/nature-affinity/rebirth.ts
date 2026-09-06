@@ -59,12 +59,6 @@ export const Rebirth: Power = {
       "tickRate": 1
     }
   ],
-  "effects": {
-    "enduranceGain": {
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Constant","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Cur.kHitPoints","target>","0",">"],null,null,null,null,null,null,null,null,null,"Ones",null,"power_redirect"],
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Constant","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["1"],null,null,null,null,null,null,null,null,null,"Ones",null,"power_redirect"],

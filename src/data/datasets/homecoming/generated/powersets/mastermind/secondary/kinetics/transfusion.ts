@@ -49,21 +49,6 @@ export const Transfusion: Power = {
     "scale": 1.7616,
     "table": "Ranged_Heal"
   },
-  "effects": {
-    "buffDuration": 20,
-    "durations": {
-      "regenDebuff": 20
-    },
-    "enduranceDrain": {
-      "scale": 0.1,
-      "table": "Ranged_EndDrain"
-    },
-    "regenDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Heal",null,1.7616,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Friend","Self"]],
     ["Endurance",null,-0.1,1,0,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

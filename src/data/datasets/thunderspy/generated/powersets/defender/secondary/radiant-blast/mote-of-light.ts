@@ -48,13 +48,11 @@ export const MoteOfLight: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "duration": 60,
-      "entity": "Pets_HolyLightMote",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "copyBoosts": true,
+    "duration": 60,
+    "entity": "Pets_HolyLightMote",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,1,1,60,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,60]

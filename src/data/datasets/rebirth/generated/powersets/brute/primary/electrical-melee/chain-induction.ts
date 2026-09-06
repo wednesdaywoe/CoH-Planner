@@ -61,28 +61,10 @@ export const ChainInduction: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 4,
-    "durations": {
-      "recoveryDebuff": 4
-    },
-    "enduranceDrain": {
-      "scale": 0.1,
-      "table": "Melee_Ones"
-    },
-    "recoveryDebuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "summon": {
-      "duration": 1,
-      "entity": "Pets_Chain_Induction_Jump1",
-      "isPseudoPet": false
-    },
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    }
+  "summon": {
+    "duration": 1,
+    "entity": "Pets_Chain_Induction_Jump1",
+    "isPseudoPet": false
   },
   "atoms": [
     ["Damage","Smashing",0.8,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],

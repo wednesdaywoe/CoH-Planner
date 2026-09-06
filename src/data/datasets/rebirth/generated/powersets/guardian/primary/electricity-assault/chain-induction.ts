@@ -59,24 +59,10 @@ export const ChainInduction: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 4,
-    "durations": {
-      "recoveryDebuff": 4
-    },
-    "enduranceDrain": {
-      "scale": 0.1,
-      "table": "Melee_Ones"
-    },
-    "recoveryDebuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "summon": {
-      "duration": 1,
-      "entity": "Pets_Chain_Induction_Jump1",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "duration": 1,
+    "entity": "Pets_Chain_Induction_Jump1",
+    "isPseudoPet": false
   },
   "atoms": [
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"StackThenIgnore",3,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],

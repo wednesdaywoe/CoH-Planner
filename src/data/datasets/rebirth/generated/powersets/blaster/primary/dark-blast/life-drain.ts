@@ -62,26 +62,6 @@ export const LifeDrain: Power = {
       "table": "Ranged_HealSelf"
     }
   ],
-  "effects": {
-    "buffDuration": 10,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.127,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 9.43,
-      "tohitDebuff": 10
-    },
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_DeBuff_ToHit"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff"
-    ]
-  },
   "atoms": [
     ["Damage","Negative",1.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Heal",null,1,1,0,"Ranged_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf",null,null,null,0.5],

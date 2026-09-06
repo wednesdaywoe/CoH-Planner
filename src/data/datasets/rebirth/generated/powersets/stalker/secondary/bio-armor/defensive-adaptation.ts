@@ -36,18 +36,6 @@ export const DefensiveAdaptation: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
-  "effects": {
-    "buffDuration": 1.1,
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.25,
-      "table": "Melee_Ones",
-      "toWho": "Self"
-    },
-    "durations": {
-      "damageDebuff": 1.1
-    }
-  },
   "atoms": [
     ["Meta",null,1,113,1.1,"Melee_Ones","Cur","Constant","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,"OnActivate"],

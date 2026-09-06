@@ -35,36 +35,6 @@ export const TerraFirma: Power = {
     "To Hit Buff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "accuracyBuff": {
-      "ignoreStrength": true,
-      "scale": 0.1,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 0.75,
-    "debuffResistance": {
-      "tohit": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "durations": {
-      "accuracyBuff": 0.75,
-      "debuffResistance": 0.75,
-      "rangeBuff": 0.75,
-      "tohitBuff": 0.75
-    },
-    "rangeBuff": {
-      "ignoreStrength": true,
-      "scale": 0.15,
-      "table": "Melee_Ones"
-    },
-    "tohitBuff": {
-      "scale": 0.25,
-      "table": "Melee_Buff_ToHit"
-    }
-  },
   "atoms": [
     ["ToHit",null,0.25,0,0.75,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["ToHit",null,1,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],

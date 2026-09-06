@@ -197,7 +197,7 @@ export function GeneralStatsBlock({
   // inflate the proc denominator). When the parent has no radius the resolver
   // borrows the summoned pseudo-pet/patch footprint (Burn, rains, Caltrops).
   const procAreaGeometry = resolveProcAreaGeometry(
-    effects.radius ?? 0, effects.arc, power.effects?.summon);
+    effects.radius ?? 0, effects.arc, power.summon);
   // For a cone, `radius` and `range` describe the same dimension — the cone's
   // reach — and Range enhancements extend it (unlike sphere/PBAoE radii, which
   // are fixed). Show the *enhanced* reach in the Effect Area row so it matches
@@ -265,7 +265,7 @@ export function GeneralStatsBlock({
         // A rain/patch hands its rolls to the summon, which is an Auto: they are
         // scored against the proc's own 10s period, once every 10s the patch
         // lives. The parent's recharge — 60s on Sleet — never enters.
-        patchDuration={resolveProcPatchDuration(effects.radius ?? 0, power.effects?.summon)}
+        patchDuration={resolveProcPatchDuration(effects.radius ?? 0, power.summon)}
       />
     </div>
   );
@@ -507,7 +507,7 @@ function ProcChanceRow({
     // With CopyBoosts the proc still reaches the summon and fires off the PET's
     // attacks (Soulbound's Build Up in henchmen) — a real effect on a schedule
     // this power's recharge says nothing about. Without one, nothing fires.
-    const viaPet = !!selectedPower.effects?.summon?.copyBoosts;
+    const viaPet = !!selectedPower.summon?.copyBoosts;
     return (
       <div className="grid grid-cols-[7rem_1fr] gap-1 text-xs">
         <div className="text-slate-400">Proc Chance</div>
@@ -804,7 +804,7 @@ function deriveSummonPatchArea(
   // based patches/shells (it is NOT populated for real PET_ENTITIES summons like
   // Mastermind henchmen), so its presence is the signal — not the narrower
   // `isPseudoPet` flag, which is false for Burn-style PL_StaticObject shells.
-  const summon = power.effects?.summon;
+  const summon = power.summon;
   if (!summon?.resolvedEntities?.length) return null;
   // Only fill a gap: if the headline already shows a real AoE radius, leave it.
   if (effects.radius && effects.radius > 0) return null;

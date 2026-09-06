@@ -55,12 +55,6 @@ export const TimeBomb: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 4,
-      "table": "Melee_Knockback"
-    }
-  },
   "atoms": [
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe","DeadVillain"],1],
     ["Meta",null,1,1,0,"Melee_Damage","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"script_notify",["Foe","DeadVillain"],1],

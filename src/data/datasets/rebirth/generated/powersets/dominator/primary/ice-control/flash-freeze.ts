@@ -60,14 +60,6 @@ export const FlashFreeze: Power = {
       "table": "Ranged_Damage"
     }
   ],
-  "effects": {
-    "sleep": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 12,
-      "table": "Ranged_Sleep"
-    }
-  },
   "atoms": [
     ["Damage","Lethal",0.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Cold",0.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],

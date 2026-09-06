@@ -44,34 +44,6 @@ export const TargetingDrone: Power = {
     "To Hit Buff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "debuffResistance": {
-      "perception": {
-        "ignoreStrength": true,
-        "scale": 0.6,
-        "table": "Melee_Ones"
-      },
-      "tohit": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "durations": {
-      "debuffResistance": 0.75,
-      "perceptionBuff": 0.75,
-      "tohitBuff": 0.75
-    },
-    "perceptionBuff": {
-      "scale": 0.6,
-      "table": "Melee_Ones"
-    },
-    "tohitBuff": {
-      "scale": 1.85,
-      "table": "Melee_Buff_ToHit"
-    }
-  },
   "atoms": [
     ["ToHit",null,1.85,1,0.75,"Melee_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_ToHit"],
     ["ToHit",null,2,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_Boolean"],

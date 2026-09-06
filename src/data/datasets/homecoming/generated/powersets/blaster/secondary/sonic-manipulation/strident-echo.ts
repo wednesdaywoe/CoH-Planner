@@ -63,14 +63,6 @@ export const StridentEcho: Power = {
       "tickRate": 0.4000000059604645
     }
   ],
-  "effects": {
-    "hold": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 5,
-      "table": "Melee_Immobilize"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.1767,1,2.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Energy",0.1767,1,2.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

@@ -43,22 +43,6 @@ export const WillOfArachnae: Power = {
     "scale": 6,
     "table": "Melee_HealSelf"
   },
-  "effects": {
-    "buffDuration": 60,
-    "durations": {
-      "maxHPBuff": 60,
-      "maxHPBuffUnenhanced": 60
-    },
-    "maxHPBuff": {
-      "scale": 2,
-      "table": "Melee_HealSelf"
-    },
-    "maxHPBuffUnenhanced": {
-      "ignoreStrength": true,
-      "scale": 2,
-      "table": "Melee_HealSelf"
-    }
-  },
   "atoms": [
     ["MaxHP",null,2,1,60,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf"],
     ["MaxHP",null,2,1,60,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf"],

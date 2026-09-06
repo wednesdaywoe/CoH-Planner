@@ -57,14 +57,6 @@ export const ScrambleThoughts: Power = {
       "table": "Ranged_InherentDamage"
     }
   ],
-  "effects": {
-    "stun": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Stun"
-    }
-  },
   "atoms": [
     ["Mez","Stunned",8,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Psionic",3.56,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

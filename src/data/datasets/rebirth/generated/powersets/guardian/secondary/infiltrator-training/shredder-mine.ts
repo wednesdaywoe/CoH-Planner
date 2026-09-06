@@ -47,12 +47,10 @@ export const ShredderMine: Power = {
     "Universal Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "duration": 260,
-      "entity": "Pets_Guardian_InfiltratorTraining_ShredderMine",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "duration": 260,
+    "entity": "Pets_Guardian_InfiltratorTraining_ShredderMine",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,1,1,260,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,260]

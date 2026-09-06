@@ -49,87 +49,28 @@ export const RallyTheMilitia: Power = {
     "Recharge Intensive Pets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 90,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 5,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "defenseBuff": {
-      "aoe": {
-        "scale": 1,
-        "table": "Ranged_Buff_Def"
+  "summon": {
+    "copyBoosts": true,
+    "duration": 120,
+    "entities": [
+      {
+        "count": 2,
+        "entity": "Pets_Militia_01"
       },
-      "cold": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
+      {
+        "count": 2,
+        "entity": "Pets_Militia_02"
       },
-      "energy": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
+      {
+        "count": 1,
+        "entity": "Pets_Militia_03"
       },
-      "fire": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "melee": {
-        "scale": 1,
-        "table": "Ranged_Buff_Def"
-      },
-      "negative": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "psionic": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "ranged": {
-        "scale": 1,
-        "table": "Ranged_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
+      {
+        "count": 1,
+        "entity": "Pets_Militia_04"
       }
-    },
-    "durations": {
-      "damageBuff": 90,
-      "defenseBuff": 90,
-      "regenBuff": 90
-    },
-    "regenBuff": {
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    },
-    "summon": {
-      "copyBoosts": true,
-      "duration": 120,
-      "entities": [
-        {
-          "count": 2,
-          "entity": "Pets_Militia_01"
-        },
-        {
-          "count": 2,
-          "entity": "Pets_Militia_02"
-        },
-        {
-          "count": 1,
-          "entity": "Pets_Militia_03"
-        },
-        {
-          "count": 1,
-          "entity": "Pets_Militia_04"
-        }
-      ],
-      "isPseudoPet": false
-    }
+    ],
+    "isPseudoPet": false
   },
   "atoms": [
     ["Defense","Melee",1,1,90,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Def"],

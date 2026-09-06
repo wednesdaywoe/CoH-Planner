@@ -45,30 +45,6 @@ export const ProtonTherapy: Power = {
     "scale": 2.5,
     "table": "Melee_HealSelf"
   },
-  "effects": {
-    "buffDuration": 60,
-    "debuffResistance": {
-      "regeneration": {
-        "scale": 0.75,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "durations": {
-      "debuffResistance": 60,
-      "enduranceGain": 2.1,
-      "resistance": 60
-    },
-    "enduranceGain": {
-      "scale": 5,
-      "table": "Melee_Ones"
-    },
-    "resistance": {
-      "toxic": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["Heal",null,2.5,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"Replace",2,null,null,1],
     ["Resistance","Toxic",2,1,60,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],

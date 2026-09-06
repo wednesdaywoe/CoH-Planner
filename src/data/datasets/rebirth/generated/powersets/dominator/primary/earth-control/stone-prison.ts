@@ -53,22 +53,6 @@ export const StonePrison: Power = {
     "duration": 9.2,
     "tickRate": 2
   },
-  "effects": {
-    "buffDuration": 15,
-    "defenseDebuff": {
-      "scale": 2,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 15
-    },
-    "immobilize": {
-      "attribType": "Duration",
-      "mag": 4,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.2,1,9.2,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,2,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Mez","Immobilized",15,4,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Immobilize"],

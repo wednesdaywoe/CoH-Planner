@@ -62,20 +62,6 @@ export const CallHawk: Power = {
       "tickRate": 1
     }
   ],
-  "effects": {
-    "buffDuration": 10,
-    "durations": {
-      "tohitDebuff": 10
-    },
-    "knockback": {
-      "scale": 0.67,
-      "table": "Ranged_Ones"
-    },
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_Debuff_ToHit"
-    }
-  },
   "atoms": [
     ["Damage","Lethal",0.52,1,1.3,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,0.25],
     ["Damage","Lethal",0.2429,1,4.1,"Ranged_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker","source.ownPowerNum?","5","<","&&"],null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker","source.ownPowerNum?",".04","*","1","+","@StdResult","*"],null,null,null,null,null,null,null,1],

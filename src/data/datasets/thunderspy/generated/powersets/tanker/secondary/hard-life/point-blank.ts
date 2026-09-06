@@ -57,16 +57,6 @@ export const PointBlank: Power = {
     "scale": 3.56,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "knockback": {
-      "scale": 3,
-      "table": "Melee_Knockback"
-    },
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    }
-  },
   "atoms": [
     ["Damage","Lethal",3.56,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","!","enttype","target>","critter","eq","&&"],null,null,null,null,null,null,null,null,null,"InherentTaunt"],

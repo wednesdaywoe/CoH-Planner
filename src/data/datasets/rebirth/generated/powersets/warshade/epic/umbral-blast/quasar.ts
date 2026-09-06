@@ -53,41 +53,6 @@ export const Quasar: Power = {
     "scale": 4,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 20,
-    "durations": {
-      "rechargeDebuff": 20,
-      "slow": 20
-    },
-    "knockback": {
-      "scale": 10,
-      "table": "Ranged_Knockback"
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.3,
-      "table": "Ranged_Slow"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Damage","Negative",4,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kWarshade_Blaster_Mode","source.Mode?","!","enttype","target>","critter","eq","&&"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Mez","Knockback",10,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Knockback"],

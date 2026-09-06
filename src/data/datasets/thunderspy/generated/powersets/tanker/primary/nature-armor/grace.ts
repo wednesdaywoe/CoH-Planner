@@ -34,29 +34,6 @@ export const Grace: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 10.75,
-    "defenseBuff": {
-      "psionic": {
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 10.75,
-      "maxHPBuff": 10.75,
-      "maxHPBuffUnenhanced": 10.75
-    },
-    "maxHPBuff": {
-      "scale": 1,
-      "table": "Melee_HealSelf"
-    },
-    "maxHPBuffUnenhanced": {
-      "ignoreStrength": true,
-      "scale": 1,
-      "table": "Melee_HealSelf"
-    }
-  },
   "atoms": [
     ["MaxHP",null,1,1,10.75,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf"],
     ["MaxHP",null,1,1,10.75,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf"],

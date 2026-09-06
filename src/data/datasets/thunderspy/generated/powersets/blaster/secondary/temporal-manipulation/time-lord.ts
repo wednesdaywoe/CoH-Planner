@@ -48,46 +48,15 @@ export const TimeLord: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 10,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.11,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "damageBuff": 9.17,
-      "movement": 10
-    },
-    "movement": {
-      "flySpeed": {
-        "scale": 0.15,
-        "table": "Melee_SpeedFlying"
-      },
-      "jumpSpeed": {
-        "scale": 0.1,
-        "table": "Melee_SpeedJumping"
-      },
-      "runSpeed": {
-        "scale": 0.1,
-        "table": "Melee_SpeedRunning"
-      }
-    },
-    "summon": {
-      "copyBoosts": true,
-      "duration": 120,
-      "entity": "Pets_Time",
-      "isPseudoPet": false
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff",
-      "movement"
-    ]
+  "summon": {
+    "copyBoosts": true,
+    "duration": 120,
+    "entity": "Pets_Time",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,1,1,120,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,120],
-    ["RechargeTime",null,0.2,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["RechargeTime",null,0.2,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,true,null,null,null,null,null,"Ones"],
     ["Movement","Run",0.1,1,10,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"SpeedRunning"],
     ["Movement","Fly",0.15,1,10,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"SpeedFlying"],
     ["Movement","Jump",0.1,1,10,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"SpeedJumping"],

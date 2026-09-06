@@ -47,58 +47,6 @@ export const TacticalTrainingManeuvers: Power = {
     "Defense Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 2.25,
-    "defenseBuff": {
-      "aoe": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "cold": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "energy": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "fire": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "melee": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "negative": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "psionic": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "ranged": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "toxic": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 2.25
-    }
-  },
   "atoms": [
     ["Defense","Ranged",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
     ["Defense","Melee",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1],

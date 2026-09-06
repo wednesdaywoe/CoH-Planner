@@ -44,21 +44,19 @@ export const HeatLoss: Power = {
     "Universal Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "duration": 2,
-      "entities": [
-        {
-          "count": 1,
-          "entity": "Pets_HeatLossDebuff"
-        },
-        {
-          "count": 1,
-          "entity": "Pets_HeatLossBuff"
-        }
-      ],
-      "isPseudoPet": false
-    }
+  "summon": {
+    "duration": 2,
+    "entities": [
+      {
+        "count": 1,
+        "entity": "Pets_HeatLossDebuff"
+      },
+      {
+        "count": 1,
+        "entity": "Pets_HeatLossBuff"
+      }
+    ],
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,-1,1,2,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,2],

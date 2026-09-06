@@ -53,18 +53,6 @@ export const SonicRepulsion: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "hold": {
-      "attribType": "Duration",
-      "mag": 2,
-      "scale": 1,
-      "table": "Ranged_Immobilize"
-    },
-    "knockback": {
-      "scale": 3,
-      "table": "Ranged_Knockback"
-    }
-  },
   "atoms": [
     ["Mez","Knockback",3,0,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1.100000023841858,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"ReduceIfKD"],
     ["Meta",null,0,0,1,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1.100000023841858,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"ReduceIfKD",null,"null",null,null,["Knocked"],2,true],

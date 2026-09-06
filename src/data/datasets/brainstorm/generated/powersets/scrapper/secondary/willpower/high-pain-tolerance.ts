@@ -36,57 +36,6 @@ export const HighPainTolerance: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 10.25,
-    "durations": {
-      "maxHPBuff": 10.25,
-      "maxHPBuffUnenhanced": 10.25,
-      "resistance": 10.25
-    },
-    "maxHPBuff": {
-      "scale": 1,
-      "table": "Melee_HealSelf"
-    },
-    "maxHPBuffUnenhanced": {
-      "ignoreStrength": true,
-      "scale": 1,
-      "table": "Melee_HealSelf"
-    },
-    "resistance": {
-      "cold": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      },
-      "smashing": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["MaxHP",null,1,1,10.25,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["MaxHP",null,1,1,10.25,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1],

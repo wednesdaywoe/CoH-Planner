@@ -54,61 +54,6 @@ export const StarlessStep: Power = {
     "scale": 1,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "buffDuration": 10,
-    "defenseBuff": {
-      "aoe": {
-        "scale": 0.725,
-        "table": "Melee_Buff_Def"
-      },
-      "cold": {
-        "scale": 0.725,
-        "table": "Melee_Buff_Def"
-      },
-      "energy": {
-        "scale": 0.725,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
-        "scale": 0.725,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.725,
-        "table": "Melee_Buff_Def"
-      },
-      "melee": {
-        "scale": 0.725,
-        "table": "Melee_Buff_Def"
-      },
-      "negative": {
-        "scale": 0.725,
-        "table": "Melee_Buff_Def"
-      },
-      "ranged": {
-        "scale": 0.725,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0.725,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 10,
-      "stealth": 0.4
-    },
-    "stealth": {
-      "translucency": {
-        "scale": 0,
-        "table": "Ranged_Ones"
-      }
-    },
-    "teleport": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Stealth","Translucency",0,1,0.4,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,-0.3],
     ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,-0.3],

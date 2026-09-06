@@ -45,13 +45,11 @@ export const GunDrone: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "duration": 99999,
-      "entity": "Pets_GunDrone_Tri",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "copyBoosts": true,
+    "duration": 99999,
+    "entity": "Pets_GunDrone_Tri",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,1,1,99999,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,99999]

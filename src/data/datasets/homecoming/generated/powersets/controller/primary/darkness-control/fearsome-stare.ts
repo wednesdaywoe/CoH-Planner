@@ -48,22 +48,6 @@ export const FearsomeStare: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 20,
-    "durations": {
-      "tohitDebuff": 20
-    },
-    "fear": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Fear"
-    },
-    "tohitDebuff": {
-      "scale": 1.5,
-      "table": "Ranged_Debuff_ToHit"
-    }
-  },
   "atoms": [
     ["Mez","Terrorized",15,3,0,"Ranged_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["ToHit",null,1.5,1,20,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],

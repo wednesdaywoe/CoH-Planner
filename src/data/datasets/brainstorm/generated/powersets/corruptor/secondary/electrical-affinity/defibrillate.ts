@@ -49,38 +49,6 @@ export const Defibrillate: Power = {
     "duration": 3,
     "tickRate": 3.5
   },
-  "effects": {
-    "buffDuration": 15,
-    "durations": {
-      "stealth": 15
-    },
-    "enduranceDrain": {
-      "scale": 0.3,
-      "table": "Ranged_EndDrain"
-    },
-    "enduranceGain": {
-      "scale": 100,
-      "table": "Melee_Ones"
-    },
-    "recoveryBuffUnenhanced": {
-      "ignoreStrength": true,
-      "scale": 30,
-      "table": "Ranged_Ones"
-    },
-    "sleep": {
-      "attribType": "Expression",
-      "mag": 3,
-      "scale": 30,
-      "table": "Ranged_Sleep"
-    },
-    "stealth": {
-      "stealthPvE": {
-        "scale": 300,
-        "table": "Melee_Ones"
-      }
-    },
-    "maxStacks": 2
-  },
   "atoms": [
     ["Heal",null,1,1,3,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,3.5,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["DeadPlayerFriend"]],
     ["Endurance",null,100,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Ignore",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["DeadPlayerFriend"]],

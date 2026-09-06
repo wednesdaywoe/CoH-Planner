@@ -113,66 +113,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Immobilized",2,3,0,"Melee_Immobilize","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Immobilize"],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&","arch","source>","Class_Tanker","==","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"],
           ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.12999999523162842,null,null,null,null,null,null,["enttype","target>","player","eq","arch","source>","Class_Tanker","==","&&"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 50,
-          "recharge": 8,
-          "endurance": 8,
-          "activationTime": 1.17,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Cold",
-              "scale": 0.2,
-              "table": "Melee_Damage",
-              "duration": 9.2,
-              "tickRate": 2
-            },
-            {
-              "type": "Fire",
-              "scale": 0.09,
-              "table": "Melee_Damage",
-              "duration": 9.2,
-              "tickRate": 2
-            }
-          ],
-          "buffDuration": 18,
-          "durations": {
-            "rechargeDebuff": 18,
-            "slow": 18
-          },
-          "immobilize": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 15,
-            "table": "Melee_Immobilize"
-          },
-          "rechargeDebuff": {
-            "ignoreStrength": true,
-            "scale": 0.2,
-            "table": "Melee_Slow"
-          },
-          "slow": {
-            "flySpeed": {
-              "scale": 0.3,
-              "table": "Melee_Slow"
-            },
-            "jumpHeight": {
-              "ignoreStrength": true,
-              "scale": 0.3,
-              "table": "Melee_Slow"
-            },
-            "jumpSpeed": {
-              "scale": 0.3,
-              "table": "Melee_Slow"
-            },
-            "runSpeed": {
-              "scale": 0.3,
-              "table": "Melee_Slow"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Block of Ice",
@@ -254,62 +195,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Cold",3.032013,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&","arch","source>","Class_Tanker","==","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"],
           ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.12999999523162842,null,null,null,null,null,null,["enttype","target>","player","eq","arch","source>","Class_Tanker","==","&&"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 32,
-          "endurance": 10.66,
-          "activationTime": 1.87,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Cold",
-              "scale": 1,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.45,
-              "table": "Melee_Damage"
-            }
-          ],
-          "buffDuration": 18,
-          "durations": {
-            "rechargeDebuff": 18,
-            "slow": 18
-          },
-          "hold": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 12,
-            "table": "Melee_Immobilize"
-          },
-          "rechargeDebuff": {
-            "ignoreStrength": true,
-            "scale": 0.3,
-            "table": "Melee_Slow"
-          },
-          "slow": {
-            "flySpeed": {
-              "scale": 0.3,
-              "table": "Melee_Slow"
-            },
-            "jumpHeight": {
-              "ignoreStrength": true,
-              "scale": 0.3,
-              "table": "Melee_Slow"
-            },
-            "jumpSpeed": {
-              "scale": 0.3,
-              "table": "Melee_Slow"
-            },
-            "runSpeed": {
-              "scale": 0.3,
-              "table": "Melee_Slow"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Ice Blast",
@@ -392,61 +278,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Cold",1.56,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&","arch","source>","Class_Tanker","==","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"],
           ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.12999999523162842,null,null,null,null,null,null,["enttype","target>","player","eq","arch","source>","Class_Tanker","==","&&"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 8,
-          "endurance": 8.528,
-          "activationTime": 1.67,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.501,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Cold",
-              "scale": 1.169,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.45,
-              "table": "Melee_Damage"
-            }
-          ],
-          "buffDuration": 10,
-          "durations": {
-            "rechargeDebuff": 10,
-            "slow": 10
-          },
-          "rechargeDebuff": {
-            "ignoreStrength": true,
-            "scale": 0.2,
-            "table": "Melee_Slow"
-          },
-          "slow": {
-            "flySpeed": {
-              "scale": 0.2,
-              "table": "Melee_Slow"
-            },
-            "jumpHeight": {
-              "ignoreStrength": true,
-              "scale": 0.2,
-              "table": "Melee_Slow"
-            },
-            "jumpSpeed": {
-              "scale": 0.2,
-              "table": "Melee_Slow"
-            },
-            "runSpeed": {
-              "scale": 0.2,
-              "table": "Melee_Slow"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Shiver",
@@ -514,60 +346,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Fire",0.48708,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&","arch","source>","Class_Tanker","==","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"],
           ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.12999999523162842,null,null,null,null,null,null,["enttype","target>","player","eq","arch","source>","Class_Tanker","==","&&"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 60,
-          "endurance": 10.4,
-          "activationTime": 2.17,
-          "effectArea": "Cone",
-          "radius": 80,
-          "arc": 2.356194496154785,
-          "maxTargets": 10,
-          "damage": {
-            "type": "Fire",
-            "scale": 0.48708,
-            "table": "Melee_Damage"
-          },
-          "buffDuration": 10,
-          "durations": {
-            "movementCapDebuff": 10,
-            "rechargeDebuff": 10,
-            "slow": 10
-          },
-          "movementCapDebuff": {
-            "runSpeed": {
-              "ignoreStrength": true,
-              "scale": 1,
-              "table": "Melee_SpeedRunning"
-            }
-          },
-          "rechargeDebuff": {
-            "ignoreStrength": true,
-            "scale": 0.65,
-            "table": "Melee_Slow"
-          },
-          "slow": {
-            "flySpeed": {
-              "scale": 0.65,
-              "table": "Melee_Slow"
-            },
-            "jumpHeight": {
-              "ignoreStrength": true,
-              "scale": 0.65,
-              "table": "Melee_Slow"
-            },
-            "jumpSpeed": {
-              "scale": 0.65,
-              "table": "Melee_Slow"
-            },
-            "runSpeed": {
-              "scale": 0.65,
-              "table": "Melee_Slow"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Ice Storm",
@@ -618,33 +397,25 @@ export const EPIC_POOLS_RAW = {
           "castTime": 2.03
         },
         "effectArea": "Location",
+        "summon": {
+          "isPseudoPet": false,
+          "duration": 15,
+          "copyBoosts": true,
+          "entities": [
+            {
+              "entity": "Pets_IceStorm",
+              "count": 1
+            },
+            {
+              "entity": "Pets_Embraced_IceStorm",
+              "count": 1
+            }
+          ]
+        },
         "atoms": [
           ["EntCreate",null,1,1,15,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,15],
           ["EntCreate",null,1,1,15,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"]
-        ],
-        "effects": {
-          "accuracy": 2,
-          "range": 60,
-          "recharge": 120,
-          "endurance": 19.5,
-          "activationTime": 2.03,
-          "effectArea": "Location",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 15,
-            "entities": [
-              {
-                "count": 1,
-                "entity": "Pets_IceStorm"
-              },
-              {
-                "count": 1,
-                "entity": "Pets_Embraced_IceStorm"
-              }
-            ],
-            "isPseudoPet": false
-          }
-        }
+        ]
       }
     ]
   },
@@ -729,47 +500,7 @@ export const EPIC_POOLS_RAW = {
           ["Movement","JumpHeight",-500,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Movement","FlyMode",-10,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Immobilized",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 80,
-          "recharge": 12,
-          "endurance": 12.74,
-          "activationTime": 1,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 10,
-          "buffDuration": 15,
-          "durations": {
-            "rechargeDebuff": 15,
-            "slow": 15
-          },
-          "immobilize": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 15,
-            "table": "Ranged_Immobilize"
-          },
-          "rechargeDebuff": {
-            "ignoreStrength": true,
-            "scale": 0.2,
-            "table": "Ranged_Slow"
-          },
-          "slow": {
-            "flySpeed": {
-              "scale": 0.2,
-              "table": "Ranged_Slow"
-            },
-            "jumpHeight": {
-              "scale": 500,
-              "table": "Ranged_Ones"
-            },
-            "runSpeed": {
-              "scale": 0.2,
-              "table": "Ranged_Slow"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Scorpion Shield",
@@ -832,40 +563,7 @@ export const EPIC_POOLS_RAW = {
           ["Elusivity","Smashing",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Elusivity","Lethal",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Elusivity","Energy",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 4,
-          "endurance": 0.1625,
-          "activationTime": 2,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "defenseBuff": {
-            "energy": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            },
-            "lethal": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            },
-            "smashing": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            }
-          },
-          "durations": {
-            "defenseBuff": 0.75,
-            "resistance": 0.75
-          },
-          "resistance": {
-            "toxic": {
-              "scale": 1.75,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Mace Beam Volley",
@@ -947,34 +645,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Smashing",0.914912,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Energy",0.914912,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Knockback"]
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 50,
-          "recharge": 12,
-          "endurance": 13.29,
-          "activationTime": 1,
-          "effectArea": "Cone",
-          "radius": 50,
-          "arc": 0.6108652353286743,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.5,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.5,
-              "table": "Ranged_Damage"
-            }
-          ],
-          "knockback": {
-            "scale": 1,
-            "table": "Ranged_Knockback"
-          }
-        }
+        ]
       },
       {
         "name": "Summon Spiderlings",
@@ -1036,26 +707,18 @@ export const EPIC_POOLS_RAW = {
           "castTime": 3.03
         },
         "effectArea": "Location",
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Patron_Powers_Arachnobot_Spiderling",
+          "duration": 240,
+          "copyBoosts": true,
+          "entityCount": 3
+        },
         "atoms": [
           ["EntCreate",null,1,1,240,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,240],
           ["EntCreate",null,1,1,240,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,1],
           ["EntCreate",null,1,1,240,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,2]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 480,
-          "endurance": 26,
-          "activationTime": 3.03,
-          "effectArea": "Location",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 240,
-            "entity": "Pets_Patron_Powers_Arachnobot_Spiderling",
-            "entityCount": 3,
-            "isPseudoPet": false
-          }
-        }
+        ]
       },
       {
         "name": "Web Cocoon",
@@ -1122,45 +785,7 @@ export const EPIC_POOLS_RAW = {
           ["Movement","JumpHeight",-500,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Movement","FlyMode",-10,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Held",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 60,
-          "recharge": 16,
-          "endurance": 10.66,
-          "activationTime": 1,
-          "effectArea": "SingleTarget",
-          "buffDuration": 15,
-          "durations": {
-            "rechargeDebuff": 15,
-            "slow": 15
-          },
-          "hold": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 10,
-            "table": "Ranged_Immobilize"
-          },
-          "rechargeDebuff": {
-            "ignoreStrength": true,
-            "scale": 0.5,
-            "table": "Ranged_Slow"
-          },
-          "slow": {
-            "flySpeed": {
-              "scale": 0.5,
-              "table": "Ranged_Slow"
-            },
-            "jumpHeight": {
-              "scale": 500,
-              "table": "Ranged_Ones"
-            },
-            "runSpeed": {
-              "scale": 0.5,
-              "table": "Ranged_Slow"
-            }
-          }
-        }
+        ]
       }
     ]
   },
@@ -1252,39 +877,7 @@ export const EPIC_POOLS_RAW = {
           ["Endurance",null,4.29,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,0.10000000149011612,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Damage","Energy",1.861113,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Endurance",null,-1.25,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"EndDrain"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 40,
-          "recharge": 16,
-          "endurance": 13.29,
-          "activationTime": 2.07,
-          "effectArea": "Cone",
-          "radius": 40,
-          "arc": 0.7853981852531433,
-          "maxTargets": 10,
-          "damage": {
-            "type": "Energy",
-            "scale": 0.96,
-            "table": "Ranged_Damage"
-          },
-          "buffDuration": 4,
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "enduranceDrain": {
-            "scale": 0.07,
-            "table": "Ranged_Ones"
-          },
-          "enduranceGain": {
-            "scale": 4.29,
-            "table": "Ranged_Ones"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Ranged_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Charged Armor",
@@ -1343,33 +936,7 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Smashing",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Energy",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 4,
-          "endurance": 0.1625,
-          "activationTime": 0.67,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "durations": {
-            "resistance": 0.75
-          },
-          "resistance": {
-            "energy": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "lethal": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Summon Adept",
@@ -1432,23 +999,15 @@ export const EPIC_POOLS_RAW = {
           "castTime": 1.17
         },
         "effectArea": "Location",
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Patron_Powers_Mu_Adept",
+          "duration": 240,
+          "copyBoosts": true
+        },
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,240]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 480,
-          "endurance": 26,
-          "activationTime": 1.17,
-          "effectArea": "Location",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 240,
-            "entity": "Pets_Patron_Powers_Mu_Adept",
-            "isPseudoPet": false
-          }
-        }
+        ]
       },
       {
         "name": "Electrifying Fences",
@@ -1531,43 +1090,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Energy",0.380837,1,7.21,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Immobilized",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Endurance",null,-1,1,6.2,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,2,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"EndDrain"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 40,
-          "recharge": 20,
-          "endurance": 12.74,
-          "activationTime": 1.17,
-          "effectArea": "AoE",
-          "radius": 10,
-          "maxTargets": 10,
-          "damage": {
-            "type": "Energy",
-            "scale": 0.1,
-            "table": "Ranged_Damage",
-            "duration": 7.1,
-            "tickRate": 1
-          },
-          "buffDuration": 6.2,
-          "durations": {
-            "enduranceDrain": 6.2,
-            "recoveryDebuff": 2
-          },
-          "enduranceDrain": {
-            "scale": 0.04,
-            "table": "Ranged_Ones"
-          },
-          "immobilize": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 15,
-            "table": "Ranged_Immobilize"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Ranged_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Electric Shackles",
@@ -1645,48 +1168,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Held",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Damage","Energy",0.579471,1,6.3,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Endurance",null,-1.25,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"EndDrain"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 32,
-          "endurance": 8.58,
-          "activationTime": 2.17,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Energy",
-            "scale": 0.15,
-            "table": "Ranged_Damage",
-            "duration": 6.3,
-            "tickRate": 1
-          },
-          "buffDuration": 8,
-          "durations": {
-            "recoveryDebuff": 8
-          },
-          "enduranceDrain": {
-            "scale": 0.07,
-            "table": "Ranged_Ones"
-          },
-          "enduranceGain": {
-            "scale": 4.29,
-            "table": "Ranged_Ones"
-          },
-          "hold": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 8,
-            "table": "Ranged_Ones"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Ranged_Ones"
-          },
-          "maxStacks": 2,
-          "stacksLinear": [
-            "enduranceGain"
-          ]
-        }
+        ]
       }
     ]
   },
@@ -1785,35 +1267,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Fire",1.313839,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kMeter","source>","0",">","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Fire",1.313839,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["kMeter","source>",".9","<","kHeld","target>","0",">","kSleep","target>","0",">","||","&&","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Fire",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kMeter","source>","0",">","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 50,
-          "recharge": 8,
-          "endurance": 8,
-          "activationTime": 1.17,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Fire",
-              "scale": 0.22,
-              "table": "Melee_Damage",
-              "duration": 9.2,
-              "tickRate": 2
-            },
-            {
-              "type": "Fire",
-              "scale": 1,
-              "table": "Melee_Damage"
-            }
-          ],
-          "immobilize": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 15,
-            "table": "Melee_Immobilize"
-          }
-        }
+        ]
       },
       {
         "name": "Char",
@@ -1891,35 +1345,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Fire",1.971164,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kMeter","source>","0",">","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Fire",1.971164,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["kMeter","source>",".9","<","kHeld","target>","0",">","kSleep","target>","0",">","||","&&","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Fire",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kMeter","source>","0",">","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 50,
-          "recharge": 32,
-          "endurance": 10.66,
-          "activationTime": 1.07,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Fire",
-              "scale": 0.1,
-              "table": "Melee_Damage",
-              "duration": 4.2,
-              "tickRate": 1
-            },
-            {
-              "type": "Fire",
-              "scale": 1,
-              "table": "Melee_Damage"
-            }
-          ],
-          "hold": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 10,
-            "table": "Melee_Immobilize"
-          }
-        }
+        ]
       },
       {
         "name": "Fire Blast",
@@ -2001,36 +1427,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Fire",1.468026,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kMeter","source>","0",">","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Fire",1.468026,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["kMeter","source>",".9","<","kHeld","target>","0",">","kSleep","target>","0",">","||","&&","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Fire",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kMeter","source>","0",">","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 4,
-          "endurance": 5.2,
-          "activationTime": 1.67,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Fire",
-              "scale": 1,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.15,
-              "table": "Melee_Damage",
-              "duration": 3.1,
-              "tickRate": 1,
-              "chance": 0.8,
-              "cancelOnMiss": true
-            },
-            {
-              "type": "Fire",
-              "scale": 1,
-              "table": "Melee_Damage"
-            }
-          ]
-        }
+        ]
       },
       {
         "name": "Melt Armor",
@@ -2092,68 +1489,7 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Negative",-3,1,40,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Toxic",-3,1,40,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Psionic",-3,1,40,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 70,
-          "recharge": 75,
-          "endurance": 18.2,
-          "activationTime": 1.5,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 16,
-          "buffDuration": 40,
-          "defenseDebuff": {
-            "scale": 2,
-            "table": "Ranged_Debuff_Def"
-          },
-          "durations": {
-            "defenseDebuff": 40,
-            "resistanceDebuff": 40
-          },
-          "resistanceDebuff": {
-            "cold": {
-              "ignoreStrength": true,
-              "scale": 3,
-              "table": "Ranged_Res_Dmg"
-            },
-            "energy": {
-              "ignoreStrength": true,
-              "scale": 3,
-              "table": "Ranged_Res_Dmg"
-            },
-            "fire": {
-              "ignoreStrength": true,
-              "scale": 3,
-              "table": "Ranged_Res_Dmg"
-            },
-            "lethal": {
-              "ignoreStrength": true,
-              "scale": 3,
-              "table": "Ranged_Res_Dmg"
-            },
-            "negative": {
-              "ignoreStrength": true,
-              "scale": 3,
-              "table": "Ranged_Res_Dmg"
-            },
-            "psionic": {
-              "ignoreStrength": true,
-              "scale": 3,
-              "table": "Ranged_Res_Dmg"
-            },
-            "smashing": {
-              "ignoreStrength": true,
-              "scale": 3,
-              "table": "Ranged_Res_Dmg"
-            },
-            "toxic": {
-              "ignoreStrength": true,
-              "scale": 3,
-              "table": "Ranged_Res_Dmg"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Fire Ball",
@@ -2244,43 +1580,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Fire",0.594277,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kMeter","source>","0",">","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Fire",0.594277,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["kMeter","source>",".9","<","kHeld","target>","0",">","kSleep","target>","0",">","||","&&","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Fire",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["kMeter","source>","0",">","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 16,
-          "endurance": 13.29,
-          "activationTime": 1,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.2,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.7,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.1,
-              "table": "Melee_Damage",
-              "duration": 2.1,
-              "tickRate": 1,
-              "chance": 0.8,
-              "cancelOnMiss": true
-            },
-            {
-              "type": "Fire",
-              "scale": 1,
-              "table": "Melee_Damage"
-            }
-          ]
-        }
+        ]
       }
     ]
   },
@@ -2338,21 +1638,7 @@ export const EPIC_POOLS_RAW = {
         "effectArea": "SingleTarget",
         "atoms": [
           ["MaxEndurance",null,5,1,10.25,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 10,
-          "activationTime": 1.17,
-          "effectArea": "SingleTarget",
-          "buffDuration": 10.25,
-          "durations": {
-            "maxEndBuff": 10.25
-          },
-          "maxEndBuff": {
-            "scale": 5,
-            "table": "Melee_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Focused Accuracy",
@@ -2401,47 +1687,7 @@ export const EPIC_POOLS_RAW = {
           ["Accuracy",null,0.2,1,0.75,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Perception",null,0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Perception",null,0.6,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 10,
-          "endurance": 0.39,
-          "activationTime": 1.17,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "accuracyBuff": {
-            "ignoreStrength": true,
-            "scale": 0.2,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 0.75,
-          "debuffResistance": {
-            "perception": {
-              "ignoreStrength": true,
-              "scale": 0.6,
-              "table": "Melee_Ones"
-            },
-            "tohit": {
-              "ignoreStrength": true,
-              "scale": 2,
-              "table": "Melee_Res_Boolean"
-            }
-          },
-          "durations": {
-            "accuracyBuff": 0.75,
-            "debuffResistance": 0.75,
-            "perceptionBuff": 0.75,
-            "tohitBuff": 0.75
-          },
-          "perceptionBuff": {
-            "scale": 0.6,
-            "table": "Melee_Ones"
-          },
-          "tohitBuff": {
-            "scale": 0.5,
-            "table": "Melee_Buff_ToHit"
-          }
-        }
+        ]
       },
       {
         "name": "Laser Beam Eyes",
@@ -2505,28 +1751,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["arch","target>","Class_Minion_Grunt","eq","arch","target>","Class_Minion_Small","eq","||","arch","target>","Class_Minion_Pets","eq","||","arch","target>","Class_Minion_Swarm","eq","||","enttype","target>","player","eq","||","!","arch","source>","Class_Scrapper","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["Raid","target.HasTag?","enttype","target>","player","eq","||","kRage","source>","0.7","<","&&","arch","source>","Class_Brute","==","&&"],true,null,null,null,null,null,null,null,null,"Ones",null,"rage"],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&","arch","source>","Class_Brute","==","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"]
-        ],
-        "effects": {
-          "accuracy": 2,
-          "range": 80,
-          "recharge": 6,
-          "endurance": 6.5,
-          "activationTime": 1.67,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Energy",
-            "scale": 1,
-            "table": "Melee_Damage"
-          },
-          "buffDuration": 6,
-          "defenseDebuff": {
-            "scale": 2,
-            "table": "Melee_Debuff_Def"
-          },
-          "durations": {
-            "defenseDebuff": 6
-          }
-        }
+        ]
       },
       {
         "name": "Physical Perfection",
@@ -2569,25 +1794,7 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Regeneration",null,0.2,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Recovery",null,0.125,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "activatePeriod": 10,
-          "effectArea": "SingleTarget",
-          "buffDuration": 10.25,
-          "durations": {
-            "recoveryBuff": 10.25,
-            "regenBuff": 10.25
-          },
-          "recoveryBuff": {
-            "scale": 0.125,
-            "table": "Melee_Ones"
-          },
-          "regenBuff": {
-            "scale": 0.2,
-            "table": "Melee_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Energy Torrent",
@@ -2663,34 +1870,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Energy",0.99,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["arch","target>","Class_Minion_Grunt","eq","arch","target>","Class_Minion_Small","eq","||","arch","target>","Class_Minion_Pets","eq","||","arch","target>","Class_Minion_Swarm","eq","||","enttype","target>","player","eq","||","!","arch","source>","Class_Scrapper","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["Raid","target.HasTag?","enttype","target>","player","eq","||","kRage","source>","0.7","<","&&","arch","source>","Class_Brute","==","&&"],true,null,null,null,null,null,null,null,null,"Ones",null,"rage"],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&","arch","source>","Class_Brute","==","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 40,
-          "recharge": 12,
-          "endurance": 10.37,
-          "activationTime": 1.07,
-          "effectArea": "Cone",
-          "radius": 40,
-          "arc": 0.7853981852531433,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.3,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.66,
-              "table": "Melee_Damage"
-            }
-          ],
-          "knockback": {
-            "scale": 0.67,
-            "table": "Melee_Ones"
-          }
-        }
+        ]
       }
     ]
   },
@@ -2747,20 +1927,7 @@ export const EPIC_POOLS_RAW = {
         "effectArea": "SingleTarget",
         "atoms": [
           ["MaxEndurance",null,5,1,10.25,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 10,
-          "effectArea": "SingleTarget",
-          "buffDuration": 10.25,
-          "durations": {
-            "maxEndBuff": 10.25
-          },
-          "maxEndBuff": {
-            "scale": 5,
-            "table": "Melee_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Focused Accuracy",
@@ -2809,47 +1976,7 @@ export const EPIC_POOLS_RAW = {
           ["Accuracy",null,0.2,1,0.75,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Perception",null,0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Perception",null,0.6,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 10,
-          "endurance": 0.39,
-          "activationTime": 1.17,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "accuracyBuff": {
-            "ignoreStrength": true,
-            "scale": 0.2,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 0.75,
-          "debuffResistance": {
-            "perception": {
-              "ignoreStrength": true,
-              "scale": 0.6,
-              "table": "Melee_Ones"
-            },
-            "tohit": {
-              "ignoreStrength": true,
-              "scale": 2,
-              "table": "Melee_Res_Boolean"
-            }
-          },
-          "durations": {
-            "accuracyBuff": 0.75,
-            "debuffResistance": 0.75,
-            "perceptionBuff": 0.75,
-            "tohitBuff": 0.75
-          },
-          "perceptionBuff": {
-            "scale": 0.6,
-            "table": "Melee_Ones"
-          },
-          "tohitBuff": {
-            "scale": 0.5,
-            "table": "Melee_Buff_ToHit"
-          }
-        }
+        ]
       },
       {
         "name": "Laser Beam Eyes",
@@ -2918,35 +2045,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Energy",1.660797,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kMeter","source>","0",">","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Energy",1.660797,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["kMeter","source>",".9","<","kHeld","target>","0",">","kSleep","target>","0",">","||","&&","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kMeter","source>","0",">","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 2,
-          "range": 80,
-          "recharge": 6,
-          "endurance": 6.5,
-          "activationTime": 1.67,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Energy",
-              "scale": 1,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1,
-              "table": "Melee_Damage"
-            }
-          ],
-          "buffDuration": 6,
-          "defenseDebuff": {
-            "scale": 2,
-            "table": "Melee_Debuff_Def"
-          },
-          "durations": {
-            "defenseDebuff": 6
-          }
-        }
+        ]
       },
       {
         "name": "Physical Perfection",
@@ -2989,25 +2088,7 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Regeneration",null,0.2,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Recovery",null,0.125,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "activatePeriod": 10,
-          "effectArea": "SingleTarget",
-          "buffDuration": 10.25,
-          "durations": {
-            "recoveryBuff": 10.25,
-            "regenBuff": 10.25
-          },
-          "recoveryBuff": {
-            "scale": 0.125,
-            "table": "Melee_Ones"
-          },
-          "regenBuff": {
-            "scale": 0.2,
-            "table": "Melee_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Energy Torrent",
@@ -3086,39 +2167,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Energy",1.016922,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kMeter","source>","0",">","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Energy",1.016922,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["kMeter","source>",".9","<","kHeld","target>","0",">","kSleep","target>","0",">","||","&&","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Energy",0.99,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["kMeter","source>","0",">","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 40,
-          "recharge": 12,
-          "endurance": 10.37,
-          "activationTime": 1.07,
-          "effectArea": "Cone",
-          "radius": 40,
-          "arc": 0.7853981852531433,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.3,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.66,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.99,
-              "table": "Melee_Damage"
-            }
-          ],
-          "knockback": {
-            "scale": 0.67,
-            "table": "Melee_Ones"
-          }
-        }
+        ]
       }
     ]
   },
@@ -3239,49 +2288,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Lethal",1.4,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["arch","target>","Class_Minion_Grunt","eq","arch","target>","Class_Minion_Small","eq","||","arch","target>","Class_Minion_Pets","eq","||","arch","target>","Class_Minion_Swarm","eq","||","enttype","target>","player","eq","||","!","arch","source>","Class_Scrapper","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["Raid","target.HasTag?","enttype","target>","player","eq","||","kRage","source>","0.7","<","&&","arch","source>","Class_Brute","==","&&"],true,null,null,null,null,null,null,null,null,"Ones",null,"rage"],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 9,
-          "endurance": 8.58,
-          "activationTime": 3,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Lethal",
-              "scale": 1,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.1,
-              "table": "Melee_Damage",
-              "duration": 3.2,
-              "tickRate": 1
-            },
-            {
-              "type": "Fire",
-              "scale": 0.45,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.045,
-              "table": "Melee_Damage",
-              "duration": 3.2,
-              "tickRate": 1
-            }
-          ],
-          "knockback": {
-            "scale": 0.7,
-            "table": "Melee_Knockback"
-          },
-          "taunt": {
-            "scale": 1,
-            "table": "Melee_InherentTaunt"
-          }
-        }
+        ]
       },
       {
         "name": "School of Sharks",
@@ -3387,54 +2394,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Negative",0.895106,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,["enttype","target>","player","eq","arch","source>","Class_Scrapper","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["Raid","target.HasTag?","enttype","target>","player","eq","||","kRage","source>","0.7","<","&&","arch","source>","Class_Brute","==","&&"],true,null,null,null,null,null,null,null,null,"Ones",null,"rage"],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 50,
-          "recharge": 10,
-          "endurance": 8.93,
-          "activationTime": 2.37,
-          "effectArea": "Cone",
-          "radius": 50,
-          "arc": 0.5235987901687622,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Negative",
-              "scale": 0.135,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.1,
-              "table": "Melee_Damage",
-              "duration": 7.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Fire",
-              "scale": 0.06075,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.045,
-              "table": "Melee_Damage",
-              "duration": 7.1,
-              "tickRate": 1
-            }
-          ],
-          "immobilize": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 15,
-            "table": "Melee_Immobilize"
-          },
-          "taunt": {
-            "scale": 1,
-            "table": "Melee_InherentTaunt"
-          }
-        }
+        ]
       },
       {
         "name": "Bile Spray",
@@ -3536,48 +2496,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Toxic",0.87593,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,["enttype","target>","player","eq","arch","source>","Class_Scrapper","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["Raid","target.HasTag?","enttype","target>","player","eq","||","kRage","source>","0.7","<","&&","arch","source>","Class_Brute","==","&&"],true,null,null,null,null,null,null,null,null,"Ones",null,"rage"],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 16,
-          "endurance": 13.28,
-          "activationTime": 2.67,
-          "effectArea": "Cone",
-          "radius": 60,
-          "arc": 0.5235987901687622,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Toxic",
-              "scale": 0.7,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.1,
-              "table": "Melee_Damage",
-              "duration": 4.25,
-              "tickRate": 1
-            },
-            {
-              "type": "Fire",
-              "scale": 0.315,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.045,
-              "table": "Melee_Damage",
-              "duration": 4.25,
-              "tickRate": 1
-            }
-          ],
-          "taunt": {
-            "scale": 1,
-            "table": "Melee_InherentTaunt"
-          }
-        }
+        ]
       },
       {
         "name": "Arctic Breath",
@@ -3700,131 +2619,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Knockback",0.1,1,10,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,0.25,1,null,true,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,0.02,null,"Ones"],
           ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["Raid","target.HasTag?","enttype","target>","player","eq","||","kRage","source>","0.7","<","&&","arch","source>","Class_Brute","==","&&"],true,null,null,null,null,null,null,null,null,"Ones",null,"rage"],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 16,
-          "endurance": 13.28,
-          "activationTime": 2.67,
-          "effectArea": "Cone",
-          "radius": 60,
-          "arc": 0.5235987901687622,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Cold",
-              "scale": 0.5,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Cold",
-              "scale": 0.1,
-              "table": "Melee_Damage",
-              "duration": 4.25,
-              "tickRate": 1
-            },
-            {
-              "type": "Fire",
-              "scale": 0.225,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.045,
-              "table": "Melee_Damage",
-              "duration": 4.25,
-              "tickRate": 1
-            }
-          ],
-          "buffDuration": 10,
-          "defenseDebuff": {
-            "scale": 1.5,
-            "table": "Melee_Debuff_Def"
-          },
-          "durations": {
-            "defenseDebuff": 10,
-            "knockback": 10,
-            "rechargeDebuff": 10,
-            "resistanceDebuff": 10,
-            "slow": 10
-          },
-          "knockback": {
-            "ignoreStrength": true,
-            "scale": 0.1,
-            "table": "Melee_Ones"
-          },
-          "rechargeDebuff": {
-            "ignoreStrength": true,
-            "scale": 0.3,
-            "table": "Melee_Slow"
-          },
-          "resistanceDebuff": {
-            "cold": {
-              "ignoreStrength": true,
-              "scale": 1.5,
-              "table": "Melee_Res_DMG"
-            },
-            "energy": {
-              "ignoreStrength": true,
-              "scale": 1.5,
-              "table": "Melee_Res_DMG"
-            },
-            "fire": {
-              "ignoreStrength": true,
-              "scale": 1.5,
-              "table": "Melee_Res_DMG"
-            },
-            "lethal": {
-              "ignoreStrength": true,
-              "scale": 1.5,
-              "table": "Melee_Res_DMG"
-            },
-            "negative": {
-              "ignoreStrength": true,
-              "scale": 1.5,
-              "table": "Melee_Res_DMG"
-            },
-            "psionic": {
-              "ignoreStrength": true,
-              "scale": 1.5,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "ignoreStrength": true,
-              "scale": 1.5,
-              "table": "Melee_Res_DMG"
-            },
-            "toxic": {
-              "ignoreStrength": true,
-              "scale": 1.5,
-              "table": "Melee_Res_DMG"
-            }
-          },
-          "slow": {
-            "flySpeed": {
-              "scale": 0.3,
-              "table": "Melee_Slow"
-            },
-            "jumpHeight": {
-              "ignoreStrength": true,
-              "scale": 0.3,
-              "table": "Melee_Slow"
-            },
-            "jumpSpeed": {
-              "scale": 0.3,
-              "table": "Melee_Slow"
-            },
-            "runSpeed": {
-              "scale": 0.3,
-              "table": "Melee_Slow"
-            }
-          },
-          "taunt": {
-            "scale": 1,
-            "table": "Melee_InherentTaunt"
-          }
-        }
+        ]
       },
       {
         "name": "Summon Guardian",
@@ -3891,23 +2686,15 @@ export const EPIC_POOLS_RAW = {
           "castTime": 3.2
         },
         "effectArea": "Location",
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Patron_Powers_Coral_Guardian_Sentinel",
+          "duration": 240,
+          "copyBoosts": true
+        },
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,240]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 480,
-          "endurance": 26,
-          "activationTime": 3.2,
-          "effectArea": "Location",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 240,
-            "entity": "Pets_Patron_Powers_Coral_Guardian_Sentinel",
-            "isPseudoPet": false
-          }
-        }
+        ]
       }
     ]
   },
@@ -4017,40 +2804,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Energy",1.460722,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,["enttype","target>","player","eq","arch","source>","Class_Scrapper","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["arch","target>","Class_Boss_Archvillain","eq","arch","target>","Class_Boss_Archvillain2","eq","||","arch","target>","Class_Boss_Monster","eq","||","arch","target>","Class_Boss_Mito","eq","||","arch","target>","Class_Boss_Hamidon","eq","||","arch","target>","Class_Boss_RularuuFM","eq","||","enttype","target>","player","eq","||","kRage","source>","0.7","<","&&","arch","source>","Class_Brute","==","&&"],true,null,null,null,null,null,null,null,null,"Ones",null,"rage"],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"]
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 80,
-          "recharge": 9,
-          "endurance": 8.58,
-          "activationTime": 1,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.66,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.66,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.594,
-              "table": "Melee_Damage"
-            }
-          ],
-          "knockback": {
-            "scale": 0.7,
-            "table": "Melee_Ones"
-          },
-          "taunt": {
-            "scale": 1,
-            "table": "Melee_InherentTaunt"
-          }
-        }
+        ]
       },
       {
         "name": "Web Envelope",
@@ -4131,56 +2885,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Immobilized",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Meta",null,0.05,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["Raid","target.HasTag?","enttype","target>","player","eq","||","kRage","source>","0.7","<","&&","arch","source>","Class_Brute","==","&&"],true,null,null,null,null,null,null,null,null,"Ones",null,"rage"],
           ["Mez","Taunt",1,4,0,"Ranged_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"]
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 80,
-          "recharge": 12,
-          "endurance": 12.74,
-          "activationTime": 1,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 10,
-          "damage": {
-            "type": "Fire",
-            "scale": 0.48708,
-            "table": "Ranged_Damage"
-          },
-          "buffDuration": 15,
-          "durations": {
-            "rechargeDebuff": 15,
-            "slow": 15
-          },
-          "immobilize": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 15,
-            "table": "Ranged_Immobilize"
-          },
-          "rechargeDebuff": {
-            "ignoreStrength": true,
-            "scale": 0.2,
-            "table": "Ranged_Slow"
-          },
-          "slow": {
-            "flySpeed": {
-              "scale": 0.2,
-              "table": "Ranged_Slow"
-            },
-            "jumpHeight": {
-              "scale": 500,
-              "table": "Ranged_Ones"
-            },
-            "runSpeed": {
-              "scale": 0.2,
-              "table": "Ranged_Slow"
-            }
-          },
-          "taunt": {
-            "scale": 1,
-            "table": "Ranged_InherentTaunt"
-          }
-        }
+        ]
       },
       {
         "name": "Focused Accuracy",
@@ -4245,47 +2950,7 @@ export const EPIC_POOLS_RAW = {
           ["Accuracy",null,0.2,1,0.75,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Perception",null,0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Perception",null,0.6,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 10,
-          "endurance": 0.195,
-          "activationTime": 1.17,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "accuracyBuff": {
-            "ignoreStrength": true,
-            "scale": 0.2,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 0.75,
-          "debuffResistance": {
-            "perception": {
-              "ignoreStrength": true,
-              "scale": 0.6,
-              "table": "Melee_Ones"
-            },
-            "tohit": {
-              "ignoreStrength": true,
-              "scale": 2,
-              "table": "Melee_Res_Boolean"
-            }
-          },
-          "durations": {
-            "accuracyBuff": 0.75,
-            "debuffResistance": 0.75,
-            "perceptionBuff": 0.75,
-            "tohitBuff": 0.75
-          },
-          "perceptionBuff": {
-            "scale": 0.6,
-            "table": "Melee_Ones"
-          },
-          "tohitBuff": {
-            "scale": 0.5,
-            "table": "Melee_Buff_ToHit"
-          }
-        }
+        ]
       },
       {
         "name": "Disruptor Blast",
@@ -4380,42 +3045,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Energy",0.640887,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,["enttype","target>","player","eq","arch","source>","Class_Scrapper","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["Raid","target.HasTag?","enttype","target>","player","eq","||","kRage","source>","0.7","<","&&","arch","source>","Class_Brute","==","&&"],true,null,null,null,null,null,null,null,null,"Ones",null,"rage"],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"]
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 80,
-          "recharge": 12,
-          "endurance": 13.28,
-          "activationTime": 1,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.5,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.5,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.45,
-              "table": "Melee_Damage"
-            }
-          ],
-          "knockback": {
-            "scale": 1,
-            "table": "Melee_Knockback"
-          },
-          "taunt": {
-            "scale": 1,
-            "table": "Melee_InherentTaunt"
-          }
-        }
+        ]
       },
       {
         "name": "Summon Blaster",
@@ -4481,23 +3111,15 @@ export const EPIC_POOLS_RAW = {
           "castTime": 3.03
         },
         "effectArea": "Location",
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Patron_Powers_Arachnobot_Blaster",
+          "duration": 240,
+          "copyBoosts": true
+        },
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,240]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 480,
-          "endurance": 26,
-          "activationTime": 3.03,
-          "effectArea": "Location",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 240,
-            "entity": "Pets_Patron_Powers_Arachnobot_Blaster",
-            "isPseudoPet": false
-          }
-        }
+        ]
       }
     ]
   },
@@ -4602,51 +3224,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Energy",1.067815,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,["enttype","target>","player","eq","arch","source>","Class_Scrapper","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["Raid","target.HasTag?","enttype","target>","player","eq","||","kRage","source>","0.7","<","&&","arch","source>","Class_Brute","==","&&"],true,null,null,null,null,null,null,null,null,"Ones",null,"rage"],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 9,
-          "endurance": 8.58,
-          "activationTime": 1.17,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Energy",
-              "scale": 1.32,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.594,
-              "table": "Melee_Damage"
-            }
-          ],
-          "buffDuration": 4,
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "enduranceDrain": {
-            "scale": 0.1,
-            "table": "Melee_Ones"
-          },
-          "enduranceGain": {
-            "scale": 4.29,
-            "table": "Melee_Ones"
-          },
-          "recoveryDebuff": {
-            "scale": 3,
-            "table": "Melee_Ones"
-          },
-          "taunt": {
-            "scale": 1,
-            "table": "Melee_InherentTaunt"
-          },
-          "maxStacks": 2,
-          "stacksLinear": [
-            "enduranceGain"
-          ]
-        }
+        ]
       },
       {
         "name": "Electrifying Fences",
@@ -4747,56 +3325,7 @@ export const EPIC_POOLS_RAW = {
           ["Endurance",null,-1,1,6.2,"Melee_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,2,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"EndDrain"],
           ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["Raid","target.HasTag?","enttype","target>","player","eq","||","kRage","source>","0.7","<","&&","arch","source>","Class_Brute","==","&&"],true,null,null,null,null,null,null,null,null,"Ones",null,"rage"],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 40,
-          "recharge": 10,
-          "endurance": 8.93,
-          "activationTime": 1.17,
-          "effectArea": "AoE",
-          "radius": 10,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Energy",
-              "scale": 0.1,
-              "table": "Melee_Damage",
-              "duration": 7.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Fire",
-              "scale": 0.045,
-              "table": "Melee_Damage",
-              "duration": 7.1,
-              "tickRate": 1
-            }
-          ],
-          "buffDuration": 6.2,
-          "durations": {
-            "enduranceDrain": 6.2,
-            "recoveryDebuff": 2
-          },
-          "enduranceDrain": {
-            "scale": 0.04,
-            "table": "Melee_Ones"
-          },
-          "immobilize": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 15,
-            "table": "Melee_Immobilize"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "taunt": {
-            "scale": 1,
-            "table": "Melee_InherentTaunt"
-          }
-        }
+        ]
       },
       {
         "name": "Ball Lightning",
@@ -4902,59 +3431,7 @@ export const EPIC_POOLS_RAW = {
           ["Endurance",null,-1.25,1,0,"Melee_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"EndDrain"],
           ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["Raid","target.HasTag?","enttype","target>","player","eq","||","kRage","source>","0.7","<","&&","arch","source>","Class_Brute","==","&&"],true,null,null,null,null,null,null,null,null,"Ones",null,"rage"],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 16,
-          "endurance": 13.28,
-          "activationTime": 1.07,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Energy",
-              "scale": 0.3,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.18,
-              "table": "Melee_Damage",
-              "duration": 3.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Fire",
-              "scale": 0.135,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.081,
-              "table": "Melee_Damage",
-              "duration": 3.1,
-              "tickRate": 1
-            }
-          ],
-          "buffDuration": 4,
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "enduranceDrain": {
-            "scale": 0.07,
-            "table": "Melee_Ones"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "taunt": {
-            "scale": 1,
-            "table": "Melee_InherentTaunt"
-          }
-        }
+        ]
       },
       {
         "name": "Static Discharge",
@@ -5044,50 +3521,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Energy",1.480747,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,["enttype","target>","player","eq","arch","source>","Class_Scrapper","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Endurance",null,-1.25,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"EndDrain"],
           ["Mez","Taunt",1,4,0,"Ranged_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 40,
-          "recharge": 12,
-          "endurance": 13.28,
-          "activationTime": 2.07,
-          "effectArea": "Cone",
-          "radius": 40,
-          "arc": 0.7853981852531433,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Energy",
-              "scale": 0.96,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.432,
-              "table": "Ranged_Damage"
-            }
-          ],
-          "buffDuration": 4,
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "enduranceDrain": {
-            "scale": 0.07,
-            "table": "Ranged_Ones"
-          },
-          "enduranceGain": {
-            "scale": 4.29,
-            "table": "Ranged_Ones"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Ranged_Ones"
-          },
-          "taunt": {
-            "scale": 1,
-            "table": "Ranged_InherentTaunt"
-          }
-        }
+        ]
       },
       {
         "name": "Summon Striker",
@@ -5153,23 +3587,15 @@ export const EPIC_POOLS_RAW = {
           "castTime": 1.17
         },
         "effectArea": "Location",
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Patron_Powers_Mu_Striker",
+          "duration": 240,
+          "copyBoosts": true
+        },
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,240]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 480,
-          "endurance": 26,
-          "activationTime": 1.17,
-          "effectArea": "Location",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 240,
-            "entity": "Pets_Patron_Powers_Mu_Striker",
-            "isPseudoPet": false
-          }
-        }
+        ]
       }
     ]
   },
@@ -5275,43 +3701,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Negative",0.223166,1,1.5,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.20000000298023224,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["arch","target>","Class_Boss_Archvillain","eq","arch","target>","Class_Boss_Archvillain2","eq","||","arch","target>","Class_Boss_Monster","eq","||","arch","target>","Class_Boss_Mito","eq","||","arch","target>","Class_Boss_Hamidon","eq","||","arch","target>","Class_Boss_RularuuFM","eq","||","enttype","target>","player","eq","||","kRage","source>","0.7","<","&&","arch","source>","Class_Brute","==","&&"],true,null,null,null,null,null,null,null,null,"Ones",null,"rage"],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 8,
-          "endurance": 8.528,
-          "activationTime": 1.1,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Negative",
-              "scale": 0.22,
-              "table": "Melee_Damage",
-              "duration": 1.5,
-              "tickRate": 0.20000000298023224
-            },
-            {
-              "type": "Fire",
-              "scale": 0.099,
-              "table": "Melee_Damage",
-              "duration": 3.6,
-              "tickRate": 0.5
-            }
-          ],
-          "buffDuration": 10,
-          "durations": {
-            "tohitDebuff": 10
-          },
-          "taunt": {
-            "scale": 1,
-            "table": "Melee_InherentTaunt"
-          },
-          "tohitDebuff": {
-            "scale": 0.75,
-            "table": "Melee_DeBuff_ToHit"
-          }
-        }
+        ]
       },
       {
         "name": "Soul Tentacles",
@@ -5411,49 +3801,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Negative",0.185424,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,["enttype","target>","player","eq","arch","source>","Class_Scrapper","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["arch","target>","Class_Boss_Archvillain","eq","arch","target>","Class_Boss_Archvillain2","eq","||","arch","target>","Class_Boss_Monster","eq","||","arch","target>","Class_Boss_Mito","eq","||","arch","target>","Class_Boss_Hamidon","eq","||","arch","target>","Class_Boss_RularuuFM","eq","||","enttype","target>","player","eq","||","kRage","source>","0.7","<","&&","arch","source>","Class_Brute","==","&&"],true,null,null,null,null,null,null,null,null,"Ones",null,"rage"],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 40,
-          "recharge": 10,
-          "endurance": 8.93,
-          "activationTime": 1.67,
-          "effectArea": "Cone",
-          "radius": 40,
-          "arc": 0.4363323152065277,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.1,
-              "table": "Melee_Damage",
-              "duration": 7.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Negative",
-              "scale": 0.135,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.045,
-              "table": "Melee_Damage",
-              "duration": 7.1,
-              "tickRate": 1
-            }
-          ],
-          "immobilize": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 15,
-            "table": "Melee_Immobilize"
-          },
-          "taunt": {
-            "scale": 1,
-            "table": "Melee_InherentTaunt"
-          }
-        }
+        ]
       },
       {
         "name": "Darkest Night",
@@ -5526,32 +3874,7 @@ export const EPIC_POOLS_RAW = {
           ["DamageBuff","Psionic",3,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
           ["DamageBuff","Toxic",3,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
           ["ToHit",null,1.5,1,5,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"DeBuff_ToHit"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 70,
-          "recharge": 10,
-          "endurance": 0.13,
-          "activationTime": 1.67,
-          "activatePeriod": 0.5,
-          "effectArea": "AoE",
-          "radius": 25,
-          "maxTargets": 16,
-          "buffDuration": 5,
-          "damageDebuff": {
-            "ignoreStrength": true,
-            "scale": 3,
-            "table": "Ranged_Debuff_Dam"
-          },
-          "durations": {
-            "damageDebuff": 5,
-            "tohitDebuff": 5
-          },
-          "tohitDebuff": {
-            "scale": 1.5,
-            "table": "Ranged_DeBuff_ToHit"
-          }
-        }
+        ]
       },
       {
         "name": "Dark Obliteration",
@@ -5639,41 +3962,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Negative",0.4292,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,["enttype","target>","player","eq","arch","source>","Class_Scrapper","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["arch","target>","Class_Boss_Archvillain","eq","arch","target>","Class_Boss_Archvillain2","eq","||","arch","target>","Class_Boss_Monster","eq","||","arch","target>","Class_Boss_Mito","eq","||","arch","target>","Class_Boss_Hamidon","eq","||","arch","target>","Class_Boss_RularuuFM","eq","||","enttype","target>","player","eq","||","kRage","source>","0.7","<","&&","arch","source>","Class_Brute","==","&&"],true,null,null,null,null,null,null,null,null,"Ones",null,"rage"],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 16,
-          "endurance": 13.28,
-          "activationTime": 1,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Negative",
-              "scale": 0.9,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.405,
-              "table": "Melee_Damage"
-            }
-          ],
-          "buffDuration": 10,
-          "durations": {
-            "tohitDebuff": 10
-          },
-          "taunt": {
-            "scale": 1,
-            "table": "Melee_InherentTaunt"
-          },
-          "tohitDebuff": {
-            "scale": 0.75,
-            "table": "Melee_DeBuff_ToHit"
-          }
-        }
+        ]
       },
       {
         "name": "Summon Widow",
@@ -5737,23 +4026,15 @@ export const EPIC_POOLS_RAW = {
           "castTime": 3.2
         },
         "effectArea": "Location",
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Patron_Powers_Blood_Widow",
+          "duration": 240,
+          "copyBoosts": true
+        },
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,240]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 480,
-          "endurance": 26,
-          "activationTime": 3.2,
-          "effectArea": "Location",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 240,
-            "entity": "Pets_Patron_Powers_Blood_Widow",
-            "isPseudoPet": false
-          }
-        }
+        ]
       }
     ]
   },
@@ -5831,27 +4112,7 @@ export const EPIC_POOLS_RAW = {
           ["Endurance",null,-5,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"EndDrain"],
           ["Damage","Energy",1.090639,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Endurance",null,-1.25,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"EndDrain"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 40,
-          "recharge": 12,
-          "endurance": 10.37,
-          "activationTime": 2.07,
-          "effectArea": "Cone",
-          "radius": 40,
-          "arc": 0.7853981852531433,
-          "maxTargets": 10,
-          "damage": {
-            "type": "Energy",
-            "scale": 0.91,
-            "table": "Ranged_Damage"
-          },
-          "enduranceDrain": {
-            "scale": 5,
-            "table": "Ranged_EndDrain"
-          }
-        }
+        ]
       },
       {
         "name": "Electric Shackles",
@@ -5917,48 +4178,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Held",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Damage","Energy",0.463576,1,6.3,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Endurance",null,-1.25,1,0,"Melee_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"EndDrain"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 16,
-          "endurance": 8.58,
-          "activationTime": 2.17,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Energy",
-            "scale": 0.15,
-            "table": "Melee_Damage",
-            "duration": 6.3,
-            "tickRate": 1
-          },
-          "buffDuration": 8,
-          "durations": {
-            "recoveryDebuff": 8
-          },
-          "enduranceDrain": {
-            "scale": 0.07,
-            "table": "Melee_Ones"
-          },
-          "enduranceGain": {
-            "scale": 4.29,
-            "table": "Melee_Ones"
-          },
-          "hold": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 8,
-            "table": "Melee_Ones"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "maxStacks": 2,
-          "stacksLinear": [
-            "enduranceGain"
-          ]
-        }
+        ]
       },
       {
         "name": "Thunder Strike",
@@ -6037,51 +4257,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Stunned",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Endurance",null,-2,1,0,"Melee_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"EndDrain"],
           ["Mez","Knockback",0.64,1,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 7,
-          "recharge": 16,
-          "endurance": 8.92,
-          "activationTime": 2.5,
-          "effectArea": "AoE",
-          "radius": 7,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 1,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.96,
-              "table": "Melee_Damage"
-            }
-          ],
-          "buffDuration": 4,
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "enduranceDrain": {
-            "scale": 0.07,
-            "table": "Melee_Ones"
-          },
-          "knockback": {
-            "scale": 0.64,
-            "table": "Melee_Ones"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "stun": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 5,
-            "table": "Melee_Stun"
-          }
-        }
+        ]
       },
       {
         "name": "Surge of Power",
@@ -6136,62 +4312,7 @@ export const EPIC_POOLS_RAW = {
           ["Recovery",null,1,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Stealth","Translucency",0,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Meta",null,1,1,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"null",null,90]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 540,
-          "endurance": 3.25,
-          "activationTime": 1.96,
-          "effectArea": "SingleTarget",
-          "buffDuration": 90,
-          "durations": {
-            "recoveryBuffUnenhanced": 90,
-            "resistance": 90,
-            "stealth": 90
-          },
-          "recoveryBuffUnenhanced": {
-            "ignoreStrength": true,
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "resistance": {
-            "cold": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "energy": {
-              "scale": 4.75,
-              "table": "Melee_Res_DMG"
-            },
-            "fire": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "lethal": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "negative": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "toxic": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            }
-          },
-          "stealth": {
-            "translucency": {
-              "ignoreStrength": true,
-              "scale": 0,
-              "table": "Melee_Ones"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "EM Pulse",
@@ -6249,40 +4370,6 @@ export const EPIC_POOLS_RAW = {
           ["Regeneration",null,-30,1,15,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Res_Boolean"],
           ["Damage","Energy",1.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Electronic","target.HasTag?"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,null,null,null,null,null,null,null,"vs-electronic"]
         ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 120,
-          "endurance": 20.8,
-          "activationTime": 1.67,
-          "effectArea": "AoE",
-          "radius": 60,
-          "maxTargets": 16,
-          "buffDuration": 15,
-          "durations": {
-            "recoveryDebuff": 15,
-            "regenDebuff": 15
-          },
-          "enduranceDrain": {
-            "scale": 50,
-            "table": "Ranged_EndDrain"
-          },
-          "recoveryDebuff": {
-            "ignoreStrength": true,
-            "scale": 1,
-            "table": "Ranged_Ones"
-          },
-          "regenDebuff": {
-            "ignoreStrength": true,
-            "scale": 10,
-            "table": "Ranged_Ones"
-          },
-          "stun": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 15,
-            "table": "Ranged_Immobilize"
-          }
-        },
         "conditionalEffects": [
           {
             "id": "vs-electronic",
@@ -6382,56 +4469,7 @@ export const EPIC_POOLS_RAW = {
           ["RechargeTime",null,0.2,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
           ["Damage","Smashing",0.633449,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Cold",2.533797,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 8,
-          "endurance": 8.528,
-          "activationTime": 1.67,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.49,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Cold",
-              "scale": 1.15,
-              "table": "Ranged_Damage"
-            }
-          ],
-          "buffDuration": 10,
-          "durations": {
-            "rechargeDebuff": 10,
-            "slow": 10
-          },
-          "rechargeDebuff": {
-            "ignoreStrength": true,
-            "scale": 0.2,
-            "table": "Ranged_Slow"
-          },
-          "slow": {
-            "flySpeed": {
-              "scale": 0.2,
-              "table": "Ranged_Slow"
-            },
-            "jumpHeight": {
-              "ignoreStrength": true,
-              "scale": 0.2,
-              "table": "Ranged_Slow"
-            },
-            "jumpSpeed": {
-              "scale": 0.2,
-              "table": "Ranged_Slow"
-            },
-            "runSpeed": {
-              "scale": 0.2,
-              "table": "Ranged_Slow"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Flash Freeze",
@@ -6498,35 +4536,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Cold",0.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Sleep",15,3,0,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Sleep",null,null,null,0.25],
           ["Mez","Sleep",2,3,0,"Ranged_Sleep","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Sleep",null,null,null,0.25]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 45,
-          "endurance": 13.65,
-          "activationTime": 2.37,
-          "effectArea": "AoE",
-          "radius": 25,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Lethal",
-              "scale": 0.1,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Cold",
-              "scale": 0.1,
-              "table": "Ranged_Damage"
-            }
-          ],
-          "sleep": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 15,
-            "table": "Ranged_Sleep"
-          }
-        }
+        ]
       },
       {
         "name": "Hoarfrost",
@@ -6576,45 +4586,7 @@ export const EPIC_POOLS_RAW = {
           ["MaxHP",null,2.5,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf"],
           ["Heal",null,3,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf"],
           ["Resistance","Toxic",2,1,120,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 360,
-          "endurance": 14.56,
-          "activationTime": 0.73,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Heal",
-            "scale": 3,
-            "table": "Melee_HealSelf"
-          },
-          "buffDuration": 120,
-          "durations": {
-            "maxHPBuff": 120,
-            "maxHPBuffUnenhanced": 120,
-            "resistance": 120
-          },
-          "maxHPBuff": {
-            "scale": 2.5,
-            "table": "Melee_HealSelf"
-          },
-          "maxHPBuffUnenhanced": {
-            "ignoreStrength": true,
-            "scale": 1.5,
-            "table": "Melee_HealSelf"
-          },
-          "resistance": {
-            "toxic": {
-              "scale": 2,
-              "table": "Melee_Res_DMG"
-            }
-          },
-          "maxStacks": 2,
-          "stacksLinear": [
-            "maxHPBuff",
-            "maxHPBuffUnenhanced"
-          ]
-        }
+        ]
       },
       {
         "name": "Frozen Armor",
@@ -6677,40 +4649,7 @@ export const EPIC_POOLS_RAW = {
           ["Elusivity","Psionic",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Elusivity","Energy",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Elusivity","Negative",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 2,
-          "endurance": 0.1625,
-          "activationTime": 0.73,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "defenseBuff": {
-            "lethal": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            },
-            "smashing": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            }
-          },
-          "durations": {
-            "defenseBuff": 0.75,
-            "resistance": 0.75
-          },
-          "resistance": {
-            "cold": {
-              "scale": 3,
-              "table": "Melee_Res_DMG"
-            },
-            "fire": {
-              "scale": 1,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Hibernate",
@@ -6774,68 +4713,12 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Knockback",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Knockup",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Untouchable",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
-          ["Mez","Immobilized",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+          ["Mez","Immobilized",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,true,null,null,null,null,null,"Ones"],
           ["Mez","OnlyAffectsSelf",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Regeneration",null,10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Recovery",null,4,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 60,
-          "endurance": 0.13,
-          "activationTime": 0.07,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "durations": {
-            "knockback": 0.75,
-            "knockup": 0.75,
-            "mezResistance": 0.75,
-            "recoveryBuff": 0.75,
-            "regenBuff": 0.75
-          },
-          "knockback": {
-            "ignoreStrength": true,
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "knockup": {
-            "ignoreStrength": true,
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "mezResistance": {
-            "knockback": {
-              "ignoreStrength": true,
-              "scale": 10,
-              "table": "Melee_Ones"
-            },
-            "knockup": {
-              "ignoreStrength": true,
-              "scale": 10,
-              "table": "Melee_Ones"
-            }
-          },
-          "onlyAffectsSelf": {
-            "ignoreStrength": true,
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          },
-          "recoveryBuff": {
-            "scale": 4,
-            "table": "Melee_Ones"
-          },
-          "regenBuff": {
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "untouchable": {
-            "ignoreStrength": true,
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          }
-        }
+        ]
       }
     ]
   },
@@ -6914,61 +4797,7 @@ export const EPIC_POOLS_RAW = {
           ["Movement","JumpHeight",0.5,1,5,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
           ["Movement","Run",-1,1,5,"Ranged_SpeedRunning","Max","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"SpeedRunning"],
           ["Movement","FlyMode",-10,1,5,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 10,
-          "endurance": 0.165,
-          "activationTime": 2,
-          "activatePeriod": 0.5,
-          "effectArea": "AoE",
-          "radius": 25,
-          "maxTargets": 10,
-          "buffDuration": 5,
-          "damageDebuff": {
-            "ignoreStrength": true,
-            "scale": 3,
-            "table": "Ranged_Debuff_Dam"
-          },
-          "durations": {
-            "damageDebuff": 5,
-            "movementCapDebuff": 5,
-            "rechargeDebuff": 5,
-            "slow": 5
-          },
-          "movementCapDebuff": {
-            "runSpeed": {
-              "ignoreStrength": true,
-              "scale": 1,
-              "table": "Ranged_SpeedRunning"
-            }
-          },
-          "rechargeDebuff": {
-            "ignoreStrength": true,
-            "scale": 0.5,
-            "table": "Ranged_Slow"
-          },
-          "slow": {
-            "flySpeed": {
-              "scale": 0.5,
-              "table": "Ranged_Slow"
-            },
-            "jumpHeight": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Ranged_Slow"
-            },
-            "jumpSpeed": {
-              "scale": 0.5,
-              "table": "Ranged_Slow"
-            },
-            "runSpeed": {
-              "scale": 0.5,
-              "table": "Ranged_Slow"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Flash Freeze",
@@ -7035,35 +4864,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Cold",0.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Sleep",15,3,0,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Sleep",null,null,null,0.25],
           ["Mez","Sleep",2,3,0,"Ranged_Sleep","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Sleep",null,null,null,0.25]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 45,
-          "endurance": 13.65,
-          "activationTime": 2.37,
-          "effectArea": "AoE",
-          "radius": 25,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Lethal",
-              "scale": 0.1,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Cold",
-              "scale": 0.1,
-              "table": "Ranged_Damage"
-            }
-          ],
-          "sleep": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 15,
-            "table": "Ranged_Sleep"
-          }
-        }
+        ]
       },
       {
         "name": "Hoarfrost",
@@ -7117,45 +4918,7 @@ export const EPIC_POOLS_RAW = {
           ["MaxHP",null,1.5,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf"],
           ["Heal",null,2.5,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf"],
           ["Resistance","Toxic",2,1,120,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 120,
-          "endurance": 14.56,
-          "activationTime": 0.73,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Heal",
-            "scale": 2.5,
-            "table": "Melee_HealSelf"
-          },
-          "buffDuration": 120,
-          "durations": {
-            "maxHPBuff": 120,
-            "maxHPBuffUnenhanced": 120,
-            "resistance": 120
-          },
-          "maxHPBuff": {
-            "scale": 1.5,
-            "table": "Melee_HealSelf"
-          },
-          "maxHPBuffUnenhanced": {
-            "ignoreStrength": true,
-            "scale": 1.5,
-            "table": "Melee_HealSelf"
-          },
-          "resistance": {
-            "toxic": {
-              "scale": 2,
-              "table": "Melee_Res_DMG"
-            }
-          },
-          "maxStacks": 2,
-          "stacksLinear": [
-            "maxHPBuff",
-            "maxHPBuffUnenhanced"
-          ]
-        }
+        ]
       },
       {
         "name": "Frozen Armor",
@@ -7218,40 +4981,7 @@ export const EPIC_POOLS_RAW = {
           ["Elusivity","Psionic",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Elusivity","Energy",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Elusivity","Negative",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 2,
-          "endurance": 0.1625,
-          "activationTime": 0.73,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "defenseBuff": {
-            "lethal": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            },
-            "smashing": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            }
-          },
-          "durations": {
-            "defenseBuff": 0.75,
-            "resistance": 0.75
-          },
-          "resistance": {
-            "cold": {
-              "scale": 3,
-              "table": "Melee_Res_DMG"
-            },
-            "fire": {
-              "scale": 1,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Hibernate",
@@ -7315,68 +5045,12 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Knockback",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Knockup",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Untouchable",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
-          ["Mez","Immobilized",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+          ["Mez","Immobilized",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,true,null,null,null,null,null,"Ones"],
           ["Mez","OnlyAffectsSelf",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Regeneration",null,10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Recovery",null,4,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 60,
-          "endurance": 0.13,
-          "activationTime": 0.07,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "durations": {
-            "knockback": 0.75,
-            "knockup": 0.75,
-            "mezResistance": 0.75,
-            "recoveryBuff": 0.75,
-            "regenBuff": 0.75
-          },
-          "knockback": {
-            "ignoreStrength": true,
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "knockup": {
-            "ignoreStrength": true,
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "mezResistance": {
-            "knockback": {
-              "ignoreStrength": true,
-              "scale": 10,
-              "table": "Melee_Ones"
-            },
-            "knockup": {
-              "ignoreStrength": true,
-              "scale": 10,
-              "table": "Melee_Ones"
-            }
-          },
-          "onlyAffectsSelf": {
-            "ignoreStrength": true,
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          },
-          "recoveryBuff": {
-            "scale": 4,
-            "table": "Melee_Ones"
-          },
-          "regenBuff": {
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "untouchable": {
-            "ignoreStrength": true,
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          }
-        }
+        ]
       }
     ]
   },
@@ -7457,23 +5131,15 @@ export const EPIC_POOLS_RAW = {
           "castTime": 1.17
         },
         "effectArea": "Location",
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Patron_Powers_Water_Spout",
+          "duration": 30,
+          "copyBoosts": true
+        },
         "atoms": [
           ["EntCreate",null,1,1,30,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,30]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 45,
-          "endurance": 14,
-          "activationTime": 1.17,
-          "effectArea": "Location",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 30,
-            "entity": "Pets_Patron_Powers_Water_Spout",
-            "isPseudoPet": false
-          }
-        }
+        ]
       },
       {
         "name": "Bile Spray",
@@ -7555,32 +5221,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Toxic",0.175186,1,4.25,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Toxic",1.2,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","IncarnateBoss","target.HasTag?","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Toxic",2.150839,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 16,
-          "endurance": 13,
-          "activationTime": 2.67,
-          "effectArea": "Cone",
-          "radius": 60,
-          "arc": 0.5235987901687622,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Toxic",
-              "scale": 0.7,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.1,
-              "table": "Ranged_Damage",
-              "duration": 4.25,
-              "tickRate": 1
-            }
-          ]
-        }
+        ]
       },
       {
         "name": "Hibernate",
@@ -7656,68 +5297,12 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Knockback",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Knockup",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Untouchable",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
-          ["Mez","Immobilized",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+          ["Mez","Immobilized",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,true,null,null,null,null,null,"Ones"],
           ["Mez","OnlyAffectsSelf",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Regeneration",null,10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Recovery",null,4,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 120,
-          "endurance": 0.13,
-          "activationTime": 0.07,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "durations": {
-            "knockback": 0.75,
-            "knockup": 0.75,
-            "mezResistance": 0.75,
-            "recoveryBuff": 0.75,
-            "regenBuff": 0.75
-          },
-          "knockback": {
-            "ignoreStrength": true,
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "knockup": {
-            "ignoreStrength": true,
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "mezResistance": {
-            "knockback": {
-              "ignoreStrength": true,
-              "scale": 10,
-              "table": "Melee_Ones"
-            },
-            "knockup": {
-              "ignoreStrength": true,
-              "scale": 10,
-              "table": "Melee_Ones"
-            }
-          },
-          "onlyAffectsSelf": {
-            "ignoreStrength": true,
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          },
-          "recoveryBuff": {
-            "scale": 4,
-            "table": "Melee_Ones"
-          },
-          "regenBuff": {
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "untouchable": {
-            "ignoreStrength": true,
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Shark Skin",
@@ -7777,37 +5362,7 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Cold",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Fire",1.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 4,
-          "endurance": 0.13,
-          "activationTime": 0.67,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "durations": {
-            "resistance": 0.75
-          },
-          "resistance": {
-            "cold": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "fire": {
-              "scale": 1.5,
-              "table": "Melee_Res_DMG"
-            },
-            "lethal": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Summon Coralax",
@@ -7867,23 +5422,15 @@ export const EPIC_POOLS_RAW = {
           "castTime": 3.2
         },
         "effectArea": "Location",
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Patron_Powers_Blue_Corolax",
+          "duration": 240,
+          "copyBoosts": true
+        },
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,240]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 480,
-          "endurance": 20,
-          "activationTime": 3.2,
-          "effectArea": "Location",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 240,
-            "entity": "Pets_Patron_Powers_Blue_Corolax",
-            "isPseudoPet": false
-          }
-        }
+        ]
       }
     ]
   },
@@ -7991,80 +5538,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Toxic",0.1932,1,9.3,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Energy",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","IncarnateBoss","target.HasTag?","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Energy",3.864,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 80,
-          "recharge": 8,
-          "endurance": 9.1,
-          "activationTime": 1,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Energy",
-              "scale": 0.5,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.05,
-              "table": "Ranged_Damage",
-              "duration": 9.3,
-              "tickRate": 1
-            }
-          ],
-          "buffDuration": 30,
-          "defenseDebuff": {
-            "scale": 2,
-            "table": "Ranged_Debuff_Def"
-          },
-          "durations": {
-            "defenseDebuff": 30,
-            "resistanceDebuff": 30
-          },
-          "resistanceDebuff": {
-            "cold": {
-              "ignoreStrength": true,
-              "scale": 2.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "energy": {
-              "ignoreStrength": true,
-              "scale": 2.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "fire": {
-              "ignoreStrength": true,
-              "scale": 2.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "lethal": {
-              "ignoreStrength": true,
-              "scale": 2.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "negative": {
-              "ignoreStrength": true,
-              "scale": 2.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "psionic": {
-              "ignoreStrength": true,
-              "scale": 2.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "smashing": {
-              "ignoreStrength": true,
-              "scale": 2.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "toxic": {
-              "ignoreStrength": true,
-              "scale": 2.5,
-              "table": "Ranged_Res_Dmg"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Scorpion Shield",
@@ -8127,40 +5601,7 @@ export const EPIC_POOLS_RAW = {
           ["Elusivity","Smashing",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Elusivity","Lethal",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Elusivity","Energy",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 4,
-          "endurance": 0.1625,
-          "activationTime": 2,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "defenseBuff": {
-            "energy": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            },
-            "lethal": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            },
-            "smashing": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            }
-          },
-          "durations": {
-            "defenseBuff": 0.75,
-            "resistance": 0.75
-          },
-          "resistance": {
-            "toxic": {
-              "scale": 1.75,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Disruptor Blast",
@@ -8243,33 +5684,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Knockback"],
           ["Damage","Energy",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","IncarnateBoss","target.HasTag?","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Energy",4.312,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 80,
-          "recharge": 12,
-          "endurance": 13.28,
-          "activationTime": 1,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.5,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.5,
-              "table": "Ranged_Damage"
-            }
-          ],
-          "knockback": {
-            "scale": 1,
-            "table": "Ranged_Knockback"
-          }
-        }
+        ]
       },
       {
         "name": "Focused Accuracy",
@@ -8330,47 +5745,7 @@ export const EPIC_POOLS_RAW = {
           ["Accuracy",null,0.2,1,0.75,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Perception",null,0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Perception",null,0.6,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 10,
-          "endurance": 0.39,
-          "activationTime": 1.17,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "accuracyBuff": {
-            "ignoreStrength": true,
-            "scale": 0.2,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 0.75,
-          "debuffResistance": {
-            "perception": {
-              "ignoreStrength": true,
-              "scale": 0.6,
-              "table": "Melee_Ones"
-            },
-            "tohit": {
-              "ignoreStrength": true,
-              "scale": 2,
-              "table": "Melee_Res_Boolean"
-            }
-          },
-          "durations": {
-            "accuracyBuff": 0.75,
-            "debuffResistance": 0.75,
-            "perceptionBuff": 0.75,
-            "tohitBuff": 0.75
-          },
-          "perceptionBuff": {
-            "scale": 0.6,
-            "table": "Melee_Ones"
-          },
-          "tohitBuff": {
-            "scale": 0.5,
-            "table": "Melee_Buff_ToHit"
-          }
-        }
+        ]
       },
       {
         "name": "Summon Tarantula",
@@ -8432,23 +5807,15 @@ export const EPIC_POOLS_RAW = {
           "castTime": 3.03
         },
         "effectArea": "Location",
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Patron_Powers_Toxic_Tarantula",
+          "duration": 240,
+          "copyBoosts": true
+        },
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,240]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 480,
-          "endurance": 26,
-          "activationTime": 3.03,
-          "effectArea": "Location",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 240,
-            "entity": "Pets_Patron_Powers_Toxic_Tarantula",
-            "isPseudoPet": false
-          }
-        }
+        ]
       }
     ]
   },
@@ -8527,33 +5894,7 @@ export const EPIC_POOLS_RAW = {
           ["Recovery",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Endurance",null,25,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,25,null,null,null,null,null,null,null,"Ones",null,null,null,0.25],
           ["Endurance",null,-10,1,0,"Melee_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"EndDrain"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 60,
-          "endurance": 13,
-          "activationTime": 2.03,
-          "effectArea": "AoE",
-          "radius": 10,
-          "maxTargets": 10,
-          "buffDuration": 4,
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "enduranceDrain": {
-            "scale": 0.35,
-            "table": "Melee_Ones"
-          },
-          "enduranceGain": {
-            "scale": 25,
-            "table": "Melee_Ones",
-            "perTarget": 25
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Charged Armor",
@@ -8612,33 +5953,7 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Smashing",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Energy",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 2,
-          "endurance": 0.13,
-          "activationTime": 0.67,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "durations": {
-            "resistance": 0.75
-          },
-          "resistance": {
-            "energy": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "lethal": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Ball Lightning",
@@ -8724,43 +6039,7 @@ export const EPIC_POOLS_RAW = {
           ["Endurance",null,-1.25,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"EndDrain"],
           ["Damage","Energy",1.02,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","IncarnateBoss","target.HasTag?","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Energy",0.086154,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 16,
-          "endurance": 15.184,
-          "activationTime": 1.07,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Energy",
-              "scale": 0.3,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.18,
-              "table": "Ranged_Damage",
-              "duration": 3.1,
-              "tickRate": 1
-            }
-          ],
-          "buffDuration": 4,
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "enduranceDrain": {
-            "scale": 0.07,
-            "table": "Ranged_Ones"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Ranged_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Surge of Power",
@@ -8827,62 +6106,7 @@ export const EPIC_POOLS_RAW = {
           ["Recovery",null,1,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Stealth","Translucency",0,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Meta",null,1,1,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"null",null,90]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 540,
-          "endurance": 2.6,
-          "activationTime": 1.96,
-          "effectArea": "SingleTarget",
-          "buffDuration": 90,
-          "durations": {
-            "recoveryBuffUnenhanced": 90,
-            "resistance": 90,
-            "stealth": 90
-          },
-          "recoveryBuffUnenhanced": {
-            "ignoreStrength": true,
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "resistance": {
-            "cold": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "energy": {
-              "scale": 4.75,
-              "table": "Melee_Res_DMG"
-            },
-            "fire": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "lethal": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "negative": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "toxic": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            }
-          },
-          "stealth": {
-            "translucency": {
-              "ignoreStrength": true,
-              "scale": 0,
-              "table": "Melee_Ones"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Summon Guardian",
@@ -8943,23 +6167,15 @@ export const EPIC_POOLS_RAW = {
           "castTime": 1.17
         },
         "effectArea": "Location",
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Patron_Powers_Mu_Guardian",
+          "duration": 240,
+          "copyBoosts": true
+        },
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,240]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 480,
-          "endurance": 20,
-          "activationTime": 1.17,
-          "effectArea": "Location",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 240,
-            "entity": "Pets_Patron_Powers_Mu_Guardian",
-            "isPseudoPet": false
-          }
-        }
+        ]
       }
     ]
   },
@@ -9038,30 +6254,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Lethal",0.7825,1,0.91,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Lethal",0.25,1,0.91,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","IncarnateBoss","target.HasTag?","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Lethal",0.395,1,0.91,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,["enttype","target>","player","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 90,
-          "recharge": 6,
-          "endurance": 7.48,
-          "activationTime": 1,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Lethal",
-            "scale": 0.4175,
-            "table": "Ranged_Damage",
-            "duration": 0.91,
-            "tickRate": 0.30000001192092896
-          },
-          "buffDuration": 8,
-          "defenseDebuff": {
-            "scale": 1,
-            "table": "Ranged_Debuff_Def"
-          },
-          "durations": {
-            "defenseDebuff": 8
-          }
-        }
+        ]
       },
       {
         "name": "M30 Grenade",
@@ -9132,33 +6325,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Lethal",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","IncarnateBoss","target.HasTag?","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Lethal",1.05,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Knockback",2,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Knockback"]
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 80,
-          "recharge": 16,
-          "endurance": 15.184,
-          "activationTime": 1.67,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.5,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.5,
-              "table": "Ranged_Damage"
-            }
-          ],
-          "knockback": {
-            "scale": 2,
-            "table": "Ranged_Knockback"
-          }
-        }
+        ]
       },
       {
         "name": "Body Armor",
@@ -9199,26 +6366,7 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Resistance","Smashing",1.5,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Lethal",1.5,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "activatePeriod": 10,
-          "effectArea": "SingleTarget",
-          "buffDuration": 10.25,
-          "durations": {
-            "resistance": 10.25
-          },
-          "resistance": {
-            "lethal": {
-              "scale": 1.5,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 1.5,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Serum",
@@ -9269,33 +6417,7 @@ export const EPIC_POOLS_RAW = {
           ["MaxHP",null,2,1,60,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf"],
           ["MaxHP",null,2,1,60,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf"],
           ["Heal",null,6,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 120,
-          "endurance": 10.4,
-          "activationTime": 1.3,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Heal",
-            "scale": 6,
-            "table": "Melee_HealSelf"
-          },
-          "buffDuration": 60,
-          "durations": {
-            "maxHPBuff": 60,
-            "maxHPBuffUnenhanced": 60
-          },
-          "maxHPBuff": {
-            "scale": 2,
-            "table": "Melee_HealSelf"
-          },
-          "maxHPBuffUnenhanced": {
-            "ignoreStrength": true,
-            "scale": 2,
-            "table": "Melee_HealSelf"
-          }
-        }
+        ]
       },
       {
         "name": "Targeting Drone",
@@ -9343,41 +6465,7 @@ export const EPIC_POOLS_RAW = {
           ["ToHit",null,2,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_Boolean"],
           ["Perception",null,0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Perception",null,0.6,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 10,
-          "endurance": 0.156,
-          "activationTime": 1.17,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "debuffResistance": {
-            "perception": {
-              "ignoreStrength": true,
-              "scale": 0.6,
-              "table": "Melee_Ones"
-            },
-            "tohit": {
-              "ignoreStrength": true,
-              "scale": 2,
-              "table": "Melee_Res_Boolean"
-            }
-          },
-          "durations": {
-            "debuffResistance": 0.75,
-            "perceptionBuff": 0.75,
-            "tohitBuff": 0.75
-          },
-          "perceptionBuff": {
-            "scale": 0.6,
-            "table": "Melee_Ones"
-          },
-          "tohitBuff": {
-            "scale": 1.85,
-            "table": "Melee_Buff_ToHit"
-          }
-        }
+        ]
       }
     ]
   },
@@ -9464,26 +6552,7 @@ export const EPIC_POOLS_RAW = {
           ["Endurance",null,25,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,25,null,null,null,null,null,null,null,"Ones",null,null,null,0.25],
           ["Damage","Negative",0.8,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","IncarnateBoss","target.HasTag?","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Negative",1.60146,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 180,
-          "endurance": 0.52,
-          "activationTime": 1.03,
-          "effectArea": "AoE",
-          "radius": 8,
-          "maxTargets": 10,
-          "damage": {
-            "type": "Negative",
-            "scale": 0.8,
-            "table": "Melee_Damage"
-          },
-          "enduranceGain": {
-            "scale": 25,
-            "table": "Melee_Ones",
-            "perTarget": 25
-          }
-        }
+        ]
       },
       {
         "name": "Dark Embrace",
@@ -9543,37 +6612,7 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Toxic",1.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Negative",1.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 4,
-          "endurance": 0.13,
-          "activationTime": 0.67,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "durations": {
-            "resistance": 0.75
-          },
-          "resistance": {
-            "lethal": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "negative": {
-              "scale": 1.5,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "toxic": {
-              "scale": 1.5,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Dark Obliteration",
@@ -9649,30 +6688,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Negative",0.888533,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Negative",0.9,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","IncarnateBoss","target.HasTag?","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Negative",0.888533,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 16,
-          "endurance": 15,
-          "activationTime": 1,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 16,
-          "damage": {
-            "type": "Negative",
-            "scale": 0.9,
-            "table": "Ranged_Damage"
-          },
-          "buffDuration": 10,
-          "durations": {
-            "tohitDebuff": 10
-          },
-          "tohitDebuff": {
-            "scale": 0.75,
-            "table": "Ranged_DeBuff_ToHit"
-          }
-        }
+        ]
       },
       {
         "name": "Soul Drain",
@@ -9758,36 +6774,7 @@ export const EPIC_POOLS_RAW = {
           ["DamageBuff","Psionic",4,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Dmg"],
           ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","IncarnateBoss","target.HasTag?","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Negative",0.870539,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1.2,
-          "recharge": 120,
-          "endurance": 15.6,
-          "activationTime": 2.37,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 10,
-          "damage": {
-            "type": "Negative",
-            "scale": 1,
-            "table": "Melee_Damage"
-          },
-          "buffDuration": 30,
-          "damageBuff": {
-            "scale": 4.8,
-            "table": "Melee_Buff_Dmg",
-            "perTarget": 0.8
-          },
-          "durations": {
-            "damageBuff": 30,
-            "tohitBuff": 30
-          },
-          "tohitBuff": {
-            "scale": 1.2,
-            "table": "Melee_Buff_ToHit",
-            "perTarget": 0.2
-          }
-        }
+        ]
       },
       {
         "name": "Summon Seer",
@@ -9846,23 +6833,15 @@ export const EPIC_POOLS_RAW = {
           "castTime": 3.2
         },
         "effectArea": "Location",
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Patron_Powers_Fortunata_Seer",
+          "duration": 240,
+          "copyBoosts": true
+        },
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,240]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 480,
-          "endurance": 20,
-          "activationTime": 3.2,
-          "effectArea": "Location",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 240,
-            "entity": "Pets_Patron_Powers_Fortunata_Seer",
-            "isPseudoPet": false
-          }
-        }
+        ]
       }
     ]
   },
@@ -9960,31 +6939,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Negative",0.15,1,3,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["kHitPoints%","target>","10","-","100","*","50","10","-","/","0","100","minmax","rand","100","*","<","enttype","target>","critter","eq","&&","arch","source>","Class_Corruptor","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,1],
           ["Damage","Negative",0.15,1,3,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["kHitPoints%","target>","10","-","100","*","50","10","-","/","0","100","minmax","rand","100","*","<","enttype","target>","player","eq","&&","arch","source>","Class_Corruptor","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,1],
           ["Mez","Immobilized",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",false,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 10,
-          "endurance": 10.192,
-          "activationTime": 2.37,
-          "effectArea": "Cone",
-          "radius": 60,
-          "arc": 1.0471975803375244,
-          "maxTargets": 10,
-          "damage": {
-            "type": "Negative",
-            "scale": 0.15,
-            "table": "Ranged_Damage",
-            "duration": 3,
-            "tickRate": 0.5
-          },
-          "immobilize": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 15,
-            "table": "Ranged_Immobilize"
-          }
-        }
+        ]
       },
       {
         "name": "Shark Skin",
@@ -10048,37 +7003,7 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Cold",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Fire",1.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 4,
-          "endurance": 0.1625,
-          "activationTime": 0.67,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "durations": {
-            "resistance": 0.75
-          },
-          "resistance": {
-            "cold": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "fire": {
-              "scale": 1.5,
-              "table": "Melee_Res_DMG"
-            },
-            "lethal": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Hibernate",
@@ -10158,68 +7083,12 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Knockback",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Knockup",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Untouchable",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
-          ["Mez","Immobilized",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+          ["Mez","Immobilized",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,true,null,null,null,null,null,"Ones"],
           ["Mez","OnlyAffectsSelf",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Regeneration",null,10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Recovery",null,4,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 60,
-          "endurance": 0.13,
-          "activationTime": 0.07,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "durations": {
-            "knockback": 0.75,
-            "knockup": 0.75,
-            "mezResistance": 0.75,
-            "recoveryBuff": 0.75,
-            "regenBuff": 0.75
-          },
-          "knockback": {
-            "ignoreStrength": true,
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "knockup": {
-            "ignoreStrength": true,
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "mezResistance": {
-            "knockback": {
-              "ignoreStrength": true,
-              "scale": 10,
-              "table": "Melee_Ones"
-            },
-            "knockup": {
-              "ignoreStrength": true,
-              "scale": 10,
-              "table": "Melee_Ones"
-            }
-          },
-          "onlyAffectsSelf": {
-            "ignoreStrength": true,
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          },
-          "recoveryBuff": {
-            "scale": 4,
-            "table": "Melee_Ones"
-          },
-          "regenBuff": {
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "untouchable": {
-            "ignoreStrength": true,
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Spirit Shark Jaws",
@@ -10298,28 +7167,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Lethal",0.15,1,3,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,1],
           ["Damage","Lethal",0.15,1,3,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["kHitPoints%","target>","10","-","100","*","50","10","-","/","0","100","minmax","rand","100","*","<","enttype","target>","critter","eq","&&","arch","source>","Class_Corruptor","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,1],
           ["Damage","Lethal",0.15,1,3,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["kHitPoints%","target>","10","-","100","*","50","10","-","/","0","100","minmax","rand","100","*","<","enttype","target>","player","eq","&&","arch","source>","Class_Corruptor","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,1]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 16,
-          "endurance": 10.66,
-          "activationTime": 1.87,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Lethal",
-            "scale": 0.15,
-            "table": "Ranged_Damage",
-            "duration": 3,
-            "tickRate": 0.5
-          },
-          "hold": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 10,
-            "table": "Ranged_Immobilize"
-          }
-        }
+        ]
       },
       {
         "name": "Summon Guardian",
@@ -10387,23 +7235,15 @@ export const EPIC_POOLS_RAW = {
           "castTime": 3.2
         },
         "effectArea": "Location",
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Patron_Powers_Coral_Guardian_Sentinel",
+          "duration": 240,
+          "copyBoosts": true
+        },
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,240]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 480,
-          "endurance": 26,
-          "activationTime": 3.2,
-          "effectArea": "Location",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 240,
-            "entity": "Pets_Patron_Powers_Coral_Guardian_Sentinel",
-            "isPseudoPet": false
-          }
-        }
+        ]
       }
     ]
   },
@@ -10492,47 +7332,7 @@ export const EPIC_POOLS_RAW = {
           ["Movement","JumpHeight",-500,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Movement","FlyMode",-10,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Immobilized",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 80,
-          "recharge": 10,
-          "endurance": 8.92,
-          "activationTime": 1,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 10,
-          "buffDuration": 15,
-          "durations": {
-            "rechargeDebuff": 15,
-            "slow": 15
-          },
-          "immobilize": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 15,
-            "table": "Ranged_Immobilize"
-          },
-          "rechargeDebuff": {
-            "ignoreStrength": true,
-            "scale": 0.2,
-            "table": "Ranged_Slow"
-          },
-          "slow": {
-            "flySpeed": {
-              "scale": 0.2,
-              "table": "Ranged_Slow"
-            },
-            "jumpHeight": {
-              "scale": 500,
-              "table": "Ranged_Ones"
-            },
-            "runSpeed": {
-              "scale": 0.2,
-              "table": "Ranged_Slow"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Scorpion Shield",
@@ -10599,40 +7399,7 @@ export const EPIC_POOLS_RAW = {
           ["Elusivity","Smashing",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Elusivity","Lethal",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Elusivity","Energy",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 4,
-          "endurance": 0.1625,
-          "activationTime": 2,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "defenseBuff": {
-            "energy": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            },
-            "lethal": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            },
-            "smashing": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            }
-          },
-          "durations": {
-            "defenseBuff": 0.75,
-            "resistance": 0.75
-          },
-          "resistance": {
-            "toxic": {
-              "scale": 1.75,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Focused Accuracy",
@@ -10697,47 +7464,7 @@ export const EPIC_POOLS_RAW = {
           ["Accuracy",null,0.2,1,0.75,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Perception",null,0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Perception",null,0.6,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 10,
-          "endurance": 0.195,
-          "activationTime": 1.17,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "accuracyBuff": {
-            "ignoreStrength": true,
-            "scale": 0.2,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 0.75,
-          "debuffResistance": {
-            "perception": {
-              "ignoreStrength": true,
-              "scale": 0.6,
-              "table": "Melee_Ones"
-            },
-            "tohit": {
-              "ignoreStrength": true,
-              "scale": 2,
-              "table": "Melee_Res_Boolean"
-            }
-          },
-          "durations": {
-            "accuracyBuff": 0.75,
-            "debuffResistance": 0.75,
-            "perceptionBuff": 0.75,
-            "tohitBuff": 0.75
-          },
-          "perceptionBuff": {
-            "scale": 0.6,
-            "table": "Melee_Ones"
-          },
-          "tohitBuff": {
-            "scale": 0.5,
-            "table": "Melee_Buff_ToHit"
-          }
-        }
+        ]
       },
       {
         "name": "Web Cocoon",
@@ -10808,45 +7535,7 @@ export const EPIC_POOLS_RAW = {
           ["Movement","JumpHeight",-500,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Movement","FlyMode",-10,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Held",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 60,
-          "recharge": 16,
-          "endurance": 10.66,
-          "activationTime": 1,
-          "effectArea": "SingleTarget",
-          "buffDuration": 15,
-          "durations": {
-            "rechargeDebuff": 15,
-            "slow": 15
-          },
-          "hold": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 10,
-            "table": "Ranged_Immobilize"
-          },
-          "rechargeDebuff": {
-            "ignoreStrength": true,
-            "scale": 0.5,
-            "table": "Ranged_Slow"
-          },
-          "slow": {
-            "flySpeed": {
-              "scale": 0.5,
-              "table": "Ranged_Slow"
-            },
-            "jumpHeight": {
-              "scale": 500,
-              "table": "Ranged_Ones"
-            },
-            "runSpeed": {
-              "scale": 0.5,
-              "table": "Ranged_Slow"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Summon Disruptor",
@@ -10912,23 +7601,15 @@ export const EPIC_POOLS_RAW = {
           "castTime": 3.03
         },
         "effectArea": "Location",
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Patron_Powers_Arachnobot_Disrupter",
+          "duration": 240,
+          "copyBoosts": true
+        },
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,240]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 480,
-          "endurance": 26,
-          "activationTime": 3.03,
-          "effectArea": "Location",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 240,
-            "entity": "Pets_Patron_Powers_Arachnobot_Disrupter",
-            "isPseudoPet": false
-          }
-        }
+        ]
       }
     ]
   },
@@ -11011,33 +7692,7 @@ export const EPIC_POOLS_RAW = {
           ["Recovery",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Endurance",null,25,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,25,null,null,null,null,null,null,null,"Ones",null,null,null,0.25],
           ["Endurance",null,-10,1,0,"Melee_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"EndDrain"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 90,
-          "endurance": 11.38,
-          "activationTime": 2.03,
-          "effectArea": "AoE",
-          "radius": 10,
-          "maxTargets": 10,
-          "buffDuration": 4,
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "enduranceDrain": {
-            "scale": 0.35,
-            "table": "Melee_Ones"
-          },
-          "enduranceGain": {
-            "scale": 25,
-            "table": "Melee_Ones",
-            "perTarget": 25
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Charged Armor",
@@ -11100,33 +7755,7 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Smashing",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Energy",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 4,
-          "endurance": 0.1625,
-          "activationTime": 0.67,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "durations": {
-            "resistance": 0.75
-          },
-          "resistance": {
-            "energy": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "lethal": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Electric Shackles",
@@ -11210,48 +7839,7 @@ export const EPIC_POOLS_RAW = {
           ["Endurance",null,-1.25,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"EndDrain"],
           ["Damage","Energy",0.15,1,6.3,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,["kHitPoints%","target>","10","-","100","*","50","10","-","/","0","100","minmax","rand","100","*","<","enttype","target>","critter","eq","&&","arch","source>","Class_Corruptor","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Energy",0.618102,1,6.3,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,["kHitPoints%","target>","10","-","100","*","50","10","-","/","0","100","minmax","rand","100","*","<","enttype","target>","player","eq","&&","arch","source>","Class_Corruptor","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 32,
-          "endurance": 8.58,
-          "activationTime": 2.17,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Energy",
-            "scale": 0.15,
-            "table": "Ranged_Damage",
-            "duration": 6.3,
-            "tickRate": 1
-          },
-          "buffDuration": 8,
-          "durations": {
-            "recoveryDebuff": 8
-          },
-          "enduranceDrain": {
-            "scale": 0.07,
-            "table": "Ranged_Ones"
-          },
-          "enduranceGain": {
-            "scale": 4.29,
-            "table": "Ranged_Ones"
-          },
-          "hold": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 8,
-            "table": "Ranged_Ones"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Ranged_Ones"
-          },
-          "maxStacks": 2,
-          "stacksLinear": [
-            "enduranceGain"
-          ]
-        }
+        ]
       },
       {
         "name": "Energize",
@@ -11319,37 +7907,7 @@ export const EPIC_POOLS_RAW = {
           ["Meta",null,0,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"null"],
           ["Regeneration",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Heal",null,2.5,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 180,
-          "endurance": 9.75,
-          "activationTime": 1.17,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Heal",
-            "scale": 2.5,
-            "table": "Melee_HealSelf"
-          },
-          "buffDuration": 90,
-          "durations": {
-            "enduranceDiscount": 90,
-            "regenBuff": 30
-          },
-          "enduranceDiscount": {
-            "ignoreStrength": true,
-            "scale": 1,
-            "table": "Melee_Stun"
-          },
-          "regenBuff": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "maxStacks": 2,
-          "stacksLinear": [
-            "enduranceDiscount"
-          ]
-        }
+        ]
       },
       {
         "name": "Summon Adept",
@@ -11416,23 +7974,15 @@ export const EPIC_POOLS_RAW = {
           "castTime": 1.17
         },
         "effectArea": "Location",
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Patron_Powers_Mu_Adept",
+          "duration": 240,
+          "copyBoosts": true
+        },
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,240]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 480,
-          "endurance": 26,
-          "activationTime": 1.17,
-          "effectArea": "Location",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 240,
-            "entity": "Pets_Patron_Powers_Mu_Adept",
-            "isPseudoPet": false
-          }
-        }
+        ]
       }
     ]
   },
@@ -11540,36 +8090,7 @@ export const EPIC_POOLS_RAW = {
           ["DamageBuff","Psionic",4,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Dmg"],
           ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kHitPoints%","target>","10","-","100","*","50","10","-","/","0","100","minmax","rand","100","*","<","enttype","target>","critter","eq","&&","arch","source>","Class_Corruptor","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,null,null,null,null,null,["kHitPoints%","target>","10","-","100","*","50","10","-","/","0","100","minmax","rand","100","*","<","enttype","target>","player","eq","&&","arch","source>","Class_Corruptor","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1.2,
-          "recharge": 120,
-          "endurance": 13.59,
-          "activationTime": 2.37,
-          "effectArea": "AoE",
-          "radius": 10,
-          "maxTargets": 7,
-          "damage": {
-            "type": "Negative",
-            "scale": 1,
-            "table": "Melee_Damage"
-          },
-          "buffDuration": 30,
-          "damageBuff": {
-            "scale": 4.8,
-            "table": "Melee_Buff_Dmg",
-            "perTarget": 0.8
-          },
-          "durations": {
-            "damageBuff": 30,
-            "tohitBuff": 30
-          },
-          "tohitBuff": {
-            "scale": 1.2,
-            "table": "Melee_Buff_ToHit",
-            "perTarget": 0.2
-          }
-        }
+        ]
       },
       {
         "name": "Dark Embrace",
@@ -11633,37 +8154,7 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Toxic",1.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Negative",1.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 4,
-          "endurance": 0.1625,
-          "activationTime": 0.67,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "durations": {
-            "resistance": 0.75
-          },
-          "resistance": {
-            "lethal": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "negative": {
-              "scale": 1.5,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "toxic": {
-              "scale": 1.5,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Power Boost",
@@ -11741,134 +8232,7 @@ export const EPIC_POOLS_RAW = {
           ["Absorb",null,0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["ToHit",null,0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Endurance",null,0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 90,
-          "endurance": 9.75,
-          "activationTime": 1.17,
-          "effectArea": "SingleTarget",
-          "buffDuration": 15,
-          "durations": {
-            "specialBuff": 15
-          },
-          "specialBuff": {
-            "absorb": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "aoe": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "cold": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "confuse": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "defense": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "endurance": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "energy": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "fear": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "fire": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "heal": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "hold": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "immobilize": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "lethal": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "melee": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "movement": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "negative": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "psionic": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "ranged": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "sleep": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "smashing": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "stun": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "tohit": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            }
-          },
-          "maxStacks": 2,
-          "stacksLinear": [
-            "specialBuff"
-          ]
-        }
+        ]
       },
       {
         "name": "Soul Storm",
@@ -11946,28 +8310,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Negative",0.393338,1,10,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Negative",0.11,1,10,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,["kHitPoints%","target>","10","-","100","*","50","10","-","/","0","100","minmax","rand","100","*","<","enttype","target>","critter","eq","&&","arch","source>","Class_Corruptor","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Negative",0.393338,1,10,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,["kHitPoints%","target>","10","-","100","*","50","10","-","/","0","100","minmax","rand","100","*","<","enttype","target>","player","eq","&&","arch","source>","Class_Corruptor","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 32,
-          "endurance": 10.66,
-          "activationTime": 2.17,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Negative",
-            "scale": 0.11,
-            "table": "Ranged_Damage",
-            "duration": 10,
-            "tickRate": 1
-          },
-          "hold": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 10,
-            "table": "Ranged_Immobilize"
-          }
-        }
+        ]
       },
       {
         "name": "Summon Mistress",
@@ -12035,23 +8378,15 @@ export const EPIC_POOLS_RAW = {
           "castTime": 3.2
         },
         "effectArea": "Location",
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Patron_Powers_Fortunata_Mistress",
+          "duration": 240,
+          "copyBoosts": true
+        },
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,240]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 480,
-          "endurance": 26,
-          "activationTime": 3.2,
-          "effectArea": "Location",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 240,
-            "entity": "Pets_Patron_Powers_Fortunata_Mistress",
-            "isPseudoPet": false
-          }
-        }
+        ]
       }
     ]
   },
@@ -12127,28 +8462,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Stunned",6,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Stun"],
           ["Damage","Special",0.1,1,0,"Melee_Damage","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Stunned",2,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 8,
-          "endurance": 0.195,
-          "activationTime": 1.17,
-          "activatePeriod": 2,
-          "effectArea": "AoE",
-          "radius": 12,
-          "maxTargets": 16,
-          "damage": {
-            "type": "Special",
-            "scale": 0.1,
-            "table": "Melee_Damage"
-          },
-          "stun": {
-            "attribType": "Duration",
-            "mag": 2,
-            "scale": 6,
-            "table": "Melee_Stun"
-          }
-        }
+        ]
       },
       {
         "name": "Dark Consumption",
@@ -12208,26 +8522,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Negative",0.8,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
           ["Endurance",null,25,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,25,null,null,null,null,null,null,null,"Ones",null,null,null,0.25],
           ["Damage","Negative",0.8,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kHitPoints%","target>","10","-","100","*","50","10","-","/","0","100","minmax","rand","100","*","<","arch","source>","Class_Corruptor","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 60,
-          "endurance": 0.52,
-          "activationTime": 1.03,
-          "effectArea": "AoE",
-          "radius": 8,
-          "maxTargets": 10,
-          "damage": {
-            "type": "Negative",
-            "scale": 0.8,
-            "table": "Melee_Damage"
-          },
-          "enduranceGain": {
-            "scale": 25,
-            "table": "Melee_Ones",
-            "perTarget": 25
-          }
-        }
+        ]
       },
       {
         "name": "Dark Embrace",
@@ -12279,37 +8574,7 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Toxic",1.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Negative",1.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 4,
-          "endurance": 0.1625,
-          "activationTime": 0.67,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "durations": {
-            "resistance": 0.75
-          },
-          "resistance": {
-            "lethal": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "negative": {
-              "scale": 1.5,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "toxic": {
-              "scale": 1.5,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Soul Transfer",
@@ -12381,57 +8646,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Immobilized",4,50,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Meta",null,1,1,90,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"xpdebtprotection"],
           ["Mez","Stunned",2,30,0,"Melee_Stun","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Stun"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 240,
-          "activationTime": 1.17,
-          "effectArea": "AoE",
-          "radius": 25,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Heal",
-              "scale": 3,
-              "table": "Melee_Heal",
-              "duration": 0.5,
-              "tickRate": 1
-            }
-          ],
-          "buffDuration": 15,
-          "durations": {
-            "untouchable": 15
-          },
-          "enduranceGain": {
-            "scale": 30,
-            "table": "Melee_Ones",
-            "perTarget": 30
-          },
-          "immobilize": {
-            "attribType": "Duration",
-            "ignoreStrength": true,
-            "mag": 50,
-            "scale": 4,
-            "table": "Melee_Ones",
-            "toWho": "Self"
-          },
-          "stun": {
-            "attribType": "Duration",
-            "mag": 30,
-            "scale": 8,
-            "table": "Melee_Stun"
-          },
-          "untouchable": {
-            "ignoreStrength": true,
-            "scale": 10,
-            "table": "Melee_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Soul Drain",
@@ -12509,36 +8724,7 @@ export const EPIC_POOLS_RAW = {
           ["DamageBuff","Toxic",4,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Dmg"],
           ["DamageBuff","Psionic",4,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Dmg"],
           ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kHitPoints%","target>","10","-","100","*","50","10","-","/","0","100","minmax","rand","100","*","<","arch","source>","Class_Corruptor","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1.2,
-          "recharge": 60,
-          "endurance": 13.79,
-          "activationTime": 2.37,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 10,
-          "damage": {
-            "type": "Negative",
-            "scale": 1,
-            "table": "Melee_Damage"
-          },
-          "buffDuration": 30,
-          "damageBuff": {
-            "scale": 4.8,
-            "table": "Melee_Buff_Dmg",
-            "perTarget": 0.8
-          },
-          "durations": {
-            "damageBuff": 30,
-            "tohitBuff": 30
-          },
-          "tohitBuff": {
-            "scale": 1.2,
-            "table": "Melee_Buff_ToHit",
-            "perTarget": 0.2
-          }
-        }
+        ]
       }
     ]
   },
@@ -12634,35 +8820,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Smashing",0.4,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["kMeter","source>","0",">","enttype","target>","critter","eq","&&","arch","source>","Class_Stalker","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["Raid","target.HasTag?","enttype","target>","player","eq","||","kRage","source>","0.7","<","&&","arch","source>","Class_Brute","==","&&"],true,null,null,null,null,null,null,null,null,"Ones",null,"rage"],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&","arch","source>","Class_Brute","==","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 15,
-          "endurance": 12.56,
-          "activationTime": 1.03,
-          "effectArea": "Cone",
-          "radius": 60,
-          "arc": 0.5235987901687622,
-          "maxTargets": 10,
-          "damage": {
-            "type": "Smashing",
-            "scale": 0.4,
-            "table": "Melee_Damage"
-          },
-          "buffDuration": 10,
-          "durations": {
-            "tohitDebuff": 10
-          },
-          "knockback": {
-            "scale": 5,
-            "table": "Melee_Knockback"
-          },
-          "tohitDebuff": {
-            "scale": 0.75,
-            "table": "Melee_DeBuff_ToHit"
-          }
-        }
+        ]
       },
       {
         "name": "Petrifying Gaze",
@@ -12717,21 +8875,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Held",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Meta",null,0.05,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["Raid","target.HasTag?","enttype","target>","player","eq","||","kRage","source>","0.7","<","&&","arch","source>","Class_Brute","==","&&"],true,null,null,null,null,null,null,null,null,"Ones",null,"rage"],
           ["Mez","Taunt",1,4,0,"Ranged_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&","arch","source>","Class_Brute","==","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 50,
-          "recharge": 32,
-          "endurance": 9.75,
-          "activationTime": 1.67,
-          "effectArea": "SingleTarget",
-          "hold": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 8,
-            "table": "Ranged_Immobilize"
-          }
-        }
+        ]
       },
       {
         "name": "Dark Blast",
@@ -12803,28 +8947,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kMeter","source>","0",">","enttype","target>","critter","eq","&&","arch","source>","Class_Stalker","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["Raid","target.HasTag?","enttype","target>","player","eq","||","kRage","source>","0.7","<","&&","arch","source>","Class_Brute","==","&&"],true,null,null,null,null,null,null,null,null,"Ones",null,"rage"],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&","arch","source>","Class_Brute","==","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 4,
-          "endurance": 4.5,
-          "activationTime": 1,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Negative",
-            "scale": 1,
-            "table": "Melee_Damage"
-          },
-          "buffDuration": 6,
-          "durations": {
-            "tohitDebuff": 6
-          },
-          "tohitDebuff": {
-            "scale": 0.75,
-            "table": "Melee_DeBuff_ToHit"
-          }
-        }
+        ]
       },
       {
         "name": "Night Fall",
@@ -12901,33 +9024,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Negative",1.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["kMeter","source>","0",">","enttype","target>","critter","eq","&&","arch","source>","Class_Stalker","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Meta",null,0.05,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["Raid","target.HasTag?","enttype","target>","player","eq","||","kRage","source>","0.7","<","&&","arch","source>","Class_Brute","==","&&"],true,null,null,null,null,null,null,null,null,"Ones",null,"rage"],
           ["Mez","Taunt",1,4,0,"Ranged_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&","arch","source>","Class_Brute","==","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 10,
-          "endurance": 11.47,
-          "activationTime": 2,
-          "effectArea": "Cone",
-          "radius": 60,
-          "arc": 0.3490658700466156,
-          "maxTargets": 10,
-          "damage": {
-            "type": "Negative",
-            "scale": 0.11,
-            "table": "Ranged_Damage",
-            "duration": 2.8,
-            "tickRate": 0.30000001192092896
-          },
-          "buffDuration": 10,
-          "durations": {
-            "tohitDebuff": 10
-          },
-          "tohitDebuff": {
-            "scale": 0.75,
-            "table": "Ranged_DeBuff_ToHit"
-          }
-        }
+        ]
       },
       {
         "name": "Tenebrous Tentacles",
@@ -13017,46 +9114,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Negative",0.935,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["kMeter","source>","0",">","enttype","target>","critter","eq","&&","arch","source>","Class_Stalker","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["Raid","target.HasTag?","enttype","target>","player","eq","||","kRage","source>","0.7","<","&&","arch","source>","Class_Brute","==","&&"],true,null,null,null,null,null,null,null,null,"Ones",null,"rage"],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&","arch","source>","Class_Brute","==","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 40,
-          "recharge": 20,
-          "endurance": 12.74,
-          "activationTime": 1.67,
-          "effectArea": "Cone",
-          "radius": 40,
-          "arc": 0.5235987901687622,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.1,
-              "table": "Melee_Damage",
-              "duration": 7.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Negative",
-              "scale": 0.135,
-              "table": "Melee_Damage"
-            }
-          ],
-          "buffDuration": 8,
-          "durations": {
-            "tohitDebuff": 8
-          },
-          "immobilize": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 15,
-            "table": "Melee_Immobilize"
-          },
-          "tohitDebuff": {
-            "scale": 0.75,
-            "table": "Melee_DeBuff_ToHit"
-          }
-        }
+        ]
       }
     ]
   },
@@ -13121,37 +9179,7 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Toxic",1.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Energy",1.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 2,
-          "endurance": 0.13,
-          "activationTime": 0.67,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "durations": {
-            "resistance": 0.75
-          },
-          "resistance": {
-            "energy": {
-              "scale": 1.5,
-              "table": "Melee_Res_DMG"
-            },
-            "lethal": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "toxic": {
-              "scale": 1.5,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Accelerate Metabolism",
@@ -13217,79 +9245,7 @@ export const EPIC_POOLS_RAW = {
           ["Recovery",null,0.3,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Movement","Fly",0.3,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Power_DisallowSpeedBoost","target.TokenOwned?","!"],null,null,null,null,null,null,null,null,null,"Ones"],
           ["Movement","Run",0.3,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Power_DisallowSpeedBoost","target.TokenOwned?","!"],null,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 240,
-          "endurance": 15.6,
-          "activationTime": 2.03,
-          "effectArea": "AoE",
-          "radius": 25,
-          "maxTargets": 255,
-          "buffDuration": 120,
-          "damageBuff": {
-            "ignoreStrength": true,
-            "scale": 2,
-            "table": "Ranged_Buff_Dmg"
-          },
-          "debuffResistance": {
-            "endurance": {
-              "ignoreStrength": true,
-              "scale": 1.5,
-              "table": "Ranged_Res_Boolean"
-            },
-            "recovery": {
-              "ignoreStrength": true,
-              "scale": 1.5,
-              "table": "Ranged_Res_Boolean"
-            }
-          },
-          "durations": {
-            "damageBuff": 120,
-            "debuffResistance": 120,
-            "mezResistance": 120,
-            "movement": 120,
-            "rechargeBuff": 120,
-            "recoveryBuff": 120
-          },
-          "mezResistance": {
-            "hold": {
-              "scale": 5,
-              "table": "Ranged_Res_Boolean"
-            },
-            "immobilize": {
-              "scale": 5,
-              "table": "Ranged_Res_Boolean"
-            },
-            "sleep": {
-              "scale": 5,
-              "table": "Ranged_Res_Boolean"
-            },
-            "stun": {
-              "scale": 5,
-              "table": "Ranged_Res_Boolean"
-            }
-          },
-          "movement": {
-            "flySpeed": {
-              "scale": 0.3,
-              "table": "Ranged_Ones"
-            },
-            "runSpeed": {
-              "scale": 0.3,
-              "table": "Ranged_Ones"
-            }
-          },
-          "rechargeBuff": {
-            "ignoreStrength": true,
-            "scale": 0.3,
-            "table": "Ranged_Ones"
-          },
-          "recoveryBuff": {
-            "scale": 0.3,
-            "table": "Ranged_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Particle Shielding",
@@ -13347,32 +9303,7 @@ export const EPIC_POOLS_RAW = {
           ["Absorb",null,0.075,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,30],
           ["Absorb",null,1,1,5,"Melee_Ones","Max","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Max.kHitPoints","target>","0.075","*","@Strength","*"],null,null,null,"Ones",null,null,null,30],
           ["Regeneration",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 120,
-          "endurance": 10.4,
-          "activationTime": 0.73,
-          "effectArea": "SingleTarget",
-          "absorb": {
-            "scale": 0.075,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 30,
-          "durations": {
-            "absorb": 5,
-            "regenBuff": 30
-          },
-          "maxStacks": 7,
-          "regenBuff": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "stackInterval": 5,
-          "stacksLinear": [
-            "absorb"
-          ]
-        }
+        ]
       },
       {
         "name": "Choking Cloud",
@@ -13422,23 +9353,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Held",4,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Replace",2,null,null,0.800000011920929,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Immobilize"],
           ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,0.10000000149011612,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated","target.ownPower?","!"],null,null,null,null,null,null,null,null,null,"Contaminated"],
           ["Mez","Held",2,2,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Replace",2,null,null,0.800000011920929,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 20,
-          "endurance": 1.7,
-          "activationTime": 3.47,
-          "activatePeriod": 5,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 16,
-          "hold": {
-            "attribType": "Duration",
-            "mag": 2,
-            "scale": 4,
-            "table": "Ranged_Immobilize"
-          }
-        }
+        ]
       },
       {
         "name": "Electron Haze",
@@ -13513,42 +9428,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Energy",0.8204,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Toxic",0.3516,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Knockback"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 16,
-          "endurance": 15.184,
-          "activationTime": 2.37,
-          "effectArea": "Cone",
-          "radius": 60,
-          "arc": 0.7853981852531433,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Energy",
-              "scale": 0.945,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.405,
-              "table": "Ranged_Damage"
-            }
-          ],
-          "buffDuration": 8,
-          "defenseDebuff": {
-            "scale": 2,
-            "table": "Ranged_Debuff_Def"
-          },
-          "durations": {
-            "defenseDebuff": 8
-          },
-          "knockback": {
-            "scale": 1,
-            "table": "Ranged_Knockback"
-          }
-        }
+        ]
       }
     ]
   },
@@ -13628,23 +9508,15 @@ export const EPIC_POOLS_RAW = {
           "castTime": 1.17
         },
         "effectArea": "Location",
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Patron_Powers_Water_Spout",
+          "duration": 30,
+          "copyBoosts": true
+        },
         "atoms": [
           ["EntCreate",null,1,1,30,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,30]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 45,
-          "endurance": 14,
-          "activationTime": 1.17,
-          "effectArea": "Location",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 30,
-            "entity": "Pets_Patron_Powers_Water_Spout",
-            "isPseudoPet": false
-          }
-        }
+        ]
       },
       {
         "name": "Bile Spray",
@@ -13724,32 +9596,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Toxic",0.1,1,4.25,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Toxic",0.87593,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Toxic",0.175186,1,4.25,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 16,
-          "endurance": 13,
-          "activationTime": 2.67,
-          "effectArea": "Cone",
-          "radius": 60,
-          "arc": 0.5235987901687622,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Toxic",
-              "scale": 0.7,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.1,
-              "table": "Ranged_Damage",
-              "duration": 4.25,
-              "tickRate": 1
-            }
-          ]
-        }
+        ]
       },
       {
         "name": "Hibernate",
@@ -13825,68 +9672,12 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Knockback",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Knockup",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Untouchable",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
-          ["Mez","Immobilized",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+          ["Mez","Immobilized",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,true,null,null,null,null,null,"Ones"],
           ["Mez","OnlyAffectsSelf",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Regeneration",null,10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Recovery",null,4,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 120,
-          "endurance": 0.13,
-          "activationTime": 0.07,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "durations": {
-            "knockback": 0.75,
-            "knockup": 0.75,
-            "mezResistance": 0.75,
-            "recoveryBuff": 0.75,
-            "regenBuff": 0.75
-          },
-          "knockback": {
-            "ignoreStrength": true,
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "knockup": {
-            "ignoreStrength": true,
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "mezResistance": {
-            "knockback": {
-              "ignoreStrength": true,
-              "scale": 10,
-              "table": "Melee_Ones"
-            },
-            "knockup": {
-              "ignoreStrength": true,
-              "scale": 10,
-              "table": "Melee_Ones"
-            }
-          },
-          "onlyAffectsSelf": {
-            "ignoreStrength": true,
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          },
-          "recoveryBuff": {
-            "scale": 4,
-            "table": "Melee_Ones"
-          },
-          "regenBuff": {
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "untouchable": {
-            "ignoreStrength": true,
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Shark Skin",
@@ -13946,37 +9737,7 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Cold",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Fire",1.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 4,
-          "endurance": 0.13,
-          "activationTime": 0.67,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "durations": {
-            "resistance": 0.75
-          },
-          "resistance": {
-            "cold": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "fire": {
-              "scale": 1.5,
-              "table": "Melee_Res_DMG"
-            },
-            "lethal": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Summon Coralax",
@@ -14038,23 +9799,15 @@ export const EPIC_POOLS_RAW = {
           "castTime": 3.2
         },
         "effectArea": "Location",
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Patron_Powers_Blue_Corolax",
+          "duration": 240,
+          "copyBoosts": true
+        },
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,240]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 480,
-          "endurance": 20,
-          "activationTime": 3.2,
-          "effectArea": "Location",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 240,
-            "entity": "Pets_Patron_Powers_Blue_Corolax",
-            "isPseudoPet": false
-          }
-        }
+        ]
       }
     ]
   },
@@ -14162,80 +9915,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Toxic",0.1932,1,9.3,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Energy",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","IncarnateBoss","target.HasTag?","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Energy",3.864,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 80,
-          "recharge": 8,
-          "endurance": 9.1,
-          "activationTime": 1,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Energy",
-              "scale": 0.5,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.05,
-              "table": "Ranged_Damage",
-              "duration": 9.3,
-              "tickRate": 1
-            }
-          ],
-          "buffDuration": 30,
-          "defenseDebuff": {
-            "scale": 2,
-            "table": "Ranged_Debuff_Def"
-          },
-          "durations": {
-            "defenseDebuff": 30,
-            "resistanceDebuff": 30
-          },
-          "resistanceDebuff": {
-            "cold": {
-              "ignoreStrength": true,
-              "scale": 2.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "energy": {
-              "ignoreStrength": true,
-              "scale": 2.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "fire": {
-              "ignoreStrength": true,
-              "scale": 2.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "lethal": {
-              "ignoreStrength": true,
-              "scale": 2.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "negative": {
-              "ignoreStrength": true,
-              "scale": 2.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "psionic": {
-              "ignoreStrength": true,
-              "scale": 2.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "smashing": {
-              "ignoreStrength": true,
-              "scale": 2.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "toxic": {
-              "ignoreStrength": true,
-              "scale": 2.5,
-              "table": "Ranged_Res_Dmg"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Scorpion Shield",
@@ -14298,40 +9978,7 @@ export const EPIC_POOLS_RAW = {
           ["Elusivity","Smashing",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Elusivity","Lethal",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Elusivity","Energy",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 4,
-          "endurance": 0.13,
-          "activationTime": 2,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "defenseBuff": {
-            "energy": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            },
-            "lethal": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            },
-            "smashing": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            }
-          },
-          "durations": {
-            "defenseBuff": 0.75,
-            "resistance": 0.75
-          },
-          "resistance": {
-            "toxic": {
-              "scale": 1.75,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Disruptor Blast",
@@ -14414,33 +10061,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Knockback"],
           ["Damage","Energy",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","IncarnateBoss","target.HasTag?","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Energy",4.312,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 80,
-          "recharge": 12,
-          "endurance": 13.1,
-          "activationTime": 1,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.5,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.5,
-              "table": "Ranged_Damage"
-            }
-          ],
-          "knockback": {
-            "scale": 1,
-            "table": "Ranged_Knockback"
-          }
-        }
+        ]
       },
       {
         "name": "Personal Force Field",
@@ -14523,66 +10144,7 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Energy",4,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,true,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Negative",4,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,true,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Psionic",4,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,true,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 15,
-          "endurance": 0.13,
-          "activationTime": 2.03,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "defenseBuffSuppressible": {
-            "scale": 7.5,
-            "table": "Melee_Buff_Def"
-          },
-          "durations": {
-            "defenseBuffSuppressible": 0.75,
-            "mezResistance": 0.75,
-            "resistance": 0.75
-          },
-          "mezResistance": {
-            "teleport": {
-              "scale": 1,
-              "table": "Melee_Ones"
-            }
-          },
-          "onlyAffectsSelf": {
-            "ignoreStrength": true,
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          },
-          "resistance": {
-            "cold": {
-              "scale": 4,
-              "table": "Melee_Res_DMG"
-            },
-            "energy": {
-              "scale": 4,
-              "table": "Melee_Res_DMG"
-            },
-            "fire": {
-              "scale": 4,
-              "table": "Melee_Res_DMG"
-            },
-            "lethal": {
-              "scale": 4,
-              "table": "Melee_Res_DMG"
-            },
-            "negative": {
-              "scale": 4,
-              "table": "Melee_Res_DMG"
-            },
-            "psionic": {
-              "scale": 4,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 4,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Summon Tarantula",
@@ -14644,23 +10206,15 @@ export const EPIC_POOLS_RAW = {
           "castTime": 3.03
         },
         "effectArea": "Location",
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Patron_Powers_Toxic_Tarantula",
+          "duration": 240,
+          "copyBoosts": true
+        },
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,240]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 480,
-          "endurance": 20,
-          "activationTime": 3.03,
-          "effectArea": "Location",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 240,
-            "entity": "Pets_Patron_Powers_Toxic_Tarantula",
-            "isPseudoPet": false
-          }
-        }
+        ]
       }
     ]
   },
@@ -14739,33 +10293,7 @@ export const EPIC_POOLS_RAW = {
           ["Recovery",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Endurance",null,25,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,25,null,null,null,null,null,null,null,"Ones",null,null,null,0.25],
           ["Endurance",null,-10,1,0,"Melee_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"EndDrain"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 60,
-          "endurance": 13,
-          "activationTime": 2.03,
-          "effectArea": "AoE",
-          "radius": 10,
-          "maxTargets": 10,
-          "buffDuration": 4,
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "enduranceDrain": {
-            "scale": 0.35,
-            "table": "Melee_Ones"
-          },
-          "enduranceGain": {
-            "scale": 25,
-            "table": "Melee_Ones",
-            "perTarget": 25
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Charged Armor",
@@ -14824,33 +10352,7 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Smashing",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Energy",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 2,
-          "endurance": 0.13,
-          "activationTime": 0.67,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "durations": {
-            "resistance": 0.75
-          },
-          "resistance": {
-            "energy": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "lethal": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Static Discharge",
@@ -14926,39 +10428,7 @@ export const EPIC_POOLS_RAW = {
           ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones",null,"rage"],
           ["Damage","Energy",1.464118,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Endurance",null,-1.25,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"EndDrain"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 16,
-          "endurance": 15.184,
-          "activationTime": 2.07,
-          "effectArea": "Cone",
-          "radius": 60,
-          "arc": 0.7853981852531433,
-          "maxTargets": 10,
-          "damage": {
-            "type": "Energy",
-            "scale": 1.23,
-            "table": "Ranged_Damage"
-          },
-          "buffDuration": 4,
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "enduranceDrain": {
-            "scale": 0.07,
-            "table": "Ranged_Ones"
-          },
-          "enduranceGain": {
-            "scale": 4.29,
-            "table": "Ranged_Ones"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Ranged_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Surge of Power",
@@ -15025,62 +10495,7 @@ export const EPIC_POOLS_RAW = {
           ["Recovery",null,1,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Stealth","Translucency",0,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Meta",null,1,1,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"null",null,90]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 540,
-          "endurance": 2.6,
-          "activationTime": 1.96,
-          "effectArea": "SingleTarget",
-          "buffDuration": 90,
-          "durations": {
-            "recoveryBuffUnenhanced": 90,
-            "resistance": 90,
-            "stealth": 90
-          },
-          "recoveryBuffUnenhanced": {
-            "ignoreStrength": true,
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "resistance": {
-            "cold": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "energy": {
-              "scale": 4.75,
-              "table": "Melee_Res_DMG"
-            },
-            "fire": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "lethal": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "negative": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "toxic": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            }
-          },
-          "stealth": {
-            "translucency": {
-              "ignoreStrength": true,
-              "scale": 0,
-              "table": "Melee_Ones"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Summon Guardian",
@@ -15142,23 +10557,15 @@ export const EPIC_POOLS_RAW = {
           "castTime": 1.17
         },
         "effectArea": "Location",
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Patron_Powers_Mu_Guardian",
+          "duration": 240,
+          "copyBoosts": true
+        },
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,240]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 480,
-          "endurance": 20,
-          "activationTime": 1.17,
-          "effectArea": "Location",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 240,
-            "entity": "Pets_Patron_Powers_Mu_Guardian",
-            "isPseudoPet": false
-          }
-        }
+        ]
       }
     ]
   },
@@ -15243,26 +10650,7 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Damage","Negative",0.8,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
           ["Endurance",null,25,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,25,null,null,null,null,null,null,null,"Ones",null,null,null,0.25]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 60,
-          "endurance": 0.52,
-          "activationTime": 1.03,
-          "effectArea": "AoE",
-          "radius": 8,
-          "maxTargets": 10,
-          "damage": {
-            "type": "Negative",
-            "scale": 0.8,
-            "table": "Melee_Damage"
-          },
-          "enduranceGain": {
-            "scale": 25,
-            "table": "Melee_Ones",
-            "perTarget": 25
-          }
-        }
+        ]
       },
       {
         "name": "Dark Embrace",
@@ -15322,37 +10710,7 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Toxic",1.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Negative",1.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 4,
-          "endurance": 0.13,
-          "activationTime": 0.67,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "durations": {
-            "resistance": 0.75
-          },
-          "resistance": {
-            "lethal": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "negative": {
-              "scale": 1.5,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "toxic": {
-              "scale": 1.5,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Soul Tentacles",
@@ -15442,45 +10800,6 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Immobilized",22.5,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kStealth","source>","0.5",">","&&"],true,null,null,null,null,null,null,null,null,"Immobilize",null,null,null,null,null,null,null,null,null,null,"stealthed"],
           ["Mez","Immobilized",4,1,0,"Ranged_Ones","Cur","Duration","Target","PvP",false,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kStealth","source>","0.5",">","&&"],true,null,null,null,null,null,null,null,null,"Ones"]
         ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 10,
-          "endurance": 8.93,
-          "activationTime": 1.67,
-          "effectArea": "Cone",
-          "radius": 60,
-          "arc": 0.7853981852531433,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Negative",
-              "scale": 0.16875,
-              "table": "Ranged_Damage",
-              "duration": 7.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Smashing",
-              "scale": 0.16875,
-              "table": "Ranged_Damage"
-            }
-          ],
-          "buffDuration": 10,
-          "durations": {
-            "tohitDebuff": 10
-          },
-          "immobilize": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 15,
-            "table": "Ranged_Immobilize"
-          },
-          "tohitDebuff": {
-            "scale": 0.75,
-            "table": "Ranged_DeBuff_ToHit"
-          }
-        },
         "conditionalEffects": [
           {
             "id": "stealthed",
@@ -15581,36 +10900,7 @@ export const EPIC_POOLS_RAW = {
           ["DamageBuff","Negative",4,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Dmg"],
           ["DamageBuff","Toxic",4,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Dmg"],
           ["DamageBuff","Psionic",4,1,30,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Dmg"]
-        ],
-        "effects": {
-          "accuracy": 1.2,
-          "recharge": 120,
-          "endurance": 15.6,
-          "activationTime": 2.37,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 10,
-          "damage": {
-            "type": "Negative",
-            "scale": 1,
-            "table": "Melee_Damage"
-          },
-          "buffDuration": 30,
-          "damageBuff": {
-            "scale": 4.8,
-            "table": "Melee_Buff_Dmg",
-            "perTarget": 0.8
-          },
-          "durations": {
-            "damageBuff": 30,
-            "tohitBuff": 30
-          },
-          "tohitBuff": {
-            "scale": 1.2,
-            "table": "Melee_Buff_ToHit",
-            "perTarget": 0.2
-          }
-        }
+        ]
       },
       {
         "name": "Summon Seer",
@@ -15670,23 +10960,15 @@ export const EPIC_POOLS_RAW = {
           "castTime": 3.2
         },
         "effectArea": "Location",
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Patron_Powers_Fortunata_Seer",
+          "duration": 240,
+          "copyBoosts": true
+        },
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,240]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 480,
-          "endurance": 20,
-          "activationTime": 3.2,
-          "effectArea": "Location",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 240,
-            "entity": "Pets_Patron_Powers_Fortunata_Seer",
-            "isPseudoPet": false
-          }
-        }
+        ]
       }
     ]
   },
@@ -15787,45 +11069,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Immobilized",2,4,0,"Melee_Immobilize","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Immobilize"],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&","arch","source>","Class_Tanker","==","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"],
           ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.12999999523162842,null,null,null,null,null,null,["enttype","target>","player","eq","arch","source>","Class_Tanker","==","&&"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1.2,
-          "range": 80,
-          "recharge": 10,
-          "endurance": 9.75,
-          "activationTime": 1.93,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.2,
-              "table": "Melee_Damage",
-              "duration": 9.2,
-              "tickRate": 2
-            },
-            {
-              "type": "Fire",
-              "scale": 0.09,
-              "table": "Melee_Damage",
-              "duration": 9.2,
-              "tickRate": 2
-            }
-          ],
-          "buffDuration": 15,
-          "defenseDebuff": {
-            "scale": 2,
-            "table": "Melee_Debuff_Def"
-          },
-          "durations": {
-            "defenseDebuff": 15
-          },
-          "immobilize": {
-            "attribType": "Duration",
-            "mag": 4,
-            "scale": 15,
-            "table": "Melee_Immobilize"
-          }
-        }
+        ]
       },
       {
         "name": "Salt Crystals",
@@ -15882,30 +11126,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Sleep",2,3,0,"Ranged_Sleep","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Sleep"],
           ["Mez","Taunt",1,4,0,"Ranged_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&","arch","source>","Class_Tanker","==","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"],
           ["Mez","Taunt",6,4,0,"Ranged_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.12999999523162842,null,null,null,null,null,null,["enttype","target>","player","eq","arch","source>","Class_Tanker","==","&&"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 45,
-          "endurance": 13.65,
-          "activationTime": 1.07,
-          "effectArea": "AoE",
-          "radius": 30,
-          "maxTargets": 10,
-          "buffDuration": 15,
-          "defenseDebuff": {
-            "scale": 2,
-            "table": "Ranged_Debuff_Def"
-          },
-          "durations": {
-            "defenseDebuff": 15
-          },
-          "sleep": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 20,
-            "table": "Ranged_Sleep"
-          }
-        }
+        ]
       },
       {
         "name": "Fossilize",
@@ -15979,41 +11200,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Smashing",3.967535,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&","arch","source>","Class_Tanker","==","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"],
           ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.12999999523162842,null,null,null,null,null,null,["enttype","target>","player","eq","arch","source>","Class_Tanker","==","&&"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1.2,
-          "range": 80,
-          "recharge": 32,
-          "endurance": 10.66,
-          "activationTime": 2.07,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 1,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.45,
-              "table": "Melee_Damage"
-            }
-          ],
-          "buffDuration": 12,
-          "defenseDebuff": {
-            "scale": 2,
-            "table": "Melee_Debuff_Def"
-          },
-          "durations": {
-            "defenseDebuff": 12
-          },
-          "hold": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 12,
-            "table": "Melee_Immobilize"
-          }
-        }
+        ]
       },
       {
         "name": "Quick Sand",
@@ -16061,23 +11248,15 @@ export const EPIC_POOLS_RAW = {
           "castTime": 3.1
         },
         "effectArea": "Location",
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Quicksand",
+          "duration": 20,
+          "copyBoosts": true
+        },
         "atoms": [
           ["EntCreate",null,-1,1,20,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,20]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 90,
-          "recharge": 75,
-          "endurance": 10.4,
-          "activationTime": 3.1,
-          "effectArea": "Location",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 20,
-            "entity": "Pets_Quicksand",
-            "isPseudoPet": false
-          }
-        }
+        ]
       },
       {
         "name": "Stalagmites",
@@ -16153,43 +11332,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Lethal",1.728365,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&","arch","source>","Class_Tanker","==","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"],
           ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.12999999523162842,null,null,null,null,null,null,["enttype","target>","player","eq","arch","source>","Class_Tanker","==","&&"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 0.8,
-          "range": 70,
-          "recharge": 32,
-          "endurance": 13.27,
-          "activationTime": 2.1,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Lethal",
-              "scale": 0.9,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.405,
-              "table": "Melee_Damage"
-            }
-          ],
-          "buffDuration": 12,
-          "defenseDebuff": {
-            "scale": 2,
-            "table": "Melee_Debuff_Def"
-          },
-          "durations": {
-            "defenseDebuff": 12
-          },
-          "stun": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 8,
-            "table": "Melee_Stun"
-          }
-        }
+        ]
       }
     ]
   },
@@ -16267,27 +11410,7 @@ export const EPIC_POOLS_RAW = {
           ["Endurance",null,-5,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"EndDrain"],
           ["Damage","Energy",1.464,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Endurance",null,-1.25,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"EndDrain"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 40,
-          "recharge": 16,
-          "endurance": 15.184,
-          "activationTime": 2.17,
-          "effectArea": "Cone",
-          "radius": 40,
-          "arc": 0.7853981852531433,
-          "maxTargets": 10,
-          "damage": {
-            "type": "Energy",
-            "scale": 1.23,
-            "table": "Ranged_Damage"
-          },
-          "enduranceDrain": {
-            "scale": 5,
-            "table": "Ranged_EndDrain"
-          }
-        }
+        ]
       },
       {
         "name": "Shocking Bolt",
@@ -16351,44 +11474,7 @@ export const EPIC_POOLS_RAW = {
           ["Endurance",null,5.33,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Held",2,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Immobilize"],
           ["Endurance",null,-1,1,8.1,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,2,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"EndDrain"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 16,
-          "endurance": 10.66,
-          "activationTime": 2,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Energy",
-            "scale": 0.1,
-            "table": "Ranged_Damage",
-            "duration": 4.2,
-            "tickRate": 1
-          },
-          "buffDuration": 8.1,
-          "durations": {
-            "enduranceDrain": 8.1
-          },
-          "enduranceDrain": {
-            "scale": 2,
-            "table": "Ranged_EndDrain"
-          },
-          "enduranceGain": {
-            "scale": 5.33,
-            "table": "Ranged_Ones"
-          },
-          "hold": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 12,
-            "table": "Ranged_Immobilize"
-          },
-          "maxStacks": 2,
-          "stacksLinear": [
-            "enduranceGain"
-          ]
-        }
+        ]
       },
       {
         "name": "Charged Armor",
@@ -16435,33 +11521,7 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Smashing",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Energy",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 2,
-          "endurance": 0.1625,
-          "activationTime": 0.67,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "durations": {
-            "resistance": 0.75
-          },
-          "resistance": {
-            "energy": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "lethal": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Surge of Power",
@@ -16516,62 +11576,7 @@ export const EPIC_POOLS_RAW = {
           ["Recovery",null,1,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Stealth","Translucency",0,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Meta",null,1,1,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"null",null,90]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 540,
-          "endurance": 2.6,
-          "activationTime": 1.96,
-          "effectArea": "SingleTarget",
-          "buffDuration": 90,
-          "durations": {
-            "recoveryBuffUnenhanced": 90,
-            "resistance": 90,
-            "stealth": 90
-          },
-          "recoveryBuffUnenhanced": {
-            "ignoreStrength": true,
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "resistance": {
-            "cold": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "energy": {
-              "scale": 4.75,
-              "table": "Melee_Res_DMG"
-            },
-            "fire": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "lethal": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "negative": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "toxic": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            }
-          },
-          "stealth": {
-            "translucency": {
-              "ignoreStrength": true,
-              "scale": 0,
-              "table": "Melee_Ones"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "EM Pulse",
@@ -16629,40 +11634,6 @@ export const EPIC_POOLS_RAW = {
           ["Regeneration",null,-30,1,15,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Res_Boolean"],
           ["Damage","Energy",1.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Electronic","target.HasTag?"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,null,null,null,null,null,null,null,"vs-electronic"]
         ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 800,
-          "endurance": 26,
-          "activationTime": 1.67,
-          "effectArea": "AoE",
-          "radius": 40,
-          "maxTargets": 16,
-          "buffDuration": 15,
-          "durations": {
-            "recoveryDebuff": 15,
-            "regenDebuff": 15
-          },
-          "enduranceDrain": {
-            "scale": 50,
-            "table": "Ranged_EndDrain"
-          },
-          "recoveryDebuff": {
-            "ignoreStrength": true,
-            "scale": 1,
-            "table": "Ranged_Ones"
-          },
-          "regenDebuff": {
-            "ignoreStrength": true,
-            "scale": 10,
-            "table": "Ranged_Ones"
-          },
-          "stun": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 15,
-            "table": "Ranged_Immobilize"
-          }
-        },
         "conditionalEffects": [
           {
             "id": "vs-electronic",
@@ -16767,41 +11738,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Energy",0.539656,1,8.2,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,2,1,null,null,null,null,null,null,["kHitPoints%","target>","10","-","100","*","50","10","-","/","0","100","minmax","rand","100","*","<","enttype","target>","player","eq","&&","arch","source>","Class_Corruptor","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Immobilized",2,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Immobilize"],
           ["Endurance",null,-1,1,6.2,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,2,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"EndDrain"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 50,
-          "recharge": 4,
-          "endurance": 9.75,
-          "activationTime": 1.67,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Energy",
-            "scale": 0.2,
-            "table": "Ranged_Damage",
-            "duration": 8.2,
-            "tickRate": 2
-          },
-          "buffDuration": 6.2,
-          "durations": {
-            "enduranceDrain": 6.2,
-            "recoveryDebuff": 2
-          },
-          "enduranceDrain": {
-            "scale": 2,
-            "table": "Ranged_EndDrain"
-          },
-          "immobilize": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 15,
-            "table": "Ranged_Immobilize"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Ranged_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Thunder Strike",
@@ -16882,47 +11819,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Stunned",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Knockback",3,1,0,"Melee_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Knockback"],
           ["Mez","Knockback",2,1,0,"Melee_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Knockback"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 7,
-          "recharge": 20,
-          "endurance": 16.2,
-          "activationTime": 2.5,
-          "effectArea": "AoE",
-          "radius": 12,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.89,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 2.09,
-              "table": "Melee_Damage"
-            }
-          ],
-          "buffDuration": 4,
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "knockback": {
-            "scale": 5,
-            "table": "Melee_Knockback"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "stun": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 5,
-            "table": "Melee_Stun"
-          }
-        }
+        ]
       },
       {
         "name": "Charged Armor",
@@ -16973,33 +11870,7 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Smashing",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Energy",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 2,
-          "endurance": 0.1625,
-          "activationTime": 0.67,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "durations": {
-            "resistance": 0.75
-          },
-          "resistance": {
-            "energy": {
-              "scale": 2,
-              "table": "Melee_Res_DMG"
-            },
-            "lethal": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Shocking Bolt",
@@ -17071,44 +11942,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Energy",0.761573,1,4.2,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,["kHitPoints%","target>","10","-","100","*","50","10","-","/","0","100","minmax","rand","100","*","<","enttype","target>","player","eq","&&","arch","source>","Class_Corruptor","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Held",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Endurance",null,-1,1,8.1,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,2,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"EndDrain"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 16,
-          "endurance": 10.66,
-          "activationTime": 2,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Energy",
-            "scale": 0.1,
-            "table": "Ranged_Damage",
-            "duration": 4.2,
-            "tickRate": 1
-          },
-          "buffDuration": 8.1,
-          "durations": {
-            "enduranceDrain": 8.1
-          },
-          "enduranceDrain": {
-            "scale": 2,
-            "table": "Ranged_EndDrain"
-          },
-          "enduranceGain": {
-            "scale": 5.33,
-            "table": "Ranged_Ones"
-          },
-          "hold": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 12,
-            "table": "Ranged_Immobilize"
-          },
-          "maxStacks": 2,
-          "stacksLinear": [
-            "enduranceGain"
-          ]
-        }
+        ]
       },
       {
         "name": "Power Sink",
@@ -17161,33 +11995,7 @@ export const EPIC_POOLS_RAW = {
           ["Recovery",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Endurance",null,25,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,25,null,null,null,null,null,null,null,"Ones",null,null,null,0.25],
           ["Endurance",null,-10,1,0,"Melee_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"EndDrain"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 60,
-          "endurance": 11.38,
-          "activationTime": 2.03,
-          "effectArea": "AoE",
-          "radius": 12,
-          "maxTargets": 10,
-          "buffDuration": 4,
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "enduranceDrain": {
-            "scale": 33,
-            "table": "Melee_EndDrain"
-          },
-          "enduranceGain": {
-            "scale": 25,
-            "table": "Melee_Ones",
-            "perTarget": 25
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          }
-        }
+        ]
       }
     ]
   },
@@ -17244,20 +12052,7 @@ export const EPIC_POOLS_RAW = {
         "effectArea": "SingleTarget",
         "atoms": [
           ["MaxEndurance",null,5,1,10.25,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 10,
-          "effectArea": "SingleTarget",
-          "buffDuration": 10.25,
-          "durations": {
-            "maxEndBuff": 10.25
-          },
-          "maxEndBuff": {
-            "scale": 5,
-            "table": "Melee_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Focused Accuracy",
@@ -17306,47 +12101,7 @@ export const EPIC_POOLS_RAW = {
           ["Accuracy",null,0.2,1,0.75,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Perception",null,0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Perception",null,0.6,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 10,
-          "endurance": 0.39,
-          "activationTime": 1.17,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "accuracyBuff": {
-            "ignoreStrength": true,
-            "scale": 0.2,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 0.75,
-          "debuffResistance": {
-            "perception": {
-              "ignoreStrength": true,
-              "scale": 0.6,
-              "table": "Melee_Ones"
-            },
-            "tohit": {
-              "ignoreStrength": true,
-              "scale": 2,
-              "table": "Melee_Res_Boolean"
-            }
-          },
-          "durations": {
-            "accuracyBuff": 0.75,
-            "debuffResistance": 0.75,
-            "perceptionBuff": 0.75,
-            "tohitBuff": 0.75
-          },
-          "perceptionBuff": {
-            "scale": 0.6,
-            "table": "Melee_Ones"
-          },
-          "tohitBuff": {
-            "scale": 0.5,
-            "table": "Melee_Buff_ToHit"
-          }
-        }
+        ]
       },
       {
         "name": "Laser Beam Eyes",
@@ -17415,35 +12170,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Energy",1.835032,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&","arch","source>","Class_Tanker","==","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"],
           ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.12999999523162842,null,null,null,null,null,null,["enttype","target>","player","eq","arch","source>","Class_Tanker","==","&&"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 2,
-          "range": 80,
-          "recharge": 6,
-          "endurance": 6.5,
-          "activationTime": 1.67,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Energy",
-              "scale": 1,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.45,
-              "table": "Melee_Damage"
-            }
-          ],
-          "buffDuration": 6,
-          "defenseDebuff": {
-            "scale": 2,
-            "table": "Melee_Debuff_Def"
-          },
-          "durations": {
-            "defenseDebuff": 6
-          }
-        }
+        ]
       },
       {
         "name": "Physical Perfection",
@@ -17486,25 +12213,7 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Regeneration",null,0.2,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Recovery",null,0.125,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "activatePeriod": 10,
-          "effectArea": "SingleTarget",
-          "buffDuration": 10.25,
-          "durations": {
-            "recoveryBuff": 10.25,
-            "regenBuff": 10.25
-          },
-          "recoveryBuff": {
-            "scale": 0.125,
-            "table": "Melee_Ones"
-          },
-          "regenBuff": {
-            "scale": 0.2,
-            "table": "Melee_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Energy Torrent",
@@ -17583,39 +12292,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&","arch","source>","Class_Tanker","==","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"],
           ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.12999999523162842,null,null,null,null,null,null,["enttype","target>","player","eq","arch","source>","Class_Tanker","==","&&"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 40,
-          "recharge": 12,
-          "endurance": 10.38,
-          "activationTime": 1.07,
-          "effectArea": "Cone",
-          "radius": 40,
-          "arc": 0.7853981852531433,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.29,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.67,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.432,
-              "table": "Melee_Damage"
-            }
-          ],
-          "knockback": {
-            "scale": 0.67,
-            "table": "Melee_Ones"
-          }
-        }
+        ]
       }
     ]
   },
@@ -17672,20 +12349,7 @@ export const EPIC_POOLS_RAW = {
         "effectArea": "SingleTarget",
         "atoms": [
           ["MaxEndurance",null,5,1,10.25,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 10,
-          "effectArea": "SingleTarget",
-          "buffDuration": 10.25,
-          "durations": {
-            "maxEndBuff": 10.25
-          },
-          "maxEndBuff": {
-            "scale": 5,
-            "table": "Melee_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Focused Accuracy",
@@ -17734,47 +12398,7 @@ export const EPIC_POOLS_RAW = {
           ["Accuracy",null,0.2,1,0.75,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Perception",null,0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Perception",null,0.6,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 10,
-          "endurance": 0.39,
-          "activationTime": 1.17,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "accuracyBuff": {
-            "ignoreStrength": true,
-            "scale": 0.2,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 0.75,
-          "debuffResistance": {
-            "perception": {
-              "ignoreStrength": true,
-              "scale": 0.6,
-              "table": "Melee_Ones"
-            },
-            "tohit": {
-              "ignoreStrength": true,
-              "scale": 2,
-              "table": "Melee_Res_Boolean"
-            }
-          },
-          "durations": {
-            "accuracyBuff": 0.75,
-            "debuffResistance": 0.75,
-            "perceptionBuff": 0.75,
-            "tohitBuff": 0.75
-          },
-          "perceptionBuff": {
-            "scale": 0.6,
-            "table": "Melee_Ones"
-          },
-          "tohitBuff": {
-            "scale": 0.5,
-            "table": "Melee_Buff_ToHit"
-          }
-        }
+        ]
       },
       {
         "name": "Laser Beam Eyes",
@@ -17843,35 +12467,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Energy",1.835032,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&","arch","source>","Class_Tanker","==","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"],
           ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.12999999523162842,null,null,null,null,null,null,["enttype","target>","player","eq","arch","source>","Class_Tanker","==","&&"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 6,
-          "endurance": 6.5,
-          "activationTime": 1.67,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Energy",
-              "scale": 1,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.45,
-              "table": "Melee_Damage"
-            }
-          ],
-          "buffDuration": 6,
-          "defenseDebuff": {
-            "scale": 2,
-            "table": "Melee_Debuff_Def"
-          },
-          "durations": {
-            "defenseDebuff": 6
-          }
-        }
+        ]
       },
       {
         "name": "Physical Perfection",
@@ -17914,25 +12510,7 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Regeneration",null,0.2,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Recovery",null,0.125,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "activatePeriod": 10,
-          "effectArea": "SingleTarget",
-          "buffDuration": 10.25,
-          "durations": {
-            "recoveryBuff": 10.25,
-            "regenBuff": 10.25
-          },
-          "recoveryBuff": {
-            "scale": 0.125,
-            "table": "Melee_Ones"
-          },
-          "regenBuff": {
-            "scale": 0.2,
-            "table": "Melee_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Energy Torrent",
@@ -18011,39 +12589,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&","arch","source>","Class_Tanker","==","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"],
           ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.12999999523162842,null,null,null,null,null,null,["enttype","target>","player","eq","arch","source>","Class_Tanker","==","&&"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 40,
-          "recharge": 12,
-          "endurance": 10.38,
-          "activationTime": 1.07,
-          "effectArea": "Cone",
-          "radius": 40,
-          "arc": 0.7853981852531433,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.29,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.67,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.432,
-              "table": "Melee_Damage"
-            }
-          ],
-          "knockback": {
-            "scale": 0.67,
-            "table": "Melee_Ones"
-          }
-        }
+        ]
       }
     ]
   },
@@ -18114,29 +12660,7 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Negative",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Toxic",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Psionic",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 2,
-          "endurance": 0.1625,
-          "activationTime": 0.67,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "durations": {
-            "resistance": 0.75
-          },
-          "resistance": {
-            "lethal": {
-              "scale": 3,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 3,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Power Blast",
@@ -18203,31 +12727,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Smashing",0.633449,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Energy",2.533797,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Knockback"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 6,
-          "endurance": 7.46,
-          "activationTime": 1.67,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.49,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.15,
-              "table": "Ranged_Damage"
-            }
-          ],
-          "knockback": {
-            "scale": 1,
-            "table": "Ranged_Knockback"
-          }
-        }
+        ]
       },
       {
         "name": "Energy Torrent",
@@ -18297,34 +12797,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Smashing",0.460586,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Energy",1.025176,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Knockback",0.3,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Knockback"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 40,
-          "recharge": 12,
-          "endurance": 10.37,
-          "activationTime": 1.07,
-          "effectArea": "Cone",
-          "radius": 40,
-          "arc": 0.7853981852531433,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.29,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.67,
-              "table": "Ranged_Damage"
-            }
-          ],
-          "knockback": {
-            "scale": 0.3,
-            "table": "Ranged_Knockback"
-          }
-        }
+        ]
       },
       {
         "name": "Explosive Blast",
@@ -18388,33 +12861,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Knockback",2,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Knockback"],
           ["Mez","Knockback",2,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Knockback"],
           ["Damage","Energy",0.448158,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 12,
-          "endurance": 13.29,
-          "activationTime": 1.67,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.5,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.4,
-              "table": "Ranged_Damage"
-            }
-          ],
-          "knockback": {
-            "scale": 2,
-            "table": "Ranged_Knockback"
-          }
-        }
+        ]
       },
       {
         "name": "Force of Nature",
@@ -18467,59 +12914,7 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Negative",3.75,1,90,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Toxic",3.75,1,90,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Recovery",null,1,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 540,
-          "endurance": 3.25,
-          "activationTime": 3.1,
-          "effectArea": "SingleTarget",
-          "buffDuration": 90,
-          "durations": {
-            "recoveryBuffUnenhanced": 90,
-            "resistance": 90
-          },
-          "recoveryBuffUnenhanced": {
-            "ignoreStrength": true,
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "resistance": {
-            "cold": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "energy": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "fire": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "lethal": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "negative": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "toxic": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            }
-          },
-          "maxStacks": 2,
-          "stacksLinear": [
-            "recoveryBuffUnenhanced",
-            "resistance"
-          ]
-        }
+        ]
       }
     ]
   },
@@ -18604,31 +12999,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Fire",3.167246,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Fire",1.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","IncarnateBoss","target.HasTag?","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Fire",1.583623,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 6,
-          "endurance": 4.5,
-          "activationTime": 1.67,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Fire",
-              "scale": 1.1,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.1,
-              "table": "Ranged_Damage",
-              "duration": 3.1,
-              "tickRate": 1,
-              "chance": 0.8,
-              "cancelOnMiss": true
-            }
-          ]
-        }
+        ]
       },
       {
         "name": "Fire Ball",
@@ -18705,38 +13076,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Fire",1.055946,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Fire",1.05,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","IncarnateBoss","target.HasTag?","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Fire",0.613922,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 16,
-          "endurance": 13.29,
-          "activationTime": 1,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.15,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.9,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.1,
-              "table": "Ranged_Damage",
-              "duration": 2.1,
-              "tickRate": 1,
-              "chance": 0.8,
-              "cancelOnMiss": true
-            }
-          ]
-        }
+        ]
       },
       {
         "name": "Fire Shield",
@@ -18784,37 +13124,7 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Fire",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Cold",1,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 2,
-          "endurance": 0.1625,
-          "activationTime": 1.67,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "durations": {
-            "resistance": 0.75
-          },
-          "resistance": {
-            "cold": {
-              "scale": 1,
-              "table": "Melee_Res_DMG"
-            },
-            "fire": {
-              "scale": 2,
-              "table": "Melee_Res_DMG"
-            },
-            "lethal": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Rise of the Phoenix",
@@ -18868,46 +13178,20 @@ export const EPIC_POOLS_RAW = {
           "duration": 0.5,
           "tickRate": 1
         },
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Phoenix",
+          "duration": 5,
+          "copyBoosts": true
+        },
         "atoms": [
           ["Heal",null,5,1,0.5,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf"],
           ["EntCreate",null,1,1,5,"Melee_Level","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,5],
           ["Mez","Untouchable",15,10,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Endurance",null,50,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,0.125],
-          ["Mez","Immobilized",4,50,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+          ["Mez","Immobilized",4,50,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,true,null,null,null,null,null,"Ones"],
           ["Meta",null,1,1,60,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"xpdebtprotection"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 300,
-          "activationTime": 1.5,
-          "effectArea": "Location",
-          "damage": {
-            "type": "Heal",
-            "scale": 5,
-            "table": "Melee_HealSelf",
-            "duration": 0.5,
-            "tickRate": 1
-          },
-          "enduranceGain": {
-            "scale": 50,
-            "table": "Melee_Ones"
-          },
-          "summon": {
-            "copyBoosts": true,
-            "duration": 5,
-            "entity": "Pets_Phoenix",
-            "isPseudoPet": false
-          },
-          "untouchable": {
-            "ignoreStrength": true,
-            "scale": 15,
-            "table": "Melee_Ones"
-          },
-          "maxStacks": 2,
-          "stacksLinear": [
-            "enduranceGain"
-          ]
-        }
+        ]
       },
       {
         "name": "Consume",
@@ -18967,42 +13251,7 @@ export const EPIC_POOLS_RAW = {
           ["Recovery",null,0.05,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["@ToHitRoll","@ToHit","<","@ForceHit","||"],null,0.05,null,null,null,null,null,null,null,"Ones",null,null,null,0.25],
           ["Damage","Fire",0.4,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","IncarnateBoss","target.HasTag?","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Fire",0.4,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 60,
-          "endurance": 0.65,
-          "activationTime": 2.03,
-          "effectArea": "AoE",
-          "radius": 20,
-          "maxTargets": 10,
-          "damage": {
-            "type": "Fire",
-            "scale": 0.4,
-            "table": "Melee_Damage"
-          },
-          "buffDuration": 120,
-          "debuffResistance": {
-            "endurance": {
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            }
-          },
-          "durations": {
-            "debuffResistance": 120,
-            "recoveryBuff": 30
-          },
-          "enduranceGain": {
-            "scale": 20,
-            "table": "Melee_Ones",
-            "perTarget": 20
-          },
-          "recoveryBuff": {
-            "scale": 0.05,
-            "table": "Melee_Ones",
-            "perTarget": 0.05
-          }
-        }
+        ]
       }
     ]
   },
@@ -19065,23 +13314,15 @@ export const EPIC_POOLS_RAW = {
           "castTime": 2.03
         },
         "effectArea": "Location",
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_RainofFire",
+          "duration": 15,
+          "copyBoosts": true
+        },
         "atoms": [
           ["EntCreate",null,1,1,15,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,15]
-        ],
-        "effects": {
-          "accuracy": 2,
-          "range": 60,
-          "recharge": 60,
-          "endurance": 26,
-          "activationTime": 2.03,
-          "effectArea": "Location",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 15,
-            "entity": "Pets_RainofFire",
-            "isPseudoPet": false
-          }
-        }
+        ]
       },
       {
         "name": "Fire Breath",
@@ -19141,25 +13382,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Fire",0.585,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage",null,null,null,1],
           ["Meta",null,8,1,0,"Ranged_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones",null,"rage"],
           ["Damage","Fire",0.942731,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,1]
-        ],
-        "effects": {
-          "accuracy": 1.2,
-          "range": 60,
-          "recharge": 16,
-          "endurance": 15.184,
-          "activationTime": 2.67,
-          "effectArea": "Cone",
-          "radius": 60,
-          "arc": 1.1344640254974365,
-          "maxTargets": 10,
-          "damage": {
-            "type": "Fire",
-            "scale": 0.585,
-            "table": "Ranged_Damage",
-            "duration": 2.1,
-            "tickRate": 1
-          }
-        }
+        ]
       },
       {
         "name": "Fire Shield",
@@ -19207,37 +13430,7 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Fire",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Cold",1,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 2,
-          "endurance": 0.13,
-          "activationTime": 1.67,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "durations": {
-            "resistance": 0.75
-          },
-          "resistance": {
-            "cold": {
-              "scale": 1,
-              "table": "Melee_Res_DMG"
-            },
-            "fire": {
-              "scale": 2,
-              "table": "Melee_Res_DMG"
-            },
-            "lethal": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Rise of the Phoenix",
@@ -19291,46 +13484,20 @@ export const EPIC_POOLS_RAW = {
           "duration": 0.5,
           "tickRate": 1
         },
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Phoenix",
+          "duration": 5,
+          "copyBoosts": true
+        },
         "atoms": [
           ["Heal",null,5,1,0.5,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf"],
           ["EntCreate",null,1,1,5,"Melee_Level","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,5],
           ["Mez","Untouchable",15,10,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Endurance",null,50,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,0.125],
-          ["Mez","Immobilized",4,50,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+          ["Mez","Immobilized",4,50,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,true,null,null,null,null,null,"Ones"],
           ["Meta",null,1,1,60,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"xpdebtprotection"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 300,
-          "activationTime": 1.5,
-          "effectArea": "Location",
-          "damage": {
-            "type": "Heal",
-            "scale": 5,
-            "table": "Melee_HealSelf",
-            "duration": 0.5,
-            "tickRate": 1
-          },
-          "enduranceGain": {
-            "scale": 50,
-            "table": "Melee_Ones"
-          },
-          "summon": {
-            "copyBoosts": true,
-            "duration": 5,
-            "entity": "Pets_Phoenix",
-            "isPseudoPet": false
-          },
-          "untouchable": {
-            "ignoreStrength": true,
-            "scale": 15,
-            "table": "Melee_Ones"
-          },
-          "maxStacks": 2,
-          "stacksLinear": [
-            "enduranceGain"
-          ]
-        }
+        ]
       },
       {
         "name": "Melt Armor",
@@ -19388,68 +13555,7 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Negative",-3,1,40,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Toxic",-3,1,40,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Psionic",-3,1,40,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 70,
-          "recharge": 60,
-          "endurance": 18.2,
-          "activationTime": 1.5,
-          "effectArea": "AoE",
-          "radius": 10,
-          "maxTargets": 10,
-          "buffDuration": 40,
-          "defenseDebuff": {
-            "scale": 2,
-            "table": "Ranged_Debuff_Def"
-          },
-          "durations": {
-            "defenseDebuff": 40,
-            "resistanceDebuff": 40
-          },
-          "resistanceDebuff": {
-            "cold": {
-              "ignoreStrength": true,
-              "scale": 3,
-              "table": "Ranged_Res_Dmg"
-            },
-            "energy": {
-              "ignoreStrength": true,
-              "scale": 3,
-              "table": "Ranged_Res_Dmg"
-            },
-            "fire": {
-              "ignoreStrength": true,
-              "scale": 3,
-              "table": "Ranged_Res_Dmg"
-            },
-            "lethal": {
-              "ignoreStrength": true,
-              "scale": 3,
-              "table": "Ranged_Res_Dmg"
-            },
-            "negative": {
-              "ignoreStrength": true,
-              "scale": 3,
-              "table": "Ranged_Res_Dmg"
-            },
-            "psionic": {
-              "ignoreStrength": true,
-              "scale": 3,
-              "table": "Ranged_Res_Dmg"
-            },
-            "smashing": {
-              "ignoreStrength": true,
-              "scale": 3,
-              "table": "Ranged_Res_Dmg"
-            },
-            "toxic": {
-              "ignoreStrength": true,
-              "scale": 3,
-              "table": "Ranged_Res_Dmg"
-            }
-          }
-        }
+        ]
       }
     ]
   },
@@ -19513,23 +13619,15 @@ export const EPIC_POOLS_RAW = {
           "castTime": 3.07
         },
         "effectArea": "Location",
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Bonfire",
+          "duration": 45,
+          "copyBoosts": true
+        },
         "atoms": [
           ["EntCreate",null,1,1,45,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,45]
-        ],
-        "effects": {
-          "accuracy": 2,
-          "range": 70,
-          "recharge": 90,
-          "endurance": 13,
-          "activationTime": 3.07,
-          "effectArea": "Location",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 45,
-            "entity": "Pets_Bonfire",
-            "isPseudoPet": false
-          }
-        }
+        ]
       },
       {
         "name": "Char",
@@ -19589,28 +13687,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Fire",0.22,1,4.2,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Fire",0.439938,1,4.2,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Held",2,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Immobilize"]
-        ],
-        "effects": {
-          "accuracy": 1.2,
-          "range": 80,
-          "recharge": 16,
-          "endurance": 10.66,
-          "activationTime": 1.07,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Fire",
-            "scale": 0.22,
-            "table": "Ranged_Damage",
-            "duration": 4.2,
-            "tickRate": 1
-          },
-          "hold": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 12,
-            "table": "Ranged_Immobilize"
-          }
-        }
+        ]
       },
       {
         "name": "Fire Shield",
@@ -19658,37 +13735,7 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Fire",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Cold",1,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 4,
-          "endurance": 0.1625,
-          "activationTime": 1.67,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "durations": {
-            "resistance": 0.75
-          },
-          "resistance": {
-            "cold": {
-              "scale": 1,
-              "table": "Melee_Res_DMG"
-            },
-            "fire": {
-              "scale": 2,
-              "table": "Melee_Res_DMG"
-            },
-            "lethal": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Melt Armor",
@@ -19754,74 +13801,7 @@ export const EPIC_POOLS_RAW = {
           ["DamageBuff","Negative",0.04,1,9,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["DamageBuff","Toxic",0.04,1,9,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["DamageBuff","Psionic",0.04,1,9,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 70,
-          "recharge": 90,
-          "endurance": 15.93,
-          "activationTime": 1.5,
-          "effectArea": "AoE",
-          "radius": 10,
-          "maxTargets": 10,
-          "buffDuration": 40,
-          "damageBuff": {
-            "ignoreStrength": true,
-            "scale": 0.04,
-            "table": "Ranged_Ones"
-          },
-          "defenseDebuff": {
-            "scale": 1,
-            "table": "Ranged_Debuff_Def"
-          },
-          "durations": {
-            "damageBuff": 9,
-            "defenseDebuff": 40,
-            "resistanceDebuff": 40
-          },
-          "resistanceDebuff": {
-            "cold": {
-              "ignoreStrength": true,
-              "scale": 1.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "energy": {
-              "ignoreStrength": true,
-              "scale": 1.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "fire": {
-              "ignoreStrength": true,
-              "scale": 1.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "lethal": {
-              "ignoreStrength": true,
-              "scale": 1.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "negative": {
-              "ignoreStrength": true,
-              "scale": 1.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "psionic": {
-              "ignoreStrength": true,
-              "scale": 1.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "smashing": {
-              "ignoreStrength": true,
-              "scale": 1.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "toxic": {
-              "ignoreStrength": true,
-              "scale": 1.5,
-              "table": "Ranged_Res_Dmg"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Rise of the Phoenix",
@@ -19875,46 +13855,20 @@ export const EPIC_POOLS_RAW = {
           "duration": 0.5,
           "tickRate": 1
         },
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Phoenix",
+          "duration": 5,
+          "copyBoosts": true
+        },
         "atoms": [
           ["Heal",null,5,1,0.5,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf"],
           ["EntCreate",null,1,1,5,"Melee_Level","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,5],
           ["Mez","Untouchable",15,10,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Endurance",null,50,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,0.125],
-          ["Mez","Immobilized",4,50,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+          ["Mez","Immobilized",4,50,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,true,null,null,null,null,null,"Ones"],
           ["Meta",null,1,1,60,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"xpdebtprotection"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 300,
-          "activationTime": 1.5,
-          "effectArea": "Location",
-          "damage": {
-            "type": "Heal",
-            "scale": 5,
-            "table": "Melee_HealSelf",
-            "duration": 0.5,
-            "tickRate": 1
-          },
-          "enduranceGain": {
-            "scale": 50,
-            "table": "Melee_Ones"
-          },
-          "summon": {
-            "copyBoosts": true,
-            "duration": 5,
-            "entity": "Pets_Phoenix",
-            "isPseudoPet": false
-          },
-          "untouchable": {
-            "ignoreStrength": true,
-            "scale": 15,
-            "table": "Melee_Ones"
-          },
-          "maxStacks": 2,
-          "stacksLinear": [
-            "enduranceGain"
-          ]
-        }
+        ]
       }
     ]
   },
@@ -20002,66 +13956,7 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Energy",4,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,true,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Negative",4,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,true,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Psionic",4,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,true,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 30,
-          "endurance": 0.1625,
-          "activationTime": 2.03,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "defenseBuffSuppressible": {
-            "scale": 7.5,
-            "table": "Melee_Buff_Def"
-          },
-          "durations": {
-            "defenseBuffSuppressible": 0.75,
-            "mezResistance": 0.75,
-            "resistance": 0.75
-          },
-          "mezResistance": {
-            "teleport": {
-              "scale": 1,
-              "table": "Melee_Ones"
-            }
-          },
-          "onlyAffectsSelf": {
-            "ignoreStrength": true,
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          },
-          "resistance": {
-            "cold": {
-              "scale": 4,
-              "table": "Melee_Res_DMG"
-            },
-            "energy": {
-              "scale": 4,
-              "table": "Melee_Res_DMG"
-            },
-            "fire": {
-              "scale": 4,
-              "table": "Melee_Res_DMG"
-            },
-            "lethal": {
-              "scale": 4,
-              "table": "Melee_Res_DMG"
-            },
-            "negative": {
-              "scale": 4,
-              "table": "Melee_Res_DMG"
-            },
-            "psionic": {
-              "scale": 4,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 4,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Repulsion Field",
@@ -20109,21 +14004,7 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Mez","Knockback",3,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1.100000023841858,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"SummerIOTornado"],
           ["Mez","Knockback",3,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Knockback"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 20,
-          "endurance": 0.325,
-          "activationTime": 2.03,
-          "activatePeriod": 0.5,
-          "effectArea": "AoE",
-          "radius": 9,
-          "maxTargets": 16,
-          "knockback": {
-            "scale": 3,
-            "table": "Ranged_Knockback"
-          }
-        }
+        ]
       },
       {
         "name": "Temp Invulnerability",
@@ -20169,29 +14050,7 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Resistance","Smashing",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Lethal",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 2,
-          "endurance": 0.1625,
-          "activationTime": 0.67,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "durations": {
-            "resistance": 0.75
-          },
-          "resistance": {
-            "lethal": {
-              "scale": 3,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 3,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Repulsion Bomb",
@@ -20264,41 +14123,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Stunned",4,2,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones",null,null,null,0.125],
           ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,0,null,true,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones",null,"drop_toggles"],
           ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","PvP",false,"Stack",2,null,null,0,null,true,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones",null,"drop_toggles"]
-        ],
-        "effects": {
-          "accuracy": 1.2,
-          "range": 80,
-          "recharge": 30,
-          "endurance": 16.9,
-          "activationTime": 3.07,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 16,
-          "damage": {
-            "type": "Smashing",
-            "scale": 1,
-            "table": "Ranged_Damage"
-          },
-          "buffDuration": 10.57,
-          "damageBuff": {
-            "ignoreStrength": true,
-            "scale": 0.062,
-            "table": "Ranged_Ones"
-          },
-          "durations": {
-            "damageBuff": 10.57
-          },
-          "knockback": {
-            "scale": 0.67,
-            "table": "Ranged_Ones"
-          },
-          "stun": {
-            "attribType": "Duration",
-            "mag": 2,
-            "scale": 8,
-            "table": "Ranged_Stun"
-          }
-        }
+        ]
       },
       {
         "name": "Force of Nature",
@@ -20351,59 +14176,7 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Negative",3.75,1,90,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Toxic",3.75,1,90,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Recovery",null,1,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 540,
-          "endurance": 3.25,
-          "activationTime": 3.1,
-          "effectArea": "SingleTarget",
-          "buffDuration": 90,
-          "durations": {
-            "recoveryBuffUnenhanced": 90,
-            "resistance": 90
-          },
-          "recoveryBuffUnenhanced": {
-            "ignoreStrength": true,
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "resistance": {
-            "cold": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "energy": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "fire": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "lethal": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "negative": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "toxic": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            }
-          },
-          "maxStacks": 2,
-          "stacksLinear": [
-            "recoveryBuffUnenhanced",
-            "resistance"
-          ]
-        }
+        ]
       }
     ]
   },
@@ -20467,23 +14240,15 @@ export const EPIC_POOLS_RAW = {
           "castTime": 3.07
         },
         "effectArea": "Location",
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Bonfire",
+          "duration": 45,
+          "copyBoosts": true
+        },
         "atoms": [
           ["EntCreate",null,1,1,45,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,45]
-        ],
-        "effects": {
-          "accuracy": 2,
-          "range": 70,
-          "recharge": 60,
-          "endurance": 13,
-          "activationTime": 3.07,
-          "effectArea": "Location",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 45,
-            "entity": "Pets_Bonfire",
-            "isPseudoPet": false
-          }
-        }
+        ]
       },
       {
         "name": "Fire Blast",
@@ -20549,31 +14314,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Fire",1.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Fire",0.1,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.8,true,"Damage",null,null,null,0.5],
           ["Damage","Fire",3.167246,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 4,
-          "endurance": 5.2,
-          "activationTime": 1.67,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Fire",
-              "scale": 1.1,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.1,
-              "table": "Ranged_Damage",
-              "duration": 3.1,
-              "tickRate": 1,
-              "chance": 0.8,
-              "cancelOnMiss": true
-            }
-          ]
-        }
+        ]
       },
       {
         "name": "Fire Ball",
@@ -20648,38 +14389,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Fire",0.1,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.8,true,"Damage",null,null,null,0.5],
           ["Damage","Smashing",0.171898,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Fire",1.055946,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 16,
-          "endurance": 15.184,
-          "activationTime": 1,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.15,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.9,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.1,
-              "table": "Ranged_Damage",
-              "duration": 2.1,
-              "tickRate": 1,
-              "chance": 0.8,
-              "cancelOnMiss": true
-            }
-          ]
-        }
+        ]
       },
       {
         "name": "Char",
@@ -20752,37 +14462,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Fire",0.492791,1,4.2,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&","arch","source>","Class_Tanker","==","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"],
           ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.12999999523162842,null,null,null,null,null,null,["enttype","target>","player","eq","arch","source>","Class_Tanker","==","&&"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 16,
-          "endurance": 8,
-          "activationTime": 1.07,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Fire",
-              "scale": 0.1,
-              "table": "Melee_Damage",
-              "duration": 4.2,
-              "tickRate": 1
-            },
-            {
-              "type": "Fire",
-              "scale": 0.045,
-              "table": "Melee_Damage",
-              "duration": 4.2,
-              "tickRate": 1
-            }
-          ],
-          "hold": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 12,
-            "table": "Melee_Immobilize"
-          }
-        }
+        ]
       },
       {
         "name": "Rise of the Phoenix",
@@ -20836,46 +14516,20 @@ export const EPIC_POOLS_RAW = {
           "duration": 0.5,
           "tickRate": 1
         },
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Phoenix",
+          "duration": 5,
+          "copyBoosts": true
+        },
         "atoms": [
           ["Heal",null,5,1,0.5,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf"],
           ["EntCreate",null,1,1,5,"Melee_Level","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,5],
           ["Mez","Untouchable",15,10,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Endurance",null,50,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,0.125],
-          ["Mez","Immobilized",4,50,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+          ["Mez","Immobilized",4,50,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,true,null,null,null,null,null,"Ones"],
           ["Meta",null,1,1,60,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"xpdebtprotection"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 300,
-          "activationTime": 1.5,
-          "effectArea": "Location",
-          "damage": {
-            "type": "Heal",
-            "scale": 5,
-            "table": "Melee_HealSelf",
-            "duration": 0.5,
-            "tickRate": 1
-          },
-          "enduranceGain": {
-            "scale": 50,
-            "table": "Melee_Ones"
-          },
-          "summon": {
-            "copyBoosts": true,
-            "duration": 5,
-            "entity": "Pets_Phoenix",
-            "isPseudoPet": false
-          },
-          "untouchable": {
-            "ignoreStrength": true,
-            "scale": 15,
-            "table": "Melee_Ones"
-          },
-          "maxStacks": 2,
-          "stacksLinear": [
-            "enduranceGain"
-          ]
-        }
+        ]
       }
     ]
   },
@@ -20964,56 +14618,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Cold",2.533797,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Cold",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","IncarnateBoss","target.HasTag?","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Cold",1.583623,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 6,
-          "endurance": 7.46,
-          "activationTime": 1.67,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.5,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Cold",
-              "scale": 1.17,
-              "table": "Ranged_Damage"
-            }
-          ],
-          "buffDuration": 10,
-          "durations": {
-            "rechargeDebuff": 10,
-            "slow": 10
-          },
-          "rechargeDebuff": {
-            "ignoreStrength": true,
-            "scale": 0.2,
-            "table": "Ranged_Slow"
-          },
-          "slow": {
-            "flySpeed": {
-              "scale": 0.2,
-              "table": "Ranged_Slow"
-            },
-            "jumpHeight": {
-              "ignoreStrength": true,
-              "scale": 0.2,
-              "table": "Ranged_Slow"
-            },
-            "jumpSpeed": {
-              "scale": 0.2,
-              "table": "Ranged_Slow"
-            },
-            "runSpeed": {
-              "scale": 0.2,
-              "table": "Ranged_Slow"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Hibernate",
@@ -21077,68 +14682,12 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Knockback",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Knockup",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Untouchable",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
-          ["Mez","Immobilized",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+          ["Mez","Immobilized",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,true,null,null,null,null,null,"Ones"],
           ["Mez","OnlyAffectsSelf",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Regeneration",null,10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Recovery",null,4,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 60,
-          "endurance": 0.1625,
-          "activationTime": 0.07,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "durations": {
-            "knockback": 0.75,
-            "knockup": 0.75,
-            "mezResistance": 0.75,
-            "recoveryBuff": 0.75,
-            "regenBuff": 0.75
-          },
-          "knockback": {
-            "ignoreStrength": true,
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "knockup": {
-            "ignoreStrength": true,
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "mezResistance": {
-            "knockback": {
-              "ignoreStrength": true,
-              "scale": 10,
-              "table": "Melee_Ones"
-            },
-            "knockup": {
-              "ignoreStrength": true,
-              "scale": 10,
-              "table": "Melee_Ones"
-            }
-          },
-          "onlyAffectsSelf": {
-            "ignoreStrength": true,
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          },
-          "recoveryBuff": {
-            "scale": 4,
-            "table": "Melee_Ones"
-          },
-          "regenBuff": {
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "untouchable": {
-            "ignoreStrength": true,
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Frozen Armor",
@@ -21201,40 +14750,7 @@ export const EPIC_POOLS_RAW = {
           ["Elusivity","Psionic",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Elusivity","Energy",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Elusivity","Negative",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 2,
-          "endurance": 0.1625,
-          "activationTime": 0.73,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "defenseBuff": {
-            "lethal": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            },
-            "smashing": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            }
-          },
-          "durations": {
-            "defenseBuff": 0.75,
-            "resistance": 0.75
-          },
-          "resistance": {
-            "cold": {
-              "scale": 3,
-              "table": "Melee_Res_DMG"
-            },
-            "fire": {
-              "scale": 1,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Frost Breath",
@@ -21302,54 +14818,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Cold",0.7,1,0.6,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","IncarnateBoss","target.HasTag?","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Cold",1.377438,1,0.6,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Cold",0.689,1,0.6,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["enttype","target>","player","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1.2,
-          "range": 40,
-          "recharge": 16,
-          "endurance": 13.29,
-          "activationTime": 2.67,
-          "effectArea": "Cone",
-          "radius": 40,
-          "arc": 0.5235987901687622,
-          "maxTargets": 10,
-          "damage": {
-            "type": "Cold",
-            "scale": 0.7,
-            "table": "Ranged_Damage",
-            "duration": 0.6,
-            "tickRate": 0.5
-          },
-          "buffDuration": 10,
-          "durations": {
-            "rechargeDebuff": 10,
-            "slow": 10
-          },
-          "rechargeDebuff": {
-            "ignoreStrength": true,
-            "scale": 0.2,
-            "table": "Ranged_Slow"
-          },
-          "slow": {
-            "flySpeed": {
-              "scale": 0.2,
-              "table": "Ranged_Slow"
-            },
-            "jumpHeight": {
-              "ignoreStrength": true,
-              "scale": 0.2,
-              "table": "Ranged_Slow"
-            },
-            "jumpSpeed": {
-              "scale": 0.2,
-              "table": "Ranged_Slow"
-            },
-            "runSpeed": {
-              "scale": 0.2,
-              "table": "Ranged_Slow"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Ice Storm",
@@ -21396,23 +14865,15 @@ export const EPIC_POOLS_RAW = {
           "castTime": 2.03
         },
         "effectArea": "Location",
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Epic_IceStorm",
+          "duration": 15,
+          "copyBoosts": true
+        },
         "atoms": [
           ["EntCreate",null,1,1,15,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,15]
-        ],
-        "effects": {
-          "accuracy": 2,
-          "range": 60,
-          "recharge": 60,
-          "endurance": 13.65,
-          "activationTime": 2.03,
-          "effectArea": "Location",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 15,
-            "entity": "Pets_Epic_IceStorm",
-            "isPseudoPet": false
-          }
-        }
+        ]
       }
     ]
   },
@@ -21480,23 +14941,15 @@ export const EPIC_POOLS_RAW = {
           "castTime": 2.03
         },
         "effectArea": "Location",
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Sleet_Defender",
+          "duration": 15,
+          "copyBoosts": true
+        },
         "atoms": [
           ["EntCreate",null,-1,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,15]
-        ],
-        "effects": {
-          "accuracy": 2,
-          "range": 60,
-          "recharge": 60,
-          "endurance": 18.2,
-          "activationTime": 2.03,
-          "effectArea": "Location",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 15,
-            "entity": "Pets_Sleet_Defender",
-            "isPseudoPet": false
-          }
-        }
+        ]
       },
       {
         "name": "Hibernate",
@@ -21560,68 +15013,12 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Knockback",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Knockup",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Untouchable",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
-          ["Mez","Immobilized",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+          ["Mez","Immobilized",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,true,null,null,null,null,null,"Ones"],
           ["Mez","OnlyAffectsSelf",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Regeneration",null,10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Recovery",null,4,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 120,
-          "endurance": 0.13,
-          "activationTime": 0.07,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "durations": {
-            "knockback": 0.75,
-            "knockup": 0.75,
-            "mezResistance": 0.75,
-            "recoveryBuff": 0.75,
-            "regenBuff": 0.75
-          },
-          "knockback": {
-            "ignoreStrength": true,
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "knockup": {
-            "ignoreStrength": true,
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "mezResistance": {
-            "knockback": {
-              "ignoreStrength": true,
-              "scale": 10,
-              "table": "Melee_Ones"
-            },
-            "knockup": {
-              "ignoreStrength": true,
-              "scale": 10,
-              "table": "Melee_Ones"
-            }
-          },
-          "onlyAffectsSelf": {
-            "ignoreStrength": true,
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          },
-          "recoveryBuff": {
-            "scale": 4,
-            "table": "Melee_Ones"
-          },
-          "regenBuff": {
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "untouchable": {
-            "ignoreStrength": true,
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Frozen Armor",
@@ -21684,40 +15081,7 @@ export const EPIC_POOLS_RAW = {
           ["Elusivity","Psionic",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Elusivity","Energy",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Elusivity","Negative",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 2,
-          "endurance": 0.13,
-          "activationTime": 0.73,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "defenseBuff": {
-            "lethal": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            },
-            "smashing": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            }
-          },
-          "durations": {
-            "defenseBuff": 0.75,
-            "resistance": 0.75
-          },
-          "resistance": {
-            "cold": {
-              "scale": 3,
-              "table": "Melee_Res_DMG"
-            },
-            "fire": {
-              "scale": 1,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Hoarfrost",
@@ -21771,45 +15135,7 @@ export const EPIC_POOLS_RAW = {
           ["MaxHP",null,2,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf"],
           ["Heal",null,4,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf"],
           ["Resistance","Toxic",2,1,120,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 360,
-          "endurance": 14.56,
-          "activationTime": 0.73,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Heal",
-            "scale": 4,
-            "table": "Melee_HealSelf"
-          },
-          "buffDuration": 120,
-          "durations": {
-            "maxHPBuff": 120,
-            "maxHPBuffUnenhanced": 120,
-            "resistance": 120
-          },
-          "maxHPBuff": {
-            "scale": 2,
-            "table": "Melee_HealSelf"
-          },
-          "maxHPBuffUnenhanced": {
-            "ignoreStrength": true,
-            "scale": 2,
-            "table": "Melee_HealSelf"
-          },
-          "resistance": {
-            "toxic": {
-              "scale": 2,
-              "table": "Melee_Res_DMG"
-            }
-          },
-          "maxStacks": 2,
-          "stacksLinear": [
-            "maxHPBuff",
-            "maxHPBuffUnenhanced"
-          ]
-        }
+        ]
       },
       {
         "name": "Ice Storm",
@@ -21856,23 +15182,15 @@ export const EPIC_POOLS_RAW = {
           "castTime": 2.03
         },
         "effectArea": "Location",
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Epic_IceStorm",
+          "duration": 15,
+          "copyBoosts": true
+        },
         "atoms": [
           ["EntCreate",null,1,1,15,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,15]
-        ],
-        "effects": {
-          "accuracy": 2,
-          "range": 60,
-          "recharge": 60,
-          "endurance": 15.6,
-          "activationTime": 2.03,
-          "effectArea": "Location",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 15,
-            "entity": "Pets_Epic_IceStorm",
-            "isPseudoPet": false
-          }
-        }
+        ]
       }
     ]
   },
@@ -21937,37 +15255,7 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Toxic",1.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Energy",1.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 2,
-          "endurance": 0.13,
-          "activationTime": 0.67,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "durations": {
-            "resistance": 0.75
-          },
-          "resistance": {
-            "energy": {
-              "scale": 1.5,
-              "table": "Melee_Res_DMG"
-            },
-            "lethal": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "toxic": {
-              "scale": 1.5,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Power Build Up",
@@ -22043,147 +15331,7 @@ export const EPIC_POOLS_RAW = {
           ["ToHit",null,0.5,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Endurance",null,0.5,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["GlobalChanceMod",null,1,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 120,
-          "endurance": 7.8,
-          "activationTime": 1.17,
-          "effectArea": "SingleTarget",
-          "buffDuration": 15,
-          "damageBuff": {
-            "ignoreStrength": true,
-            "scale": 5,
-            "table": "Melee_Buff_Dmg"
-          },
-          "durations": {
-            "damageBuff": 15,
-            "specialBuff": 10,
-            "tohitBuff": 15
-          },
-          "specialBuff": {
-            "absorb": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "aoe": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "cold": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "confuse": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "defense": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "endurance": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "energy": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "fear": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "fire": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "heal": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "hold": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "immobilize": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "lethal": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "melee": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "movement": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "negative": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "psionic": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "ranged": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "sleep": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "smashing": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "stun": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "tohit": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            }
-          },
-          "tohitBuff": {
-            "scale": 2,
-            "table": "Melee_Buff_ToHit"
-          },
-          "maxStacks": 2,
-          "stacksLinear": [
-            "damageBuff",
-            "specialBuff",
-            "tohitBuff"
-          ]
-        }
+        ]
       },
       {
         "name": "Devastating Blow",
@@ -22272,53 +15420,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Energy",2.991438,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated","target.ownPower?"],true,null,null,null,null,null,null,null,null,"Ones",null,"token_add"],
           ["Mez","Stunned",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1.2,
-          "range": 7,
-          "recharge": 17,
-          "endurance": 16.016,
-          "activationTime": 2.5,
-          "effectArea": "AoE",
-          "radius": 8,
-          "maxTargets": 5,
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.77,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 2.31,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.616,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.797717,
-              "table": "Melee_Damage"
-            }
-          ],
-          "buffDuration": 10,
-          "defenseDebuff": {
-            "scale": 2,
-            "table": "Melee_Debuff_Def"
-          },
-          "durations": {
-            "defenseDebuff": 10
-          },
-          "stun": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 10,
-            "table": "Melee_Immobilize"
-          }
-        }
+        ]
       },
       {
         "name": "Irradiated Ground",
@@ -22365,23 +15467,15 @@ export const EPIC_POOLS_RAW = {
           "activatePeriod": 1
         },
         "effectArea": "SingleTarget",
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Radiation_Melee_Irradiated_Ground_Pet",
+          "duration": 2,
+          "copyBoosts": true
+        },
         "atoms": [
           ["EntCreate",null,-1,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,2]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 4,
-          "endurance": 0.52,
-          "activationTime": 2.03,
-          "activatePeriod": 1,
-          "effectArea": "SingleTarget",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 2,
-            "entity": "Pets_Radiation_Melee_Irradiated_Ground_Pet",
-            "isPseudoPet": false
-          }
-        }
+        ]
       },
       {
         "name": "Neutron Bomb",
@@ -22451,37 +15545,7 @@ export const EPIC_POOLS_RAW = {
           ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,0.3499999940395355,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated","target.ownPower?","!"],null,null,null,null,null,null,null,null,null,"Contaminated"],
           ["Damage","Energy",0.77,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Toxic",0.33,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1.1,
-          "range": 80,
-          "recharge": 20,
-          "endurance": 18.512,
-          "activationTime": 1.67,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Energy",
-              "scale": 0.77,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.33,
-              "table": "Ranged_Damage"
-            }
-          ],
-          "buffDuration": 16,
-          "defenseDebuff": {
-            "scale": 2,
-            "table": "Ranged_Debuff_Def"
-          },
-          "durations": {
-            "defenseDebuff": 16
-          }
-        }
+        ]
       }
     ]
   },
@@ -22586,38 +15650,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Negative",0.214714,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,1],
           ["Damage","Negative",0.279628,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Immobilized",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 50,
-          "recharge": 20,
-          "endurance": 12.74,
-          "activationTime": 2.37,
-          "effectArea": "Cone",
-          "radius": 50,
-          "arc": 0.5235987901687622,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Negative",
-              "scale": 0.135,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.1,
-              "table": "Ranged_Damage",
-              "duration": 7.1,
-              "tickRate": 1
-            }
-          ],
-          "immobilize": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 15,
-            "table": "Ranged_Immobilize"
-          }
-        }
+        ]
       },
       {
         "name": "Bile Spray",
@@ -22701,32 +15734,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Toxic",0.1,1,4.25,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Toxic",0.977277,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Toxic",0.195455,1,4.25,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 16,
-          "endurance": 13.29,
-          "activationTime": 2.67,
-          "effectArea": "Cone",
-          "radius": 60,
-          "arc": 0.5235987901687622,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Toxic",
-              "scale": 0.7,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.1,
-              "table": "Ranged_Damage",
-              "duration": 4.25,
-              "tickRate": 1
-            }
-          ]
-        }
+        ]
       },
       {
         "name": "Knockout Blow",
@@ -22804,30 +15812,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Smashing",5.373587,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Held",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Knockup",3,1,0,"Melee_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Knockback"]
-        ],
-        "effects": {
-          "accuracy": 1.2,
-          "range": 7,
-          "recharge": 20,
-          "endurance": 16.2,
-          "activationTime": 2.23,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Smashing",
-            "scale": 3.56,
-            "table": "Melee_Damage"
-          },
-          "hold": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 10,
-            "table": "Melee_Stun"
-          },
-          "knockup": {
-            "scale": 3,
-            "table": "Melee_Knockback"
-          }
-        }
+        ]
       },
       {
         "name": "Shark Skin",
@@ -22891,37 +15876,7 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Cold",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Fire",1.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 4,
-          "endurance": 0.1625,
-          "activationTime": 0.67,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "durations": {
-            "resistance": 0.75
-          },
-          "resistance": {
-            "cold": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "fire": {
-              "scale": 1.5,
-              "table": "Melee_Res_DMG"
-            },
-            "lethal": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Spirit Shark Jaws",
@@ -23007,35 +15962,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Held",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Damage","Lethal",0.758003,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Lethal",0.379002,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,1]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 16,
-          "endurance": 10.66,
-          "activationTime": 1.87,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Lethal",
-              "scale": 0.135,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.1,
-              "table": "Ranged_Damage",
-              "duration": 7.1,
-              "tickRate": 1
-            }
-          ],
-          "hold": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 10,
-            "table": "Ranged_Immobilize"
-          }
-        }
+        ]
       }
     ]
   },
@@ -23120,47 +16047,7 @@ export const EPIC_POOLS_RAW = {
           ["Movement","JumpHeight",-500,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Movement","FlyMode",-10,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Immobilized",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 80,
-          "recharge": 16,
-          "endurance": 12.74,
-          "activationTime": 1,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 10,
-          "buffDuration": 15,
-          "durations": {
-            "rechargeDebuff": 15,
-            "slow": 15
-          },
-          "immobilize": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 15,
-            "table": "Ranged_Immobilize"
-          },
-          "rechargeDebuff": {
-            "ignoreStrength": true,
-            "scale": 0.2,
-            "table": "Ranged_Slow"
-          },
-          "slow": {
-            "flySpeed": {
-              "scale": 0.2,
-              "table": "Ranged_Slow"
-            },
-            "jumpHeight": {
-              "scale": 500,
-              "table": "Ranged_Ones"
-            },
-            "runSpeed": {
-              "scale": 0.2,
-              "table": "Ranged_Slow"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Scorpion Shield",
@@ -23223,40 +16110,7 @@ export const EPIC_POOLS_RAW = {
           ["Elusivity","Smashing",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Elusivity","Lethal",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Elusivity","Energy",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 4,
-          "endurance": 0.1625,
-          "activationTime": 2,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "defenseBuff": {
-            "energy": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            },
-            "lethal": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            },
-            "smashing": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            }
-          },
-          "durations": {
-            "defenseBuff": 0.75,
-            "resistance": 0.75
-          },
-          "resistance": {
-            "toxic": {
-              "scale": 1.75,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Mace Beam Volley",
@@ -23338,34 +16192,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Smashing",0.914912,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Energy",0.914912,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Knockback"]
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 50,
-          "recharge": 12,
-          "endurance": 13.29,
-          "activationTime": 1,
-          "effectArea": "Cone",
-          "radius": 50,
-          "arc": 0.6108652353286743,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.5,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.5,
-              "table": "Ranged_Damage"
-            }
-          ],
-          "knockback": {
-            "scale": 1,
-            "table": "Ranged_Knockback"
-          }
-        }
+        ]
       },
       {
         "name": "Power Boost",
@@ -23439,134 +16266,7 @@ export const EPIC_POOLS_RAW = {
           ["Absorb",null,0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["ToHit",null,0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Endurance",null,0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 90,
-          "endurance": 9.75,
-          "activationTime": 1.17,
-          "effectArea": "SingleTarget",
-          "buffDuration": 15,
-          "durations": {
-            "specialBuff": 15
-          },
-          "specialBuff": {
-            "absorb": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "aoe": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "cold": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "confuse": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "defense": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "endurance": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "energy": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "fear": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "fire": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "heal": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "hold": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "immobilize": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "lethal": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "melee": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "movement": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "negative": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "psionic": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "ranged": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "sleep": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "smashing": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "stun": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "tohit": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            }
-          },
-          "maxStacks": 2,
-          "stacksLinear": [
-            "specialBuff"
-          ]
-        }
+        ]
       },
       {
         "name": "Web Cocoon",
@@ -23633,45 +16333,7 @@ export const EPIC_POOLS_RAW = {
           ["Movement","JumpHeight",-500,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Movement","FlyMode",-10,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Held",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 60,
-          "recharge": 16,
-          "endurance": 10.66,
-          "activationTime": 1,
-          "effectArea": "SingleTarget",
-          "buffDuration": 15,
-          "durations": {
-            "rechargeDebuff": 15,
-            "slow": 15
-          },
-          "hold": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 10,
-            "table": "Ranged_Immobilize"
-          },
-          "rechargeDebuff": {
-            "ignoreStrength": true,
-            "scale": 0.5,
-            "table": "Ranged_Slow"
-          },
-          "slow": {
-            "flySpeed": {
-              "scale": 0.5,
-              "table": "Ranged_Slow"
-            },
-            "jumpHeight": {
-              "scale": 500,
-              "table": "Ranged_Ones"
-            },
-            "runSpeed": {
-              "scale": 0.5,
-              "table": "Ranged_Slow"
-            }
-          }
-        }
+        ]
       }
     ]
   },
@@ -23763,39 +16425,7 @@ export const EPIC_POOLS_RAW = {
           ["Endurance",null,4.29,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,0.10000000149011612,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Damage","Energy",1.861113,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Endurance",null,-1.25,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"EndDrain"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 40,
-          "recharge": 16,
-          "endurance": 13.29,
-          "activationTime": 2.07,
-          "effectArea": "Cone",
-          "radius": 40,
-          "arc": 0.7853981852531433,
-          "maxTargets": 10,
-          "damage": {
-            "type": "Energy",
-            "scale": 0.96,
-            "table": "Ranged_Damage"
-          },
-          "buffDuration": 4,
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "enduranceDrain": {
-            "scale": 0.07,
-            "table": "Ranged_Ones"
-          },
-          "enduranceGain": {
-            "scale": 4.29,
-            "table": "Ranged_Ones"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Ranged_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Charged Armor",
@@ -23854,33 +16484,7 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Smashing",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Energy",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 4,
-          "endurance": 0.1625,
-          "activationTime": 0.67,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "durations": {
-            "resistance": 0.75
-          },
-          "resistance": {
-            "energy": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "lethal": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Thunder Strike",
@@ -23971,51 +16575,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Stunned",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Endurance",null,-2,1,0,"Melee_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"EndDrain"],
           ["Mez","Knockback",0.64,1,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 7,
-          "recharge": 16,
-          "endurance": 12.74,
-          "activationTime": 3.3,
-          "effectArea": "AoE",
-          "radius": 7,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.29,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.37,
-              "table": "Melee_Damage"
-            }
-          ],
-          "buffDuration": 4,
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "enduranceDrain": {
-            "scale": 0.07,
-            "table": "Melee_Ones"
-          },
-          "knockback": {
-            "scale": 0.64,
-            "table": "Melee_Ones"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "stun": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 5,
-            "table": "Melee_Stun"
-          }
-        }
+        ]
       },
       {
         "name": "Electrifying Fences",
@@ -24098,43 +16658,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Energy",0.380837,1,7.21,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Immobilized",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Endurance",null,-1,1,6.2,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,2,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"EndDrain"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 40,
-          "recharge": 16,
-          "endurance": 12.74,
-          "activationTime": 1.17,
-          "effectArea": "AoE",
-          "radius": 10,
-          "maxTargets": 10,
-          "damage": {
-            "type": "Energy",
-            "scale": 0.1,
-            "table": "Ranged_Damage",
-            "duration": 7.1,
-            "tickRate": 1
-          },
-          "buffDuration": 6.2,
-          "durations": {
-            "enduranceDrain": 6.2,
-            "recoveryDebuff": 2
-          },
-          "enduranceDrain": {
-            "scale": 0.04,
-            "table": "Ranged_Ones"
-          },
-          "immobilize": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 15,
-            "table": "Ranged_Immobilize"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Ranged_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Electric Shackles",
@@ -24212,48 +16736,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Held",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Damage","Energy",0.579471,1,6.3,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Endurance",null,-1.25,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"EndDrain"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 16,
-          "endurance": 8.58,
-          "activationTime": 2.17,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Energy",
-            "scale": 0.15,
-            "table": "Ranged_Damage",
-            "duration": 6.3,
-            "tickRate": 1
-          },
-          "buffDuration": 8,
-          "durations": {
-            "recoveryDebuff": 8
-          },
-          "enduranceDrain": {
-            "scale": 0.07,
-            "table": "Ranged_Ones"
-          },
-          "enduranceGain": {
-            "scale": 4.29,
-            "table": "Ranged_Ones"
-          },
-          "hold": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 8,
-            "table": "Ranged_Ones"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Ranged_Ones"
-          },
-          "maxStacks": 2,
-          "stacksLinear": [
-            "enduranceGain"
-          ]
-        }
+        ]
       }
     ]
   },
@@ -24349,33 +16832,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Negative",0.11,1,2.8,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
           ["ToHit",null,0.75,1,10,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"DeBuff_ToHit"],
           ["Damage","Negative",0.155692,1,2.8,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 10,
-          "endurance": 11.47,
-          "activationTime": 2,
-          "effectArea": "Cone",
-          "radius": 60,
-          "arc": 0.3490658700466156,
-          "maxTargets": 10,
-          "damage": {
-            "type": "Negative",
-            "scale": 0.11,
-            "table": "Ranged_Damage",
-            "duration": 2.8,
-            "tickRate": 0.30000001192092896
-          },
-          "buffDuration": 10,
-          "durations": {
-            "tohitDebuff": 10
-          },
-          "tohitDebuff": {
-            "scale": 0.75,
-            "table": "Ranged_DeBuff_ToHit"
-          }
-        }
+        ]
       },
       {
         "name": "Dark Embrace",
@@ -24439,37 +16896,7 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Toxic",1.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Negative",1.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 4,
-          "endurance": 0.1625,
-          "activationTime": 0.67,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "durations": {
-            "resistance": 0.75
-          },
-          "resistance": {
-            "lethal": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "negative": {
-              "scale": 1.5,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "toxic": {
-              "scale": 1.5,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Oppressive Gloom",
@@ -24541,28 +16968,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Special",0.1,1,0,"Melee_Damage","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
           ["Meta",null,0,1,3,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"null"],
           ["Mez","Stunned",2,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 8,
-          "endurance": 0.195,
-          "activationTime": 1.17,
-          "activatePeriod": 2,
-          "effectArea": "AoE",
-          "radius": 12,
-          "maxTargets": 16,
-          "damage": {
-            "type": "Special",
-            "scale": 0.1,
-            "table": "Melee_Damage"
-          },
-          "stun": {
-            "attribType": "Duration",
-            "mag": 2,
-            "scale": 6,
-            "table": "Melee_Stun"
-          }
-        }
+        ]
       },
       {
         "name": "Soul Tentacles",
@@ -24650,38 +17056,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Smashing",0.177915,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,1],
           ["Damage","Negative",0.231703,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Immobilized",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 40,
-          "recharge": 16,
-          "endurance": 12.74,
-          "activationTime": 1.67,
-          "effectArea": "Cone",
-          "radius": 40,
-          "arc": 0.4363323152065277,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.1,
-              "table": "Ranged_Damage",
-              "duration": 7.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Negative",
-              "scale": 0.135,
-              "table": "Ranged_Damage"
-            }
-          ],
-          "immobilize": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 15,
-            "table": "Ranged_Immobilize"
-          }
-        }
+        ]
       },
       {
         "name": "Soul Storm",
@@ -24757,28 +17132,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Negative",0.11,1,10,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Held",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Damage","Negative",0.368754,1,10,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 16,
-          "endurance": 10.66,
-          "activationTime": 2.17,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Negative",
-            "scale": 0.11,
-            "table": "Ranged_Damage",
-            "duration": 10,
-            "tickRate": 1
-          },
-          "hold": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 10,
-            "table": "Ranged_Immobilize"
-          }
-        }
+        ]
       }
     ]
   },
@@ -24836,26 +17190,7 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Resistance","Smashing",1.5,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Lethal",1.5,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "activatePeriod": 10,
-          "effectArea": "SingleTarget",
-          "buffDuration": 10.25,
-          "durations": {
-            "resistance": 10.25
-          },
-          "resistance": {
-            "lethal": {
-              "scale": 1.5,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 1.5,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Cryo Freeze Ray",
@@ -24916,26 +17251,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Knockback",-100,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Knockup",-100,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Held",2,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Immobilize"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 16,
-          "endurance": 8.58,
-          "activationTime": 1.87,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Cold",
-            "scale": 0.1,
-            "table": "Ranged_Damage"
-          },
-          "hold": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 10,
-            "table": "Ranged_Immobilize"
-          }
-        }
+        ]
       },
       {
         "name": "Sleep Grenade",
@@ -24994,28 +17310,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Smashing",0.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Sleep",20,3,0,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Sleep",null,null,null,0.26],
           ["Mez","Sleep",2,3,0,"Ranged_Sleep","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Sleep",null,null,null,0.26]
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 80,
-          "recharge": 45,
-          "endurance": 13.65,
-          "activationTime": 1.87,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 10,
-          "damage": {
-            "type": "Smashing",
-            "scale": 0.1,
-            "table": "Ranged_Damage"
-          },
-          "sleep": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 20,
-            "table": "Ranged_Sleep"
-          }
-        }
+        ]
       },
       {
         "name": "Surveillance",
@@ -25071,66 +17366,7 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Psionic",-2,1,20,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Toxic",-2,1,20,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Defense","All",2,1,20,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Debuff_Def"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 45,
-          "endurance": 10.66,
-          "activationTime": 1,
-          "effectArea": "SingleTarget",
-          "buffDuration": 20,
-          "defenseDebuff": {
-            "scale": 2,
-            "table": "Melee_Debuff_Def"
-          },
-          "durations": {
-            "defenseDebuff": 20,
-            "resistanceDebuff": 20
-          },
-          "resistanceDebuff": {
-            "cold": {
-              "ignoreStrength": true,
-              "scale": 2,
-              "table": "Melee_Res_DMG"
-            },
-            "energy": {
-              "ignoreStrength": true,
-              "scale": 2,
-              "table": "Melee_Res_DMG"
-            },
-            "fire": {
-              "ignoreStrength": true,
-              "scale": 2,
-              "table": "Melee_Res_DMG"
-            },
-            "lethal": {
-              "ignoreStrength": true,
-              "scale": 2,
-              "table": "Melee_Res_DMG"
-            },
-            "negative": {
-              "ignoreStrength": true,
-              "scale": 2,
-              "table": "Melee_Res_DMG"
-            },
-            "psionic": {
-              "ignoreStrength": true,
-              "scale": 2,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "ignoreStrength": true,
-              "scale": 2,
-              "table": "Melee_Res_DMG"
-            },
-            "toxic": {
-              "ignoreStrength": true,
-              "scale": 2,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "LRM Rocket",
@@ -25201,33 +17437,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Lethal",0.75,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Lethal",0.74,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Knockback",0.7,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Knockback"]
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 150,
-          "recharge": 120,
-          "endurance": 15.75,
-          "activationTime": 5.87,
-          "effectArea": "AoE",
-          "radius": 20,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Lethal",
-              "scale": 1.49,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Smashing",
-              "scale": 1,
-              "table": "Ranged_Damage"
-            }
-          ],
-          "knockback": {
-            "scale": 0.7,
-            "table": "Ranged_Knockback"
-          }
-        }
+        ]
       }
     ]
   },
@@ -25299,33 +17509,7 @@ export const EPIC_POOLS_RAW = {
           ["EnduranceDiscount",null,0.5,1,30,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Stun"],
           ["Regeneration",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Heal",null,2.5,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 120,
-          "endurance": 10.4,
-          "activationTime": 1.17,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Heal",
-            "scale": 2.5,
-            "table": "Melee_HealSelf"
-          },
-          "buffDuration": 30,
-          "durations": {
-            "enduranceDiscount": 30,
-            "regenBuff": 30
-          },
-          "enduranceDiscount": {
-            "ignoreStrength": true,
-            "scale": 0.5,
-            "table": "Melee_Stun"
-          },
-          "regenBuff": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Power Build Up",
@@ -25403,145 +17587,7 @@ export const EPIC_POOLS_RAW = {
           ["DamageBuff","Energy",8,1,12.5,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Dmg"],
           ["DamageBuff","Negative",8,1,12.5,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Dmg"],
           ["DamageBuff","Psionic",8,1,12.5,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Dmg"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 120,
-          "endurance": 7.8,
-          "activationTime": 1.17,
-          "effectArea": "SingleTarget",
-          "buffDuration": 12.5,
-          "damageBuff": {
-            "ignoreStrength": true,
-            "scale": 8,
-            "table": "Melee_Buff_Dmg"
-          },
-          "durations": {
-            "damageBuff": 12.5,
-            "specialBuff": 12.5,
-            "tohitBuff": 12.5
-          },
-          "specialBuff": {
-            "absorb": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "aoe": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "cold": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "confuse": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "defense": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "endurance": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "energy": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "fear": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "fire": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "heal": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "hold": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "immobilize": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "lethal": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "melee": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "movement": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "negative": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "psionic": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "ranged": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "sleep": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "smashing": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "stun": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            },
-            "tohit": {
-              "ignoreStrength": true,
-              "scale": 0.5,
-              "table": "Melee_Ones"
-            }
-          },
-          "tohitBuff": {
-            "scale": 1,
-            "table": "Melee_Buff_ToHit"
-          },
-          "maxStacks": 2,
-          "stacksLinear": [
-            "specialBuff"
-          ]
-        }
+        ]
       },
       {
         "name": "Temp Invulnerability",
@@ -25591,29 +17637,7 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Resistance","Smashing",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Lethal",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 2,
-          "endurance": 0.1625,
-          "activationTime": 0.67,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "durations": {
-            "resistance": 0.75
-          },
-          "resistance": {
-            "lethal": {
-              "scale": 3,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 3,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Force of Nature",
@@ -25670,58 +17694,7 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Negative",3.75,1,90,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Toxic",3.75,1,90,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Recovery",null,1,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 540,
-          "endurance": 2.6,
-          "activationTime": 3.1,
-          "effectArea": "SingleTarget",
-          "buffDuration": 90,
-          "durations": {
-            "recoveryBuff": 90,
-            "resistance": 90
-          },
-          "recoveryBuff": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "resistance": {
-            "cold": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "energy": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "fire": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "lethal": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "negative": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "toxic": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            }
-          },
-          "maxStacks": 2,
-          "stacksLinear": [
-            "recoveryBuff",
-            "resistance"
-          ]
-        }
+        ]
       },
       {
         "name": "Total Focus",
@@ -25793,33 +17766,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Energy",1.78,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kHitPoints%","target>","10","-","100","*","50","10","-","/","0","100","minmax","rand","100","*","<","enttype","target>","critter","eq","&&","arch","source>","Class_Corruptor","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Energy",6.72619,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kHitPoints%","target>","10","-","100","*","50","10","-","/","0","100","minmax","rand","100","*","<","enttype","target>","player","eq","&&","arch","source>","Class_Corruptor","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Stunned",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1.2,
-          "range": 7,
-          "recharge": 20,
-          "endurance": 18.512,
-          "activationTime": 2.5,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 1,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 2.56,
-              "table": "Melee_Damage"
-            }
-          ],
-          "stun": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 10,
-            "table": "Melee_Immobilize"
-          }
-        }
+        ]
       }
     ]
   },
@@ -25905,31 +17852,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Energy",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","IncarnateBoss","target.HasTag?","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Energy",1.583623,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Knockback"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 6,
-          "endurance": 7.48,
-          "activationTime": 1.67,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.5,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.17,
-              "table": "Ranged_Damage"
-            }
-          ],
-          "knockback": {
-            "scale": 1,
-            "table": "Ranged_Knockback"
-          }
-        }
+        ]
       },
       {
         "name": "Energize",
@@ -25980,33 +17903,7 @@ export const EPIC_POOLS_RAW = {
           ["EnduranceDiscount",null,0.5,1,30,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Stun"],
           ["Regeneration",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Heal",null,2.5,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 120,
-          "endurance": 10.4,
-          "activationTime": 1.17,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Heal",
-            "scale": 2.5,
-            "table": "Melee_HealSelf"
-          },
-          "buffDuration": 30,
-          "durations": {
-            "enduranceDiscount": 30,
-            "regenBuff": 30
-          },
-          "enduranceDiscount": {
-            "ignoreStrength": true,
-            "scale": 0.5,
-            "table": "Melee_Stun"
-          },
-          "regenBuff": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Temp Invulnerability",
@@ -26052,29 +17949,7 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Resistance","Smashing",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Lethal",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 2,
-          "endurance": 0.1625,
-          "activationTime": 0.67,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "durations": {
-            "resistance": 0.75
-          },
-          "resistance": {
-            "lethal": {
-              "scale": 3,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 3,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Energy Torrent",
@@ -26146,34 +18021,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Energy",0.96,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","IncarnateBoss","target.HasTag?","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Energy",0.742881,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Knockback",0.3,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Knockback"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 40,
-          "recharge": 12,
-          "endurance": 10.37,
-          "activationTime": 1.07,
-          "effectArea": "Cone",
-          "radius": 40,
-          "arc": 0.7853981852531433,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.29,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.67,
-              "table": "Ranged_Damage"
-            }
-          ],
-          "knockback": {
-            "scale": 0.3,
-            "table": "Ranged_Knockback"
-          }
-        }
+        ]
       },
       {
         "name": "Power Boost",
@@ -26235,134 +18083,7 @@ export const EPIC_POOLS_RAW = {
           ["Absorb",null,0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["ToHit",null,0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Endurance",null,0.75,1,15,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 90,
-          "endurance": 9.75,
-          "activationTime": 1.17,
-          "effectArea": "SingleTarget",
-          "buffDuration": 15,
-          "durations": {
-            "specialBuff": 15
-          },
-          "specialBuff": {
-            "absorb": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "aoe": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "cold": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "confuse": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "defense": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "endurance": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "energy": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "fear": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "fire": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "heal": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "hold": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "immobilize": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "lethal": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "melee": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "movement": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "negative": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "psionic": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "ranged": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "sleep": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "smashing": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "stun": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            },
-            "tohit": {
-              "ignoreStrength": true,
-              "scale": 0.75,
-              "table": "Melee_Ones"
-            }
-          },
-          "maxStacks": 2,
-          "stacksLinear": [
-            "specialBuff"
-          ]
-        }
+        ]
       }
     ]
   },
@@ -26455,38 +18176,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Smashing",0.701877,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Energy",1.893298,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Stunned",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1.2,
-          "range": 7,
-          "recharge": 20,
-          "endurance": 10.19,
-          "activationTime": 1.8,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 1.56,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 3,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Special",
-              "scale": 3,
-              "table": "Melee_Damage"
-            }
-          ],
-          "stun": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 8,
-            "table": "Melee_Stun"
-          }
-        }
+        ]
       },
       {
         "name": "Energize",
@@ -26537,33 +18227,7 @@ export const EPIC_POOLS_RAW = {
           ["EnduranceDiscount",null,0.5,1,30,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Stun"],
           ["Regeneration",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Heal",null,2.5,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 120,
-          "endurance": 10.4,
-          "activationTime": 1.17,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Heal",
-            "scale": 2.5,
-            "table": "Melee_HealSelf"
-          },
-          "buffDuration": 30,
-          "durations": {
-            "enduranceDiscount": 30,
-            "regenBuff": 30
-          },
-          "enduranceDiscount": {
-            "ignoreStrength": true,
-            "scale": 0.5,
-            "table": "Melee_Stun"
-          },
-          "regenBuff": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Temp Invulnerability",
@@ -26609,29 +18273,7 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Resistance","Smashing",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Lethal",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 2,
-          "endurance": 0.13,
-          "activationTime": 0.67,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "durations": {
-            "resistance": 0.75
-          },
-          "resistance": {
-            "lethal": {
-              "scale": 3,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 3,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Energy Torrent",
@@ -26703,34 +18345,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Energy",0.96,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","IncarnateBoss","target.HasTag?","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Energy",0.742881,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Knockback",0.3,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Knockback"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 40,
-          "recharge": 12,
-          "endurance": 11.86,
-          "activationTime": 1.07,
-          "effectArea": "Cone",
-          "radius": 40,
-          "arc": 0.7853981852531433,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.3,
-              "table": "Ranged_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.66,
-              "table": "Ranged_Damage"
-            }
-          ],
-          "knockback": {
-            "scale": 0.3,
-            "table": "Ranged_Knockback"
-          }
-        }
+        ]
       },
       {
         "name": "Force of Nature",
@@ -26786,65 +18401,7 @@ export const EPIC_POOLS_RAW = {
           ["GlobalChanceMod",null,-1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["GlobalChanceMod",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["MaxEndurance",null,-15,1,30,"Ranged_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Pool.Manipulation.Unrelenting","source.ownPower?","!"],null,null,null,null,null,null,null,null,null,"Ones",null,null,null,120]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 540,
-          "endurance": 2.6,
-          "activationTime": 3.1,
-          "effectArea": "SingleTarget",
-          "buffDuration": 120,
-          "durations": {
-            "maxEndBuff": 30,
-            "recoveryBuffUnenhanced": 120,
-            "resistance": 120
-          },
-          "maxEndBuff": {
-            "ignoreStrength": true,
-            "scale": 15,
-            "table": "Ranged_Ones"
-          },
-          "recoveryBuffUnenhanced": {
-            "ignoreStrength": true,
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "resistance": {
-            "cold": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "energy": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "fire": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "lethal": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "negative": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            },
-            "toxic": {
-              "scale": 3.75,
-              "table": "Melee_Res_DMG"
-            }
-          },
-          "maxStacks": 2,
-          "stacksLinear": [
-            "recoveryBuffUnenhanced",
-            "resistance"
-          ]
-        }
+        ]
       }
     ]
   },
@@ -26918,29 +18475,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Psionic",3.167246,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Psionic",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","IncarnateBoss","target.HasTag?","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Psionic",1.583623,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 100,
-          "recharge": 4,
-          "endurance": 4.5,
-          "activationTime": 1.67,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Psionic",
-            "scale": 1,
-            "table": "Ranged_Damage"
-          },
-          "buffDuration": 6,
-          "durations": {
-            "rechargeDebuff": 6
-          },
-          "rechargeDebuff": {
-            "ignoreStrength": true,
-            "scale": 0.3,
-            "table": "Ranged_Slow"
-          }
-        }
+        ]
       },
       {
         "name": "Indomitable Will",
@@ -26994,74 +18529,7 @@ export const EPIC_POOLS_RAW = {
           ["MezResist","Held",1,1,90,"Melee_Ones","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["MezResist","Confused",1,1,90,"Melee_Ones","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["MezResist","Terrorized",1,1,90,"Melee_Ones","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 180,
-          "endurance": 13.65,
-          "activationTime": 0.73,
-          "effectArea": "SingleTarget",
-          "buffDuration": 90,
-          "confuse": {
-            "attribType": "Magnitude",
-            "ignoreStrength": true,
-            "mag": 1,
-            "scale": -10,
-            "table": "Melee_Ones",
-            "toWho": "Self"
-          },
-          "defenseBuff": {
-            "psionic": {
-              "scale": 2.5,
-              "table": "Melee_Buff_Def"
-            }
-          },
-          "durations": {
-            "confuse": 90,
-            "defenseBuff": 90,
-            "fear": 90,
-            "hold": 90,
-            "sleep": 90,
-            "stun": 90
-          },
-          "effectDuration": 90,
-          "fear": {
-            "attribType": "Magnitude",
-            "ignoreStrength": true,
-            "mag": 1,
-            "scale": -10,
-            "table": "Melee_Ones",
-            "toWho": "Self"
-          },
-          "hold": {
-            "attribType": "Magnitude",
-            "ignoreStrength": true,
-            "mag": 1,
-            "scale": -10,
-            "table": "Melee_Ones",
-            "toWho": "Self"
-          },
-          "sleep": {
-            "attribType": "Magnitude",
-            "ignoreStrength": true,
-            "mag": 1,
-            "scale": -10,
-            "table": "Melee_Ones",
-            "toWho": "Self"
-          },
-          "stun": {
-            "attribType": "Magnitude",
-            "ignoreStrength": true,
-            "mag": 1,
-            "scale": -10,
-            "table": "Melee_Ones",
-            "toWho": "Self"
-          },
-          "maxStacks": 2,
-          "stacksLinear": [
-            "defenseBuff"
-          ]
-        }
+        ]
       },
       {
         "name": "Mind Over Body",
@@ -27108,33 +18576,7 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Smashing",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Psionic",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 2,
-          "endurance": 0.1625,
-          "activationTime": 0.67,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "durations": {
-            "resistance": 0.75
-          },
-          "resistance": {
-            "lethal": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "psionic": {
-              "scale": 2,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "World of Confusion",
@@ -27192,29 +18634,7 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Mez","Confused",1.5,2,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Damage","Psionic",0.12,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 10,
-          "endurance": 0.52,
-          "activationTime": 1.67,
-          "activatePeriod": 4,
-          "effectArea": "AoE",
-          "radius": 8,
-          "maxTargets": 10,
-          "damage": {
-            "type": "Psionic",
-            "scale": 0.12,
-            "table": "Ranged_Damage",
-            "tickRate": 2
-          },
-          "confuse": {
-            "attribType": "Duration",
-            "mag": 2,
-            "scale": 1.5,
-            "table": "Ranged_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Psionic Tornado",
@@ -27278,37 +18698,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Psionic",0.239681,1,2.05,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Psionic",0.175,1,2.05,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","IncarnateBoss","target.HasTag?","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Psionic",0.119841,1,2.05,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["enttype","target>","player","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 100,
-          "recharge": 20,
-          "endurance": 18.512,
-          "activationTime": 2,
-          "effectArea": "AoE",
-          "radius": 20,
-          "maxTargets": 16,
-          "damage": {
-            "type": "Psionic",
-            "scale": 0.178,
-            "table": "Ranged_Damage",
-            "duration": 2.05,
-            "tickRate": 0.5
-          },
-          "buffDuration": 10,
-          "durations": {
-            "rechargeDebuff": 10
-          },
-          "knockup": {
-            "scale": 1.4,
-            "table": "Ranged_Ones"
-          },
-          "rechargeDebuff": {
-            "ignoreStrength": true,
-            "scale": 0.3,
-            "table": "Ranged_Slow"
-          }
-        }
+        ]
       }
     ]
   },
@@ -27376,70 +18766,7 @@ export const EPIC_POOLS_RAW = {
           ["MezResist","Held",1,1,90,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["MezResist","Confused",1,1,90,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["MezResist","Terrorized",1,1,90,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 180,
-          "endurance": 13.65,
-          "activationTime": 0.73,
-          "effectArea": "SingleTarget",
-          "buffDuration": 90,
-          "confuse": {
-            "attribType": "Magnitude",
-            "ignoreStrength": true,
-            "mag": 1,
-            "scale": -10,
-            "table": "Melee_Ones",
-            "toWho": "Self"
-          },
-          "defenseBuff": {
-            "psionic": {
-              "scale": 2.5,
-              "table": "Melee_Buff_Def"
-            }
-          },
-          "durations": {
-            "confuse": 90,
-            "defenseBuff": 90,
-            "fear": 90,
-            "hold": 90,
-            "sleep": 90,
-            "stun": 90
-          },
-          "effectDuration": 90,
-          "fear": {
-            "attribType": "Magnitude",
-            "ignoreStrength": true,
-            "mag": 1,
-            "scale": -10,
-            "table": "Melee_Ones",
-            "toWho": "Self"
-          },
-          "hold": {
-            "attribType": "Magnitude",
-            "ignoreStrength": true,
-            "mag": 1,
-            "scale": -10,
-            "table": "Melee_Ones",
-            "toWho": "Self"
-          },
-          "sleep": {
-            "attribType": "Magnitude",
-            "ignoreStrength": true,
-            "mag": 1,
-            "scale": -10,
-            "table": "Melee_Ones",
-            "toWho": "Self"
-          },
-          "stun": {
-            "attribType": "Magnitude",
-            "ignoreStrength": true,
-            "mag": 1,
-            "scale": -10,
-            "table": "Melee_Ones",
-            "toWho": "Self"
-          }
-        }
+        ]
       },
       {
         "name": "Mind Over Body",
@@ -27483,33 +18810,7 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Smashing",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Psionic",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 2,
-          "endurance": 0.1625,
-          "activationTime": 0.67,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "durations": {
-            "resistance": 0.75
-          },
-          "resistance": {
-            "lethal": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "psionic": {
-              "scale": 2,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Link Minds",
@@ -27563,75 +18864,7 @@ export const EPIC_POOLS_RAW = {
           ["Defense","Energy",1,1,90,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Def"],
           ["Defense","Negative",1,1,90,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Def"],
           ["Defense","Psionic",1,1,90,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Def"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 240,
-          "endurance": 10.7,
-          "activationTime": 1,
-          "effectArea": "AoE",
-          "radius": 35,
-          "maxTargets": 255,
-          "buffDuration": 90,
-          "defenseBuff": {
-            "aoe": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            },
-            "cold": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            },
-            "energy": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            },
-            "fire": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            },
-            "lethal": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            },
-            "melee": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            },
-            "negative": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            },
-            "psionic": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            },
-            "ranged": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            },
-            "smashing": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            }
-          },
-          "durations": {
-            "defenseBuff": 90,
-            "resistance": 90,
-            "tohitBuff": 90
-          },
-          "resistance": {
-            "psionic": {
-              "ignoreStrength": true,
-              "scale": 3,
-              "table": "Melee_Res_DMG"
-            }
-          },
-          "tohitBuff": {
-            "scale": 0.5,
-            "table": "Melee_Buff_ToHit"
-          }
-        }
+        ]
       },
       {
         "name": "World of Confusion",
@@ -27684,29 +18917,7 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Mez","Confused",1.5,2,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Damage","Psionic",0.12,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 10,
-          "endurance": 0.52,
-          "activationTime": 1.67,
-          "activatePeriod": 4,
-          "effectArea": "AoE",
-          "radius": 8,
-          "maxTargets": 10,
-          "damage": {
-            "type": "Psionic",
-            "scale": 0.12,
-            "table": "Ranged_Damage",
-            "tickRate": 2
-          },
-          "confuse": {
-            "attribType": "Duration",
-            "mag": 2,
-            "scale": 1.5,
-            "table": "Ranged_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Psychic Scream",
@@ -27762,40 +18973,7 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Psionic",-2,1,10,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Damage","Psionic",1.48635,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Meta",null,8,1,0,"Melee_Ones","Abs","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones",null,"rage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 16,
-          "endurance": 15.184,
-          "activationTime": 1.67,
-          "effectArea": "Cone",
-          "radius": 60,
-          "arc": 0.7853981852531433,
-          "maxTargets": 10,
-          "damage": {
-            "type": "Psionic",
-            "scale": 1.3,
-            "table": "Melee_Damage"
-          },
-          "buffDuration": 10,
-          "durations": {
-            "rechargeDebuff": 10,
-            "resistanceDebuff": 10
-          },
-          "rechargeDebuff": {
-            "ignoreStrength": true,
-            "scale": 0.5,
-            "table": "Melee_Slow"
-          },
-          "resistanceDebuff": {
-            "psionic": {
-              "ignoreStrength": true,
-              "scale": 2,
-              "table": "Ranged_Res_Dmg"
-            }
-          }
-        }
+        ]
       }
     ]
   },
@@ -27876,26 +19054,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Psionic",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kHitPoints%","target>","10","-","100","*","50","10","-","/","0","100","minmax","rand","100","*","<","enttype","target>","critter","eq","&&","arch","source>","Class_Corruptor","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Psionic",2.824687,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kHitPoints%","target>","10","-","100","*","50","10","-","/","0","100","minmax","rand","100","*","<","enttype","target>","player","eq","&&","arch","source>","Class_Corruptor","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Held",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1.2,
-          "range": 80,
-          "recharge": 16,
-          "endurance": 10.66,
-          "activationTime": 1.1,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Psionic",
-            "scale": 1,
-            "table": "Ranged_Damage"
-          },
-          "hold": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 12,
-            "table": "Ranged_Immobilize"
-          }
-        }
+        ]
       },
       {
         "name": "Mass Hypnosis",
@@ -27949,23 +19108,7 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Mez","Sleep",20,3,0,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Sleep"],
           ["Mez","Sleep",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 45,
-          "endurance": 13.65,
-          "activationTime": 2.03,
-          "effectArea": "AoE",
-          "radius": 25,
-          "maxTargets": 10,
-          "sleep": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 20,
-            "table": "Ranged_Sleep"
-          }
-        }
+        ]
       },
       {
         "name": "Mind Over Body",
@@ -28016,33 +19159,7 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Smashing",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Lethal",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Psionic",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 2,
-          "endurance": 0.1625,
-          "activationTime": 0.67,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "durations": {
-            "resistance": 0.75
-          },
-          "resistance": {
-            "lethal": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            },
-            "psionic": {
-              "scale": 2,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "World of Confusion",
@@ -28104,29 +19221,7 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Mez","Confused",1.5,2,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Damage","Psionic",0.12,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 10,
-          "endurance": 0.52,
-          "activationTime": 1.67,
-          "activatePeriod": 4,
-          "effectArea": "AoE",
-          "radius": 8,
-          "maxTargets": 10,
-          "damage": {
-            "type": "Psionic",
-            "scale": 0.12,
-            "table": "Ranged_Damage",
-            "tickRate": 2
-          },
-          "confuse": {
-            "attribType": "Duration",
-            "mag": 2,
-            "scale": 1.5,
-            "table": "Ranged_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Telekinesis",
@@ -28191,32 +19286,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Repel",1,1,0.75,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Held",0.75,1.5,0,"Melee_Immobilize","Cur","Duration","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,true,null,null,null,null,null,null,"Immobilize"],
           ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 40,
-          "recharge": 60,
-          "endurance": 0.5,
-          "activationTime": 1.13,
-          "activatePeriod": 0.5,
-          "effectArea": "AoE",
-          "radius": 10,
-          "maxTargets": 5,
-          "buffDuration": 0.75,
-          "durations": {
-            "repel": 0.75
-          },
-          "hold": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 0.75,
-            "table": "Melee_Immobilize"
-          },
-          "repel": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          }
-        }
+        ]
       }
     ]
   },
@@ -28314,37 +19384,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Immobilized",2,3,0,"Melee_Immobilize","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Immobilize"],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&","arch","source>","Class_Tanker","==","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"],
           ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.12999999523162842,null,null,null,null,null,null,["enttype","target>","player","eq","arch","source>","Class_Tanker","==","&&"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 50,
-          "recharge": 10,
-          "endurance": 9.75,
-          "activationTime": 1.17,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Fire",
-              "scale": 0.22,
-              "table": "Melee_Damage",
-              "duration": 9.2,
-              "tickRate": 2
-            },
-            {
-              "type": "Fire",
-              "scale": 0.099,
-              "table": "Melee_Damage",
-              "duration": 9.2,
-              "tickRate": 2
-            }
-          ],
-          "immobilize": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 15,
-            "table": "Melee_Immobilize"
-          }
-        }
+        ]
       },
       {
         "name": "Char",
@@ -28421,37 +19461,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Fire",0.492791,1,4.2,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&","arch","source>","Class_Tanker","==","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"],
           ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.12999999523162842,null,null,null,null,null,null,["enttype","target>","player","eq","arch","source>","Class_Tanker","==","&&"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 50,
-          "recharge": 32,
-          "endurance": 10.66,
-          "activationTime": 1.07,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Fire",
-              "scale": 0.1,
-              "table": "Melee_Damage",
-              "duration": 4.2,
-              "tickRate": 1
-            },
-            {
-              "type": "Fire",
-              "scale": 0.045,
-              "table": "Melee_Damage",
-              "duration": 4.2,
-              "tickRate": 1
-            }
-          ],
-          "hold": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 12,
-            "table": "Melee_Immobilize"
-          }
-        }
+        ]
       },
       {
         "name": "Fire Blast",
@@ -28538,43 +19548,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Fire",1.835032,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&","arch","source>","Class_Tanker","==","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"],
           ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.12999999523162842,null,null,null,null,null,null,["enttype","target>","player","eq","arch","source>","Class_Tanker","==","&&"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 4,
-          "endurance": 4.5,
-          "activationTime": 1.67,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Fire",
-              "scale": 1,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.1,
-              "table": "Melee_Damage",
-              "duration": 3.1,
-              "tickRate": 1,
-              "chance": 0.8,
-              "cancelOnMiss": true
-            },
-            {
-              "type": "Fire",
-              "scale": 0.45,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.045,
-              "table": "Melee_Damage",
-              "duration": 3.1,
-              "tickRate": 1
-            }
-          ]
-        }
+        ]
       },
       {
         "name": "Melt Armor",
@@ -28644,73 +19618,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Fire",0.48708,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["Mez","Taunt",1,4,0,"Ranged_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["arch","target>","Class_Boss_Archvillain","eq","arch","target>","Class_Boss_Archvillain2","eq","||","arch","target>","Class_Boss_Monster","eq","||","arch","target>","Class_Boss_Rularuu","eq","||","arch","target>","Class_Boss_RularuuFM","eq","||","@ToHitRoll","0.2","+","@ToHit","<","&&","arch","source>","Class_Tanker","==","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"],
           ["Mez","Taunt",1,4,0,"Ranged_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["arch","target>","Class_Minion_Grunt","eq","arch","target>","Class_Minion_Small","eq","||","arch","target>","Class_Minion_Pets","eq","||","arch","target>","Class_Minion_Swarm","eq","||","arch","source>","Class_Tanker","==","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 70,
-          "recharge": 100,
-          "endurance": 15.93,
-          "activationTime": 1.5,
-          "effectArea": "AoE",
-          "radius": 10,
-          "maxTargets": 10,
-          "damage": {
-            "type": "Fire",
-            "scale": 0.48708,
-            "table": "Ranged_Damage"
-          },
-          "buffDuration": 40,
-          "defenseDebuff": {
-            "scale": 1,
-            "table": "Ranged_Debuff_Def"
-          },
-          "durations": {
-            "defenseDebuff": 40,
-            "resistanceDebuff": 40
-          },
-          "resistanceDebuff": {
-            "cold": {
-              "ignoreStrength": true,
-              "scale": 1.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "energy": {
-              "ignoreStrength": true,
-              "scale": 1.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "fire": {
-              "ignoreStrength": true,
-              "scale": 1.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "lethal": {
-              "ignoreStrength": true,
-              "scale": 1.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "negative": {
-              "ignoreStrength": true,
-              "scale": 1.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "psionic": {
-              "ignoreStrength": true,
-              "scale": 1.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "smashing": {
-              "ignoreStrength": true,
-              "scale": 1.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "toxic": {
-              "ignoreStrength": true,
-              "scale": 1.5,
-              "table": "Ranged_Res_Dmg"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Fire Ball",
@@ -28806,50 +19714,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Fire",0.817131,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&","arch","source>","Class_Tanker","==","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"],
           ["Mez","Taunt",6,4,0,"Melee_Ones","Abs","Duration","Target","PvP",true,"Stack",2,null,null,0.12999999523162842,null,null,null,null,null,null,["enttype","target>","player","eq","arch","source>","Class_Tanker","==","&&"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 16,
-          "endurance": 13.29,
-          "activationTime": 1,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.2,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.7,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Fire",
-              "scale": 0.1,
-              "table": "Melee_Damage",
-              "duration": 2.1,
-              "tickRate": 1,
-              "chance": 0.8,
-              "cancelOnMiss": true
-            },
-            {
-              "type": "Fire",
-              "scale": 0.045,
-              "table": "Melee_Damage",
-              "duration": 2.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Fire",
-              "scale": 0.405,
-              "table": "Melee_Damage"
-            }
-          ]
-        }
+        ]
       }
     ]
   },
@@ -28959,38 +19824,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Lethal",2.77943,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["kMeter","source>",".9","<","kHeld","target>","0",">","kSleep","target>","0",">","||","&&","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kMeter","source>","0",">","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Knockback",0.7,1,0,"Melee_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Knockback"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 6,
-          "endurance": 6.5,
-          "activationTime": 3,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Lethal",
-              "scale": 0.7,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.1,
-              "table": "Melee_Damage",
-              "duration": 3.2,
-              "tickRate": 1
-            },
-            {
-              "type": "Lethal",
-              "scale": 1,
-              "table": "Melee_Damage"
-            }
-          ],
-          "knockback": {
-            "scale": 0.7,
-            "table": "Melee_Knockback"
-          }
-        }
+        ]
       },
       {
         "name": "Water Spout",
@@ -29057,23 +19891,15 @@ export const EPIC_POOLS_RAW = {
           "castTime": 1.17
         },
         "effectArea": "Location",
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Patron_Powers_Water_Spout_Stalker",
+          "duration": 30,
+          "copyBoosts": true
+        },
         "atoms": [
           ["EntCreate",null,1,1,30,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,30]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 120,
-          "endurance": 18.2,
-          "activationTime": 1.17,
-          "effectArea": "Location",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 30,
-            "entity": "Pets_Patron_Powers_Water_Spout_Stalker",
-            "isPseudoPet": false
-          }
-        }
+        ]
       },
       {
         "name": "Hibernate",
@@ -29156,68 +19982,12 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Knockback",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Knockup",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Untouchable",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
-          ["Mez","Immobilized",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+          ["Mez","Immobilized",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,true,null,null,null,null,null,"Ones"],
           ["Mez","OnlyAffectsSelf",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Regeneration",null,10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Recovery",null,4,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 60,
-          "endurance": 0.1625,
-          "activationTime": 0.07,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "durations": {
-            "knockback": 0.75,
-            "knockup": 0.75,
-            "mezResistance": 0.75,
-            "recoveryBuff": 0.75,
-            "regenBuff": 0.75
-          },
-          "knockback": {
-            "ignoreStrength": true,
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "knockup": {
-            "ignoreStrength": true,
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "mezResistance": {
-            "knockback": {
-              "ignoreStrength": true,
-              "scale": 10,
-              "table": "Melee_Ones"
-            },
-            "knockup": {
-              "ignoreStrength": true,
-              "scale": 10,
-              "table": "Melee_Ones"
-            }
-          },
-          "onlyAffectsSelf": {
-            "ignoreStrength": true,
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          },
-          "recoveryBuff": {
-            "scale": 4,
-            "table": "Melee_Ones"
-          },
-          "regenBuff": {
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "untouchable": {
-            "ignoreStrength": true,
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Spirit Shark Jaws",
@@ -29303,35 +20073,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Held",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Damage","Lethal",0.606403,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Lethal",0.303201,1,7.1,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,1]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 32,
-          "endurance": 10.66,
-          "activationTime": 1.87,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Lethal",
-              "scale": 0.135,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.1,
-              "table": "Melee_Damage",
-              "duration": 7.1,
-              "tickRate": 1
-            }
-          ],
-          "hold": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 10,
-            "table": "Melee_Immobilize"
-          }
-        }
+        ]
       },
       {
         "name": "Summon Guardian",
@@ -29398,23 +20140,15 @@ export const EPIC_POOLS_RAW = {
           "castTime": 3.2
         },
         "effectArea": "Location",
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Patron_Powers_Coral_Guardian_Warder",
+          "duration": 240,
+          "copyBoosts": true
+        },
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,240]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 480,
-          "endurance": 26,
-          "activationTime": 3.2,
-          "effectArea": "Location",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 240,
-            "entity": "Pets_Patron_Powers_Coral_Guardian_Warder",
-            "isPseudoPet": false
-          }
-        }
+        ]
       }
     ]
   },
@@ -29523,36 +20257,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Energy",1.655485,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["kMeter","source>",".9","<","kHeld","target>","0",">","kSleep","target>","0",">","||","&&","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kMeter","source>","0",">","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Knockback",0.7,1,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 80,
-          "recharge": 6,
-          "endurance": 6.5,
-          "activationTime": 1,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.5,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.5,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1,
-              "table": "Melee_Damage"
-            }
-          ],
-          "knockback": {
-            "scale": 0.7,
-            "table": "Melee_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Mace Beam",
@@ -29647,36 +20352,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Energy",2.239774,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["kMeter","source>",".9","<","kHeld","target>","0",">","kSleep","target>","0",">","||","&&","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Energy",2.3,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kMeter","source>","0",">","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Knockback",2,1,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1.25,
-          "range": 150,
-          "recharge": 16,
-          "endurance": 12.56,
-          "activationTime": 7,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 1.15,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1.15,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 2.3,
-              "table": "Melee_Damage"
-            }
-          ],
-          "knockback": {
-            "scale": 2,
-            "table": "Melee_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Disruptor Blast",
@@ -29770,38 +20446,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Energy",1.201663,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["kMeter","source>",".9","<","kHeld","target>","0",">","kSleep","target>","0",">","||","&&","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["kMeter","source>","0",">","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Knockback",1,1,0,"Melee_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Knockback"]
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 80,
-          "recharge": 12,
-          "endurance": 13.29,
-          "activationTime": 1,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.5,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.5,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1,
-              "table": "Melee_Damage"
-            }
-          ],
-          "knockback": {
-            "scale": 1,
-            "table": "Melee_Knockback"
-          }
-        }
+        ]
       },
       {
         "name": "Web Cocoon",
@@ -29872,45 +20517,7 @@ export const EPIC_POOLS_RAW = {
           ["Movement","JumpHeight",-500,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Movement","FlyMode",-10,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Held",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 60,
-          "recharge": 16,
-          "endurance": 10.66,
-          "activationTime": 1,
-          "effectArea": "SingleTarget",
-          "buffDuration": 15,
-          "durations": {
-            "rechargeDebuff": 15,
-            "slow": 15
-          },
-          "hold": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 10,
-            "table": "Ranged_Immobilize"
-          },
-          "rechargeDebuff": {
-            "ignoreStrength": true,
-            "scale": 0.5,
-            "table": "Ranged_Slow"
-          },
-          "slow": {
-            "flySpeed": {
-              "scale": 0.5,
-              "table": "Ranged_Slow"
-            },
-            "jumpHeight": {
-              "scale": 500,
-              "table": "Ranged_Ones"
-            },
-            "runSpeed": {
-              "scale": 0.5,
-              "table": "Ranged_Slow"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Summon Spiderlings",
@@ -29976,26 +20583,18 @@ export const EPIC_POOLS_RAW = {
           "castTime": 3.03
         },
         "effectArea": "Location",
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Patron_Powers_Arachnobot_Spiderling",
+          "duration": 240,
+          "copyBoosts": true,
+          "entityCount": 3
+        },
         "atoms": [
           ["EntCreate",null,1,1,240,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,240],
           ["EntCreate",null,1,1,240,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,1],
           ["EntCreate",null,1,1,240,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,2]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 480,
-          "endurance": 26,
-          "activationTime": 3.03,
-          "effectArea": "Location",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 240,
-            "entity": "Pets_Patron_Powers_Arachnobot_Spiderling",
-            "entityCount": 3,
-            "isPseudoPet": false
-          }
-        }
+        ]
       }
     ]
   },
@@ -30099,47 +20698,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Energy",1.183997,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kMeter","source>","0",">","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Energy",1.183997,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["kMeter","source>",".9","<","kHeld","target>","0",">","kSleep","target>","0",">","||","&&","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kMeter","source>","0",">","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 6,
-          "endurance": 6.5,
-          "activationTime": 1.17,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Energy",
-              "scale": 1,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 1,
-              "table": "Melee_Damage"
-            }
-          ],
-          "buffDuration": 2,
-          "durations": {
-            "recoveryDebuff": 2
-          },
-          "enduranceDrain": {
-            "scale": 0.07,
-            "table": "Melee_Ones"
-          },
-          "enduranceGain": {
-            "scale": 3.25,
-            "table": "Melee_Ones"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "maxStacks": 2,
-          "stacksLinear": [
-            "enduranceGain"
-          ]
-        }
+        ]
       },
       {
         "name": "Zapp",
@@ -30222,40 +20781,7 @@ export const EPIC_POOLS_RAW = {
           ["Endurance",null,-3,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"EndDrain"],
           ["Damage","Energy",2.3,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["kMeter","source>",".9","<","kHeld","target>","0",">","kSleep","target>","0",">","||","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Energy",2.3,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kMeter","source>","0",">"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1.2,
-          "range": 150,
-          "recharge": 12,
-          "endurance": 12.56,
-          "activationTime": 7.33,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Energy",
-            "scale": 2.3,
-            "table": "Ranged_Damage"
-          },
-          "buffDuration": 4,
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "enduranceDrain": {
-            "scale": 0.14,
-            "table": "Ranged_Ones"
-          },
-          "enduranceGain": {
-            "scale": 8.97,
-            "table": "Ranged_Ones"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Ranged_Ones"
-          },
-          "maxStacks": 2,
-          "stacksLinear": [
-            "enduranceGain"
-          ]
-        }
+        ]
       },
       {
         "name": "Ball Lightning",
@@ -30352,48 +20878,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Energy",0.75814,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["kMeter","source>",".9","<","kHeld","target>","0",">","kSleep","target>","0",">","||","&&","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Energy",1.02,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["kMeter","source>","0",">","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Endurance",null,-1.25,1,0,"Melee_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"EndDrain"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 16,
-          "endurance": 13.29,
-          "activationTime": 1.07,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Energy",
-              "scale": 0.3,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.18,
-              "table": "Melee_Damage",
-              "duration": 3.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Energy",
-              "scale": 1.02,
-              "table": "Melee_Damage"
-            }
-          ],
-          "buffDuration": 4,
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "enduranceDrain": {
-            "scale": 0.07,
-            "table": "Melee_Ones"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Electric Shackles",
@@ -30475,48 +20960,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Held",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Damage","Energy",0.463576,1,6.3,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Endurance",null,-1.25,1,0,"Melee_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"EndDrain"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 32,
-          "endurance": 8.58,
-          "activationTime": 2.17,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Energy",
-            "scale": 0.15,
-            "table": "Melee_Damage",
-            "duration": 6.3,
-            "tickRate": 1
-          },
-          "buffDuration": 8,
-          "durations": {
-            "recoveryDebuff": 8
-          },
-          "enduranceDrain": {
-            "scale": 0.07,
-            "table": "Melee_Ones"
-          },
-          "enduranceGain": {
-            "scale": 4.29,
-            "table": "Melee_Ones"
-          },
-          "hold": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 8,
-            "table": "Melee_Ones"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "maxStacks": 2,
-          "stacksLinear": [
-            "enduranceGain"
-          ]
-        }
+        ]
       },
       {
         "name": "Summon Adept",
@@ -30583,23 +21027,15 @@ export const EPIC_POOLS_RAW = {
           "castTime": 1.17
         },
         "effectArea": "Location",
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Patron_Powers_Mu_Adept",
+          "duration": 240,
+          "copyBoosts": true
+        },
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,240]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 480,
-          "endurance": 26,
-          "activationTime": 1.17,
-          "effectArea": "Location",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 240,
-            "entity": "Pets_Patron_Powers_Mu_Adept",
-            "isPseudoPet": false
-          }
-        }
+        ]
       }
     ]
   },
@@ -30701,35 +21137,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Negative",1.087427,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kMeter","source>","0",">","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Negative",1.087427,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["kMeter","source>",".9","<","kHeld","target>","0",">","kSleep","target>","0",">","||","&&","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kMeter","source>","0",">","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 4,
-          "endurance": 4.5,
-          "activationTime": 1,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Negative",
-              "scale": 1,
-              "table": "Melee_Damage"
-            }
-          ],
-          "buffDuration": 6,
-          "durations": {
-            "tohitDebuff": 6
-          },
-          "tohitDebuff": {
-            "scale": 0.75,
-            "table": "Melee_DeBuff_ToHit"
-          }
-        }
+        ]
       },
       {
         "name": "Moonbeam",
@@ -30817,35 +21225,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Negative",1.859175,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kMeter","source>","0",">","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Negative",1.859175,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["kMeter","source>",".9","<","kHeld","target>","0",">","kSleep","target>","0",">","||","&&","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Negative",2.3,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kMeter","source>","0",">","enttype","target>","critter","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1.2,
-          "range": 150,
-          "recharge": 12,
-          "endurance": 12.59,
-          "activationTime": 7.33,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Negative",
-              "scale": 2.3,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Negative",
-              "scale": 2.3,
-              "table": "Melee_Damage"
-            }
-          ],
-          "buffDuration": 10,
-          "durations": {
-            "tohitDebuff": 10
-          },
-          "tohitDebuff": {
-            "scale": 0.75,
-            "table": "Melee_DeBuff_ToHit"
-          }
-        }
+        ]
       },
       {
         "name": "Shadow Meld",
@@ -30915,68 +21295,7 @@ export const EPIC_POOLS_RAW = {
           ["Defense","Energy",2.7,1,15,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Def"],
           ["Defense","Negative",2.7,1,15,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Def"],
           ["Stealth","Translucency",0,1,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 90,
-          "endurance": 5.2,
-          "activationTime": 3,
-          "effectArea": "SingleTarget",
-          "buffDuration": 15,
-          "defenseBuff": {
-            "aoe": {
-              "scale": 2.7,
-              "table": "Melee_Buff_Def"
-            },
-            "cold": {
-              "scale": 2.7,
-              "table": "Melee_Buff_Def"
-            },
-            "energy": {
-              "scale": 2.7,
-              "table": "Melee_Buff_Def"
-            },
-            "fire": {
-              "scale": 2.7,
-              "table": "Melee_Buff_Def"
-            },
-            "lethal": {
-              "scale": 2.7,
-              "table": "Melee_Buff_Def"
-            },
-            "melee": {
-              "scale": 2.7,
-              "table": "Melee_Buff_Def"
-            },
-            "negative": {
-              "scale": 2.7,
-              "table": "Melee_Buff_Def"
-            },
-            "psionic": {
-              "scale": 2.7,
-              "table": "Melee_Buff_Def"
-            },
-            "ranged": {
-              "scale": 2.7,
-              "table": "Melee_Buff_Def"
-            },
-            "smashing": {
-              "scale": 2.7,
-              "table": "Melee_Buff_Def"
-            }
-          },
-          "durations": {
-            "defenseBuff": 15,
-            "stealth": 15
-          },
-          "stealth": {
-            "translucency": {
-              "ignoreStrength": true,
-              "scale": 0,
-              "table": "Melee_Ones"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Soul Storm",
@@ -31052,28 +21371,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Negative",0.11,1,10,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Held",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Damage","Negative",0.295003,1,10,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 32,
-          "endurance": 10.66,
-          "activationTime": 2.17,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Negative",
-            "scale": 0.11,
-            "table": "Melee_Damage",
-            "duration": 10,
-            "tickRate": 1
-          },
-          "hold": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 10,
-            "table": "Melee_Immobilize"
-          }
-        }
+        ]
       },
       {
         "name": "Summon Widow",
@@ -31139,23 +21437,15 @@ export const EPIC_POOLS_RAW = {
           "castTime": 3.2
         },
         "effectArea": "Location",
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Patron_Powers_Night_Widow",
+          "duration": 240,
+          "copyBoosts": true
+        },
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,240]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 480,
-          "endurance": 26,
-          "activationTime": 3.2,
-          "effectArea": "Location",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 240,
-            "entity": "Pets_Patron_Powers_Night_Widow",
-            "isPseudoPet": false
-          }
-        }
+        ]
       }
     ]
   },
@@ -31232,24 +21522,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Knockback",3,1,0,"Melee_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Knockback"],
           ["Damage","Smashing",1.64,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","IncarnateBoss","target.HasTag?","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Smashing",2.137765,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 40,
-          "recharge": 10,
-          "endurance": 8.19,
-          "activationTime": 2.5,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Smashing",
-            "scale": 1.64,
-            "table": "Melee_Damage"
-          },
-          "knockback": {
-            "scale": 3,
-            "table": "Melee_Knockback"
-          }
-        }
+        ]
       },
       {
         "name": "Fissure",
@@ -31316,32 +21589,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Smashing",0.9,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","IncarnateBoss","target.HasTag?","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Smashing",0.688728,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Stunned",4,2,0,"Melee_Stun","Cur","Duration","Target","PvP",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Stun"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 20,
-          "recharge": 20,
-          "endurance": 8.92,
-          "activationTime": 2.1,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 16,
-          "damage": {
-            "type": "Smashing",
-            "scale": 0.9,
-            "table": "Melee_Damage"
-          },
-          "knockback": {
-            "scale": 0.67,
-            "table": "Melee_Ones"
-          },
-          "stun": {
-            "attribType": "Duration",
-            "mag": 2,
-            "scale": 8,
-            "table": "Melee_Stun"
-          }
-        }
+        ]
       },
       {
         "name": "Rock Armor",
@@ -31402,29 +21650,7 @@ export const EPIC_POOLS_RAW = {
           ["Elusivity","Energy",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Elusivity","Negative",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Resistance","Toxic",2.75,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 4,
-          "endurance": 0.1625,
-          "activationTime": 0.73,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "buffDuration": 0.75,
-          "defenseBuff": {
-            "lethal": {
-              "scale": 1.6,
-              "table": "Melee_Buff_Def"
-            },
-            "smashing": {
-              "scale": 1.6,
-              "table": "Melee_Buff_Def"
-            }
-          },
-          "durations": {
-            "defenseBuff": 0.75
-          }
-        }
+        ]
       },
       {
         "name": "Seismic Smash",
@@ -31487,26 +21713,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Smashing",2.154532,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Smashing",2.154532,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kImmobilized","target>","0",">","kHeld","target>","0",">","||","kSleep","target>","0",">","||","kStunned","target>","0",">","||","&&","arch","source>","Class_Controller","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Held",4,4,0,"Melee_Immobilize","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Immobilize"]
-        ],
-        "effects": {
-          "accuracy": 1.2,
-          "range": 7,
-          "recharge": 14,
-          "endurance": 12.96,
-          "activationTime": 1.5,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Smashing",
-            "scale": 2.6,
-            "table": "Melee_Damage"
-          },
-          "hold": {
-            "attribType": "Duration",
-            "mag": 4,
-            "scale": 8,
-            "table": "Melee_Immobilize"
-          }
-        }
+        ]
       },
       {
         "name": "Earth's Embrace",
@@ -31560,45 +21767,7 @@ export const EPIC_POOLS_RAW = {
           ["MaxHP",null,2,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf"],
           ["Heal",null,4,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf",null,null,null,1],
           ["Resistance","Toxic",2,1,120,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 240,
-          "endurance": 9.1,
-          "activationTime": 2.03,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Heal",
-            "scale": 4,
-            "table": "Melee_HealSelf"
-          },
-          "buffDuration": 120,
-          "durations": {
-            "maxHPBuff": 120,
-            "maxHPBuffUnenhanced": 120,
-            "resistance": 120
-          },
-          "maxHPBuff": {
-            "scale": 2,
-            "table": "Melee_HealSelf"
-          },
-          "maxHPBuffUnenhanced": {
-            "ignoreStrength": true,
-            "scale": 2,
-            "table": "Melee_HealSelf"
-          },
-          "resistance": {
-            "toxic": {
-              "scale": 2,
-              "table": "Melee_Res_DMG"
-            }
-          },
-          "maxStacks": 2,
-          "stacksLinear": [
-            "maxHPBuff",
-            "maxHPBuffUnenhanced"
-          ]
-        }
+        ]
       }
     ]
   },
@@ -31700,33 +21869,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Knockback",0.7,1,0,"Melee_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Knockback"],
           ["Damage","Lethal",2.320925,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Knockback",0.7,1,0,"Melee_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Knockback"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 9,
-          "endurance": 8.58,
-          "activationTime": 3,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Lethal",
-              "scale": 1.1,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 0.1,
-              "table": "Melee_Damage",
-              "duration": 3.2,
-              "tickRate": 1
-            }
-          ],
-          "knockback": {
-            "scale": 0.7,
-            "table": "Melee_Knockback"
-          }
-        }
+        ]
       },
       {
         "name": "School of Sharks",
@@ -31815,38 +21958,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Negative",0.144336,1,7.1,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,1],
           ["Damage","Negative",0.187972,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Immobilized",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 20,
-          "endurance": 12.74,
-          "activationTime": 2.37,
-          "effectArea": "Cone",
-          "radius": 60,
-          "arc": 0.8726646304130554,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Negative",
-              "scale": 0.15,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Negative",
-              "scale": 0.11,
-              "table": "Melee_Damage",
-              "duration": 7.1,
-              "tickRate": 1
-            }
-          ],
-          "immobilize": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 15,
-            "table": "Melee_Immobilize"
-          }
-        }
+        ]
       },
       {
         "name": "Bile Spray",
@@ -31931,32 +22043,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Toxic",0.15,1,4.25,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Toxic",0.788337,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Toxic",0.175112,1,4.25,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 18,
-          "endurance": 12.48,
-          "activationTime": 2.67,
-          "effectArea": "Cone",
-          "radius": 60,
-          "arc": 0.8726646304130554,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Toxic",
-              "scale": 0.75,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.15,
-              "table": "Melee_Damage",
-              "duration": 4.25,
-              "tickRate": 1
-            }
-          ]
-        }
+        ]
       },
       {
         "name": "Arctic Breath",
@@ -32062,115 +22149,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Cold",0.656947,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Cold",0.171389,1,4.25,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Knockback",0.1,1,12,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,0.25,1,null,true,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,0.05,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 24,
-          "endurance": 14.27,
-          "activationTime": 2.67,
-          "effectArea": "Cone",
-          "radius": 60,
-          "arc": 0.8726646304130554,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Cold",
-              "scale": 0.75,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Cold",
-              "scale": 0.15,
-              "table": "Melee_Damage",
-              "duration": 4.25,
-              "tickRate": 1
-            }
-          ],
-          "buffDuration": 12,
-          "defenseDebuff": {
-            "scale": 1.5,
-            "table": "Melee_Debuff_Def"
-          },
-          "durations": {
-            "defenseDebuff": 12,
-            "knockback": 12,
-            "rechargeDebuff": 12,
-            "resistanceDebuff": 12,
-            "slow": 12
-          },
-          "knockback": {
-            "ignoreStrength": true,
-            "scale": 0.1,
-            "table": "Melee_Ones"
-          },
-          "rechargeDebuff": {
-            "ignoreStrength": true,
-            "scale": 0.3,
-            "table": "Melee_Slow"
-          },
-          "resistanceDebuff": {
-            "cold": {
-              "ignoreStrength": true,
-              "scale": 1.5,
-              "table": "Melee_Res_DMG"
-            },
-            "energy": {
-              "ignoreStrength": true,
-              "scale": 1.5,
-              "table": "Melee_Res_DMG"
-            },
-            "fire": {
-              "ignoreStrength": true,
-              "scale": 1.5,
-              "table": "Melee_Res_DMG"
-            },
-            "lethal": {
-              "ignoreStrength": true,
-              "scale": 1.5,
-              "table": "Melee_Res_DMG"
-            },
-            "negative": {
-              "ignoreStrength": true,
-              "scale": 1.5,
-              "table": "Melee_Res_DMG"
-            },
-            "psionic": {
-              "ignoreStrength": true,
-              "scale": 1.5,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "ignoreStrength": true,
-              "scale": 1.5,
-              "table": "Melee_Res_DMG"
-            },
-            "toxic": {
-              "ignoreStrength": true,
-              "scale": 1.5,
-              "table": "Melee_Res_DMG"
-            }
-          },
-          "slow": {
-            "flySpeed": {
-              "scale": 0.3,
-              "table": "Melee_Slow"
-            },
-            "jumpHeight": {
-              "ignoreStrength": true,
-              "scale": 0.3,
-              "table": "Melee_Slow"
-            },
-            "jumpSpeed": {
-              "scale": 0.3,
-              "table": "Melee_Slow"
-            },
-            "runSpeed": {
-              "scale": 0.3,
-              "table": "Melee_Slow"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Summon Guardian",
@@ -32237,23 +22216,15 @@ export const EPIC_POOLS_RAW = {
           "castTime": 3.2
         },
         "effectArea": "Location",
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Patron_Powers_Coral_Guardian_Sentinel",
+          "duration": 240,
+          "copyBoosts": true
+        },
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,240]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 480,
-          "endurance": 26,
-          "activationTime": 3.2,
-          "effectArea": "Location",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 240,
-            "entity": "Pets_Patron_Powers_Coral_Guardian_Sentinel",
-            "isPseudoPet": false
-          }
-        }
+        ]
       }
     ]
   },
@@ -32353,31 +22324,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Smashing",1.095542,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Energy",1.095542,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Knockback",0.7,1,0,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 80,
-          "recharge": 9,
-          "endurance": 8.58,
-          "activationTime": 1,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.66,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.66,
-              "table": "Melee_Damage"
-            }
-          ],
-          "knockback": {
-            "scale": 0.7,
-            "table": "Melee_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Web Envelope",
@@ -32451,47 +22398,7 @@ export const EPIC_POOLS_RAW = {
           ["Movement","JumpHeight",-500,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Movement","FlyMode",-10,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Immobilized",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 80,
-          "recharge": 12,
-          "endurance": 12.74,
-          "activationTime": 1,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 10,
-          "buffDuration": 15,
-          "durations": {
-            "rechargeDebuff": 15,
-            "slow": 15
-          },
-          "immobilize": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 15,
-            "table": "Ranged_Immobilize"
-          },
-          "rechargeDebuff": {
-            "ignoreStrength": true,
-            "scale": 0.2,
-            "table": "Ranged_Slow"
-          },
-          "slow": {
-            "flySpeed": {
-              "scale": 0.2,
-              "table": "Ranged_Slow"
-            },
-            "jumpHeight": {
-              "scale": 500,
-              "table": "Ranged_Ones"
-            },
-            "runSpeed": {
-              "scale": 0.2,
-              "table": "Ranged_Slow"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Disruptor Blast",
@@ -32576,33 +22483,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Smashing",0.480665,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Energy",0.480665,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Knockback",1,1,0,"Melee_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Knockback"]
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 80,
-          "recharge": 16,
-          "endurance": 18.98,
-          "activationTime": 1,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.5,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.5,
-              "table": "Melee_Damage"
-            }
-          ],
-          "knockback": {
-            "scale": 1,
-            "table": "Melee_Knockback"
-          }
-        }
+        ]
       },
       {
         "name": "Shatter Armor",
@@ -32686,73 +22567,7 @@ export const EPIC_POOLS_RAW = {
           ["Resistance","Negative",-2,1,20,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Psionic",-2,1,20,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
           ["Resistance","Toxic",-2,1,20,"Melee_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]
-        ],
-        "effects": {
-          "accuracy": 1.05,
-          "range": 7,
-          "recharge": 15,
-          "endurance": 17.94,
-          "activationTime": 2.33,
-          "effectArea": "SingleTarget",
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 1.932,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Toxic",
-              "scale": 0.828,
-              "table": "Melee_Damage"
-            }
-          ],
-          "buffDuration": 20,
-          "durations": {
-            "resistanceDebuff": 20
-          },
-          "resistanceDebuff": {
-            "cold": {
-              "ignoreStrength": true,
-              "scale": 2,
-              "table": "Melee_Res_DMG"
-            },
-            "energy": {
-              "ignoreStrength": true,
-              "scale": 2,
-              "table": "Melee_Res_DMG"
-            },
-            "fire": {
-              "ignoreStrength": true,
-              "scale": 2,
-              "table": "Melee_Res_DMG"
-            },
-            "lethal": {
-              "ignoreStrength": true,
-              "scale": 2,
-              "table": "Melee_Res_DMG"
-            },
-            "negative": {
-              "ignoreStrength": true,
-              "scale": 2,
-              "table": "Melee_Res_DMG"
-            },
-            "psionic": {
-              "ignoreStrength": true,
-              "scale": 2,
-              "table": "Melee_Res_DMG"
-            },
-            "smashing": {
-              "ignoreStrength": true,
-              "scale": 2,
-              "table": "Melee_Res_DMG"
-            },
-            "toxic": {
-              "ignoreStrength": true,
-              "scale": 2,
-              "table": "Melee_Res_DMG"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Summon Tarantula",
@@ -32818,23 +22633,15 @@ export const EPIC_POOLS_RAW = {
           "castTime": 3.03
         },
         "effectArea": "Location",
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Patron_Powers_Toxic_Tarantula",
+          "duration": 240,
+          "copyBoosts": true
+        },
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,240]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 480,
-          "endurance": 26,
-          "activationTime": 3.03,
-          "effectArea": "Location",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 240,
-            "entity": "Pets_Patron_Powers_Toxic_Tarantula",
-            "isPseudoPet": false
-          }
-        }
+        ]
       }
     ]
   },
@@ -32928,40 +22735,7 @@ export const EPIC_POOLS_RAW = {
           ["Endurance",null,4.29,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Damage","Energy",1.601723,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Endurance",null,-2,1,0,"Melee_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"EndDrain"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 8,
-          "endurance": 7.58,
-          "activationTime": 1.17,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Energy",
-            "scale": 1.42,
-            "table": "Melee_Damage"
-          },
-          "buffDuration": 4,
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "enduranceDrain": {
-            "scale": 0.1,
-            "table": "Melee_Ones"
-          },
-          "enduranceGain": {
-            "scale": 4.29,
-            "table": "Melee_Ones"
-          },
-          "recoveryDebuff": {
-            "scale": 3,
-            "table": "Melee_Ones"
-          },
-          "maxStacks": 2,
-          "stacksLinear": [
-            "enduranceGain"
-          ]
-        }
+        ]
       },
       {
         "name": "Electrifying Fences",
@@ -33049,43 +22823,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Energy",0.256007,1,7.21,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Immobilized",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"],
           ["Endurance",null,-1,1,6.2,"Melee_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,2,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"EndDrain"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 20,
-          "endurance": 12.74,
-          "activationTime": 1.17,
-          "effectArea": "AoE",
-          "radius": 20,
-          "maxTargets": 16,
-          "damage": {
-            "type": "Energy",
-            "scale": 0.11,
-            "table": "Melee_Damage",
-            "duration": 7.1,
-            "tickRate": 1
-          },
-          "buffDuration": 6.2,
-          "durations": {
-            "enduranceDrain": 6.2,
-            "recoveryDebuff": 2
-          },
-          "enduranceDrain": {
-            "scale": 0.04,
-            "table": "Melee_Ones"
-          },
-          "immobilize": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 15,
-            "table": "Melee_Immobilize"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Ball Lightning",
@@ -33174,43 +22912,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Energy",0.327442,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Energy",0.172674,1,3.1,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Endurance",null,-1.25,1,0,"Melee_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"EndDrain"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 18,
-          "endurance": 18.98,
-          "activationTime": 1.07,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Energy",
-              "scale": 0.4,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Energy",
-              "scale": 0.2,
-              "table": "Melee_Damage",
-              "duration": 3.1,
-              "tickRate": 1
-            }
-          ],
-          "buffDuration": 4,
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "enduranceDrain": {
-            "scale": 0.07,
-            "table": "Melee_Ones"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Static Discharge",
@@ -33290,39 +22992,7 @@ export const EPIC_POOLS_RAW = {
           ["Endurance",null,4.29,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,0.10000000149011612,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Damage","Energy",1.11056,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Endurance",null,-1.25,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"EndDrain"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 24,
-          "endurance": 10.74,
-          "activationTime": 2.07,
-          "effectArea": "Cone",
-          "radius": 60,
-          "arc": 0.8726646304130554,
-          "maxTargets": 16,
-          "damage": {
-            "type": "Energy",
-            "scale": 0.96,
-            "table": "Ranged_Damage"
-          },
-          "buffDuration": 4,
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "enduranceDrain": {
-            "scale": 0.07,
-            "table": "Ranged_Ones"
-          },
-          "enduranceGain": {
-            "scale": 4.29,
-            "table": "Ranged_Ones"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Ranged_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Summon Striker",
@@ -33388,23 +23058,15 @@ export const EPIC_POOLS_RAW = {
           "castTime": 1.17
         },
         "effectArea": "Location",
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Patron_Powers_Mu_Striker",
+          "duration": 240,
+          "copyBoosts": true
+        },
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,240]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 480,
-          "endurance": 26,
-          "activationTime": 1.17,
-          "effectArea": "Location",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 240,
-            "entity": "Pets_Patron_Powers_Mu_Striker",
-            "isPseudoPet": false
-          }
-        }
+        ]
       }
     ]
   },
@@ -33498,30 +23160,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Negative",0.22,1,1.5,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.20000000298023224,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
           ["ToHit",null,0.75,1,10,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"DeBuff_ToHit"],
           ["Damage","Negative",0.209218,1,1.5,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.20000000298023224,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 8,
-          "endurance": 8.528,
-          "activationTime": 1.1,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Negative",
-            "scale": 0.22,
-            "table": "Melee_Damage",
-            "duration": 1.5,
-            "tickRate": 0.20000000298023224
-          },
-          "buffDuration": 10,
-          "durations": {
-            "tohitDebuff": 10
-          },
-          "tohitDebuff": {
-            "scale": 0.75,
-            "table": "Melee_DeBuff_ToHit"
-          }
-        }
+        ]
       },
       {
         "name": "Soul Tentacles",
@@ -33610,38 +23249,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Smashing",0.119598,1,7.1,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage",null,null,null,1],
           ["Damage","Negative",0.155756,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Mez","Immobilized",2,3,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 20,
-          "endurance": 10.74,
-          "activationTime": 1.67,
-          "effectArea": "Cone",
-          "radius": 60,
-          "arc": 0.8726646304130554,
-          "maxTargets": 16,
-          "damage": [
-            {
-              "type": "Negative",
-              "scale": 0.11,
-              "table": "Melee_Damage",
-              "duration": 7.1,
-              "tickRate": 1
-            },
-            {
-              "type": "Negative",
-              "scale": 0.15,
-              "table": "Melee_Damage"
-            }
-          ],
-          "immobilize": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 15,
-            "table": "Melee_Immobilize"
-          }
-        }
+        ]
       },
       {
         "name": "Dark Obliteration",
@@ -33718,30 +23326,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Negative",1.24,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
           ["ToHit",null,0.75,1,10,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"DeBuff_ToHit"],
           ["Damage","Negative",1.06,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 80,
-          "recharge": 18,
-          "endurance": 12.98,
-          "activationTime": 1,
-          "effectArea": "AoE",
-          "radius": 15,
-          "maxTargets": 16,
-          "damage": {
-            "type": "Negative",
-            "scale": 1.24,
-            "table": "Melee_Damage"
-          },
-          "buffDuration": 10,
-          "durations": {
-            "tohitDebuff": 10
-          },
-          "tohitDebuff": {
-            "scale": 0.75,
-            "table": "Melee_DeBuff_ToHit"
-          }
-        }
+        ]
       },
       {
         "name": "Darkest Night",
@@ -33814,32 +23399,7 @@ export const EPIC_POOLS_RAW = {
           ["DamageBuff","Psionic",3,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
           ["DamageBuff","Toxic",3,1,5,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
           ["ToHit",null,1.5,1,5,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"DeBuff_ToHit"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 70,
-          "recharge": 10,
-          "endurance": 0.13,
-          "activationTime": 1.67,
-          "activatePeriod": 0.5,
-          "effectArea": "AoE",
-          "radius": 25,
-          "maxTargets": 16,
-          "buffDuration": 5,
-          "damageDebuff": {
-            "ignoreStrength": true,
-            "scale": 3,
-            "table": "Ranged_Debuff_Dam"
-          },
-          "durations": {
-            "damageDebuff": 5,
-            "tohitDebuff": 5
-          },
-          "tohitDebuff": {
-            "scale": 1.5,
-            "table": "Ranged_DeBuff_ToHit"
-          }
-        }
+        ]
       },
       {
         "name": "Summon Widow",
@@ -33902,23 +23462,15 @@ export const EPIC_POOLS_RAW = {
           "castTime": 3.2
         },
         "effectArea": "Location",
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Patron_Powers_Blood_Widow",
+          "duration": 240,
+          "copyBoosts": true
+        },
         "atoms": [
           ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,240]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 60,
-          "recharge": 480,
-          "endurance": 26,
-          "activationTime": 3.2,
-          "effectArea": "Location",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 240,
-            "entity": "Pets_Patron_Powers_Blood_Widow",
-            "isPseudoPet": false
-          }
-        }
+        ]
       }
     ]
   },
@@ -33997,45 +23549,7 @@ export const EPIC_POOLS_RAW = {
           ["Mez","Immobilized",2,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Immobilize"],
           ["Meta",null,0.05,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["Raid","target.HasTag?","enttype","target>","player","eq","||","kRage","source>","0.7","<","&&","arch","source>","Class_Brute","==","&&"],true,null,null,null,null,null,null,null,null,"Ones",null,"rage"],
           ["Mez","Taunt",1,4,0,"Ranged_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&","arch","source>","Class_Brute","==","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 50,
-          "recharge": 8,
-          "endurance": 9.75,
-          "activationTime": 1.37,
-          "effectArea": "SingleTarget",
-          "buffDuration": 15,
-          "durations": {
-            "rechargeDebuff": 15,
-            "slow": 15
-          },
-          "immobilize": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 15,
-            "table": "Ranged_Immobilize"
-          },
-          "rechargeDebuff": {
-            "ignoreStrength": true,
-            "scale": 0.5,
-            "table": "Ranged_Slow"
-          },
-          "slow": {
-            "flySpeed": {
-              "scale": 0.5,
-              "table": "Ranged_Slow"
-            },
-            "jumpHeight": {
-              "scale": 500,
-              "table": "Ranged_Ones"
-            },
-            "runSpeed": {
-              "scale": 0.5,
-              "table": "Ranged_Slow"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Caltrops",
@@ -34082,23 +23596,15 @@ export const EPIC_POOLS_RAW = {
           "castTime": 1.07
         },
         "effectArea": "Location",
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Caltrops",
+          "duration": 45,
+          "copyBoosts": true
+        },
         "atoms": [
           ["EntCreate",null,1,1,45,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,45]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 25,
-          "recharge": 45,
-          "endurance": 9.75,
-          "activationTime": 1.07,
-          "effectArea": "Location",
-          "summon": {
-            "copyBoosts": true,
-            "duration": 45,
-            "entity": "Pets_Caltrops",
-            "isPseudoPet": false
-          }
-        }
+        ]
       },
       {
         "name": "Shuriken",
@@ -34158,20 +23664,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Lethal",0.84,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["arch","target>","Class_Minion_Grunt","eq","arch","target>","Class_Minion_Small","eq","||","arch","target>","Class_Minion_Pets","eq","||","arch","target>","Class_Minion_Swarm","eq","||","enttype","target>","player","eq","||","!","arch","source>","Class_Scrapper","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["Raid","target.HasTag?","enttype","target>","player","eq","||","kRage","source>","0.7","<","&&","arch","source>","Class_Brute","==","&&"],true,null,null,null,null,null,null,null,null,"Ones",null,"rage"],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&","arch","source>","Class_Brute","==","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 70,
-          "recharge": 3,
-          "endurance": 5.46,
-          "activationTime": 1.07,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Lethal",
-            "scale": 0.84,
-            "table": "Melee_Damage"
-          }
-        }
+        ]
       },
       {
         "name": "Targeting Drone",
@@ -34220,47 +23713,7 @@ export const EPIC_POOLS_RAW = {
           ["Accuracy",null,0.2,1,0.75,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Perception",null,0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Perception",null,0.6,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 10,
-          "endurance": 0.39,
-          "activationTime": 1.17,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "accuracyBuff": {
-            "ignoreStrength": true,
-            "scale": 0.2,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 0.75,
-          "debuffResistance": {
-            "perception": {
-              "ignoreStrength": true,
-              "scale": 0.6,
-              "table": "Melee_Ones"
-            },
-            "tohit": {
-              "ignoreStrength": true,
-              "scale": 2,
-              "table": "Melee_Res_Boolean"
-            }
-          },
-          "durations": {
-            "accuracyBuff": 0.75,
-            "debuffResistance": 0.75,
-            "perceptionBuff": 0.75,
-            "tohitBuff": 0.75
-          },
-          "perceptionBuff": {
-            "scale": 0.6,
-            "table": "Melee_Ones"
-          },
-          "tohitBuff": {
-            "scale": 0.5,
-            "table": "Melee_Buff_ToHit"
-          }
-        }
+        ]
       },
       {
         "name": "Exploding Shuriken",
@@ -34322,22 +23775,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["arch","target>","Class_Minion_Grunt","eq","arch","target>","Class_Minion_Small","eq","||","arch","target>","Class_Minion_Pets","eq","||","arch","target>","Class_Minion_Swarm","eq","||","enttype","target>","player","eq","||","!","arch","source>","Class_Scrapper","==","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Meta",null,0.05,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,["Raid","target.HasTag?","enttype","target>","player","eq","||","kRage","source>","0.7","<","&&","arch","source>","Class_Brute","==","&&"],true,null,null,null,null,null,null,null,null,"Ones",null,"rage"],
           ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&","arch","source>","Class_Brute","==","&&"],true,null,null,null,null,null,null,null,null,"InherentTaunt"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 70,
-          "recharge": 16,
-          "endurance": 13.29,
-          "activationTime": 1.07,
-          "effectArea": "AoE",
-          "radius": 10,
-          "maxTargets": 10,
-          "damage": {
-            "type": "Lethal",
-            "scale": 1,
-            "table": "Melee_Damage"
-          }
-        }
+        ]
       }
     ]
   },
@@ -34413,45 +23851,7 @@ export const EPIC_POOLS_RAW = {
           ["Movement","JumpHeight",-500,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Movement","FlyMode",-10,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Mez","Immobilized",2,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Immobilize"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 50,
-          "recharge": 8,
-          "endurance": 9.75,
-          "activationTime": 1.37,
-          "effectArea": "SingleTarget",
-          "buffDuration": 15,
-          "durations": {
-            "rechargeDebuff": 15,
-            "slow": 15
-          },
-          "immobilize": {
-            "attribType": "Duration",
-            "mag": 3,
-            "scale": 15,
-            "table": "Ranged_Immobilize"
-          },
-          "rechargeDebuff": {
-            "ignoreStrength": true,
-            "scale": 0.5,
-            "table": "Ranged_Slow"
-          },
-          "slow": {
-            "flySpeed": {
-              "scale": 0.5,
-              "table": "Ranged_Slow"
-            },
-            "jumpHeight": {
-              "scale": 500,
-              "table": "Ranged_Ones"
-            },
-            "runSpeed": {
-              "scale": 0.5,
-              "table": "Ranged_Slow"
-            }
-          }
-        }
+        ]
       },
       {
         "name": "Physical Perfection",
@@ -34494,25 +23894,7 @@ export const EPIC_POOLS_RAW = {
         "atoms": [
           ["Regeneration",null,0.2,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Recovery",null,0.125,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "activatePeriod": 10,
-          "effectArea": "SingleTarget",
-          "buffDuration": 10.25,
-          "durations": {
-            "recoveryBuff": 10.25,
-            "regenBuff": 10.25
-          },
-          "recoveryBuff": {
-            "scale": 0.125,
-            "table": "Melee_Ones"
-          },
-          "regenBuff": {
-            "scale": 0.2,
-            "table": "Melee_Ones"
-          }
-        }
+        ]
       },
       {
         "name": "Shuriken",
@@ -34570,20 +23952,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Lethal",1.165037,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kMeter","source>","0",">","enttype","target>","player","eq","&&","arch","source>","Class_Stalker","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Lethal",1.165037,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["kMeter","source>",".9","<","kHeld","target>","0",">","kSleep","target>","0",">","||","&&","enttype","target>","player","eq","&&","arch","source>","Class_Stalker","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Lethal",0.84,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kMeter","source>","0",">","enttype","target>","critter","eq","&&","arch","source>","Class_Stalker","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 70,
-          "recharge": 3,
-          "endurance": 5.46,
-          "activationTime": 1.07,
-          "effectArea": "SingleTarget",
-          "damage": {
-            "type": "Lethal",
-            "scale": 1.64,
-            "table": "Melee_Damage"
-          }
-        }
+        ]
       },
       {
         "name": "Targeting Drone",
@@ -34629,47 +23998,7 @@ export const EPIC_POOLS_RAW = {
           ["Accuracy",null,0.2,1,0.75,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Perception",null,0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
           ["Perception",null,0.6,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "recharge": 10,
-          "endurance": 0.39,
-          "activationTime": 1.17,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget",
-          "accuracyBuff": {
-            "ignoreStrength": true,
-            "scale": 0.2,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 0.75,
-          "debuffResistance": {
-            "perception": {
-              "ignoreStrength": true,
-              "scale": 0.6,
-              "table": "Melee_Ones"
-            },
-            "tohit": {
-              "ignoreStrength": true,
-              "scale": 2,
-              "table": "Melee_Res_Boolean"
-            }
-          },
-          "durations": {
-            "accuracyBuff": 0.75,
-            "debuffResistance": 0.75,
-            "perceptionBuff": 0.75,
-            "tohitBuff": 0.75
-          },
-          "perceptionBuff": {
-            "scale": 0.6,
-            "table": "Melee_Ones"
-          },
-          "tohitBuff": {
-            "scale": 0.5,
-            "table": "Melee_Buff_ToHit"
-          }
-        }
+        ]
       },
       {
         "name": "Exploding Shuriken",
@@ -34737,29 +24066,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Lethal",1.115002,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kMeter","source>","0",">","enttype","target>","player","eq","&&","arch","source>","Class_Stalker","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Lethal",1.115002,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["kMeter","source>",".9","<","kHeld","target>","0",">","kSleep","target>","0",">","||","&&","enttype","target>","player","eq","&&","arch","source>","Class_Stalker","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"],
           ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["kMeter","source>","0",">","enttype","target>","critter","eq","&&","arch","source>","Class_Stalker","eq","&&"],true,null,null,null,null,null,null,null,null,"Damage"]
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 70,
-          "recharge": 32,
-          "endurance": 18.98,
-          "activationTime": 1.07,
-          "effectArea": "AoE",
-          "radius": 10,
-          "maxTargets": 10,
-          "damage": [
-            {
-              "type": "Smashing",
-              "scale": 0.5,
-              "table": "Melee_Damage"
-            },
-            {
-              "type": "Lethal",
-              "scale": 1,
-              "table": "Melee_Damage"
-            }
-          ]
-        }
+        ]
       }
     ]
   }

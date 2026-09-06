@@ -36,12 +36,6 @@ export const SmokeFlash: Power = {
     "Accuracy"
   ],
   "maxSlots": 6,
-  "effects": {
-    "placate": {
-      "scale": 8,
-      "table": "Melee_Taunt"
-    }
-  },
   "atoms": [
     ["Mez","Placate",8,3,0,"Melee_Taunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Taunt"],
     ["Mez","Placate",6,3,0,"Melee_Taunt","Abs","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Taunt"]

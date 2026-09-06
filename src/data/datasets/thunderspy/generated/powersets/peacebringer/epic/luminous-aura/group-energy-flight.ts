@@ -54,16 +54,6 @@ export const GroupEnergyFlight: Power = {
     "duration": 1.25,
     "tickRate": 0.5
   },
-  "effects": {
-    "buffDuration": 3,
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 3
-    }
-  },
   "atoms": [
     ["Damage","Energy",0.08,1,1.25,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
     ["Defense","All",1,1,3,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Debuff_Def"],

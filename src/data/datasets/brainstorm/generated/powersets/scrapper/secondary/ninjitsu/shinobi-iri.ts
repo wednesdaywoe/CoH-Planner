@@ -43,49 +43,6 @@ export const ShinobiIri: Power = {
     "Defense Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 1,
-      "table": "Melee_Buff_Dmg"
-    },
-    "defenseBuff": {
-      "aoe": {
-        "scale": 0.45,
-        "table": "Melee_Buff_Def"
-      },
-      "melee": {
-        "scale": 0.45,
-        "table": "Melee_Buff_Def"
-      },
-      "ranged": {
-        "scale": 0.45,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "damageBuff": 0.75,
-      "defenseBuff": 0.75,
-      "stealth": 0.75
-    },
-    "stealth": {
-      "stackKey": "StealthToggle",
-      "stealthPvE": {
-        "scale": 35.5,
-        "table": "Melee_Ones"
-      },
-      "stealthPvP": {
-        "scale": 390,
-        "table": "Melee_Ones"
-      },
-      "translucency": {
-        "ignoreStrength": true,
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      }
-    }
-  },
   "atoms": [
     ["Defense","Ranged",0.45,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
     ["Defense","Melee",0.45,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],

@@ -37,24 +37,6 @@ export const PackMaster: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 10.25,
-    "durations": {
-      "regenBuff": 10.25,
-      "specialBuff": 10.25
-    },
-    "regenBuff": {
-      "scale": 1.7999999999999998,
-      "table": "Melee_Ones"
-    },
-    "specialBuff": {
-      "heal": {
-        "ignoreStrength": true,
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      }
-    }
-  },
   "atoms": [
     ["Heal",null,0.05,1,10.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kHunterMode","Source.Mode?","!","kProwlerMode","Source.Mode?","!","&&"],null,null,null,null,null,null,null,null,null,"NBInactive"],
     ["Regeneration",null,0.6,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kHunterMode","Source.Mode?","!","kProwlerMode","Source.Mode?","!","&&"],null,null,null,null,null,null,null,null,null,"NBInactive"],

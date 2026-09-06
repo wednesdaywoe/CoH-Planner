@@ -36,63 +36,6 @@ export const Enduring: Power = {
     "Endurance Modification"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.2,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "defenseBuff": {
-      "psionic": {
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "debuffResistance": 0.75,
-      "defenseBuff": 0.75,
-      "recoveryBuff": 0.75,
-      "resistance": 0.75
-    },
-    "recoveryBuff": {
-      "scale": 0.3,
-      "table": "Melee_Ones"
-    },
-    "resistance": {
-      "cold": {
-        "ignoreStrength": true,
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "energy": {
-        "ignoreStrength": true,
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "fire": {
-        "ignoreStrength": true,
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "lethal": {
-        "ignoreStrength": true,
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "negative": {
-        "ignoreStrength": true,
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "smashing": {
-        "ignoreStrength": true,
-        "scale": 0,
-        "table": "Melee_Ones"
-      }
-    }
-  },
   "atoms": [
     ["Recovery",null,0.3,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Defense","Psionic",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],

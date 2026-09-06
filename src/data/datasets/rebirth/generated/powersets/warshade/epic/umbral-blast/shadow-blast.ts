@@ -53,41 +53,6 @@ export const ShadowBlast: Power = {
     "scale": 1.64,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 10,
-    "durations": {
-      "rechargeDebuff": 10,
-      "slow": 10
-    },
-    "knockback": {
-      "scale": 1,
-      "table": "Ranged_Knockback"
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.2,
-      "table": "Ranged_Slow"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Constant","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kWarshade_Blaster_Mode","source.Mode?","!"],null,null,null,null,null,null,null,null,null,"Ones",null,"power_redirect"],
     ["Damage","Negative",1.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
@@ -122,41 +87,6 @@ export const ShadowBlast: Power = {
         "type": "Negative",
         "scale": 1.64,
         "table": "Ranged_SSDamage"
-      },
-      "effects": {
-        "buffDuration": 6,
-        "durations": {
-          "rechargeDebuff": 6,
-          "slow": 6
-        },
-        "knockback": {
-          "scale": 1,
-          "table": "Ranged_Knockback"
-        },
-        "rechargeDebuff": {
-          "ignoreStrength": true,
-          "scale": 0.2,
-          "table": "Ranged_Slow"
-        },
-        "slow": {
-          "flySpeed": {
-            "scale": 0.2,
-            "table": "Ranged_Slow"
-          },
-          "jumpHeight": {
-            "ignoreStrength": true,
-            "scale": 0.2,
-            "table": "Ranged_Slow"
-          },
-          "jumpSpeed": {
-            "scale": 0.2,
-            "table": "Ranged_Slow"
-          },
-          "runSpeed": {
-            "scale": 0.2,
-            "table": "Ranged_Slow"
-          }
-        }
       },
       "shortHelp": "Ranged, Moderate DMG(Negative), Foe Knockback, -Recharge, -SPD",
       "description": "A much more powerful, yet slower version of Dark Nova Bolt. Dark Nova Blast sends focused negative Nictus energy at a foe.  This attack can knock down foes and will leave the targets' attack and movement speed slowed. This power is only available while in Dark Nova Form. Damage: Moderate, Recharge: Moderate",

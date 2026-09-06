@@ -56,30 +56,6 @@ export const StygianReturn: Power = {
       "tickRate": 1
     }
   ],
-  "effects": {
-    "buffDuration": 15,
-    "durations": {
-      "untouchable": 15
-    },
-    "enduranceGain": {
-      "scale": 30,
-      "table": "Melee_Ones",
-      "perTarget": 30
-    },
-    "immobilize": {
-      "attribType": "Duration",
-      "ignoreStrength": true,
-      "mag": 50,
-      "scale": 4,
-      "table": "Melee_Ones",
-      "toWho": "Self"
-    },
-    "untouchable": {
-      "ignoreStrength": true,
-      "scale": 10,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
     ["Heal",null,3,1,0.5,"Melee_Heal","Abs","Magnitude","Self","Any",false,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Heal"],

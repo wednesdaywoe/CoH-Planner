@@ -55,18 +55,6 @@ export const ForceBolt: Power = {
     "scale": 1,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Ranged_Ones"
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 1.5,
-      "scale": 8,
-      "table": "Ranged_Stun"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["cur.kUntouchable","target>","0","<="],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Movement","FlyMode",-1.6,1,15,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],

@@ -77,14 +77,14 @@ interface Census {
  * A pair leaving this set is the ENDSTAT-1 failure repeating — a fallback the code documents
  * and the data does not honour — so it reds here before BPORT7 ships it.
  */
-const COVERED_ARMS = [
+const COVERED_ARMS: string[] = [
+  // BPORT7's regen emptied the bag; the 6 surviving pairs are guards whose seams still
+  // declare them (bag=0 bagOnly=0 atom=undefined — no atom side computed, no bag to compare).
   'damage/damage',
   'stats.arc/arc',
   'stats.castTime/castTime',
   'stats.endurance/enduranceCost',
-  'stats.maxTargets/maxTargets',
   'stats.radius/radius',
-  'stats.range/range',
   'stats.recharge/recharge',
 ];
 
@@ -122,18 +122,13 @@ const COVERED_ARMS = [
  *
  * What was left, and what BPORT6 carried: `power-row-utils` (the whole predicate, atom-native
  * — see `toggle-roster-atom-native.verify.test.ts`) and `character-totals`
- * (`collectStrengthBuffs` onto `specialBuffValue` + `stackCapOf`). The `summon` cluster is
- * BPORT7's by BPORT3's verdict: no summon reader may move until `convert-powerset.cjs` lifts
- * the slot, so reader and writer cross together.
+ * (`collectStrengthBuffs` onto `specialBuffValue` + `stackCapOf`). The `summon` cluster was
+ * BPORT7's by BPORT3's verdict — reader and writer crossed together once
+ * `convert-powerset.cjs` lifted the slot — and left this map with the crossing: five files
+ * dropped out, and what remains is BPORT6's pair, still waiting on PARTSTAT-2.
  */
 const CANONICAL_MIGRATED_FIRST: Record<string, string[]> = {
-  'src/components/info/BuffPetAuraToggle.tsx': ['summon'],
-  'src/components/info/EnhancementInfoContent.tsx': ['summon'],
-  'src/components/info/PowerInfoBlocks.tsx': ['summon'],
-  'src/components/modals/CompareSlottingModal.tsx': ['summon'],
-  'src/utils/calculations/attack-chain-powers.ts': ['summon'],
-  'src/utils/calculations/inherents.ts': ['buffDuration', 'recharge'],
-  'src/utils/calculations/perma.ts': ['buffDuration', 'recharge'],
+  // BPORT7's regen emptied the bag; the beta has no bag-only seams, so nothing carries.
 };
 
 /**
@@ -222,16 +217,19 @@ describe('BPORT4 census — what the strip costs, per seam', () => {
     expect(b.bothRead.length + b.identical.length + b.betaOnly.length + b.migrated.length +
       b.renamed.length).toBe(census.sweep.length);
     // 27 until BPORT6, when `power-row-utils` stopped reading the bag entirely and left the
-    // bucket; 27 again at BPORT11, and the new member reads nothing. `character-totals.ts`
-    // declares {@link syntheticEffects}, whose body is `power.effects` — the sweep's grep sees
-    // a bag read, the corrected finder sees no slot, and the asymmetry is BPORT4's whole point
-    // restated. Pinned as a pair so the bucket cannot grow a REAL reader unnoticed.
-    expect(b.bothRead).toHaveLength(27);
+    // bucket; 27 again at BPORT11, and the new member reads nothing. BPORT7's crossing took
+    // `CompareSlottingModal` out — its only bag read was the summon that moved to
+    // `power.summon`. `character-totals.ts` declares {@link syntheticEffects}, whose body is
+    // `power.effects` — the sweep's grep sees a bag read, the corrected finder sees no slot,
+    // and the asymmetry is BPORT4's whole point restated. Pinned as a pair so the bucket
+    // cannot grow a REAL reader unnoticed.
+    expect(b.bothRead).toHaveLength(26);
     expect(b.bothRead).toContain('src/utils/calculations/character-totals.ts');
     expect(bagSeams('src/utils/calculations/character-totals.ts')).toHaveLength(0);
     // 6 until BPORT5. The sixth was the oracle, and it was never beta-only — canonical kept
-    // the same file under the name PROD7 renamed away from on this side.
-    expect(b.betaOnly).toHaveLength(5);
+    // the same file under the name PROD7 renamed away from on this side. BPORT7's crossing
+    // dropped `proc-potential` — its two summon reads were its only bag seams.
+    expect(b.betaOnly).toHaveLength(4);
     expect(b.renamed).toEqual([ORACLE]);
   });
 
@@ -445,10 +443,12 @@ describe('BPORT4 finders — the four ways a bag read hides from a regex', () =>
   });
 
   it('follows an alias', () => {
+    // BPORT7 crossed the summon read this fixture used to pin — the one alias seam in the
+    // 24 — so the fixture now holds on a surviving control-slot read of the same alias.
     const seams = bagSeams('src/components/modals/PowersetCompareModal.tsx');
     expect(seams.length).toBeGreaterThan(0);
     expect(seams.every((s) => s.binding === 'alias:power')).toBe(true);
-    expect(seams.map((s) => s.slot)).toContain('summon');
+    expect(seams.map((s) => s.slot)).toContain('hold');
   });
 
   it('follows an alias bound through a chain, not just an identifier', () => {

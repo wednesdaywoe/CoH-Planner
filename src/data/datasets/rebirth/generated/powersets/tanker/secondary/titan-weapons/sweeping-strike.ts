@@ -57,16 +57,6 @@ export const SweepingStrike: Power = {
     "scale": 1.429,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    }
-  },
   "atoms": [
     ["Meta",null,1,1,0,"Melee_Ones","Cur","Constant","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["1"],null,null,null,null,null,null,null,null,null,"Ones",null,"power_redirect"],
     ["Damage","Smashing",1.429,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
@@ -105,16 +95,6 @@ export const SweepingStrike: Power = {
         "type": "Smashing",
         "scale": 1.429,
         "table": "Melee_Damage"
-      },
-      "effects": {
-        "knockback": {
-          "scale": 0.67,
-          "table": "Melee_Ones"
-        },
-        "taunt": {
-          "scale": 1,
-          "table": "Melee_InherentTaunt"
-        }
       },
       "shortHelp": "Melee (Cone), High DMG(Smashing), Foe Knockdown",
       "description": "You make a sweeping slash with your weapon, causing high damage and possibly knocking your opponent down. Damage: High, Recharge: Long",

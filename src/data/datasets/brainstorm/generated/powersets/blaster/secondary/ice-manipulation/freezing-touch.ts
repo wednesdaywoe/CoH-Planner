@@ -54,14 +54,6 @@ export const FreezingTouch: Power = {
     "duration": 10.1,
     "tickRate": 1
   },
-  "effects": {
-    "hold": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 10,
-      "table": "Melee_Immobilize"
-    }
-  },
   "atoms": [
     ["MezResist","Knockup",100,1,6,"Melee_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["MezResist","Knockback",100,1,6,"Melee_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],

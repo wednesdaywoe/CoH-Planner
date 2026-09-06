@@ -54,22 +54,6 @@ export const NeutronBomb: Power = {
     "scale": 0.9,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 16,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.034,
-      "table": "Ranged_Ones"
-    },
-    "defenseDebuff": {
-      "scale": 2,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "damageBuff": 9.17,
-      "defenseDebuff": 16
-    }
-  },
   "atoms": [
     ["Damage","Energy",0.9,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Defense","All",2,1,16,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Debuff_Def"],

@@ -43,89 +43,87 @@ export const RainofFire: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "displayName": "Rain of Fire",
-      "duration": 15,
-      "isPseudoPet": true,
-      "powers": [
-        "Pets.RainofFire_Sentinel.Avoid",
-        "Pets.RainofFire_Sentinel.RainofFire"
-      ],
-      "resolvedEntities": [
-        {
-          "displayName": "Rain of Fire",
-          "duration": 15,
-          "copyCreatorMods": true,
-          "abilities": [
-            {
-              "name": "RainofFire",
-              "displayName": "RainofFire",
-              "type": "Auto",
-              "damage": [
-                {
-                  "damageType": "Fire",
-                  "scale": 0.0218,
-                  "table": "Melee_Damage"
-                },
-                {
-                  "damageType": "Fire",
-                  "scale": 0.0218,
-                  "table": "Melee_InherentDamage"
-                }
-              ],
-              "effects": [
-                {
-                  "type": "Slow",
-                  "axis": "runSpeed",
-                  "scale": 0.4,
-                  "table": "Melee_Slow",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "Slow",
-                  "axis": "jumpHeight",
-                  "scale": 0.4,
-                  "table": "Melee_Slow",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "Slow",
-                  "axis": "jumpSpeed",
-                  "scale": 0.4,
-                  "table": "Melee_Slow"
-                },
-                {
-                  "type": "Slow",
-                  "axis": "flySpeed",
-                  "scale": 0.3,
-                  "table": "Melee_Slow",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "MovementCapDebuff",
-                  "axis": "runSpeed",
-                  "scale": 1,
-                  "table": "Melee_SpeedRunning",
-                  "ignoreStrength": true
-                }
-              ],
-              "recharge": 0,
-              "castTime": 0,
-              "activatePeriod": 0.2,
-              "effectArea": "Sphere",
-              "targetsAffected": [
-                "Foe"
-              ],
-              "radius": 25,
-              "maxTargets": 10
-            }
-          ]
-        }
-      ],
-      "entity": "PL_StaticObject"
-    }
+  "summon": {
+    "copyBoosts": true,
+    "displayName": "Rain of Fire",
+    "duration": 15,
+    "isPseudoPet": true,
+    "powers": [
+      "Pets.RainofFire_Sentinel.Avoid",
+      "Pets.RainofFire_Sentinel.RainofFire"
+    ],
+    "resolvedEntities": [
+      {
+        "displayName": "Rain of Fire",
+        "duration": 15,
+        "copyCreatorMods": true,
+        "abilities": [
+          {
+            "name": "RainofFire",
+            "displayName": "RainofFire",
+            "type": "Auto",
+            "damage": [
+              {
+                "damageType": "Fire",
+                "scale": 0.0218,
+                "table": "Melee_Damage"
+              },
+              {
+                "damageType": "Fire",
+                "scale": 0.0218,
+                "table": "Melee_InherentDamage"
+              }
+            ],
+            "effects": [
+              {
+                "type": "Slow",
+                "axis": "runSpeed",
+                "scale": 0.4,
+                "table": "Melee_Slow",
+                "ignoreStrength": true
+              },
+              {
+                "type": "Slow",
+                "axis": "jumpHeight",
+                "scale": 0.4,
+                "table": "Melee_Slow",
+                "ignoreStrength": true
+              },
+              {
+                "type": "Slow",
+                "axis": "jumpSpeed",
+                "scale": 0.4,
+                "table": "Melee_Slow"
+              },
+              {
+                "type": "Slow",
+                "axis": "flySpeed",
+                "scale": 0.3,
+                "table": "Melee_Slow",
+                "ignoreStrength": true
+              },
+              {
+                "type": "MovementCapDebuff",
+                "axis": "runSpeed",
+                "scale": 1,
+                "table": "Melee_SpeedRunning",
+                "ignoreStrength": true
+              }
+            ],
+            "recharge": 0,
+            "castTime": 0,
+            "activatePeriod": 0.2,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "Foe"
+            ],
+            "radius": 25,
+            "maxTargets": 10
+          }
+        ]
+      }
+    ],
+    "entity": "PL_StaticObject"
   },
   "atoms": [
     ["EntCreate",null,1,1,15,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,15]

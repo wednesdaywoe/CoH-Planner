@@ -53,23 +53,6 @@ export const EnfeeblingLullaby: Power = {
     "scale": 0.2,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 15,
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 2,
-      "table": "Melee_Debuff_Dam"
-    },
-    "durations": {
-      "damageDebuff": 15
-    },
-    "sleep": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 12,
-      "table": "Ranged_Sleep"
-    }
-  },
   "atoms": [
     ["Damage","Psionic",0.2,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["DamageBuff","Smashing",2,1,15,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],

@@ -69,12 +69,6 @@ export const Upheaval: Power = {
       "table": "Melee_HealSelf"
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",1,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,["cur.kMeter","source>","1","*","1.3","+","@StdResult","*"],null,null,null,"Damage",null,null,["Foe"]],
     ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones",null,null,["Foe"]],
@@ -101,58 +95,6 @@ export const Upheaval: Power = {
       "damageTypes": [
         "Lethal"
       ],
-      "effects": {
-        "buffDuration": 8,
-        "durations": {
-          "resistanceDebuff": 8
-        },
-        "knockback": {
-          "scale": 0.67,
-          "table": "Melee_Ones"
-        },
-        "resistanceDebuff": {
-          "cold": {
-            "ignoreStrength": true,
-            "scale": 1.5,
-            "table": "Melee_Res_DMG"
-          },
-          "energy": {
-            "ignoreStrength": true,
-            "scale": 1.5,
-            "table": "Melee_Res_DMG"
-          },
-          "fire": {
-            "ignoreStrength": true,
-            "scale": 1.5,
-            "table": "Melee_Res_DMG"
-          },
-          "lethal": {
-            "ignoreStrength": true,
-            "scale": 1.5,
-            "table": "Melee_Res_DMG"
-          },
-          "negative": {
-            "ignoreStrength": true,
-            "scale": 1.5,
-            "table": "Melee_Res_DMG"
-          },
-          "psionic": {
-            "ignoreStrength": true,
-            "scale": 1.5,
-            "table": "Melee_Res_DMG"
-          },
-          "smashing": {
-            "ignoreStrength": true,
-            "scale": 1.5,
-            "table": "Melee_Res_DMG"
-          },
-          "toxic": {
-            "ignoreStrength": true,
-            "scale": 1.5,
-            "table": "Melee_Res_DMG"
-          }
-        }
-      },
       "shortHelp": "PBAoE, Special DMG, Foe Knockdown, -All Primal Energy",
       "description": "You channel the forces of nature and release them shattering the earth beneath you sending shards of stone and debris out at nearby foes causing high damage and potentially knocking them down. In primal (human) form you will deal smashing damage and will heal yourself and up to 3 nearby allies for a large amount of health. In Hunter form you'll deal lethal damage and reduce the targets' resistance slightly. In Prowler form you'll deal lethal damage, cause minor lethal damage over time and have a high chance to stun. Upheaval will deal high damage if the user has no Primal Energy, however it will deal additional damage for each charge of Primal Energies the user owns. Upheaval consumes all Primal Energies. Damage: Special, Recharge: Long",
       "effectArea": "AoE",
@@ -219,18 +161,6 @@ export const Upheaval: Power = {
       "damageTypes": [
         "Lethal"
       ],
-      "effects": {
-        "knockback": {
-          "scale": 0.67,
-          "table": "Melee_Ones"
-        },
-        "stun": {
-          "attribType": "Duration",
-          "mag": 2,
-          "scale": 5,
-          "table": "Melee_Stun"
-        }
-      },
       "shortHelp": "PBAoE, Special DMG, Foe Knockdown, -All Primal Energy",
       "description": "You channel the forces of nature and release them shattering the earth beneath you sending shards of stone and debris out at nearby foes causing high damage and potentially knocking them down. In primal (human) form you will deal smashing damage and will heal yourself and up to 3 nearby allies for a large amount of health. In Hunter form you'll deal lethal damage and reduce the targets' resistance slightly. In Prowler form you'll deal lethal damage, cause minor lethal damage over time and have a high chance to stun. Upheaval will deal high damage if the user has no Primal Energy, however it will deal additional damage for each charge of Primal Energies the user owns. Upheaval consumes all Primal Energies. Damage: Special, Recharge: Long",
       "effectArea": "AoE",

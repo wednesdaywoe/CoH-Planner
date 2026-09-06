@@ -55,59 +55,6 @@ export const AcidArrow: Power = {
     "duration": 20,
     "tickRate": 1
   },
-  "effects": {
-    "buffDuration": 20,
-    "defenseDebuff": {
-      "scale": 2,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 20,
-      "resistanceDebuff": 20
-    },
-    "resistanceDebuff": {
-      "cold": {
-        "ignoreStrength": true,
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
-        "ignoreStrength": true,
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "fire": {
-        "ignoreStrength": true,
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "lethal": {
-        "ignoreStrength": true,
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "negative": {
-        "ignoreStrength": true,
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "psionic": {
-        "ignoreStrength": true,
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "smashing": {
-        "ignoreStrength": true,
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "toxic": {
-        "ignoreStrength": true,
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["Damage","Toxic",0.01,1,20,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
     ["Resistance","Smashing",-3,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_Dmg"],

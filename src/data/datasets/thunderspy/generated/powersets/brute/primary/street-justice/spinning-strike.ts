@@ -73,16 +73,6 @@ export const SpinningStrike: Power = {
       ]
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.77,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Combo_Level_1","source.ownPower?","!","Temporary_Powers.Temporary_Powers.Combo_Level_2","source.ownPower?","!","&&","Temporary_Powers.Temporary_Powers.Combo_Level_3","source.ownPower?","!","&&","enttype","target>","critter","eq","&&"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Smashing",0.77,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Combo_Level_1","source.ownPower?","!","Temporary_Powers.Temporary_Powers.Combo_Level_2","source.ownPower?","!","&&","Temporary_Powers.Temporary_Powers.Combo_Level_3","source.ownPower?","!","&&","enttype","target>","critter","eq","&&"],null,null,null,null,null,null,null,null,null,"Damage",null,null,null,0.4],

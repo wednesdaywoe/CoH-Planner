@@ -48,14 +48,12 @@ export const SeekerDrones: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "duration": 240,
-      "entity": "Pets_Traps_Seeker1",
-      "entityCount": 2,
-      "isPseudoPet": false
-    }
+  "summon": {
+    "copyBoosts": true,
+    "duration": 240,
+    "entity": "Pets_Traps_Seeker1",
+    "entityCount": 2,
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,1,1,240,"Ranged_Level","Cur","Magnitude","Target","Any",false,"StackThenIgnore",3,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240],

@@ -42,13 +42,11 @@ export const IceSlick: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "duration": 30,
-      "entity": "Pets_IceSlick",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "copyBoosts": true,
+    "duration": 30,
+    "entity": "Pets_IceSlick",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,-1,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,30]

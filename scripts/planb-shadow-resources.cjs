@@ -70,7 +70,7 @@ function norm(v) {
 }
 const eq = (a, b) => a.scale === b.scale && a.perTarget === b.perTarget;
 
-const stats = { powers: 0, checked: 0, agree: 0, punts: 0 };
+const stats = { powers: 0, noBag: 0, checked: 0, agree: 0, punts: 0 };
 const findings = [];
 const punts = [];
 
@@ -78,6 +78,8 @@ function checkPower(dataset, power, genPath) {
   const name = power.name || genPath;
   if (POWER_FILTER && !name.toLowerCase().includes(POWER_FILTER.toLowerCase())) return;
   stats.powers++;
+  // STRIP-1 (BPORT7) removed the bag this gate compares against; bag-less powers are vacuous rows, named in the tail.
+  if (!power.effects || !Object.keys(power.effects).length) { stats.noBag++; return; }
   const eff = power.effects || {};
 
   for (const { slot, fn } of SLOTS) {
@@ -108,6 +110,9 @@ function sweep(dataset) {
 
 for (const ds of DATASETS) sweep(ds);
 
+// Every swept power bag-less: the run checks nothing and the tail names it.
+const VACUOUS = stats.powers > 0 && stats.noBag === stats.powers;
+
 console.log(`\nPlan B Slice 6 — regen/recovery reconstruction (regenBuff + recoveryBuff + both twins)`);
 console.log(`  powers swept:  ${stats.powers}`);
 console.log(`  checked:       ${stats.checked}   (atom returned a value — gated)`);
@@ -136,4 +141,9 @@ if (findings.length) {
   console.log('\nFAIL — atom-derived regen/recovery diverges from the bag. Fix before migrating the applier.');
   process.exit(1);
 }
-console.log('\nOK — every atom-derived regen/recovery value reproduces the bag corpus-wide.');
+if (VACUOUS) {
+  console.log(`\nVACUOUS — bag absent: ${stats.noBag} powers swept, 0 checks — vacuous post-STRIP-1.`);
+  console.log('   The atom side is graded by the converter gates, not here.');
+} else {
+  console.log('\nOK — every atom-derived regen/recovery value reproduces the bag corpus-wide.');
+}

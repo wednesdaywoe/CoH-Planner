@@ -44,14 +44,6 @@ export const MassConfusion: Power = {
     "Controller Archetype Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "confuse": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 20,
-      "table": "Ranged_Immobilize"
-    }
-  },
   "atoms": [
     ["Mez","Confused",20,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Immobilize"],
     ["Mez","Confused",15,1,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Immobilize"],

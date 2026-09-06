@@ -55,27 +55,6 @@ export const SoulDrain: Power = {
     "scale": 1,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "buffDuration": 30,
-    "damageBuff": {
-      "scale": 4.8,
-      "table": "Melee_Buff_Dmg",
-      "perTarget": 0.8
-    },
-    "durations": {
-      "damageBuff": 30,
-      "tohitBuff": 30
-    },
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    },
-    "tohitBuff": {
-      "scale": 1.2,
-      "table": "Melee_Buff_ToHit",
-      "perTarget": 0.2
-    }
-  },
   "atoms": [
     ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
     ["ToHit",null,0.2,1,30,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.2,null,null,null,null,null,null,null,"Buff_ToHit"],

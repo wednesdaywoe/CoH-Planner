@@ -44,22 +44,6 @@ export const FlashArrow: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 60,
-    "durations": {
-      "perceptionDebuff": 60,
-      "tohitDebuff": 60
-    },
-    "perceptionDebuff": {
-      "scale": 0.9,
-      "table": "Ranged_Ones"
-    },
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_Debuff_ToHit",
-      "unresistable": true
-    }
-  },
   "atoms": [
     ["ToHit",null,0.75,1,60,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["ToHit",null,0.75,1,60,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

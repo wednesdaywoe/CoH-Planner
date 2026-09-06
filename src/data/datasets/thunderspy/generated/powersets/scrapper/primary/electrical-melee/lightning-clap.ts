@@ -47,18 +47,6 @@ export const LightningClap: Power = {
     "Stuns"
   ],
   "maxSlots": 6,
-  "effects": {
-    "knockback": {
-      "scale": 2,
-      "table": "Melee_Knockback"
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 2,
-      "scale": 8,
-      "table": "Melee_Stun"
-    }
-  },
   "atoms": [
     ["Mez","Stunned",8,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Stun"],
     ["Mez","Stunned",8,1,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Stun"],

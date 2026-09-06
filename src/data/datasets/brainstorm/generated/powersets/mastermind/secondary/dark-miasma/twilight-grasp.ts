@@ -50,28 +50,6 @@ export const TwilightGrasp: Power = {
     "scale": 1.7616,
     "table": "Ranged_Heal"
   },
-  "effects": {
-    "buffDuration": 20,
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 1,
-      "table": "Ranged_Debuff_Dam"
-    },
-    "durations": {
-      "damageDebuff": 20,
-      "regenDebuff": 20,
-      "tohitDebuff": 20
-    },
-    "regenDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    },
-    "tohitDebuff": {
-      "scale": 0.5,
-      "table": "Ranged_Debuff_ToHit"
-    }
-  },
   "atoms": [
     ["ToHit",null,0.5,1,20,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["DamageBuff","Smashing",1,1,20,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],

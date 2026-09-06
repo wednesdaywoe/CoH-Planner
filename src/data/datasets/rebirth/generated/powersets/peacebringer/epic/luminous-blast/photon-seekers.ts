@@ -44,25 +44,23 @@ export const PhotonSeekers: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "duration": 60,
-      "entities": [
-        {
-          "count": 1,
-          "entity": "Pets_LightDrone1"
-        },
-        {
-          "count": 1,
-          "entity": "Pets_LightDrone2"
-        },
-        {
-          "count": 1,
-          "entity": "Pets_LightDrone3"
-        }
-      ],
-      "isPseudoPet": false
-    }
+  "summon": {
+    "duration": 60,
+    "entities": [
+      {
+        "count": 1,
+        "entity": "Pets_LightDrone1"
+      },
+      {
+        "count": 1,
+        "entity": "Pets_LightDrone2"
+      },
+      {
+        "count": 1,
+        "entity": "Pets_LightDrone3"
+      }
+    ],
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,1,1,60,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,60],

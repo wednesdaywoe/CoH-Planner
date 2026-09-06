@@ -34,48 +34,6 @@ export const ForceAffinity: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 10.25,
-    "durations": {
-      "enduranceDiscount": 10.25,
-      "resistance": 10.25
-    },
-    "enduranceDiscount": {
-      "ignoreStrength": true,
-      "scale": 0.35,
-      "table": "Melee_Ones"
-    },
-    "resistance": {
-      "cold": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 0.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "smashing": {
-        "scale": 0.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["Resistance","Smashing",0.5,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_Dmg"],
     ["Resistance","Lethal",0.5,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_Dmg"],

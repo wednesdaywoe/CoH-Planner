@@ -43,21 +43,19 @@ export const DimensionShift: Power = {
     "Universal Control Duration Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "duration": 20,
-      "entities": [
-        {
-          "count": 1,
-          "entity": "Pets_Dimension_Shift"
-        },
-        {
-          "count": 1,
-          "entity": "Pets_Dimension_Shift_Phased"
-        }
-      ],
-      "isPseudoPet": false
-    }
+  "summon": {
+    "duration": 20,
+    "entities": [
+      {
+        "count": 1,
+        "entity": "Pets_Dimension_Shift"
+      },
+      {
+        "count": 1,
+        "entity": "Pets_Dimension_Shift_Phased"
+      }
+    ],
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,-1,1,20,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Ignore",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,0.5,null,null,null,null,"OnActivate",20],

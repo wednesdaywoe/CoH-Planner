@@ -44,30 +44,6 @@ export const BeyondTheVeilAlive: Power = {
     "duration": 0.5,
     "tickRate": 1
   },
-  "effects": {
-    "buffDuration": 15,
-    "durations": {
-      "recoveryBuff": 15,
-      "untouchable": 15
-    },
-    "enduranceDrain": {
-      "scale": 0.1,
-      "table": "Ranged_Ones"
-    },
-    "enduranceGain": {
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 2,
-      "table": "Ranged_Ones"
-    },
-    "untouchable": {
-      "ignoreStrength": true,
-      "scale": 10,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Mez","Untouchable",10,1,15,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["Recovery",null,2,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],

@@ -41,66 +41,6 @@ export const TRMindLink: Power = {
     "To Hit Buff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 90,
-    "defenseBuff": {
-      "aoe": {
-        "scale": 0.8,
-        "table": "Melee_Buff_Def"
-      },
-      "cold": {
-        "scale": 0.8,
-        "table": "Melee_Buff_Def"
-      },
-      "energy": {
-        "scale": 0.8,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
-        "scale": 0.8,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.8,
-        "table": "Melee_Buff_Def"
-      },
-      "melee": {
-        "scale": 0.8,
-        "table": "Melee_Buff_Def"
-      },
-      "negative": {
-        "scale": 0.8,
-        "table": "Melee_Buff_Def"
-      },
-      "psionic": {
-        "scale": 0.8,
-        "table": "Melee_Buff_Def"
-      },
-      "ranged": {
-        "scale": 0.8,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0.8,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 90,
-      "resistance": 90,
-      "tohitBuff": 90
-    },
-    "resistance": {
-      "psionic": {
-        "scale": 3,
-        "table": "Melee_Res_DMG"
-      }
-    },
-    "tohitBuff": {
-      "scale": 0.5,
-      "table": "Melee_Buff_ToHit"
-    }
-  },
   "atoms": [
     ["ToHit",null,0.5,1,90,"Melee_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_ToHit"],
     ["Resistance","Psionic",3,1,90,"Melee_Res_DMG","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],

@@ -57,60 +57,6 @@ export const Placate: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 5,
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 2,
-      "table": "Melee_Debuff_Dam"
-    },
-    "durations": {
-      "damageDebuff": 5,
-      "resistanceDebuff": 5
-    },
-    "resistanceDebuff": {
-      "cold": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Res_DMG"
-      },
-      "energy": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Res_DMG"
-      },
-      "fire": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Res_DMG"
-      },
-      "lethal": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Res_DMG"
-      },
-      "negative": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Res_DMG"
-      },
-      "psionic": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Res_DMG"
-      },
-      "smashing": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Res_DMG"
-      },
-      "toxic": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Res_DMG"
-      }
-    }
-  },
   "atoms": [
     ["DamageBuff","Smashing",2,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Lethal",2,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],

@@ -41,41 +41,6 @@ export const TimeStop: Power = {
     "Holds"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 20,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.143,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 9.67,
-      "regenDebuff": 20,
-      "specialBuff": 20
-    },
-    "hold": {
-      "attribType": "Duration",
-      "mag": 2,
-      "scale": 10,
-      "table": "Ranged_Immobilize"
-    },
-    "regenDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    },
-    "specialBuff": {
-      "heal": {
-        "ignoreStrength": true,
-        "scale": 0.25,
-        "table": "Ranged_Stun"
-      }
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff"
-    ]
-  },
   "atoms": [
     ["Mez","Held",10,2,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Mez","Held",6,1,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

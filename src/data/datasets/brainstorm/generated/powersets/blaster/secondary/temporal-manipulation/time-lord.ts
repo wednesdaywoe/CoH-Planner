@@ -34,46 +34,6 @@ export const TimeLord: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "debuffResistance": {
-      "movement": {
-        "ignoreStrength": true,
-        "scale": 0.6,
-        "table": "Melee_Ones"
-      },
-      "recharge": {
-        "ignoreStrength": true,
-        "scale": 0.6,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "debuffResistance": 0.75,
-      "rechargeBuff": 0.75,
-      "resistance": 0.75,
-      "stun": 0.75
-    },
-    "effectDuration": 0.75,
-    "rechargeBuff": {
-      "ignoreStrength": true,
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
-    "resistance": {
-      "energy": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "stun": {
-      "attribType": "Magnitude",
-      "ignoreStrength": true,
-      "mag": 1,
-      "scale": -10,
-      "table": "Melee_Res_Boolean"
-    }
-  },
   "atoms": [
     ["RechargeTime",null,0.2,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Movement","Run",0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],

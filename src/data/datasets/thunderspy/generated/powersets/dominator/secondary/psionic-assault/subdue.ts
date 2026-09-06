@@ -50,25 +50,6 @@ export const Subdue: Power = {
     "scale": 2.28,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 8,
-    "durations": {
-      "resistanceDebuff": 8
-    },
-    "immobilize": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 6,
-      "table": "Ranged_Immobilize"
-    },
-    "resistanceDebuff": {
-      "psionic": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["Damage","Psionic",2.28,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Mez","Immobilized",6,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Immobilize"],

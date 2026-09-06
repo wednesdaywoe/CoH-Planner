@@ -53,21 +53,19 @@ export const Liquefy: Power = {
     "Universal Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "duration": 30,
-      "entities": [
-        {
-          "count": 1,
-          "entity": "Pets_Liquefy_MM"
-        },
-        {
-          "count": 1,
-          "entity": "Pets_ShockMM"
-        }
-      ],
-      "isPseudoPet": false
-    }
+  "summon": {
+    "duration": 30,
+    "entities": [
+      {
+        "count": 1,
+        "entity": "Pets_Liquefy_MM"
+      },
+      {
+        "count": 1,
+        "entity": "Pets_ShockMM"
+      }
+    ],
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,-1,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,30],

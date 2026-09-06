@@ -46,21 +46,11 @@ export const SoulAbsorption: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 10,
-    "durations": {
-      "tohitDebuff": 10
-    },
-    "summon": {
-      "copyBoosts": true,
-      "duration": 1,
-      "entity": "Pets_SoulAbsorptionBuff",
-      "isPseudoPet": false
-    },
-    "tohitDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_ToHit"
-    }
+  "summon": {
+    "copyBoosts": true,
+    "duration": 1,
+    "entity": "Pets_SoulAbsorptionBuff",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,-1,1,1,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1],

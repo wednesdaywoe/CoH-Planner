@@ -44,25 +44,10 @@ export const TimeBomb: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 15.5,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.528,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 15.5
-    },
-    "summon": {
-      "duration": 21,
-      "entity": "Pets_Bomb",
-      "isPseudoPet": false
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff"
-    ]
+  "summon": {
+    "duration": 21,
+    "entity": "Pets_Bomb",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,1,1,21,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,21],

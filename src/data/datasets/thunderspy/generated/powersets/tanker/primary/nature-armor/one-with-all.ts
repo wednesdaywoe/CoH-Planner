@@ -47,54 +47,6 @@ export const OneWithAll: Power = {
     "Tanker Archetype Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 30,
-    "durations": {
-      "resistance": 30
-    },
-    "resistance": {
-      "cold": {
-        "scale": 0.07,
-        "table": "Melee_Res_DMG",
-        "perTarget": 0.07
-      },
-      "energy": {
-        "scale": 0.07,
-        "table": "Melee_Res_DMG",
-        "perTarget": 0.07
-      },
-      "fire": {
-        "scale": 0.07,
-        "table": "Melee_Res_DMG",
-        "perTarget": 0.07
-      },
-      "lethal": {
-        "scale": 0.07,
-        "table": "Melee_Res_DMG",
-        "perTarget": 0.07
-      },
-      "negative": {
-        "scale": 0.07,
-        "table": "Melee_Res_DMG",
-        "perTarget": 0.07
-      },
-      "psionic": {
-        "scale": 0.07,
-        "table": "Melee_Res_DMG",
-        "perTarget": 0.07
-      },
-      "smashing": {
-        "scale": 0.07,
-        "table": "Melee_Res_DMG",
-        "perTarget": 0.07
-      },
-      "toxic": {
-        "scale": 0.07,
-        "table": "Melee_Res_DMG",
-        "perTarget": 0.07
-      }
-    }
-  },
   "atoms": [
     ["Damage","Fire",3,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","target.isFriend?","!","&&"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Meta",null,0,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"null"],

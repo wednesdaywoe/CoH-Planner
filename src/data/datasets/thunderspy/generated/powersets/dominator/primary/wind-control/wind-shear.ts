@@ -52,50 +52,6 @@ export const WindShear: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 2.1,
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 1.25,
-      "table": "Melee_Debuff_Dam"
-    },
-    "durations": {
-      "damageDebuff": 2.1,
-      "movementCapDebuff": 2.1,
-      "slow": 2.1,
-      "tohitDebuff": 2.1
-    },
-    "movementCapDebuff": {
-      "runSpeed": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_SpeedRunning"
-      }
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.65,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.65,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.65,
-        "table": "Melee_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.65,
-        "table": "Melee_Slow"
-      }
-    },
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Melee_DeBuff_ToHit"
-    }
-  },
   "atoms": [
     ["ToHit",null,0.75,1,2.1,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"DeBuff_ToHit"],
     ["Movement","JumpHeight",0.65,1,2.1,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],

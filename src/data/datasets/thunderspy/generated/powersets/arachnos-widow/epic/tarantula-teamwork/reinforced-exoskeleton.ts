@@ -44,48 +44,6 @@ export const ReinforcedExoskeleton: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "absorb": {
-      "appliesStrength": true,
-      "maxHPFraction": 0.015,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 0.75,
-    "durations": {
-      "absorb": 0.75,
-      "resistance": 0.75
-    },
-    "resistance": {
-      "cold": {
-        "scale": 2,
-        "table": "Melee_Res_DMG"
-      },
-      "energy": {
-        "scale": 2,
-        "table": "Melee_Res_DMG"
-      },
-      "fire": {
-        "scale": 2,
-        "table": "Melee_Res_DMG"
-      },
-      "lethal": {
-        "scale": 2,
-        "table": "Melee_Res_DMG"
-      },
-      "negative": {
-        "scale": 2,
-        "table": "Melee_Res_DMG"
-      },
-      "smashing": {
-        "scale": 2,
-        "table": "Melee_Res_DMG"
-      },
-      "toxic": {
-        "scale": 2,
-        "table": "Melee_Res_DMG"
-      }
-    }
-  },
   "atoms": [
     ["Resistance","Smashing",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Resistance","Lethal",2,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],

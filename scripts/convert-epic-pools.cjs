@@ -21,6 +21,7 @@ const {
   BOOST_TYPE_MAP,
   SET_CATEGORY_MAP,
   extractEffects,
+  extractPowerSummon,
   extractDamage,
   extractFormVariants,
   extractGrantEdges,
@@ -232,30 +233,6 @@ function convertEpicPower(rawJson, rank, availableLevel) {
     power.effectArea = EFFECT_AREA_MAP[rawJson.effect_area] ?? rawJson.effect_area;
   }
 
-  // Effects object (legacy format: stats mixed in with effects)
-  const effects = {};
-
-  // Stats
-  if (rawJson.accuracy) effects.accuracy = rawJson.accuracy;
-  if (rawJson.range) effects.range = rawJson.range;
-  if (rawJson.recharge_time) effects.recharge = rawJson.recharge_time;
-  if (rawJson.endurance_cost) effects.endurance = rawJson.endurance_cost;
-  if (rawJson.activation_time) effects.activationTime = rawJson.activation_time;
-  // Toggle tick period — endurance/sec = endurance / activatePeriod. Missing this
-  // field made every epic/patron toggle's endurance display fall back to 0.5s and
-  // overcount cost (Oppressive Gloom showed 0.31/s instead of its true 0.08/s, since
-  // its real tick period is 2.0s not 0.5s). Mirrors convert-pool-powers.cjs.
-  if (rawJson.activate_period) effects.activatePeriod = rawJson.activate_period;
-  if (rawJson.effect_area && rawJson.effect_area !== 'None') {
-    // Bin format uses "Sphere" for what the planner calls "AoE"; normalize.
-    effects.effectArea = EFFECT_AREA_MAP[rawJson.effect_area] ?? rawJson.effect_area;
-  }
-  if (rawJson.radius && rawJson.radius > 0) effects.radius = rawJson.radius;
-  if (rawJson.arc && rawJson.arc > 0) effects.arc = rawJson.arc;
-  if (rawJson.max_targets_hit && rawJson.max_targets_hit > 0) {
-    effects.maxTargets = rawJson.max_targets_hit;
-  }
-
   // Extract effects from raw JSON using recursive template collection.
   //
   // `collectBaseTemplates` (shared with convert-powerset.cjs) covers BOTH shapes: a
@@ -272,15 +249,6 @@ function convertEpicPower(rawJson, rank, availableLevel) {
     const damage = extractDamage(allTemplates);
     if (damage) {
       power.damage = damage;
-      effects.damage = damage;
-    }
-
-    // All other effects
-    const extractedEffects = extractEffects(allTemplates, undefined, rawJson.targets_affected);
-    if (Object.keys(extractedEffects).length > 0) {
-      for (const [key, value] of Object.entries(extractedEffects)) {
-        effects[key] = value;
-      }
     }
 
     // Per-target stacking (Soul Drain / Spirit Drain's +ToHit/+Damage per foe hit).
@@ -294,8 +262,17 @@ function convertEpicPower(rawJson, rank, availableLevel) {
     // Must run BEFORE the atom emit below: `computeAoePerTargetPatches` stamps
     // `_perTargetIncrement` on the templates, and `encodeAtomsForEmit` copies it onto
     // the atom (see AtomicEffect.perTarget). Reversing the order silently drops the stamp.
-    const stackingResult = detectStackingEffects(rawJson);
-    if (stackingResult) mergeStackingPatches(effects, stackingResult);
+    // detectStackingEffects stamps _perTargetIncrement on the templates (atom path);
+    // the bag it once patched is gone (atom1-13).
+    detectStackingEffects(rawJson);
+
+    // The pets. This partition reached `extractSummon` through the bag and nothing else, so
+    // retiring the bag took every epic and patron summon with it — 50 records per fork, the
+    // whole patron tier (Summon Widow, Mu Guardian, the Coralax) plus the epic rains, showing
+    // no pet and folding no aura (ENT-22). Same address as convert-powerset.cjs's, so one
+    // reader answers for both partitions.
+    const summon = extractPowerSummon(allTemplates, rawJson.name);
+    if (summon) power.summon = summon;
 
   }
 
@@ -310,15 +287,13 @@ function convertEpicPower(rawJson, rank, availableLevel) {
   if (quickSnipe) {
     power.quickSnipe = quickSnipe;
     const base = extractSnipeBaseTiming(rawJson);
-    // Into `stats` AND the legacy bag keys, for as long as both shapes ship. The mint above
-    // reads the redirect SHELL's timing, which is the fast anim; the base is the slow form's.
+    // Into `stats`. The legacy bag keys are gone (atom1-13). The mint above reads the
+    // redirect SHELL's timing, which is the fast anim; the base is the slow form's.
     if (base?.castTime != null) {
       power.stats.castTime = base.castTime;
-      effects.activationTime = base.castTime;
     }
     if (base?.interruptTime != null) {
       power.stats.interruptTime = base.interruptTime;
-      effects.interruptTime = base.interruptTime;
     }
     // A root time carried over from the (unread) shell would contradict the base cast.
     if (base?.timeToRoot != null) power.stats.timeToRoot = base.timeToRoot;
@@ -366,8 +341,6 @@ function convertEpicPower(rawJson, rank, availableLevel) {
     }
   }
 
-  power.effects = effects;
-
   // Conditional bonus effects (Mechanic Adjusters) — the same emit convert-powerset.cjs and
   // convert-pool-powers.cjs run, and for the same reason placed AFTER the atom block: the
   // extractor stamps `_perTargetIncrement` on the templates it patches and `encodeAtomsForEmit`
@@ -387,8 +360,14 @@ function convertEpicPower(rawJson, rank, availableLevel) {
   // no less exposed than a powerset one. Hibernate and Rise of the Phoenix shipped a recovered
   // `immobilize` on `["Self"]` powers because of it.
   if (datasetId === 'thunderspy') {
-    guardThunderspyOnesBuffs(power, rawJson.targets_affected);
-    guardThunderspyAppliedMez(power, rawJson.targets_affected);
+    // The guards read the effects PROJECTION to decide which slots are Thunderspy target-trap
+    // artifacts, then stamp the atoms behind them. The bag is no longer emitted on the power,
+    // so it is computed here for the guards alone and thrown away — dropping the computation
+    // along with the emission is what silently retired both guards and let the trapped rows
+    // reach the engine on the atoms (TSPY-10, and it re-opened TWIN-2's widening).
+    const guardBag = extractEffects(allTemplates, undefined, rawJson.targets_affected);
+    guardThunderspyOnesBuffs(power, rawJson.targets_affected, guardBag);
+    guardThunderspyAppliedMez(power, rawJson.targets_affected, guardBag);
   }
 
   return power;

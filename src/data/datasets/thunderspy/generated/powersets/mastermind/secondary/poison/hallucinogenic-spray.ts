@@ -46,51 +46,6 @@ export const HallucinogenicSpray: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 20,
-    "durations": {
-      "movementCapDebuff": 20,
-      "rechargeDebuff": 20,
-      "slow": 20
-    },
-    "fear": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Fear"
-    },
-    "movementCapDebuff": {
-      "runSpeed": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_SpeedRunning"
-      }
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.65,
-      "table": "Ranged_Slow"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.65,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.65,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.65,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.65,
-        "table": "Ranged_Slow"
-      }
-    }
-  },
   "atoms": [
     ["RechargeTime",null,0.65,1,20,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
     ["Movement","JumpHeight",0.65,1,20,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],

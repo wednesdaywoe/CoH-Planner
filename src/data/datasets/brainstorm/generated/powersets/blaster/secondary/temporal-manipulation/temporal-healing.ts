@@ -44,39 +44,6 @@ export const TemporalHealing: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "absorb": {
-      "scale": 0.15,
-      "table": "Melee_HealSelf"
-    },
-    "buffDuration": 2.25,
-    "debuffResistance": {
-      "movement": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "recharge": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "regeneration": {
-        "ignoreStrength": true,
-        "scale": 0.5,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "durations": {
-      "absorb": 12,
-      "debuffResistance": 2.25,
-      "recoveryBuff": 2.25
-    },
-    "recoveryBuff": {
-      "scale": 0.5,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Recovery",null,0.5,1,2.25,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["Movement","Run",0.2,1,2.25,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],

@@ -47,12 +47,10 @@ export const ShadowField: Power = {
     "Universal Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "duration": 45,
-      "entity": "Pets_Shadow_Field_Dominator",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "duration": 45,
+    "entity": "Pets_Shadow_Field_Dominator",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,1,1,45,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kStealth","source>","0.5","<="],null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,45],

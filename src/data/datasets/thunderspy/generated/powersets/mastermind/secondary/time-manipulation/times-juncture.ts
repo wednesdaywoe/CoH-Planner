@@ -48,50 +48,6 @@ export const TimesJuncture: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 1,
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 2,
-      "table": "Ranged_Debuff_Dam"
-    },
-    "durations": {
-      "damageDebuff": 1,
-      "movementCapDebuff": 1,
-      "slow": 1,
-      "tohitDebuff": 1
-    },
-    "movementCapDebuff": {
-      "runSpeed": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
-      }
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      }
-    },
-    "tohitDebuff": {
-      "scale": 1.25,
-      "table": "Ranged_DeBuff_ToHit"
-    }
-  },
   "atoms": [
     ["ToHit",null,1.25,1,1,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?","!"],null,null,null,null,null,null,null,null,null,"DeBuff_ToHit"],
     ["Movement","Run",0.3,1,1,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff","target.ownPower?","!"],null,null,null,null,null,null,null,null,null,"Slow"],

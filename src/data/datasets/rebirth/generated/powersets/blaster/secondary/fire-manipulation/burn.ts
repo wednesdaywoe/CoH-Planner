@@ -49,36 +49,10 @@ export const Burn: Power = {
     "scale": 1.6,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "buffDuration": 9.53,
-    "damageBuff": {
-      "scale": 0.061,
-      "table": "Melee_Ones",
-      "perTarget": 0.061
-    },
-    "durations": {
-      "damageBuff": 9.53
-    },
-    "immobilize": {
-      "attribType": "Duration",
-      "ignoreStrength": true,
-      "mag": -15,
-      "scale": 100,
-      "table": "Melee_Res_Boolean",
-      "toWho": "Self"
-    },
-    "mezResistance": {
-      "immobilize": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "summon": {
-      "duration": 10,
-      "entity": "Pets_Burn",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "duration": 10,
+    "entity": "Pets_Burn",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,1,1,10,"Melee_Level","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,10],

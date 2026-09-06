@@ -57,20 +57,6 @@ export const SolarFlare: Power = {
     "scale": 1.42,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "buffDuration": 10,
-    "defenseDebuff": {
-      "scale": 2,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "knockback": {
-      "scale": 2,
-      "table": "Melee_Knockback"
-    }
-  },
   "atoms": [
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Constant","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kPeacebringer_Tanker_Mode","source.Mode?","!"],null,null,null,null,null,null,null,null,null,"Ones",null,"power_redirect"],
     ["Damage","Energy",1.42,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
@@ -102,24 +88,6 @@ export const SolarFlare: Power = {
         "type": "Energy",
         "scale": 0.9,
         "table": "Melee_SSDamage"
-      },
-      "effects": {
-        "buffDuration": 10,
-        "defenseDebuff": {
-          "scale": 2,
-          "table": "Melee_Debuff_Def"
-        },
-        "durations": {
-          "defenseDebuff": 10
-        },
-        "knockback": {
-          "scale": 0.67,
-          "table": "Melee_Ones"
-        },
-        "taunt": {
-          "scale": 1,
-          "table": "Melee_InherentTaunt"
-        }
       },
       "shortHelp": "PBAoE Melee, High DMG(Energy), Foe -DEF, Knockback",
       "description": "You channel the might of your Kheldian energy into the very Earth itself.  The ground erupts and cracks with luminous energy, blasting all nearby foes, knocking them back and reducing their defense. This power is only available while in White Dwarf Form. Damage: High, Recharge: Slow",

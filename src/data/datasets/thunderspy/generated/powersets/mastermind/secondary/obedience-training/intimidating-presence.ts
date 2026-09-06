@@ -46,20 +46,6 @@ export const IntimidatingPresence: Power = {
     "Immobilize"
   ],
   "maxSlots": 6,
-  "effects": {
-    "fear": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 10,
-      "table": "Ranged_Fear"
-    },
-    "immobilize": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 15,
-      "table": "Melee_Immobilize"
-    }
-  },
   "atoms": [
     ["Mez","Terrorized",10,3,0,"Ranged_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Fear"],
     ["Mez","Immobilized",15,3,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Immobilize"]

@@ -48,17 +48,6 @@ export const NWMentalBlast: Power = {
     "scale": 1.053628,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 6,
-    "durations": {
-      "rechargeDebuff": 6
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.3,
-      "table": "Ranged_Slow"
-    }
-  },
   "atoms": [
     ["Damage","Psionic",1.053628,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["RechargeTime",null,0.3,1,6,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],

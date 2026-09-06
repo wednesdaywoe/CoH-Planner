@@ -63,55 +63,6 @@ export const MassDriver: Power = {
       "tickRate": 1
     }
   ],
-  "effects": {
-    "buffDuration": 12,
-    "durations": {
-      "rechargeDebuff": 12,
-      "resistanceDebuff": 8,
-      "slow": 12
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.15,
-      "table": "Ranged_Slow"
-    },
-    "resistanceDebuff": {
-      "energy": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "lethal": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "smashing": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      }
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.15,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.15,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.15,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.15,
-        "table": "Ranged_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Resistance","Smashing",-1.5,1,8,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Resistance","Lethal",-1.5,1,8,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],

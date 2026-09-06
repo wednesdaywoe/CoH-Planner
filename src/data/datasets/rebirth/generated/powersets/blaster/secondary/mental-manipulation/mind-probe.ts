@@ -47,27 +47,6 @@ export const MindProbe: Power = {
     "scale": 1.64,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "buffDuration": 8.67,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.077,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "damageBuff": 8.67,
-      "rechargeDebuff": 6
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.4,
-      "table": "Melee_Slow"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff"
-    ]
-  },
   "atoms": [
     ["Damage","Psionic",1.64,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["RechargeTime",null,0.4,1,6,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],

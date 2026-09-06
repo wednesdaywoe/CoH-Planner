@@ -57,17 +57,6 @@ export const Combustion: Power = {
       "tickRate": 0.75
     }
   ],
-  "effects": {
-    "buffDuration": 10.5,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.061,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "damageBuff": 10.5
-    }
-  },
   "atoms": [
     ["Damage","Fire",0.5,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Fire",0.1,1,7.1,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.75,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],

@@ -49,13 +49,11 @@ export const Fallout: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "duration": 1,
-      "entity": "Pets_Fallout",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "copyBoosts": true,
+    "duration": 1,
+    "entity": "Pets_Fallout",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,-1,1,1,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1],

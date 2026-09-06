@@ -59,12 +59,6 @@ export const ExplosiveBlast: Power = {
       "table": "Ranged_Damage"
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 2,
-      "table": "Ranged_Knockback"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.27,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Energy",0.63,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],

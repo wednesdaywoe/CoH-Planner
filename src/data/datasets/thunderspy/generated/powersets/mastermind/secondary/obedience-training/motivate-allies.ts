@@ -53,22 +53,6 @@ export const MotivateAllies: Power = {
       "table": "Ranged_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 30,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 4,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "durations": {
-      "damageBuff": 30,
-      "tohitBuff": 30
-    },
-    "tohitBuff": {
-      "scale": 1.5,
-      "table": "Ranged_Buff_ToHit"
-    }
-  },
   "atoms": [
     ["Damage","Psionic",2.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,true,null,null,null,null,["kHitPoints%","target>","50","-","100","<","enttype","target>","critter","eq","&&"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Psionic",2.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,true,null,null,null,null,["kHitPoints%","target>","50","-","100","<","enttype","target>","critter","eq","&&"],null,null,null,null,null,null,null,null,null,"Damage"],

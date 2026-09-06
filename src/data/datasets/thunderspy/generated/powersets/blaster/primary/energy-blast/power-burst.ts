@@ -57,25 +57,6 @@ export const PowerBurst: Power = {
       "table": "Ranged_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 9.5,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.132,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 9.5
-    },
-    "knockback": {
-      "scale": 2,
-      "table": "Ranged_Knockback"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff"
-    ]
-  },
   "atoms": [
     ["Damage","Smashing",0.636,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Energy",1.484,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],

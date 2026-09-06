@@ -51,14 +51,6 @@ export const FRTSubdue: Power = {
     "scale": 1.72795,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "immobilize": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 6,
-      "table": "Ranged_Immobilize"
-    }
-  },
   "atoms": [
     ["Damage","Psionic",1.72795,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Mez","Immobilized",6,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0.8,true,"Immobilize"],

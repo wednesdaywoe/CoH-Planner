@@ -32,30 +32,6 @@ export const AthleticRegulation: Power = {
     "Fly"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 2.25,
-    "debuffResistance": {
-      "defense": {
-        "ignoreStrength": true,
-        "scale": 0.75,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "durations": {
-      "debuffResistance": 2.25,
-      "movement": 2.25
-    },
-    "movement": {
-      "flySpeed": {
-        "scale": 0.075,
-        "table": "Melee_SpeedFlying"
-      },
-      "runSpeed": {
-        "scale": 0.075,
-        "table": "Melee_SpeedRunning"
-      }
-    }
-  },
   "atoms": [
     ["Movement","Run",0.075,1,2.25,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Movement","Fly",0.075,1,2.25,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],

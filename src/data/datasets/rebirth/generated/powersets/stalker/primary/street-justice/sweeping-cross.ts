@@ -68,14 +68,6 @@ export const SweepingCross: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "stun": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 6,
-      "table": "Melee_Stun"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",1.5,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Combo_Level_1","source.ownPower?","!","Temporary_Powers.Temporary_Powers.Combo_Level_2","source.ownPower?","!","&&","Temporary_Powers.Temporary_Powers.Combo_Level_3","source.ownPower?","!","&&","enttype","target>","critter","eq","&&"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Smashing",1.5,1,0,"Melee_Damage","Abs","Expression","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kMeter","source>",".9","<","&&"],null,null,null,null,null,["30","source.TeamSize>","0.03","*","0.07","+","rand",">=","@StdResult","*"],null,null,null,"Damage"],

@@ -45,34 +45,10 @@ export const ShadowSlip: Power = {
     "Universal Travel"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 15,
-    "durations": {
-      "mezResistance": 15,
-      "stealth": 1.5
-    },
-    "mezResistance": {
-      "teleport": {
-        "ignoreStrength": true,
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "stealth": {
-      "translucency": {
-        "scale": 0,
-        "table": "Ranged_Ones"
-      }
-    },
-    "summon": {
-      "duration": 1,
-      "entity": "Pets_TPFoeTauntWide",
-      "isPseudoPet": false
-    },
-    "teleport": {
-      "scale": 2.1,
-      "table": "Ranged_Ones"
-    }
+  "summon": {
+    "duration": 1,
+    "entity": "Pets_TPFoeTauntWide",
+    "isPseudoPet": false
   },
   "atoms": [
     ["Stealth","Translucency",0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],

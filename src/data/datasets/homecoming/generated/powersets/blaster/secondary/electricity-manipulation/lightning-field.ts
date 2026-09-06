@@ -46,27 +46,6 @@ export const LightningField: Power = {
     "Stuns"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 8.73,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.025,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "damageBuff": 8.73
-    },
-    "knockback": {
-      "scale": 1,
-      "table": "Melee_Knockback"
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 2,
-      "scale": 8,
-      "table": "Melee_Stun"
-    }
-  },
   "atoms": [
     ["Mez","Knockback",1,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Mez","Stunned",8,2,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Replace",2,null,null,0.5,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

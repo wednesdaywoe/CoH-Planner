@@ -42,67 +42,6 @@ export const SiphonSpeed: Power = {
     "Universal Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 60,
-    "durations": {
-      "movement": 60,
-      "movementCapDebuff": 60,
-      "rechargeBuff": 60,
-      "rechargeDebuff": 60,
-      "slow": 60
-    },
-    "movement": {
-      "flySpeed": {
-        "scale": 0.85,
-        "table": "Melee_SpeedFlying"
-      },
-      "runSpeed": {
-        "scale": 0.85,
-        "table": "Melee_SpeedRunning"
-      }
-    },
-    "movementCapDebuff": {
-      "runSpeed": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_SpeedRunning"
-      }
-    },
-    "rechargeBuff": {
-      "ignoreStrength": true,
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.5,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.5,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.5,
-        "table": "Melee_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.5,
-        "table": "Melee_Slow"
-      }
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "movement",
-      "rechargeBuff"
-    ]
-  },
   "atoms": [
     ["Movement","Run",0.5,1,60,"Melee_Slow","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
     ["Movement","Fly",0.5,1,60,"Melee_Slow","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],

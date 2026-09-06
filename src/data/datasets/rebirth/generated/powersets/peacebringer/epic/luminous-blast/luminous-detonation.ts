@@ -56,20 +56,6 @@ export const LuminousDetonation: Power = {
     "scale": 0.9,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 10,
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "knockback": {
-      "scale": 2,
-      "table": "Ranged_Knockback"
-    }
-  },
   "atoms": [
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Constant","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kPeacebringer_Blaster_Mode","source.Mode?","!"],null,null,null,null,null,null,null,null,null,"Ones",null,"power_redirect"],
     ["Damage","Energy",0.9,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
@@ -110,20 +96,6 @@ export const LuminousDetonation: Power = {
           "table": "Ranged_SSDamage"
         }
       ],
-      "effects": {
-        "buffDuration": 10,
-        "defenseDebuff": {
-          "scale": 1,
-          "table": "Ranged_Debuff_Def"
-        },
-        "durations": {
-          "defenseDebuff": 10
-        },
-        "knockback": {
-          "scale": 2,
-          "table": "Ranged_Knockback"
-        }
-      },
       "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Smash/Energy), Foe -DEF, Knockback",
       "description": "You hurl a large blast of Kheldian light energy that violently explodes on impact, damaging all foes near the target, reducing their defense. Some affected targets may get knocked back. This power is only available while in Bright Nova Form. Damage: Moderate, Recharge: Slow",
       "effectArea": "AoE",

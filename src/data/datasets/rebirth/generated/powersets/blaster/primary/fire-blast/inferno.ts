@@ -64,17 +64,6 @@ export const Inferno: Power = {
       "cancelOnMiss": true
     }
   ],
-  "effects": {
-    "buffDuration": 10.5,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.042,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 10.5
-    }
-  },
   "atoms": [
     ["Damage","Smashing",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Fire",3,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],

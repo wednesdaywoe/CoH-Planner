@@ -43,67 +43,6 @@ export const PersonalForceField: Power = {
     "Defense Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "defenseBuffSuppressible": {
-      "scale": 7.5,
-      "table": "Melee_Buff_Def"
-    },
-    "durations": {
-      "defenseBuffSuppressible": 0.75,
-      "mezResistance": 0.75,
-      "onlyAffectsSelf": 99999,
-      "resistance": 0.75
-    },
-    "mezResistance": {
-      "teleport": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      }
-    },
-    "onlyAffectsSelf": {
-      "ignoreStrength": true,
-      "scale": 100,
-      "table": "Melee_Ones"
-    },
-    "resistance": {
-      "cold": {
-        "ignoreStrength": true,
-        "scale": 4,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "ignoreStrength": true,
-        "scale": 4,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "ignoreStrength": true,
-        "scale": 4,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "ignoreStrength": true,
-        "scale": 4,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "ignoreStrength": true,
-        "scale": 4,
-        "table": "Melee_Res_Dmg"
-      },
-      "psionic": {
-        "ignoreStrength": true,
-        "scale": 4,
-        "table": "Melee_Res_Dmg"
-      },
-      "smashing": {
-        "ignoreStrength": true,
-        "scale": 4,
-        "table": "Melee_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["Mez","OnlyAffectsSelf",100,1,99999,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,30],
     ["Defense","All",7.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,true,null,null,null,null,null,null,"Buff_Def"],

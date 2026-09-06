@@ -70,41 +70,6 @@ export const Geyser: Power = {
       "tickRate": 0.5
     }
   ],
-  "effects": {
-    "buffDuration": 10.43,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.041,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 10.43,
-      "slow": 10
-    },
-    "knockup": {
-      "scale": 1.5,
-      "table": "Ranged_Ones"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.33,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.33,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.33,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.33,
-        "table": "Ranged_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Fire",1.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],

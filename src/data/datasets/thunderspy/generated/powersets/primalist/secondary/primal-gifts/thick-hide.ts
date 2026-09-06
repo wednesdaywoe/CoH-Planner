@@ -44,39 +44,6 @@ export const ThickHide: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "debuffResistance": {
-      "movement": {
-        "ignoreStrength": true,
-        "scale": 0.4,
-        "table": "Melee_Ones"
-      },
-      "recharge": {
-        "ignoreStrength": true,
-        "scale": 0.4,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "debuffResistance": 0.75,
-      "resistance": 0.75
-    },
-    "resistance": {
-      "cold": {
-        "scale": 3,
-        "table": "Melee_Res_DMG"
-      },
-      "lethal": {
-        "scale": 3,
-        "table": "Melee_Res_DMG"
-      },
-      "smashing": {
-        "scale": 3,
-        "table": "Melee_Res_DMG"
-      }
-    }
-  },
   "atoms": [
     ["Resistance","Smashing",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Res_DMG"],
     ["Resistance","Lethal",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Res_DMG"],

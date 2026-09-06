@@ -37,24 +37,6 @@ export const GuidingLightRootBonus: Power = {
     "duration": 10.25,
     "tickRate": 0.5
   },
-  "effects": {
-    "buffDuration": 10.25,
-    "debuffResistance": {
-      "endurance": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Melee_Res_Boolean"
-      },
-      "recovery": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "durations": {
-      "debuffResistance": 10.25
-    }
-  },
   "atoms": [
     ["Heal",null,0.03,1,10.25,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,0.5,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf"],
     ["Recovery",null,1.5,1,10.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_Boolean"],

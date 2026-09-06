@@ -56,22 +56,6 @@ export const Rebirth: Power = {
       "tickRate": 1
     }
   ],
-  "effects": {
-    "buffDuration": 15,
-    "durations": {
-      "stealth": 15
-    },
-    "enduranceGain": {
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    },
-    "stealth": {
-      "stealthPvE": {
-        "scale": 300,
-        "table": "Melee_Ones"
-      }
-    }
-  },
   "atoms": [
     ["Heal",null,5,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["DeadPlayerFriend"]],
     ["Endurance",null,0.5,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["DeadPlayerFriend"]],

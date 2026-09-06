@@ -63,14 +63,6 @@ export const Roots: Power = {
       "tickRate": 2
     }
   ],
-  "effects": {
-    "immobilize": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.1,1,5.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Lethal",0.1,1,5.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

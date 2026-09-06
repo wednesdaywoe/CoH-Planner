@@ -41,16 +41,10 @@ export const Transference: Power = {
     "Endurance Modification"
   ],
   "maxSlots": 6,
-  "effects": {
-    "enduranceDrain": {
-      "scale": 0.4,
-      "table": "Ranged_Ones"
-    },
-    "summon": {
-      "duration": 1,
-      "entity": "Pets_Transference_Controller",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "duration": 1,
+    "entity": "Pets_Transference_Controller",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,-1,1,1,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,1],

@@ -55,66 +55,6 @@ export const Reconstruction: Power = {
       "tickRate": 1
     }
   ],
-  "effects": {
-    "buffDuration": 90,
-    "durations": {
-      "rechargeBuff": 90,
-      "recoveryBuff": 90,
-      "resistance": 90,
-      "stealth": 15,
-      "untouchable": 15
-    },
-    "enduranceGain": {
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    },
-    "rechargeBuff": {
-      "ignoreStrength": true,
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 2,
-      "table": "Ranged_Ones"
-    },
-    "resistance": {
-      "cold": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "stealth": {
-      "stealthPvE": {
-        "scale": 300,
-        "table": "Melee_Ones"
-      }
-    },
-    "untouchable": {
-      "ignoreStrength": true,
-      "scale": 10,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Heal",null,2.5,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Cur.kHitPoints","source>","0",">"],null,null,null,null,null,null,null,null,null,null,null,null,["Self"]],
     ["Resistance","Fire",0.5,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Cur.kHitPoints","source>","0",">"],null,null,null,null,null,null,null,null,null,null,null,null,["Self"]],

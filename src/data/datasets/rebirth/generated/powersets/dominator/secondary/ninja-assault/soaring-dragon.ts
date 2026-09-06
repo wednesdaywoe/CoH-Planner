@@ -76,20 +76,6 @@ export const SoaringDragon: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 10,
-    "defenseDebuff": {
-      "scale": 0.6,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "knockup": {
-      "scale": 2,
-      "table": "Melee_Knockback"
-    }
-  },
   "atoms": [
     ["Damage","Lethal",1.96,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"NinjaAssault_BoostOff"],
     ["Mez","Knockup",2,1,0,"Melee_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.75,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0.75,null,"Knockback"],

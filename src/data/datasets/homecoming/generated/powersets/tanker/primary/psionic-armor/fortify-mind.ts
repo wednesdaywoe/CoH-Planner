@@ -38,57 +38,6 @@ export const FortifyMind: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "absorb": {
-      "scale": 3,
-      "table": "Melee_HealSelf"
-    },
-    "buffDuration": 45,
-    "debuffResistance": {
-      "endurance": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "recharge": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "recovery": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "regeneration": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "absorb": 30,
-      "debuffResistance": 45,
-      "maxHPBuff": 45,
-      "regenBuff": 45
-    },
-    "maxHPBuff": {
-      "scale": 1,
-      "table": "Melee_HealSelf"
-    },
-    "regenBuff": {
-      "scale": 0.5,
-      "table": "Melee_Ones"
-    },
-    "maxStacks": 3,
-    "stacksLinear": [
-      "absorb",
-      "debuffResistance"
-    ],
-    "stackCaps": {
-      "absorb": 2
-    }
-  },
   "atoms": [
     ["Absorb",null,3,1,30,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"Stack",2,null,null,1],
     ["MaxHP",null,1,1,45,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],

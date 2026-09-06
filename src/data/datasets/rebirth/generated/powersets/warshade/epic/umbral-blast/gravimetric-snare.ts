@@ -66,48 +66,6 @@ export const GravimetricSnare: Power = {
       "tickRate": 2
     }
   ],
-  "effects": {
-    "accuracyBuff": {
-      "scale": 4,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 6,
-    "durations": {
-      "accuracyBuff": 15,
-      "rechargeDebuff": 6,
-      "slow": 6
-    },
-    "immobilize": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.2,
-      "table": "Ranged_Slow"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Constant","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kWarshade_Tanker_Mode","source.Mode?","!"],null,null,null,null,null,null,null,null,null,"Ones",null,"power_redirect"],
     ["Damage","Negative",0.1,1,9.2,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,2,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
@@ -147,45 +105,6 @@ export const GravimetricSnare: Power = {
           "table": "Melee_SSDamage"
         }
       ],
-      "effects": {
-        "buffDuration": 6,
-        "durations": {
-          "rechargeDebuff": 6,
-          "slow": 6
-        },
-        "knockback": {
-          "scale": 0.67,
-          "table": "Melee_Ones"
-        },
-        "rechargeDebuff": {
-          "ignoreStrength": true,
-          "scale": 0.2,
-          "table": "Melee_Slow"
-        },
-        "slow": {
-          "flySpeed": {
-            "scale": 0.2,
-            "table": "Melee_Slow"
-          },
-          "jumpHeight": {
-            "ignoreStrength": true,
-            "scale": 0.2,
-            "table": "Melee_Slow"
-          },
-          "jumpSpeed": {
-            "scale": 0.2,
-            "table": "Melee_Slow"
-          },
-          "runSpeed": {
-            "scale": 0.2,
-            "table": "Melee_Slow"
-          }
-        },
-        "taunt": {
-          "scale": 1,
-          "table": "Melee_InherentTaunt"
-        }
-      },
       "shortHelp": "Melee, Moderate DMG(Smash/Negative), Foe  -Recharge, -SPD, Knockback",
       "description": "The Black Dwarf Strike is a moderate melee attack that releases Nictus Dark Energy on impact, which can Knock Down foes, and slows a targets attack and movement speed. This power is only available while in Black Dwarf Form. Damage: Moderate, Recharge: Fast",
       "effectArea": "SingleTarget",

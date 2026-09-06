@@ -44,28 +44,6 @@ export const BlindingBeam: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 30,
-    "durations": {
-      "perceptionDebuff": 30,
-      "tohitDebuff": 30
-    },
-    "hold": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Immobilize"
-    },
-    "perceptionDebuff": {
-      "scale": 0.9,
-      "table": "Melee_Ones"
-    },
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_Debuff_ToHit",
-      "unresistable": true
-    }
-  },
   "atoms": [
     ["ToHit",null,0.75,1,30,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
     ["Perception",null,-0.9,1,30,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],

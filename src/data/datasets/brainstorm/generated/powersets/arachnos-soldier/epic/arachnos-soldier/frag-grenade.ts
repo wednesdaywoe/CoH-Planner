@@ -59,12 +59,6 @@ export const FragGrenade: Power = {
       "table": "Ranged_Damage"
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 0.75,
-      "table": "Ranged_Knockback"
-    }
-  },
   "atoms": [
     ["Damage","Lethal",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
     ["Damage","Fire",0.67,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
@@ -102,12 +96,6 @@ export const FragGrenade: Power = {
           "table": "Ranged_Damage"
         }
       ],
-      "effects": {
-        "knockback": {
-          "scale": 0.75,
-          "table": "Ranged_Knockback"
-        }
-      },
       "shortHelp": "Ranged (Targeted AoE), DMG(Fire/Lethal), Foe Knockback",
       "description": "Launches an M30 Grenade at long range from an arm of your backpack. The explosion from this grenade affects all within the blast and can knock them back.\n\nNotes: If you take this power, you cannot take the Wolf Spider version.\n\nDamage: Light.\nRecharge: Slow.",
       "effectArea": "AoE",
@@ -237,12 +225,6 @@ export const FragGrenade: Power = {
           "table": "Ranged_Damage"
         }
       ],
-      "effects": {
-        "knockback": {
-          "scale": 0.75,
-          "table": "Ranged_Knockback"
-        }
-      },
       "shortHelp": "Ranged (Targeted AoE), DMG(Fire/Lethal), Foe Knockback",
       "description": "Launches a Frag Grenade at long range from your Nullifier Mace. The explosion from this grenade affects all within the blast and can knock them back.\n\nNotes: If you take this power, you cannot take the Crab Spider version.\n\nDamage: Light.\nRecharge: Slow.",
       "effectArea": "AoE",

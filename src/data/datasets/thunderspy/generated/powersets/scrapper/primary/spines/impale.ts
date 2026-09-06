@@ -63,42 +63,6 @@ export const Impale: Power = {
       "cancelOnMiss": true
     }
   ],
-  "effects": {
-    "buffDuration": 15,
-    "durations": {
-      "rechargeDebuff": 8,
-      "slow": 15
-    },
-    "immobilize": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 15,
-      "table": "Melee_Immobilize"
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.1,
-      "table": "Melee_Slow"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.3,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.3,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.3,
-        "table": "Melee_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.3,
-        "table": "Melee_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Damage","Lethal",1.64,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Mez","Immobilized",15,3,0,"Melee_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Immobilize"],

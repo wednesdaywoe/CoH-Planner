@@ -42,59 +42,6 @@ export const FortifyPack: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 60,
-    "defenseBuff": {
-      "aoe": {
-        "scale": 0,
-        "table": "Ranged_Buff_Def"
-      },
-      "cold": {
-        "scale": 0,
-        "table": "Ranged_Buff_Def"
-      },
-      "energy": {
-        "scale": 0,
-        "table": "Ranged_Buff_Def"
-      },
-      "fire": {
-        "scale": 0,
-        "table": "Ranged_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0,
-        "table": "Ranged_Buff_Def"
-      },
-      "melee": {
-        "scale": 0,
-        "table": "Ranged_Buff_Def"
-      },
-      "negative": {
-        "scale": 0,
-        "table": "Ranged_Buff_Def"
-      },
-      "psionic": {
-        "scale": 0,
-        "table": "Ranged_Buff_Def"
-      },
-      "ranged": {
-        "scale": 0,
-        "table": "Ranged_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0,
-        "table": "Ranged_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 60,
-      "regenBuff": 60
-    },
-    "regenBuff": {
-      "scale": 0,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Defense","Melee",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Cur.kMeter","source>",".1","*",".05","+","@Strength","*"],null,null,null,"Buff_Def"],
     ["Defense","Ranged",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Cur.kMeter","source>",".1","*",".05","+","@Strength","*"],null,null,null,"Buff_Def"],

@@ -64,53 +64,6 @@ export const SonicThrust: Power = {
       "table": "Melee_InherentDamage"
     }
   ],
-  "effects": {
-    "buffDuration": 15,
-    "debuffResistance": {
-      "defense": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "endurance": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "movement": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "recharge": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "recovery": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "regeneration": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "tohit": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      }
-    },
-    "durations": {
-      "debuffResistance": 15
-    },
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.38,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Energy",0.38,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

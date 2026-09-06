@@ -53,32 +53,11 @@ export const PowerofthePhoenix: Power = {
     "duration": 0.5,
     "tickRate": 1
   },
-  "effects": {
-    "buffDuration": 15,
-    "durations": {
-      "stealth": 15,
-      "untouchable": 15
-    },
-    "enduranceGain": {
-      "scale": 70,
-      "table": "Ranged_Ones"
-    },
-    "stealth": {
-      "stealthPvE": {
-        "scale": 300,
-        "table": "Melee_Ones"
-      }
-    },
-    "summon": {
-      "copyBoosts": true,
-      "duration": 5,
-      "entity": "Pets_Phoenix",
-      "isPseudoPet": false
-    },
-    "untouchable": {
-      "scale": 10,
-      "table": "Ranged_Ones"
-    }
+  "summon": {
+    "copyBoosts": true,
+    "duration": 5,
+    "entity": "Pets_Phoenix",
+    "isPseudoPet": false
   },
   "atoms": [
     ["Heal",null,7,1,0.5,"Ranged_HealSelf","Abs","Magnitude","Target","Any",false,"Stack",2,null,1,1],

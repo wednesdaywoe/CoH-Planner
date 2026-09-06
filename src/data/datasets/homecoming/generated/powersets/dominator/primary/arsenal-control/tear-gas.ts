@@ -46,84 +46,82 @@ export const TearGas: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "displayName": "Tear Gas",
-      "duration": 60,
-      "isPseudoPet": true,
-      "powers": [
-        "Redirects.Assault_Rifle.Tear_Gas",
-        "Redirects.Assault_Rifle.Tear_Gas_Debuff",
-        "Redirects.Assault_Rifle.Tear_Gas_OneShot",
-        "Pets.ResistAll.ResistAll"
-      ],
-      "resolvedEntities": [
-        {
-          "displayName": "Tear Gas",
-          "duration": 60,
-          "copyCreatorMods": true,
-          "abilities": [
-            {
-              "name": "Tear_Gas",
-              "displayName": "Tear Gas",
-              "type": "Auto",
-              "damage": [
-                {
-                  "damageType": "Toxic",
-                  "scale": 0.3,
-                  "table": "Ranged_Damage"
-                }
-              ],
-              "conditionalDamage": true,
-              "effects": [
-                {
-                  "type": "Hold",
-                  "magnitude": 3,
-                  "attribType": "Duration",
-                  "scale": 5,
-                  "table": "Ranged_Immobilize"
-                }
-              ],
-              "recharge": 0,
-              "castTime": 0,
-              "activatePeriod": 4,
-              "effectArea": "Sphere",
-              "targetsAffected": [
-                "Foe"
-              ],
-              "radius": 30,
-              "maxTargets": 5
-            },
-            {
-              "name": "Tear_Gas_OneShot",
-              "displayName": "Tear Gas",
-              "type": "Auto",
-              "damage": [],
-              "effects": [
-                {
-                  "type": "Hold",
-                  "magnitude": 3,
-                  "attribType": "Duration",
-                  "scale": 8,
-                  "table": "Ranged_Immobilize"
-                }
-              ],
-              "recharge": 0,
-              "castTime": 0,
-              "activatePeriod": 1000,
-              "effectArea": "Sphere",
-              "targetsAffected": [
-                "Foe"
-              ],
-              "radius": 30,
-              "maxTargets": 16
-            }
-          ]
-        }
-      ],
-      "entity": "PL_StaticObject"
-    }
+  "summon": {
+    "copyBoosts": true,
+    "displayName": "Tear Gas",
+    "duration": 60,
+    "isPseudoPet": true,
+    "powers": [
+      "Redirects.Assault_Rifle.Tear_Gas",
+      "Redirects.Assault_Rifle.Tear_Gas_Debuff",
+      "Redirects.Assault_Rifle.Tear_Gas_OneShot",
+      "Pets.ResistAll.ResistAll"
+    ],
+    "resolvedEntities": [
+      {
+        "displayName": "Tear Gas",
+        "duration": 60,
+        "copyCreatorMods": true,
+        "abilities": [
+          {
+            "name": "Tear_Gas",
+            "displayName": "Tear Gas",
+            "type": "Auto",
+            "damage": [
+              {
+                "damageType": "Toxic",
+                "scale": 0.3,
+                "table": "Ranged_Damage"
+              }
+            ],
+            "conditionalDamage": true,
+            "effects": [
+              {
+                "type": "Hold",
+                "magnitude": 3,
+                "attribType": "Duration",
+                "scale": 5,
+                "table": "Ranged_Immobilize"
+              }
+            ],
+            "recharge": 0,
+            "castTime": 0,
+            "activatePeriod": 4,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "Foe"
+            ],
+            "radius": 30,
+            "maxTargets": 5
+          },
+          {
+            "name": "Tear_Gas_OneShot",
+            "displayName": "Tear Gas",
+            "type": "Auto",
+            "damage": [],
+            "effects": [
+              {
+                "type": "Hold",
+                "magnitude": 3,
+                "attribType": "Duration",
+                "scale": 8,
+                "table": "Ranged_Immobilize"
+              }
+            ],
+            "recharge": 0,
+            "castTime": 0,
+            "activatePeriod": 1000,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "Foe"
+            ],
+            "radius": 30,
+            "maxTargets": 16
+          }
+        ]
+      }
+    ],
+    "entity": "PL_StaticObject"
   },
   "atoms": [
     ["EntCreate",null,1,1,60,"Melee_Level","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,60]

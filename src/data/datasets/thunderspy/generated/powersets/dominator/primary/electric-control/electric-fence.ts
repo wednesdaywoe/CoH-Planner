@@ -40,41 +40,8 @@ export const ElectricFence: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 10.25,
-    "debuffResistance": {
-      "endurance": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Res_Boolean"
-      },
-      "movement": {
-        "ignoreStrength": true,
-        "scale": 0.4,
-        "table": "Melee_Ones"
-      },
-      "recharge": {
-        "ignoreStrength": true,
-        "scale": 0.4,
-        "table": "Melee_Ones"
-      },
-      "recovery": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Res_Boolean"
-      }
-    },
-    "durations": {
-      "debuffResistance": 10.25,
-      "recoveryBuff": 10.25
-    },
-    "recoveryBuff": {
-      "scale": 0.2,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
-    ["RechargeTime",null,0.2,1,10.25,"Ranged_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["RechargeTime",null,0.2,1,10.25,"Ranged_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,true,null,null,null,null,null,"Ones"],
     ["Recovery",null,0.2,1,10.25,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["RechargeTime",null,0.4,1,10.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["Movement","Run",0.4,1,10.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],

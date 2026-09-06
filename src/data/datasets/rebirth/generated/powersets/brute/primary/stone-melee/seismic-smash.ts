@@ -55,18 +55,6 @@ export const SeismicSmash: Power = {
     "scale": 3.56,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "hold": {
-      "attribType": "Duration",
-      "mag": 4,
-      "scale": 8,
-      "table": "Melee_Immobilize"
-    },
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",3.56,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Mez","Held",8,4,0,"Melee_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Immobilize"],

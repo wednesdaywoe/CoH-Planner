@@ -61,54 +61,6 @@ export const AssassinsResonance: Power = {
   ],
   "fromHideBonus": 2.4,
   "midCombatCast": 1.77,
-  "effects": {
-    "buffDuration": 15,
-    "durations": {
-      "resistanceDebuff": 15
-    },
-    "resistanceDebuff": {
-      "cold": {
-        "ignoreStrength": true,
-        "scale": 1.2,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "energy": {
-        "ignoreStrength": true,
-        "scale": 1.2,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "fire": {
-        "ignoreStrength": true,
-        "scale": 1.2,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "lethal": {
-        "ignoreStrength": true,
-        "scale": 1.2,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "negative": {
-        "ignoreStrength": true,
-        "scale": 1.2,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "psionic": {
-        "ignoreStrength": true,
-        "scale": 1.2,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "smashing": {
-        "ignoreStrength": true,
-        "scale": 1.2,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "toxic": {
-        "ignoreStrength": true,
-        "scale": 1.2,
-        "table": "Melee_Debuff_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["Damage","Smashing",1.25,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
     ["Damage","Energy",1.25,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
@@ -156,60 +108,6 @@ export const AssassinsResonance: Power = {
           "table": "Melee_InherentDamage"
         }
       ],
-      "effects": {
-        "buffDuration": 15,
-        "durations": {
-          "resistanceDebuff": 15
-        },
-        "resistanceDebuff": {
-          "cold": {
-            "ignoreStrength": true,
-            "scale": 1.2,
-            "table": "Melee_Debuff_Res_Dmg"
-          },
-          "energy": {
-            "ignoreStrength": true,
-            "scale": 1.2,
-            "table": "Melee_Debuff_Res_Dmg"
-          },
-          "fire": {
-            "ignoreStrength": true,
-            "scale": 1.2,
-            "table": "Melee_Debuff_Res_Dmg"
-          },
-          "lethal": {
-            "ignoreStrength": true,
-            "scale": 1.2,
-            "table": "Melee_Debuff_Res_Dmg"
-          },
-          "negative": {
-            "ignoreStrength": true,
-            "scale": 1.2,
-            "table": "Melee_Debuff_Res_Dmg"
-          },
-          "psionic": {
-            "ignoreStrength": true,
-            "scale": 1.2,
-            "table": "Melee_Debuff_Res_Dmg"
-          },
-          "smashing": {
-            "ignoreStrength": true,
-            "scale": 1.2,
-            "table": "Melee_Debuff_Res_Dmg"
-          },
-          "toxic": {
-            "ignoreStrength": true,
-            "scale": 1.2,
-            "table": "Melee_Debuff_Res_Dmg"
-          }
-        },
-        "sleep": {
-          "attribType": "Duration",
-          "mag": 3,
-          "scale": 15,
-          "table": "Melee_Sleep"
-        }
-      },
       "shortHelp": "Melee, DMG(Energy/Smashing), Sleep, -Res(DMG)",
       "description": "A signature Stalker attack. This attack does superior energy and smashing damage on its own as a frontal attack and cannot be interrupted. However, if it is executed while you are Hidden, this attack will do tremendous damage, as you whisper at your unsuspecting foe. This attack may be interrupted if you move or are attacked while executing this power and are hidden. Using this power while not hidden has a chance to critically hit equal to 33.3% times the number of stacks of Assassin's Focus. Using Assassin's Strike when not hidden will remove all stacks of Assassin's Focus regardless if you critically hit or not.",
       "effectArea": "SingleTarget",
@@ -947,54 +845,6 @@ export const AssassinsResonance: Power = {
           "table": "Melee_Damage"
         }
       ],
-      "effects": {
-        "buffDuration": 15,
-        "durations": {
-          "resistanceDebuff": 15
-        },
-        "resistanceDebuff": {
-          "cold": {
-            "ignoreStrength": true,
-            "scale": 1.2,
-            "table": "Melee_Debuff_Res_Dmg"
-          },
-          "energy": {
-            "ignoreStrength": true,
-            "scale": 1.2,
-            "table": "Melee_Debuff_Res_Dmg"
-          },
-          "fire": {
-            "ignoreStrength": true,
-            "scale": 1.2,
-            "table": "Melee_Debuff_Res_Dmg"
-          },
-          "lethal": {
-            "ignoreStrength": true,
-            "scale": 1.2,
-            "table": "Melee_Debuff_Res_Dmg"
-          },
-          "negative": {
-            "ignoreStrength": true,
-            "scale": 1.2,
-            "table": "Melee_Debuff_Res_Dmg"
-          },
-          "psionic": {
-            "ignoreStrength": true,
-            "scale": 1.2,
-            "table": "Melee_Debuff_Res_Dmg"
-          },
-          "smashing": {
-            "ignoreStrength": true,
-            "scale": 1.2,
-            "table": "Melee_Debuff_Res_Dmg"
-          },
-          "toxic": {
-            "ignoreStrength": true,
-            "scale": 1.2,
-            "table": "Melee_Debuff_Res_Dmg"
-          }
-        }
-      },
       "shortHelp": "Melee, DMG(Energy/Smashing), Sleep, -Res(DMG)",
       "description": "A signature Stalker attack. This attack does superior energy and smashing damage on its own as a frontal attack and cannot be interrupted. However, if it is executed while you are Hidden, this attack will do tremendous damage, as you whisper at your unsuspecting foe. This attack may be interrupted if you move or are attacked while executing this power and are hidden. Using this power while not hidden has a chance to critically hit equal to 33.3% times the number of stacks of Assassin's Focus. Using Assassin's Strike when not hidden will remove all stacks of Assassin's Focus regardless if you critically hit or not.",
       "effectArea": "SingleTarget",

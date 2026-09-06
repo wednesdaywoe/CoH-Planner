@@ -43,21 +43,10 @@ export const RainofFire: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 9.53,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.028,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 9.53
-    },
-    "summon": {
-      "duration": 15,
-      "entity": "Pets_RainofFire",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "duration": 15,
+    "entity": "Pets_RainofFire",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,1,1,15,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,15],

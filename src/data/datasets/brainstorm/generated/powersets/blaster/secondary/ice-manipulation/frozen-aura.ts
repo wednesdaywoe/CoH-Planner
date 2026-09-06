@@ -50,14 +50,6 @@ export const FrozenAura: Power = {
     "scale": 1.424,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "sleep": {
-      "attribType": "Duration",
-      "mag": 2,
-      "scale": 20,
-      "table": "Ranged_Sleep"
-    }
-  },
   "atoms": [
     ["Mez","Sleep",20,2,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,0.5],
     ["Mez","Sleep",12,1,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,0.5],

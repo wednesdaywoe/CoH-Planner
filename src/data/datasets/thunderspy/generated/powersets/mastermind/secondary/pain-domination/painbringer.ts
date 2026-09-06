@@ -42,42 +42,6 @@ export const Painbringer: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 60,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 5,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 5,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "durations": {
-      "damageBuff": 60,
-      "damageDebuff": 60,
-      "recoveryBuff": 60,
-      "regenBuff": 60,
-      "regenDebuff": 60
-    },
-    "recoveryBuff": {
-      "scale": 4,
-      "table": "Ranged_Ones"
-    },
-    "regenBuff": {
-      "scale": 2.5,
-      "table": "Ranged_Ones"
-    },
-    "regenDebuff": {
-      "scale": 5,
-      "table": "Ranged_Ones"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff"
-    ]
-  },
   "atoms": [
     ["DamageBuff","Smashing",5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Lethal",5,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],

@@ -42,39 +42,6 @@ export const SonicBarrier: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 240,
-    "debuffResistance": {
-      "defense": {
-        "ignoreStrength": true,
-        "scale": 0.75,
-        "table": "Ranged_Res_Boolean"
-      },
-      "tohit": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Ranged_Res_Boolean"
-      }
-    },
-    "durations": {
-      "debuffResistance": 240,
-      "resistance": 240
-    },
-    "resistance": {
-      "lethal": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
-      "smashing": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["Resistance","Smashing",2,1,240,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["Resistance","Lethal",2,1,240,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],

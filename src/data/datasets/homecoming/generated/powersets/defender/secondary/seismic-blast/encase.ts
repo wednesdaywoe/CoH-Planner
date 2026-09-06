@@ -51,29 +51,6 @@ export const Encase: Power = {
     "scale": 1,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 3,
-    "defenseDebuff": {
-      "scale": 0.5,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 3,
-      "movementCapDebuff": 3
-    },
-    "movementCapDebuff": {
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Ranged_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Damage","Smashing",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Defense","All",0.5,1,3,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],

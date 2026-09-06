@@ -60,39 +60,6 @@ export const KiPush: Power = {
     "scale": 0.8,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "buffDuration": 2,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.11,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "damageBuff": 8.33,
-      "hold": 2,
-      "repel": 2
-    },
-    "effectDuration": 2,
-    "hold": {
-      "attribType": "Magnitude",
-      "ignoreStrength": true,
-      "mag": 1,
-      "scale": 4,
-      "table": "Melee_Ones"
-    },
-    "knockback": {
-      "scale": 4,
-      "table": "Melee_Knockback"
-    },
-    "repel": {
-      "scale": 15,
-      "table": "Melee_Ones"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff"
-    ]
-  },
   "atoms": [
     ["Damage","Smashing",0.8,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Mez","Repel",15,1,2,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones"],

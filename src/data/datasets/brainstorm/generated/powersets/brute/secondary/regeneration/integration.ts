@@ -48,69 +48,6 @@ export const Integration: Power = {
     "Threat Duration"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 2.25,
-    "durations": {
-      "hold": 2.25,
-      "immobilize": 2.25,
-      "knockback": 2.25,
-      "knockup": 2.25,
-      "regenBuff": 2.25,
-      "regenBuffUnenhanced": 2.25,
-      "sleep": 2.25,
-      "stun": 2.25
-    },
-    "effectDuration": 2.25,
-    "hold": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": -30,
-      "table": "Melee_Res_Boolean",
-      "toWho": "Self"
-    },
-    "immobilize": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": -30,
-      "table": "Melee_Res_Boolean",
-      "toWho": "Self"
-    },
-    "knockback": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "knockup": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "regenBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "regenBuffUnenhanced": {
-      "ignoreStrength": true,
-      "scale": 0.5,
-      "table": "Melee_Ones"
-    },
-    "sleep": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": -30,
-      "table": "Melee_Res_Boolean",
-      "toWho": "Self"
-    },
-    "stun": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": -30,
-      "table": "Melee_Res_Boolean",
-      "toWho": "Self"
-    },
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    }
-  },
   "atoms": [
     ["Mez","Taunt",1,3,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","!","enttype","target>","critter","eq","&&","entref","source>","entref","target>","eq","!","&&"],null,null,null,null,null,null,null,null,null,"StealthOn"],
     ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Raid","target.HasTag?","!","&&"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],

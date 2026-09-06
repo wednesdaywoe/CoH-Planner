@@ -46,21 +46,6 @@ export const PrimalHowl: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 60,
-    "durations": {
-      "recoveryBuff": 60,
-      "regenBuff": 60
-    },
-    "recoveryBuff": {
-      "scale": 0.5,
-      "table": "Melee_Ones"
-    },
-    "regenBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Regeneration",null,1,1,60,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kHunterMode","Source.Mode?","!","kProwlerMode","Source.Mode?","!","&&"],null,null,null,null,null,null,null,null,null,"Ones",null,null,["Self","Friend"]],
     ["Recovery",null,0.5,1,60,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kHunterMode","Source.Mode?","!","kProwlerMode","Source.Mode?","!","&&"],null,null,null,null,null,null,null,null,null,"Ones",null,null,["Self","Friend"]],
@@ -76,60 +61,6 @@ export const PrimalHowl: Power = {
         "endurance": 13,
         "castTime": 2.83,
         "maxTargets": 10
-      },
-      "effects": {
-        "buffDuration": 30,
-        "damageDebuff": {
-          "ignoreStrength": true,
-          "scale": 3.75,
-          "table": "Melee_Debuff_Dam"
-        },
-        "durations": {
-          "damageDebuff": 30,
-          "resistanceDebuff": 30
-        },
-        "resistanceDebuff": {
-          "cold": {
-            "ignoreStrength": true,
-            "scale": 3,
-            "table": "Melee_Res_DMG"
-          },
-          "energy": {
-            "ignoreStrength": true,
-            "scale": 3,
-            "table": "Melee_Res_DMG"
-          },
-          "fire": {
-            "ignoreStrength": true,
-            "scale": 3,
-            "table": "Melee_Res_DMG"
-          },
-          "lethal": {
-            "ignoreStrength": true,
-            "scale": 3,
-            "table": "Melee_Res_DMG"
-          },
-          "negative": {
-            "ignoreStrength": true,
-            "scale": 3,
-            "table": "Melee_Res_DMG"
-          },
-          "psionic": {
-            "ignoreStrength": true,
-            "scale": 3,
-            "table": "Melee_Res_DMG"
-          },
-          "smashing": {
-            "ignoreStrength": true,
-            "scale": 3,
-            "table": "Melee_Res_DMG"
-          },
-          "toxic": {
-            "ignoreStrength": true,
-            "scale": 3,
-            "table": "Melee_Res_DMG"
-          }
-        }
       },
       "shortHelp": "PBAoE Special, Requires Primal or Hunter Form",
       "description": "The Primalist lets out a Primal Howl with varying effects depending on their current form. In Primal Form, you will boost their recovery and regeneration significantly for a good while. In Hunter Form you will reduce the damage and damage resistance of nearby foes. Primal Howl builds 3 Primal Energy. Primal Howl may not be used in Prowler Form. Recharge: Very Long",

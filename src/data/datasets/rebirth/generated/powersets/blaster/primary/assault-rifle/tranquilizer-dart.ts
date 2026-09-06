@@ -56,25 +56,6 @@ export const TranquilizerDart: Power = {
     "scale": 1.64,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 9.17,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.11,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 9.17
-    },
-    "knockback": {
-      "scale": 0.75,
-      "table": "Ranged_Knockback"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff"
-    ]
-  },
   "atoms": [
     ["Damage","Lethal",1.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Mez","Knockback",0.75,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0.25,null,"Knockback"],

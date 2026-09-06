@@ -56,34 +56,6 @@ export const Crush: Power = {
     "scale": 0.1,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 2.25,
-    "durations": {
-      "slow": 2.25
-    },
-    "knockup": {
-      "scale": 1,
-      "table": "Ranged_Knockback"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 1,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "scale": 500,
-        "table": "Ranged_Ones"
-      },
-      "jumpSpeed": {
-        "scale": 1,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 1,
-        "table": "Ranged_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Mez","Knockup",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Knockback"],

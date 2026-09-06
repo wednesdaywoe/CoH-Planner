@@ -44,22 +44,6 @@ export const SaltCrystals: Power = {
     "Sleep"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 10,
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "sleep": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 12,
-      "table": "Ranged_Sleep"
-    }
-  },
   "atoms": [
     ["Mez","Sleep",12,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Defense","All",1,1,10,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],

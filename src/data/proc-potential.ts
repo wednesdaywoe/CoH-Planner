@@ -202,14 +202,14 @@ function resolveProcContext(power: Power) {
     // `stats.arc` is the raw binary value (radians); the geometry resolvers
     // expect degrees.
     arcToDegrees(stats.arc),
-    power.effects?.summon,
+    power.summon,
   );
   const roll = resolveProcRollGeometry(power.procsOnlyOnMainTarget, area.radius, area.arcDegrees);
   const schedule = resolveProcRollSchedule({
     powerType: power.powerType,
     baseRecharge: stats.recharge ?? 0,
     castTime: stats.castTime ?? 0,
-    patchDuration: resolveProcPatchDuration(directRadius, power.effects?.summon),
+    patchDuration: resolveProcPatchDuration(directRadius, power.summon),
   });
 
   return {

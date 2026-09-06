@@ -44,64 +44,6 @@ export const StaticShield: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "debuffResistance": {
-      "endurance": {
-        "ignoreStrength": true,
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      },
-      "recovery": {
-        "ignoreStrength": true,
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "durations": {
-      "debuffResistance": 0.75,
-      "hold": 0.75,
-      "mezResistance": 0.75,
-      "resistance": 0.75,
-      "sleep": 0.75,
-      "stun": 0.75
-    },
-    "effectDuration": 0.75,
-    "hold": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": -30,
-      "table": "Melee_Res_Boolean",
-      "toWho": "Self"
-    },
-    "mezResistance": {
-      "teleport": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Ones"
-      }
-    },
-    "resistance": {
-      "psionic": {
-        "scale": 3.5,
-        "table": "Melee_Res_DMG"
-      }
-    },
-    "sleep": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": -30,
-      "table": "Melee_Res_Boolean",
-      "toWho": "Self"
-    },
-    "stun": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": -30,
-      "table": "Melee_Res_Boolean",
-      "toWho": "Self"
-    }
-  },
   "atoms": [
     ["Mez","Stunned",-30,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Res_Boolean"],
     ["Mez","Held",-30,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Res_Boolean"],

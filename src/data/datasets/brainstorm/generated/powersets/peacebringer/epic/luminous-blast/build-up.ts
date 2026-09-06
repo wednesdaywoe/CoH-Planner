@@ -38,39 +38,6 @@ export const BuildUp: Power = {
     "To Hit Buff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 30,
-    "damageBuff": {
-      "durationVariants": [
-        {
-          "duration": 10,
-          "scale": 8
-        }
-      ],
-      "ignoreStrength": true,
-      "scale": 3.2,
-      "table": "Melee_Buff_Dmg"
-    },
-    "durations": {
-      "damageBuff": 30,
-      "tohitBuff": 30
-    },
-    "tohitBuff": {
-      "durationVariants": [
-        {
-          "duration": 10,
-          "scale": 2
-        }
-      ],
-      "scale": 0.77,
-      "table": "Melee_Buff_ToHit"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff",
-      "tohitBuff"
-    ]
-  },
   "atoms": [
     ["ToHit",null,2,1,10,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["DamageBuff","Smashing",8,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],

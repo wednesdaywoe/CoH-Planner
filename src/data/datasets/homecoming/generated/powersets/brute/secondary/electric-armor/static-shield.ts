@@ -44,68 +44,6 @@ export const StaticShield: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "debuffResistance": {
-      "endurance": {
-        "ignoreStrength": true,
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      },
-      "recovery": {
-        "ignoreStrength": true,
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "durations": {
-      "debuffResistance": 0.75,
-      "hold": 0.75,
-      "mezResistance": 0.75,
-      "resistance": 0.75,
-      "sleep": 0.75,
-      "stun": 0.75
-    },
-    "effectDuration": 0.75,
-    "hold": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": -30,
-      "table": "Melee_Res_Boolean",
-      "toWho": "Self"
-    },
-    "mezResistance": {
-      "teleport": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Ones"
-      }
-    },
-    "resistance": {
-      "psionic": {
-        "scale": 3.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "sleep": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": -30,
-      "table": "Melee_Res_Boolean",
-      "toWho": "Self"
-    },
-    "stun": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": -30,
-      "table": "Melee_Res_Boolean",
-      "toWho": "Self"
-    }
-  },
   "atoms": [
     ["MezResist","Teleport",1,1,0.75,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Endurance",null,3,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],

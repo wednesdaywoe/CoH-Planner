@@ -58,29 +58,6 @@ export const Entomb: Power = {
       "table": "Ranged_InherentDamage"
     }
   ],
-  "effects": {
-    "buffDuration": 12,
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 12,
-      "movementCapDebuff": 12
-    },
-    "movementCapDebuff": {
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Ranged_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Damage","Smashing",2.12,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Smashing",2.12,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],

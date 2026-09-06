@@ -41,39 +41,6 @@ export const ProwlerForm: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
-  "effects": {
-    "buffDuration": 2.25,
-    "durations": {
-      "movement": 2.25
-    },
-    "movement": {
-      "jumpHeight": {
-        "scale": 0.125,
-        "suppressible": true,
-        "table": "Melee_Leap"
-      },
-      "jumpSpeed": {
-        "scale": 0.275,
-        "suppressible": true,
-        "table": "Melee_SpeedJumping"
-      },
-      "movementControl": {
-        "scale": 10,
-        "suppressible": true,
-        "table": "Melee_Ones"
-      },
-      "movementFriction": {
-        "scale": 2,
-        "suppressible": true,
-        "table": "Melee_Ones"
-      },
-      "runSpeed": {
-        "scale": 0.75,
-        "suppressible": true,
-        "table": "Melee_SpeedRunning"
-      }
-    }
-  },
   "atoms": [
     ["Meta",null,1,9,2.25,"Melee_Ones","Cur","Constant","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode"],
     ["Meta",null,1,102,2.25,"Melee_Ones","Cur","Constant","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode"],

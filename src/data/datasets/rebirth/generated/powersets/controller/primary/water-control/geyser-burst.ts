@@ -46,12 +46,10 @@ export const GeyserBurst: Power = {
     "Universal Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "duration": 45,
-      "entity": "Pets_Water_Control_Geyser_Burst",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "duration": 45,
+    "entity": "Pets_Water_Control_Geyser_Burst",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,-1,1,45,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,45]

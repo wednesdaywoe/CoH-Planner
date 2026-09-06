@@ -60,27 +60,6 @@ export const EnergyPunch: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 8.33,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.055,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "damageBuff": 8.33
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 2,
-      "scale": 5,
-      "table": "Melee_Stun"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff"
-    ]
-  },
   "atoms": [
     ["Damage","Smashing",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Energy",0.96,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],

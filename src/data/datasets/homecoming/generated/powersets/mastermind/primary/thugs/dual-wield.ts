@@ -52,12 +52,6 @@ export const DualWield: Power = {
     "duration": 0.3,
     "tickRate": 0.25
   },
-  "effects": {
-    "knockback": {
-      "scale": 0.64,
-      "table": "Ranged_Knockback"
-    }
-  },
   "atoms": [
     ["Damage","Lethal",0.66,1,0.3,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Mez","Knockback",0.64,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

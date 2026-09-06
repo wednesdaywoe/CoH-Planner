@@ -45,30 +45,11 @@ export const BurstofSpeed: Power = {
     "Universal Travel"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 8.5,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.026,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 8.5
-    },
-    "summon": {
-      "copyBoosts": true,
-      "duration": 2,
-      "entity": "Pets_Burst_of_Speed",
-      "isPseudoPet": false
-    },
-    "teleport": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff"
-    ]
+  "summon": {
+    "copyBoosts": true,
+    "duration": 2,
+    "entity": "Pets_Burst_of_Speed",
+    "isPseudoPet": false
   },
   "atoms": [
     ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,-0.3],

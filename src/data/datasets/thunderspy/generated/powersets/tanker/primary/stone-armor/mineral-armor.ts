@@ -44,46 +44,6 @@ export const MineralArmor: Power = {
     "Defense Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "confuse": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": -30,
-      "table": "Melee_Ones",
-      "toWho": "Self"
-    },
-    "debuffResistance": {
-      "perception": {
-        "scale": 0.6,
-        "table": "Melee_Ones"
-      }
-    },
-    "defenseBuff": {
-      "psionic": {
-        "scale": 2.5,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "confuse": 0.75,
-      "debuffResistance": 0.75,
-      "defenseBuff": 0.75,
-      "mezResistance": 0.75,
-      "perceptionBuff": 0.75
-    },
-    "effectDuration": 0.75,
-    "mezResistance": {
-      "confuse": {
-        "scale": 5,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "perceptionBuff": {
-      "scale": 0.6,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Defense","Psionic",2.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Def"],
     ["Perception",null,0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],

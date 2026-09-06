@@ -95,16 +95,6 @@ export const FeralBlow: Power = {
       "damageTypes": [
         "Lethal"
       ],
-      "effects": {
-        "buffDuration": 10,
-        "defenseDebuff": {
-          "scale": 1.5,
-          "table": "Melee_Debuff_Def"
-        },
-        "durations": {
-          "defenseDebuff": 10
-        }
-      },
       "shortHelp": "Melee, Light DMG(Special), Special",
       "description": "You lash out at a nearby foe dealing Light damage. In primal (human) form you will deal smashing damage and will heal yourself and up to 3 nearby allies for a tiny amount of health. In Hunter form you'll deal lethal damage and reduce the target's defense. In Prowler form you'll deal lethal damage, cause minor lethal damage over time and have a small chance to stun. This power builds 1 Primal Energy. Damage: Light, Recharge: Very Fast",
       "effectArea": "SingleTarget",

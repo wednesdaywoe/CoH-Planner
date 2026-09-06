@@ -61,20 +61,6 @@ export const ShortCircuit: Power = {
       "tickRate": 0.3499999940395355
     }
   ],
-  "effects": {
-    "buffDuration": 10,
-    "durations": {
-      "recoveryDebuff": 10
-    },
-    "enduranceDrain": {
-      "scale": 0.35,
-      "table": "Ranged_EndDrain"
-    },
-    "recoveryDebuff": {
-      "scale": 1,
-      "table": "Ranged_EndDrain"
-    }
-  },
   "atoms": [
     ["Endurance",null,-0.35,1,0,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Energy",0.18,1,1.5,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.3499999940395355,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

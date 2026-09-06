@@ -52,54 +52,6 @@ export const CSVenomGrenade: Power = {
     "duration": 4.125,
     "tickRate": 1
   },
-  "effects": {
-    "buffDuration": 16,
-    "durations": {
-      "resistanceDebuff": 16
-    },
-    "resistanceDebuff": {
-      "cold": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Res_DMG"
-      },
-      "energy": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Res_DMG"
-      },
-      "fire": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Res_DMG"
-      },
-      "lethal": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Res_DMG"
-      },
-      "negative": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Res_DMG"
-      },
-      "psionic": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Res_DMG"
-      },
-      "smashing": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Ranged_Res_DMG"
-      },
-      "toxic": {
-        "ignoreStrength": true,
-        "scale": 4,
-        "table": "Ranged_Res_DMG"
-      }
-    }
-  },
   "atoms": [
     ["Damage","Toxic",0.1964,1,4.125,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Resistance","Smashing",-2,1,16,"Ranged_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],

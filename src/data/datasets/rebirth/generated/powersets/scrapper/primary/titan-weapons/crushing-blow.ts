@@ -54,16 +54,6 @@ export const CrushingBlow: Power = {
     "scale": 1.804,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "buffDuration": 10,
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    }
-  },
   "atoms": [
     ["Meta",null,1,1,0,"Melee_Ones","Cur","Constant","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["1"],null,null,null,null,null,null,null,null,null,"Ones",null,"power_redirect"],
     ["Damage","Smashing",1.804,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
@@ -103,16 +93,6 @@ export const CrushingBlow: Power = {
         "type": "Smashing",
         "scale": 1.804,
         "table": "Melee_Damage"
-      },
-      "effects": {
-        "buffDuration": 10,
-        "defenseDebuff": {
-          "scale": 1,
-          "table": "Melee_Debuff_Def"
-        },
-        "durations": {
-          "defenseDebuff": 10
-        }
       },
       "shortHelp": "Melee, High DMG(Smashing), -DEF",
       "description": "You swing a mighty crushing blow at your opponent dealing High Smashing damage and reducing their defense.  Damage: High, Recharge: Moderate",

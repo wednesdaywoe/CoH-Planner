@@ -40,64 +40,6 @@ export const Meltdown: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 60,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 3.3,
-      "table": "Melee_Buff_Dmg"
-    },
-    "durations": {
-      "damageBuff": 60,
-      "maxEndBuff": 15,
-      "recoveryBuffUnenhanced": 60,
-      "resistance": 60
-    },
-    "maxEndBuff": {
-      "ignoreStrength": true,
-      "scale": 15,
-      "table": "Melee_Ones"
-    },
-    "recoveryBuffUnenhanced": {
-      "ignoreStrength": true,
-      "scale": 0.3,
-      "table": "Melee_Ones"
-    },
-    "resistance": {
-      "cold": {
-        "scale": 2,
-        "table": "Melee_Res_DMG"
-      },
-      "energy": {
-        "scale": 2,
-        "table": "Melee_Res_DMG"
-      },
-      "fire": {
-        "scale": 2,
-        "table": "Melee_Res_DMG"
-      },
-      "lethal": {
-        "scale": 2,
-        "table": "Melee_Res_DMG"
-      },
-      "negative": {
-        "scale": 2,
-        "table": "Melee_Res_DMG"
-      },
-      "psionic": {
-        "scale": 2,
-        "table": "Melee_Res_DMG"
-      },
-      "smashing": {
-        "scale": 2,
-        "table": "Melee_Res_DMG"
-      },
-      "toxic": {
-        "scale": 2,
-        "table": "Melee_Res_DMG"
-      }
-    }
-  },
   "atoms": [
     ["Resistance","Smashing",2,1,60,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
     ["Resistance","Lethal",2,1,60,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],

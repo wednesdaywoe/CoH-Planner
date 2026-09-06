@@ -40,22 +40,6 @@ export const Taunt: Power = {
     "Defense Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 15,
-    "defenseBuff": {
-      "aoe": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 15
-    },
-    "placate": {
-      "scale": 5,
-      "table": "Melee_Taunt"
-    }
-  },
   "atoms": [
     ["Mez","Placate",5,4,0,"Melee_Taunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Taunt"],
     ["Defense","AoE",1.5,1,15,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Def"],

@@ -125,34 +125,6 @@ export const HailofBullets: Power = {
       "tickRate": 1
     }
   ],
-  "effects": {
-    "buffDuration": 5,
-    "defenseBuff": {
-      "aoe": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "melee": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "ranged": {
-        "ignoreStrength": true,
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 5,
-      "knockback": 2.3
-    },
-    "knockback": {
-      "scale": 0.8,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Defense","Ranged",1.5,1,5,"Ranged_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Defense","Melee",1.5,1,5,"Ranged_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],

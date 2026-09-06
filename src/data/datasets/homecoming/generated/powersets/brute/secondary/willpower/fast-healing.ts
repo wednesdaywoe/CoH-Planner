@@ -34,24 +34,6 @@ export const FastHealing: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 10,
-    "debuffResistance": {
-      "regeneration": {
-        "ignoreStrength": true,
-        "scale": 0.75,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "durations": {
-      "debuffResistance": 10,
-      "regenBuff": 10
-    },
-    "regenBuff": {
-      "scale": 0.75,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Regeneration",null,0.75,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,1],
     ["Regeneration",null,0.75,1,10,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true]

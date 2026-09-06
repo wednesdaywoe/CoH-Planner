@@ -41,7 +41,6 @@ export const EquipThugs: Power = {
     "Recharge Intensive Pets"
   ],
   "maxSlots": 6,
-  "effects": {},
   "atoms": [
     ["Recovery",null,0.15,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,true,null,null,null,null,null,"Ones"],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,["MastermindPets_Thug","target.VillainName>"],true,null,null,null,null,null,null,null,null,"Ones"],

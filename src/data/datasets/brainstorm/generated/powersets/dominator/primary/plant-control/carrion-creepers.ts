@@ -49,114 +49,112 @@ export const CarrionCreepers: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "displayName": "Carrion Creeper",
-      "duration": 120,
-      "isPseudoPet": true,
-      "powers": [
-        "Pets.ResistAll.ResistAll",
-        "Villain_Pets.Creeper_Patch.Carrion_Creepers",
-        "Villain_Pets.Creeper_Patch.Vines",
-        "Villain_Pets.Creeper_Patch.Bramble",
-        "Villain_Pets.Creeper_Patch.FX"
-      ],
-      "resolvedEntities": [
-        {
-          "displayName": "Carrion Creeper",
-          "duration": 120,
-          "copyCreatorMods": true,
-          "abilities": [
-            {
-              "name": "Carrion_Creepers",
-              "displayName": "Carrion Creepers",
-              "type": "Auto",
-              "damage": [
-                {
-                  "damageType": "Smashing",
-                  "scale": 0.2333,
-                  "table": "Ranged_Damage"
-                },
-                {
-                  "damageType": "Lethal",
-                  "scale": 0.2333,
-                  "table": "Ranged_Damage"
-                }
-              ],
-              "effects": [
-                {
-                  "type": "KnockupResist",
-                  "scale": 100,
-                  "table": "Ranged_Ones",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "KnockbackResist",
-                  "scale": 100,
-                  "table": "Ranged_Ones",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "Immobilize",
-                  "magnitude": 4,
-                  "attribType": "Duration",
-                  "scale": 15,
-                  "table": "Ranged_Immobilize"
-                }
-              ],
-              "recharge": 0,
-              "castTime": 0,
-              "activatePeriod": 3,
-              "effectArea": "Sphere",
-              "targetsAffected": [
-                "DeadFoe"
-              ],
-              "radius": 20,
-              "maxTargets": 1
-            },
-            {
-              "name": "Bramble",
-              "displayName": "Bramble",
-              "type": "Auto",
-              "damage": [],
-              "effects": [
-                {
-                  "type": "Slow",
-                  "axis": "runSpeed",
-                  "scale": 0.5,
-                  "table": "Melee_Slow"
-                },
-                {
-                  "type": "Slow",
-                  "axis": "jumpHeight",
-                  "scale": 500,
-                  "table": "Melee_Ones",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "MovementCapDebuff",
-                  "axis": "runSpeed",
-                  "scale": 1,
-                  "table": "Melee_SpeedRunning",
-                  "ignoreStrength": true
-                }
-              ],
-              "recharge": 0,
-              "castTime": 0,
-              "activatePeriod": 0.2,
-              "effectArea": "Sphere",
-              "targetsAffected": [
-                "Foe"
-              ],
-              "radius": 20,
-              "maxTargets": 16
-            }
-          ]
-        }
-      ],
-      "entity": "PL_Untargetable_FightPreferRanged"
-    }
+  "summon": {
+    "copyBoosts": true,
+    "displayName": "Carrion Creeper",
+    "duration": 120,
+    "isPseudoPet": true,
+    "powers": [
+      "Pets.ResistAll.ResistAll",
+      "Villain_Pets.Creeper_Patch.Carrion_Creepers",
+      "Villain_Pets.Creeper_Patch.Vines",
+      "Villain_Pets.Creeper_Patch.Bramble",
+      "Villain_Pets.Creeper_Patch.FX"
+    ],
+    "resolvedEntities": [
+      {
+        "displayName": "Carrion Creeper",
+        "duration": 120,
+        "copyCreatorMods": true,
+        "abilities": [
+          {
+            "name": "Carrion_Creepers",
+            "displayName": "Carrion Creepers",
+            "type": "Auto",
+            "damage": [
+              {
+                "damageType": "Smashing",
+                "scale": 0.2333,
+                "table": "Ranged_Damage"
+              },
+              {
+                "damageType": "Lethal",
+                "scale": 0.2333,
+                "table": "Ranged_Damage"
+              }
+            ],
+            "effects": [
+              {
+                "type": "KnockupResist",
+                "scale": 100,
+                "table": "Ranged_Ones",
+                "ignoreStrength": true
+              },
+              {
+                "type": "KnockbackResist",
+                "scale": 100,
+                "table": "Ranged_Ones",
+                "ignoreStrength": true
+              },
+              {
+                "type": "Immobilize",
+                "magnitude": 4,
+                "attribType": "Duration",
+                "scale": 15,
+                "table": "Ranged_Immobilize"
+              }
+            ],
+            "recharge": 0,
+            "castTime": 0,
+            "activatePeriod": 3,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "DeadFoe"
+            ],
+            "radius": 20,
+            "maxTargets": 1
+          },
+          {
+            "name": "Bramble",
+            "displayName": "Bramble",
+            "type": "Auto",
+            "damage": [],
+            "effects": [
+              {
+                "type": "Slow",
+                "axis": "runSpeed",
+                "scale": 0.5,
+                "table": "Melee_Slow"
+              },
+              {
+                "type": "Slow",
+                "axis": "jumpHeight",
+                "scale": 500,
+                "table": "Melee_Ones",
+                "ignoreStrength": true
+              },
+              {
+                "type": "MovementCapDebuff",
+                "axis": "runSpeed",
+                "scale": 1,
+                "table": "Melee_SpeedRunning",
+                "ignoreStrength": true
+              }
+            ],
+            "recharge": 0,
+            "castTime": 0,
+            "activatePeriod": 0.2,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "Foe"
+            ],
+            "radius": 20,
+            "maxTargets": 16
+          }
+        ]
+      }
+    ],
+    "entity": "PL_Untargetable_FightPreferRanged"
   },
   "atoms": [
     ["EntCreate",null,1,1,120,"Melee_Level","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,120]

@@ -41,20 +41,6 @@ export const RadioactiveCloud: Power = {
     "Holds"
   ],
   "maxSlots": 6,
-  "effects": {
-    "hold": {
-      "attribType": "Duration",
-      "mag": 2,
-      "scale": 8,
-      "table": "Melee_Immobilize"
-    },
-    "immobilize": {
-      "attribType": "Duration",
-      "mag": 2,
-      "scale": 8,
-      "table": "Ranged_Immobilize"
-    }
-  },
   "atoms": [
     ["Mez","Held",8,2,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Replace",2,null,null,0.5,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Mez","Held",5,1,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

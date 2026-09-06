@@ -49,17 +49,6 @@ export const GeneticContamination: Power = {
     "scale": 0.15,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "buffDuration": 5,
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 1.5,
-      "table": "Melee_Debuff_Dam"
-    },
-    "durations": {
-      "damageDebuff": 5
-    }
-  },
   "atoms": [
     ["Damage","Toxic",0.15,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
     ["DamageBuff","Smashing",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["kDefensiveAdaptation","source.Mode?","!"],null,null,null,null,null,null,null,null,null,"NormalDebuff"],

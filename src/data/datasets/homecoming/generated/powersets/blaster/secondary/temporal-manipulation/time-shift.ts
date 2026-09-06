@@ -48,57 +48,6 @@ export const TimeShift: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 20,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.033,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 9.53,
-      "movementCapDebuff": 20,
-      "slow": 20,
-      "tohitDebuff": 20
-    },
-    "movementCapDebuff": {
-      "runSpeed": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
-      }
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.4,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.4,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.4,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "ignoreStrength": true,
-        "scale": 0.4,
-        "table": "Ranged_Slow"
-      }
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 2,
-      "scale": 8,
-      "table": "Ranged_Immobilize"
-    },
-    "tohitDebuff": {
-      "scale": 0.5,
-      "table": "Ranged_Debuff_ToHit"
-    }
-  },
   "atoms": [
     ["Mez","Stunned",8,2,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Mez","Stunned",5,1,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

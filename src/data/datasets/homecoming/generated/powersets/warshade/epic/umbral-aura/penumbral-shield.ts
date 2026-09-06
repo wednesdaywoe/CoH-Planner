@@ -44,26 +44,6 @@ export const PenumbralShield: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "durations": {
-      "resistance": 0.75
-    },
-    "resistance": {
-      "cold": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["Resistance","Fire",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
     ["Resistance","Cold",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],

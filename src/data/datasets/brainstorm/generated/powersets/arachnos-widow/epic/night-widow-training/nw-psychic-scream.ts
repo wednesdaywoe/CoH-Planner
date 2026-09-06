@@ -51,17 +51,6 @@ export const NWPsychicScream: Power = {
     "scale": 1.4931,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 20,
-    "durations": {
-      "rechargeDebuff": 20
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.5,
-      "table": "Ranged_Slow"
-    }
-  },
   "atoms": [
     ["Damage","Psionic",1.4931,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["RechargeTime",null,0.5,1,20,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],

@@ -44,34 +44,6 @@ export const FocusedFighter: Power = {
     "Defense Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "confuse": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": -30,
-      "table": "Melee_Res_Boolean",
-      "toWho": "Self"
-    },
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.8,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "defenseBuff": {
-      "melee": {
-        "scale": 0.75,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "confuse": 0.75,
-      "debuffResistance": 0.75,
-      "defenseBuff": 0.75
-    },
-    "effectDuration": 0.75
-  },
   "atoms": [
     ["Defense","Melee",0.75,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Buff_Def"],
     ["Mez","Confused",-30,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Res_Boolean"],

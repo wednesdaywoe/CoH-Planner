@@ -45,143 +45,141 @@ export const CategoryFive: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "displayName": "Category Five",
-      "duration": 20,
-      "entityCount": 2,
-      "isPseudoPet": true,
-      "powers": [
-        "Pets.ResistAll_NoFly.ResistAll",
-        "Redirects.Storm_Blast.Category_Five"
-      ],
-      "resolvedEntities": [
-        {
-          "displayName": "Category Five",
-          "duration": 20,
-          "copyCreatorMods": true,
-          "abilities": [
-            {
-              "name": "Category_Five",
-              "displayName": "Category Five",
-              "type": "Auto",
-              "damage": [
-                {
-                  "damageType": "Cold",
-                  "scale": 0.008,
-                  "table": "Melee_Damage"
-                },
-                {
-                  "damageType": "Smashing",
-                  "scale": 0.08,
-                  "table": "Ranged_Damage"
-                }
-              ],
-              "effects": [
-                {
-                  "type": "Slow",
-                  "axis": "runSpeed",
-                  "scale": 0.7,
-                  "table": "Melee_Slow",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "Slow",
-                  "axis": "jumpSpeed",
-                  "scale": 0.7,
-                  "table": "Melee_Slow",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "Slow",
-                  "axis": "flySpeed",
-                  "scale": 0.84,
-                  "table": "Melee_Slow",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "Slow",
-                  "axis": "jumpHeight",
-                  "scale": 0.7,
-                  "table": "Melee_Slow",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "RechargeDebuff",
-                  "scale": 0.42,
-                  "table": "Melee_Slow",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "MovementCapDebuff",
-                  "axis": "runSpeed",
-                  "scale": 1,
-                  "table": "Melee_SpeedRunning",
-                  "ignoreStrength": true
-                }
-              ],
-              "recharge": 0,
-              "castTime": 0,
-              "activatePeriod": 0.33,
-              "effectArea": "Sphere",
-              "targetsAffected": [
-                "Foe"
-              ],
-              "radius": 40,
-              "maxTargets": 16
-            }
-          ]
-        },
-        {
-          "displayName": "Category Five Eye",
-          "duration": 17,
-          "copyCreatorMods": true,
-          "abilities": [
-            {
-              "name": "Nukenado_Pulse",
-              "displayName": "Category Five Eye Wall",
-              "type": "Auto",
-              "damage": [],
-              "effects": [
-                {
-                  "type": "Knockback",
-                  "magnitude": 1,
-                  "attribType": "Magnitude",
-                  "scale": 1.1,
-                  "table": "Ranged_Knockback"
-                },
-                {
-                  "type": "Knockback",
-                  "magnitude": 1,
-                  "attribType": "Magnitude",
-                  "scale": 1,
-                  "table": "Ranged_Ones"
-                },
-                {
-                  "type": "Fear",
-                  "magnitude": 50,
-                  "attribType": "Duration",
-                  "scale": 1,
-                  "table": "Melee_Ones",
-                  "ignoreStrength": true
-                }
-              ],
-              "recharge": 0,
-              "castTime": 0,
-              "activatePeriod": 0.33,
-              "effectArea": "Sphere",
-              "targetsAffected": [
-                "Foe"
-              ],
-              "radius": 25,
-              "maxTargets": 16
-            }
-          ]
-        }
-      ],
-      "entity": "PL_StaticObject"
-    }
+  "summon": {
+    "copyBoosts": true,
+    "displayName": "Category Five",
+    "duration": 20,
+    "entityCount": 2,
+    "isPseudoPet": true,
+    "powers": [
+      "Pets.ResistAll_NoFly.ResistAll",
+      "Redirects.Storm_Blast.Category_Five"
+    ],
+    "resolvedEntities": [
+      {
+        "displayName": "Category Five",
+        "duration": 20,
+        "copyCreatorMods": true,
+        "abilities": [
+          {
+            "name": "Category_Five",
+            "displayName": "Category Five",
+            "type": "Auto",
+            "damage": [
+              {
+                "damageType": "Cold",
+                "scale": 0.008,
+                "table": "Melee_Damage"
+              },
+              {
+                "damageType": "Smashing",
+                "scale": 0.08,
+                "table": "Ranged_Damage"
+              }
+            ],
+            "effects": [
+              {
+                "type": "Slow",
+                "axis": "runSpeed",
+                "scale": 0.7,
+                "table": "Melee_Slow",
+                "ignoreStrength": true
+              },
+              {
+                "type": "Slow",
+                "axis": "jumpSpeed",
+                "scale": 0.7,
+                "table": "Melee_Slow",
+                "ignoreStrength": true
+              },
+              {
+                "type": "Slow",
+                "axis": "flySpeed",
+                "scale": 0.84,
+                "table": "Melee_Slow",
+                "ignoreStrength": true
+              },
+              {
+                "type": "Slow",
+                "axis": "jumpHeight",
+                "scale": 0.7,
+                "table": "Melee_Slow",
+                "ignoreStrength": true
+              },
+              {
+                "type": "RechargeDebuff",
+                "scale": 0.42,
+                "table": "Melee_Slow",
+                "ignoreStrength": true
+              },
+              {
+                "type": "MovementCapDebuff",
+                "axis": "runSpeed",
+                "scale": 1,
+                "table": "Melee_SpeedRunning",
+                "ignoreStrength": true
+              }
+            ],
+            "recharge": 0,
+            "castTime": 0,
+            "activatePeriod": 0.33,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "Foe"
+            ],
+            "radius": 40,
+            "maxTargets": 16
+          }
+        ]
+      },
+      {
+        "displayName": "Category Five Eye",
+        "duration": 17,
+        "copyCreatorMods": true,
+        "abilities": [
+          {
+            "name": "Nukenado_Pulse",
+            "displayName": "Category Five Eye Wall",
+            "type": "Auto",
+            "damage": [],
+            "effects": [
+              {
+                "type": "Knockback",
+                "magnitude": 1,
+                "attribType": "Magnitude",
+                "scale": 1.1,
+                "table": "Ranged_Knockback"
+              },
+              {
+                "type": "Knockback",
+                "magnitude": 1,
+                "attribType": "Magnitude",
+                "scale": 1,
+                "table": "Ranged_Ones"
+              },
+              {
+                "type": "Fear",
+                "magnitude": 50,
+                "attribType": "Duration",
+                "scale": 1,
+                "table": "Melee_Ones",
+                "ignoreStrength": true
+              }
+            ],
+            "recharge": 0,
+            "castTime": 0,
+            "activatePeriod": 0.33,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "Foe"
+            ],
+            "radius": 25,
+            "maxTargets": 16
+          }
+        ]
+      }
+    ],
+    "entity": "PL_StaticObject"
   },
   "atoms": [
     ["EntCreate",null,1,1,20,"Melee_Level","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,20],

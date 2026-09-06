@@ -34,17 +34,6 @@ export const NaturesBoon: Power = {
     "Recharge"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 30,
-    "durations": {
-      "enduranceDiscount": 30
-    },
-    "enduranceDiscount": {
-      "ignoreStrength": true,
-      "scale": 0.5,
-      "table": "Melee_Stun"
-    }
-  },
   "atoms": [
     ["GlobalChanceMod",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["GlobalChanceMod",null,-1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],

@@ -43,23 +43,6 @@ export const DarkPit: Power = {
     "Stuns"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 7.5,
-    "damageBuff": {
-      "scale": 0.018,
-      "table": "Ranged_Ones",
-      "perTarget": 0.018
-    },
-    "durations": {
-      "damageBuff": 7.5
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 2,
-      "scale": 8,
-      "table": "Ranged_Stun"
-    }
-  },
   "atoms": [
     ["Mez","Stunned",8,2,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Stun"],
     ["DamageBuff","Smashing",0.018,1,7.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.018,null,null,null,null,null,null,null,"Ones"],

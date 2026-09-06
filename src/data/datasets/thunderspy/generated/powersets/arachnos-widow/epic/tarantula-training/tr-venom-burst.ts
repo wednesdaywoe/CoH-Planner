@@ -59,16 +59,6 @@ export const TRVenomBurst: Power = {
       "tickRate": 0.6000000238418579
     }
   ],
-  "effects": {
-    "buffDuration": 30,
-    "durations": {
-      "regenDebuff": 30
-    },
-    "regenDebuff": {
-      "scale": 2.5,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Damage","Energy",1.0923,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Toxic",0.36962,1,3,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.6000000238418579,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],

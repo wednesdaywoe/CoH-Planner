@@ -47,54 +47,6 @@ export const TacticalTrainingLeadership: Power = {
     "To Hit Buff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 2.25,
-    "confuse": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": -15,
-      "table": "Ranged_Res_Boolean"
-    },
-    "debuffResistance": {
-      "perception": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Boolean"
-      }
-    },
-    "durations": {
-      "confuse": 2.25,
-      "debuffResistance": 2.25,
-      "fear": 2.25,
-      "mezResistance": 2.25,
-      "perceptionBuff": 2.25,
-      "tohitBuff": 2.25
-    },
-    "effectDuration": 2.25,
-    "fear": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": -15,
-      "table": "Ranged_Res_Boolean"
-    },
-    "mezResistance": {
-      "confuse": {
-        "scale": 1.75,
-        "table": "Ranged_Res_Boolean"
-      },
-      "fear": {
-        "scale": 1.75,
-        "table": "Ranged_Res_Boolean"
-      }
-    },
-    "perceptionBuff": {
-      "scale": 2,
-      "table": "Ranged_Res_Boolean"
-    },
-    "tohitBuff": {
-      "scale": 1,
-      "table": "Ranged_Buff_ToHit"
-    }
-  },
   "atoms": [
     ["ToHit",null,1,1,2.25,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["Perception",null,1.5,1,2.25,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],

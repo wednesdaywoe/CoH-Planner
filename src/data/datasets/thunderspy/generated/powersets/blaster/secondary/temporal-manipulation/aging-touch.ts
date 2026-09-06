@@ -43,47 +43,6 @@ export const AgingTouch: Power = {
     "Knockback"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 10,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.066,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "damageBuff": 8.5,
-      "movement": 10,
-      "rechargeBuff": 10
-    },
-    "knockback": {
-      "scale": 2.54,
-      "table": "Melee_Ones"
-    },
-    "movement": {
-      "flySpeed": {
-        "scale": 0.15,
-        "table": "Melee_SpeedFlying"
-      },
-      "jumpSpeed": {
-        "scale": 0.1,
-        "table": "Melee_SpeedJumping"
-      },
-      "runSpeed": {
-        "scale": 0.1,
-        "table": "Melee_SpeedRunning",
-        "perTarget": 0.1
-      }
-    },
-    "rechargeBuff": {
-      "ignoreStrength": true,
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff"
-    ]
-  },
   "atoms": [
     ["Mez","Knockback",2.54,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["RechargeTime",null,0.2,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],

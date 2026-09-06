@@ -48,18 +48,6 @@ export const SoothingFlames: Power = {
     "scale": 2,
     "table": "Ranged_Heal"
   },
-  "effects": {
-    "buffDuration": 30,
-    "durations": {
-      "resistance": 30
-    },
-    "resistance": {
-      "toxic": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["Heal",null,2,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Heal"],
     ["Resistance","Toxic",1,1,30,"Melee_Res_Dmg","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_Dmg"]

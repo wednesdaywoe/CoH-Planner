@@ -51,14 +51,6 @@ export const Telekinesis: Power = {
     "Immobilize"
   ],
   "maxSlots": 6,
-  "effects": {
-    "immobilize": {
-      "attribType": "Duration",
-      "mag": 4,
-      "scale": 5,
-      "table": "Ranged_Immobilize"
-    }
-  },
   "atoms": [
     ["Mez","Immobilized",5,4,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kHitPoints%","target>","0",">","&&"]],
     ["Mez","Immobilized",2.5,1,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,0.05000000074505806,null,null,null,null,null,null,["enttype","target>","critter","eq","kHitPoints%","target>","0",">","&&"],null,null,null,null,null,null,null,null,null,"Overpower"],

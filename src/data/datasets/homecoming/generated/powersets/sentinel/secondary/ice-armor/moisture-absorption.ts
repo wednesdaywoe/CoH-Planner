@@ -43,55 +43,6 @@ export const MoistureAbsorption: Power = {
     "Endurance Modification"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 100,
-    "defenseBuff": {
-      "cold": {
-        "scale": 0.4,
-        "table": "Melee_Buff_Def"
-      },
-      "energy": {
-        "scale": 0.4,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
-        "scale": 0.4,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.4,
-        "table": "Melee_Buff_Def"
-      },
-      "negative": {
-        "scale": 0.4,
-        "table": "Melee_Buff_Def"
-      },
-      "psionic": {
-        "scale": 0.4,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0.4,
-        "table": "Melee_Buff_Def"
-      },
-      "toxic": {
-        "scale": 0.4,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 100
-    },
-    "enduranceDrain": {
-      "scale": 0.35,
-      "table": "Melee_Ones"
-    },
-    "enduranceGain": {
-      "scale": 15,
-      "table": "Melee_Ones",
-      "perTarget": 15
-    }
-  },
   "atoms": [
     ["Endurance",null,-0.35,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Endurance",null,15,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,15],

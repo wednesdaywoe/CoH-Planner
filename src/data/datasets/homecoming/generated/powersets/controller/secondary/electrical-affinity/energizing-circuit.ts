@@ -71,21 +71,6 @@ export const EnergizingCircuit: Power = {
     "Endurance Modification"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 5,
-    "durations": {
-      "rechargeBuff": 5
-    },
-    "enduranceGain": {
-      "scale": 25,
-      "table": "Melee_Ones"
-    },
-    "rechargeBuff": {
-      "ignoreStrength": true,
-      "scale": 1.25,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Endurance",null,25,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["RechargeTime",null,1.25,1,5,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],

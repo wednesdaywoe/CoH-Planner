@@ -55,20 +55,6 @@ export const RendFlesh: Power = {
     "scale": 0.8,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "buffDuration": 15,
-    "durations": {
-      "regenDebuff": 15
-    },
-    "regenDebuff": {
-      "scale": 0.2,
-      "table": "Ranged_Ones"
-    },
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    }
-  },
   "atoms": [
     ["Damage","Lethal",0.8,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Regeneration",null,-0.2,1,15,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones"],

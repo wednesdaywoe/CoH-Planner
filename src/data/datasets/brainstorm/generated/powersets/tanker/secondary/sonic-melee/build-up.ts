@@ -38,60 +38,6 @@ export const BuildUp: Power = {
     "To Hit Buff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 10,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 6,
-      "table": "Melee_Buff_Dmg"
-    },
-    "durations": {
-      "damageBuff": 10,
-      "specialBuff": 10,
-      "tohitBuff": 10
-    },
-    "specialBuff": {
-      "confuse": {
-        "ignoreStrength": true,
-        "scale": 0.25,
-        "table": "Melee_Ones"
-      },
-      "fear": {
-        "ignoreStrength": true,
-        "scale": 0.25,
-        "table": "Melee_Ones"
-      },
-      "hold": {
-        "ignoreStrength": true,
-        "scale": 0.25,
-        "table": "Melee_Ones"
-      },
-      "immobilize": {
-        "ignoreStrength": true,
-        "scale": 0.25,
-        "table": "Melee_Ones"
-      },
-      "sleep": {
-        "ignoreStrength": true,
-        "scale": 0.25,
-        "table": "Melee_Ones"
-      },
-      "stun": {
-        "ignoreStrength": true,
-        "scale": 0.25,
-        "table": "Melee_Ones"
-      }
-    },
-    "tohitBuff": {
-      "scale": 2,
-      "table": "Melee_Buff_ToHit"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff",
-      "tohitBuff"
-    ]
-  },
   "atoms": [
     ["ToHit",null,2,1,10,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["DamageBuff","Smashing",6,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],

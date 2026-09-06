@@ -48,12 +48,10 @@ export const OmegaManeuver: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "duration": 5,
-      "entity": "Pets_Omega_Bomb",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "duration": 5,
+    "entity": "Pets_Omega_Bomb",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,-1,1,5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,5]

@@ -67,7 +67,11 @@ interface LegacyPoolPower {
   /** EntsAffected — the power-level recipient list `reachesCaster` resolves an atom's
    *  `AnyAffected` pronoun against (TARGETS-3). */
   targetsAffected?: string[];
-  effects: LegacyPoolPowerEffects;
+  /** The transitional effects bag. Absent since the pool converter stopped emitting it
+   *  (REBUILD-PROGRESS `effects` bag removal, writer side) — the epic side lost it at
+   *  atom1-13 and this one followed. Optional because a legacy or vendored registry
+   *  predating the strip still carries one and must keep transforming. */
+  effects?: LegacyPoolPowerEffects;
   // Game "mode" gating — the combat states a caster can be in (Kheldian
   // Nova/Dwarf forms, Titan Momentum, Domination, Granite, Swap Ammo, travel
   // toggles). Stamped by `assignModes` / `extractModeVariants` in
@@ -186,7 +190,16 @@ function pickMinted(legacy: LegacyPoolPower): Minted {
  * Transform legacy pool power to typed Power
  */
 function transformPoolPower(legacy: LegacyPoolPower): Power {
-  // Destructure stats that need renaming, spread the rest through directly
+  // Destructure stats that need renaming, spread the rest through directly.
+  //
+  // The bag left the pool contract with the writer-side strip and this went on destructuring
+  // it, which is the failure `transformEpicPower` already took: an unguarded destructure of an
+  // absent bag throws, and the whole partition stops listing. Every scalar below also rides
+  // `legacy.stats`, which `pickMinted` carries through untouched and which the consumers
+  // already prefer (`power.stats?.recharge ?? power.effects?.recharge`), so a bagless power
+  // loses nothing by taking the `{}` branch — including the toggle endurance conversion, which
+  // `character-totals.ts` performs off `stats.endurance / stats.activatePeriod` when no
+  // `effects.enduranceCost` is there to prefer.
   const {
     endurance,
     activatePeriod,
@@ -199,7 +212,7 @@ function transformPoolPower(legacy: LegacyPoolPower): Power {
     arc,
     maxTargets,
     ...effectFields
-  } = legacy.effects;
+  } = legacy.effects ?? {};
 
   // Toggle endurance is per-tick in the binary data — convert to per-second.
   // Default activate period is 0.5s (standard toggle tick rate) when not explicit.
@@ -227,21 +240,27 @@ function transformPoolPower(legacy: LegacyPoolPower): Power {
     requires: legacy.requires,
     ...pickModeGates(legacy),
     ...pickMinted(legacy),
-    effects: {
-      // Stats (renamed from legacy format)
-      accuracy,
-      range,
-      recharge,
-      enduranceCost: endCost,
-      castTime: activationTime,
-      effectArea: effectArea as PowerEffects['effectArea'],
-      radius,
-      arc,
-      maxTargets,
-      // All other effects pass through directly (damage, buffs, debuffs,
-      // mez, movement, stealth, summon, resistance, defense, etc.)
-      ...effectFields,
-    } as PowerEffects,
+    // Emitted only when the legacy power actually carried a bag. A bagless pool power must
+    // read `effects === undefined`, the same as every powerset and epic power post-strip: the
+    // display and toggle paths gate on `if (!power.effects)`, and an all-undefined object is
+    // truthy enough to send them down the populated branch with nothing in it.
+    ...(legacy.effects ? {
+      effects: {
+        // Stats (renamed from legacy format)
+        accuracy,
+        range,
+        recharge,
+        enduranceCost: endCost,
+        castTime: activationTime,
+        effectArea: effectArea as PowerEffects['effectArea'],
+        radius,
+        arc,
+        maxTargets,
+        // All other effects pass through directly (damage, buffs, debuffs,
+        // mez, movement, stealth, summon, resistance, defense, etc.)
+        ...effectFields,
+      } as PowerEffects,
+    } : {}),
   };
 }
 

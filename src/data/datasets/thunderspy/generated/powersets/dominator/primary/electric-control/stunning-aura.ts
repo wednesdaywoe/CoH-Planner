@@ -46,27 +46,6 @@ export const StunningAura: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 2.25,
-    "durations": {
-      "recoveryBuff": 2.25,
-      "regenBuff": 2.25
-    },
-    "enduranceDrain": {
-      "scale": 0.075,
-      "table": "Ranged_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 0.1,
-      "table": "Ranged_Ones",
-      "perTarget": 0.1
-    },
-    "regenBuff": {
-      "scale": 0.15,
-      "table": "Ranged_Ones",
-      "perTarget": 0.15
-    }
-  },
   "atoms": [
     ["Endurance",null,-0.075,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones"],
     ["Regeneration",null,0.15,1,2.25,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.15,null,null,null,null,null,null,null,"Ones"],

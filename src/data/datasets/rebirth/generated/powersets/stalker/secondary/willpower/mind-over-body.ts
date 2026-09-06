@@ -44,26 +44,6 @@ export const MindOverBody: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "durations": {
-      "resistance": 0.75
-    },
-    "resistance": {
-      "lethal": {
-        "scale": 2.25,
-        "table": "Melee_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      },
-      "smashing": {
-        "scale": 2.25,
-        "table": "Melee_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["Resistance","Smashing",2.25,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Res_Dmg"],
     ["Resistance","Lethal",2.25,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Res_Dmg"],

@@ -60,22 +60,6 @@ export const TouchofFear: Power = {
     "duration": 3.1,
     "tickRate": 0.75
   },
-  "effects": {
-    "buffDuration": 20,
-    "durations": {
-      "tohitDebuff": 20
-    },
-    "fear": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 7,
-      "table": "Melee_Fear"
-    },
-    "tohitDebuff": {
-      "scale": 1.5,
-      "table": "Melee_DeBuff_ToHit"
-    }
-  },
   "atoms": [
     ["Damage","Negative",0.1726,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.75,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
     ["Damage","Fire",0.0777,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.75,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace",null,null,["Foe"]],

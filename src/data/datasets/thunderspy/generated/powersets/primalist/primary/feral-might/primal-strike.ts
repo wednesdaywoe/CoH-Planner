@@ -90,17 +90,6 @@ export const PrimalStrike: Power = {
       "damageTypes": [
         "Lethal"
       ],
-      "effects": {
-        "buffDuration": 6,
-        "damageDebuff": {
-          "ignoreStrength": true,
-          "scale": 2.25,
-          "table": "Melee_Debuff_Dam"
-        },
-        "durations": {
-          "damageDebuff": 6
-        }
-      },
       "shortHelp": "Melee, Superior DMG(Special), Special",
       "description": "You strike your foe will the primal forces of nature to deal Superior damage. In primal (human) form you will deal smashing damage and will heal yourself and up to 3 nearby allies for a good amount of health. In Hunter form you'll deal lethal damage and reduce the target's damage slightly. In Prowler form you'll deal lethal damage, cause minor lethal damage over time and have a high chance to stun. This power builds 1 primal energy. Damage: Superior, Recharge: Slow",
       "effectArea": "SingleTarget",
@@ -165,14 +154,6 @@ export const PrimalStrike: Power = {
       "damageTypes": [
         "Lethal"
       ],
-      "effects": {
-        "stun": {
-          "attribType": "Duration",
-          "mag": 2,
-          "scale": 5,
-          "table": "Melee_Stun"
-        }
-      },
       "shortHelp": "Melee, Superior DMG(Special), Special",
       "description": "You strike your foe will the primal forces of nature to deal Superior damage. In primal (human) form you will deal smashing damage and will heal yourself and up to 3 nearby allies for a good amount of health. In Hunter form you'll deal lethal damage and reduce the target's damage slightly. In Prowler form you'll deal lethal damage, cause minor lethal damage over time and have a high chance to stun. This power builds 1 primal energy. Damage: Superior, Recharge: Slow",
       "effectArea": "SingleTarget",

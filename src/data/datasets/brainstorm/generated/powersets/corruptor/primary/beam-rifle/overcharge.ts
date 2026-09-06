@@ -64,22 +64,6 @@ export const Overcharge: Power = {
       "tickRate": 1
     }
   ],
-  "effects": {
-    "buffDuration": 15,
-    "defenseDebuff": {
-      "scale": 1.5,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 15
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 4,
-      "table": "Ranged_Stun"
-    }
-  },
   "atoms": [
     ["Damage","Energy",3,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Energy",0.1,1,4.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1],

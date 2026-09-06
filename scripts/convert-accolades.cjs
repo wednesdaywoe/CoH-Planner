@@ -34,6 +34,7 @@ const fs = require('fs');
 const path = require('path');
 const {
   extractEffects,
+  extractPowerSummon,
   extractDamage,
   normalizeIconPath,
   collectBaseTemplates,
@@ -122,34 +123,26 @@ function convertAccoladePower(rawJson) {
   resolveThunderspyMovementTargets(rawJson);
 
   // Execution stats and the two power-level display fields, in the shape an archetype power
-  // publishes. The legacy copies under `effects` below stay until the bag's execution keys are
-  // deleted (atom-migration, display item job 2).
+  // publishes. The legacy `effects` bag copies are gone (atom1-13).
   power.stats = powerStats(rawJson);
   if (rawJson.effect_area && rawJson.effect_area !== 'None') {
     power.effectArea = EFFECT_AREA_MAP[rawJson.effect_area] ?? rawJson.effect_area;
   }
 
-  const effects = {};
-  if (rawJson.accuracy) effects.accuracy = rawJson.accuracy;
-  if (rawJson.recharge_time) effects.recharge = rawJson.recharge_time;
-  if (rawJson.endurance_cost) effects.endurance = rawJson.endurance_cost;
-  if (rawJson.activation_time) effects.activationTime = rawJson.activation_time;
-  if (rawJson.activate_period) effects.activatePeriod = rawJson.activate_period;
-  if (rawJson.effect_area && rawJson.effect_area !== 'None') {
-    effects.effectArea = EFFECT_AREA_MAP[rawJson.effect_area] ?? rawJson.effect_area;
-  }
-
-  // Extract effects + atoms exactly as the powerset/pool/inherent converters do.
-  // `collectBaseTemplates` covers a power's own effects AND its redirect chain.
+  // `collectBaseTemplates` covers a power's own effects AND its redirect chain; the
+  // templates feed the atom list below. The legacy `effects` bag is gone (atom1-13).
   const { templates: allTemplates } = collectBaseTemplates(rawJson);
   if (allTemplates.length > 0) {
     const damage = extractDamage(allTemplates);
     if (damage) {
       power.damage = damage;
-      effects.damage = damage;
     }
-    const extracted = extractEffects(allTemplates, rawJson.name, rawJson.targets_affected);
-    for (const [key, value] of Object.entries(extracted)) effects[key] = value;
+
+    // The pets. This partition reached `extractSummon` through the bag it no longer emits, so
+    // the strip took its summons silently — the Accolade markers (Mark of Recall's beacon, the
+    // Portable Workbench) among them (ENT-22). Same address as every other partition's.
+    const summon = extractPowerSummon(allTemplates, rawJson.name);
+    if (summon) power.summon = summon;
   }
 
   // The conditional→atom join, stamped ahead of the atom emit for the reason
@@ -171,8 +164,6 @@ function convertAccoladePower(rawJson) {
       if (atoms) power.atoms = atoms;
     }
   }
-
-  power.effects = effects;
 
   // Conditional bonus effects (Mechanic Adjusters) — the positive state gates the base
   // collector filters out, surfaced as toggles. Called AFTER the atom emit, because
@@ -208,8 +199,14 @@ function convertAccoladePower(rawJson) {
     // needs are missing from every fork-6 power alike. The applied-mez half was called only by
     // convert-powerset.cjs, so Rest, Hibernate and Rise of the Phoenix shipped 15 foe-control
     // slots on self-only powers (TWIN-2).
-    guardThunderspyOnesBuffs(power, rawJson.targets_affected);
-    guardThunderspyAppliedMez(power, rawJson.targets_affected);
+    // The guards read the effects PROJECTION to decide which slots are Thunderspy target-trap
+    // artifacts, then stamp the atoms behind them. The bag is no longer emitted on the power,
+    // so it is computed here for the guards alone and thrown away — dropping the computation
+    // along with the emission is what silently retired both guards and let the trapped rows
+    // reach the engine on the atoms (TSPY-10, and it re-opened TWIN-2's widening).
+    const guardBag = extractEffects(allTemplates, rawJson.name, rawJson.targets_affected);
+    guardThunderspyOnesBuffs(power, rawJson.targets_affected, guardBag);
+    guardThunderspyAppliedMez(power, rawJson.targets_affected, guardBag);
   }
 
   return power;

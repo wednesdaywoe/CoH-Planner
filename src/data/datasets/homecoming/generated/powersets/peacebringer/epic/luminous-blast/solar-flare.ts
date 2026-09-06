@@ -53,20 +53,6 @@ export const SolarFlare: Power = {
     "scale": 1.42,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "buffDuration": 10,
-    "defenseDebuff": {
-      "scale": 2,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "knockback": {
-      "scale": 2,
-      "table": "Melee_Knockback"
-    }
-  },
   "atoms": [
     ["Damage","Energy",1.42,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Mez","Knockback",2,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

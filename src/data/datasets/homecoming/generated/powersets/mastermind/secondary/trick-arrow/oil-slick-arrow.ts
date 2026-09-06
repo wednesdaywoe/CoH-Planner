@@ -45,20 +45,18 @@ export const OilSlickArrow: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "conditionalEntities": [
-        {
-          "entity": "Pets_OilSlickBurn",
-          "label": "Oil Slick Ignited",
-          "toggleId": "oilslick_ignited"
-        }
-      ],
-      "copyBoosts": true,
-      "duration": 30,
-      "entity": "Pets_OilSlickOil",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "conditionalEntities": [
+      {
+        "entity": "Pets_OilSlickBurn",
+        "label": "Oil Slick Ignited",
+        "toggleId": "oilslick_ignited"
+      }
+    ],
+    "copyBoosts": true,
+    "duration": 30,
+    "entity": "Pets_OilSlickOil",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,-1,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,30]

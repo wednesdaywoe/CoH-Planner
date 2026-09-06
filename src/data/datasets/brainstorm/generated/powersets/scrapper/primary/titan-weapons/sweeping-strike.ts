@@ -56,12 +56,6 @@ export const SweepingStrike: Power = {
     "scale": 1.3102,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",1.3102,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
     ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.6600000262260437,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
@@ -84,12 +78,6 @@ export const SweepingStrike: Power = {
         "type": "Smashing",
         "scale": 1.0428,
         "table": "Melee_Damage"
-      },
-      "effects": {
-        "knockback": {
-          "scale": 0.67,
-          "table": "Melee_Ones"
-        }
       },
       "shortHelp": "Melee (Cone), DMG(Smashing), Foe Knockdown",
       "description": "You make a sweeping slash with your weapon, causing high damage and possibly knocking your opponent down.\n\nNotes: Titan Sweep (Fast) is unaffected by Arc changes.",

@@ -46,62 +46,6 @@ export const Hibernate: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "durations": {
-      "knockback": 0.75,
-      "knockup": 0.75,
-      "mezResistance": 0.75,
-      "recoveryBuff": 0.75,
-      "regenBuff": 0.75
-    },
-    "immobilize": {
-      "attribType": "Duration",
-      "ignoreStrength": true,
-      "mag": 100,
-      "scale": 0.75,
-      "table": "Melee_Ones",
-      "toWho": "Self"
-    },
-    "knockback": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "knockup": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "mezResistance": {
-      "knockback": {
-        "ignoreStrength": true,
-        "scale": 10,
-        "table": "Melee_Ones"
-      },
-      "knockup": {
-        "ignoreStrength": true,
-        "scale": 10,
-        "table": "Melee_Ones"
-      }
-    },
-    "onlyAffectsSelf": {
-      "ignoreStrength": true,
-      "scale": 0.75,
-      "table": "Melee_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 4,
-      "table": "Melee_Ones"
-    },
-    "regenBuff": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "untouchable": {
-      "ignoreStrength": true,
-      "scale": 0.75,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["MezResist","Knockback",10,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["MezResist","Knockup",10,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],

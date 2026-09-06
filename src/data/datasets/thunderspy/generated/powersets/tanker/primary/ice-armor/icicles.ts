@@ -51,55 +51,6 @@ export const Icicles: Power = {
     "scale": 0.1,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "buffDuration": 5,
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 2,
-      "table": "Melee_Debuff_Dam"
-    },
-    "durations": {
-      "damageDebuff": 5,
-      "movementCapDebuff": 5,
-      "rechargeDebuff": 5,
-      "slow": 5
-    },
-    "movementCapDebuff": {
-      "runSpeed": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_SpeedRunning"
-      }
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.4,
-      "table": "Melee_Slow"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.7,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.7,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.7,
-        "table": "Melee_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.7,
-        "table": "Melee_Slow"
-      }
-    },
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    }
-  },
   "atoms": [
     ["Damage","Lethal",0.1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Fire",0.045,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],

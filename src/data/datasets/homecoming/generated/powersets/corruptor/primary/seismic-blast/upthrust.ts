@@ -55,33 +55,6 @@ export const Upthrust: Power = {
     "scale": 0.8985,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 16,
-    "defenseDebuff": {
-      "scale": 0.7,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 16,
-      "movementCapDebuff": 16
-    },
-    "knockback": {
-      "scale": 0.33,
-      "table": "Ranged_Ones"
-    },
-    "movementCapDebuff": {
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Ranged_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Defense","All",0.7,1,16,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Movement","FlyMode",-1.6,1,16,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],

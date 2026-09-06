@@ -44,26 +44,11 @@ export const Aim: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 11.5,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.151,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 11.5
-    },
-    "summon": {
-      "copyBoosts": true,
-      "duration": 10,
-      "entity": "Pets_FlameThrower",
-      "isPseudoPet": false
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff"
-    ]
+  "summon": {
+    "copyBoosts": true,
+    "duration": 10,
+    "entity": "Pets_FlameThrower",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,1,1,10,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,0.5,null,null,null,null,null,10],

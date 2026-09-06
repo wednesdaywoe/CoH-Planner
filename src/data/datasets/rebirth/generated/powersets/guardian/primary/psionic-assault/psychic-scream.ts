@@ -51,17 +51,6 @@ export const PsychicScream: Power = {
     "scale": 1.3,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "buffDuration": 10,
-    "durations": {
-      "rechargeDebuff": 10
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.5,
-      "table": "Melee_Slow"
-    }
-  },
   "atoms": [
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"StackThenIgnore",3,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.15000000596046448,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight","source.ownPower?","!","Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight_Lockout","source.ownPower?","!","&&","Temporary_Powers.Temporary_Powers.Boggled","target.ownPower?","!","&&"],null,null,null,null,null,null,null,0.15,null,"Ones"],

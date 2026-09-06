@@ -51,16 +51,6 @@ export const GleamingBolt: Power = {
     "scale": 0.6,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 3,
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 3
-    }
-  },
   "atoms": [
     ["Damage","Energy",0.6,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
     ["Defense","All",1,1,3,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]]
@@ -79,21 +69,6 @@ export const GleamingBolt: Power = {
         "type": "Energy",
         "scale": 0.6,
         "table": "Melee_InherentDamage"
-      },
-      "effects": {
-        "buffDuration": 4,
-        "defenseDebuff": {
-          "scale": 1.5,
-          "table": "Melee_Debuff_Def"
-        },
-        "durations": {
-          "defenseDebuff": 3,
-          "taunt": 4
-        },
-        "taunt": {
-          "scale": 1,
-          "table": "Melee_InherentTaunt"
-        }
       },
       "shortHelp": "Ranged, Minor DMG(Energy), Foe -DEF",
       "description": "A very quick, but low damage bolt of Kheldian energy that can reduce a target's Defense. Note that Dwarf Gleaming Bolt is unaffected by Range changes. Damage: Minor",

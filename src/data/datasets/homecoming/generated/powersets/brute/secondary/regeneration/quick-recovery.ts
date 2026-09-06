@@ -34,24 +34,6 @@ export const QuickRecovery: Power = {
     "Endurance Modification"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 10.25,
-    "debuffResistance": {
-      "recovery": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "debuffResistance": 10.25,
-      "recoveryBuff": 10.25
-    },
-    "recoveryBuff": {
-      "scale": 0.3,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Recovery",null,0.3,1,10.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Recovery",null,0.2,1,10.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]

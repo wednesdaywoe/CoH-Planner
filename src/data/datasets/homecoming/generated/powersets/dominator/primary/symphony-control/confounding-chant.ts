@@ -55,14 +55,6 @@ export const ConfoundingChant: Power = {
     "duration": 19.75,
     "tickRate": 1
   },
-  "effects": {
-    "stun": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Stun"
-    }
-  },
   "atoms": [
     ["Damage","Psionic",0.125,1,19.75,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Replace",2,null,1,1],
     ["Mez","Stunned",8,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

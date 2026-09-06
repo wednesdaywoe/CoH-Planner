@@ -42,12 +42,10 @@ export const PoisonGasArrow: Power = {
     "Universal Control Duration Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "duration": 30,
-      "entity": "Pets_PoisonGasArrow",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "duration": 30,
+    "entity": "Pets_PoisonGasArrow",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,1,1,30,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,30]

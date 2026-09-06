@@ -38,23 +38,6 @@ export const ShadowSlip: Power = {
     "Accuracy"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 15,
-    "durations": {
-      "mezResistance": 15
-    },
-    "mezResistance": {
-      "teleport": {
-        "ignoreStrength": true,
-        "scale": 100,
-        "table": "Ranged_Ones"
-      }
-    },
-    "teleport": {
-      "scale": 4.1,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Mez","Teleport",4.1,3,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1.5],
     ["MezResist","Teleport",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,2.8]

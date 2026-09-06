@@ -37,23 +37,6 @@ export const KineticTransfer: Power = {
     "Accuracy"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 45,
-    "damageBuff": {
-      "scale": 4,
-      "table": "Ranged_Buff_Dmg",
-      "perTarget": 2
-    },
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 2,
-      "table": "Ranged_Debuff_Dam"
-    },
-    "durations": {
-      "damageBuff": 45,
-      "damageDebuff": 30
-    }
-  },
   "atoms": [
     ["DamageBuff","Smashing",2,1,45,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,2,null,null,null,null,null,null,null,null,null,null,["Friend","Self"]],
     ["DamageBuff","Lethal",2,1,45,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,2,null,null,null,null,null,null,null,null,null,null,["Friend","Self"]],

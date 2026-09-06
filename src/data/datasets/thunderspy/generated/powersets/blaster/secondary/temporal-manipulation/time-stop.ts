@@ -41,61 +41,11 @@ export const TimeStop: Power = {
     "Holds"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 20,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.143,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 9.67,
-      "movement": 10,
-      "regenDebuff": 20,
-      "specialBuff": 20
-    },
-    "hold": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Immobilize"
-    },
-    "movement": {
-      "flySpeed": {
-        "scale": 0.15,
-        "table": "Melee_SpeedFlying"
-      },
-      "jumpSpeed": {
-        "scale": 0.1,
-        "table": "Melee_SpeedJumping"
-      },
-      "runSpeed": {
-        "scale": 0.1,
-        "table": "Melee_SpeedRunning"
-      }
-    },
-    "regenDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    },
-    "specialBuff": {
-      "heal": {
-        "scale": 0.25,
-        "table": "Ranged_Stun"
-      }
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff",
-      "movement"
-    ]
-  },
   "atoms": [
     ["Mez","Held",8,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Immobilize"],
     ["Heal",null,-0.25,1,20,"Ranged_Stun","Str","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Stun"],
     ["Regeneration",null,-0.5,1,20,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones"],
-    ["RechargeTime",null,0.2,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["RechargeTime",null,0.2,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,true,null,null,null,null,null,"Ones"],
     ["Movement","Run",0.1,1,10,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"SpeedRunning"],
     ["Movement","Fly",0.15,1,10,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"SpeedFlying"],
     ["Movement","Jump",0.1,1,10,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"SpeedJumping"],

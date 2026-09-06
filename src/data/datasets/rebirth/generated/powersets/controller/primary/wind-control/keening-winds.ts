@@ -47,27 +47,6 @@ export const KeeningWinds: Power = {
     "Universal Control Duration Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 2.1,
-    "confuse": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Fear"
-    },
-    "durations": {
-      "enduranceDrain": 2.1
-    },
-    "enduranceDrain": {
-      "scale": 0.04,
-      "table": "Ranged_Ones"
-    },
-    "enduranceGain": {
-      "scale": 10,
-      "table": "Ranged_EndDrain",
-      "perTarget": 10
-    }
-  },
   "atoms": [
     ["Mez","Confused",15,3,0,"Ranged_Fear","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Fear"],
     ["Mez","Confused",8,1,0,"Ranged_Fear","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0.5,null,"Fear"],

@@ -53,16 +53,6 @@ export const MightyShockwave: Power = {
     "scale": 0.876923,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Ranged_Ones"
-    },
-    "taunt": {
-      "scale": 1,
-      "table": "Ranged_InherentTaunt"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.876923,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Mez","Taunt",1,4,0,"Ranged_InherentTaunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"InherentTaunt"],

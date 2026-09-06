@@ -32,24 +32,6 @@ export const CombatTrainingOffensive: Power = {
     "Accuracy"
   ],
   "maxSlots": 6,
-  "effects": {
-    "accuracyBuff": {
-      "scale": 1,
-      "table": "Melee_Buff_ToHit"
-    },
-    "buffDuration": 0.75,
-    "debuffResistance": {
-      "tohit": {
-        "ignoreStrength": true,
-        "scale": 0.33,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "accuracyBuff": 0.75,
-      "debuffResistance": 0.75
-    }
-  },
   "atoms": [
     ["Accuracy",null,1,1,0.75,"Melee_Buff_ToHit","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["ToHit",null,0.33,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]

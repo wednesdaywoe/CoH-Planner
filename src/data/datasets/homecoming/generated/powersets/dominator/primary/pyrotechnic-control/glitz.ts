@@ -61,20 +61,6 @@ export const Glitz: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "fear": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Fear"
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Stun"
-    }
-  },
   "atoms": [
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Cur.kHitPoints","target>","0",">"],null,null,null,null,null,null,null,null,null,null,null,"null"],
     ["Mez","Stunned",8,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Cur.kHitPoints","target>","0",">","enttype","target>","critter","eq","&&"]],

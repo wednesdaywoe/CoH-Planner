@@ -40,43 +40,6 @@ export const BerylCrystals: Power = {
     "Recharge"
   ],
   "maxSlots": 6,
-  "effects": {
-    "accuracyBuff": {
-      "ignoreStrength": true,
-      "scale": 0.33,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 0.75,
-    "confuse": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": -30,
-      "table": "Ranged_Res_Boolean",
-      "toWho": "Self"
-    },
-    "debuffResistance": {
-      "perception": {
-        "scale": 0.6,
-        "table": "Melee_Ones"
-      },
-      "tohit": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "durations": {
-      "accuracyBuff": 0.75,
-      "confuse": 0.75,
-      "debuffResistance": 0.75,
-      "perceptionBuff": 0.75
-    },
-    "effectDuration": 0.75,
-    "perceptionBuff": {
-      "scale": 0.6,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Mez","Confused",-30,1,0.75,"Ranged_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
     ["Perception",null,0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],

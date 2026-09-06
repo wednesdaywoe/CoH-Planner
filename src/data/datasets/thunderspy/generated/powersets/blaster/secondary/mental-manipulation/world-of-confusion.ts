@@ -57,14 +57,6 @@ export const WorldofConfusion: Power = {
     "table": "Ranged_Damage",
     "tickRate": 2
   },
-  "effects": {
-    "confuse": {
-      "attribType": "Duration",
-      "mag": 2,
-      "scale": 1.5,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Mez","Confused",1.5,2,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["Damage","Psionic",0.12,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"]

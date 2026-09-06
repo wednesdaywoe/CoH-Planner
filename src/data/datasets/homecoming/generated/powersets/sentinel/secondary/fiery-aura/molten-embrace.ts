@@ -40,17 +40,6 @@ export const MoltenEmbrace: Power = {
     "Recharge"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 1.2,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 1,
-      "table": "Melee_Buff_Dmg"
-    },
-    "durations": {
-      "damageBuff": 1.2
-    }
-  },
   "atoms": [
     ["DamageBuff","Smashing",1,1,1.2,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Lethal",1,1,1.2,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],

@@ -47,39 +47,6 @@ export const Hypothermia: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 15.1,
-    "durations": {
-      "sleep": 15.1,
-      "slow": 15
-    },
-    "effectDuration": 15.1,
-    "sleep": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 4,
-      "table": "Ranged_Sleep"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.35,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.35,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.35,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.35,
-        "table": "Ranged_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Mez","Sleep",4,3,15.1,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,3,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Water_Control_Drowning","target.ownPower?","!","&&"],null,null,null,null,null,null,null,0.6,null,"Sleep"],
     ["Mez","Sleep",3,1,15.1,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,3,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Temporary_Powers.Temporary_Powers.Water_Control_Drowning","target.ownPower?","!","&&"],null,null,null,null,null,null,null,0.3,null,"Sleep"],

@@ -55,34 +55,6 @@ export const HotFeet: Power = {
     "scale": 0.25,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 2.25,
-    "durations": {
-      "slow": 2.25
-    },
-    "fear": {
-      "attribType": "Duration",
-      "ignoreStrength": true,
-      "mag": 3,
-      "scale": 4,
-      "table": "Ranged_Ones"
-    },
-    "slow": {
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.7,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.7,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.7,
-        "table": "Ranged_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Damage","Fire",0.25,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Mez","Afraid",4,3,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,1,null,true],

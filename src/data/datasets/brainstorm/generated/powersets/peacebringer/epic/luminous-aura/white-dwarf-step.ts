@@ -38,51 +38,6 @@ export const WhiteDwarfStep: Power = {
     "Universal Travel"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 3,
-    "durations": {
-      "movement": 15,
-      "stealth": 3,
-      "untouchable": 3
-    },
-    "movement": {
-      "fly": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Ranged_Ones"
-      },
-      "flySpeed": {
-        "ignoreStrength": true,
-        "scale": 500,
-        "table": "Melee_SpeedFlying"
-      },
-      "movementControl": {
-        "ignoreStrength": true,
-        "scale": 8,
-        "table": "Melee_Ones"
-      },
-      "movementFriction": {
-        "ignoreStrength": true,
-        "scale": 8,
-        "table": "Melee_Ones"
-      }
-    },
-    "stealth": {
-      "translucency": {
-        "scale": 0.25,
-        "table": "Ranged_Ones"
-      }
-    },
-    "teleport": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "untouchable": {
-      "ignoreStrength": true,
-      "scale": 1000,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Stealth","Translucency",0,1,1.5,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1.17],

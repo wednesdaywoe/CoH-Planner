@@ -34,46 +34,6 @@ export const RepellingForce: Power = {
     "Defense Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 10.3,
-    "defenseBuff": {
-      "cold": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "energy": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "negative": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "psionic": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "toxic": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 10.3
-    }
-  },
   "atoms": [
     ["Defense","Smashing",0.5,1,10.3,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
     ["Defense","Lethal",0.5,1,10.3,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],

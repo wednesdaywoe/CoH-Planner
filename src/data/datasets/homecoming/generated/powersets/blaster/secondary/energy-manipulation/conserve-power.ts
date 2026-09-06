@@ -43,38 +43,6 @@ export const ConservePower: Power = {
     "scale": 1,
     "table": "Melee_HealSelf"
   },
-  "effects": {
-    "buffDuration": 60,
-    "durations": {
-      "enduranceDiscount": 60,
-      "regenBuff": 60,
-      "regenBuffUnenhanced": 60,
-      "stun": 60
-    },
-    "effectDuration": 60,
-    "enduranceDiscount": {
-      "ignoreStrength": true,
-      "scale": 1,
-      "table": "Melee_Stun"
-    },
-    "regenBuff": {
-      "scale": 1.125,
-      "table": "Melee_Ones"
-    },
-    "regenBuffUnenhanced": {
-      "ignoreStrength": true,
-      "scale": 1.125,
-      "table": "Melee_Ones"
-    },
-    "stun": {
-      "attribType": "Magnitude",
-      "ignoreStrength": true,
-      "mag": 1,
-      "scale": -30,
-      "table": "Melee_Res_Boolean",
-      "toWho": "Self"
-    }
-  },
   "atoms": [
     ["EnduranceDiscount",null,1,1,60,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Regeneration",null,1.125,1,60,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],

@@ -45,28 +45,12 @@ export const HellonEarth: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 90,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 5,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "durations": {
-      "damageBuff": 90,
-      "tohitBuff": 90
-    },
-    "summon": {
-      "copyBoosts": true,
-      "duration": 90,
-      "entity": "Pets_Living_Hellfire",
-      "entityCount": 10,
-      "isPseudoPet": false
-    },
-    "tohitBuff": {
-      "scale": 1,
-      "table": "Ranged_Buff_ToHit"
-    }
+  "summon": {
+    "copyBoosts": true,
+    "duration": 90,
+    "entity": "Pets_Living_Hellfire",
+    "entityCount": 10,
+    "isPseudoPet": false
   },
   "atoms": [
     ["ToHit",null,1,1,90,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],

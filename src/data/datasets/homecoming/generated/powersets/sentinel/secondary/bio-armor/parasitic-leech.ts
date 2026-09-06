@@ -45,36 +45,6 @@ export const ParasiticLeech: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "absorb": {
-      "appliesStrength": true,
-      "maxHPFraction": 0.143,
-      "table": "Melee_Ones",
-      "maxHPFractionPerTarget": 0.143
-    },
-    "buffDuration": 45,
-    "durations": {
-      "absorb": 45,
-      "recoveryBuff": 45,
-      "regenBuff": 45,
-      "regenDebuff": 30
-    },
-    "recoveryBuff": {
-      "scale": 0.429,
-      "table": "Melee_Ones",
-      "perTarget": 0.429
-    },
-    "regenBuff": {
-      "scale": 0.714,
-      "table": "Melee_Ones",
-      "perTarget": 0.714
-    },
-    "regenDebuff": {
-      "ignoreStrength": true,
-      "scale": 1,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Recovery",null,0.429,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.429],
     ["Regeneration",null,0.714,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.714],

@@ -52,35 +52,6 @@ export const Zapp: Power = {
     "scale": 2.28,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 8.83,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.088,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 8.83,
-      "recoveryDebuff": 4
-    },
-    "enduranceDrain": {
-      "scale": 0.15,
-      "table": "Ranged_Ones"
-    },
-    "enduranceGain": {
-      "scale": 7.2,
-      "table": "Ranged_Ones"
-    },
-    "recoveryDebuff": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff",
-      "enduranceGain"
-    ]
-  },
   "atoms": [
     ["Damage","Energy",2.28,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Endurance",null,-0.15,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones"],

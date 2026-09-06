@@ -34,47 +34,6 @@ export const Precognition: Power = {
     "Defense Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 10.25,
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.2312,
-        "table": "Melee_Res_Boolean"
-      },
-      "perception": {
-        "ignoreStrength": true,
-        "scale": 0.6,
-        "table": "Melee_Ones"
-      }
-    },
-    "defenseBuff": {
-      "aoe": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "melee": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "psionic": {
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
-      "ranged": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "debuffResistance": 10.25,
-      "defenseBuff": 10.25,
-      "perceptionBuff": 0.75
-    },
-    "perceptionBuff": {
-      "scale": 0.6,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Defense","Ranged",0.5,1,10.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Defense","Melee",0.5,1,10.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],

@@ -45,20 +45,6 @@ export const Vines: Power = {
     "Immobilize"
   ],
   "maxSlots": 6,
-  "effects": {
-    "hold": {
-      "attribType": "Duration",
-      "mag": 2,
-      "scale": 8,
-      "table": "Ranged_Immobilize"
-    },
-    "immobilize": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    }
-  },
   "atoms": [
     ["DamageBuff","Smashing",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,[".066","activatetime","power.base>","*","areafactor","power.base>","/"],null,null,null,"Defiance"],
     ["DamageBuff","Lethal",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,[".066","activatetime","power.base>","*","areafactor","power.base>","/"],null,null,null,"Defiance"],

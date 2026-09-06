@@ -46,17 +46,6 @@ export const Repel: Power = {
     "Knockback"
   ],
   "maxSlots": 6,
-  "effects": {
-    "enduranceDrain": {
-      "ignoreStrength": true,
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "knockback": {
-      "scale": 3,
-      "table": "Ranged_Knockback"
-    }
-  },
   "atoms": [
     ["Mez","Knockback",3,0,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1.100000023841858,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"ReduceIfKD"],
     ["Endurance",null,-1,0,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1.100000023841858,null,true,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"ReduceIfKD"],

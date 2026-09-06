@@ -34,13 +34,11 @@ export const IcePatch: Power = {
     "Recharge"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "duration": 30,
-      "entity": "Pets_IcePatch",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "copyBoosts": true,
+    "duration": 30,
+    "entity": "Pets_IcePatch",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,1,1,30,"Melee_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,30],

@@ -40,12 +40,10 @@ export const SpiritTree: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "duration": 90,
-      "entity": "Pets_Spirit_Tree",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "duration": 90,
+    "entity": "Pets_Spirit_Tree",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,-1,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,90]

@@ -45,20 +45,6 @@ export const ACCOLADES_POWERSET = {
       "atoms": [
         ["MaxEndurance",null,5,1,10.75,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
       ],
-      "effects": {
-        "accuracy": 1,
-        "activatePeriod": 10,
-        "effectArea": "SingleTarget",
-        "buffDuration": 10.75,
-        "durations": {
-          "maxEndBuff": 10.75
-        },
-        "maxEndBuff": {
-          "ignoreStrength": true,
-          "scale": 5,
-          "table": "Melee_Ones"
-        }
-      },
       "targetsAffected": [
         "Self"
       ]
@@ -93,20 +79,6 @@ export const ACCOLADES_POWERSET = {
       "atoms": [
         ["MaxEndurance",null,5,1,10.75,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
       ],
-      "effects": {
-        "accuracy": 1,
-        "activatePeriod": 10,
-        "effectArea": "SingleTarget",
-        "buffDuration": 10.75,
-        "durations": {
-          "maxEndBuff": 10.75
-        },
-        "maxEndBuff": {
-          "ignoreStrength": true,
-          "scale": 5,
-          "table": "Melee_Ones"
-        }
-      },
       "targetsAffected": [
         "Self"
       ]
@@ -141,20 +113,6 @@ export const ACCOLADES_POWERSET = {
       "atoms": [
         ["MaxHP",null,1,1,10.75,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
       ],
-      "effects": {
-        "accuracy": 1,
-        "activatePeriod": 10,
-        "effectArea": "SingleTarget",
-        "buffDuration": 10.75,
-        "durations": {
-          "maxHPBuffUnenhanced": 10.75
-        },
-        "maxHPBuffUnenhanced": {
-          "ignoreStrength": true,
-          "scale": 1,
-          "table": "Melee_HealSelf"
-        }
-      },
       "targetsAffected": [
         "Self"
       ]
@@ -189,20 +147,6 @@ export const ACCOLADES_POWERSET = {
       "atoms": [
         ["MaxHP",null,0.5,1,10.75,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
       ],
-      "effects": {
-        "accuracy": 1,
-        "activatePeriod": 10,
-        "effectArea": "SingleTarget",
-        "buffDuration": 10.75,
-        "durations": {
-          "maxHPBuffUnenhanced": 10.75
-        },
-        "maxHPBuffUnenhanced": {
-          "ignoreStrength": true,
-          "scale": 0.5,
-          "table": "Melee_HealSelf"
-        }
-      },
       "targetsAffected": [
         "Self"
       ]
@@ -238,26 +182,6 @@ export const ACCOLADES_POWERSET = {
         ["MaxHP",null,0.5,1,10.75,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
         ["MaxEndurance",null,5,1,10.75,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
       ],
-      "effects": {
-        "accuracy": 1,
-        "activatePeriod": 10,
-        "effectArea": "SingleTarget",
-        "buffDuration": 10.75,
-        "durations": {
-          "maxEndBuff": 10.75,
-          "maxHPBuffUnenhanced": 10.75
-        },
-        "maxEndBuff": {
-          "ignoreStrength": true,
-          "scale": 5,
-          "table": "Melee_Ones"
-        },
-        "maxHPBuffUnenhanced": {
-          "ignoreStrength": true,
-          "scale": 0.5,
-          "table": "Melee_HealSelf"
-        }
-      },
       "targetsAffected": [
         "Self"
       ]
@@ -304,45 +228,6 @@ export const ACCOLADES_POWERSET = {
         ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
         ["Mez","Immobilized",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true]
       ],
-      "effects": {
-        "accuracy": 1.5,
-        "recharge": 600,
-        "activationTime": 2.33,
-        "effectArea": "SingleTarget",
-        "damage": {
-          "type": "Cold",
-          "scale": 0.2,
-          "table": "Ranged_Tempdamage",
-          "duration": 9.2,
-          "tickRate": 2
-        },
-        "buffDuration": 18,
-        "durations": {
-          "rechargeDebuff": 18,
-          "slow": 18
-        },
-        "immobilize": {
-          "attribType": "Duration",
-          "mag": 3,
-          "scale": 15,
-          "table": "Ranged_Immobilize"
-        },
-        "rechargeDebuff": {
-          "ignoreStrength": true,
-          "scale": 0.2,
-          "table": "Ranged_Slow"
-        },
-        "slow": {
-          "flySpeed": {
-            "scale": 0.3,
-            "table": "Ranged_Slow"
-          },
-          "runSpeed": {
-            "scale": 0.3,
-            "table": "Ranged_Slow"
-          }
-        }
-      },
       "targetsAffected": [
         "Foe"
       ]
@@ -385,86 +270,6 @@ export const ACCOLADES_POWERSET = {
         ["Defense","Negative",0.5,1,60,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
         ["RechargePower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
       ],
-      "effects": {
-        "accuracy": 1,
-        "recharge": 600,
-        "activationTime": 0.67,
-        "effectArea": "SingleTarget",
-        "buffDuration": 60,
-        "defenseBuff": {
-          "cold": {
-            "ignoreStrength": true,
-            "scale": 0.5,
-            "table": "Melee_Ones"
-          },
-          "energy": {
-            "ignoreStrength": true,
-            "scale": 0.5,
-            "table": "Melee_Ones"
-          },
-          "fire": {
-            "ignoreStrength": true,
-            "scale": 0.5,
-            "table": "Melee_Ones"
-          },
-          "lethal": {
-            "ignoreStrength": true,
-            "scale": 0.5,
-            "table": "Melee_Ones"
-          },
-          "negative": {
-            "ignoreStrength": true,
-            "scale": 0.5,
-            "table": "Melee_Ones"
-          },
-          "smashing": {
-            "ignoreStrength": true,
-            "scale": 0.5,
-            "table": "Melee_Ones"
-          }
-        },
-        "durations": {
-          "defenseBuff": 60,
-          "resistance": 60
-        },
-        "resistance": {
-          "cold": {
-            "ignoreStrength": true,
-            "scale": 0.3,
-            "table": "Melee_Ones"
-          },
-          "energy": {
-            "ignoreStrength": true,
-            "scale": 0.3,
-            "table": "Melee_Ones"
-          },
-          "fire": {
-            "ignoreStrength": true,
-            "scale": 0.3,
-            "table": "Melee_Ones"
-          },
-          "lethal": {
-            "ignoreStrength": true,
-            "scale": 0.3,
-            "table": "Melee_Ones"
-          },
-          "negative": {
-            "ignoreStrength": true,
-            "scale": 0.3,
-            "table": "Melee_Ones"
-          },
-          "smashing": {
-            "ignoreStrength": true,
-            "scale": 0.3,
-            "table": "Melee_Ones"
-          },
-          "toxic": {
-            "ignoreStrength": true,
-            "scale": 0.3,
-            "table": "Melee_Ones"
-          }
-        }
-      },
       "targetsAffected": [
         "Self"
       ]
@@ -500,48 +305,6 @@ export const ACCOLADES_POWERSET = {
         ["Enhancement","Sleep",0.66,1,60,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
         ["RechargePower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
       ],
-      "effects": {
-        "accuracy": 1,
-        "recharge": 600,
-        "activationTime": 1.17,
-        "effectArea": "SingleTarget",
-        "buffDuration": 60,
-        "durations": {
-          "specialBuff": 60
-        },
-        "specialBuff": {
-          "confuse": {
-            "ignoreStrength": true,
-            "scale": 0.66,
-            "table": "Melee_Ones"
-          },
-          "fear": {
-            "ignoreStrength": true,
-            "scale": 0.66,
-            "table": "Melee_Ones"
-          },
-          "hold": {
-            "ignoreStrength": true,
-            "scale": 0.66,
-            "table": "Melee_Ones"
-          },
-          "immobilize": {
-            "ignoreStrength": true,
-            "scale": 0.66,
-            "table": "Melee_Ones"
-          },
-          "sleep": {
-            "ignoreStrength": true,
-            "scale": 0.66,
-            "table": "Melee_Ones"
-          },
-          "stun": {
-            "ignoreStrength": true,
-            "scale": 0.66,
-            "table": "Melee_Ones"
-          }
-        }
-      },
       "targetsAffected": [
         "Self"
       ]
@@ -575,38 +338,6 @@ export const ACCOLADES_POWERSET = {
         ["Defense","All",-0.1,1,60,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
         ["RechargePower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
       ],
-      "effects": {
-        "accuracy": 1,
-        "recharge": 600,
-        "activationTime": 0.73,
-        "effectArea": "SingleTarget",
-        "buffDuration": 60,
-        "defenseDebuff": {
-          "ignoreStrength": true,
-          "scale": 0.1,
-          "table": "Melee_Ones",
-          "toWho": "Self"
-        },
-        "durations": {
-          "defenseDebuff": 60,
-          "rechargeBuff": 60,
-          "recoveryBuff": 60,
-          "tohitBuff": 60
-        },
-        "rechargeBuff": {
-          "ignoreStrength": true,
-          "scale": 1,
-          "table": "Melee_Ones"
-        },
-        "recoveryBuff": {
-          "scale": 8,
-          "table": "Melee_Ones"
-        },
-        "tohitBuff": {
-          "scale": 0.25,
-          "table": "Melee_Ones"
-        }
-      },
       "targetsAffected": [
         "Self"
       ]
@@ -641,20 +372,6 @@ export const ACCOLADES_POWERSET = {
       "atoms": [
         ["MaxEndurance",null,5,1,10.75,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
       ],
-      "effects": {
-        "accuracy": 1,
-        "activatePeriod": 10,
-        "effectArea": "SingleTarget",
-        "buffDuration": 10.75,
-        "durations": {
-          "maxEndBuff": 10.75
-        },
-        "maxEndBuff": {
-          "ignoreStrength": true,
-          "scale": 5,
-          "table": "Melee_Ones"
-        }
-      },
       "targetsAffected": [
         "Self"
       ]
@@ -689,20 +406,6 @@ export const ACCOLADES_POWERSET = {
       "atoms": [
         ["MaxHP",null,1,1,10.75,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
       ],
-      "effects": {
-        "accuracy": 1,
-        "activatePeriod": 10,
-        "effectArea": "SingleTarget",
-        "buffDuration": 10.75,
-        "durations": {
-          "maxHPBuffUnenhanced": 10.75
-        },
-        "maxHPBuffUnenhanced": {
-          "ignoreStrength": true,
-          "scale": 1,
-          "table": "Melee_HealSelf"
-        }
-      },
       "targetsAffected": [
         "Self"
       ]
@@ -738,26 +441,6 @@ export const ACCOLADES_POWERSET = {
         ["MaxHP",null,0.5,1,10.75,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
         ["MaxEndurance",null,5,1,10.75,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
       ],
-      "effects": {
-        "accuracy": 1,
-        "activatePeriod": 10,
-        "effectArea": "SingleTarget",
-        "buffDuration": 10.75,
-        "durations": {
-          "maxEndBuff": 10.75,
-          "maxHPBuffUnenhanced": 10.75
-        },
-        "maxEndBuff": {
-          "ignoreStrength": true,
-          "scale": 5,
-          "table": "Melee_Ones"
-        },
-        "maxHPBuffUnenhanced": {
-          "ignoreStrength": true,
-          "scale": 0.5,
-          "table": "Melee_HealSelf"
-        }
-      },
       "targetsAffected": [
         "Self"
       ]
@@ -804,45 +487,6 @@ export const ACCOLADES_POWERSET = {
         ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
         ["Mez","Immobilized",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true]
       ],
-      "effects": {
-        "accuracy": 1.5,
-        "recharge": 600,
-        "activationTime": 1.87,
-        "effectArea": "SingleTarget",
-        "damage": {
-          "type": "Energy",
-          "scale": 0.2,
-          "table": "Ranged_Tempdamage",
-          "duration": 9.2,
-          "tickRate": 2
-        },
-        "buffDuration": 18,
-        "durations": {
-          "rechargeDebuff": 18,
-          "slow": 18
-        },
-        "immobilize": {
-          "attribType": "Duration",
-          "mag": 3,
-          "scale": 15,
-          "table": "Ranged_Immobilize"
-        },
-        "rechargeDebuff": {
-          "ignoreStrength": true,
-          "scale": 0.2,
-          "table": "Ranged_Slow"
-        },
-        "slow": {
-          "flySpeed": {
-            "scale": 0.3,
-            "table": "Ranged_Slow"
-          },
-          "runSpeed": {
-            "scale": 0.3,
-            "table": "Ranged_Slow"
-          }
-        }
-      },
       "targetsAffected": [
         "Foe"
       ]
@@ -885,86 +529,6 @@ export const ACCOLADES_POWERSET = {
         ["Defense","Negative",0.5,1,60,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
         ["RechargePower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
       ],
-      "effects": {
-        "accuracy": 1,
-        "recharge": 600,
-        "activationTime": 3,
-        "effectArea": "SingleTarget",
-        "buffDuration": 60,
-        "defenseBuff": {
-          "cold": {
-            "ignoreStrength": true,
-            "scale": 0.5,
-            "table": "Melee_Ones"
-          },
-          "energy": {
-            "ignoreStrength": true,
-            "scale": 0.5,
-            "table": "Melee_Ones"
-          },
-          "fire": {
-            "ignoreStrength": true,
-            "scale": 0.5,
-            "table": "Melee_Ones"
-          },
-          "lethal": {
-            "ignoreStrength": true,
-            "scale": 0.5,
-            "table": "Melee_Ones"
-          },
-          "negative": {
-            "ignoreStrength": true,
-            "scale": 0.5,
-            "table": "Melee_Ones"
-          },
-          "smashing": {
-            "ignoreStrength": true,
-            "scale": 0.5,
-            "table": "Melee_Ones"
-          }
-        },
-        "durations": {
-          "defenseBuff": 60,
-          "resistance": 60
-        },
-        "resistance": {
-          "cold": {
-            "ignoreStrength": true,
-            "scale": 0.3,
-            "table": "Melee_Ones"
-          },
-          "energy": {
-            "ignoreStrength": true,
-            "scale": 0.3,
-            "table": "Melee_Ones"
-          },
-          "fire": {
-            "ignoreStrength": true,
-            "scale": 0.3,
-            "table": "Melee_Ones"
-          },
-          "lethal": {
-            "ignoreStrength": true,
-            "scale": 0.3,
-            "table": "Melee_Ones"
-          },
-          "negative": {
-            "ignoreStrength": true,
-            "scale": 0.3,
-            "table": "Melee_Ones"
-          },
-          "smashing": {
-            "ignoreStrength": true,
-            "scale": 0.3,
-            "table": "Melee_Ones"
-          },
-          "toxic": {
-            "ignoreStrength": true,
-            "scale": 0.3,
-            "table": "Melee_Ones"
-          }
-        }
-      },
       "targetsAffected": [
         "Self"
       ]
@@ -1000,48 +564,6 @@ export const ACCOLADES_POWERSET = {
         ["Enhancement","Sleep",0.66,1,60,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
         ["RechargePower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
       ],
-      "effects": {
-        "accuracy": 1,
-        "recharge": 600,
-        "activationTime": 1.17,
-        "effectArea": "SingleTarget",
-        "buffDuration": 60,
-        "durations": {
-          "specialBuff": 60
-        },
-        "specialBuff": {
-          "confuse": {
-            "ignoreStrength": true,
-            "scale": 0.66,
-            "table": "Melee_Ones"
-          },
-          "fear": {
-            "ignoreStrength": true,
-            "scale": 0.66,
-            "table": "Melee_Ones"
-          },
-          "hold": {
-            "ignoreStrength": true,
-            "scale": 0.66,
-            "table": "Melee_Ones"
-          },
-          "immobilize": {
-            "ignoreStrength": true,
-            "scale": 0.66,
-            "table": "Melee_Ones"
-          },
-          "sleep": {
-            "ignoreStrength": true,
-            "scale": 0.66,
-            "table": "Melee_Ones"
-          },
-          "stun": {
-            "ignoreStrength": true,
-            "scale": 0.66,
-            "table": "Melee_Ones"
-          }
-        }
-      },
       "targetsAffected": [
         "Self"
       ]
@@ -1076,20 +598,6 @@ export const ACCOLADES_POWERSET = {
       "atoms": [
         ["MaxHP",null,0.5,1,10.75,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
       ],
-      "effects": {
-        "accuracy": 1,
-        "activatePeriod": 10,
-        "effectArea": "SingleTarget",
-        "buffDuration": 10.75,
-        "durations": {
-          "maxHPBuffUnenhanced": 10.75
-        },
-        "maxHPBuffUnenhanced": {
-          "ignoreStrength": true,
-          "scale": 0.5,
-          "table": "Melee_HealSelf"
-        }
-      },
       "targetsAffected": [
         "Self"
       ]
@@ -1123,38 +631,6 @@ export const ACCOLADES_POWERSET = {
         ["Defense","All",-0.1,1,60,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
         ["RechargePower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
       ],
-      "effects": {
-        "accuracy": 1,
-        "recharge": 600,
-        "activationTime": 0.73,
-        "effectArea": "SingleTarget",
-        "buffDuration": 60,
-        "defenseDebuff": {
-          "ignoreStrength": true,
-          "scale": 0.1,
-          "table": "Melee_Ones",
-          "toWho": "Self"
-        },
-        "durations": {
-          "defenseDebuff": 60,
-          "rechargeBuff": 60,
-          "recoveryBuff": 60,
-          "tohitBuff": 60
-        },
-        "rechargeBuff": {
-          "ignoreStrength": true,
-          "scale": 1,
-          "table": "Melee_Ones"
-        },
-        "recoveryBuff": {
-          "scale": 8,
-          "table": "Melee_Ones"
-        },
-        "tohitBuff": {
-          "scale": 0.25,
-          "table": "Melee_Ones"
-        }
-      },
       "targetsAffected": [
         "Self"
       ]
@@ -1190,26 +666,6 @@ export const ACCOLADES_POWERSET = {
         ["MaxHP",null,1,1,10.75,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
         ["MaxEndurance",null,10,1,10.75,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
       ],
-      "effects": {
-        "accuracy": 1,
-        "activatePeriod": 10,
-        "effectArea": "SingleTarget",
-        "buffDuration": 10.75,
-        "durations": {
-          "maxEndBuff": 10.75,
-          "maxHPBuffUnenhanced": 10.75
-        },
-        "maxEndBuff": {
-          "ignoreStrength": true,
-          "scale": 10,
-          "table": "Melee_Ones"
-        },
-        "maxHPBuffUnenhanced": {
-          "ignoreStrength": true,
-          "scale": 1,
-          "table": "Melee_HealSelf"
-        }
-      },
       "targetsAffected": [
         "Self"
       ]
@@ -1239,11 +695,6 @@ export const ACCOLADES_POWERSET = {
         ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"revoke_power",null,1],
         ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
       ],
-      "effects": {
-        "accuracy": 1,
-        "activatePeriod": 10,
-        "effectArea": "SingleTarget"
-      },
       "grantEdges": [
         {
           "op": "revoke",
@@ -1289,31 +740,6 @@ export const ACCOLADES_POWERSET = {
         ["Defense","Psionic",0.25,1,60,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
         ["RechargePower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
       ],
-      "effects": {
-        "accuracy": 1,
-        "recharge": 600,
-        "activationTime": 0.73,
-        "effectArea": "SingleTarget",
-        "buffDuration": 60,
-        "defenseBuff": {
-          "psionic": {
-            "ignoreStrength": true,
-            "scale": 0.25,
-            "table": "Melee_Ones"
-          }
-        },
-        "durations": {
-          "defenseBuff": 60,
-          "resistance": 60
-        },
-        "resistance": {
-          "psionic": {
-            "ignoreStrength": true,
-            "scale": 0.075,
-            "table": "Melee_Ones"
-          }
-        }
-      },
       "targetsAffected": [
         "Self"
       ]
@@ -1348,26 +774,6 @@ export const ACCOLADES_POWERSET = {
         ["RechargePower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Self"],2.05],
         ["Meta",null,1,1,0,"Ranged_Ones","Abs","Constant","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"token_add",["Self"]]
       ],
-      "effects": {
-        "accuracy": 1,
-        "recharge": 600,
-        "activationTime": 2,
-        "effectArea": "SingleTarget",
-        "buffDuration": 5,
-        "durations": {
-          "stealth": 5
-        },
-        "stealth": {
-          "translucency": {
-            "scale": 0,
-            "table": "Melee_Ones"
-          }
-        },
-        "teleport": {
-          "scale": 1,
-          "table": "Melee_Ones"
-        }
-      },
       "targetsAffected": [
         "Self"
       ]
@@ -1423,22 +829,16 @@ export const ACCOLADES_POWERSET = {
         "activatePeriod": 1
       },
       "effectArea": "Location",
+      "summon": {
+        "isPseudoPet": false,
+        "entity": "Pets_Recall_Marker",
+        "duration": 99999
+      },
       "atoms": [
         ["EntCreate",null,-1,1,99999,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"OnActivate",99999],
         ["Meta",null,1,170,1.5,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
         ["Meta",null,1,1,0,"Melee_Damage","Cur","Magnitude","Target","Any",true,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"script_notify"]
       ],
-      "effects": {
-        "accuracy": 1,
-        "recharge": 600,
-        "activatePeriod": 1,
-        "effectArea": "Location",
-        "summon": {
-          "duration": 99999,
-          "entity": "Pets_Recall_Marker",
-          "isPseudoPet": false
-        }
-      },
       "targetsAffected": [
         "Self"
       ]
@@ -1483,99 +883,6 @@ export const ACCOLADES_POWERSET = {
         ["MezResist","Stunned",1.5,1,30,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
         ["MezResist","Sleep",1.5,1,30,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true]
       ],
-      "effects": {
-        "accuracy": 1,
-        "recharge": 600,
-        "effectArea": "SingleTarget",
-        "buffDuration": 30,
-        "confuse": {
-          "attribType": "Magnitude",
-          "ignoreStrength": true,
-          "mag": 1,
-          "scale": -15,
-          "table": "Melee_Ones",
-          "toWho": "Self"
-        },
-        "durations": {
-          "confuse": 30,
-          "fear": 30,
-          "hold": 30,
-          "immobilize": 30,
-          "knockback": 30,
-          "knockup": 30,
-          "mezResistance": 30,
-          "sleep": 30,
-          "stun": 30
-        },
-        "effectDuration": 30,
-        "fear": {
-          "attribType": "Magnitude",
-          "ignoreStrength": true,
-          "mag": 1,
-          "scale": -15,
-          "table": "Melee_Ones",
-          "toWho": "Self"
-        },
-        "hold": {
-          "attribType": "Magnitude",
-          "ignoreStrength": true,
-          "mag": 1,
-          "scale": -15,
-          "table": "Melee_Ones",
-          "toWho": "Self"
-        },
-        "immobilize": {
-          "attribType": "Magnitude",
-          "ignoreStrength": true,
-          "mag": 1,
-          "scale": -15,
-          "table": "Melee_Ones",
-          "toWho": "Self"
-        },
-        "knockback": {
-          "ignoreStrength": true,
-          "scale": 7.5,
-          "table": "Melee_Ones"
-        },
-        "knockup": {
-          "ignoreStrength": true,
-          "scale": 7.5,
-          "table": "Melee_Ones"
-        },
-        "mezResistance": {
-          "placate": {
-            "ignoreStrength": true,
-            "scale": 0.5,
-            "table": "Melee_Ones"
-          },
-          "repel": {
-            "ignoreStrength": true,
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "taunt": {
-            "ignoreStrength": true,
-            "scale": 0.5,
-            "table": "Melee_Ones"
-          }
-        },
-        "sleep": {
-          "attribType": "Magnitude",
-          "ignoreStrength": true,
-          "mag": 1,
-          "scale": -15,
-          "table": "Melee_Ones",
-          "toWho": "Self"
-        },
-        "stun": {
-          "attribType": "Magnitude",
-          "ignoreStrength": true,
-          "mag": 1,
-          "scale": -15,
-          "table": "Melee_Ones",
-          "toWho": "Self"
-        }
-      },
       "targetsAffected": [
         "Self"
       ]
@@ -1605,26 +912,6 @@ export const ACCOLADES_POWERSET = {
         ["MaxHP",null,0.5,1,10.75,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
         ["MaxEndurance",null,5,1,10.75,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
       ],
-      "effects": {
-        "accuracy": 1,
-        "activatePeriod": 10,
-        "effectArea": "SingleTarget",
-        "buffDuration": 10.75,
-        "durations": {
-          "maxEndBuff": 10.75,
-          "maxHPBuffUnenhanced": 10.75
-        },
-        "maxEndBuff": {
-          "ignoreStrength": true,
-          "scale": 5,
-          "table": "Melee_Ones"
-        },
-        "maxHPBuffUnenhanced": {
-          "ignoreStrength": true,
-          "scale": 0.5,
-          "table": "Melee_HealSelf"
-        }
-      },
       "targetsAffected": [
         "Self"
       ]
@@ -1653,20 +940,6 @@ export const ACCOLADES_POWERSET = {
       "atoms": [
         ["MaxEndurance",null,5,1,10.75,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
       ],
-      "effects": {
-        "accuracy": 1,
-        "activatePeriod": 10,
-        "effectArea": "SingleTarget",
-        "buffDuration": 10.75,
-        "durations": {
-          "maxEndBuff": 10.75
-        },
-        "maxEndBuff": {
-          "ignoreStrength": true,
-          "scale": 5,
-          "table": "Melee_Ones"
-        }
-      },
       "targetsAffected": [
         "Self"
       ]
@@ -1691,10 +964,6 @@ export const ACCOLADES_POWERSET = {
       "atoms": [
         ["Meta",null,-1,1,1,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null",null,1.5]
       ],
-      "effects": {
-        "accuracy": 1,
-        "effectArea": "SingleTarget"
-      },
       "targetsAffected": [
         "Self"
       ]
@@ -1741,18 +1010,6 @@ export const ACCOLADES_POWERSET = {
         ["Damage","Smashing",0.036,1,0,"Melee_Tempdamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","group","target>","MastermindPets","eq","!","&&","group","target>","Pets","eq","!","&&"]],
         ["Movement","Run",0,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq"],true]
       ],
-      "effects": {
-        "accuracy": 1,
-        "recharge": 3,
-        "endurance": 3.25,
-        "activationTime": 1.83,
-        "effectArea": "SingleTarget",
-        "damage": {
-          "type": "Smashing",
-          "scale": 0.036,
-          "table": "Melee_Tempdamage"
-        }
-      },
       "targetsAffected": [
         "Any"
       ]
@@ -1784,13 +1041,6 @@ export const ACCOLADES_POWERSET = {
       "atoms": [
         ["Meta",null,100,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,"view_attributes"]
       ],
-      "effects": {
-        "accuracy": 1,
-        "recharge": 10,
-        "endurance": 6.5,
-        "activationTime": 1.5,
-        "effectArea": "SingleTarget"
-      },
       "targetsAffected": [
         "Foe"
       ]

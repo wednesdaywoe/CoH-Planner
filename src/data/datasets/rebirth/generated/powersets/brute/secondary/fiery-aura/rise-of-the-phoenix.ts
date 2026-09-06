@@ -53,43 +53,10 @@ export const RiseofthePhoenix: Power = {
     "duration": 0.5,
     "tickRate": 1
   },
-  "effects": {
-    "buffDuration": 90,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 5,
-      "table": "Melee_Buff_Dmg"
-    },
-    "durations": {
-      "damageBuff": 90
-    },
-    "enduranceGain": {
-      "scale": 50,
-      "table": "Melee_Ones"
-    },
-    "immobilize": {
-      "attribType": "Duration",
-      "ignoreStrength": true,
-      "mag": 50,
-      "scale": 4,
-      "table": "Melee_Ones",
-      "toWho": "Self"
-    },
-    "summon": {
-      "duration": 5,
-      "entity": "Pets_Phoenix",
-      "isPseudoPet": false
-    },
-    "untouchable": {
-      "ignoreStrength": true,
-      "scale": 15,
-      "table": "Melee_Ones"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff",
-      "enduranceGain"
-    ]
+  "summon": {
+    "duration": 5,
+    "entity": "Pets_Phoenix",
+    "isPseudoPet": false
   },
   "atoms": [
     ["Heal",null,5,1,0.5,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf"],

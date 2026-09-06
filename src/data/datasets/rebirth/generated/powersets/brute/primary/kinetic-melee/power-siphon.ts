@@ -38,20 +38,6 @@ export const PowerSiphon: Power = {
     "To Hit Buff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 20,
-    "durations": {
-      "tohitBuff": 20
-    },
-    "tohitBuff": {
-      "scale": 0.75,
-      "table": "Melee_Buff_ToHit"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "tohitBuff"
-    ]
-  },
   "atoms": [
     ["Meta",null,1,86,20,"Melee_Ones","Cur","Constant","Self","Any",false,"Replace",2,null,1,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode"],
     ["ToHit",null,0.75,1,20,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_ToHit"]

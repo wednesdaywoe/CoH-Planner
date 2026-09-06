@@ -44,35 +44,6 @@ export const InstantHealing: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 20,
-    "debuffResistance": {
-      "endurance": {
-        "ignoreStrength": true,
-        "scale": 0.03,
-        "table": "Melee_Ones"
-      },
-      "recovery": {
-        "ignoreStrength": true,
-        "scale": 0.03,
-        "table": "Melee_Ones"
-      },
-      "regeneration": {
-        "ignoreStrength": true,
-        "scale": 0.055,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "debuffResistance": 20,
-      "regenBuff": 2.25
-    },
-    "regenBuff": {
-      "scale": 2,
-      "table": "Melee_Ones",
-      "perTarget": 0.25
-    }
-  },
   "atoms": [
     ["Regeneration",null,2,1,2.25,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
     ["Meta",null,1,1,90,"Melee_Ones","Cur","Magnitude","Target","PvE",false,"Refresh",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null"],

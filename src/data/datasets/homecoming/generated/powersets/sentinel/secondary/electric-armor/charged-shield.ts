@@ -44,27 +44,6 @@ export const ChargedShield: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.6,
-    "durations": {
-      "maxEndBuff": 0.6,
-      "regenBuff": 0.6,
-      "regenBuffUnenhanced": 0.6
-    },
-    "maxEndBuff": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "regenBuff": {
-      "scale": 1.5,
-      "table": "Melee_Ones"
-    },
-    "regenBuffUnenhanced": {
-      "ignoreStrength": true,
-      "scale": 0.5,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["MaxEndurance",null,10,1,0.6,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Regeneration",null,1.5,1,0.6,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],

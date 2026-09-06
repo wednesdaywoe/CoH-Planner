@@ -42,40 +42,6 @@ export const AdrenalinBoost: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 90,
-    "debuffResistance": {
-      "movement": {
-        "ignoreStrength": true,
-        "scale": 0.8,
-        "table": "Ranged_Ones"
-      },
-      "recharge": {
-        "ignoreStrength": true,
-        "scale": 0.8,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "debuffResistance": 90,
-      "rechargeBuff": 90,
-      "recoveryBuff": 90,
-      "regenBuff": 90
-    },
-    "rechargeBuff": {
-      "ignoreStrength": true,
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 8,
-      "table": "Ranged_Ones"
-    },
-    "regenBuff": {
-      "scale": 5,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Recovery",null,8,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["Regeneration",null,5,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],

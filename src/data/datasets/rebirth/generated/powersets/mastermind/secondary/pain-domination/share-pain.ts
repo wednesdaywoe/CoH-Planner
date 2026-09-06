@@ -52,36 +52,6 @@ export const SharePain: Power = {
       "table": "Ranged_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 15,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 2.5,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "durations": {
-      "damageBuff": 15,
-      "regenDebuff": 15,
-      "resistance": 15
-    },
-    "regenDebuff": {
-      "ignoreStrength": true,
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "resistance": {
-      "heal": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Ranged_Ones"
-      }
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff",
-      "resistance"
-    ]
-  },
   "atoms": [
     ["Heal",null,3.52,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Heal",null,null,null,0.5],
     ["Damage","Special",1.76,1,0,"Ranged_Damage","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],

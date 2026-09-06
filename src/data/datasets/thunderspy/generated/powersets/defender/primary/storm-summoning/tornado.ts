@@ -50,13 +50,11 @@ export const Tornado: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "duration": 30,
-      "entity": "Pets_Tornado",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "copyBoosts": true,
+    "duration": 30,
+    "entity": "Pets_Tornado",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,1,1,30,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,30]

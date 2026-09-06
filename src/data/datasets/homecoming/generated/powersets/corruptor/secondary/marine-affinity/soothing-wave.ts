@@ -49,18 +49,6 @@ export const SoothingWave: Power = {
     "scale": 1,
     "table": "Ranged_Heal"
   },
-  "effects": {
-    "buffDuration": 10,
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.85,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "durations": {
-      "damageDebuff": 10
-    },
-    "maxStacks": 2
-  },
   "atoms": [
     ["Heal",null,1,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["DamageBuff","Smashing",-0.85,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],

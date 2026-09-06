@@ -53,16 +53,6 @@ export const Burst: Power = {
     "duration": 0.7,
     "tickRate": 0.30000001192092896
   },
-  "effects": {
-    "buffDuration": 8,
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 8
-    }
-  },
   "atoms": [
     ["Damage","Lethal",0.5467,1,0.7,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
     ["Defense","All",1,1,8,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]]
@@ -95,16 +85,6 @@ export const Burst: Power = {
         "table": "Ranged_Damage",
         "duration": 0.7,
         "tickRate": 0.30000001192092896
-      },
-      "effects": {
-        "buffDuration": 8,
-        "defenseDebuff": {
-          "scale": 1,
-          "table": "Ranged_Debuff_Def"
-        },
-        "durations": {
-          "defenseDebuff": 8
-        }
       },
       "shortHelp": "Ranged, DMG(Lethal), Foe -DEF",
       "description": "Quickly fires a Burst of rounds at a single target at long range. Damage is average, but the fire rate is fast. Can also reduce the target's defense.",

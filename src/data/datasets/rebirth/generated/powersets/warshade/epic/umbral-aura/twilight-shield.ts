@@ -44,22 +44,6 @@ export const TwilightShield: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "durations": {
-      "resistance": 0.75
-    },
-    "resistance": {
-      "energy": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["Resistance","Energy",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!","kShapeshiftDeactive","Source.Mode?","!","&&"],null,null,null,null,null,null,null,null,null,"ShapeshiftDeactive"],
     ["Resistance","Negative",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!","kShapeshiftDeactive","Source.Mode?","!","&&"],null,null,null,null,null,null,null,null,null,"ShapeshiftDeactive"],

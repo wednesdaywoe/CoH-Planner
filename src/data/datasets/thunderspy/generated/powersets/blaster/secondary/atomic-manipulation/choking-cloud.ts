@@ -50,13 +50,11 @@ export const ChokingCloud: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "duration": 2,
-      "entity": "Pets_Radiation_Melee_Irradiated_Ground_Pet",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "copyBoosts": true,
+    "duration": 2,
+    "entity": "Pets_Radiation_Melee_Irradiated_Ground_Pet",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,-1,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,2]

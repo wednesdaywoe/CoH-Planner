@@ -56,16 +56,6 @@ export const HeavyBurst: Power = {
     "duration": 2,
     "tickRate": 0.30000001192092896
   },
-  "effects": {
-    "buffDuration": 12,
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 12
-    }
-  },
   "atoms": [
     ["Damage","Lethal",0.1557,1,2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
     ["Defense","All",1,1,12,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]]
@@ -101,16 +91,6 @@ export const HeavyBurst: Power = {
         "table": "Ranged_Damage",
         "duration": 2,
         "tickRate": 0.30000001192092896
-      },
-      "effects": {
-        "buffDuration": 12,
-        "defenseDebuff": {
-          "scale": 1,
-          "table": "Ranged_Debuff_Def"
-        },
-        "durations": {
-          "defenseDebuff": 12
-        }
       },
       "shortHelp": "Ranged (Cone), DMG(Lethal), Foe -DEF",
       "description": "Fires a Heavy Burst of rounds at foes in a long cone in front of the user. Can also reduce the targets' defense.",

@@ -48,47 +48,6 @@ export const HauntingHaze: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 5,
-    "durations": {
-      "perceptionDebuff": 30,
-      "rechargeDebuff": 5,
-      "slow": 5,
-      "tohitDebuff": 5
-    },
-    "perceptionDebuff": {
-      "scale": 0.9,
-      "table": "Melee_Ones"
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.5,
-      "table": "Melee_Slow"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.7,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.7,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.7,
-        "table": "Melee_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.7,
-        "table": "Melee_Slow"
-      }
-    },
-    "tohitDebuff": {
-      "scale": 1,
-      "table": "Melee_DeBuff_ToHit"
-    }
-  },
   "atoms": [
     ["ToHit",null,1,1,5,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"DeBuff_ToHit"],
     ["Perception",null,-0.9,1,30,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones"],

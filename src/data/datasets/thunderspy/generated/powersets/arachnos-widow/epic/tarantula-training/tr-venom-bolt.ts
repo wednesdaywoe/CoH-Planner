@@ -57,16 +57,6 @@ export const TRVenomBolt: Power = {
       "tickRate": 0.5
     }
   ],
-  "effects": {
-    "buffDuration": 15,
-    "durations": {
-      "regenDebuff": 15
-    },
-    "regenDebuff": {
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Damage","Energy",0.6072,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Toxic",0.24656,1,2.1,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],

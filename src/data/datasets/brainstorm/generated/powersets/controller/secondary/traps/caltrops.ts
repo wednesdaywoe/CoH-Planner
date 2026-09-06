@@ -46,70 +46,68 @@ export const Caltrops: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "displayName": "Caltrops",
-      "duration": 45,
-      "isPseudoPet": true,
-      "powers": [
-        "Pets.Caltrops.Caltrops",
-        "Pets.Caltrops.Avoid"
-      ],
-      "resolvedEntities": [
-        {
-          "displayName": "Caltrops",
-          "duration": 45,
-          "copyCreatorMods": true,
-          "abilities": [
-            {
-              "name": "Caltrops",
-              "displayName": "Caltrops",
-              "type": "Auto",
-              "damage": [
-                {
-                  "damageType": "Lethal",
-                  "scale": 0.05,
-                  "table": "Melee_Damage"
-                }
-              ],
-              "effects": [
-                {
-                  "type": "Slow",
-                  "axis": "runSpeed",
-                  "scale": 0.8,
-                  "table": "Melee_Slow"
-                },
-                {
-                  "type": "Slow",
-                  "axis": "jumpHeight",
-                  "scale": 500,
-                  "table": "Melee_Slow",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "MovementCapDebuff",
-                  "axis": "runSpeed",
-                  "scale": 1,
-                  "table": "Melee_SpeedRunning",
-                  "ignoreStrength": true
-                }
-              ],
-              "recharge": 0,
-              "castTime": 0,
-              "activatePeriod": 1,
-              "effectArea": "Sphere",
-              "targetsAffected": [
-                "Foe"
-              ],
-              "radius": 15,
-              "maxTargets": 16
-            }
-          ]
-        }
-      ],
-      "entity": "PL_StaticObject"
-    }
+  "summon": {
+    "copyBoosts": true,
+    "displayName": "Caltrops",
+    "duration": 45,
+    "isPseudoPet": true,
+    "powers": [
+      "Pets.Caltrops.Caltrops",
+      "Pets.Caltrops.Avoid"
+    ],
+    "resolvedEntities": [
+      {
+        "displayName": "Caltrops",
+        "duration": 45,
+        "copyCreatorMods": true,
+        "abilities": [
+          {
+            "name": "Caltrops",
+            "displayName": "Caltrops",
+            "type": "Auto",
+            "damage": [
+              {
+                "damageType": "Lethal",
+                "scale": 0.05,
+                "table": "Melee_Damage"
+              }
+            ],
+            "effects": [
+              {
+                "type": "Slow",
+                "axis": "runSpeed",
+                "scale": 0.8,
+                "table": "Melee_Slow"
+              },
+              {
+                "type": "Slow",
+                "axis": "jumpHeight",
+                "scale": 500,
+                "table": "Melee_Slow",
+                "ignoreStrength": true
+              },
+              {
+                "type": "MovementCapDebuff",
+                "axis": "runSpeed",
+                "scale": 1,
+                "table": "Melee_SpeedRunning",
+                "ignoreStrength": true
+              }
+            ],
+            "recharge": 0,
+            "castTime": 0,
+            "activatePeriod": 1,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "Foe"
+            ],
+            "radius": 15,
+            "maxTargets": 16
+          }
+        ]
+      }
+    ],
+    "entity": "PL_StaticObject"
   },
   "atoms": [
     ["EntCreate",null,1,1,45,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,45],

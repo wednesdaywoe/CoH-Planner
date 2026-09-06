@@ -43,36 +43,6 @@ export const Placate: Power = {
     "Threat Duration"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 10,
-    "durations": {
-      "stealth": 10,
-      "tohitBuff": 10
-    },
-    "placate": {
-      "scale": 10,
-      "table": "Melee_Taunt"
-    },
-    "stealth": {
-      "stealthPvE": {
-        "scale": 54,
-        "table": "Melee_Ones"
-      },
-      "stealthPvP": {
-        "scale": 500,
-        "table": "Melee_Ones"
-      },
-      "translucency": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      }
-    },
-    "tohitBuff": {
-      "scale": 2,
-      "table": "Melee_Buff_ToHit"
-    }
-  },
   "atoms": [
     ["Stealth","RadiusPvE",54,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.3],
     ["Stealth","RadiusPvP",500,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.3],

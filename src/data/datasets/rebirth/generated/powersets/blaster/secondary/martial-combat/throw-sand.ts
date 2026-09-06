@@ -49,28 +49,6 @@ export const ThrowSand: Power = {
     "Universal Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 20,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.029,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 8.57,
-      "perceptionDebuff": 20
-    },
-    "perceptionDebuff": {
-      "scale": 0.9,
-      "table": "Ranged_Ones"
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 2,
-      "scale": 10,
-      "table": "Ranged_Sleep"
-    }
-  },
   "atoms": [
     ["Mez","Stunned",10,2,0,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Sleep",null,null,null,0.25],
     ["Perception",null,-0.9,1,20,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones"],

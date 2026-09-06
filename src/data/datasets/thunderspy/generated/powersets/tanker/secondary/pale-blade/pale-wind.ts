@@ -47,31 +47,6 @@ export const PaleWind: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 15,
-    "durations": {
-      "regenDebuff": 15,
-      "repel": 0.4
-    },
-    "fear": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 0.5,
-      "table": "Melee_Fear"
-    },
-    "regenDebuff": {
-      "scale": 0.2,
-      "table": "Ranged_Ones"
-    },
-    "repel": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    }
-  },
   "atoms": [
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["Regeneration",null,-0.2,1,15,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones"],

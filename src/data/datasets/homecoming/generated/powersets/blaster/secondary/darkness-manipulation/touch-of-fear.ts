@@ -50,17 +50,6 @@ export const TouchofFear: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 8.67,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.077,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "damageBuff": 8.67
-    }
-  },
   "atoms": [
     ["DamageBuff","Smashing",0.077,1,8.67,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance",null,null,["Self"]],
     ["DamageBuff","Lethal",0.077,1,8.67,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defiance",null,null,["Self"]],
@@ -88,38 +77,6 @@ export const TouchofFear: Power = {
         "recharge": 10,
         "endurance": 5.2,
         "castTime": 1.17
-      },
-      "effects": {
-        "buffDuration": 20,
-        "damageBuff": {
-          "ignoreStrength": true,
-          "scale": 0.077,
-          "table": "Melee_Ones"
-        },
-        "durations": {
-          "damageBuff": 8.67,
-          "tohitDebuff": 20
-        },
-        "fear": {
-          "attribType": "Duration",
-          "mag": 2,
-          "scale": 10,
-          "table": "Melee_Fear"
-        },
-        "hold": {
-          "attribType": "Duration",
-          "mag": 2,
-          "scale": 6,
-          "table": "Ranged_Immobilize"
-        },
-        "tohitDebuff": {
-          "scale": 1.5,
-          "table": "Melee_DeBuff_ToHit"
-        },
-        "maxStacks": 2,
-        "stacksLinear": [
-          "damageBuff"
-        ]
       },
       "shortHelp": "Fear, Foe -To Hit, Self +Regeneration, +Recovery, +Res(Fear)",
       "description": "The Netherworld is one scary place, and with but a touch, you can give your enemy a glimpse into this dark world. This will cause them to helplessly tremble in Fear. Foes in this state of panic have reduced chance to hit. Additionally, drawing upon this connection to the Netherworld causes you to rapidly regenerate health and recover endurance for a short time.\n\nNotes: Touch of the Beyond is unaffected by Range changes.\n\nRecharge: Moderate.",

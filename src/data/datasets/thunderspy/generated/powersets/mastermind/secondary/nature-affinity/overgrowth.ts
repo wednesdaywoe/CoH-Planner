@@ -41,28 +41,6 @@ export const Overgrowth: Power = {
     "To Hit Buff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 60,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 6.6,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "durations": {
-      "damageBuff": 60,
-      "enduranceDiscount": 60,
-      "tohitBuff": 60
-    },
-    "enduranceDiscount": {
-      "ignoreStrength": true,
-      "scale": 0.5,
-      "table": "Ranged_Stun"
-    },
-    "tohitBuff": {
-      "scale": 1,
-      "table": "Ranged_Buff_ToHit"
-    }
-  },
   "atoms": [
     ["ToHit",null,1,1,60,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_ToHit"],
     ["DamageBuff","Smashing",6.6,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Dmg"],

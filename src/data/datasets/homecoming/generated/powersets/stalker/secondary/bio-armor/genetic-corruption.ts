@@ -48,23 +48,6 @@ export const GeneticCorruption: Power = {
     "Sleep"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 5,
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 1.5,
-      "table": "Melee_Debuff_Dam"
-    },
-    "durations": {
-      "damageDebuff": 5
-    },
-    "sleep": {
-      "attribType": "Duration",
-      "mag": 2,
-      "scale": 6,
-      "table": "Melee_Stun"
-    }
-  },
   "atoms": [
     ["Mez","Sleep",6,2,0,"Melee_Stun","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,0.6600000262260437,null,null,null,null,null,null,["enttype","target>","critter","eq","entref","target>","entref","source>","eq","!","&&","kOffensiveAdaptation","Source.Mode?","!","&&"],null,null,null,null,null,null,null,null,null,"NormalDebuffGC"],
     ["DamageBuff","Smashing",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["entref","target>","entref","source>","eq","!","kDefensiveAdaptation","Source.Mode?","!","&&"]],

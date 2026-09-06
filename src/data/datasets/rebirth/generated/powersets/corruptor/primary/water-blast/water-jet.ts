@@ -58,31 +58,6 @@ export const WaterJet: Power = {
       "table": "Ranged_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 8,
-    "durations": {
-      "slow": 8
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Constant","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["1"],null,null,null,null,null,null,null,null,null,"Ones",null,"power_redirect"],
     ["Damage","Smashing",0.49,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
@@ -130,31 +105,6 @@ export const WaterJet: Power = {
           "table": "Ranged_Damage"
         }
       ],
-      "effects": {
-        "buffDuration": 8,
-        "durations": {
-          "slow": 8
-        },
-        "slow": {
-          "flySpeed": {
-            "scale": 0.2,
-            "table": "Ranged_Slow"
-          },
-          "jumpHeight": {
-            "ignoreStrength": true,
-            "scale": 0.2,
-            "table": "Ranged_Slow"
-          },
-          "jumpSpeed": {
-            "scale": 0.2,
-            "table": "Ranged_Slow"
-          },
-          "runSpeed": {
-            "scale": 0.2,
-            "table": "Ranged_Slow"
-          }
-        }
-      },
       "shortHelp": "Ranged, High DMG(Cold/Smash), Foe -Speed, Self +/-Tidal Power",
       "description": "You spray a concentrated torrent of water toward your target that causes High Cold and Smashing damage as well as reducing your target's movement speed.  If you have 2 or less Tidal Power, you will gain a stack of Tidal Power. If you have 3 Tidal Power and you activate this power, it will have an enhanced effect causing Water Jet to cast slightly faster and immediately reset the recharge of Water Jet.  Water Jet's enhanced effect can be used once every 15 seconds.  Damage: High, Recharge: Moderate",
       "effectArea": "SingleTarget",

@@ -49,49 +49,47 @@ export const Ignite: Power = {
     "duration": 5.5,
     "tickRate": 0.25
   },
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "displayName": "Flames",
-      "duration": 5.5,
-      "isPseudoPet": true,
-      "powers": [
-        "Pets.ResistAll_NoFly.ResistAll",
-        "Redirects.Assault_Rifle.Ignite",
-        "Redirects.Assault_Rifle.Avoid"
-      ],
-      "resolvedEntities": [
-        {
-          "displayName": "Flames",
-          "duration": 5.5,
-          "copyCreatorMods": true,
-          "abilities": [
-            {
-              "name": "Ignite",
-              "displayName": "Ignite",
-              "type": "Auto",
-              "damage": [
-                {
-                  "damageType": "Fire",
-                  "scale": 0.1,
-                  "table": "Melee_Damage"
-                }
-              ],
-              "recharge": 0,
-              "castTime": 0,
-              "activatePeriod": 0.5,
-              "effectArea": "Sphere",
-              "targetsAffected": [
-                "Foe"
-              ],
-              "radius": 4,
-              "maxTargets": 4
-            }
-          ]
-        }
-      ],
-      "entity": "PL_StaticObject"
-    }
+  "summon": {
+    "copyBoosts": true,
+    "displayName": "Flames",
+    "duration": 5.5,
+    "isPseudoPet": true,
+    "powers": [
+      "Pets.ResistAll_NoFly.ResistAll",
+      "Redirects.Assault_Rifle.Ignite",
+      "Redirects.Assault_Rifle.Avoid"
+    ],
+    "resolvedEntities": [
+      {
+        "displayName": "Flames",
+        "duration": 5.5,
+        "copyCreatorMods": true,
+        "abilities": [
+          {
+            "name": "Ignite",
+            "displayName": "Ignite",
+            "type": "Auto",
+            "damage": [
+              {
+                "damageType": "Fire",
+                "scale": 0.1,
+                "table": "Melee_Damage"
+              }
+            ],
+            "recharge": 0,
+            "castTime": 0,
+            "activatePeriod": 0.5,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "Foe"
+            ],
+            "radius": 4,
+            "maxTargets": 4
+          }
+        ]
+      }
+    ],
+    "entity": "PL_StaticObject"
   },
   "atoms": [
     ["Damage","Fire",0.1254,1,5.5,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

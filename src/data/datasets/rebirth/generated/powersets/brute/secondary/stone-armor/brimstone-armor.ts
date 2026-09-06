@@ -44,22 +44,6 @@ export const BrimstoneArmor: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "durations": {
-      "resistance": 0.75
-    },
-    "resistance": {
-      "cold": {
-        "scale": 2.5,
-        "table": "Melee_Res_DMG"
-      },
-      "fire": {
-        "scale": 2.5,
-        "table": "Melee_Res_DMG"
-      }
-    }
-  },
   "atoms": [
     ["Resistance","Fire",2.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!","kGranite_Armor_Mode","Source.Mode?","!","&&"],null,null,null,null,null,null,null,null,null,"GraniteDeactive"],
     ["Resistance","Cold",2.5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!","kGranite_Armor_Mode","Source.Mode?","!","&&"],null,null,null,null,null,null,null,null,null,"GraniteDeactive"],

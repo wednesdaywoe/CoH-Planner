@@ -52,16 +52,6 @@ export const GleamingBolt: Power = {
     "scale": 0.68,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 3,
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 3
-    }
-  },
   "atoms": [
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Constant","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kPeacebringer_Blaster_Mode","source.Mode?","!","kPeacebringer_Tanker_Mode","source.Mode?","!","&&"],null,null,null,null,null,null,null,null,null,"Ones",null,"power_redirect"],
     ["Damage","Energy",0.68,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
@@ -84,16 +74,6 @@ export const GleamingBolt: Power = {
         "type": "Energy",
         "scale": 0.68,
         "table": "Ranged_SSDamage"
-      },
-      "effects": {
-        "buffDuration": 3,
-        "defenseDebuff": {
-          "scale": 1,
-          "table": "Ranged_Debuff_Def"
-        },
-        "durations": {
-          "defenseDebuff": 3
-        }
       },
       "shortHelp": "Ranged, Minor DMG(Energy), Foe -DEF",
       "description": "A very quick, but low damage bolt of Kheldian energy that can reduce a target's defense. This power is only available while in Bright Nova Form. Damage: Minor, Recharge: Very Fast",
@@ -118,20 +98,6 @@ export const GleamingBolt: Power = {
         "type": "Energy",
         "scale": 0.68,
         "table": "Melee_SSDamage"
-      },
-      "effects": {
-        "buffDuration": 3,
-        "defenseDebuff": {
-          "scale": 1,
-          "table": "Ranged_Debuff_Def"
-        },
-        "durations": {
-          "defenseDebuff": 3
-        },
-        "taunt": {
-          "scale": 1,
-          "table": "Melee_InherentTaunt"
-        }
       },
       "shortHelp": "Ranged, Minor DMG(Energy), Foe -DEF",
       "description": "A very quick, but low damage bolt of Kheldian energy that can reduce a target's Defense. Damage: Minor, Recharge: Very Fast",

@@ -57,16 +57,6 @@ export const ModerateBridge: Power = {
     "duration": 0.6,
     "tickRate": 0.4000000059604645
   },
-  "effects": {
-    "buffDuration": 10,
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    }
-  },
   "atoms": [
     ["Damage","Lethal",0.66,1,0.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,0.125],
     ["Damage","Fire",0.297,1,0.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace",null,null,null,0.125],

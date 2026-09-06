@@ -43,60 +43,48 @@ export const PoisonGasArrow: Power = {
     "Sleep"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 60,
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 2,
-      "table": "Ranged_Debuff_Dam",
-      "unresistable": true
-    },
-    "durations": {
-      "damageDebuff": 60
-    },
-    "summon": {
-      "copyBoosts": true,
-      "displayName": "Poison Gas Arrow",
-      "duration": 20,
-      "isPseudoPet": true,
-      "powers": [
-        "Redirects.Trick_Arrow.PoisonGasArrow"
-      ],
-      "resolvedEntities": [
-        {
-          "displayName": "Poison Gas Arrow",
-          "duration": 20,
-          "copyCreatorMods": true,
-          "abilities": [
-            {
-              "name": "PoisonGasArrow",
-              "displayName": "Poison Gas Arrow",
-              "type": "Auto",
-              "damage": [],
-              "effects": [
-                {
-                  "type": "Sleep",
-                  "magnitude": 2,
-                  "attribType": "Duration",
-                  "scale": 1,
-                  "table": "Melee_Sleep"
-                }
-              ],
-              "recharge": 0,
-              "castTime": 0,
-              "activatePeriod": 2.5,
-              "effectArea": "Sphere",
-              "targetsAffected": [
-                "Foe"
-              ],
-              "radius": 25,
-              "maxTargets": 16
-            }
-          ]
-        }
-      ],
-      "entity": "PL_StaticObject"
-    }
+  "summon": {
+    "copyBoosts": true,
+    "displayName": "Poison Gas Arrow",
+    "duration": 20,
+    "isPseudoPet": true,
+    "powers": [
+      "Redirects.Trick_Arrow.PoisonGasArrow"
+    ],
+    "resolvedEntities": [
+      {
+        "displayName": "Poison Gas Arrow",
+        "duration": 20,
+        "copyCreatorMods": true,
+        "abilities": [
+          {
+            "name": "PoisonGasArrow",
+            "displayName": "Poison Gas Arrow",
+            "type": "Auto",
+            "damage": [],
+            "effects": [
+              {
+                "type": "Sleep",
+                "magnitude": 2,
+                "attribType": "Duration",
+                "scale": 1,
+                "table": "Melee_Sleep"
+              }
+            ],
+            "recharge": 0,
+            "castTime": 0,
+            "activatePeriod": 2.5,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "Foe"
+            ],
+            "radius": 25,
+            "maxTargets": 16
+          }
+        ]
+      }
+    ],
+    "entity": "PL_StaticObject"
   },
   "atoms": [
     ["EntCreate",null,1,1,20,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,20],

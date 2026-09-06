@@ -45,26 +45,6 @@ export const RisetotheChallenge: Power = {
     "Universal Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 1.125,
-    "durations": {
-      "regenBuff": 1.125,
-      "tohitDebuff": 1
-    },
-    "regenBuff": {
-      "scale": 1.25,
-      "table": "Melee_Ones",
-      "perTarget": 0.25
-    },
-    "taunt": {
-      "scale": 1.25,
-      "table": "Melee_Ones"
-    },
-    "tohitDebuff": {
-      "scale": 0.5,
-      "table": "Melee_DeBuff_ToHit"
-    }
-  },
   "atoms": [
     ["Mez","Taunt",1.25,3,0,"Melee_Ones","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","!","enttype","target>","critter","eq","&&"],null,null,null,null,null,null,null,null,null,"Ones"],
     ["ToHit",null,0.5,1,1,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"DeBuff_ToHit"],

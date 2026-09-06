@@ -211,46 +211,6 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
         "Universal Travel"
       ],
       "maxSlots": 6,
-      "effects": {
-        "buffDuration": 0.75,
-        "durations": {
-          "movement": 0.75,
-          "slow": 0.75
-        },
-        "movement": {
-          "fly": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "flySpeed": {
-            "scale": 1.25,
-            "suppressible": true,
-            "table": "Melee_SpeedFlying"
-          },
-          "flySpeedUnenhanced": {
-            "ignoreStrength": true,
-            "scale": 0.8,
-            "suppressible": true,
-            "table": "Melee_Ones"
-          },
-          "movementControl": {
-            "scale": 2,
-            "table": "Melee_Control"
-          },
-          "movementFriction": {
-            "scale": 2,
-            "table": "Melee_Friction"
-          }
-        },
-        "slow": {
-          "flySpeed": {
-            "ignoreStrength": true,
-            "scale": 1.01,
-            "table": "Melee_Ones",
-            "toWho": "Self"
-          }
-        }
-      },
       "atoms": [
         [
           "Movement",
@@ -668,87 +628,6 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
         "Universal Travel"
       ],
       "maxSlots": 6,
-      "effects": {
-        "buffDuration": 0.75,
-        "defenseBuff": {
-          "aoe": {
-            "scale": 0.25,
-            "table": "Melee_Buff_Def"
-          },
-          "cold": {
-            "scale": 0.25,
-            "table": "Melee_Buff_Def"
-          },
-          "energy": {
-            "scale": 0.25,
-            "table": "Melee_Buff_Def"
-          },
-          "fire": {
-            "scale": 0.25,
-            "table": "Melee_Buff_Def"
-          },
-          "lethal": {
-            "scale": 0.25,
-            "table": "Melee_Buff_Def"
-          },
-          "melee": {
-            "scale": 0.25,
-            "table": "Melee_Buff_Def"
-          },
-          "negative": {
-            "scale": 0.25,
-            "table": "Melee_Buff_Def"
-          },
-          "psionic": {
-            "scale": 0.25,
-            "table": "Melee_Buff_Def"
-          },
-          "ranged": {
-            "scale": 0.25,
-            "table": "Melee_Buff_Def"
-          },
-          "smashing": {
-            "scale": 0.25,
-            "table": "Melee_Buff_Def"
-          }
-        },
-        "durations": {
-          "defenseBuff": 0.75,
-          "movement": 0.75,
-          "slow": 0.75
-        },
-        "movement": {
-          "fly": {
-            "scale": 4,
-            "table": "Melee_Ones"
-          },
-          "flySpeed": {
-            "scale": 0.5,
-            "table": "Melee_Ones"
-          },
-          "flySpeedUnenhanced": {
-            "ignoreStrength": true,
-            "scale": 0.5,
-            "table": "Melee_Ones"
-          },
-          "movementControl": {
-            "scale": 25,
-            "table": "Melee_Control"
-          },
-          "movementFriction": {
-            "scale": 25,
-            "table": "Melee_Friction"
-          }
-        },
-        "slow": {
-          "flySpeed": {
-            "ignoreStrength": true,
-            "scale": 1.01,
-            "table": "Melee_Ones",
-            "toWho": "Self"
-          }
-        }
-      },
       "atoms": [
         [
           "Movement",
@@ -1402,30 +1281,6 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
         "Universal Travel"
       ],
       "maxSlots": 6,
-      "effects": {
-        "buffDuration": 10,
-        "durations": {
-          "movement": 10
-        },
-        "movement": {
-          "fly": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "flySpeed": {
-            "scale": 0.5,
-            "table": "Melee_SpeedFlying"
-          },
-          "movementControl": {
-            "scale": 10,
-            "table": "Melee_Control"
-          },
-          "movementFriction": {
-            "scale": 10,
-            "table": "Melee_Friction"
-          }
-        }
-      },
       "atoms": [
         [
           "Movement",
@@ -1634,81 +1489,6 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
         "Universal Travel"
       ],
       "maxSlots": 6,
-      "effects": {
-        "buffDuration": 0.75,
-        "defenseBuff": {
-          "aoe": {
-            "scale": 1.5,
-            "table": "Melee_Buff_Def"
-          },
-          "cold": {
-            "scale": 1.5,
-            "table": "Melee_Buff_Def"
-          },
-          "energy": {
-            "scale": 1.5,
-            "table": "Melee_Buff_Def"
-          },
-          "fire": {
-            "scale": 1.5,
-            "table": "Melee_Buff_Def"
-          },
-          "lethal": {
-            "scale": 1.5,
-            "table": "Melee_Buff_Def"
-          },
-          "melee": {
-            "scale": 1.5,
-            "table": "Melee_Buff_Def"
-          },
-          "negative": {
-            "scale": 1.5,
-            "table": "Melee_Buff_Def"
-          },
-          "psionic": {
-            "scale": 1.5,
-            "table": "Melee_Buff_Def"
-          },
-          "ranged": {
-            "scale": 1.5,
-            "table": "Melee_Buff_Def"
-          },
-          "smashing": {
-            "scale": 1.5,
-            "table": "Melee_Buff_Def"
-          }
-        },
-        "durations": {
-          "defenseBuff": 0.75,
-          "movement": 0.75,
-          "movementCapBump": 0.75,
-          "onlyAffectsSelf": 0.75
-        },
-        "movement": {
-          "fly": {
-            "scale": 4,
-            "table": "Melee_Ones"
-          },
-          "movementControl": {
-            "scale": 15,
-            "table": "Melee_Control"
-          },
-          "movementFriction": {
-            "scale": 15,
-            "table": "Melee_Friction"
-          }
-        },
-        "movementCapBump": {
-          "flySpeed": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          }
-        },
-        "onlyAffectsSelf": {
-          "scale": 4,
-          "table": "Melee_Ones"
-        }
-      },
       "atoms": [
         [
           "Movement",
@@ -2685,105 +2465,6 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
         "Defense Sets"
       ],
       "maxSlots": 6,
-      "effects": {
-        "buffDuration": 0.75,
-        "defenseBuff": {
-          "aoe": {
-            "scale": 0.25,
-            "table": "Melee_Buff_Def"
-          },
-          "cold": {
-            "scale": 0.25,
-            "table": "Melee_Buff_Def"
-          },
-          "energy": {
-            "scale": 0.25,
-            "table": "Melee_Buff_Def"
-          },
-          "fire": {
-            "scale": 0.25,
-            "table": "Melee_Buff_Def"
-          },
-          "lethal": {
-            "scale": 0.25,
-            "table": "Melee_Buff_Def"
-          },
-          "melee": {
-            "scale": 0.25,
-            "table": "Melee_Buff_Def"
-          },
-          "negative": {
-            "scale": 0.25,
-            "table": "Melee_Buff_Def"
-          },
-          "ranged": {
-            "scale": 0.25,
-            "table": "Melee_Buff_Def"
-          },
-          "smashing": {
-            "scale": 0.25,
-            "table": "Melee_Buff_Def"
-          }
-        },
-        "defenseBuffSuppressible": {
-          "aoe": {
-            "scale": 5,
-            "table": "Melee_Buff_Def"
-          },
-          "cold": {
-            "scale": 0.5,
-            "table": "Melee_Buff_Def"
-          },
-          "energy": {
-            "scale": 0.5,
-            "table": "Melee_Buff_Def"
-          },
-          "fire": {
-            "scale": 0.5,
-            "table": "Melee_Buff_Def"
-          },
-          "lethal": {
-            "scale": 0.5,
-            "table": "Melee_Buff_Def"
-          },
-          "melee": {
-            "scale": 0.5,
-            "table": "Melee_Buff_Def"
-          },
-          "negative": {
-            "scale": 0.5,
-            "table": "Melee_Buff_Def"
-          },
-          "ranged": {
-            "scale": 0.5,
-            "table": "Melee_Buff_Def"
-          },
-          "smashing": {
-            "scale": 0.5,
-            "table": "Melee_Buff_Def"
-          }
-        },
-        "durations": {
-          "defenseBuff": 0.75,
-          "defenseBuffSuppressible": 0.75,
-          "stealth": 0.75
-        },
-        "stealth": {
-          "stealthPvE": {
-            "scale": 150,
-            "table": "Melee_Ones"
-          },
-          "stealthPvP": {
-            "scale": 500,
-            "table": "Melee_Ones"
-          },
-          "translucency": {
-            "ignoreStrength": true,
-            "scale": 0.8,
-            "table": "Melee_Ones"
-          }
-        }
-      },
       "atoms": [
         [
           "Stealth",
@@ -3675,36 +3356,6 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
         "Recharge"
       ],
       "maxSlots": 0,
-      "effects": {
-        "buffDuration": 15,
-        "durations": {
-          "recoveryBuff": 15,
-          "stealth": 10
-        },
-        "placate": {
-          "scale": 10,
-          "table": "Melee_Taunt"
-        },
-        "recoveryBuff": {
-          "scale": 0.25,
-          "table": "Melee_Ones"
-        },
-        "stealth": {
-          "stealthPvE": {
-            "scale": 150,
-            "table": "Melee_Ones"
-          },
-          "stealthPvP": {
-            "scale": 380,
-            "table": "Melee_Ones"
-          },
-          "translucency": {
-            "ignoreStrength": true,
-            "scale": 0.2,
-            "table": "Melee_Ones"
-          }
-        }
-      },
       "atoms": [
         [
           "Recovery",
@@ -4016,43 +3667,6 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
         "Universal Travel"
       ],
       "maxSlots": 6,
-      "effects": {
-        "buffDuration": 4,
-        "durations": {
-          "movement": 2,
-          "slow": 4,
-          "stealth": 1.5
-        },
-        "movement": {
-          "fly": {
-            "ignoreStrength": true,
-            "scale": 1,
-            "table": "Ranged_Ones"
-          }
-        },
-        "slow": {
-          "movementFriction": {
-            "ignoreStrength": true,
-            "scale": 1,
-            "table": "Ranged_Ones",
-            "toWho": "Self"
-          }
-        },
-        "stealth": {
-          "translucency": {
-            "scale": 0,
-            "table": "Ranged_Ones"
-          }
-        },
-        "teleport": {
-          "scale": 1,
-          "table": "Ranged_Ones"
-        },
-        "maxStacks": 2,
-        "stacksLinear": [
-          "movement"
-        ]
-      },
       "atoms": [
         [
           "Stealth",
@@ -4247,27 +3861,11 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
         "Universal Travel"
       ],
       "maxSlots": 6,
-      "effects": {
-        "buffDuration": 1.5,
-        "durations": {
-          "stealth": 1.5
-        },
-        "stealth": {
-          "translucency": {
-            "scale": 0,
-            "table": "Ranged_Ones"
-          }
-        },
-        "summon": {
-          "copyBoosts": true,
-          "duration": 1,
-          "entity": "Pets_TPFoeTaunt",
-          "isPseudoPet": false
-        },
-        "teleport": {
-          "scale": 2.1,
-          "table": "Ranged_Ones"
-        }
+      "summon": {
+        "copyBoosts": true,
+        "duration": 1,
+        "entity": "Pets_TPFoeTaunt",
+        "isPseudoPet": false
       },
       "atoms": [
         [
@@ -4748,22 +4346,6 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
         "Universal Travel"
       ],
       "maxSlots": 6,
-      "effects": {
-        "buffDuration": 1.5,
-        "durations": {
-          "stealth": 1.5
-        },
-        "stealth": {
-          "translucency": {
-            "scale": 0,
-            "table": "Ranged_Ones"
-          }
-        },
-        "teleport": {
-          "scale": 1,
-          "table": "Ranged_Ones"
-        }
-      },
       "atoms": [
         [
           "Stealth",
@@ -4883,18 +4465,6 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
         "Recharge"
       ],
       "maxSlots": 6,
-      "effects": {
-        "buffDuration": 5,
-        "durations": {
-          "stealth": 5
-        },
-        "stealth": {
-          "translucency": {
-            "scale": 0,
-            "table": "Melee_Ones"
-          }
-        }
-      },
       "atoms": [
         [
           "Stealth",

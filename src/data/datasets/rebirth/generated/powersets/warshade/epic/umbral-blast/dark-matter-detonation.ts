@@ -55,41 +55,6 @@ export const DarkMatterDetonation: Power = {
     "scale": 0.9,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 6,
-    "durations": {
-      "rechargeDebuff": 6,
-      "slow": 6
-    },
-    "knockback": {
-      "scale": 2,
-      "table": "Ranged_Knockback"
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.2,
-      "table": "Ranged_Slow"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Constant","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kWarshade_Blaster_Mode","source.Mode?","!"],null,null,null,null,null,null,null,null,null,"Ones",null,"power_redirect"],
     ["Damage","Negative",0.9,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
@@ -126,41 +91,6 @@ export const DarkMatterDetonation: Power = {
         "type": "Negative",
         "scale": 0.9,
         "table": "Ranged_SSDamage"
-      },
-      "effects": {
-        "buffDuration": 10,
-        "durations": {
-          "rechargeDebuff": 10,
-          "slow": 10
-        },
-        "knockback": {
-          "scale": 2,
-          "table": "Ranged_Knockback"
-        },
-        "rechargeDebuff": {
-          "ignoreStrength": true,
-          "scale": 0.2,
-          "table": "Ranged_Slow"
-        },
-        "slow": {
-          "flySpeed": {
-            "scale": 0.2,
-            "table": "Ranged_Slow"
-          },
-          "jumpHeight": {
-            "ignoreStrength": true,
-            "scale": 0.2,
-            "table": "Ranged_Slow"
-          },
-          "jumpSpeed": {
-            "scale": 0.2,
-            "table": "Ranged_Slow"
-          },
-          "runSpeed": {
-            "scale": 0.2,
-            "table": "Ranged_Slow"
-          }
-        }
       },
       "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Negative), Foe Knockback, -Recharge, -SPD",
       "description": "You hurl a blast of Dark Matter that violently explodes on impact, damaging all foes near the target. All affected targets' attack and movement speed are slowed.  Some foes may be knocked down. This power is only available while in Dark Nova Form. Damage: Moderate, Recharge: Slow",

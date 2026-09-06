@@ -54,22 +54,6 @@ export const Parry: Power = {
     "scale": 0.84,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "buffDuration": 10,
-    "defenseBuff": {
-      "lethal": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      },
-      "melee": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 10
-    }
-  },
   "atoms": [
     ["Damage","Lethal",0.84,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Defense","Melee",1.5,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],

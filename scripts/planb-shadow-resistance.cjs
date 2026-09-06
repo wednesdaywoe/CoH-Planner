@@ -72,7 +72,7 @@ function atomSelf(v) {
   return v ? r4(Math.abs(v.scale)) : undefined;
 }
 
-const stats = { powers: 0, buffTypes: 0, buffAgree: 0, forkResolved: 0, perTargetTypes: 0, selfTypes: 0,
+const stats = { powers: 0, noBag: 0, buffTypes: 0, buffAgree: 0, forkResolved: 0, perTargetTypes: 0, selfTypes: 0,
   selfAgree: 0, selfRecovered: 0 };
 const selfRecoveriesSeen = {};
 const findings = [];
@@ -81,6 +81,8 @@ function checkPower(dataset, power, genPath) {
   const name = power.name || genPath;
   if (POWER_FILTER && !name.toLowerCase().includes(POWER_FILTER.toLowerCase())) return;
   stats.powers++;
+  // STRIP-1 (BPORT7) removed the bag this gate compares against; bag-less powers are vacuous rows, named in the tail.
+  if (!power.effects || !Object.keys(power.effects).length) { stats.noBag++; return; }
 
   const bagRes = power.effects && typeof power.effects.resistance === 'object' ? power.effects.resistance : {};
   const bagDeb = power.effects && typeof power.effects.resistanceDebuff === 'object' ? power.effects.resistanceDebuff : {};
@@ -136,6 +138,10 @@ function sweep(dataset) {
 
 for (const ds of DATASETS) sweep(ds);
 
+// Every swept power bag-less: the run checks nothing, the tail names it, and the
+// bag-derived recovery pin below is waived.
+const VACUOUS = stats.powers > 0 && stats.noBag === stats.powers;
+
 console.log(`\nPlan B Slice 3 — resistance reconstruction (buff + self-penalty)`);
 console.log(`  powers swept:        ${stats.powers}`);
 console.log(`  buff type-slots:     ${stats.buffTypes}  (of which per-target: ${stats.perTargetTypes})`);
@@ -146,7 +152,7 @@ console.log(`  self recovered:      ${stats.selfRecovered}  (Rest's AnyAffected 
 // Both ways: a fork that stopped recovering Rest's crash is the join regressing, and this
 // gate would otherwise read the silence as agreement.
 const EXPECTED_SELF_RECOVERIES = ['homecoming|Rest', 'rebirth|Rest', 'thunderspy|Rest', 'brainstorm|Rest'];
-const recoveryPinFailures = [
+const recoveryPinFailures = VACUOUS ? [] : [
   ...Object.keys(selfRecoveriesSeen).filter((k) => !EXPECTED_SELF_RECOVERIES.includes(k))
     .map((k) => `NEW self recovery, never read: ${k}`),
   // Only datasets this run swept can be reported lost. Without the guard a single-dataset
@@ -174,4 +180,9 @@ if (recoveryPinFailures.length) {
   console.log('\nFAIL — the self-recovery roster moved. No divergence; see the [PIN] lines above.');
   process.exit(1);
 }
-console.log('\nOK — atom-derived resistance buff + self-penalty reproduce the bag corpus-wide (8 standard types).');
+if (VACUOUS) {
+  console.log(`\nVACUOUS — bag absent: ${stats.noBag} powers swept, 0 checks — vacuous post-STRIP-1.`);
+  console.log('   The atom side is graded by the converter gates, not here.');
+} else {
+  console.log('\nOK — atom-derived resistance buff + self-penalty reproduce the bag corpus-wide (8 standard types).');
+}

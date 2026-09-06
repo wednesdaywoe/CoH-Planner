@@ -46,12 +46,10 @@ export const IceStorm: Power = {
     "Universal Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "duration": 15,
-      "entity": "Pets_Corruptor_IceStorm",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "duration": 15,
+    "entity": "Pets_Corruptor_IceStorm",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,-1,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,15]

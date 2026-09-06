@@ -44,51 +44,6 @@ export const EagleEye: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "accuracyBuff": {
-      "ignoreStrength": true,
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 0.75,
-    "debuffResistance": {
-      "perception": {
-        "ignoreStrength": true,
-        "scale": 0.6,
-        "table": "Melee_Ones"
-      },
-      "tohit": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "durations": {
-      "accuracyBuff": 0.75,
-      "debuffResistance": 0.75,
-      "perceptionBuff": 0.75,
-      "recoveryBuff": 0.75,
-      "regenBuff": 0.75,
-      "regenBuffUnenhanced": 0.75
-    },
-    "perceptionBuff": {
-      "scale": 0.6,
-      "table": "Melee_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 0.5,
-      "table": "Melee_Ones"
-    },
-    "regenBuff": {
-      "scale": 1.125,
-      "table": "Melee_Ones"
-    },
-    "regenBuffUnenhanced": {
-      "ignoreStrength": true,
-      "scale": 1.125,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["ToHit",null,2,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Accuracy",null,0.2,1,0.75,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],

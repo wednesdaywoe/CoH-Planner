@@ -51,17 +51,6 @@ export const FistfulofArrows: Power = {
     "scale": 0.91,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 8.67,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.032,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 8.67
-    }
-  },
   "atoms": [
     ["Damage","Lethal",0.91,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["DamageBuff","Smashing",0.032,1,8.67,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],

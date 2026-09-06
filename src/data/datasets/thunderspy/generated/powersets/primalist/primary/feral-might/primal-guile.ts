@@ -36,12 +36,6 @@ export const PrimalGuile: Power = {
     "Accuracy"
   ],
   "maxSlots": 6,
-  "effects": {
-    "placate": {
-      "scale": 6,
-      "table": "Melee_Taunt"
-    }
-  },
   "atoms": [
     ["Mez","Placate",8,3,0,"Melee_Taunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1],
     ["Mez","Placate",6,3,0,"Melee_Taunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1]

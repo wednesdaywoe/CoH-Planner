@@ -45,45 +45,6 @@ export const SpeedBoost: Power = {
     "Universal Travel"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 240,
-    "debuffResistance": {
-      "movement": {
-        "scale": 0.25,
-        "table": "Melee_SpeedFlying"
-      },
-      "recharge": {
-        "ignoreStrength": true,
-        "scale": 0.25,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "debuffResistance": 240,
-      "movement": 240,
-      "rechargeBuff": 240,
-      "recoveryBuff": 240
-    },
-    "movement": {
-      "flySpeed": {
-        "scale": 0.25,
-        "table": "Melee_SpeedFlying"
-      },
-      "runSpeed": {
-        "scale": 0.25,
-        "table": "Melee_SpeedRunning"
-      }
-    },
-    "rechargeBuff": {
-      "ignoreStrength": true,
-      "scale": 0.5,
-      "table": "Melee_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 0.75,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["RechargeTime",null,0.5,1,240,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["Recovery",null,0.5,1,240,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],

@@ -59,25 +59,6 @@ export const TelekineticThrust: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 9.57,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.137,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "damageBuff": 9.57
-    },
-    "knockback": {
-      "scale": 8,
-      "table": "Melee_Knockback"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff"
-    ]
-  },
   "atoms": [
     ["Damage","Smashing",0.4,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Psionic",0.4,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],

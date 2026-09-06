@@ -38,12 +38,6 @@ export const MasterBrawler: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 30,
-    "durations": {
-      "absorb": 30
-    }
-  },
   "atoms": [
     ["Absorb",null,4,1,30,"Melee_HealSelf","Max","Expression","Self","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["100","kHitPoints%","source>","-","kEndurance%","source>","+","200","/","@StdResult","*"]],
     ["Absorb",null,4,1,30,"Melee_HealSelf","Max","Expression","Self","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,["100","kHitPoints%","source>","-","kEndurance%","source>","+","200","/","@StdResult","*"]]

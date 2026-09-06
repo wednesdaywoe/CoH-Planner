@@ -58,27 +58,6 @@ export const RingofFire: Power = {
     "duration": 9.2,
     "tickRate": 1.5
   },
-  "effects": {
-    "buffDuration": 8.67,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.077,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 8.67
-    },
-    "immobilize": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff"
-    ]
-  },
   "atoms": [
     ["Damage","Fire",0.22,1,9.2,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1.5,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Immobilize"],

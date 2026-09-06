@@ -43,22 +43,6 @@ export const Energize: Power = {
     "scale": 2.5,
     "table": "Melee_HealSelf"
   },
-  "effects": {
-    "buffDuration": 45,
-    "durations": {
-      "enduranceDiscount": 30,
-      "regenBuff": 45
-    },
-    "enduranceDiscount": {
-      "ignoreStrength": true,
-      "scale": 0.5,
-      "table": "Melee_Stun"
-    },
-    "regenBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["EnduranceDiscount",null,0.5,1,30,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Regeneration",null,1,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],

@@ -36,43 +36,6 @@ export const TenebrousRegeneration: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 10.3,
-    "defenseBuff": {
-      "cold": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "energy": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "negative": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 10.25,
-      "regenBuff": 10.3
-    },
-    "regenBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Defense","Smashing",0.25,1,10.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Defense","Lethal",0.25,1,10.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],

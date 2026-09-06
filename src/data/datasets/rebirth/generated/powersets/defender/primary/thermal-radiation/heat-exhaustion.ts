@@ -37,33 +37,6 @@ export const HeatExhaustion: Power = {
     "Accuracy"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 40,
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 5,
-      "table": "Ranged_Debuff_Dam"
-    },
-    "durations": {
-      "damageDebuff": 40,
-      "recoveryDebuff": 40,
-      "regenDebuff": 40
-    },
-    "enduranceDrain": {
-      "scale": 0.13,
-      "table": "Ranged_EndDrain"
-    },
-    "recoveryDebuff": {
-      "ignoreStrength": true,
-      "scale": 2,
-      "table": "Ranged_Ones"
-    },
-    "regenDebuff": {
-      "ignoreStrength": true,
-      "scale": 5,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["DamageBuff","Smashing",5,1,40,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Debuff_Dam"],
     ["DamageBuff","Lethal",5,1,40,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Debuff_Dam"],

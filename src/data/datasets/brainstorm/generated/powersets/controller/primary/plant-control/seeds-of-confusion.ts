@@ -45,14 +45,6 @@ export const SeedsofConfusion: Power = {
     "Controller Archetype Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "confuse": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Stun"
-    }
-  },
   "atoms": [
     ["RechargePower",null,6.5,0,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1.08],
     ["Mez","Confused",8,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

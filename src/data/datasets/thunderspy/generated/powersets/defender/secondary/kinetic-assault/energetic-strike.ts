@@ -59,23 +59,6 @@ export const EnergeticStrike: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 10,
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 1,
-      "table": "Melee_Debuff_Dam"
-    },
-    "durations": {
-      "damageDebuff": 10
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 10,
-      "table": "Melee_Immobilize"
-    }
-  },
   "atoms": [
     ["DamageBuff","Smashing",1,1,10,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?",".15","*","1.5","+","@StdResult","*"]],
     ["DamageBuff","Lethal",1,1,10,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse","source.ownPowerNum?",".15","*","1.5","+","@StdResult","*"]],

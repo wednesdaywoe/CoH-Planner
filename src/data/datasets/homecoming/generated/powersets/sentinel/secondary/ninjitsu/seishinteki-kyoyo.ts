@@ -36,39 +36,6 @@ export const SeishintekiKyoyo: Power = {
     "Endurance Modification"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 30,
-    "debuffResistance": {
-      "endurance": {
-        "ignoreStrength": true,
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      },
-      "recovery": {
-        "ignoreStrength": true,
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "debuffResistance": 30,
-      "recoveryBuff": 30
-    },
-    "enduranceGain": {
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "debuffResistance",
-      "enduranceGain",
-      "recoveryBuff"
-    ]
-  },
   "atoms": [
     ["Endurance",null,0.2,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1],
     ["Recovery",null,0.2,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],

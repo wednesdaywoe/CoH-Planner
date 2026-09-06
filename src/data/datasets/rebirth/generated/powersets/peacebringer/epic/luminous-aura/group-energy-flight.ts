@@ -46,54 +46,6 @@ export const GroupEnergyFlight: Power = {
     "Universal Travel"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "defenseBuff": {
-      "aoe": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "cold": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "energy": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "melee": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "negative": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "psionic": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "ranged": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 0.75
-    }
-  },
   "atoms": [
     ["Defense","Melee",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Buff_Def"],
     ["Defense","Ranged",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Buff_Def"],

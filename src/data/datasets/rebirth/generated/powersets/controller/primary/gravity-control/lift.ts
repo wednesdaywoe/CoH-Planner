@@ -49,12 +49,6 @@ export const Lift: Power = {
     "scale": 1.32,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "knockup": {
-      "scale": 6,
-      "table": "Ranged_Knockback"
-    }
-  },
   "atoms": [
     ["Mez","Knockup",6,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Knockback"],
     ["Damage","Smashing",1.32,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage",null,null,null,2],

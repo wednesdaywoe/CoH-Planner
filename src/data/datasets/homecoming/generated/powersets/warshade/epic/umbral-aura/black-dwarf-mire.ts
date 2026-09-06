@@ -53,49 +53,6 @@ export const BlackDwarfMire: Power = {
     "scale": 1,
     "table": "Melee_InherentDamage"
   },
-  "effects": {
-    "buffDuration": 10,
-    "damageBuff": {
-      "scale": 1.25,
-      "table": "Melee_Buff_Dmg",
-      "perTarget": 1.25
-    },
-    "durations": {
-      "damageBuff": 10,
-      "rechargeDebuff": 6,
-      "slow": 6,
-      "tohitBuff": 10
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.2,
-      "table": "Melee_Slow"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      }
-    },
-    "tohitBuff": {
-      "scale": 0.5,
-      "table": "Melee_Buff_ToHit",
-      "perTarget": 0.5
-    }
-  },
   "atoms": [
     ["Damage","Negative",1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"SSDamage"],
     ["Movement","JumpHeight",0.2,1,6,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],

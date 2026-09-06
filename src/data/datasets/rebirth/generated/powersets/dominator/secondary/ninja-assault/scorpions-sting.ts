@@ -73,42 +73,6 @@ export const ScorpionsSting: Power = {
       "table": "Ranged_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 15,
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 3,
-      "table": "Ranged_Debuff_Dam"
-    },
-    "durations": {
-      "damageDebuff": 15,
-      "slow": 15
-    },
-    "hold": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 5,
-      "table": "Ranged_Immobilize"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.3,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.3,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.3,
-        "table": "Melee_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.3,
-        "table": "Melee_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Damage","Lethal",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"NinjaAssault_BoostOff"],
     ["Damage","Toxic",0.22,1,4.6,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage",null,null,null,0.5],

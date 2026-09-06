@@ -44,48 +44,6 @@ export const PrimalistsCloak: Power = {
     "Defense Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 1.25,
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.3,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "defenseBuff": {
-      "aoe": {
-        "scale": 2,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "defenseBuffSuppressible": {
-      "aoe": {
-        "scale": 2,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "debuffResistance": 1.25,
-      "defenseBuff": 1.25,
-      "defenseBuffSuppressible": 1.25,
-      "stealth": 1.25
-    },
-    "stealth": {
-      "stealthPvE": {
-        "scale": 35,
-        "table": "Melee_Ones"
-      },
-      "stealthPvP": {
-        "scale": 350,
-        "table": "Melee_Ones"
-      },
-      "translucency": {
-        "ignoreStrength": true,
-        "scale": 0.15,
-        "table": "Melee_Ones"
-      }
-    }
-  },
   "atoms": [
     ["Stealth","RadiusPvE",35,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kProwlerMode","Source.Mode?","!"],null,null,true,null,null,null,null,null,null,"Ones"],
     ["Stealth","RadiusPvP",350,1,1.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kProwlerMode","Source.Mode?","!"],null,null,true,null,null,null,null,null,null,"Ones"],

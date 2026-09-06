@@ -52,47 +52,6 @@ export const ScrambleThoughts: Power = {
     "scale": 1,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "fear": {
-      "attribType": "Duration",
-      "ignoreStrength": true,
-      "mag": 3,
-      "scale": 10,
-      "table": "Ranged_Stun"
-    },
-    "hold": {
-      "attribType": "Duration",
-      "ignoreStrength": true,
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Immobilize"
-    },
-    "immobilize": {
-      "attribType": "Duration",
-      "ignoreStrength": true,
-      "mag": 3,
-      "scale": 10,
-      "table": "Ranged_Stun"
-    },
-    "placate": {
-      "ignoreStrength": true,
-      "scale": 10,
-      "table": "Ranged_Stun"
-    },
-    "sleep": {
-      "attribType": "Duration",
-      "ignoreStrength": true,
-      "mag": 3,
-      "scale": 10,
-      "table": "Ranged_Stun"
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 10,
-      "table": "Ranged_Stun"
-    }
-  },
   "atoms": [
     ["Damage","Psionic",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Mez","Stunned",10,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

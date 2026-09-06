@@ -43,13 +43,11 @@ export const GangWar: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "duration": 120,
-      "isPseudoPet": false,
-      "entity": "Pets_Thug_Pose_01",
-      "entityCount": 10
-    }
+  "summon": {
+    "duration": 120,
+    "isPseudoPet": false,
+    "entity": "Pets_Thug_Pose_01",
+    "entityCount": 10
   },
   "atoms": [
     ["EntCreate",null,1,1,120,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Levelminus2",null,null,null,null,null,null,null,null,null,120],

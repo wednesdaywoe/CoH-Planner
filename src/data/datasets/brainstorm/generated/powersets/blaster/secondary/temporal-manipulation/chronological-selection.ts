@@ -38,28 +38,6 @@ export const ChronologicalSelection: Power = {
     "To Hit Buff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 10,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 5,
-      "table": "Melee_Buff_Dmg"
-    },
-    "durations": {
-      "damageBuff": 10,
-      "rechargeBuff": 10,
-      "tohitBuff": 10
-    },
-    "rechargeBuff": {
-      "ignoreStrength": true,
-      "scale": 0.3,
-      "table": "Melee_Ones"
-    },
-    "tohitBuff": {
-      "scale": 2,
-      "table": "Melee_Buff_ToHit"
-    }
-  },
   "atoms": [
     ["RechargeTime",null,0.3,1,10,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["ToHit",null,2,1,10,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],

@@ -48,25 +48,6 @@ export const Hurricane: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 10,
-    "durations": {
-      "repel": 1.05,
-      "tohitDebuff": 10
-    },
-    "knockback": {
-      "scale": 4,
-      "table": "Ranged_Knockback"
-    },
-    "repel": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "tohitDebuff": {
-      "scale": 3,
-      "table": "Ranged_Debuff_ToHit"
-    }
-  },
   "atoms": [
     ["ToHit",null,3,1,10,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Range",null,-0.6,1,10,"Ranged_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],

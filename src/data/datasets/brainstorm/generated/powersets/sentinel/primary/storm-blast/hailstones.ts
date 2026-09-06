@@ -71,12 +71,6 @@ export const Hailstones: Power = {
       "tickRate": 0.30000001192092896
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,["temporary_powers.temporary_powers.StormBlast_InStormCell","target.ownPower?","!"]],
     ["Meta",null,1,1,7.1,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,["temporary_powers.temporary_powers.StormBlast_InStormCell","target.ownPower?","!"],null,null,null,null,null,null,null,null,null,null,null,"null"],

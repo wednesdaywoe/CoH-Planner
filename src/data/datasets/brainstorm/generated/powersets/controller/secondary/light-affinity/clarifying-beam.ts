@@ -54,46 +54,6 @@ export const ClarifyingBeam: Power = {
       "table": "Ranged_Heal"
     }
   ],
-  "effects": {
-    "buffDuration": 120,
-    "durations": {
-      "resistance": 120
-    },
-    "resistance": {
-      "cold": {
-        "scale": 1,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1,
-        "table": "Ranged_Res_Dmg"
-      },
-      "fire": {
-        "scale": 1,
-        "table": "Ranged_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 1,
-        "table": "Ranged_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1,
-        "table": "Ranged_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 1,
-        "table": "Ranged_Res_Dmg"
-      },
-      "smashing": {
-        "scale": 1,
-        "table": "Ranged_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 1,
-        "table": "Ranged_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["Resistance","Smashing",1,1,120,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Friend"]],
     ["Resistance","Lethal",1,1,120,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Friend"]],

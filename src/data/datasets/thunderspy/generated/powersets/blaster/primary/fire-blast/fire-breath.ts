@@ -53,17 +53,6 @@ export const FireBreath: Power = {
     "duration": 2.1,
     "tickRate": 1
   },
-  "effects": {
-    "buffDuration": 10.17,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.082,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 10.17
-    }
-  },
   "atoms": [
     ["Damage","Fire",0.585,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage",null,null,null,1],
     ["DamageBuff","Smashing",0.082,1,10.17,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],

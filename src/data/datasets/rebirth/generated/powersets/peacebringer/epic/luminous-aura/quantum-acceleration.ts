@@ -46,16 +46,10 @@ export const QuantumAcceleration: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "duration": 4,
-      "entity": "Pets_Dive_Attack",
-      "isPseudoPet": false
-    },
-    "teleport": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    }
+  "summon": {
+    "duration": 4,
+    "entity": "Pets_Dive_Attack",
+    "isPseudoPet": false
   },
   "atoms": [
     ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,0.7],

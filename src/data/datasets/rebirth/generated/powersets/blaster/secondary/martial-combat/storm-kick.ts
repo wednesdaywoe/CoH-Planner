@@ -62,25 +62,6 @@ export const StormKick: Power = {
       "chance": 0.6
     }
   ],
-  "effects": {
-    "buffDuration": 8.57,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.071,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "damageBuff": 8.57
-    },
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff"
-    ]
-  },
   "atoms": [
     ["Damage","Smashing",1.32,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Lethal",0.1,1,1.5,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,0.6000000238418579,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0.6,null,"Damage"],

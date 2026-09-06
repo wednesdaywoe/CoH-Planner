@@ -44,14 +44,6 @@ export const MassConfusion: Power = {
     "Dominator Archetype Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "confuse": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 20,
-      "table": "Ranged_Immobilize"
-    }
-  },
   "atoms": [
     ["Mez","Confused",20,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["RechargePower",null,14.5,0,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,2.1],

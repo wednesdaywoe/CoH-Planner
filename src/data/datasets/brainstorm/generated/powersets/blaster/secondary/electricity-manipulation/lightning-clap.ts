@@ -56,31 +56,6 @@ export const LightningClap: Power = {
     "scale": 0.17,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "buffDuration": 2.25,
-    "durations": {
-      "recoveryBuff": 2.25,
-      "regenBuff": 2.25,
-      "regenBuffUnenhanced": 2.25
-    },
-    "enduranceDrain": {
-      "scale": 0.02,
-      "table": "Melee_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 0.5,
-      "table": "Melee_Ones"
-    },
-    "regenBuff": {
-      "scale": 1.125,
-      "table": "Melee_Ones"
-    },
-    "regenBuffUnenhanced": {
-      "ignoreStrength": true,
-      "scale": 1.125,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Endurance",null,-0.02,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","entref","source>","entref","target>","eq","!","&&","cur.kHeld","source>","0",">","cur.kStun","source>","0",">","||","cur.kSleep","source>","0",">","||","cur.kTerrorized","source>","0",">","||","!","&&"]],
     ["Damage","Energy",0.17,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","entref","source>","entref","target>","eq","!","&&","cur.kHeld","source>","0",">","cur.kStun","source>","0",">","||","cur.kSleep","source>","0",">","||","cur.kTerrorized","source>","0",">","||","!","&&"]],

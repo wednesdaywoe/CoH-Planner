@@ -68,26 +68,6 @@ export const IncandescentStrike: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 10,
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "hold": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 10,
-      "table": "Melee_Immobilize"
-    },
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Constant","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kPeacebringer_Tanker_Mode","source.Mode?","!"],null,null,null,null,null,null,null,null,null,"Ones",null,"power_redirect"],
     ["Damage","Smashing",1.56,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
@@ -131,30 +111,6 @@ export const IncandescentStrike: Power = {
           "table": "Melee_SSDamage"
         }
       ],
-      "effects": {
-        "buffDuration": 10,
-        "defenseDebuff": {
-          "scale": 1,
-          "table": "Melee_Debuff_Def"
-        },
-        "durations": {
-          "defenseDebuff": 10
-        },
-        "knockback": {
-          "scale": 0.67,
-          "table": "Melee_Ones"
-        },
-        "stun": {
-          "attribType": "Duration",
-          "mag": 2,
-          "scale": 6,
-          "table": "Melee_Stun"
-        },
-        "taunt": {
-          "scale": 1,
-          "table": "Melee_InherentTaunt"
-        }
-      },
       "shortHelp": "Melee, Heavy DMG(Energy/Smash), Foe -DEF, -Fly, Disorient",
       "description": "White Dwarf Smite is powerful melee attack that can often Disorient or Knock Down opponents. White Dwarf Smite can also bring down fliers, and reduce their defense. This power is only available while in White Dwarf Form. Damage: Heavy, Recharge: Moderate",
       "effectArea": "SingleTarget",

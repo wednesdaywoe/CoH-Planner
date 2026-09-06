@@ -48,54 +48,6 @@ export const GraceofNature: Power = {
     "scale": 1,
     "table": "Melee_Heal"
   },
-  "effects": {
-    "buffDuration": 45,
-    "defenseBuff": {
-      "aoe": {
-        "scale": 2,
-        "table": "Melee_Buff_Def"
-      },
-      "cold": {
-        "scale": 2,
-        "table": "Melee_Buff_Def"
-      },
-      "energy": {
-        "scale": 2,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
-        "scale": 2,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 2,
-        "table": "Melee_Buff_Def"
-      },
-      "melee": {
-        "scale": 2,
-        "table": "Melee_Buff_Def"
-      },
-      "negative": {
-        "scale": 2,
-        "table": "Melee_Buff_Def"
-      },
-      "psionic": {
-        "scale": 2,
-        "table": "Melee_Buff_Def"
-      },
-      "ranged": {
-        "scale": 2,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 2,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 45
-    }
-  },
   "atoms": [
     ["Heal",null,1,1,0,"Melee_Heal","Abs","Expression","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["cur.kMeter","source>","4","*","4","+","@StdResult","*"],null,null,null,"Heal"],
     ["Defense","Melee",2,1,45,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Def"],

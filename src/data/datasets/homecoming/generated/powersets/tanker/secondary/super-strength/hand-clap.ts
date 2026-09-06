@@ -53,18 +53,6 @@ export const HandClap: Power = {
     "Threat Duration"
   ],
   "maxSlots": 6,
-  "effects": {
-    "knockback": {
-      "scale": 2,
-      "table": "Melee_Knockback"
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 2,
-      "scale": 8,
-      "table": "Melee_Stun"
-    }
-  },
   "atoms": [
     ["Mez","Stunned",8,2,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Mez","Knockback",2,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

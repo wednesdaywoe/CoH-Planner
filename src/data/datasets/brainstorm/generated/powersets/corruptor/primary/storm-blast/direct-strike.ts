@@ -54,12 +54,6 @@ export const DirectStrike: Power = {
     "scale": 4.5,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "enduranceDrain": {
-      "scale": 0.2,
-      "table": "Ranged_EndDrain"
-    }
-  },
   "atoms": [
     ["Endurance",null,-0.2,1,0,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
     ["Damage","Energy",4.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],

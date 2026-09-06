@@ -54,22 +54,6 @@ export const CuttingBeam: Power = {
     "scale": 0.919,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 10,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.051,
-      "table": "Ranged_Ones"
-    },
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "damageBuff": 9.4,
-      "defenseDebuff": 10
-    }
-  },
   "atoms": [
     ["Damage","Energy",0.919,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage",null,null,null,0.5],
     ["DamageBuff","Smashing",0.051,1,9.4,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],

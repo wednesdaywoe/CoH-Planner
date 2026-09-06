@@ -49,32 +49,6 @@ export const Wormhole: Power = {
     "Universal Travel"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 1.5,
-    "durations": {
-      "stealth": 1.5
-    },
-    "knockback": {
-      "scale": 7,
-      "table": "Ranged_Knockback"
-    },
-    "stealth": {
-      "translucency": {
-        "scale": 0,
-        "table": "Ranged_Ones"
-      }
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 10,
-      "table": "Ranged_Stun"
-    },
-    "teleport": {
-      "scale": 4.1,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Stealth","Translucency",0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,1.4],
     ["Mez","Teleport",4.1,3,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,2.6],

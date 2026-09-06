@@ -46,37 +46,10 @@ export const EMPArrow: Power = {
     "Universal Control Duration Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 15,
-    "durations": {
-      "recoveryDebuff": 15,
-      "regenDebuff": 15
-    },
-    "enduranceDrain": {
-      "scale": 0.55,
-      "table": "Ranged_Ones"
-    },
-    "hold": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
-    "recoveryDebuff": {
-      "ignoreStrength": true,
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "regenDebuff": {
-      "ignoreStrength": true,
-      "scale": 10,
-      "table": "Ranged_Ones"
-    },
-    "summon": {
-      "duration": 5,
-      "entity": "Pets_OilSlickLighter",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "duration": 5,
+    "entity": "Pets_OilSlickLighter",
+    "isPseudoPet": false
   },
   "atoms": [
     ["Mez","Held",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Immobilize"],

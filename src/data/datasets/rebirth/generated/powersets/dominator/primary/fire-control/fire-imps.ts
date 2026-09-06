@@ -43,13 +43,11 @@ export const FireImps: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "duration": 99999,
-      "entity": "Pets_FireImp",
-      "entityCount": 3,
-      "isPseudoPet": false
-    }
+  "summon": {
+    "duration": 99999,
+    "entity": "Pets_FireImp",
+    "entityCount": 3,
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,1,1,99999,"Ranged_LevelMinus","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"LevelMinus",null,null,null,null,null,null,null,null,null,99999],

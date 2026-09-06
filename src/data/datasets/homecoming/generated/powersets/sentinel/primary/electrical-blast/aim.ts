@@ -38,43 +38,6 @@ export const Aim: Power = {
     "To Hit Buff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 10,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 4,
-      "table": "Melee_Buff_Dmg"
-    },
-    "durations": {
-      "damageBuff": 10,
-      "rangeBuff": 10,
-      "specialBuff": 10,
-      "tohitBuff": 10
-    },
-    "rangeBuff": {
-      "ignoreStrength": true,
-      "scale": 0.333,
-      "table": "Melee_Ones"
-    },
-    "specialBuff": {
-      "endurance": {
-        "ignoreStrength": true,
-        "scale": 0.25,
-        "table": "Ranged_EndDrain"
-      }
-    },
-    "tohitBuff": {
-      "scale": 4,
-      "table": "Melee_Buff_ToHit"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff",
-      "rangeBuff",
-      "specialBuff",
-      "tohitBuff"
-    ]
-  },
   "atoms": [
     ["ToHit",null,4,1,10,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Range",null,0.333,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],

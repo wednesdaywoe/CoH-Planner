@@ -48,17 +48,6 @@ export const WildBastion: Power = {
     "duration": 10.1,
     "tickRate": 1
   },
-  "effects": {
-    "absorb": {
-      "appliesStrength": true,
-      "maxHPFraction": 0.25,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 60,
-    "durations": {
-      "absorb": 60
-    }
-  },
   "atoms": [
     ["Absorb",null,1,1,60,"Ranged_Ones","Max","Expression","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Max.kHitPoints","source>","0.25","*","@Strength","*"]],
     ["Heal",null,0.2727,1,10.1,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],

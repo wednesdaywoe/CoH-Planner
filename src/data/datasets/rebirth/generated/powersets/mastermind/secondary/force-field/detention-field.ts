@@ -43,21 +43,6 @@ export const DetentionField: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 30,
-    "durations": {
-      "onlyAffectsSelf": 30,
-      "untouchable": 30
-    },
-    "onlyAffectsSelf": {
-      "scale": 6,
-      "table": "Ranged_Immobilize"
-    },
-    "untouchable": {
-      "scale": 6,
-      "table": "Ranged_Immobilize"
-    }
-  },
   "atoms": [
     ["Mez","Untouchable",6,1,30,"Ranged_Immobilize","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","target.isFriend?","!","&&"],null,null,null,null,null,null,null,null,null,"Immobilize"],
     ["Mez","OnlyAffectsSelf",6,1,30,"Ranged_Immobilize","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","target.isFriend?","!","&&"],null,null,null,null,null,null,null,null,null,"Immobilize"],

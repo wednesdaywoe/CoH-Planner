@@ -43,22 +43,20 @@ export const RainofArrows: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "duration": 3,
-      "entities": [
-        {
-          "count": 1,
-          "entity": "Pets_RainofArrows_Visual"
-        },
-        {
-          "count": 1,
-          "entity": "Pets_RainofArrows_Sentinel"
-        }
-      ],
-      "isPseudoPet": false
-    }
+  "summon": {
+    "copyBoosts": true,
+    "duration": 3,
+    "entities": [
+      {
+        "count": 1,
+        "entity": "Pets_RainofArrows_Visual"
+      },
+      {
+        "count": 1,
+        "entity": "Pets_RainofArrows_Sentinel"
+      }
+    ],
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,1,1,3,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,3],

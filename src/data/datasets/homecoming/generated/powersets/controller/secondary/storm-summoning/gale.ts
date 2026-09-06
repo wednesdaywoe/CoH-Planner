@@ -52,12 +52,6 @@ export const Gale: Power = {
     "scale": 0.1,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "knockback": {
-      "scale": 10,
-      "table": "Ranged_Knockback"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Mez","Knockback",5,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

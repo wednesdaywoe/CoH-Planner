@@ -43,33 +43,6 @@ export const EMPPulse: Power = {
     "Holds"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 15,
-    "durations": {
-      "recoveryDebuff": 15,
-      "regenDebuff": 15
-    },
-    "enduranceDrain": {
-      "scale": 0.45,
-      "table": "Ranged_EndDrain"
-    },
-    "hold": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
-    "recoveryDebuff": {
-      "ignoreStrength": true,
-      "scale": 10,
-      "table": "Ranged_Ones"
-    },
-    "regenDebuff": {
-      "ignoreStrength": true,
-      "scale": 10,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Mez","Held",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Endurance",null,-0.45,1,0,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

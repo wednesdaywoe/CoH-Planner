@@ -41,16 +41,6 @@ export const StoneShelter: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "absorb": {
-      "scale": 1,
-      "table": "Ranged_Heal"
-    },
-    "buffDuration": 15,
-    "durations": {
-      "absorb": 15
-    }
-  },
   "atoms": [
     ["Absorb",null,1,1,15,"Ranged_Heal","Max","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Heal"]
   ]

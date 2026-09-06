@@ -44,24 +44,6 @@ export const UptotheChallenge: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 1.125,
-    "debuffResistance": {
-      "regeneration": {
-        "ignoreStrength": true,
-        "scale": 0.15,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "debuffResistance": 1.125,
-      "regenBuff": 1.125
-    },
-    "regenBuff": {
-      "scale": 2,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Regeneration",null,2,1,1.125,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
     ["Regeneration",null,0.15,1,1.125,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],

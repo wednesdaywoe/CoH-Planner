@@ -37,29 +37,6 @@ export const SonicCage: Power = {
     "Accuracy"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 30,
-    "durations": {
-      "immobilize": 30,
-      "onlyAffectsSelf": 30,
-      "untouchable": 30
-    },
-    "effectDuration": 30,
-    "immobilize": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": 4,
-      "table": "Ranged_Immobilize"
-    },
-    "onlyAffectsSelf": {
-      "scale": 4,
-      "table": "Ranged_Immobilize"
-    },
-    "untouchable": {
-      "scale": 4,
-      "table": "Ranged_Immobilize"
-    }
-  },
   "atoms": [
     ["Mez","Untouchable",4,1,30,"Ranged_Immobilize","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Mez","OnlyAffectsSelf",4,1,30,"Ranged_Immobilize","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

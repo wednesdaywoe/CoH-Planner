@@ -43,30 +43,6 @@ export const InertialReduction: Power = {
     "Universal Travel"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 60,
-    "durations": {
-      "movement": 60
-    },
-    "movement": {
-      "jumpHeight": {
-        "scale": 1,
-        "table": "Melee_Leap"
-      },
-      "jumpSpeed": {
-        "scale": 1,
-        "table": "Melee_SpeedJumping"
-      },
-      "movementControl": {
-        "scale": 10,
-        "table": "Melee_Control"
-      },
-      "movementFriction": {
-        "scale": 10,
-        "table": "Melee_Friction"
-      }
-    }
-  },
   "atoms": [
     ["Movement","JumpHeight",1,1,60,"Melee_Leap","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Power_DisallowSpeedBoost","target.TokenOwned?","!"]],
     ["Movement","Jump",1,1,60,"Melee_SpeedJumping","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Power_DisallowSpeedBoost","target.TokenOwned?","!"]],

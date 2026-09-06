@@ -50,66 +50,6 @@ export const ElixirofLife: Power = {
     "duration": 0.5,
     "tickRate": 1
   },
-  "effects": {
-    "buffDuration": 90,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 4,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 4,
-      "table": "Ranged_Debuff_Dam"
-    },
-    "durations": {
-      "damageBuff": 90,
-      "damageDebuff": 45,
-      "hold": 4,
-      "rechargeBuff": 90,
-      "recoveryBuff": 90,
-      "resistance": 90,
-      "tohitBuffUnenhanced": 90,
-      "tohitDebuff": 45
-    },
-    "effectDuration": 4,
-    "enduranceGain": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "hold": {
-      "attribType": "Magnitude",
-      "ignoreStrength": true,
-      "mag": 1,
-      "scale": 1000,
-      "table": "Ranged_Ones"
-    },
-    "rechargeBuff": {
-      "ignoreStrength": true,
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 2,
-      "table": "Ranged_Ones"
-    },
-    "resistance": {
-      "toxic": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      }
-    },
-    "tohitBuffUnenhanced": {
-      "ignoreStrength": true,
-      "scale": 3,
-      "table": "Ranged_Buff_ToHit"
-    },
-    "tohitDebuff": {
-      "ignoreStrength": true,
-      "scale": 3,
-      "table": "Ranged_Debuff_ToHit"
-    }
-  },
   "atoms": [
     ["Heal",null,1,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["Endurance",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],

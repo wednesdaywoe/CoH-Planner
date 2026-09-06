@@ -45,51 +45,6 @@ export const NebulousForm: Power = {
     "Universal Travel"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "durations": {
-      "movement": 0.75,
-      "stealth": 0.75,
-      "threatDebuff": 0.75
-    },
-    "movement": {
-      "jumpHeight": {
-        "scale": 0.5,
-        "table": "Melee_Leap"
-      },
-      "jumpSpeed": {
-        "scale": 0.5,
-        "table": "Melee_SpeedJumping"
-      },
-      "movementControl": {
-        "scale": 10,
-        "table": "Melee_Ones"
-      },
-      "movementFriction": {
-        "scale": 2,
-        "table": "Melee_Ones"
-      }
-    },
-    "stealth": {
-      "stealthPvE": {
-        "scale": 20,
-        "table": "Melee_Ones"
-      },
-      "stealthPvP": {
-        "scale": 222,
-        "table": "Melee_Ones"
-      },
-      "translucency": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      }
-    },
-    "threatDebuff": {
-      "ignoreStrength": true,
-      "scale": 1,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Stealth","Translucency",0.1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","Source.Mode?","!"]],
     ["Stealth","RadiusPvE",20,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","Source.Mode?","!"],null,null,true],

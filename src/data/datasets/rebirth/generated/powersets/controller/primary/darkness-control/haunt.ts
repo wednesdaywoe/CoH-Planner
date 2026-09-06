@@ -50,13 +50,11 @@ export const Haunt: Power = {
     "Universal Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "duration": 60,
-      "entity": "Pets_Shade",
-      "entityCount": 2,
-      "isPseudoPet": false
-    }
+  "summon": {
+    "duration": 60,
+    "entity": "Pets_Shade",
+    "entityCount": 2,
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,60],

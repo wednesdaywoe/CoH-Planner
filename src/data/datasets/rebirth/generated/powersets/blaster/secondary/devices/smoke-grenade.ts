@@ -43,27 +43,6 @@ export const SmokeGrenade: Power = {
     "Universal Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 60,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.014,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "damageBuff": 8.87,
-      "perceptionDebuff": 60,
-      "tohitDebuff": 60
-    },
-    "perceptionDebuff": {
-      "scale": 0.9,
-      "table": "Melee_Ones"
-    },
-    "tohitDebuff": {
-      "scale": 0.7,
-      "table": "Melee_DeBuff_ToHit"
-    }
-  },
   "atoms": [
     ["Perception",null,-0.9,1,60,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones"],
     ["ToHit",null,0.7,1,60,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","@ToHitRoll","@ToHit","<","@ForceHit","||","&&"],null,null,null,null,null,null,null,null,null,"DeBuff_ToHit"],

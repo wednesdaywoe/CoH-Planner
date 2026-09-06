@@ -43,42 +43,6 @@ export const ForceBubble: Power = {
     "Universal Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.3,
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 2.5,
-      "table": "Ranged_Debuff_Dam"
-    },
-    "durations": {
-      "damageDebuff": 0.3,
-      "slow": 0.3
-    },
-    "knockback": {
-      "ignoreStrength": true,
-      "scale": 0.1,
-      "table": "Ranged_Ones"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.4,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.4,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.4,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.4,
-        "table": "Ranged_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Mez","Knockback",0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.009999999776482582,null,true,null,null,null,null,["cur.kUntouchable","target>","0","<=","Temporary_Powers.Temporary_Powers.DetentionAnchor","target.ownPower?","||","enttype","target>","critter","eq","&&","entref","target>","entref","source>","eq","!","&&"],null,null,null,null,null,null,null,0.01,null,"Ones"],
     ["Movement","Run",0.4,1,0.3,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["cur.kUntouchable","target>","0","<=","Temporary_Powers.Temporary_Powers.DetentionAnchor","target.ownPower?","||","entref","target>","entref","source>","eq","!","&&"],null,null,null,null,null,null,null,null,null,"Slow"],

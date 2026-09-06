@@ -40,22 +40,6 @@ export const Forge: Power = {
     "To Hit Buff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 120,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 4,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "durations": {
-      "damageBuff": 120,
-      "tohitBuff": 120
-    },
-    "tohitBuff": {
-      "scale": 2,
-      "table": "Ranged_Buff_ToHit"
-    }
-  },
   "atoms": [
     ["ToHit",null,2,1,120,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_ToHit"],
     ["DamageBuff","Smashing",4,1,120,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Dmg"],

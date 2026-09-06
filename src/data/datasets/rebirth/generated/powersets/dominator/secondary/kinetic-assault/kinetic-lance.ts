@@ -69,37 +69,6 @@ export const KineticLance: Power = {
       "cancelOnMiss": true
     }
   ],
-  "effects": {
-    "buffDuration": 15,
-    "durations": {
-      "rechargeDebuff": 15,
-      "slow": 15
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.15,
-      "table": "Ranged_Slow"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.15,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.15,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.15,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.15,
-        "table": "Ranged_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Damage","Lethal",2.314,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Energy",1.246,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],

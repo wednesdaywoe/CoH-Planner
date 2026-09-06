@@ -55,63 +55,6 @@ export const StormKick: Power = {
     "scale": 1.32,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "buffDuration": 10,
-    "defenseBuff": {
-      "aoe": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
-      "cold": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
-      "energy": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
-      "melee": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
-      "negative": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
-      "ranged": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 10
-    },
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",1.32,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Fire",0.594,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,"FieryEmbrace"],

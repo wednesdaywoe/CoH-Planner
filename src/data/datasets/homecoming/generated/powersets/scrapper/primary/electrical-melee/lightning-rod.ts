@@ -45,89 +45,83 @@ export const LightningRod: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "displayName": "Lightning Rod",
-      "duration": 1,
-      "isPseudoPet": true,
-      "powers": [
-        "Pets.Lightning_Rod_Universal.Lightning_Rod_Center",
-        "Pets.Lightning_Rod_Universal.Lightning_Rod",
-        "Pets.ResistAll.ResistAll"
-      ],
-      "resolvedEntities": [
-        {
-          "displayName": "Lightning Rod",
-          "duration": 1,
-          "copyCreatorMods": true,
-          "abilities": [
-            {
-              "name": "Lightning_Rod_Center",
-              "displayName": "Lightning Rod",
-              "type": "Auto",
-              "damage": [
-                {
-                  "damageType": "Energy",
-                  "scale": 0.933,
-                  "table": "Melee_Damage"
-                }
-              ],
-              "recharge": 10,
-              "castTime": 0,
-              "activatePeriod": 100,
-              "effectArea": "Sphere",
-              "targetsAffected": [
-                "Foe"
-              ],
-              "radius": 5,
-              "maxTargets": 1
-            },
-            {
-              "name": "Lightning_Rod",
-              "displayName": "Lightning Rod",
-              "type": "Auto",
-              "damage": [
-                {
-                  "damageType": "Energy",
-                  "scale": 2.2685,
-                  "table": "Melee_Damage"
-                },
-                {
-                  "damageType": "Fire",
-                  "scale": 1.0208,
-                  "table": "Melee_Damage"
-                }
-              ],
-              "effects": [
-                {
-                  "type": "Knockback",
-                  "magnitude": 1,
-                  "attribType": "Magnitude",
-                  "scale": 0.64,
-                  "table": "Melee_Ones",
-                  "chance": 0.8
-                }
-              ],
-              "recharge": 10,
-              "castTime": 0,
-              "activatePeriod": 100,
-              "effectArea": "Sphere",
-              "targetsAffected": [
-                "Foe"
-              ],
-              "radius": 20,
-              "maxTargets": 16
-            }
-          ]
-        }
-      ],
-      "entity": "PL_StaticObject"
-    },
-    "teleport": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    }
+  "summon": {
+    "copyBoosts": true,
+    "displayName": "Lightning Rod",
+    "duration": 1,
+    "isPseudoPet": true,
+    "powers": [
+      "Pets.Lightning_Rod_Universal.Lightning_Rod_Center",
+      "Pets.Lightning_Rod_Universal.Lightning_Rod",
+      "Pets.ResistAll.ResistAll"
+    ],
+    "resolvedEntities": [
+      {
+        "displayName": "Lightning Rod",
+        "duration": 1,
+        "copyCreatorMods": true,
+        "abilities": [
+          {
+            "name": "Lightning_Rod_Center",
+            "displayName": "Lightning Rod",
+            "type": "Auto",
+            "damage": [
+              {
+                "damageType": "Energy",
+                "scale": 0.933,
+                "table": "Melee_Damage"
+              }
+            ],
+            "recharge": 10,
+            "castTime": 0,
+            "activatePeriod": 100,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "Foe"
+            ],
+            "radius": 5,
+            "maxTargets": 1
+          },
+          {
+            "name": "Lightning_Rod",
+            "displayName": "Lightning Rod",
+            "type": "Auto",
+            "damage": [
+              {
+                "damageType": "Energy",
+                "scale": 2.2685,
+                "table": "Melee_Damage"
+              },
+              {
+                "damageType": "Fire",
+                "scale": 1.0208,
+                "table": "Melee_Damage"
+              }
+            ],
+            "effects": [
+              {
+                "type": "Knockback",
+                "magnitude": 1,
+                "attribType": "Magnitude",
+                "scale": 0.64,
+                "table": "Melee_Ones",
+                "chance": 0.8
+              }
+            ],
+            "recharge": 10,
+            "castTime": 0,
+            "activatePeriod": 100,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "Foe"
+            ],
+            "radius": 20,
+            "maxTargets": 16
+          }
+        ]
+      }
+    ],
+    "entity": "PL_StaticObject"
   },
   "atoms": [
     ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.5],

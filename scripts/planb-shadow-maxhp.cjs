@@ -59,13 +59,15 @@ function norm(v) {
 }
 const eq = (a, b) => (!a && !b) || (a && b && a.scale === b.scale && a.perTarget === b.perTarget);
 
-const stats = { powers: 0, slots: 0, agree: 0 };
+const stats = { powers: 0, noBag: 0, slots: 0, agree: 0 };
 const findings = [];
 
 function checkPower(dataset, power, genPath) {
   const name = power.name || genPath;
   if (POWER_FILTER && !name.toLowerCase().includes(POWER_FILTER.toLowerCase())) return;
   stats.powers++;
+  // STRIP-1 (BPORT7) removed the bag this gate compares against; bag-less powers are vacuous rows, named in the tail.
+  if (!power.effects || !Object.keys(power.effects).length) { stats.noBag++; return; }
   const eff = power.effects || {};
 
   for (const { slot, fn } of SLOTS) {
@@ -89,6 +91,9 @@ function sweep(dataset) {
 
 for (const ds of DATASETS) sweep(ds);
 
+// Every swept power bag-less: the run checks nothing and the tail names it.
+const VACUOUS = stats.powers > 0 && stats.noBag === stats.powers;
+
 console.log(`\nPlan B Slice 5 — max-HP reconstruction (maxHPBuff + maxHPBuffUnenhanced twin)`);
 console.log(`  powers swept:  ${stats.powers}`);
 console.log(`  slots:         ${stats.slots}`);
@@ -106,4 +111,9 @@ if (findings.length) {
   console.log('\nFAIL — atom-derived max-HP diverges from the bag. Fix before migrating the applier.');
   process.exit(1);
 }
-console.log('\nOK — atom-derived maxHPBuff + maxHPBuffUnenhanced reproduce the bag corpus-wide.');
+if (VACUOUS) {
+  console.log(`\nVACUOUS — bag absent: ${stats.noBag} powers swept, 0 checks — vacuous post-STRIP-1.`);
+  console.log('   The atom side is graded by the converter gates, not here.');
+} else {
+  console.log('\nOK — atom-derived maxHPBuff + maxHPBuffUnenhanced reproduce the bag corpus-wide.');
+}

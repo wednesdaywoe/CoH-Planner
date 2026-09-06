@@ -45,22 +45,6 @@ export const HealingFlames: Power = {
     "scale": 2.5,
     "table": "Melee_HealSelf"
   },
-  "effects": {
-    "buffDuration": 60,
-    "durations": {
-      "resistance": 60
-    },
-    "resistance": {
-      "toxic": {
-        "scale": 2,
-        "table": "Melee_Res_DMG"
-      }
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "resistance"
-    ]
-  },
   "atoms": [
     ["Heal",null,2.5,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf"],
     ["Resistance","Toxic",2,1,60,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"]

@@ -57,12 +57,6 @@ export const LightningStrike: Power = {
       "table": "Ranged_InherentDamage"
     }
   ],
-  "effects": {
-    "enduranceDrain": {
-      "scale": 0.1,
-      "table": "Ranged_EndDrain"
-    }
-  },
   "atoms": [
     ["Damage","Energy",2.28,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Energy",2.28,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],

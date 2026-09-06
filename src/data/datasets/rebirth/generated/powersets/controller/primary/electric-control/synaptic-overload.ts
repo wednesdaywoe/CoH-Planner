@@ -44,31 +44,11 @@ export const SynapticOverload: Power = {
     "Universal Control Duration Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 8,
-    "confuse": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
-    "durations": {
-      "recoveryDebuff": 8
-    },
-    "enduranceDrain": {
-      "scale": 0.1,
-      "table": "Ranged_Ones"
-    },
-    "recoveryDebuff": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "summon": {
-      "duration": 2.1,
-      "entity": "Pets_Chain_Confuse_Controller_Jump1",
-      "entityCount": 2,
-      "isPseudoPet": false
-    }
+  "summon": {
+    "duration": 2.1,
+    "entity": "Pets_Chain_Confuse_Controller_Jump1",
+    "entityCount": 2,
+    "isPseudoPet": false
   },
   "atoms": [
     ["Mez","Confused",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Immobilize"],

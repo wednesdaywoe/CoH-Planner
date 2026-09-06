@@ -65,12 +65,6 @@ export const ArcofDestruction: Power = {
     "scale": 1.9519,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",1.9519,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
     ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.75,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
@@ -93,12 +87,6 @@ export const ArcofDestruction: Power = {
         "type": "Smashing",
         "scale": 1.5241,
         "table": "Melee_Damage"
-      },
-      "effects": {
-        "knockback": {
-          "scale": 0.67,
-          "table": "Melee_Ones"
-        }
       },
       "shortHelp": "Melee (Cone), DMG(Smashing), Foe Knockback",
       "description": "You swing your weapon in a devastating Arc of Destruction that deals Superior Smashing damage and has a good chance to knock foes down. Arc of Destruction may only be used while on the ground. Note that Arc of Destruction is unaffected by Arc changes.\n\nNotes: Thanks to gauntlet, this power can hit up to 5 targets above its cap at 1/3rd effectiveness.",

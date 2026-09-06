@@ -56,22 +56,6 @@ export const MementoMori: Power = {
       "table": "Melee_HealSelf"
     }
   ],
-  "effects": {
-    "buffDuration": 30,
-    "durations": {
-      "maxHPBuff": 30
-    },
-    "fear": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 5,
-      "table": "Melee_Stun"
-    },
-    "maxHPBuff": {
-      "scale": 3.15,
-      "table": "Melee_HealSelf"
-    }
-  },
   "atoms": [
     ["RechargePower",null,290,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Ignore",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"],1.35],
     ["MaxHP",null,3,1,30,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kHitPoints%","source>","0",">"],null,null,null,null,"MementoMori",null,null,null,null,null,null,null,["Foe"],null,null,null,null,null,null,null,null,true],

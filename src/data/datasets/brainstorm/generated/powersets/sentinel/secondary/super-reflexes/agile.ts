@@ -34,58 +34,6 @@ export const Agile: Power = {
     "Defense Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.2,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "defenseBuff": {
-      "ranged": {
-        "scale": 0.75,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "debuffResistance": 0.75,
-      "defenseBuff": 0.75,
-      "resistance": 0.75
-    },
-    "resistance": {
-      "cold": {
-        "ignoreStrength": true,
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "energy": {
-        "ignoreStrength": true,
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "fire": {
-        "ignoreStrength": true,
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "lethal": {
-        "ignoreStrength": true,
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "negative": {
-        "ignoreStrength": true,
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "smashing": {
-        "ignoreStrength": true,
-        "scale": 0,
-        "table": "Melee_Ones"
-      }
-    }
-  },
   "atoms": [
     ["Defense","Ranged",0.75,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Defense","All",0.2,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],

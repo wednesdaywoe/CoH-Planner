@@ -54,21 +54,6 @@ export const FRTPsionicLance: Power = {
     "duration": 4.1,
     "tickRate": 1
   },
-  "effects": {
-    "buffDuration": 10,
-    "durations": {
-      "rechargeDebuff": 10
-    },
-    "knockup": {
-      "scale": 1.4,
-      "table": "Ranged_Ones"
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.3,
-      "table": "Ranged_Slow"
-    }
-  },
   "atoms": [
     ["Damage","Psionic",0.2034,1,4.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Mez","Knockup",1.4,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"FateSealed"],

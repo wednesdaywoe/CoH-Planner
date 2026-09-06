@@ -47,34 +47,6 @@ export const TacticalTrainingLeadership: Power = {
     "To Hit Buff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 2.25,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 1.5,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "debuffResistance": {
-      "perception": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Boolean"
-      }
-    },
-    "durations": {
-      "damageBuff": 2.25,
-      "debuffResistance": 2.25,
-      "perceptionBuff": 2.25,
-      "tohitBuff": 2.25
-    },
-    "perceptionBuff": {
-      "scale": 2,
-      "table": "Ranged_Res_Boolean"
-    },
-    "tohitBuff": {
-      "scale": 1,
-      "table": "Ranged_Buff_ToHit"
-    }
-  },
   "atoms": [
     ["DamageBuff","Smashing",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Lethal",1.5,1,2.25,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],

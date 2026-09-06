@@ -579,10 +579,10 @@ export function CompareSlottingModal() {
             />
 
             {/* Pet Damage section */}
-            {power.effects?.summon && (
+            {power.summon && (
               <div className="mt-3 pt-3 border-t border-slate-700">
                 <PetDamageDisplay
-                  summon={power.effects.summon}
+                  summon={power.summon}
                   level={build.level}
                   enhancementDamageBonus={activeEnhBonuses.damage || 0}
                   globalDamageBonus={globalBonusesForCalc.damage ?? 0}

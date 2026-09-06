@@ -60,17 +60,6 @@ export const FullAuto: Power = {
       "table": "Ranged_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 11.5,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.087,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 11.5
-    }
-  },
   "atoms": [
     ["Damage","Lethal",0.162,1,3.3,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.20000000298023224,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Lethal",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.1,null,"Damage",null,null,null,3.3],

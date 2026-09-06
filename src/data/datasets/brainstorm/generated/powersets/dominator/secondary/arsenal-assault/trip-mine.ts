@@ -42,56 +42,54 @@ export const TripMine: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "displayName": "Mine",
-      "duration": 170,
-      "isPseudoPet": true,
-      "powers": [
-        "Pets.Trip_Mine_Dominator.TripMine_Resistance",
-        "Pets.Trip_Mine_Dominator.TripMine_SelfDestruct"
-      ],
-      "resolvedEntities": [
-        {
-          "displayName": "Mine",
-          "duration": 170,
-          "copyCreatorMods": true,
-          "abilities": [
-            {
-              "name": "TripMine_SelfDestruct",
-              "displayName": "Self Destruct",
-              "type": "Click",
-              "damage": [
-                {
-                  "damageType": "Fire",
-                  "scale": 1.0954,
-                  "table": "Melee_Damage"
-                }
-              ],
-              "effects": [
-                {
-                  "type": "Knockback",
-                  "magnitude": 1,
-                  "attribType": "Magnitude",
-                  "scale": 0.75,
-                  "table": "Melee_Ones",
-                  "chance": 0.5
-                }
-              ],
-              "recharge": 20,
-              "castTime": 0,
-              "effectArea": "SingleTarget",
-              "targetsAffected": [
-                "Foe"
-              ],
-              "maxTargets": 1
-            }
-          ]
-        }
-      ],
-      "entity": "PL_Untargetable_FightPreferRanged"
-    }
+  "summon": {
+    "copyBoosts": true,
+    "displayName": "Mine",
+    "duration": 170,
+    "isPseudoPet": true,
+    "powers": [
+      "Pets.Trip_Mine_Dominator.TripMine_Resistance",
+      "Pets.Trip_Mine_Dominator.TripMine_SelfDestruct"
+    ],
+    "resolvedEntities": [
+      {
+        "displayName": "Mine",
+        "duration": 170,
+        "copyCreatorMods": true,
+        "abilities": [
+          {
+            "name": "TripMine_SelfDestruct",
+            "displayName": "Self Destruct",
+            "type": "Click",
+            "damage": [
+              {
+                "damageType": "Fire",
+                "scale": 1.0954,
+                "table": "Melee_Damage"
+              }
+            ],
+            "effects": [
+              {
+                "type": "Knockback",
+                "magnitude": 1,
+                "attribType": "Magnitude",
+                "scale": 0.75,
+                "table": "Melee_Ones",
+                "chance": 0.5
+              }
+            ],
+            "recharge": 20,
+            "castTime": 0,
+            "effectArea": "SingleTarget",
+            "targetsAffected": [
+              "Foe"
+            ],
+            "maxTargets": 1
+          }
+        ]
+      }
+    ],
+    "entity": "PL_Untargetable_FightPreferRanged"
   },
   "atoms": [
     ["EntCreate",null,1,1,170,"Melee_Level","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,170]

@@ -42,44 +42,6 @@ export const KujiInToh: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 210,
-    "durations": {
-      "fear": 210,
-      "recoveryBuff": 210,
-      "regenBuff": 210,
-      "regenBuffUnenhanced": 210,
-      "resistance": 210
-    },
-    "effectDuration": 210,
-    "fear": {
-      "attribType": "Magnitude",
-      "ignoreStrength": true,
-      "mag": 1,
-      "scale": -30,
-      "table": "Melee_Res_Boolean",
-      "toWho": "Self"
-    },
-    "recoveryBuff": {
-      "scale": 0.5,
-      "table": "Melee_Ones"
-    },
-    "regenBuff": {
-      "scale": 1.125,
-      "table": "Melee_Ones"
-    },
-    "regenBuffUnenhanced": {
-      "ignoreStrength": true,
-      "scale": 1.125,
-      "table": "Melee_Ones"
-    },
-    "resistance": {
-      "psionic": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["Regeneration",null,1.125,1,210,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Regeneration",null,1.125,1,210,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],

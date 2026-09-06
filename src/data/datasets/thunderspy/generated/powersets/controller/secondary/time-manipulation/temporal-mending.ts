@@ -61,29 +61,6 @@ export const TemporalMending: Power = {
       ]
     }
   ],
-  "effects": {
-    "buffDuration": 30,
-    "debuffResistance": {
-      "movement": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Ranged_Ones"
-      },
-      "recharge": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Ranged_Ones"
-      },
-      "regeneration": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Ranged_Res_Boolean"
-      }
-    },
-    "durations": {
-      "debuffResistance": 30
-    }
-  },
   "atoms": [
     ["Heal",null,0.75,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff","target.ownPower?","!"],null,null,null,null,null,null,null,null,null,"Heal"],
     ["Heal",null,0.2,1,6,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.5,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff","target.ownPower?","!","isPVPMap?","!","&&"],null,null,null,null,null,null,null,null,null,"Heal",null,null,null,1],

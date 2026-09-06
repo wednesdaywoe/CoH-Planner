@@ -50,17 +50,6 @@ export const Disintegrate: Power = {
     "duration": 10.5,
     "tickRate": 1.1100000143051147
   },
-  "effects": {
-    "buffDuration": 15,
-    "durations": {
-      "regenDebuff": 15
-    },
-    "regenDebuff": {
-      "ignoreStrength": true,
-      "scale": 1.5,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Damage","Energy",0.216,1,10.5,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1.1100000143051147,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Meta",null,1,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"null"],

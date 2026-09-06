@@ -44,15 +44,12 @@ export const Decoy: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "duration": 60,
-      "isPseudoPet": false,
-      "entity": "Pets_Decoy_Dominator",
-      "entityCount": 3
-    },
-    "maxStacks": 2
+  "summon": {
+    "copyBoosts": true,
+    "duration": 60,
+    "isPseudoPet": false,
+    "entity": "Pets_Decoy_Dominator",
+    "entityCount": 3
   },
   "atoms": [
     ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["@CustomFX","Mirror","eq","@CustomFX","PhantomMirror","eq","||"],null,null,null,null,null,null,null,null,null,"MirrorArmy",null,null,null,0.1,null,null,null,null,null,60],

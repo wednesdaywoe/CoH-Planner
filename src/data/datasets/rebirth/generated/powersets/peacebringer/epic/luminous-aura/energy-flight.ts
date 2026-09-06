@@ -42,45 +42,6 @@ export const EnergyFlight: Power = {
     "Universal Travel"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "durations": {
-      "movement": 0.75,
-      "slow": 0.75
-    },
-    "movement": {
-      "fly": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      },
-      "flySpeed": {
-        "scale": 0.83,
-        "suppressible": true,
-        "table": "Melee_SpeedFlying"
-      },
-      "flySpeedUnenhanced": {
-        "ignoreStrength": true,
-        "scale": 0.83,
-        "table": "Melee_Ones"
-      },
-      "movementControl": {
-        "scale": 2,
-        "table": "Melee_Control"
-      },
-      "movementFriction": {
-        "scale": 2,
-        "table": "Melee_Friction"
-      }
-    },
-    "slow": {
-      "flySpeed": {
-        "ignoreStrength": true,
-        "scale": 1.01,
-        "table": "Melee_Ones",
-        "toWho": "Self"
-      }
-    }
-  },
   "atoms": [
     ["Meta",null,1,126,999999,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode",null,null,null,null,null,null,"OnActivate"],
     ["Meta",null,1,3,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode",null,null,null,null,null,null,"OnActivate"],

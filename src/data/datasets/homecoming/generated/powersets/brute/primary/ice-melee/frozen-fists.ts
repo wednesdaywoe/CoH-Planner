@@ -65,37 +65,6 @@ export const FrozenFists: Power = {
       "tickRate": 0.25
     }
   ],
-  "effects": {
-    "buffDuration": 5,
-    "durations": {
-      "rechargeDebuff": 5,
-      "slow": 5
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.1,
-      "table": "Melee_Slow"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.1,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.1,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.1,
-        "table": "Melee_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.1,
-        "table": "Melee_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Damage","Smashing",0.1,1,0.3,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Cold",0.4,1,0.3,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

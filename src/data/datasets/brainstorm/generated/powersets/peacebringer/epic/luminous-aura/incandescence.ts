@@ -34,22 +34,6 @@ export const Incandescence: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 10.25,
-    "durations": {
-      "resistance": 10.25
-    },
-    "resistance": {
-      "energy": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["Resistance","Energy",1.5,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Resistance","Negative",1.5,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1]

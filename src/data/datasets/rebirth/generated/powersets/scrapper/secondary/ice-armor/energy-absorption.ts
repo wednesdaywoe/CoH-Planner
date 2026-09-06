@@ -42,66 +42,6 @@ export const EnergyAbsorption: Power = {
     "Endurance Modification"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 45,
-    "debuffResistance": {
-      "movement": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "recharge": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      }
-    },
-    "defenseBuff": {
-      "cold": {
-        "scale": 0.16,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.06
-      },
-      "energy": {
-        "scale": 0.16,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.06
-      },
-      "fire": {
-        "scale": 0.16,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.06
-      },
-      "lethal": {
-        "scale": 0.16,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.06
-      },
-      "negative": {
-        "scale": 0.16,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.06
-      },
-      "smashing": {
-        "scale": 0.16,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.06
-      }
-    },
-    "durations": {
-      "debuffResistance": 45,
-      "defenseBuff": 45
-    },
-    "enduranceDrain": {
-      "scale": 0.35,
-      "table": "Melee_Ones"
-    },
-    "enduranceGain": {
-      "scale": 15,
-      "table": "Melee_Ones",
-      "perTarget": 15
-    }
-  },
   "atoms": [
     ["Endurance",null,-0.35,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones"],
     ["Endurance",null,15,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,15,null,null,null,null,null,null,null,"Ones"],

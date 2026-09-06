@@ -53,40 +53,6 @@ export const CloakofFear: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 3,
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 2,
-      "table": "Melee_Debuff_Dam"
-    },
-    "durations": {
-      "damageDebuff": 3,
-      "fear": 3,
-      "knockback": 5,
-      "knockup": 5,
-      "tohitDebuff": 3
-    },
-    "effectDuration": 3,
-    "fear": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "knockback": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "knockup": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "tohitDebuff": {
-      "scale": 0.05,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Mez","Terrorized",1,1,3,"Melee_Ones","Cur","Magnitude","Target","Any",false,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Mez","Terrorized",1,1,3,"Melee_Ones","Cur","Magnitude","Target","Any",false,"RefreshToCount",1,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"]],

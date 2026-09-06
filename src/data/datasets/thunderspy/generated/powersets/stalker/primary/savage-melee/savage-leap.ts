@@ -43,17 +43,11 @@ export const SavageLeap: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "duration": 4,
-      "entity": "Pets_Savage_Melee_Savage_Leap",
-      "isPseudoPet": false
-    },
-    "teleport": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    }
+  "summon": {
+    "copyBoosts": true,
+    "duration": 4,
+    "entity": "Pets_Savage_Melee_Savage_Leap",
+    "isPseudoPet": false
   },
   "atoms": [
     ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,0.7],

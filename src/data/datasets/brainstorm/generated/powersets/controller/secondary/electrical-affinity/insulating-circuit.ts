@@ -71,16 +71,6 @@ export const InsulatingCircuit: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "absorb": {
-      "scale": 2,
-      "table": "Ranged_Heal"
-    },
-    "buffDuration": 30,
-    "durations": {
-      "absorb": 30
-    }
-  },
   "atoms": [
     ["Absorb",null,2,1,30,"Ranged_Heal","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.1],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"BuildStatic"]

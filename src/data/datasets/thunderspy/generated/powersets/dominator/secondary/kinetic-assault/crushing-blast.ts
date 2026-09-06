@@ -65,40 +65,6 @@ export const CrushingBlast: Power = {
       "cancelOnMiss": true
     }
   ],
-  "effects": {
-    "buffDuration": 10,
-    "durations": {
-      "rechargeDebuff": 10,
-      "slow": 10
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.15,
-      "table": "Ranged_Slow"
-    },
-    "slow": {
-      "flySpeed": {
-        "ignoreStrength": true,
-        "scale": 0.15,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.15,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "ignoreStrength": true,
-        "scale": 0.15,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "ignoreStrength": true,
-        "scale": 0.15,
-        "table": "Ranged_Slow"
-      }
-    }
-  },
   "atoms": [
     ["RechargeTime",null,0.15,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["Movement","JumpHeight",0.15,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],

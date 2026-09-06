@@ -50,19 +50,11 @@ export const Vacuum: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "hold": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Immobilize"
-    },
-    "summon": {
-      "copyBoosts": true,
-      "duration": 8,
-      "entity": "Pets_WindControl_Vacuum_Controller",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "copyBoosts": true,
+    "duration": 8,
+    "entity": "Pets_WindControl_Vacuum_Controller",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,-1,1,8,"Ranged_Ones","Cur","Expression","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["entref","target.owner>","entref","source>","eq","!"],null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,8],

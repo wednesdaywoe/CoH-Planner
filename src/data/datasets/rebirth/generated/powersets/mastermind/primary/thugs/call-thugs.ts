@@ -44,12 +44,10 @@ export const CallThugs: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "duration": 99999,
-      "entity": "MastermindPets_Thug",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "duration": 99999,
+    "entity": "MastermindPets_Thug",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,1,1,99999,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Levelminus2",null,null,null,2,null,null,null,null,null,99999],

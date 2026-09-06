@@ -58,68 +58,6 @@ export const ArcticAir: Power = {
     "scale": 0.2,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 2.25,
-    "confuse": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 4,
-      "table": "Ranged_Fear"
-    },
-    "durations": {
-      "movementCapDebuff": 2.25,
-      "rechargeDebuff": 2.25,
-      "slow": 2.25,
-      "stealth": 2.25
-    },
-    "fear": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 2,
-      "table": "Ranged_Fear"
-    },
-    "movementCapDebuff": {
-      "runSpeed": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
-      }
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.5,
-      "table": "Ranged_Slow"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.65,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.65,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.65,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.65,
-        "table": "Ranged_Slow"
-      }
-    },
-    "stealth": {
-      "stealthPvE": {
-        "scale": 35,
-        "table": "Ranged_Ones"
-      },
-      "stealthPvP": {
-        "scale": 389,
-        "table": "Ranged_Ones"
-      }
-    }
-  },
   "atoms": [
     ["Damage","Cold",0.2,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
     ["Mez","Afraid",2,3,0,"Ranged_Fear","Cur","Duration","Target","Any",true,"Replace",2,null,null,0.5,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Fear"],

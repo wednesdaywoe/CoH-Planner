@@ -61,32 +61,6 @@ export const ElectricFence: Power = {
       "table": "Ranged_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 6.2,
-    "durations": {
-      "enduranceDrain": 6.2,
-      "recoveryDebuff": 2
-    },
-    "enduranceDrain": {
-      "scale": 0.028,
-      "table": "Ranged_Ones"
-    },
-    "enduranceGain": {
-      "scale": 2.6,
-      "table": "Ranged_Ones",
-      "perTarget": 2.6
-    },
-    "immobilize": {
-      "attribType": "Duration",
-      "mag": 4,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
-    "recoveryDebuff": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Damage","Energy",2,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Energy",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],

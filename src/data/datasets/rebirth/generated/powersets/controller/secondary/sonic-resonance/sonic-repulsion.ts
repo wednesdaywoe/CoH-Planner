@@ -40,21 +40,6 @@ export const SonicRepulsion: Power = {
     "Knockback"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.5,
-    "durations": {
-      "knockback": 0.5
-    },
-    "enduranceDrain": {
-      "ignoreStrength": true,
-      "scale": 2.5,
-      "table": "Ranged_Ones"
-    },
-    "knockback": {
-      "scale": 3,
-      "table": "Ranged_Knockback"
-    }
-  },
   "atoms": [
     ["Mez","Knockback",3,1,0.5,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Knockback"],
     ["Endurance",null,-2.5,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],

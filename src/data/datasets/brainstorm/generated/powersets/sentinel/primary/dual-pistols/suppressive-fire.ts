@@ -59,14 +59,6 @@ export const SuppressiveFire: Power = {
       "table": "Ranged_InherentDamage"
     }
   ],
-  "effects": {
-    "stun": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 3.2,
-      "table": "Ranged_Sleep"
-    }
-  },
   "atoms": [
     ["Damage","Lethal",0.0984,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kFireAmmo","Source.Mode?","kIceAmmo","Source.Mode?","||","kToxicAmmo","Source.Mode?","||","!","&&"],null,null,null,null,null,null,null,null,null,"Lethal",null,null,["Foe"]],
     ["Mez","Stunned",3.2,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kFireAmmo","Source.Mode?","kIceAmmo","Source.Mode?","||","kToxicAmmo","Source.Mode?","||","!","&&"],null,null,null,null,null,null,null,null,null,"Lethal",null,null,["Foe"]],

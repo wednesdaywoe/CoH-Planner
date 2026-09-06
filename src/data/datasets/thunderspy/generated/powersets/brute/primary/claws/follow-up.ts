@@ -35,16 +35,6 @@ export const FollowUp: Power = {
     "To Hit Buff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 1.25,
-    "durations": {
-      "tohitBuff": 1.25
-    },
-    "tohitBuff": {
-      "scale": 1,
-      "table": "Melee_Buff_ToHit"
-    }
-  },
   "atoms": [
     ["ToHit",null,1,1,1.25,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?","!"],null,null,null,null,null,null,null,null,null,"Buff_ToHit"],
     ["ToHit",null,0.5,1,1.25,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["isPVPMap?"],true,null,null,null,null,null,null,null,null,"Buff_ToHit"]

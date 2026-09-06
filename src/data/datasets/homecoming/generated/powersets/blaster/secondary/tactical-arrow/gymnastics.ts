@@ -44,20 +44,18 @@ export const Gymnastics: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "conditionalEntities": [
-        {
-          "entity": "Pets_OilSlickBurn_Blaster",
-          "label": "Oil Slick Ignited",
-          "toggleId": "oilslick_ignited"
-        }
-      ],
-      "copyBoosts": true,
-      "duration": 30,
-      "entity": "Pets_OilSlickOil_Blaster",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "conditionalEntities": [
+      {
+        "entity": "Pets_OilSlickBurn_Blaster",
+        "label": "Oil Slick Ignited",
+        "toggleId": "oilslick_ignited"
+      }
+    ],
+    "copyBoosts": true,
+    "duration": 30,
+    "entity": "Pets_OilSlickOil_Blaster",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,-1,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,30],

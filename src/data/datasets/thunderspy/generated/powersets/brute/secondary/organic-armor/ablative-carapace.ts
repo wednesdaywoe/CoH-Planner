@@ -38,21 +38,6 @@ export const AblativeCarapace: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {
-    "absorb": {
-      "scale": 0.3,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 30,
-    "durations": {
-      "absorb": 30,
-      "regenBuff": 30
-    },
-    "regenBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Absorb",null,0.3,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
     ["Absorb",null,1,1,30,"Melee_Ones","Max","Expression","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["Max.kHitPoints","source>","0.3","*","@Strength","*"],null,null,null,"Ones"],

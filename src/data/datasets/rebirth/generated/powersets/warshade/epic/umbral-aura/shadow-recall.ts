@@ -43,24 +43,6 @@ export const ShadowRecall: Power = {
     "Universal Travel"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 1.5,
-    "durations": {
-      "stealth": 1.5
-    },
-    "stealth": {
-      "translucency": {
-        "ignoreStrength": true,
-        "scale": 0,
-        "table": "Ranged_Ones"
-      }
-    },
-    "teleport": {
-      "ignoreStrength": true,
-      "scale": 1,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Constant","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["target.isFriend?","!","Warshade_Offensive.Umbral_Blast.Starless_Step","source.ownPower?","!","&&"],null,null,null,null,null,null,null,null,null,"Ones",null,"power_redirect"],
     ["Stealth","Translucency",0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
@@ -88,34 +70,10 @@ export const ShadowRecall: Power = {
         "castTime": 3.93,
         "interruptTime": 2
       },
-      "effects": {
-        "buffDuration": 15,
-        "durations": {
-          "mezResistance": 15,
-          "stealth": 1.5
-        },
-        "mezResistance": {
-          "teleport": {
-            "ignoreStrength": true,
-            "scale": 100,
-            "table": "Ranged_Ones"
-          }
-        },
-        "stealth": {
-          "translucency": {
-            "scale": 0,
-            "table": "Ranged_Ones"
-          }
-        },
-        "summon": {
-          "duration": 1,
-          "entity": "Pets_TPFoeTaunt",
-          "isPseudoPet": false
-        },
-        "teleport": {
-          "scale": 2.1,
-          "table": "Ranged_Ones"
-        }
+      "summon": {
+        "duration": 1,
+        "entity": "Pets_TPFoeTaunt",
+        "isPseudoPet": false
       },
       "shortHelp": "Ranged, High DMG(Negative), Self Teleport, +DEF(All)",
       "description": "Starless Gateway allows you to teleport a group of foes in close proximity to each other to your location.  Training this power unlocks Shadow Slip, allowing you to Teleport yourself long distances.  Recharge: Long",
@@ -304,34 +262,10 @@ export const ShadowRecall: Power = {
         "endurance": 15,
         "castTime": 1.93
       },
-      "effects": {
-        "buffDuration": 15,
-        "durations": {
-          "mezResistance": 15,
-          "stealth": 1.5
-        },
-        "mezResistance": {
-          "teleport": {
-            "ignoreStrength": true,
-            "scale": 100,
-            "table": "Ranged_Ones"
-          }
-        },
-        "stealth": {
-          "translucency": {
-            "scale": 0,
-            "table": "Ranged_Ones"
-          }
-        },
-        "summon": {
-          "duration": 1,
-          "entity": "Pets_TPFoeTaunt",
-          "isPseudoPet": false
-        },
-        "teleport": {
-          "scale": 2.1,
-          "table": "Ranged_Ones"
-        }
+      "summon": {
+        "duration": 1,
+        "entity": "Pets_TPFoeTaunt",
+        "isPseudoPet": false
       },
       "shortHelp": "Ranged, High DMG(Negative), Self Teleport, +DEF(All)",
       "description": "Starless Gateway allows you to teleport a group of foes in close proximity to each other to your location.  Training this power unlocks Shadow Slip, allowing you to Teleport yourself long distances.  Recharge: Long",
@@ -521,34 +455,10 @@ export const ShadowRecall: Power = {
         "castTime": 3.93,
         "interruptTime": 2
       },
-      "effects": {
-        "buffDuration": 15,
-        "durations": {
-          "mezResistance": 15,
-          "stealth": 1.5
-        },
-        "mezResistance": {
-          "teleport": {
-            "ignoreStrength": true,
-            "scale": 100,
-            "table": "Ranged_Ones"
-          }
-        },
-        "stealth": {
-          "translucency": {
-            "scale": 0,
-            "table": "Ranged_Ones"
-          }
-        },
-        "summon": {
-          "duration": 1,
-          "entity": "Pets_TPFoeTaunt",
-          "isPseudoPet": false
-        },
-        "teleport": {
-          "scale": 2.1,
-          "table": "Ranged_Ones"
-        }
+      "summon": {
+        "duration": 1,
+        "entity": "Pets_TPFoeTaunt",
+        "isPseudoPet": false
       },
       "shortHelp": "Ranged, High DMG(Negative), Self Teleport, +DEF(All)",
       "description": "Starless Gateway allows you to teleport a group of foes in close proximity to each other to your location.  Training this power unlocks Shadow Slip, allowing you to Teleport yourself long distances.  Recharge: Long",

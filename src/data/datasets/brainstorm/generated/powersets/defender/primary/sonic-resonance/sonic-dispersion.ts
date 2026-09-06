@@ -47,64 +47,6 @@ export const SonicDispersion: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 15,
-    "durations": {
-      "hold": 15,
-      "immobilize": 15,
-      "resistance": 15,
-      "stun": 15
-    },
-    "effectDuration": 15,
-    "hold": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": -20,
-      "table": "Ranged_Res_Boolean"
-    },
-    "immobilize": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": -20,
-      "table": "Ranged_Res_Boolean"
-    },
-    "resistance": {
-      "cold": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "fire": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "smashing": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      }
-    },
-    "stun": {
-      "attribType": "Magnitude",
-      "mag": 1,
-      "scale": -20,
-      "table": "Ranged_Res_Boolean"
-    }
-  },
   "atoms": [
     ["Resistance","Smashing",1.5,1,15,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["Resistance","Lethal",1.5,1,15,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],

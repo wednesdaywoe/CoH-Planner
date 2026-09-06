@@ -46,12 +46,10 @@ export const LightningStorm: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "duration": 60,
-      "entity": "Pets_LightningStorm_Controller",
-      "isPseudoPet": false
-    }
+  "summon": {
+    "duration": 60,
+    "entity": "Pets_LightningStorm_Controller",
+    "isPseudoPet": false
   },
   "atoms": [
     ["EntCreate",null,1,1,60,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,60]

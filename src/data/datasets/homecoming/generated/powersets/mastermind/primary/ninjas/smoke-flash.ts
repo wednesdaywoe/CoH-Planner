@@ -38,27 +38,6 @@ export const SmokeFlash: Power = {
     "Recharge"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 4,
-    "durations": {
-      "stealth": 4
-    },
-    "stealth": {
-      "stealthPvE": {
-        "scale": 54,
-        "table": "Ranged_Ones"
-      },
-      "stealthPvP": {
-        "scale": 500,
-        "table": "Ranged_Ones"
-      },
-      "translucency": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Ranged_Ones"
-      }
-    }
-  },
   "atoms": [
     ["Stealth","RadiusPvE",54,1,4,"Ranged_Ones","Cur","Magnitude","TargetAndPets","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,null,null,1.17],
     ["Stealth","RadiusPvP",500,1,4,"Ranged_Ones","Cur","Magnitude","TargetAndPets","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,null,null,1.17],

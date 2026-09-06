@@ -62,26 +62,6 @@ export const TRClawShred: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 15,
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 6,
-      "regenDebuff": 15
-    },
-    "regenDebuff": {
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    },
-    "taunt": {
-      "ignoreStrength": true,
-      "scale": 20,
-      "table": "Melee_Taunt"
-    }
-  },
   "atoms": [
     ["Damage","Lethal",1.329,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Toxic",0.5645,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],

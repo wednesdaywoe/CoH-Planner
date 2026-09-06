@@ -36,69 +36,6 @@ export const StoneSkin: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 10.25,
-    "defenseBuff": {
-      "cold": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "energy": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "negative": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 10.25,
-      "resistance": 10.25
-    },
-    "resistance": {
-      "cold": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "smashing": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["Resistance","Smashing",1,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Resistance","Lethal",1,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],

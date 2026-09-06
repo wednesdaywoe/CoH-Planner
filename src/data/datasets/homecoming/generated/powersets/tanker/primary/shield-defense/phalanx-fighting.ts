@@ -37,29 +37,6 @@ export const PhalanxFighting: Power = {
     "Defense Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 1.25,
-    "defenseBuff": {
-      "aoe": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.3
-      },
-      "melee": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.3
-      },
-      "ranged": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.3
-      }
-    },
-    "durations": {
-      "defenseBuff": 1.25
-    }
-  },
   "atoms": [
     ["Defense","Ranged",0.5,1,1.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Defense","Melee",0.5,1,1.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],

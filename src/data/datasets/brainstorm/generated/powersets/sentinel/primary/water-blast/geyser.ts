@@ -75,35 +75,6 @@ export const Geyser: Power = {
       "table": "Ranged_InherentDamage"
     }
   ],
-  "effects": {
-    "buffDuration": 10,
-    "durations": {
-      "slow": 10
-    },
-    "knockup": {
-      "scale": 1.5,
-      "table": "Ranged_Ones"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.33,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.33,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.33,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.33,
-        "table": "Ranged_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Damage","Fire",1.126,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Fire",0.102,1,5.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,["enttype","target>","critter","eq","temporary_powers.temporary_powers.tidal_power","source.ownPowerNum?","0","==","&&"],null,null,null,null,null,null,null,null,null,null,null,null,null,0.5],

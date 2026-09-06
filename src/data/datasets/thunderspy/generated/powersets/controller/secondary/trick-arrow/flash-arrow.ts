@@ -48,21 +48,6 @@ export const FlashArrow: Power = {
     "scale": 0.15,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 60,
-    "durations": {
-      "perceptionDebuff": 60,
-      "tohitDebuff": 5
-    },
-    "perceptionDebuff": {
-      "scale": 0.9,
-      "table": "Ranged_Ones"
-    },
-    "tohitDebuff": {
-      "scale": 3.5,
-      "table": "Ranged_DeBuff_ToHit"
-    }
-  },
   "atoms": [
     ["Perception",null,-0.9,1,60,"Ranged_Ones","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Ones"],
     ["ToHit",null,1.5,1,60,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"DeBuff_ToHit"],

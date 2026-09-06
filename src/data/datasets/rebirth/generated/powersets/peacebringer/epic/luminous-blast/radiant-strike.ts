@@ -63,20 +63,6 @@ export const RadiantStrike: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 6,
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 6
-    },
-    "knockback": {
-      "scale": 2,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Constant","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kPeacebringer_Tanker_Mode","source.Mode?","!"],null,null,null,null,null,null,null,null,null,"Ones",null,"power_redirect"],
     ["Damage","Smashing",1,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
@@ -118,24 +104,6 @@ export const RadiantStrike: Power = {
           "table": "Melee_SSDamage"
         }
       ],
-      "effects": {
-        "buffDuration": 6,
-        "defenseDebuff": {
-          "scale": 1,
-          "table": "Melee_Debuff_Def"
-        },
-        "durations": {
-          "defenseDebuff": 6
-        },
-        "knockback": {
-          "scale": 0.67,
-          "table": "Melee_Ones"
-        },
-        "taunt": {
-          "scale": 1,
-          "table": "Melee_InherentTaunt"
-        }
-      },
       "shortHelp": "Melee, Moderate DMG(Smash/Energy), Foe -DEF, Knockback",
       "description": "The White Dwarf Strike is a moderate melee attack that releases Kheldian light on impact, which can Knock Down foes, and reduce a target's Defense. This power is only available while in White Dwarf Form. Damage: Moderate, Recharge: Fast",
       "effectArea": "SingleTarget",

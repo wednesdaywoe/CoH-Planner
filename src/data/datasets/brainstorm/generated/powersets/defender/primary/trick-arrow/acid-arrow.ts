@@ -55,58 +55,6 @@ export const AcidArrow: Power = {
     "duration": 20,
     "tickRate": 1
   },
-  "effects": {
-    "buffDuration": 45,
-    "debuffResistance": {
-      "endurance": {
-        "ignoreStrength": true,
-        "scale": 4,
-        "table": "Ranged_Res_Dmg"
-      },
-      "recharge": {
-        "ignoreStrength": true,
-        "scale": 4,
-        "table": "Ranged_Res_Dmg"
-      },
-      "recovery": {
-        "ignoreStrength": true,
-        "scale": 4,
-        "table": "Ranged_Res_Dmg"
-      },
-      "regeneration": {
-        "ignoreStrength": true,
-        "scale": 4,
-        "table": "Ranged_Res_Dmg"
-      },
-      "tohit": {
-        "ignoreStrength": true,
-        "scale": 4,
-        "table": "Ranged_Res_Dmg"
-      }
-    },
-    "defenseDebuff": {
-      "scale": 2,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "debuffResistance": 45,
-      "defenseDebuff": 45,
-      "enduranceDiscount": 45,
-      "resistance": 45
-    },
-    "enduranceDiscount": {
-      "ignoreStrength": true,
-      "scale": 4,
-      "table": "Ranged_Res_Dmg"
-    },
-    "resistance": {
-      "heal": {
-        "ignoreStrength": true,
-        "scale": 4,
-        "table": "Ranged_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["Damage","Toxic",0.01,1,20,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
     ["Defense","All",2,1,45,"Ranged_Debuff_Def","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1],

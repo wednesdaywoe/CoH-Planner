@@ -45,34 +45,6 @@ export const EssenceBoost: Power = {
     "scale": 4,
     "table": "Melee_HealSelf"
   },
-  "effects": {
-    "buffDuration": 120,
-    "durations": {
-      "maxHPBuff": 120,
-      "maxHPBuffUnenhanced": 120,
-      "resistance": 120
-    },
-    "maxHPBuff": {
-      "scale": 2,
-      "table": "Melee_HealSelf"
-    },
-    "maxHPBuffUnenhanced": {
-      "ignoreStrength": true,
-      "scale": 2,
-      "table": "Melee_HealSelf"
-    },
-    "resistance": {
-      "toxic": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "maxHPBuff",
-      "maxHPBuffUnenhanced"
-    ]
-  },
   "atoms": [
     ["MaxHP",null,2,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kPeacebringer_Tanker_Mode","source.Mode?","!"],null,null,null,null,null,null,null,null,null,"HealSelf"],
     ["MaxHP",null,2,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["kPeacebringer_Tanker_Mode","source.Mode?","!"],null,null,null,null,null,null,null,null,null,"HealSelf"],

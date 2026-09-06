@@ -57,22 +57,6 @@ export const DefensiveSweep: Power = {
     "scale": 0.6684,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "buffDuration": 10,
-    "defenseBuff": {
-      "melee": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 10
-    }
-  },
   "atoms": [
     ["Defense","Melee",1.5,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defense",null,null,["Foe"]],
     ["Defense","Smashing",1.5,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Defense",null,null,["Foe"]],
@@ -96,24 +80,6 @@ export const DefensiveSweep: Power = {
         "type": "Smashing",
         "scale": 0.5615,
         "table": "Melee_Damage"
-      },
-      "effects": {
-        "buffDuration": 7.5,
-        "defenseBuff": {
-          "melee": {
-            "scale": 1.5,
-            "table": "Melee_Buff_Def",
-            "perTarget": 1.5
-          },
-          "smashing": {
-            "scale": 1.5,
-            "table": "Melee_Buff_Def",
-            "perTarget": 1.5
-          }
-        },
-        "durations": {
-          "defenseBuff": 7.5
-        }
       },
       "shortHelp": "Melee(Cone), DMG(Smashing), Self +DEF(Melee, Smash)",
       "description": "You take a defensive stance and strike your opponents. Successfully executing this attack will cause light smashing damage to nearby foes, while giving you increased defense against their melee and smashing attacks. Note that Defensive Sweep is unaffected by Arc changes.",

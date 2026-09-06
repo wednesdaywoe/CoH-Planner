@@ -34,29 +34,6 @@ export const QuantumBoost: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
-  "effects": {
-    "buffDuration": 0.75,
-    "durations": {
-      "movementCapBump": 0.75,
-      "specialBuff": 0.75
-    },
-    "movementCapBump": {
-      "flySpeed": {
-        "ignoreStrength": true,
-        "scale": 1,
-        "stackKey": "TravelTurboMaxBuff",
-        "suppressible": true,
-        "table": "Melee_Ones"
-      }
-    },
-    "specialBuff": {
-      "movement": {
-        "ignoreStrength": true,
-        "scale": 0.35,
-        "table": "Ranged_SpeedFlying"
-      }
-    }
-  },
   "atoms": [
     ["Movement","Fly",1,1,0.75,"Melee_Ones","Max","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,"TravelTurboMaxBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true],
     ["Movement","Fly",0.35,1,0.75,"Ranged_SpeedFlying","Str","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,null,null,true,null,"TravelTurboBuff",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,true]

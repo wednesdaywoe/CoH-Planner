@@ -44,26 +44,6 @@ export const ChargedArmor: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "durations": {
-      "resistance": 0.75
-    },
-    "resistance": {
-      "energy": {
-        "scale": 3.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 3.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "smashing": {
-        "scale": 3.5,
-        "table": "Melee_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["Resistance","Smashing",3.5,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
     ["Resistance","Lethal",3.5,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],

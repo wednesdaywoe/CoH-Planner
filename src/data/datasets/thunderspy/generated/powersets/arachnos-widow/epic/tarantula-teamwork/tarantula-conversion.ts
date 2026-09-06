@@ -44,63 +44,6 @@ export const TarantulaConversion: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 10.25,
-    "defenseDebuff": {
-      "ignoreStrength": true,
-      "scale": 1.35,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 10.25,
-      "maxHPBuff": 10.25,
-      "maxHPBuffUnenhanced": 10.25,
-      "resistance": 10.25
-    },
-    "maxHPBuff": {
-      "scale": 0.5,
-      "table": "Melee_HealSelf"
-    },
-    "maxHPBuffUnenhanced": {
-      "ignoreStrength": true,
-      "scale": 0.5,
-      "table": "Melee_HealSelf"
-    },
-    "resistance": {
-      "cold": {
-        "scale": 0.75,
-        "table": "Melee_Res_DMG"
-      },
-      "energy": {
-        "scale": 0.75,
-        "table": "Melee_Res_DMG"
-      },
-      "fire": {
-        "scale": 0.75,
-        "table": "Melee_Res_DMG"
-      },
-      "lethal": {
-        "scale": 2,
-        "table": "Melee_Res_DMG"
-      },
-      "negative": {
-        "scale": 0.75,
-        "table": "Melee_Res_DMG"
-      },
-      "psionic": {
-        "scale": 1,
-        "table": "Melee_Res_DMG"
-      },
-      "smashing": {
-        "scale": 2,
-        "table": "Melee_Res_DMG"
-      },
-      "toxic": {
-        "scale": 1,
-        "table": "Melee_Res_DMG"
-      }
-    }
-  },
   "atoms": [
     ["Resistance","Smashing",2,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Resistance","Lethal",2,1,10.25,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],

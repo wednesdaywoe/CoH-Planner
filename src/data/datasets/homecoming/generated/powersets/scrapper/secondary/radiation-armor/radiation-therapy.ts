@@ -70,21 +70,6 @@ export const RadiationTherapy: Power = {
       "tickRate": 1
     }
   ],
-  "effects": {
-    "buffDuration": 30,
-    "durations": {
-      "regenDebuff": 30
-    },
-    "enduranceGain": {
-      "scale": 7.75,
-      "table": "Melee_Ones"
-    },
-    "regenDebuff": {
-      "ignoreStrength": true,
-      "scale": 1.5,
-      "table": "Melee_Ones"
-    }
-  },
   "atoms": [
     ["Heal",null,1,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"StackThenIgnore",10,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"],0.25],
     ["Endurance",null,7.75,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"StackThenIgnore",10,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],

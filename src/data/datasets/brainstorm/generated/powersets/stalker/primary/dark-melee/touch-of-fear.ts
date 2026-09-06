@@ -67,22 +67,6 @@ export const TouchofFear: Power = {
       "table": "Melee_InherentDamage"
     }
   ],
-  "effects": {
-    "buffDuration": 20,
-    "durations": {
-      "tohitDebuff": 20
-    },
-    "fear": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 7,
-      "table": "Melee_Fear"
-    },
-    "tohitDebuff": {
-      "scale": 1.5,
-      "table": "Melee_DeBuff_ToHit"
-    }
-  },
   "atoms": [
     ["Damage","Negative",0.1726,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.75,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
     ["Damage","Negative",0.8632,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,["enttype","target>","critter","eq","kMeter","source>",".9","<","&&"],null,null,null,null,null,null,null,null,null,"ASTeamCrit",null,null,["Foe"]],

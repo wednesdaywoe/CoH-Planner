@@ -34,21 +34,6 @@ export const RepulsionFieldNew: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
-  "effects": {
-    "buffDuration": 0.75,
-    "durations": {
-      "knockback": 0.75
-    },
-    "enduranceDrain": {
-      "ignoreStrength": true,
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "knockback": {
-      "scale": 3,
-      "table": "Ranged_Knockback"
-    }
-  },
   "atoms": [
     ["Mez","Knockback",3,1,0.75,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,["cur.kUntouchable","target>","0","<=","Temporary_Powers.Temporary_Powers.DetentionAnchor","target.ownPower?","||","enttype","target>","critter","eq","&&","entref","target>","entref","source>","eq","!","&&","kRepulsionFieldEffects","Source.Mode?","!","&&"],null,null,null,null,null,null,null,null,null,"RepulsionFieldEffects"],
     ["Endurance",null,-1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["cur.kUntouchable","target>","0","<=","Temporary_Powers.Temporary_Powers.DetentionAnchor","target.ownPower?","||","entref","target>","entref","source>","eq","!","&&","kRepulsionFieldEffects","Source.Mode?","!","&&"],null,null,null,null,null,null,null,null,null,"RepulsionFieldEffects"],

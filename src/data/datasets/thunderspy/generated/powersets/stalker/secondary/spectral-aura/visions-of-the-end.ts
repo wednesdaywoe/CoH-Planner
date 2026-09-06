@@ -40,14 +40,6 @@ export const VisionsOfTheEnd: Power = {
     "Fear"
   ],
   "maxSlots": 6,
-  "effects": {
-    "fear": {
-      "attribType": "Duration",
-      "mag": 1,
-      "scale": 10,
-      "table": "Melee_Fear"
-    }
-  },
   "atoms": [
     ["Mez","Terrorized",10,1,0,"Melee_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Fear"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],

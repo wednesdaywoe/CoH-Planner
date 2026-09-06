@@ -44,30 +44,6 @@ export const ProtonArmor: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "durations": {
-      "resistance": 0.75
-    },
-    "resistance": {
-      "cold": {
-        "scale": 2,
-        "table": "Melee_Res_DMG"
-      },
-      "energy": {
-        "scale": 4,
-        "table": "Melee_Res_DMG"
-      },
-      "fire": {
-        "scale": 3,
-        "table": "Melee_Res_DMG"
-      },
-      "negative": {
-        "scale": 2,
-        "table": "Melee_Res_DMG"
-      }
-    }
-  },
   "atoms": [
     ["Resistance","Energy",4,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],
     ["Resistance","Fire",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_DMG"],

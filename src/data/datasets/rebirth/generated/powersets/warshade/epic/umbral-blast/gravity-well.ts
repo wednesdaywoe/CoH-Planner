@@ -68,43 +68,6 @@ export const GravityWell: Power = {
       "tickRate": 0.5
     }
   ],
-  "effects": {
-    "buffDuration": 10,
-    "durations": {
-      "rechargeDebuff": 10,
-      "slow": 10
-    },
-    "hold": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 10,
-      "table": "Melee_Immobilize"
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.3,
-      "table": "Melee_Slow"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.3,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.3,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.3,
-        "table": "Melee_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.3,
-        "table": "Melee_Slow"
-      }
-    }
-  },
   "atoms": [
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Constant","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kWarshade_Tanker_Mode","source.Mode?","!"],null,null,null,null,null,null,null,null,null,"Ones",null,"power_redirect"],
     ["Damage","Negative",1.56,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
@@ -143,51 +106,6 @@ export const GravityWell: Power = {
           "table": "Melee_SSDamage"
         }
       ],
-      "effects": {
-        "buffDuration": 10,
-        "durations": {
-          "rechargeDebuff": 10,
-          "slow": 10
-        },
-        "knockback": {
-          "scale": 0.67,
-          "table": "Melee_Ones"
-        },
-        "rechargeDebuff": {
-          "ignoreStrength": true,
-          "scale": 0.2,
-          "table": "Melee_Slow"
-        },
-        "slow": {
-          "flySpeed": {
-            "scale": 0.2,
-            "table": "Melee_Slow"
-          },
-          "jumpHeight": {
-            "ignoreStrength": true,
-            "scale": 0.2,
-            "table": "Melee_Slow"
-          },
-          "jumpSpeed": {
-            "scale": 0.2,
-            "table": "Melee_Slow"
-          },
-          "runSpeed": {
-            "scale": 0.2,
-            "table": "Melee_Slow"
-          }
-        },
-        "stun": {
-          "attribType": "Duration",
-          "mag": 2,
-          "scale": 6,
-          "table": "Melee_Immobilize"
-        },
-        "taunt": {
-          "scale": 1,
-          "table": "Melee_InherentTaunt"
-        }
-      },
       "shortHelp": "Melee, Heavy DMG(Negative/Smash), Foe -Recharge, -SPD, -Fly, Disorient",
       "description": "Black Dwarf Smite is powerful melee attack that can often Disorient or Knock Down opponents. Black Dwarf Smite can also bring down fliers, and slows a targets attack and movement speed. This power is only available while in Black Dwarf Form. Damage: Heavy, Recharge: Moderate",
       "effectArea": "SingleTarget",

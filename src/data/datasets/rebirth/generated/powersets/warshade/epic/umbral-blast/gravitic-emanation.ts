@@ -57,48 +57,6 @@ export const GraviticEmanation: Power = {
     "scale": 0.4,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "accuracyBuff": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 10,
-    "durations": {
-      "accuracyBuff": 8,
-      "rechargeDebuff": 10,
-      "slow": 10
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.2,
-      "table": "Ranged_Slow"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "ignoreStrength": true,
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      }
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Stun"
-    }
-  },
   "atoms": [
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Constant","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kWarshade_Blaster_Mode","source.Mode?","!"],null,null,null,null,null,null,null,null,null,"Ones",null,"power_redirect"],
     ["Damage","Negative",0.4,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
@@ -131,37 +89,6 @@ export const GraviticEmanation: Power = {
         "type": "Negative",
         "scale": 0.99,
         "table": "Ranged_SSDamage"
-      },
-      "effects": {
-        "buffDuration": 8,
-        "durations": {
-          "rechargeDebuff": 8,
-          "slow": 8
-        },
-        "rechargeDebuff": {
-          "ignoreStrength": true,
-          "scale": 0.2,
-          "table": "Ranged_Slow"
-        },
-        "slow": {
-          "flySpeed": {
-            "scale": 0.2,
-            "table": "Ranged_Slow"
-          },
-          "jumpHeight": {
-            "ignoreStrength": true,
-            "scale": 0.2,
-            "table": "Ranged_Slow"
-          },
-          "jumpSpeed": {
-            "scale": 0.2,
-            "table": "Ranged_Slow"
-          },
-          "runSpeed": {
-            "scale": 0.2,
-            "table": "Ranged_Slow"
-          }
-        }
       },
       "shortHelp": "Ranged (Cone), Moderate DMG(Negative), Foe -Recharge, -SPD, Knockback",
       "description": "Sends bolts of Nictus dark energy to multiple targets at once within a cone area in front of the caster.  Deals moderate negative energy damage to each affected foe and reduces their attack rate and movement speed. This power is only available while in Dark Nova Form. Damage: Moderate. Recharge: Slow",

@@ -34,21 +34,6 @@ export const ConserveEnergy: Power = {
     "Recharge"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 90,
-    "durations": {
-      "enduranceDiscount": 90
-    },
-    "enduranceDiscount": {
-      "ignoreStrength": true,
-      "scale": 1,
-      "table": "Melee_Stun"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "enduranceDiscount"
-    ]
-  },
   "atoms": [
     ["EnduranceDiscount",null,1,1,90,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Meta",null,1,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"EyesFX",null,"null"]

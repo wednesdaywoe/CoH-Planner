@@ -58,59 +58,6 @@ export const TimeBomb: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "buffDuration": 30,
-    "durations": {
-      "movement": 30,
-      "rechargeBuff": 30,
-      "rechargeDebuff": 30,
-      "recoveryBuff": 30,
-      "recoveryDebuff": 30,
-      "slow": 30
-    },
-    "knockback": {
-      "scale": 4,
-      "table": "Melee_Knockback"
-    },
-    "movement": {
-      "flySpeed": {
-        "scale": 0.375,
-        "table": "Ranged_Ones"
-      },
-      "runSpeed": {
-        "scale": 0.375,
-        "table": "Ranged_Ones"
-      }
-    },
-    "rechargeBuff": {
-      "ignoreStrength": true,
-      "scale": 0.375,
-      "table": "Ranged_Ones"
-    },
-    "rechargeDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.4,
-      "table": "Ranged_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 0.375,
-      "table": "Ranged_Ones"
-    },
-    "recoveryDebuff": {
-      "scale": 0.3,
-      "table": "Ranged_Ones"
-    },
-    "slow": {
-      "flySpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Ones"
-      },
-      "runSpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Ones"
-      }
-    }
-  },
   "atoms": [
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe","DeadVillain"],1],
     ["Meta",null,1,1,0,"Melee_Damage","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"script_notify",["Foe","DeadVillain"],1],

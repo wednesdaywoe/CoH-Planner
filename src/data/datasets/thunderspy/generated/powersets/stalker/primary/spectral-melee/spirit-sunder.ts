@@ -72,14 +72,6 @@ export const SpiritSunder: Power = {
       "table": "Melee_HealSelf"
     }
   ],
-  "effects": {
-    "fear": {
-      "attribType": "Duration",
-      "mag": 0.75,
-      "scale": 10,
-      "table": "Melee_Fear"
-    }
-  },
   "atoms": [
     ["Damage","Negative",1.6,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Psionic",1.6,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],

@@ -51,16 +51,6 @@ export const Channelgun: Power = {
     "scale": 1.16,
     "table": "Ranged_Damage"
   },
-  "effects": {
-    "buffDuration": 5,
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 5
-    }
-  },
   "atoms": [
     ["Damage","Energy",1.16,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Defense","All",1,1,5,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],

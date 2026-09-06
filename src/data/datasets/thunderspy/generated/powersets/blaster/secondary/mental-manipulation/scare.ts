@@ -41,27 +41,6 @@ export const Scare: Power = {
     "Fear"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 10.17,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.176,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "damageBuff": 10.17
-    },
-    "fear": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 10,
-      "table": "Melee_Fear"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff"
-    ]
-  },
   "atoms": [
     ["Mez","Terrorized",10,3,0,"Melee_Fear","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Fear"],
     ["Mez","Terrorized",7,1,0,"Melee_Fear","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Fear"],

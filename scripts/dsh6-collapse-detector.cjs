@@ -317,8 +317,53 @@ function collectRepresented(power) {
     }
   };
 
-  // 1) base effects bag
-  walkBag(power.effects);
+  // 1) base effect identities from the atom projection. The transitional `effects`
+  //    bag is retired: the emitted atom tuples carry every identity it did at fixed
+  //    positions (ATOM_TUPLE_FIELDS, mirrored 1:1 from the Rust wire schema) —
+  //    effectType=0 subType=1 scale=2 modifierTable=5 aspect=6 attribType=7
+  //    toWho=8 resistible=10 ignoreStrength=17. Parse those and rebuild the same
+  //    (ids, classes, scalar, unenhancedET, selfET) the old walkBag produced, so the
+  //    by-type/scalar/discriminator gates keep checking the projection.
+  const ATOM = { effectType: 0, subType: 1, scale: 2, modifierTable: 5, aspect: 6, attribType: 7, toWho: 8, resistible: 10, ignoreStrength: 17 };
+  // The three gates each apply a DIFFERENT filter set, so derive the atom's raw
+  // fields once and feed all three independently — folding CHECKABLE_ET in front
+  // of the scalar block (as the by-type input does) would drop Perception/Recharge/
+  // Range/etc. that only the scalar gate checks. Output atoms are the projection's
+  // superset (PvE + PvP twins both emitted), and the gate only ever checks an
+  // INPUT identity against the output, so emitting extra identities is FP-safe.
+  function walkAtoms(power) {
+    for (const t of (power.atoms || [])) {
+      if (!t || !Array.isArray(t)) continue;
+      const effectType = t[ATOM.effectType];
+      const scale = t[ATOM.scale];
+      if (!scale) continue;                              // marker/no-op
+      const modifierTable = t[ATOM.modifierTable];
+      const aspect = t[ATOM.aspect];
+      const attribType = t[ATOM.attribType];
+      if (attribType === 'Expression') continue;         // engine phantoms / caps
+      const subL = normSub(t[ATOM.subType]);
+      const isDebuff = scale < 0 || /debuff/i.test(modifierTable || '');
+      // ---- by-type (ids, classes): CHECKABLE_ET + checkableSub (+ Res routing drops) ----
+      if (aspect !== 'Str' && !(aspect === 'Res' && effectType === 'Movement') && !(aspect === 'Res' && effectType === 'Defense' && subL === 'all')) {
+        if (CHECKABLE_ET.has(effectType) && checkableSub(effectType, subL)) {
+          const sign = SIGNED_ET.has(effectType) ? (isDebuff ? '-' : '+') : null;
+          ids.add(sign ? `${effectType}|${subL}|${sign}` : `${effectType}|${subL}|`);
+          classes.add(effectType);
+        }
+      }
+      // ---- scalar gate (et|sign|table): SCALAR_CHECK_ET, exclude Str(non-primary)/Res ----
+      const strIsPrimary = effectType === 'Range' || effectType === 'Accuracy';
+      if (!((aspect === 'Str' && !strIsPrimary) || aspect === 'Res') && SCALAR_CHECK_ET.has(effectType)) {
+        scalar.add(`${effectType}|${isDebuff ? '-' : '+'}|${tableNorm(modifierTable)}`);
+      }
+      // ---- discriminators (exclude Str): IgnoreStrength twin half + self-penalty ----
+      if (aspect !== 'Str') {
+        if (!isDebuff && t[ATOM.ignoreStrength] && aspect !== 'Res' && UNENHANCED_ET.has(effectType)) unenhancedET.add(effectType);
+        if (isDebuff && t[ATOM.toWho] === 'Self' && SELF_PENALTY_ET.has(effectType)) selfET.add(effectType);
+      }
+    }
+  }
+  walkAtoms(power);
   // 2) any sibling container that holds effects bags (specialEffects,
   //    conditionalEffects, ammo variants, …). Deep-walk generically: any nested
   //    object with an `effects` bag, or that itself looks like an effects bag.
@@ -507,7 +552,9 @@ function main() {
     let genMod, sourceJson;
     try { genMod = require(genPath); } catch { cov.requireFail++; continue; }
     try { sourceJson = JSON.parse(fs.readFileSync(srcPath, 'utf-8')); } catch { cov.sourceMissing++; continue; }
-    const power = Object.values(genMod).find((v) => v && typeof v === 'object' && v.effects) || {};
+    // Select the Power-shaped export. The base `effects` bag is retired, so match on
+    // the atom projection (primary) or a residual conditional/special-effects bag.
+    const power = Object.values(genMod).find((v) => v && typeof v === 'object' && (v.atoms || v.effects || v.conditionalEffects || v.specialEffects)) || {};
     const powerName = power.name || sourceRel;
     if (POWER_FILTER && !powerName.toLowerCase().includes(POWER_FILTER.toLowerCase())) continue;
     cov.powersChecked++;
@@ -635,7 +682,7 @@ function main() {
               'Endurance/…): two same-(effectType,sign) templates on DIFFERENT tables where ' +
               'last-write-wins keeps one. resistible folded OUT (buffs have no twin; DSH3 gates ' +
               'debuff twins); the PvP `enttype target> player eq` variant is dropped exactly as ' +
-              'the converter does (mirrors convert-powerset.cjs:667). NOW AT ZERO: this surfaced ' +
+              'the converter does (mirrors convert-powerset.cjs:1068). NOW AT ZERO: this surfaced ' +
               'one real bug — the conditional pipeline (collectConditionalsGrouped) omitted that ' +
               'PvP-drop, so Beam Rifle Disintegrate kept the PvP -3/Ranged_Res_Boolean regen over ' +
               'the PvE -0.75/Ranged_Ones (Mids-confirmed). Fixed 2026-07-05 → gate green (0).',

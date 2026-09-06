@@ -52,14 +52,6 @@ export const FreezeRay: Power = {
     "duration": 2,
     "tickRate": 0.20000000298023224
   },
-  "effects": {
-    "hold": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Sleep"
-    }
-  },
   "atoms": [
     ["Mez","Held",8,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Cold",0.2,1,2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.20000000298023224,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

@@ -54,25 +54,12 @@ export const ShadowyBinds: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 30.25,
-    "durations": {
-      "mezResistance": 30.25
-    },
-    "mezResistance": {
-      "fear": {
-        "ignoreStrength": true,
-        "scale": 3,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "summon": {
-      "copyBoosts": true,
-      "duration": 30,
-      "entity": "Pets_Shade",
-      "entityCount": 3,
-      "isPseudoPet": false
-    }
+  "summon": {
+    "copyBoosts": true,
+    "duration": 30,
+    "entity": "Pets_Shade",
+    "entityCount": 3,
+    "isPseudoPet": false
   },
   "atoms": [
     ["MezResist","Terrorized",3,1,30.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Res_Boolean"],

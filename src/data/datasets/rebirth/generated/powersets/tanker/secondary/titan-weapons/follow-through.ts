@@ -71,22 +71,6 @@ export const FollowThrough: Power = {
       "cancelOnMiss": true
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
-    "stun": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 4,
-      "table": "Melee_Stun"
-    },
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",2.156,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],
     ["Damage","Lethal",0.1,1,1.6,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,0.8500000238418579,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0.85,true,"Damage"],

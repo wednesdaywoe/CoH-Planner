@@ -65,12 +65,6 @@ export const Hailstones: Power = {
       "tickRate": 0.30000001192092896
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Damage","Cold",0.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.6],
     ["Damage","Cold",0.25,1,1,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.5],

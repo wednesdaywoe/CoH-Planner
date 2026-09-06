@@ -46,38 +46,6 @@ export const WildFortress: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "absorb": {
-      "scale": 0.15,
-      "table": "Melee_HealSelf"
-    },
-    "buffDuration": 2.5,
-    "confuse": {
-      "attribType": "Magnitude",
-      "ignoreStrength": true,
-      "mag": 1,
-      "scale": -30,
-      "table": "Ranged_Res_Boolean",
-      "toWho": "Self"
-    },
-    "durations": {
-      "absorb": 12,
-      "confuse": 2.5,
-      "recoveryBuff": 2.5,
-      "resistance": 2.5
-    },
-    "effectDuration": 2.5,
-    "recoveryBuff": {
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    },
-    "resistance": {
-      "toxic": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["Mez","Confused",-30,1,2.5,"Ranged_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
     ["Absorb",null,0.15,1,12,"Melee_HealSelf","Max","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["@CustomFX","ShowFloaters","eq"]],

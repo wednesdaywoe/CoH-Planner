@@ -137,11 +137,17 @@ describe('BPORT3 — characterStateAdapter.ts reads supplier 2, not the power ba
  * `summon` has 1,435 carriers across the four datasets and no mint, so it dies exactly when
  * BPORT7's regen lands. BPORT2 found this on `BuffPetAuraToggle.tsx` and deferred that ONE
  * file to BPORT7, because a reader can only move to `power.summon` once a converter writes
- * it. The same crossing is owed to every reader below — ten files, forty-three sites, two of
- * them BPORT3's own — and the beta ships zero powers carrying a top-level `summon` today, so
- * none of them may move first. Canonical recorded the cost of getting this wrong in
- * `Power.summon`'s own doc: retiring the bag "took the pets with it and 400+ summoners per
- * fork went dark" (ENT-22).
+ * it. The same crossing was owed to every reader the census named — eleven files, forty-four
+ * sites — and the beta shipped zero powers carrying a top-level `summon`, so none of them
+ * may move first. Canonical recorded the cost of getting this wrong in `Power.summon`'s own
+ * doc: retiring the bag "took the pets with it and 400+ summoners per fork went dark"
+ * (ENT-22).
+ *
+ * BPORT7 crossed it. The twenty-four power-bag reads (twenty-three own, one alias) now read
+ * `power.summon`, and `buildDisplayEffects` mints the display bag's `summon` from the top
+ * level, because the bag spread no longer carries it. What the roster below pins is what
+ * SURVIVES: the eighteen display-bag reads in three files, all `param` binding — they read
+ * the bag the mint builds, not the power's, so the regen does not touch them.
  *
  * Counts are per-file match counts, not per-file line counts. The first census of this taken
  * by eye read nine files and twenty-two sites, because a line-oriented grep counts a JSX
@@ -156,21 +162,13 @@ describe('BPORT3 — characterStateAdapter.ts reads supplier 2, not the power ba
  * finders moving too.
  */
 const SUMMON_BAG_READERS: Record<string, number> = {
-  'src/components/info/BuffPetAuraToggle.tsx': 1,
   'src/components/info/DamageBlock.tsx': 2,
-  'src/components/info/EnhancementInfoContent.tsx': 4,
-  'src/components/info/InfoPanel.tsx': 8,
-  'src/components/info/PowerInfoBlocks.tsx': 4,
-  'src/components/info/PowerInfoTooltip.tsx': 15,
-  'src/components/info/buildDisplayEffects.ts': 3,
-  'src/components/modals/CompareSlottingModal.tsx': 2,
-  'src/components/modals/PowersetCompareModal.tsx': 1,
-  'src/data/proc-potential.ts': 2,
-  'src/utils/calculations/attack-chain-powers.ts': 2,
+  'src/components/info/InfoPanel.tsx': 3,
+  'src/components/info/PowerInfoTooltip.tsx': 13,
 };
 
 describe('BPORT3 — the summon slot crosses with its writer, or the pets go dark', () => {
-  it('has exactly these bag readers, and BPORT2 tracked one of them', () => {
+  it('the surviving by-name readers are the display-bag reads the mint supplies', () => {
     const found: Record<string, number> = {};
     for (const f of FILES) {
       // `resolvePowerMagnitudes` reads `summon` too, through the registry rather than by
@@ -183,15 +181,19 @@ describe('BPORT3 — the summon slot crosses with its writer, or the pets go dar
     expect(found).toEqual(SUMMON_BAG_READERS);
   });
 
-  it('has no converter able to let them move yet, except the pool one', () => {
-    // `convert-pool-powers.cjs` lifts the slot; `convert-powerset.cjs` still writes it into
-    // the bag in three places and nowhere else. Until the powerset converter crosses too, a
-    // reader that switched to `power.summon` would go blank for every primary and secondary.
-    // When that line lands this assertion reds, which is the intended alarm: the readers
-    // above are then free — and required — to move in the same change.
+  it('every power-bag converter lifts the slot, so the crossing is owed to no one', () => {
+    // The alarm form of this assertion reds the moment a converter lands the lift without
+    // the readers moving; BPORT7 answered it in one change. The five lifters are the
+    // converters that write a power bag at all — the other convert-*.cjs files emit
+    // non-power data and never had the slot to lift.
     const scripts = readdirSync(path.join(REPO, 'scripts')).filter((f) => /^convert-.*\.cjs$/.test(f));
     const lifts = scripts.filter((f) => /\bpower\.summon\s*=/.test(read(`scripts/${f}`))).sort();
-    expect(lifts).toEqual(['convert-pool-powers.cjs']);
-    expect(read('scripts/convert-powerset.cjs')).not.toMatch(/\bpower\.summon\s*=/);
+    expect(lifts).toEqual([
+      'convert-accolades.cjs',
+      'convert-basic-inherents.cjs',
+      'convert-epic-pools.cjs',
+      'convert-pool-powers.cjs',
+      'convert-powerset.cjs',
+    ]);
   });
 });

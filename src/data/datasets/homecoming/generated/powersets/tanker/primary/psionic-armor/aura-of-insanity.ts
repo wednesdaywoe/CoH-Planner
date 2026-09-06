@@ -73,52 +73,6 @@ export const AuraofInsanity: Power = {
       "tickRate": 1
     }
   ],
-  "effects": {
-    "buffDuration": 4,
-    "confuse": {
-      "attribType": "Magnitude",
-      "mag": 2,
-      "scale": 2,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "confuse": 4,
-      "fear": 4,
-      "hold": 4,
-      "sleep": 4,
-      "stun": 4
-    },
-    "effectDuration": 4,
-    "fear": {
-      "attribType": "Magnitude",
-      "mag": 2,
-      "scale": 2,
-      "table": "Melee_Ones"
-    },
-    "hold": {
-      "attribType": "Magnitude",
-      "mag": 2,
-      "scale": 2,
-      "table": "Melee_Ones"
-    },
-    "sleep": {
-      "attribType": "Magnitude",
-      "mag": 2,
-      "scale": 2,
-      "table": "Melee_Ones"
-    },
-    "stun": {
-      "attribType": "Magnitude",
-      "mag": 2,
-      "scale": 2,
-      "table": "Melee_Ones"
-    },
-    "taunt": {
-      "ignoreStrength": true,
-      "scale": 1.1,
-      "table": "Melee_InherentTaunt"
-    }
-  },
   "atoms": [
     ["Damage","Special",-0.05,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Damage","Psionic",0.05,1,3.75,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.2],

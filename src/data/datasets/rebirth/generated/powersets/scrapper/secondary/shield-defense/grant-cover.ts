@@ -47,63 +47,6 @@ export const GrantCover: Power = {
     "Defense Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 2.25,
-    "debuffResistance": {
-      "defense": {
-        "ignoreStrength": true,
-        "scale": 0.4,
-        "table": "Melee_Res_Boolean"
-      },
-      "recharge": {
-        "ignoreStrength": true,
-        "scale": 0.3,
-        "table": "Melee_Ones"
-      }
-    },
-    "defenseBuff": {
-      "aoe": {
-        "scale": 1.125,
-        "table": "Melee_Buff_Def"
-      },
-      "cold": {
-        "scale": 1.125,
-        "table": "Melee_Buff_Def"
-      },
-      "energy": {
-        "scale": 1.125,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
-        "scale": 1.125,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 1.125,
-        "table": "Melee_Buff_Def"
-      },
-      "melee": {
-        "scale": 1.125,
-        "table": "Melee_Buff_Def"
-      },
-      "negative": {
-        "scale": 1.125,
-        "table": "Melee_Buff_Def"
-      },
-      "ranged": {
-        "scale": 1.125,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 1.125,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "debuffResistance": 2.25,
-      "defenseBuff": 2.25
-    }
-  },
   "atoms": [
     ["Defense","Melee",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!"],null,null,null,null,null,null,null,null,null,"Buff_Def"],
     ["Defense","Ranged",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq","!"],null,null,null,null,null,null,null,null,null,"Buff_Def"],

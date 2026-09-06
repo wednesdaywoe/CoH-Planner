@@ -61,20 +61,12 @@ export const PsiWhipCoil: Power = {
       "tickRate": 0.25
     }
   ],
-  "effects": {
-    "hold": {
-      "attribType": "Duration",
-      "mag": 3,
-      "scale": 6,
-      "table": "Ranged_Immobilize"
-    },
-    "summon": {
-      "copyBoosts": true,
-      "duration": 6,
-      "entity": "Pets_Telekinetic_Sword",
-      "entityCount": 3,
-      "isPseudoPet": false
-    }
+  "summon": {
+    "copyBoosts": true,
+    "duration": 6,
+    "entity": "Pets_Telekinetic_Sword",
+    "entityCount": 3,
+    "isPseudoPet": false
   },
   "atoms": [
     ["Damage","Energy",0.1625,1,2,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage"],

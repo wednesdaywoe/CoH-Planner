@@ -65,19 +65,6 @@ export const AssassinsPsiBlade: Power = {
   ],
   "fromHideBonus": 0.40506329113924044,
   "midCombatCast": 1,
-  "effects": {
-    "buffDuration": 5,
-    "durations": {
-      "resistanceDebuff": 5
-    },
-    "resistanceDebuff": {
-      "psionic": {
-        "ignoreStrength": true,
-        "scale": 2,
-        "table": "Melee_Res_DMG"
-      }
-    }
-  },
   "atoms": [
     ["Damage","Psionic",1.875,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage",null,null,["Foe"]],
     ["Damage","Smashing",0.5625,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage",null,null,["Foe"]],
@@ -123,19 +110,6 @@ export const AssassinsPsiBlade: Power = {
       "damageTypes": [
         "Psionic"
       ],
-      "effects": {
-        "buffDuration": 5,
-        "durations": {
-          "resistanceDebuff": 5
-        },
-        "resistanceDebuff": {
-          "psionic": {
-            "ignoreStrength": true,
-            "scale": 2,
-            "table": "Melee_Res_DMG"
-          }
-        }
-      },
       "shortHelp": "Melee, Special DMG (Psionic/Smash), +Insight",
       "description": "A signature Stalker attack.  This attack does superior psionic and smashing damage on its own as a frontal attack and cannot be interrupted.  However, if it is executed while you are Hidden, this attack will do tremendous damage, as you waylay your unsuspecting foe. This attack may be interrupted if you move or are attacked while executing this power and are hidden.  Using this power while not hidden has a chance to critically hit equal to 33.3% times the number of stacks of Assassin's Focus.  Using Assassin's Psi Blade has a good chance to grant Insight if used while not hidden and a very high chance to grant Insight if used while hidden. Using Assassin's Strike when not hidden will remove all stacks of Assassin's Focus regardless if you critically hit or not.  Damage: Special, Recharge: Slow",
       "effectArea": "SingleTarget",
@@ -582,19 +556,6 @@ export const AssassinsPsiBlade: Power = {
       "damageTypes": [
         "Psionic"
       ],
-      "effects": {
-        "buffDuration": 5,
-        "durations": {
-          "resistanceDebuff": 5
-        },
-        "resistanceDebuff": {
-          "psionic": {
-            "ignoreStrength": true,
-            "scale": 2,
-            "table": "Melee_Res_DMG"
-          }
-        }
-      },
       "shortHelp": "Melee, Special DMG (Psionic/Smash), +Insight",
       "description": "A signature Stalker attack.  This attack does superior psionic and smashing damage on its own as a frontal attack and cannot be interrupted.  However, if it is executed while you are Hidden, this attack will do tremendous damage, as you waylay your unsuspecting foe. This attack may be interrupted if you move or are attacked while executing this power and are hidden.  Using this power while not hidden has a chance to critically hit equal to 33.3% times the number of stacks of Assassin's Focus.  Using Assassin's Psi Blade has a good chance to grant Insight if used while not hidden and a very high chance to grant Insight if used while hidden. Using Assassin's Strike when not hidden will remove all stacks of Assassin's Focus regardless if you critically hit or not.  Damage: Special, Recharge: Slow",
       "effectArea": "SingleTarget",

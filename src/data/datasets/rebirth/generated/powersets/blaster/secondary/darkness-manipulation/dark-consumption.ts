@@ -52,22 +52,6 @@ export const DarkConsumption: Power = {
     "scale": 0.8,
     "table": "Melee_Damage"
   },
-  "effects": {
-    "buffDuration": 7.5,
-    "damageBuff": {
-      "scale": 0.031,
-      "table": "Melee_Ones",
-      "perTarget": 0.031
-    },
-    "durations": {
-      "damageBuff": 7.5
-    },
-    "enduranceGain": {
-      "scale": 25,
-      "table": "Melee_Ones",
-      "perTarget": 25
-    }
-  },
   "atoms": [
     ["Damage","Negative",0.8,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
     ["Endurance",null,25,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,25,null,null,null,null,null,null,null,"Ones",null,null,null,0.25],

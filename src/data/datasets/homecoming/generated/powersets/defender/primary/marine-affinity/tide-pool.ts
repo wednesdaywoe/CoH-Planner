@@ -46,113 +46,111 @@ export const TidePool: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "displayName": "Tide Pool",
-      "duration": 240,
-      "isPseudoPet": true,
-      "powers": [
-        "Redirects.Marine_Affinity.TidePool_Aura",
-        "Redirects.Marine_Affinity.TidePool_Aura_Debuff"
-      ],
-      "resolvedEntities": [
-        {
-          "displayName": "Tide Pool",
-          "duration": 240,
-          "copyCreatorMods": true,
-          "abilities": [
-            {
-              "name": "TidePool_Aura",
-              "displayName": "Tide Pool",
-              "type": "Auto",
-              "damage": [],
-              "effects": [
-                {
-                  "type": "Slow",
-                  "axis": "runSpeed",
-                  "scale": 0.72,
-                  "table": "Ranged_Slow",
-                  "conditional": true
-                },
-                {
-                  "type": "Slow",
-                  "axis": "jumpHeight",
-                  "scale": 500,
-                  "table": "Ranged_Ones",
-                  "ignoreStrength": true,
-                  "conditional": true
-                },
-                {
-                  "type": "MovementCapDebuff",
-                  "axis": "runSpeed",
-                  "scale": 1,
-                  "table": "Ranged_SpeedRunning",
-                  "ignoreStrength": true,
-                  "conditional": true
-                },
-                {
-                  "type": "Knockback",
-                  "magnitude": 1,
-                  "attribType": "Magnitude",
-                  "scale": 0.67,
-                  "table": "Melee_Ones",
-                  "conditional": true
-                }
-              ],
-              "recharge": 0,
-              "castTime": 0,
-              "activatePeriod": 0.2,
-              "effectArea": "Sphere",
-              "targetsAffected": [
-                "Friend"
-              ],
-              "radius": 25,
-              "maxTargets": 255
-            },
-            {
-              "name": "TidePool_Aura_Debuff",
-              "displayName": "Tide Pool",
-              "type": "Auto",
-              "damage": [],
-              "effects": [
-                {
-                  "type": "Slow",
-                  "axis": "runSpeed",
-                  "scale": 0.72,
-                  "table": "Ranged_Slow"
-                },
-                {
-                  "type": "Slow",
-                  "axis": "jumpHeight",
-                  "scale": 500,
-                  "table": "Ranged_Ones",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "MovementCapDebuff",
-                  "axis": "runSpeed",
-                  "scale": 1,
-                  "table": "Ranged_SpeedRunning",
-                  "ignoreStrength": true
-                }
-              ],
-              "recharge": 0,
-              "castTime": 0,
-              "activatePeriod": 0.2,
-              "effectArea": "Sphere",
-              "targetsAffected": [
-                "Foe",
-                "DeadFoe"
-              ],
-              "radius": 25,
-              "maxTargets": 16
-            }
-          ]
-        }
-      ],
-      "entity": "PL_StaticObject"
-    }
+  "summon": {
+    "copyBoosts": true,
+    "displayName": "Tide Pool",
+    "duration": 240,
+    "isPseudoPet": true,
+    "powers": [
+      "Redirects.Marine_Affinity.TidePool_Aura",
+      "Redirects.Marine_Affinity.TidePool_Aura_Debuff"
+    ],
+    "resolvedEntities": [
+      {
+        "displayName": "Tide Pool",
+        "duration": 240,
+        "copyCreatorMods": true,
+        "abilities": [
+          {
+            "name": "TidePool_Aura",
+            "displayName": "Tide Pool",
+            "type": "Auto",
+            "damage": [],
+            "effects": [
+              {
+                "type": "Slow",
+                "axis": "runSpeed",
+                "scale": 0.72,
+                "table": "Ranged_Slow",
+                "conditional": true
+              },
+              {
+                "type": "Slow",
+                "axis": "jumpHeight",
+                "scale": 500,
+                "table": "Ranged_Ones",
+                "ignoreStrength": true,
+                "conditional": true
+              },
+              {
+                "type": "MovementCapDebuff",
+                "axis": "runSpeed",
+                "scale": 1,
+                "table": "Ranged_SpeedRunning",
+                "ignoreStrength": true,
+                "conditional": true
+              },
+              {
+                "type": "Knockback",
+                "magnitude": 1,
+                "attribType": "Magnitude",
+                "scale": 0.67,
+                "table": "Melee_Ones",
+                "conditional": true
+              }
+            ],
+            "recharge": 0,
+            "castTime": 0,
+            "activatePeriod": 0.2,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "Friend"
+            ],
+            "radius": 25,
+            "maxTargets": 255
+          },
+          {
+            "name": "TidePool_Aura_Debuff",
+            "displayName": "Tide Pool",
+            "type": "Auto",
+            "damage": [],
+            "effects": [
+              {
+                "type": "Slow",
+                "axis": "runSpeed",
+                "scale": 0.72,
+                "table": "Ranged_Slow"
+              },
+              {
+                "type": "Slow",
+                "axis": "jumpHeight",
+                "scale": 500,
+                "table": "Ranged_Ones",
+                "ignoreStrength": true
+              },
+              {
+                "type": "MovementCapDebuff",
+                "axis": "runSpeed",
+                "scale": 1,
+                "table": "Ranged_SpeedRunning",
+                "ignoreStrength": true
+              }
+            ],
+            "recharge": 0,
+            "castTime": 0,
+            "activatePeriod": 0.2,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "Foe",
+              "DeadFoe"
+            ],
+            "radius": 25,
+            "maxTargets": 16
+          }
+        ]
+      }
+    ],
+    "entity": "PL_StaticObject"
   },
   "atoms": [
     ["EntCreate",null,1,1,240,"Melee_Level","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240]

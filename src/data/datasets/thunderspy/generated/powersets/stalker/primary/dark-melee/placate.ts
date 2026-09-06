@@ -59,13 +59,6 @@ export const Placate: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "enduranceGain": {
-      "scale": 2.5,
-      "table": "Melee_Ones",
-      "perTarget": 2.5
-    }
-  },
   "atoms": [
     ["Damage","Negative",0.848,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage"],
     ["Endurance",null,2.5,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,2.5,null,null,null,null,null,null,null,"Ones",null,null,null,0.25],

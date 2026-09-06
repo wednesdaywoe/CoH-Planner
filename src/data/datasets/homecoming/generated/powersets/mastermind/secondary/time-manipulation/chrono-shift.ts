@@ -63,27 +63,6 @@ export const ChronoShift: Power = {
       ]
     }
   ],
-  "effects": {
-    "buffDuration": 90,
-    "durations": {
-      "rechargeBuff": 90,
-      "recoveryBuff": 30
-    },
-    "enduranceGain": {
-      "ignoreStrength": true,
-      "scale": 0.15,
-      "table": "Ranged_Ones"
-    },
-    "rechargeBuff": {
-      "ignoreStrength": true,
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 0.3,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["Heal",null,1.056,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff","target.ownPower?","!"]],
     ["Heal",null,0.176,1,30,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,3,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff","target.ownPower?","!"],null,null,null,null,null,null,null,null,null,null,null,null,null,1],

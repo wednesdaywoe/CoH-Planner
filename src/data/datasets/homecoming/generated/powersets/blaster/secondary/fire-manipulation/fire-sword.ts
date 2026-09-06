@@ -64,26 +64,6 @@ export const FireSword: Power = {
       "cancelOnMiss": true
     }
   ],
-  "effects": {
-    "buffDuration": 10,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 0.088,
-      "table": "Melee_Ones"
-    },
-    "defenseDebuff": {
-      "scale": 0.5,
-      "table": "Melee_Debuff_Def"
-    },
-    "durations": {
-      "damageBuff": 8.83,
-      "defenseDebuff": 10
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff"
-    ]
-  },
   "atoms": [
     ["Damage","Fire",1.96,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Damage","Fire",0.1,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.75,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.8,true,null,null,null,null,0.5],

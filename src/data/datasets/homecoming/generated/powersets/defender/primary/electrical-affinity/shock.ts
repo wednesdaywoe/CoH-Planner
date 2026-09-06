@@ -41,31 +41,6 @@ export const Shock: Power = {
     "Endurance Modification"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 25,
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 3,
-      "table": "Ranged_Debuff_Dam"
-    },
-    "durations": {
-      "damageDebuff": 25,
-      "recoveryDebuff": 25,
-      "regenDebuff": 25
-    },
-    "enduranceDrain": {
-      "scale": 0.16,
-      "table": "Ranged_EndDrain"
-    },
-    "recoveryDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_Ones"
-    },
-    "regenDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["DamageBuff","Smashing",3,1,25,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Lethal",3,1,25,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],

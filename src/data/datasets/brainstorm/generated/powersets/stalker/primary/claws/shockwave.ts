@@ -60,12 +60,6 @@ export const Shockwave: Power = {
       "table": "Melee_InherentDamage"
     }
   ],
-  "effects": {
-    "knockback": {
-      "scale": 0.7,
-      "table": "Melee_Knockback"
-    }
-  },
   "atoms": [
     ["Damage","Lethal",1.04,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Mez","Knockback",0.7,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],

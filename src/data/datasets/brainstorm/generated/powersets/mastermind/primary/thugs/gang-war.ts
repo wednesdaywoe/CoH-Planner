@@ -44,14 +44,12 @@ export const GangWar: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Thug_Pose_01",
-      "entityCount": 9,
-      "duration": 60,
-      "copyBoosts": true
-    }
+  "summon": {
+    "isPseudoPet": false,
+    "entity": "Pets_Thug_Pose_01",
+    "entityCount": 9,
+    "duration": 60,
+    "copyBoosts": true
   },
   "atoms": [
     ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"cancel_mods",null,1],

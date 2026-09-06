@@ -50,34 +50,6 @@ export const RisetotheChallenge: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 1,
-    "debuffResistance": {
-      "regeneration": {
-        "ignoreStrength": true,
-        "scale": 0.0225,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "debuffResistance": 1,
-      "regenBuff": 1,
-      "tohitDebuff": 1
-    },
-    "regenBuff": {
-      "scale": 1.25,
-      "table": "Melee_Ones",
-      "perTarget": 0.25
-    },
-    "taunt": {
-      "scale": 1.25,
-      "table": "Melee_Ones"
-    },
-    "tohitDebuff": {
-      "scale": 0.5,
-      "table": "Melee_DeBuff_ToHit"
-    }
-  },
   "atoms": [
     ["ToHit",null,0.5,1,1,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Regeneration",null,1,1,1.125,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],

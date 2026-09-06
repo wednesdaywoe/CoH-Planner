@@ -47,104 +47,102 @@ export const SleepGrenade: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "effects": {
-    "summon": {
-      "copyBoosts": true,
-      "displayName": "Sleep Grenade",
-      "duration": 30,
-      "isPseudoPet": false,
-      "powers": [
-        "Pets.ResistAll.ResistAll",
-        "Redirects.Assault_Rifle.Sleep_Grenade",
-        "Redirects.Assault_Rifle.Sleep_Grenade_Damage"
-      ],
-      "resolvedEntities": [
-        {
-          "displayName": "Sleep Grenade",
-          "duration": 30,
-          "copyCreatorMods": true,
-          "abilities": [
-            {
-              "name": "Sleep_Grenade",
-              "displayName": "Sleep Grenade",
-              "type": "Auto",
-              "damage": [],
-              "effects": [
-                {
-                  "type": "Sleep",
-                  "magnitude": 3,
-                  "attribType": "Duration",
-                  "scale": 3.4,
-                  "table": "Melee_Immobilize"
-                },
-                {
-                  "type": "Slow",
-                  "axis": "runSpeed",
-                  "scale": 0.4,
-                  "table": "Melee_Slow"
-                },
-                {
-                  "type": "Slow",
-                  "axis": "flySpeed",
-                  "scale": 0.4,
-                  "table": "Melee_Slow"
-                },
-                {
-                  "type": "Slow",
-                  "axis": "jumpSpeed",
-                  "scale": 0.4,
-                  "table": "Melee_Slow"
-                },
-                {
-                  "type": "Slow",
-                  "axis": "jumpHeight",
-                  "scale": 0.4,
-                  "table": "Melee_Slow",
-                  "ignoreStrength": true
-                },
-                {
-                  "type": "RechargeDebuff",
-                  "scale": 0.3,
-                  "table": "Melee_Slow",
-                  "ignoreStrength": true
-                }
-              ],
-              "recharge": 0,
-              "castTime": 0,
-              "activatePeriod": 3,
-              "effectArea": "Sphere",
-              "targetsAffected": [
-                "Foe"
-              ],
-              "radius": 20,
-              "maxTargets": 16
-            },
-            {
-              "name": "Sleep_Grenade_Damage",
-              "displayName": "Sleep Grenade Burst",
-              "type": "Auto",
-              "damage": [
-                {
-                  "damageType": "Toxic",
-                  "scale": 1,
-                  "table": "Ranged_Damage"
-                }
-              ],
-              "recharge": 0,
-              "castTime": 0,
-              "activatePeriod": 100,
-              "effectArea": "Sphere",
-              "targetsAffected": [
-                "Foe"
-              ],
-              "radius": 20,
-              "maxTargets": 16
-            }
-          ]
-        }
-      ],
-      "entity": "PL_StaticObject"
-    }
+  "summon": {
+    "copyBoosts": true,
+    "displayName": "Sleep Grenade",
+    "duration": 30,
+    "isPseudoPet": false,
+    "powers": [
+      "Pets.ResistAll.ResistAll",
+      "Redirects.Assault_Rifle.Sleep_Grenade",
+      "Redirects.Assault_Rifle.Sleep_Grenade_Damage"
+    ],
+    "resolvedEntities": [
+      {
+        "displayName": "Sleep Grenade",
+        "duration": 30,
+        "copyCreatorMods": true,
+        "abilities": [
+          {
+            "name": "Sleep_Grenade",
+            "displayName": "Sleep Grenade",
+            "type": "Auto",
+            "damage": [],
+            "effects": [
+              {
+                "type": "Sleep",
+                "magnitude": 3,
+                "attribType": "Duration",
+                "scale": 3.4,
+                "table": "Melee_Immobilize"
+              },
+              {
+                "type": "Slow",
+                "axis": "runSpeed",
+                "scale": 0.4,
+                "table": "Melee_Slow"
+              },
+              {
+                "type": "Slow",
+                "axis": "flySpeed",
+                "scale": 0.4,
+                "table": "Melee_Slow"
+              },
+              {
+                "type": "Slow",
+                "axis": "jumpSpeed",
+                "scale": 0.4,
+                "table": "Melee_Slow"
+              },
+              {
+                "type": "Slow",
+                "axis": "jumpHeight",
+                "scale": 0.4,
+                "table": "Melee_Slow",
+                "ignoreStrength": true
+              },
+              {
+                "type": "RechargeDebuff",
+                "scale": 0.3,
+                "table": "Melee_Slow",
+                "ignoreStrength": true
+              }
+            ],
+            "recharge": 0,
+            "castTime": 0,
+            "activatePeriod": 3,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "Foe"
+            ],
+            "radius": 20,
+            "maxTargets": 16
+          },
+          {
+            "name": "Sleep_Grenade_Damage",
+            "displayName": "Sleep Grenade Burst",
+            "type": "Auto",
+            "damage": [
+              {
+                "damageType": "Toxic",
+                "scale": 1,
+                "table": "Ranged_Damage"
+              }
+            ],
+            "recharge": 0,
+            "castTime": 0,
+            "activatePeriod": 100,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "Foe"
+            ],
+            "radius": 20,
+            "maxTargets": 16
+          }
+        ]
+      }
+    ],
+    "entity": "PL_StaticObject"
   },
   "atoms": [
     ["EntCreate",null,1,1,30,"Melee_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,30]

@@ -63,13 +63,6 @@ export const BlazingAura: Power = {
       "table": "Melee_Damage"
     }
   ],
-  "effects": {
-    "taunt": {
-      "ignoreStrength": true,
-      "scale": 1.1,
-      "table": "Melee_InherentTaunt"
-    }
-  },
   "atoms": [
     ["Damage","Fire",0.1729,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Fire",0.0778,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],

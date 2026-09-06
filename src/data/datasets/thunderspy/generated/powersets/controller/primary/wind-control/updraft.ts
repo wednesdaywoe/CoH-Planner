@@ -57,12 +57,6 @@ export const Updraft: Power = {
       "table": "Ranged_Damage"
     }
   ],
-  "effects": {
-    "knockup": {
-      "scale": 6,
-      "table": "Ranged_Knockback"
-    }
-  },
   "atoms": [
     ["Damage","Smashing",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Damage",null,null,null,1.6],
     ["Damage","Smashing",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Damage",null,null,null,1.6],

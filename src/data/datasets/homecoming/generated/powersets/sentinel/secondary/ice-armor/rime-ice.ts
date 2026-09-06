@@ -40,28 +40,6 @@ export const RimeIce: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "absorb": {
-      "scale": 3,
-      "table": "Melee_HealSelf"
-    },
-    "buffDuration": 30,
-    "durations": {
-      "absorb": 30,
-      "regenBuff": 30,
-      "resistance": 60
-    },
-    "regenBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "resistance": {
-      "toxic": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["Resistance","Toxic",2,1,60,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Absorb",null,3,1,30,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"Replace",2,null,null,1],

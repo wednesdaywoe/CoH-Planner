@@ -44,45 +44,6 @@ export const PsionicShield: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 0.75,
-    "debuffResistance": {
-      "endurance": {
-        "scale": 0.75,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "durations": {
-      "debuffResistance": 0.75,
-      "resistance": 0.75
-    },
-    "resistance": {
-      "cold": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      }
-    }
-  },
   "atoms": [
     ["Resistance","Fire",2,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
     ["Resistance","Cold",2,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],

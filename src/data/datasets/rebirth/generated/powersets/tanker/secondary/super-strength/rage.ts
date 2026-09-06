@@ -39,46 +39,6 @@ export const Rage: Power = {
     "To Hit Buff"
   ],
   "maxSlots": 6,
-  "effects": {
-    "buffDuration": 120,
-    "damageBuff": {
-      "ignoreStrength": true,
-      "scale": 8,
-      "table": "Melee_Buff_Dmg"
-    },
-    "damageDebuff": {
-      "ignoreStrength": true,
-      "scale": 999,
-      "table": "Melee_Buff_Dmg",
-      "toWho": "Self"
-    },
-    "defenseDebuff": {
-      "ignoreStrength": true,
-      "scale": 0.2,
-      "table": "Melee_Ones",
-      "toWho": "Self"
-    },
-    "durations": {
-      "damageBuff": 120,
-      "damageDebuff": 10,
-      "defenseDebuff": 10,
-      "tohitBuff": 120
-    },
-    "enduranceDrain": {
-      "ignoreStrength": true,
-      "scale": 0.25,
-      "table": "Melee_Ones"
-    },
-    "tohitBuff": {
-      "scale": 2,
-      "table": "Melee_Buff_ToHit"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff",
-      "tohitBuff"
-    ]
-  },
   "atoms": [
     ["ToHit",null,2,1,120,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_ToHit"],
     ["DamageBuff","Smashing",8,1,120,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff_Dmg"],

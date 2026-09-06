@@ -36,17 +36,6 @@ export const CryoAmmunition: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
-  "effects": {
-    "buffDuration": 0.75,
-    "durations": {
-      "rangeBuff": 0.75
-    },
-    "rangeBuff": {
-      "ignoreStrength": true,
-      "scale": 0.333,
-      "table": "Ranged_Ones"
-    }
-  },
   "atoms": [
     ["GlobalChanceMod",null,1,1,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Range",null,0.333,1,0.75,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
