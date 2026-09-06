@@ -183,10 +183,10 @@
       "path": "docs/DATA-GAP-REGISTER.md",
       "status": "forked",
       "sha256": {
-        "canonical": "4691cdefe1bc45d8030059aa4cc85baa4ef3d0fb0fe56dfdb1f6884bc2ce2276",
+        "canonical": "031a47a5b65c54a6d055a2245f29ab150a895e86bb666b21076648b0099a51f2",
         "beta": "4ed9208b0a77447bca3de4e35e956e7208bdc4392f1b0159cb9e710a7f53444d"
       },
-      "reason": "canonical's register carries the STRIP-1 burn-down (KB-INFO row, lint trims, closure narratives) and the PERMA-2/PERMA-3/PERMA-4/PERMA-5 closures (PERMA-5 closed 2026-09-05, re-stamped there, taking the frontier to 0 open) which the beta's copy lacks, plus SYNTH-1, filed 2026-09-05 from the beta's own BPORT11 carry and open there (the frontier was 0 for the day between PERMA-5 and it); ABSORB-4's carried residual was re-measured the same way on 2026-09-05, against the beta's still-live bag, and BPORT11's own row is ticked here; BPORT8 ticked 2026-09-06 and ENGLAG-1 filed from it, taking the frontier to 2 open; beta's copy is the pre-migration register: a stale snapshot of canonical's own frontier (3 open, TSPY-11/STRIP-1/FORK-4), not an independent beta assessment. Carrying canonical's copy across would advertise `0 open` in the repo where this entry's own exit, the beta-side STRIP-1 port, is still unrun.",
+      "reason": "canonical's register carries the STRIP-1 burn-down (KB-INFO row, lint trims, closure narratives) and the PERMA-2/PERMA-3/PERMA-4/PERMA-5 closures (PERMA-5 closed 2026-09-05, re-stamped there, taking the frontier to 0 open) which the beta's copy lacks, plus SYNTH-1, filed 2026-09-05 from the beta's own BPORT11 carry and open there (the frontier was 0 for the day between PERMA-5 and it); ABSORB-4's carried residual was re-measured the same way on 2026-09-05, against the beta's still-live bag, and BPORT11's own row is ticked here; BPORT8 ticked 2026-09-06 and ENGLAG-1 filed from it, taking the frontier to 2 open (ENGLAG-1 re-filed the same day once the atom seed, not the vendor lag, proved to be the defect); beta's copy is the pre-migration register: a stale snapshot of canonical's own frontier (3 open, TSPY-11/STRIP-1/FORK-4), not an independent beta assessment. Carrying canonical's copy across would advertise `0 open` in the repo where this entry's own exit, the beta-side STRIP-1 port, is still unrun.",
       "exit": "the converter mirror (FORK-3 sync:shared) after the STRIP-1 migration lands on the beta side.",
       "gap": "STRIP-1"
     },
