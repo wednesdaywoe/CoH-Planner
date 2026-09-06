@@ -23,6 +23,7 @@ import { getAllPowersets, getPowersetsForArchetype } from '@/data/powersets';
 import {
   toHitBuffValue, damageBuffValue, resistanceBuffValue, defenseBuffValue,
   defenseBuffSuppressibleValue, regenBuffValue, recoveryBuffValue,
+  absorbMaxHPFractionValue, baseAtoms,
 } from '@/data/core/atom-query';
 import { getAvailableGenericIOs, createGenericIOEnhancement } from '@/data/enhancement-registry';
 import { withoutIllegalSlots } from '@/utils/build-enhancement-validation';
@@ -84,6 +85,51 @@ function bundleEffects(server: Server): Map<string, Record<string, unknown>> {
   return out;
 }
 
+/** The bundle meta the engine's derived per-foe absorb gate reads (`effectArea`,
+ *  `stats.maxTargets`), keyed like `bundleEffects`. The BPORT7 regen empties the bag this
+ *  sits next to, but this meta survives it. */
+const bundleMetaCache = new Map<Server, Map<string, { effectArea?: string; maxTargets?: number }>>();
+function bundleMeta(server: Server): Map<string, { effectArea?: string; maxTargets?: number }> {
+  const cached = bundleMetaCache.get(server);
+  if (cached) return cached;
+  const { gunzipSync } = require('node:zlib') as typeof import('node:zlib');
+  const bundle = JSON.parse(
+    gunzipSync(readFileSync(join(BUNDLE_DIR, `${server}.json.gz`))).toString('utf8'),
+  ) as Record<string, Record<string, { id?: string; powers?: { internalName?: string; effectArea?: string; stats?: { maxTargets?: number } }[] }>>;
+  const out = new Map<string, { effectArea?: string; maxTargets?: number }>();
+  for (const section of ['powersets', 'power-pools', 'epic-pools']) {
+    for (const [setKey, set] of Object.entries(bundle[section] ?? {})) {
+      for (const power of set.powers ?? []) {
+        if (power.internalName) {
+          out.set(`${set.id ?? setKey}\0${power.internalName}`, { effectArea: power.effectArea, maxTargets: power.stats?.maxTargets });
+        }
+      }
+    }
+  }
+  bundleMetaCache.set(server, out);
+  return out;
+}
+
+/** Whether the engine's own bundle authors any per-foe increment, read off its wire atoms
+ *  (slot 24 = per_target). Independent of the legacy dataset and its atom readers. */
+const bundlePerFoeCache = new Map<Server, boolean>();
+function bundleHasPerFoeAtom(server: Server): boolean {
+  const cached = bundlePerFoeCache.get(server);
+  if (cached !== undefined) return cached;
+  const { gunzipSync } = require('node:zlib') as typeof import('node:zlib');
+  const bundle = JSON.parse(
+    gunzipSync(readFileSync(join(BUNDLE_DIR, `${server}.json.gz`))).toString('utf8'),
+  ) as Record<string, Record<string, { powers?: { atoms?: unknown[][] }[] }>>;
+  const out = ['powersets', 'power-pools', 'epic-pools'].some((section) =>
+    Object.values(bundle[section] ?? {})
+      .flatMap((set) => set.powers ?? [])
+      .flatMap((power) => power.atoms ?? [])
+      .some((atom) => Array.isArray(atom) && atom.length > 24 && atom[24] != null),
+  );
+  bundlePerFoeCache.set(server, out);
+  return out;
+}
+
 /** The slot paths in an effects bag that carry a per-foe increment (`defenseBuff`,
  *  `movement.runSpeed`, …), sorted — one dataset's answer to "which of this power's effects
  *  grow per foe". */
@@ -102,11 +148,14 @@ function perTargetSlots(effects: Record<string, unknown> | undefined): string[] 
   return out.sort();
 }
 
-/** `null` when the two datasets agree which of this power's slots grow per foe; otherwise a
- *  description of the disagreement. */
+/** `null` when the two datasets agree which of this power's slots grow per foe, or when the
+ *  legacy bag is absent: bag-vs-bag is unrunnable post-strip, and by then the response
+ *  comparison grades both sides atom-fed. Otherwise a description of the disagreement. */
 function perTargetDrift(server: Server, powersetId: string, internalName: string, legacy: Power): string | null {
+  const legacyEffects = (legacy as unknown as { effects?: Record<string, unknown> }).effects;
+  if (legacyEffects == null) return null;
   const engineSlots = perTargetSlots(bundleEffects(server).get(`${powersetId}\0${internalName}`));
-  const legacySlots = perTargetSlots((legacy as unknown as { effects?: Record<string, unknown> }).effects);
+  const legacySlots = perTargetSlots(legacyEffects);
   if (engineSlots.join(',') === legacySlots.join(',')) return null;
   return `legacy grows [${legacySlots.join(', ')}] per foe, engine dataset grows [${engineSlots.join(', ') || 'none'}]`;
 }
@@ -383,20 +432,28 @@ suite('PROD5 — engine vs legacy dashboard parity, per server', () => {
   //
   // Widened by PROD6C-3j, which the walk as first written was structurally blind to: it carried
   // no absorb reader, and it filtered to Toggle/Auto while every power whose absorb grows per
-  // foe (Parasitic Aura / Leech) is a Click. Both halves of that blindness are lifted here —
-  // absorb is bag-only, so it is read off the slot, in BOTH spellings of the increment (the
-  // fraction form's `maxHPFractionPerTarget`, the scale form's `perTarget`), since the two
-  // repos' converters recover the same authored Expression into different shapes.
+  // foe (Parasitic Aura / Leech) is a Click. Both halves of that blindness are lifted here.
+  // BPORT7 A3 re-keyed absorb discovery from the legacy bag (the BPORT7 regen empties it) to
+  // the Absorb atom's `perTarget` stamp, and excluded the per-foe absorb channel itself as the
+  // named ABSORB-4 residual: the atom-fed oracle reads absorb flat (no reader returns
+  // `perTarget`) while the engine grows it per foe, so key-comparing absorb grades two
+  // channels, not two calcs. The exclusion mirrors the engine's
+  // `per_target: derived.or(atom_per_target)`: the atom stamp, or the derived gate (frac probe
+  // answers, bundle effectArea AoE/Cone, 1 < stats.maxTargets < 255). Excluded powers are
+  // logged unverified, so the residual is watched, not hidden.
   it.each(SERVERS)('%s: per-foe buffs track the targets-hit count identically on both calcs', async (server) => {
     await loadDataset(server);
 
     const READERS = [toHitBuffValue, damageBuffValue, resistanceBuffValue, defenseBuffValue, defenseBuffSuppressibleValue, regenBuffValue, recoveryBuffValue];
-    const absorbSlot = (power: Power) =>
-      (power as unknown as { effects?: { absorb?: { perTarget?: number; maxHPFractionPerTarget?: number } } })
-        .effects?.absorb;
+    // BPORT7 A3: the absorb arm used to read the legacy bag (`effects.absorb.perTarget`),
+    // which the BPORT7 regen empties. It now reads the Absorb atom's `perTarget` stamp, the
+    // data the engine's `per_target` field is built from, so discovery survives the regen.
+    // Measured a no-op on the examined set: every bag-discovered power is already found by
+    // the readers arm (Recovery/Regeneration stamps), 74/69/71/74 pre- and post-rekey.
+    const carriesAbsorbPerFoe = (power: Power) =>
+      baseAtoms(power).some((a) => a.effectType === 'Absorb' && a.perTarget);
     const carriesPerTarget = (power: Power) => {
-      const absorb = absorbSlot(power);
-      if (absorb && (absorb.perTarget || absorb.maxHPFractionPerTarget)) return true;
+      if (carriesAbsorbPerFoe(power)) return true;
       return READERS.some((read) => {
         const value = read(power as never) as unknown;
         if (!value || typeof value !== 'object') return false;
@@ -438,6 +495,7 @@ suite('PROD5 — engine vs legacy dashboard parity, per server', () => {
 
     const mismatches: string[] = [];
     const adjudicated: string[] = [];
+    const unverified: string[] = [];
     let examined = 0;
     let responsive = 0;
 
@@ -461,6 +519,20 @@ suite('PROD5 — engine vs legacy dashboard parity, per server', () => {
           adjudicated.push(`${powersetKey}/${power.name}: ${drift} — dataset drift, response comparison skipped`);
           continue;
         }
+        // BPORT7 A3: the per-foe absorb channel is the named ABSORB-4 residual. The atom-fed
+        // oracle reads absorb flat while the engine grows it per foe (atom stamp or derived
+        // bundle gate), so the absorb key compares two channels, not two calcs. Drop it and
+        // log the power unverified; the exclusion mirrors the engine's own gate, so it stays
+        // live across the BPORT7 regen.
+        const meta = bundleMeta(server).get(`${powerset.id ?? powersetKey}\0${power.internalName}`);
+        const absorbUnverified =
+          carriesAbsorbPerFoe(power) ||
+          (absorbMaxHPFractionValue(power) != null &&
+            (meta?.effectArea === 'AoE' || meta?.effectArea === 'Cone') &&
+            (meta?.maxTargets ?? 0) > 1 && (meta?.maxTargets ?? 0) !== 255);
+        if (absorbUnverified) {
+          unverified.push(`${powersetKey}/${power.name}: absorb key excluded, per-foe channel ungraded (ABSORB-4 residual)`);
+        }
         examined++;
 
         const build = solo(atId, powerset.id ?? powersetKey, power);
@@ -468,7 +540,7 @@ suite('PROD5 — engine vs legacy dashboard parity, per server', () => {
         for (const targets of [null, 1, 5] as const) {
           const at = totalsAt(build, power, targets);
           // The RESPONSE to the count, not the totals themselves.
-          const keys = Object.keys(at.engine).filter((key) => !UNMAPPED.has(key));
+          const keys = Object.keys(at.engine).filter((key) => !UNMAPPED.has(key) && !(absorbUnverified && key === 'absorb'));
           const engineMoved = keys.filter((key) => Math.abs((at.engine[key] ?? 0) - (zero.engine[key] ?? 0)) > F32_TOLERANCE);
           const legacyMoved = keys.filter((key) => Math.abs((at.legacy[key] ?? 0) - (zero.legacy[key] ?? 0)) > F32_TOLERANCE);
           if (targets !== null && engineMoved.length) responsive++;
@@ -483,27 +555,22 @@ suite('PROD5 — engine vs legacy dashboard parity, per server', () => {
       }
     }
 
-    // Whether this fork carries per-foe data at all, read off the BAG — an oracle independent of
-    // the atom readers the walk uses, so a reader that silently stopped matching cannot also
-    // silence the guard below.
-    const forkHasPerFoeData = Object.values(getAllPowersets()).some((powerset) =>
-      (powerset.powers ?? []).some((power) =>
-        Object.values((power as unknown as { effects?: Record<string, unknown> }).effects ?? {}).some((slot) =>
-          slot && typeof slot === 'object' &&
-          // Either a by-type sub-entry's increment, or the slot's own — an absorb carries its
-          // per-foe growth at the top level of the slot, not one level down.
-          (!!(slot as { perTarget?: number }).perTarget ||
-            !!(slot as { maxHPFractionPerTarget?: number }).maxHPFractionPerTarget ||
-            Object.values(slot as Record<string, unknown>).some((entry) => entry && typeof entry === 'object' && !!(entry as { perTarget?: number }).perTarget)),
-        ),
-      ),
-    );
+    // Whether this fork carries per-foe data at all, read off the ENGINE's own bundle atoms
+    // (wire slot 24 = per_target) — an oracle independent of the legacy dataset and its
+    // readers, so a reader that silently stopped matching cannot also silence the guard
+    // below. The bag this used to be read off leaves at BPORT8; the stamps survive both
+    // regens (577/501/615/577 stamped atoms across the four forks, measured pre-regen).
+    const forkHasPerFoeData = bundleHasPerFoeAtom(server);
 
     // eslint-disable-next-line no-console
     console.warn(`[PROD6B-2d] ${server}: ${examined} per-foe powers, ${responsive} slider responses observed`);
     if (adjudicated.length) {
       // eslint-disable-next-line no-console
       console.warn(`[PROD6B-2d] ${server} dataset drift (accepted, ${adjudicated.length}):\n    ${adjudicated.join('\n    ')}`);
+    }
+    if (unverified.length) {
+      // eslint-disable-next-line no-console
+      console.warn(`[PROD6B-2d] ${server} per-foe absorb (ABSORB-4 residual, ${unverified.length}):\n    ${unverified.join('\n    ')}`);
     }
 
     if (mismatches.length) {
@@ -512,11 +579,9 @@ suite('PROD5 — engine vs legacy dashboard parity, per server', () => {
     }
     expect(mismatches).toEqual([]);
 
-    // Thunderspy exports no per-foe increment on ANY power — its Invincibility is a flat
-    // `{scale: 0.1}` where Homecoming's is `{scale: 0.6, perTarget: 0.1}`. Whether the fork
-    // rebalanced the per-foe scaling away or its converter drops the increments is unresolved
-    // (no authored tspy def is available to settle it), so this reports rather than asserts —
-    // but only for a fork whose own data carries nothing to grade.
+    // Report rather than assert when the fork's engine bundle authors no per_target stamp:
+    // the absence might be an honest rebalance, not a converter drop, and no authored def
+    // settles it.
     if (!forkHasPerFoeData) {
       // eslint-disable-next-line no-console
       console.warn(`[PROD6B-2d] ${server}: fork exports no per-foe increment on any power — slider handling unverified here`);
