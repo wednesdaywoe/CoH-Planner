@@ -826,6 +826,36 @@ const UNTYPED_DURATION_EFFECT_KEY = 'effectDuration';
  *  projection-field comparison still failed the gate. */
 const ENGINE_NORMALIZED_EFFECT_KEYS = new Set(['enduranceCost', 'castTime']);
 
+/** The bag keys `buildDisplayEffects` mints for a power on its own — what a display bag still
+ *  carries when the authored `effects` is empty. Execution stats off `stats`, the lifted
+ *  `summon`, the heal pulled out of the damage array, and the flattened movement axes.
+ *
+ *  Named here rather than derived because the adjudication below needs it per ROW (it has the
+ *  bag, not the power), and pinned by [`assertMintedKeysStillMint`] so it cannot drift from the
+ *  builder it describes. */
+const DISPLAY_MINTED_KEYS = new Set([
+  'summon', 'enduranceCost', 'recharge', 'accuracy', 'range', 'castTime', 'radius', 'maxTargets',
+  'arc', 'healing', 'buffDuration', 'fly', 'runSpeed', 'jumpSpeed', 'jumpHeight',
+  'flyUnenhanced', 'runSpeedUnenhanced', 'jumpSpeedUnenhanced', 'jumpHeightUnenhanced',
+]);
+
+/** Does this display bag carry anything the AUTHORED effects supplied?
+ *
+ *  This is the question the engine-supersedes-beta adjudication actually depends on, and until
+ *  STRIP-1 nobody had to ask it: the arm accepts an engine-only row when "the beta's bag has no
+ *  such key", reading that as the beta's converter having dropped an effect the parser
+ *  recovered. That inference holds while the beta HAS a bag and the missing key is one power's
+ *  drift. It does not hold at all once the bag is empty for every power — then the premise is
+ *  universally true, the arm accepts the entire corpus, and the gate reports the strip as
+ *  hundreds of separate converter drops.
+ *
+ *  So a bag holding nothing but keys the builder minted for itself is not evidence of drift. It
+ *  is a power with no authored effects, and its rows stay hard. */
+function bagCarriesAuthoredEffects(bag: Record<string, unknown> | undefined): boolean {
+  if (!bag) return false;
+  return Object.keys(bag).some((key) => !DISPLAY_MINTED_KEYS.has(key));
+}
+
 /** Do two authored bag slots state the same thing? Numbers compare through the same f32/f64
  *  skew the tier comparison allows; objects compare per key; one side missing is a difference.
  *  This is what widens `inputsDiffer` from bare numbers to every slot shape (2026-08-19 oracle
@@ -937,8 +967,12 @@ function magnitudeDeltas(
     const driftNote = `the two datasets author '${effectKey}' differently (engine ${slotOf(engineSlot)}, beta ${slotOf(betaSlot)})`;
 
     if (engine && !beta) {
-      if (betaEffects?.[engine.effectKey] == null) {
+      if (betaEffects?.[engine.effectKey] == null && bagCarriesAuthoredEffects(betaEffects)) {
         adjudicated.push(`${key}: engine resolved ${engine.label} = ${engine.value.base} but the beta dataset carries no '${engine.effectKey}' effect`);
+      } else if (betaEffects?.[engine.effectKey] == null) {
+        // The bag carries no authored effect at all, so "no such key" says nothing about this
+        // key — see [`bagCarriesAuthoredEffects`]. Hard, and named as the population it is.
+        out.push(`${powerName}.${key}: engine resolved ${engine.label} = ${engine.value.base} and the beta's display bag carries NO authored effect (minted keys only)`);
       } else if (drift) {
         // The engine resolves a row the beta does not, from a slot the datasets disagree on —
         // the legacy pool/epic `fly` slots against the contract's cap/current split is the
@@ -1167,6 +1201,34 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
   beforeAll(() => {
     for (const s of SERVERS) engineHandle(s);
   });
+
+  // [`DISPLAY_MINTED_KEYS`] is the hand-written half of the adjudication floor, and a stale copy
+  // of it fails OPEN: a key the builder mints but this set omits reads as an authored effect, and
+  // the arm goes back to accepting a bagless power's rows. So re-derive it from the builder over
+  // the corpus — hand every power an EMPTY authored bag and collect what still comes out.
+  it.each(SERVERS)('%s: the minted-key set still describes buildDisplayEffects', async (server) => {
+    await loadDataset(server);
+    const minted = new Set<string>();
+    let powersSeen = 0;
+    for (const atId of STANDARD_ARCHETYPE_IDS) {
+      for (const set of getPowersetsForArchetype(atId)) {
+        for (const power of set.powers as Power[]) {
+          powersSeen += 1;
+          const stripped = { ...power, effects: {} as PowerEffects };
+          for (const key of Object.keys(buildDisplayEffects(stripped))) minted.add(key);
+        }
+      }
+    }
+    expect(powersSeen, `${server}: no powers walked, the derivation is vacuous`).toBeGreaterThan(1000);
+    expect(minted.size, `${server}: an emptied bag minted nothing — the builder no longer mints`).toBeGreaterThan(0);
+    const undeclared = [...minted].filter((key) => !DISPLAY_MINTED_KEYS.has(key)).sort();
+    expect(
+      undeclared,
+      `${server}: buildDisplayEffects mints these with no authored effects, and DISPLAY_MINTED_KEYS ` +
+        `omits them — every one reads as an authored effect and re-opens the arm STRIP-1 made ` +
+        `vacuous. Add them to the set.`,
+    ).toEqual([]);
+  }, 120000);
 
   it.each(SERVERS)('%s: every selected power projects to the beta calculators', async (server) => {
     await loadDataset(server); // activates this dataset for the beta calculators
