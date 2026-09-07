@@ -50,6 +50,7 @@ import { calculateArcanaTime } from '@/utils/calculations/damage';
 import { calcThreeTier, convertGlobalBonusesToAspects, withStrengthBonuses, type ThreeTierValues } from '@/components/info/powerDisplayUtils';
 import { resolvePowerMagnitudes, type ResolvedMagnitude } from '@/components/info/resolvePowerMagnitudes';
 import { magnitudesFromProjection } from '@/components/info/magnitudesFromProjection';
+import { powerLevelDuration, type BagDurations } from '@/components/info/effectRowDuration';
 import { EFFECT_REGISTRY } from '@/data/core/effect-registry';
 import { buildDisplayEffects, getStackingInfo, withPseudoPetEffects, withTargetsHit } from '@/components/info/buildDisplayEffects';
 import { resolveEffectivePower, effectiveGlobalAdjusters, isCasterHidden, currentToHitFraction, type EffectivePowerState } from '@/components/info/resolveEffectivePower';
@@ -1421,6 +1422,99 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
       `${relative} stopped passing \`rows\`, so it resolves the stripped display bag again`,
     ).toContain('rows={effectRows}');
   });
+
+  // PROD6B-BETA-PARITY class 2 — which duration the rendered rows state.
+  //
+  // `RegistryEffectsDisplay` takes engine ROWS but read the duration off the display BAG, and
+  // after STRIP-1 the bag's `buffDuration` is not the power's clock: on Dual Pistols it is the
+  // `iceammo` entry's 10s slow (the base -Def runs 8s), on Dark Miasma the 1s `EntCreate`
+  // marker the summon-lifespan backfill picks up (the debuffs run 30s). The precedence moved to
+  // `effectRowDuration.ts` so it could be graded here, since there is no render harness.
+  //
+  // The oracle is the ENGINE's own `buffDuration` row — the atom plurality — not a restatement
+  // of the function under test. Where the beta bag disagrees with it, the rendered answer has
+  // to be the engine's.
+  it.each(SERVERS)('%s: the rendered duration follows the engine row, not the stripped bag', async (server) => {
+    await loadDataset(server);
+    const handle = engineHandle(server);
+    const deltas: string[] = [];
+    // Powers whose recorded durations reach no row, so the engine's power-level plurality and
+    // its rows answer differently. Named below rather than failed.
+    const pluralityOutranks: string[] = [];
+    // `disputed` is the population that grades the rule; `bagAnswered` the one that proves the
+    // bag fallback is still alive for a caller resolving the bag itself.
+    const census = { projected: 0, disputed: 0, bagAnswered: 0, agreedRows: 0 };
+
+    for (const atId of STANDARD_ARCHETYPE_IDS) {
+      const build = buildFor(server, atId, 50, false);
+      const state = toCharacterStateJson(withoutIllegalSlots(build), CTX);
+      for (const set of getPowersetsForArchetype(atId)) {
+        for (const power of set.powers as Power[]) {
+          const json = handle.project_power(state, set.id!, power.internalName);
+          const raw = json ? (JSON.parse(json) as EnginePowerProjection | null) : null;
+          if (!raw) continue;
+          census.projected += 1;
+          const shown = { ...power, powerSet: set.id! } as unknown as SelectedPower;
+          const engineRows = mapOnePowerProjection(raw).grantedMagnitudes;
+          const adapted = magnitudesFromProjection(engineRows);
+          const bag = displayBag(shown) as BagDurations;
+          const sources = adapted.map((r) => ({
+            effectKey: r.effectKey,
+            category: r.config.category,
+            duration: r.duration,
+          }));
+          const rendered = powerLevelDuration(sources, bag);
+          const where = `${set.id}.${power.internalName}`;
+
+          // The engine's own power-level answer, off the atom-derived durations map.
+          const engineBuffDur = engineRows.find((r) => r.rowKey === 'buffDuration')?.value.base;
+          const timedRowDurs = sources
+            .filter((r) => r.category !== 'execution' && r.duration != null && r.duration > 0)
+            .map((r) => r.duration as number);
+          const rowsAgree = timedRowDurs.length > 0
+            && timedRowDurs.every((d) => Math.abs(d - timedRowDurs[0]) < 0.001);
+          if (rowsAgree) census.agreedRows += 1;
+
+          if (rowsAgree && bag.buffDuration != null && Math.abs(bag.buffDuration - timedRowDurs[0]) > 0.001) {
+            census.disputed += 1;
+            if (rendered == null || Math.abs(rendered - timedRowDurs[0]) > 0.001) {
+              deltas.push(`${where}: rendered ${rendered} but the engine rows state ${timedRowDurs[0]} (bag says ${bag.buffDuration})`);
+            }
+            // The engine's own power-level plurality can outrank every row's duration, and
+            // that is not a contradiction: it votes over the whole `durations` map while a row
+            // surfaces one only for its OWN bag key. Thunderspy's Time Lord is the case — the
+            // self +Recharge and three movement axes record 10s and reach no row carrying it,
+            // the eight damageBuff rows record 9.17s and do, so the plurality says 10 and every
+            // row that can speak says 9.17. Counted rather than failed: an answer built from
+            // rows that agree is the best claim this component can make, and the map's other
+            // half has no row to hang on. The ceiling is the tripwire.
+            if (engineBuffDur != null && Math.abs(engineBuffDur - timedRowDurs[0]) > 0.001) {
+              pluralityOutranks.push(`${where}: rows ${timedRowDurs[0]} vs plurality ${engineBuffDur}`);
+            }
+          }
+
+          // No row carries a duration, so the bag is the only source left and must still answer.
+          if (timedRowDurs.length === 0 && bag.buffDuration != null && bag.buffDuration > 0) {
+            census.bagAnswered += 1;
+            if (rendered == null || Math.abs(rendered - bag.buffDuration) > 0.001) {
+              deltas.push(`${where}: rowless power rendered ${rendered}, dropping the bag's ${bag.buffDuration}`);
+            }
+          }
+        }
+      }
+    }
+
+    // eslint-disable-next-line no-console
+    console.warn(`[class-2 duration] ${server}: ${census.projected} powers, ${census.agreedRows} with agreeing rows, ${census.disputed} disputed, ${census.bagAnswered} bag-answered, ${pluralityOutranks.length} plurality-outranks`);
+    expect(census.projected, `${server}: nothing projected`).toBeGreaterThan(500);
+    expect(census.disputed, `${server}: no power where the bag and the engine rows disagree — the rule is ungraded`).toBeGreaterThan(0);
+    expect(census.bagAnswered, `${server}: no rowless power — the bag fallback is ungraded`).toBeGreaterThan(0);
+    expect(deltas.slice(0, 20), `${server}: ${deltas.length} duration deltas`).toEqual([]);
+    expect(
+      pluralityOutranks.length,
+      `${server}: ${pluralityOutranks.length} powers whose recorded durations reach no row: ${pluralityOutranks.slice(0, 5).join(', ')}`,
+    ).toBeLessThan(10);
+  }, 900000);
 
   it.each(SERVERS)('%s: every selected power projects to the beta calculators', async (server) => {
     await loadDataset(server); // activates this dataset for the beta calculators

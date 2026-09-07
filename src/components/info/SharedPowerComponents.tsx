@@ -14,6 +14,7 @@ import {
   type ResolvedMagnitude,
 } from './resolvePowerMagnitudes';
 import type { ThreeTierValues } from './powerDisplayUtils';
+import { effectRowDuration, powerLevelDuration, type BagDurations } from './effectRowDuration';
 import { abbreviateDamageType, type PowerDamageResult } from '@/utils/calculations';
 import {
   CATEGORY_CONFIG,
@@ -698,29 +699,12 @@ export function RegistryEffectsDisplay({
   const durations = effects?.durations as Record<string, number> | undefined;
   const buffDur = effects?.buffDuration as number | undefined;
 
-  // Look up the duration to annotate a row with. Prefer per-effect entries
-  // when present; fall back to `buffDuration` so debuff/buff rows always
-  // surface "how long does this last" — even when the per-effect map is
-  // empty, the power-level `buffDuration` field is the same number.
-  // Historically the renderer skipped the annotation when the per-effect
-  // duration matched buffDuration on the assumption it was shown elsewhere,
-  // but buffDuration is not actually rendered as a primary display value —
-  // the `duration` prop on this component is unused. Re-surfacing the
-  // duration here is the only place users see "-Recharge lasts 15s".
-  const getEffectDuration = (effectKey: string, category?: string): number | undefined => {
-    const baseKey = effectKey.includes('_') ? effectKey.split('_')[0] : effectKey;
-    // An explicit per-effect duration always wins.
-    const explicit = durations?.[effectKey] ?? durations?.[baseKey];
-    if (explicit != null) return explicit;
-    // Otherwise fall back to the power-level buff duration ONLY for timed
-    // effects (buffs/debuffs/control) — that's where "this -Recharge debuff
-    // lasts 15s" comes from. Execution stats (End Cost, Rech Time, Accuracy,
-    // Pwr Range, Activation, Radius, Arc, Max Targets) are instantaneous power
-    // attributes with no duration, so the buff duration must NOT be stamped
-    // onto them (was producing a bogus "(2s)" on every such row).
-    if (category === 'execution') return undefined;
-    return buffDur;
-  };
+  // The precedence lives in `effectRowDuration.ts` so it can be graded without a render
+  // harness. Re-surfacing the duration is the only place users see "-Recharge lasts 15s" —
+  // `buffDuration` is not rendered as a primary value and the `duration` prop is unused.
+  const bagDurations: BagDurations = { durations, buffDuration: buffDur };
+  const getEffectDuration = (effectKey: string, category?: string, rowDuration?: number) =>
+    effectRowDuration({ effectKey, category, duration: rowDuration }, bagDurations);
 
   // Map enhancement type names to registry aspect names
   const enhancementToAspect: Record<string, string> = {
@@ -919,20 +903,16 @@ export function RegistryEffectsDisplay({
 
   // Power-level duration, surfaced as its own row instead of being stamped onto
   // every effect label as a "(Ns)" parenthetical — that repeated the same value
-  // down the column and pushed the label past its fixed track. Prefer the
-  // explicit power buff duration; fall back to a per-effect duration only when
-  // every timed row agrees, so a power with genuinely mixed durations doesn't
-  // collapse to one misleading row (those keep showing inline below).
+  // down the column and pushed the label past its fixed track.
   const hasTimedEffect = displayableEffects.some((e) => e.effect.config.category !== 'execution');
-  let powerDuration: number | undefined = buffDur != null && buffDur > 0 ? buffDur : undefined;
-  if (powerDuration == null) {
-    const durs = displayableEffects
-      .map((e) => getEffectDuration(e.effect.key, e.effect.config.category))
-      .filter((d): d is number => d != null && d > 0);
-    if (durs.length > 0 && durs.every((d) => Math.abs(d - durs[0]) < 0.001)) {
-      powerDuration = durs[0];
-    }
-  }
+  const powerDuration = powerLevelDuration(
+    displayableEffects.map((e) => ({
+      effectKey: e.effect.key,
+      category: e.effect.config.category,
+      duration: e.duration,
+    })),
+    bagDurations,
+  );
 
   return (
     <div>
@@ -1370,7 +1350,11 @@ export function RegistryEffectsDisplay({
           archetypeId,
           level,
           effectDur: itemKey
-            ? getEffectDuration(itemKey, group.type === 'single' ? group.item.effect.config.category : undefined)
+            ? getEffectDuration(
+                itemKey,
+                group.type === 'single' ? group.item.effect.config.category : undefined,
+                group.type === 'single' ? group.item.duration : undefined,
+              )
             : undefined,
         }));
         const result: React.ReactNode[] = [];
