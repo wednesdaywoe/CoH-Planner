@@ -196,8 +196,20 @@ function carriesModeVariant(power: Power): boolean {
 /** Does this power carry a +Strength self-buff at all? Read off the bag key the Strength pass
  *  consumes on both sides, so the fixture below discovers its own carriers from the fork's data
  *  rather than naming any (Rule 0). */
+/** Does this power grant +Strength — the Power Boost family the PROD6C fold reads?
+ *
+ *  Was `effects.specialBuff != null`. STRIP-1 emptied `effects`, so that read returned false for
+ *  every power on every fork, `strengthCandidates` found none, and the body below returned at its
+ *  first line — green, having graded nothing. It never went red, which makes it the worse half of
+ *  the same defect the 36 loud failures came from (PROD6B-BETA-PARITY class 1).
+ *
+ *  The atom source: `specialBuff` is the bag slot `aspect: Str` atoms route to, minus the
+ *  `DamageBuff` family, which routes to `damageBuff` instead. This is deliberately wider than that
+ *  routing, because it only has to NOMINATE candidates — the caller then runs each through the
+ *  engine and keeps the first whose `strength*` lands in a family the fold actually reads, which
+ *  is the step written precisely so this predicate need not replicate the routing. */
 function grantsStrength(power: Power): boolean {
-  return (power as unknown as { effects?: { specialBuff?: unknown } }).effects?.specialBuff != null;
+  return baseAtoms(power).some((a) => a.aspect === 'Str' && landsOnCaster(a));
 }
 
 /** Candidate builds whose ACTIVE powers grant +Strength (the Power Boost family), for the
@@ -859,8 +871,13 @@ const DISPLAY_MINTED_KEYS = new Set([
  *  universally true, the arm accepts the entire corpus, and the gate reports the strip as
  *  hundreds of separate converter drops.
  *
- *  So a bag holding nothing but keys the builder minted for itself is not evidence of drift. It
- *  is a power with no authored effects, and its rows stay hard. */
+ *  So a bag holding nothing but keys the builder minted for itself is not evidence of drift.
+ *
+ *  It is not evidence of AGREEMENT either, which is the half this originally got wrong by making
+ *  those rows hard. A resolver with no authored input is not a second opinion that disagrees — it
+ *  is not a witness at all, and 20,613 of the suite's 21,603 hard rows were that (census
+ *  2026-09-07, PROD6B-BETA-PARITY class 1). They leave through [`magnitudeDeltas`]' third bucket:
+ *  counted and reported per body, never accepted and never dropped. */
 function bagCarriesAuthoredEffects(bag: Record<string, unknown> | undefined): boolean {
   if (!bag) return false;
   return Object.keys(bag).some((key) => !DISPLAY_MINTED_KEYS.has(key));
@@ -895,8 +912,49 @@ function byTypeFingerprint(label: string | null | undefined): string | null {
   return label == null ? null : [...label].sort().join('');
 }
 
-/** Diff one power's granted magnitudes, split into real disagreements and adjudicated
- *  engine-supersedes-beta ones. Rows are matched by key, not position — the engine emits them in
+/** One power's magnitude comparison, in four parts.
+ *
+ *  `real` and `adjudicated` are the original two: a disagreement between two sides that both
+ *  answered, and one the authored data explains. `unwitnessed` is the third — rows the beta
+ *  cannot speak to because STRIP-1 left its bag holding only minted keys, which is most of the
+ *  corpus and was previously counted as disagreement. `witnessed` says whether this power's beta
+ *  side had any authored input at all, so a body can state the population it really graded
+ *  instead of the population it walked. */
+type MagnitudeDiff = { real: string[]; adjudicated: string[]; unwitnessed: string[]; witnessed: boolean };
+
+/** Running totals for one test body's magnitude half — how many powers it walked, how many of
+ *  those the beta could witness, and the unwitnessed rows themselves.
+ *
+ *  Every body reports these, because the alternative to reporting them is an arm that looks
+ *  green over a population of zero. `stated-skip-beats-silent-skip`. */
+type MagnitudeWitness = { powers: number; witnessed: number; unwitnessed: string[] };
+
+function witnessCounter(): MagnitudeWitness {
+  return { powers: 0, witnessed: 0, unwitnessed: [] };
+}
+
+/** Fold one power's diff into a body's totals, and return its hard deltas for the caller to push. */
+function countWitness(w: MagnitudeWitness, mags: MagnitudeDiff): MagnitudeDiff {
+  w.powers += 1;
+  if (mags.witnessed) w.witnessed += 1;
+  w.unwitnessed.push(...mags.unwitnessed);
+  return mags;
+}
+
+/** The line every body prints, and the claim it is allowed to make.
+ *
+ *  A body whose `witnessed` is 0 has no resolver oracle for magnitudes at all; its verdict is the
+ *  engine-side floor beside it, not this comparison. Saying so in the log is the difference
+ *  between a stated skip and a silent one. */
+function witnessLine(server: string, label: string, w: MagnitudeWitness): string {
+  return `[witness] ${server} ${label}: ${w.witnessed}/${w.powers} powers reached the resolver with an ` +
+    `authored bag; ${w.unwitnessed.length} rows unwitnessed` +
+    (w.witnessed === 0 ? ' — this body grades NO magnitude comparison (see the engine-side floor)' : '');
+}
+
+/** Diff one power's granted magnitudes into the three buckets of [`MagnitudeDiff`] — a real
+ *  disagreement, an adjudicated engine-supersedes-beta one, and a row the beta could not witness.
+ *  Rows are matched by key, not position — the engine emits them in
  *  bag order while the beta resolver emits them in registry-group order, and row ORDER is the
  *  component's sort, not part of the resolution under test.
  *
@@ -951,9 +1009,11 @@ function magnitudeDeltas(
   betaRows: Map<string, ResolvedMagnitude>,
   betaEffects: Record<string, unknown> | undefined,
   engineEffects?: Record<string, unknown>,
-): { real: string[]; adjudicated: string[] } {
+): MagnitudeDiff {
   const out: string[] = [];
   const adjudicated: string[] = [];
+  const unwitnessed: string[] = [];
+  const witnessed = bagCarriesAuthoredEffects(betaEffects);
   const engineByKey = new Map(engineRows.map((row) => [row.rowKey, row]));
   // Rows the engine typed off effect keys the beta's own bag lacks — the evidence an untyped
   // beta-only duration is the same template seen through the weaker converter.
@@ -981,8 +1041,10 @@ function magnitudeDeltas(
         adjudicated.push(`${key}: engine resolved ${engine.label} = ${engine.value.base} but the beta dataset carries no '${engine.effectKey}' effect`);
       } else if (betaEffects?.[engine.effectKey] == null) {
         // The bag carries no authored effect at all, so "no such key" says nothing about this
-        // key — see [`bagCarriesAuthoredEffects`]. Hard, and named as the population it is.
-        out.push(`${powerName}.${key}: engine resolved ${engine.label} = ${engine.value.base} and the beta's display bag carries NO authored effect (minted keys only)`);
+        // key — see [`bagCarriesAuthoredEffects`]. The beta is not a witness here, so this is
+        // neither a delta nor an acceptance: it goes to the third bucket, which every call site
+        // counts and states.
+        unwitnessed.push(`${powerName}.${key}: engine resolved ${engine.label} = ${engine.value.base}, beta bag has nothing authored`);
       } else if (drift) {
         // The engine resolves a row the beta does not, from a slot the datasets disagree on —
         // the legacy pool/epic `fly` slots against the contract's cap/current split is the
@@ -1052,7 +1114,7 @@ function magnitudeDeltas(
       }
     }
   }
-  return { real: out, adjudicated };
+  return { real: out, adjudicated, unwitnessed, witnessed };
 }
 
 /** A bypass slice no Alpha authors — the whole bonus bypassing ED — for probing whether the split
@@ -1111,6 +1173,27 @@ const MAX_SLOTS_PER_POWER = 6;
 /** Did any projected value for this power change between two runs? Every enhanceable surface the
  *  projection carries, not one chosen aspect: an Alpha that enhances only Heal moves magnitude rows
  *  and no execution tier, and a guard watching recharge alone would call that "no effect". */
+/** Did the GRANTED MAGNITUDES move between two projections?
+ *
+ *  The magnitude-only half of [`projectedValuesMoved`], which returns true on an execution tier
+ *  alone. Every "the state reached the engine" floor used that, and the tiers are the dominant
+ *  subpopulation: a body could keep asserting the state was observable while the state had
+ *  stopped reaching magnitude rows entirely. That was tolerable while the resolver comparison
+ *  covered the magnitude half; STRIP-1 removed the resolver's input, so the floor beneath those
+ *  bodies IS this now. `mutation-floor-hidden-by-dominant-subpopulation`. */
+function magnitudeRowsMoved(
+  a: PowerProjection,
+  b: PowerProjection,
+  tier: 'base' | 'enhanced' | 'final' = 'enhanced',
+): boolean {
+  const rightRows = new Map(b.grantedMagnitudes.map((row) => [row.rowKey, row]));
+  for (const row of a.grantedMagnitudes) {
+    const other = rightRows.get(row.rowKey);
+    if (other && Math.abs(row.value[tier] - other.value[tier]) > TOLERANCE) return true;
+  }
+  return false;
+}
+
 function projectedValuesMoved(a: PowerProjection, b: PowerProjection): boolean {
   const tiers: (keyof PowerProjection)[] = ['recharge', 'enduranceCost', 'accuracy', 'castTime', 'range'];
   for (const key of tiers) {
@@ -1158,9 +1241,10 @@ function diffProjection(
   projection: Map<string, PowerProjection>,
   rawGlobal: ReturnType<typeof mapGlobal>,
   state: ReferenceState = {},
-): { deltas: string[]; adjudicated: string[]; rows: number } {
+): { deltas: string[]; adjudicated: string[]; rows: number; witness: MagnitudeWitness } {
   const deltas: string[] = [];
   const adjudicated: string[] = [];
+  const witness = witnessCounter();
   let rows = 0;
 
   for (const power of powers) {
@@ -1169,12 +1253,12 @@ function diffProjection(
     if (!engine) continue;
     const { projection: beta, magnitudes, bag } = betaReference(power, build, archetypeId, rawGlobal, state);
     const perma = permaDelta(engine.perma, beta.perma, undefined, power);
-    const mags = magnitudeDeltas(
+    const mags = countWitness(witness, magnitudeDeltas(
       power.internalName,
       engine.grantedMagnitudes,
       magnitudes,
       bag,
-    );
+    ));
     rows += engine.grantedMagnitudes.length;
     deltas.push(
       ...tierDelta(`${power.internalName}.recharge`, engine.recharge, beta.recharge),
@@ -1198,7 +1282,7 @@ function diffProjection(
       deltas.push(`${power.internalName}.arcanaTime: engine ${arcanaEngine} vs beta ${arcanaBeta}`);
     }
   }
-  return { deltas, adjudicated, rows };
+  return { deltas, adjudicated, rows, witness };
 }
 
 const suite = artifactsReady ? describe : describe.skip;
@@ -1591,7 +1675,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
       const { magnitudes } = betaReference(power, build, archetypeId, rawGlobal);
       return n + engine.grantedMagnitudes.filter((r) => magnitudes.has(r.rowKey)).length;
     }, 0);
-    const { deltas, adjudicated } = diffProjection(server, powers, build, archetypeId, projection, rawGlobal);
+    const { deltas, adjudicated, witness } = diffProjection(server, powers, build, archetypeId, projection, rawGlobal);
 
     // eslint-disable-next-line no-console
     console.warn(`[PROD6B-2 magnitudes] ${server}: ${magnitudeRows} engine rows across ${powers.length} powers, ${matchedRows} matched key-for-key`);
@@ -1603,6 +1687,13 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
       // eslint-disable-next-line no-console
       console.error(`\n[PROD6B-1 projection parity] ${server} (${powers.length} powers)\n    ${deltas.join('\n    ')}`);
     }
+    // The magnitude half of this body is unwitnessed: STRIP-1 left the fixture's bags holding
+    // minted keys only (0 / 0 / 1 / 0 powers carry an authored one), so the comparison above
+    // grades the execution tiers, ArcanaTime, perma and enhancement bonuses, and the magnitude
+    // rows only where the resolver can still speak. Floored on the rows existing at all; their
+    // shape is graded by the ENGLAG-1 adapter arm over the whole corpus.
+    // eslint-disable-next-line no-console
+    console.warn(witnessLine(server, 'every selected power projects to the beta calculators', witness));
     expect(deltas).toEqual([]);
   }, 120000); // dataset load + per-power calculators over a full build; matches the suite's
   // --testTimeout, for the same reason as serverParity.ts: 30000 was chosen to beat vitest's 5s
@@ -1615,6 +1706,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
   // above.
   it.each(SERVERS)('%s: granted magnitudes match the beta resolver for every archetype', async (server) => {
     await loadDataset(server);
+    const witness = witnessCounter();
 
     const deltas: string[] = [];
     const adjudicated: string[] = [];
@@ -1663,13 +1755,13 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
         // The engine's OWN copy of the power (the 6C-3h evidence, extended to this sweep by the
         // 2026-08-19 oracle re-cut). Absent on a lookup miss, which keeps every row strict there.
         const enginePower = engineBundle.get(projectionKey(power.powerSet, power.internalName));
-        const mags = magnitudeDeltas(
+        const mags = countWitness(witness, magnitudeDeltas(
           `${atId}/${power.internalName}`,
           engine.grantedMagnitudes,
           magnitudes,
           bag,
           enginePower ? displayBag(enginePower as unknown as Power, 0, shownPower(enginePower as unknown as Power, build, atId, rawGlobal)) : undefined,
-        );
+        ));
         deltas.push(...mags.real);
         adjudicated.push(
           ...mags.adjudicated.map((d) => `${atId}/${power.internalName}.${d}`),
@@ -1706,6 +1798,13 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     expect(summonPowers, `${server}: the summon fixture reached no power carrying a summon`).toBeGreaterThan(20);
     expect(enginePetRows, `${server}: no engine row resolved from a pseudo-pet key — the merge is ungraded here`).toBeGreaterThan(0);
     expect(betaPetRows, `${server}: no beta row resolved from a pseudo-pet key — the merge is ungraded here`).toBeGreaterThan(0);
+    // Anti-vacuity for the magnitude half. STRIP-1 left most of the corpus unable to answer, and
+    // an arm that grades zero powers is green for the wrong reason — so the population the
+    // resolver CAN still witness is floored rather than assumed.
+    expect(
+      witness.witnessed,
+      witnessLine(server, 'granted magnitudes match the beta resolver for every archetype', witness),
+    ).toBeGreaterThan(0);
     expect(deltas).toEqual([]);
   }, 120000);
 
@@ -1720,6 +1819,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
   // in — over every archetype's second powerset, which the fixture never picks.
   it.each(SERVERS)('%s: a power the build does not hold projects on demand', async (server) => {
     await loadDataset(server);
+    const witness = witnessCounter();
 
     const deltas: string[] = [];
     const adjudicated: string[] = [];
@@ -1758,13 +1858,13 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
         // The engine's OWN copy (the 6C-3h evidence, extended here by the 2026-08-19 re-cut) —
         // for the magnitude drift branches and for the perma null boundary alike.
         const enginePower = bundlePowers(server).get(projectionKey(unheldSet.id, power.internalName));
-        const mags = magnitudeDeltas(
+        const mags = countWitness(witness, magnitudeDeltas(
           `${atId}/${power.internalName}`,
           engine.grantedMagnitudes,
           magnitudes,
           bag,
           enginePower ? displayBag(enginePower as unknown as Power, 0, shownPower(enginePower as unknown as Power, build, atId, rawGlobal)) : undefined,
-        );
+        ));
         const perma = permaDelta(engine.perma, beta.perma, enginePower, unslotted);
         deltas.push(
           ...tierDelta(`${atId}/${power.internalName}.recharge`, engine.recharge, beta.recharge),
@@ -1795,6 +1895,13 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     // Guard the sweep: an empty walk would pass vacuously.
     expect(projected, `${server}: no unheld power was projected`).toBeGreaterThan(0);
     expect(magnitudeRows, `${server}: no unheld power resolved a magnitude row`).toBeGreaterThan(0);
+    // Anti-vacuity for the magnitude half. STRIP-1 left most of the corpus unable to answer, and
+    // an arm that grades zero powers is green for the wrong reason — so the population the
+    // resolver CAN still witness is floored rather than assumed.
+    expect(
+      witness.witnessed,
+      witnessLine(server, 'a power the build does not hold projects on demand', witness),
+    ).toBeGreaterThan(0);
     expect(deltas).toEqual([]);
   }, 120000);
 
@@ -1818,6 +1925,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
   //     non-zero count is what makes the set-scoped resolution load-bearing.
   it.each(SERVERS)('%s: pool and epic powers project through their legacy shape', async (server) => {
     await loadDataset(server);
+    const witness = witnessCounter();
 
     const build = buildFor(server);
     const atId = build.archetype.id as string;
@@ -1863,13 +1971,13 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
           const { projection: beta, magnitudes, bag } = betaReference(unslotted, build, atId, rawGlobal);
           // The engine's OWN copy of this power — the evidence both adjudications rest on.
           const enginePower = engineBundle.get(projectionKey(set.id, power.internalName));
-          const mags = magnitudeDeltas(
+          const mags = countWitness(witness, magnitudeDeltas(
             tag,
             engine.grantedMagnitudes,
             magnitudes,
             bag,
             enginePower ? displayBag(enginePower as unknown as Power, 0, shownPower(enginePower as unknown as Power, build, atId, rawGlobal)) : {},
-          );
+          ));
           const perma = permaDelta(engine.perma, beta.perma, enginePower, power);
           deltas.push(
             ...tierDelta(`${tag}.recharge`, engine.recharge, beta.recharge),
@@ -1924,6 +2032,11 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
         .sort(),
       `${server}: powers whose window only the atoms carry`,
     ).toEqual(MIRROR_BLIND_ROWS[server]);
+    // No floor on the witnessed population here: it is zero on every fork, and pinning it at zero
+    // would assert the strip stays. The verdict for this body's magnitude half is the engine-side
+    // floor above; this states the skip rather than leaving it silent.
+    // eslint-disable-next-line no-console
+    console.warn(witnessLine(server, 'pool and epic powers project through their legacy shape', witness));
     expect(deltas).toEqual([]);
   }, 180000);
 
@@ -1939,12 +2052,19 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
   // method: no reimplementation of the code under test).
   it.each(SERVERS)('%s: +Strength self-buffs reach the granted magnitudes', async (server) => {
     await loadDataset(server);
+    const witness = witnessCounter();
     const candidates = strengthCandidates(server);
-    if (candidates.length === 0) {
-      // eslint-disable-next-line no-console
-      console.warn(`[PROD6C strength] ${server}: fork carries no specialBuff power — nothing to grade`);
-      return;
-    }
+    // This used to warn "fork carries no specialBuff power" and RETURN. Between STRIP-1 and
+    // 2026-09-07 that branch was taken on ALL FOUR forks, because `grantsStrength` read the
+    // emptied `effects.specialBuff` — so the body returned at its first line, green, with nothing
+    // graded, and no arm anywhere said so. A floor instead: every fork carries carriers (9 on
+    // each, measured), and a discovery function that finds none is broken, not a corpus gap.
+    expect(
+      candidates.length,
+      `${server}: no powerset carries a +Strength power — \`grantsStrength\` found no carrier on a ` +
+        `fork that has them, so the discovery is reading something that is gone (it read the ` +
+        `stripped \`effects.specialBuff\` until 2026-09-07) and this body grades nothing`,
+    ).toBeGreaterThan(0);
 
     // (1) Some candidate must produce a Strength fraction in a family the fold reads, or the
     // rest of this measures nothing. Most carriers grant ToHit / endurance / movement Strength,
@@ -1981,6 +2101,29 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     }
     expect(movedRows, `${server}: the +Strength fold changed no displayed row`).toBeGreaterThan(0);
 
+    // …and the fold must reach the ENGINE's magnitude rows, which is the half the resolver can no
+    // longer speak for: this body witnesses 0 of its 9 carriers' powers. Same fixture with the
+    // carriers switched off, so the only difference between the two runs is the Strength they
+    // grant. The fold lands in the FINAL tier, past enhancement, so that is the tier compared.
+    const deactivate = (placed: Build['primary']) => ({
+      ...placed,
+      powers: (placed?.powers ?? []).map((p) => (carriers.includes(p.internalName) ? { ...p, isActive: false } : p)),
+    });
+    const unfolded = { ...build, primary: deactivate(build.primary), secondary: deactivate(build.secondary), activeModes: [] };
+    const plainProjection = mapPowerProjection(engineTotals(server, unfolded).power_projection);
+    let engineFolded = 0;
+    for (const power of powers) {
+      const key = projectionKey(power.powerSet, power.internalName);
+      const on = projection.get(key);
+      const off = plainProjection.get(key);
+      if (on && off && magnitudeRowsMoved(on, off, 'final')) engineFolded += 1;
+    }
+    expect(
+      engineFolded,
+      `${server}: switching the +Strength carriers off moved no ENGINE magnitude row — the fold ` +
+        `is not reaching them, and the resolver comparison below grades 0 of this fixture's powers`,
+    ).toBeGreaterThan(0);
+
     // (3) …and on that fixture the engine still matches the beta row for row.
     const deltas: string[] = [];
     const adjudicated: string[] = [];
@@ -1994,13 +2137,13 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
       // one power is a DIFFERENT record than the export's (its recharge/accuracy/mez all
       // disagree at base) — every one of those rows is authored drift, not a fold defect.
       const enginePower = engineBundle.get(projectionKey(power.powerSet, power.internalName));
-      const mags = magnitudeDeltas(
+      const mags = countWitness(witness, magnitudeDeltas(
         `${atId}/${power.internalName}`,
         engine.grantedMagnitudes,
         magnitudes,
         bag,
         enginePower ? displayBag(enginePower as unknown as Power, 0, shownPower(enginePower as unknown as Power, build, atId, rawGlobal)) : undefined,
-      );
+      ));
       deltas.push(...mags.real);
       adjudicated.push(...mags.adjudicated.map((d) => `${atId}/${power.internalName}.${d}`));
     }
@@ -2015,6 +2158,11 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
       // eslint-disable-next-line no-console
       console.error(`\n[PROD6C strength] ${server} (${deltas.length} deltas)\n    ${deltas.slice(0, 40).join('\n    ')}`);
     }
+    // No floor on the witnessed population here: this fixture's carriers are clicks and their
+    // powersets' bags are empty, so it is zero on every fork. The verdict for the magnitude half
+    // is `engineFolded` above; this states the skip rather than leaving it silent.
+    // eslint-disable-next-line no-console
+    console.warn(witnessLine(server, '+Strength self-buffs reach the granted magnitudes', witness));
     expect(deltas).toEqual([]);
   }, 60000);
 
@@ -2032,6 +2180,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
   // passing vacuously — the reach is measured with the beta's own bag builder, not asserted.
   it.each(SERVERS)('%s: granted magnitudes scale with the targets-hit slider', async (server) => {
     await loadDataset(server);
+    const witness = witnessCounter();
 
     const deltas: string[] = [];
     const adjudicated: string[] = [];
@@ -2100,7 +2249,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
         // The engine's OWN copy of this power, dragged to the same setting: the authored values
         // both sides read, which is what separates a converter-value difference from a calc bug.
         const enginePower = engineBundle.get(key);
-        const mags = magnitudeDeltas(
+        const mags = countWitness(witness, magnitudeDeltas(
           `${atId}/${power.internalName}@${targetsHit}`,
           engine.grantedMagnitudes,
           magnitudes,
@@ -2108,17 +2257,17 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
           enginePower
             ? displayBag(enginePower as unknown as Power, targetsHit, shownPower(enginePower as unknown as Power, build, atId, rawGlobal))
             : undefined,
-        );
+        ));
         deltas.push(...mags.real);
         adjudicated.push(...mags.adjudicated.map((d) => `${atId}/${power.internalName}.${d}`));
 
-        const atZero = magnitudeDeltas(
+        const atZero = countWitness(witness, magnitudeDeltas(
           `${atId}/${power.internalName}@0`,
           zeroed.get(key)?.grantedMagnitudes ?? [],
           betaReference(power, build, atId, rawGlobalZero).magnitudes,
           displayBag(power, 0, shownPower(power, build, atId, rawGlobal)),
           enginePower ? displayBag(enginePower as unknown as Power, 0, shownPower(enginePower as unknown as Power, build, atId, rawGlobal)) : undefined,
-        );
+        ));
         deltas.push(...atZero.real);
         adjudicated.push(...atZero.adjudicated.map((d) => `${atId}/${power.internalName}@0.${d}`));
       }
@@ -2137,14 +2286,35 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
       // eslint-disable-next-line no-console
       console.error(`\n[PROD6C-3b targets-hit] ${server} (${deltas.length} deltas)\n    ${deltas.slice(0, 40).join('\n    ')}`);
     }
-    if (bagsChanged === 0) {
-      // eslint-disable-next-line no-console
-      console.warn(`[PROD6C-3b targets-hit] ${server}: no power's display bag changes under its own slider — this fork's corpus cannot grade the transform`);
-      expect(deltas).toEqual([]);
-      return;
-    }
+    // This used to warn and RETURN here, on the reading that a fork whose corpus reaches the
+    // transform on no power should be reported and skipped rather than pass vacuously. That
+    // reading is dead: `sliders` is 0 on all four forks, because `getStackingInfo` opens with
+    // `if (!power.effects) return null` and STRIP-1 emptied `effects` on every power. The skip
+    // condition and the thing it was skipping have the same cause, so the body returned green
+    // having graded nothing — and it never went red, which is why it outlasted the 36 that did.
+    //
+    // Failing loudly instead (Rule 1). This is not a corpus gap to report; it is the discovery
+    // function reading a bag that is gone, and the same starvation has taken the InfoPanel's
+    // targets-hit slider off every power on every fork.
+    expect(
+      sliders,
+      `${server}: not one power carries a stacking slider — \`getStackingInfo\` reads \`power.effects\`, ` +
+        `which STRIP-1 emptied, so it returns null for the whole corpus. The engine's atom-native ` +
+        `replacement is in coh_math's stacking.rs; the TS side has not been re-pointed at it.`,
+    ).toBeGreaterThan(0);
+    expect(
+      bagsChanged,
+      `${server}: ${sliders} powers carry a slider and not one display bag changes under it`,
+    ).toBeGreaterThan(0);
     expect(betaMoved, `${server}: the slider moved no beta row`).toBeGreaterThan(0);
     expect(engineMoved, `${server}: the slider moved no engine row`).toBeGreaterThan(0);
+    // Anti-vacuity for the magnitude half. STRIP-1 left most of the corpus unable to answer, and
+    // an arm that grades zero powers is green for the wrong reason — so the population the
+    // resolver CAN still witness is floored rather than assumed.
+    expect(
+      witness.witnessed,
+      witnessLine(server, 'granted magnitudes scale with the targets-hit slider', witness),
+    ).toBeGreaterThan(0);
     expect(deltas).toEqual([]);
   }, 180000);
 
@@ -2159,6 +2329,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
   // adapter forwards it to the engine, `betaReference` resolves the beta power through it.
   it.each(SERVERS)('%s: the shown power drives the projection under every combat state', async (server) => {
     await loadDataset(server);
+    const witness = witnessCounter();
 
     const deltas: string[] = [];
     const adjudicated: string[] = [];
@@ -2235,13 +2406,13 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
           // 2026-08-19 re-cut) — resolved through the same effective-power transform, so a
           // conditional-merged row still compares authored-to-authored.
           const enginePower = bundlePowers(server).get(key);
-          const mags = magnitudeDeltas(
+          const mags = countWitness(witness, magnitudeDeltas(
             `${atId}/${power.internalName}@${tag}`,
             engine.grantedMagnitudes,
             magnitudes,
             bag,
             enginePower ? displayBag(enginePower as unknown as Power, 0, shownPower(enginePower as unknown as Power, build, atId, rawGlobal, ctx)) : undefined,
-          );
+          ));
           deltas.push(...mags.real);
           adjudicated.push(...mags.adjudicated.map((d) => `${atId}/${power.internalName}@${tag}.${d}`));
           deltas.push(
@@ -2320,6 +2491,13 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
       // eslint-disable-next-line no-console
       console.warn(`[PROD6C-3k effective] ${server}: no cast moved from cover — ${openers} openers reached, none whose mid-combat cast differs from its from-Hide one`);
     }
+    // Anti-vacuity for the magnitude half. STRIP-1 left most of the corpus unable to answer, and
+    // an arm that grades zero powers is green for the wrong reason — so the population the
+    // resolver CAN still witness is floored rather than assumed.
+    expect(
+      witness.witnessed,
+      witnessLine(server, 'the shown power drives the projection under every combat state', witness),
+    ).toBeGreaterThan(0);
     expect(deltas).toEqual([]);
   }, 300000);
 
@@ -2332,11 +2510,13 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
   // Redirect table), so the fixture discovers which archetypes have them rather than naming any.
   it.each(SERVERS)('%s: a live caster mode redirects the projected power', async (server) => {
     await loadDataset(server);
+    const witness = witnessCounter();
 
     const deltas: string[] = [];
     const adjudicated: string[] = [];
     let modedPowers = 0;
     let movedPowers = 0;
+    let movedMagPowers = 0;
     let movedRows = 0;
 
     for (const atId of STANDARD_ARCHETYPE_IDS) {
@@ -2371,7 +2551,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
           modedPowers += 1;
 
           const { projection: beta, magnitudes, bag } = betaReference(power, build, atId, rawGlobal);
-          const mags = magnitudeDeltas(`${atId}/${power.internalName}@${mode}`, engine.grantedMagnitudes, magnitudes, bag);
+          const mags = countWitness(witness, magnitudeDeltas(`${atId}/${power.internalName}@${mode}`, engine.grantedMagnitudes, magnitudes, bag));
           deltas.push(...mags.real);
           adjudicated.push(...mags.adjudicated.map((d) => `${atId}/${power.internalName}@${mode}.${d}`));
           deltas.push(
@@ -2384,12 +2564,20 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
 
           // Reach: what the mode actually MOVED against the no-mode run. A redirect that changes
           // nothing is ungraded however green the parity goes (the PROD6C-3f method).
+          //
+          // Measured on the DISPLAY BAG, which STRIP-1 emptied — so what survives here is the
+          // minted keys, and a redirect that changed only authored effects now moves nothing.
+          // Kept because a redirect that swaps the execution stats still shows up in it, and
+          // widened below with the engine's own rows, which are the half the bag can no longer
+          // speak for.
           const offBag = displayBag(power, 0, shownPower(power, base, atId, plainRawGlobal));
           const changed = [...new Set([...Object.keys(offBag), ...Object.keys(bag)])].filter(
             (bagKey) => JSON.stringify(offBag[bagKey]) !== JSON.stringify(bag[bagKey]),
           );
           const beforeCast = plain.get(key)?.castTime;
           const castMoved = !!beforeCast && !!engine.castTime && Math.abs(beforeCast.base - engine.castTime.base) > TOLERANCE;
+          const off = plain.get(key);
+          if (off && magnitudeRowsMoved(engine, off)) movedMagPowers += 1;
           if (changed.length > 0 || castMoved) {
             movedPowers += 1;
             movedRows += changed.length;
@@ -2416,6 +2604,19 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     // 28 / 32 / 22 powers), so none of them may quietly grade nothing.
     expect(modedPowers, `${server}: no power/mode pair reached — the fixture grades no redirect`).toBeGreaterThan(0);
     expect(movedPowers, `${server}: ${modedPowers} pairs reached and not one value moved`).toBeGreaterThan(0);
+    // …and the redirect reached the granted MAGNITUDES, read off the engine rather than off the
+    // stripped bag above. This body witnesses 0 of its powers on every fork, so the resolver
+    // comparison beside it grades none of them and this is the whole verdict for that half.
+    expect(
+      movedMagPowers,
+      `${server}: ${modedPowers} pairs reached and the mode moved no engine MAGNITUDE row — the ` +
+        `bag-keyed reach above cannot see this, because STRIP-1 left the bag holding minted keys`,
+    ).toBeGreaterThan(0);
+    // No floor on the witnessed population here: it is zero on every fork, and pinning it at zero
+    // would assert the strip stays. The verdict for this body's magnitude half is the engine-side
+    // floor above; this states the skip rather than leaving it silent.
+    // eslint-disable-next-line no-console
+    console.warn(witnessLine(server, 'a live caster mode redirects the projected power', witness));
     expect(deltas).toEqual([]);
   }, 300000);
 
@@ -2508,6 +2709,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
   // lockstep, so the moved-row counts catch that instead.
   it.each(SERVERS)('%s: granted magnitudes resolve at the build level, not a pinned one', async (server) => {
     await loadDataset(server);
+    const witness = witnessCounter();
 
     const deltas: string[] = [];
     const adjudicated: string[] = [];
@@ -2541,13 +2743,13 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
         // The engine's OWN copy (6C-3h evidence, extended by the 2026-08-19 re-cut) — the
         // dataset differences the level-50 sweep adjudicates are the same records here.
         const enginePower = bundlePowers(server).get(key);
-        const mags = magnitudeDeltas(
+        const mags = countWitness(witness, magnitudeDeltas(
           `${atId}/${power.internalName}@${SWEEP_LEVEL}`,
           engineLow.grantedMagnitudes,
           betaLow,
           low_.bag,
           enginePower ? displayBag(enginePower as unknown as Power, 0, shownPower(enginePower as unknown as Power, low.build, atId, low.rawGlobal)) : undefined,
-        );
+        ));
         deltas.push(...mags.real);
         adjudicated.push(...mags.adjudicated.map((d) => `${atId}/${power.internalName}.${d}`));
         rows += engineLow.grantedMagnitudes.length;
@@ -2580,6 +2782,13 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
 
     expect(engineMoved, `${server}: no engine row changed between level ${SWEEP_LEVEL} and 50 — the level is being ignored`).toBeGreaterThan(0);
     expect(betaMoved, `${server}: no beta row changed between level ${SWEEP_LEVEL} and 50 — the level is being ignored`).toBeGreaterThan(0);
+    // Anti-vacuity for the magnitude half. STRIP-1 left most of the corpus unable to answer, and
+    // an arm that grades zero powers is green for the wrong reason — so the population the
+    // resolver CAN still witness is floored rather than assumed.
+    expect(
+      witness.witnessed,
+      witnessLine(server, 'granted magnitudes resolve at the build level, not a pinned one', witness),
+    ).toBeGreaterThan(0);
     expect(deltas).toEqual([]);
   }, 180000);
 
@@ -2643,12 +2852,14 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     // equipped Alpha — rather than by reimplementing the split here (the PROD6B-2b method).
     const plainProjection = mapPowerProjection(engineTotals(server, build).power_projection);
     let engineMoved = 0;
+    let engineMagsMoved = 0;
     let betaMoved = 0;
     for (const power of powers) {
       const key = projectionKey(power.powerSet, power.internalName);
       const withAlpha = projection.get(key);
       const without = plainProjection.get(key);
       if (withAlpha && without && projectedValuesMoved(withAlpha, without)) engineMoved++;
+      if (withAlpha && without && magnitudeRowsMoved(withAlpha, without)) engineMagsMoved++;
       const betaWith = betaEnhancement(power, build, state);
       const betaWithout = betaEnhancement(power, build, {});
       for (const aspect of alpha.aspects) {
@@ -2657,9 +2868,18 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     }
     expect(engineMoved, `${server}: equipping Alpha changed no engine-projected value`).toBeGreaterThan(0);
     expect(betaMoved, `${server}: equipping Alpha changed no beta enhancement bonus`).toBeGreaterThan(0);
+    // The magnitude half of that reach, floored separately. The resolver used to grade Alpha's
+    // effect on the granted magnitudes row for row; STRIP-1 left it nothing to grade with (this
+    // body witnesses 0 / 0 / 3 / 0 powers), so the claim that Alpha reaches the magnitudes at all
+    // rests here. `projectedValuesMoved` above is satisfied by an execution tier alone.
+    expect(
+      engineMagsMoved,
+      `${server}: equipping Alpha moved an execution tier but no granted MAGNITUDE row — with the ` +
+        `resolver comparison starved by STRIP-1, nothing else grades Alpha's reach into them`,
+    ).toBeGreaterThan(0);
 
     // (2) …and under that Alpha the engine still matches the beta calculators row for row.
-    const { deltas, adjudicated, rows } = diffProjection(server, powers, build, archetypeId, projection, rawGlobal, state);
+    const { deltas, adjudicated, rows, witness } = diffProjection(server, powers, build, archetypeId, projection, rawGlobal, state);
 
     // eslint-disable-next-line no-console
     console.warn(
@@ -2676,6 +2896,10 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
       // eslint-disable-next-line no-console
       console.error(`\n[PROD6C-3f alpha] ${server} (${deltas.length} deltas)\n    ${deltas.slice(0, 60).join('\n    ')}`);
     }
+    // Unwitnessed magnitude half — see the `engineMagsMoved` floor above, which is this body's
+    // verdict for it. 0 / 0 / 3 / 0 powers reach the resolver with an authored bag.
+    // eslint-disable-next-line no-console
+    console.warn(witnessLine(server, 'an equipped Alpha splits through ED on every projected power', witness));
     expect(deltas).toEqual([]);
   }, 60000);
 
@@ -2692,6 +2916,8 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     const adjudicated: string[] = [];
     let rows = 0;
     let rescaled = 0;
+    let magsRescaled = 0;
+    const witness = witnessCounter();
     const suppression: string[] = [];
 
     // 45 is the incarnate floor itself, so `above` keeps them alive while still rescaling IOs and
@@ -2747,12 +2973,29 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
         }
       }
 
+      // …and observable in the GRANTED MAGNITUDES, not only in the enhancement bonuses feeding
+      // them. `rescaled` counts a beta-side aspect moving; it would stay green with the engine's
+      // magnitude rows frozen at their level-50 values. That gap used to be covered by the
+      // resolver comparison below, which STRIP-1 starved (this body witnesses 0 / 0 / 2 / 0).
+      const atFifty = mapPowerProjection(
+        engineTotals(server, build, ctxWith({ incarnateActive: { ...CTX.incarnateActive, alpha: true } })).power_projection,
+      );
+      for (const power of powers) {
+        const key = projectionKey(power.powerSet, power.internalName);
+        const ex = projection.get(key);
+        const full = atFifty.get(key);
+        if (ex && full && magnitudeRowsMoved(ex, full)) magsRescaled += 1;
+      }
+
       // Per power, so a delta names the power it came from. Both sides read the same handicap
       // curves now (PROD6C-3g), so every row is a hard must-equal — the cap-multiple adjudication
       // this loop used to carry had nothing left to exempt.
       for (const power of powers) {
         const diff = diffProjection(server, [power], build, build.archetype.id!, projection, rawGlobal, state);
         rows += diff.rows;
+        witness.powers += diff.witness.powers;
+        witness.witnessed += diff.witness.witnessed;
+        witness.unwitnessed.push(...diff.witness.unwitnessed);
         adjudicated.push(...diff.adjudicated.map((d) => `@ex${exemplarLevel} ${d}`));
         deltas.push(...diff.deltas.map((d) => `@ex${exemplarLevel} ${d}`));
       }
@@ -2761,7 +3004,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
 
     // eslint-disable-next-line no-console
     console.warn(
-      `[PROD6C-3f exemplar] ${server}: ${rows} magnitude rows across ex${above}/ex${below}, ${rescaled} powers rescaled — ${suppression.join(', ')}; ` +
+      `[PROD6C-3f exemplar] ${server}: ${rows} magnitude rows across ex${above}/ex${below}, ${rescaled} powers rescaled (${magsRescaled} in their magnitude rows) — ${suppression.join(', ')}; ` +
         `shared exemplar pre-clamp ${exemplarCap}`,
     );
     if (adjudicated.length) {
@@ -2773,6 +3016,15 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
       console.error(`\n[PROD6C-3f exemplar] ${server} (${deltas.length} deltas)\n    ${deltas.slice(0, 60).join('\n    ')}`);
     }
     expect(rescaled, `${server}: exemplaring changed no enhancement bonus — the fixture's IOs are all attuned`).toBeGreaterThan(0);
+    expect(
+      magsRescaled,
+      `${server}: exemplaring moved an enhancement bonus but no granted MAGNITUDE row against the ` +
+        `level-50 run — with the resolver comparison starved by STRIP-1, nothing else grades the ` +
+        `rescale reaching the rows`,
+    ).toBeGreaterThan(0);
+    // Unwitnessed magnitude half — the `magsRescaled` floor above is this body's verdict for it.
+    // eslint-disable-next-line no-console
+    console.warn(witnessLine(server, 'an exemplared build rescales IOs, and below 45 suppresses Alpha', witness));
     expect(deltas).toEqual([]);
   }, 90000);
 });
