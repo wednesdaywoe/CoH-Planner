@@ -312,3 +312,22 @@ const EFFECT_AREA_LABEL: Record<string, string> = {
 export function formatEffectArea(area: string): string {
   return EFFECT_AREA_LABEL[area] ?? area.replace(/([a-z])([A-Z])/g, '$1 $2');
 }
+
+/** Pseudo-pet summon durations at or above this are the data's "permanent" sentinel (99999s) —
+ *  a persistent pet with no bounded lifespan on the wire. Real patches last seconds to a
+ *  minute, well under this. */
+export const PERMANENT_PSEUDOPET_DURATION = 1000;
+
+/**
+ * A summon's lifetime, as every surface should print it.
+ *
+ * The sentinel rendered verbatim reads as a number somebody forgot to fix rather than as "this
+ * henchman stays until it dies". Shared because three surfaces print this fact and they did not
+ * agree: the InfoPanel's pet block formatted it, the picker tooltip printed `({duration}s)` raw
+ * and so showed `99999s`, and `buildDisplayEffects` backfilled it into the `buffDuration` slot,
+ * where it collided with the engine's own answer for that key (PROD6B-BETA-PARITY class 2).
+ */
+export function formatSummonDuration(duration?: number): string {
+  if (!duration || duration >= PERMANENT_PSEUDOPET_DURATION) return 'permanent';
+  return `${duration}s`;
+}

@@ -180,6 +180,13 @@ function quickSnipeReadsCasterToHit(power: Power): boolean {
   return tokens.some((t, i) => t.toLowerCase() === 'cur.ktohit' && tokens[i + 1]?.toLowerCase() === 'source>');
 }
 
+/** Does this power summon an entity? Read off `power.summon`, the whole-power verdict the
+ *  converter stamps (ENT-22) — never re-derived from `EntCreate` atoms, which state the
+ *  entity's own lifespan and not whether the power has one. */
+function carriesSummon(power: Power): boolean {
+  return (power as unknown as { summon?: unknown }).summon != null;
+}
+
 /** Does this power redirect on a caster mode (PROD6C-3l)? Read off the power's own table so the
  *  fixture discovers which archetypes have modes instead of naming any. */
 function carriesModeVariant(power: Power): boolean {
@@ -1406,16 +1413,21 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
   // would leave all of them green while the panel went back to rendering minted keys only.
   // There is no render harness in this repo, so this reads the call sites (ENGLAG-1).
   //
-  // `CompareSlottingModal` is the third caller and is deliberately absent: its subject is a
-  // HYPOTHETICAL slotting, and `project_power` resolves the build's own, so engine rows would
-  // answer a question that modal is not asking. It renders minted keys only until either the
-  // engine can project a proposed slotting or the display bag gets a TS-side atom seed.
+  // `CompareSlottingModal` was the third caller and was held back on the reading that its
+  // subject is a HYPOTHETICAL slotting while `project_power` resolves the build's own. PROD6D
+  // had already retired that: `useHypotheticalCalculation` runs the engine over the proposed
+  // slotting, and the modal was reading `enhancementBonuses` off that very projection while
+  // resolving its rows from the stripped bag beside it. It passes the rows since 2026-09-07.
+  //
+  // This list is the members; `beta-display.test.ts` pins the ROSTER, so a fourth surface
+  // cannot ship on the bag path by simply not appearing here.
   it.each([
     ['components/info/InfoPanel.tsx'],
     ['components/info/PowerInfoTooltip.tsx'],
+    ['components/modals/CompareSlottingModal.tsx'],
   ])('%s feeds the projection rows to RegistryEffectsDisplay', (relative) => {
     const source = readFileSync(join(__dirname, '..', ...relative.split('/')), 'utf8');
-    expect(source, `${relative} no longer adapts the projection`).toContain('magnitudesFromProjection(projection.grantedMagnitudes)');
+    expect(source, `${relative} no longer adapts the projection`).toMatch(/magnitudesFromProjection\(\w+\.grantedMagnitudes\)/);
     const call = source.slice(source.indexOf('<RegistryEffectsDisplay'));
     expect(
       call.slice(0, call.indexOf('/>')),
@@ -1425,25 +1437,29 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
 
   // PROD6B-BETA-PARITY class 2 — which duration the rendered rows state.
   //
-  // `RegistryEffectsDisplay` takes engine ROWS but read the duration off the display BAG, and
-  // after STRIP-1 the bag's `buffDuration` is not the power's clock: on Dual Pistols it is the
-  // `iceammo` entry's 10s slow (the base -Def runs 8s), on Dark Miasma the 1s `EntCreate`
-  // marker the summon-lifespan backfill picks up (the debuffs run 30s). The precedence moved to
-  // `effectRowDuration.ts` so it could be graded here, since there is no render harness.
+  // The precedence in `effectRowDuration.ts` (the row's own duration, then the bag's per-effect
+  // `durations` map, then its power-level `buffDuration`) is unchanged. What was wrong was a
+  // SUPPLIER. `buildDisplayEffects` backfilled a summon's lifespan into `buffDuration` under the
+  // guard "only where the power states no duration of its own" — a guard reading a key STRIP-1
+  // removed from every power on every fork, so it became universally true and fired on all
+  // 110 / 111 / 120 / 119 summon powers per fork. That put a PET'S LIFESPAN into the slot meaning
+  // the power's own effect clock: two different quantities, one slot, and the pet's number won
+  // wherever no row could speak. Removed 2026-09-07; the lifespan keeps its own home on all three
+  // surfaces through `formatSummonDuration`, which also states the 99999s sentinel as words.
   //
-  // The oracle is the ENGINE's own `buffDuration` row — the atom plurality — not a restatement
-  // of the function under test. Where the beta bag disagrees with it, the rendered answer has
-  // to be the engine's.
-  it.each(SERVERS)('%s: the rendered duration follows the engine row, not the stripped bag', async (server) => {
+  // The oracle is the ENGINE's rows — the atom-derived durations — not a restatement of the
+  // function under test. The live tripwire is the supply census: a bag duration with no authored
+  // value behind it means a mint is back, and a mint is what this closed.
+  it.each(SERVERS)('%s: the rendered duration follows the engine rows, and no bag key mints one', async (server) => {
     await loadDataset(server);
     const handle = engineHandle(server);
     const deltas: string[] = [];
+    // A bag duration with nothing authored behind it — the backfill, or its next incarnation.
+    const minted: string[] = [];
     // Powers whose recorded durations reach no row, so the engine's power-level plurality and
     // its rows answer differently. Named below rather than failed.
     const pluralityOutranks: string[] = [];
-    // `disputed` is the population that grades the rule; `bagAnswered` the one that proves the
-    // bag fallback is still alive for a caller resolving the bag itself.
-    const census = { projected: 0, disputed: 0, bagAnswered: 0, agreedRows: 0 };
+    const census = { projected: 0, summon: 0, agreedRows: 0, mixed: 0, disputed: 0, bagAnswered: 0 };
 
     for (const atId of STANDARD_ARCHETYPE_IDS) {
       const build = buildFor(server, atId, 50, false);
@@ -1454,17 +1470,33 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
           const raw = json ? (JSON.parse(json) as EnginePowerProjection | null) : null;
           if (!raw) continue;
           census.projected += 1;
+          if (carriesSummon(power)) census.summon += 1;
           const shown = { ...power, powerSet: set.id! } as unknown as SelectedPower;
           const engineRows = mapOnePowerProjection(raw).grantedMagnitudes;
           const adapted = magnitudesFromProjection(engineRows);
           const bag = displayBag(shown) as BagDurations;
+          const where = `${set.id}.${power.internalName}`;
+
+          // The supply census. A surviving bag duration is legitimate only where the power's own
+          // `effects` authored one — which is why this reads the AUTHORED object and not the
+          // built bag on the right-hand side. Keyed per power, so a same-named template in
+          // another set cannot stand in for this one.
+          const authored = power.effects as
+            { buffDuration?: number; effectDuration?: number; durations?: Record<string, number> } | undefined;
+          if (bag.buffDuration != null && authored?.buffDuration == null && authored?.effectDuration == null) {
+            minted.push(`${where}.buffDuration=${bag.buffDuration}`);
+          }
+          if (bag.durations && Object.keys(bag.durations).length > 0
+            && Object.keys(authored?.durations ?? {}).length === 0) {
+            minted.push(`${where}.durations=${Object.keys(bag.durations).join('/')}`);
+          }
+
           const sources = adapted.map((r) => ({
             effectKey: r.effectKey,
             category: r.config.category,
             duration: r.duration,
           }));
           const rendered = powerLevelDuration(sources, bag);
-          const where = `${set.id}.${power.internalName}`;
 
           // The engine's own power-level answer, off the atom-derived durations map.
           const engineBuffDur = engineRows.find((r) => r.rowKey === 'buffDuration')?.value.base;
@@ -1473,23 +1505,31 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
             .map((r) => r.duration as number);
           const rowsAgree = timedRowDurs.length > 0
             && timedRowDurs.every((d) => Math.abs(d - timedRowDurs[0]) < 0.001);
-          if (rowsAgree) census.agreedRows += 1;
 
-          if (rowsAgree && bag.buffDuration != null && Math.abs(bag.buffDuration - timedRowDurs[0]) > 0.001) {
-            census.disputed += 1;
+          if (rowsAgree) {
+            census.agreedRows += 1;
+            if (bag.buffDuration != null && Math.abs(bag.buffDuration - timedRowDurs[0]) > 0.001) census.disputed += 1;
             if (rendered == null || Math.abs(rendered - timedRowDurs[0]) > 0.001) {
               deltas.push(`${where}: rendered ${rendered} but the engine rows state ${timedRowDurs[0]} (bag says ${bag.buffDuration})`);
             }
-            // The engine's own power-level plurality can outrank every row's duration, and
-            // that is not a contradiction: it votes over the whole `durations` map while a row
+            // The engine's own power-level plurality can outrank every row's duration, and that
+            // is not a contradiction: it votes over the whole `durations` map while a row
             // surfaces one only for its OWN bag key. Thunderspy's Time Lord is the case — the
             // self +Recharge and three movement axes record 10s and reach no row carrying it,
             // the eight damageBuff rows record 9.17s and do, so the plurality says 10 and every
-            // row that can speak says 9.17. Counted rather than failed: an answer built from
-            // rows that agree is the best claim this component can make, and the map's other
-            // half has no row to hang on. The ceiling is the tripwire.
+            // row that can speak says 9.17. Counted rather than failed: an answer built from the
+            // rows that agree is the best claim this component can make. The ceiling is the
+            // tripwire, and it is over every agreeing-row power now that the arm is no longer
+            // nested inside a `disputed` branch the backfill used to inflate.
             if (engineBuffDur != null && Math.abs(engineBuffDur - timedRowDurs[0]) > 0.001) {
               pluralityOutranks.push(`${where}: rows ${timedRowDurs[0]} vs plurality ${engineBuffDur}`);
+            }
+          } else if (timedRowDurs.length > 1) {
+            // Genuinely mixed durations. One power-level number would be a claim the power does
+            // not make, so the honest answer is none unless the bag authored one.
+            census.mixed += 1;
+            if (rendered != null && (bag.buffDuration == null || Math.abs(rendered - bag.buffDuration) > 0.001)) {
+              deltas.push(`${where}: rendered ${rendered} on rows that disagree (${timedRowDurs.join('/')})`);
             }
           }
 
@@ -1505,15 +1545,27 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     }
 
     // eslint-disable-next-line no-console
-    console.warn(`[class-2 duration] ${server}: ${census.projected} powers, ${census.agreedRows} with agreeing rows, ${census.disputed} disputed, ${census.bagAnswered} bag-answered, ${pluralityOutranks.length} plurality-outranks`);
+    console.warn(`[class-2 duration] ${server}: ${census.projected} powers (${census.summon} summon), ${census.agreedRows} with agreeing rows, ${census.mixed} mixed, ${census.disputed} disputed, ${census.bagAnswered} bag-answered, ${minted.length} minted, ${pluralityOutranks.length} plurality-outranks`);
     expect(census.projected, `${server}: nothing projected`).toBeGreaterThan(500);
-    expect(census.disputed, `${server}: no power where the bag and the engine rows disagree — the rule is ungraded`).toBeGreaterThan(0);
-    expect(census.bagAnswered, `${server}: no rowless power — the bag fallback is ungraded`).toBeGreaterThan(0);
+    expect(census.agreedRows, `${server}: no power whose rows agree — the rule is ungraded`).toBeGreaterThan(0);
+    expect(census.mixed, `${server}: no power with mixed durations — the "no single answer" arm is ungraded`).toBeGreaterThan(0);
+    // The `disputed` and `bagAnswered` populations are NOT asserted non-zero any more, and the
+    // reason is the closure itself: after the backfill went, the only bag left stating a duration
+    // is the handful of powers that AUTHOR one (homecoming's Assassin's Strike is the whole
+    // population on that fork, and the other three carry none). Asserting a floor on them would
+    // be asserting that the defect is still present. They stay in the census so the numbers are
+    // visible; the claim that replaced them is `minted`.
+    expect(census.summon, `${server}: no summon power projected — the minted-supplier claim is vacuous`).toBeGreaterThan(50);
+    expect(
+      minted.slice(0, 10),
+      `${server}: ${minted.length} display-bag durations with nothing authored behind them — a `
+        + `mint is back. The summon-lifespan backfill was exactly this shape.`,
+    ).toEqual([]);
     expect(deltas.slice(0, 20), `${server}: ${deltas.length} duration deltas`).toEqual([]);
     expect(
       pluralityOutranks.length,
       `${server}: ${pluralityOutranks.length} powers whose recorded durations reach no row: ${pluralityOutranks.slice(0, 5).join(', ')}`,
-    ).toBeLessThan(10);
+    ).toBeLessThan(35);
   }, 900000);
 
   it.each(SERVERS)('%s: every selected power projects to the beta calculators', async (server) => {
@@ -1574,10 +1626,25 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     let petPowers = 0;
     let enginePetRows = 0;
     let betaPetRows = 0;
+    // Anti-vacuity for the summon fixture: the widening is only real while it keeps reaching
+    // powers that summon. A chooser that stops finding them would leave every arm below green.
+    let summonPowers = 0;
 
     const engineBundle = bundlePowers(server);
+    // Two fixtures per archetype. The first-set default is the 6B corpus; the second picks the
+    // sets that SUMMON, because the default reaches almost none of them — measured, the whole
+    // rain / patch / henchman family (Caltrops, Trip Mine, Rain of Fire, Haunt, Dark Extraction)
+    // produced no delta row of ANY kind, so a class sized off this sweep was sized off fixture
+    // coverage and not off the powers carrying the mechanic. Discovered by counting each set's
+    // own carriers, so no powerset is named (Rule 0), the same way the 3k/3l sweeps choose.
+    const summonRichest = (sets: { powers: Power[] }[]) => {
+      const carried = sets.map((set) => set.powers.filter(carriesSummon).length);
+      return carried.indexOf(Math.max(...carried));
+    };
+    const graded = new Set<string>();
     for (const atId of STANDARD_ARCHETYPE_IDS) {
-      const build = buildFor(server, atId);
+    for (const chooseSet of [undefined, summonRichest]) {
+      const build = buildFor(server, atId, 50, true, chooseSet);
       const powers = [...build.primary.powers, ...build.secondary.powers];
       if (powers.length === 0) continue;
 
@@ -1588,6 +1655,10 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
       for (const power of powers) {
         const engine = projection.get(projectionKey(power.powerSet, power.internalName));
         if (!engine) continue;
+        // The two fixtures overlap wherever the summon-richest set IS the first one.
+        if (graded.has(projectionKey(power.powerSet, power.internalName))) continue;
+        graded.add(projectionKey(power.powerSet, power.internalName));
+        if (carriesSummon(power as Power)) summonPowers += 1;
         const { magnitudes, bag } = betaReference(power, build, atId, rawGlobal);
         // The engine's OWN copy of the power (the 6C-3h evidence, extended to this sweep by the
         // 2026-08-19 oracle re-cut). Absent on a lookup miss, which keeps every row strict there.
@@ -1616,6 +1687,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
         }
       }
     }
+    }
 
     // eslint-disable-next-line no-console
     console.warn(`[PROD6B-2 magnitudes] ${server} sweep: ${rows} rows — ${[...kinds].map(([k, n]) => `${k}:${n}`).join(' ')}`);
@@ -1631,6 +1703,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     console.warn(`[PROD6C-3c pseudo-pet] ${server} sweep: ${petPowers} powers carry pet-only effect keys, ${enginePetRows} engine / ${betaPetRows} beta rows resolve from one`);
     // Guard against a vacuous pass: the sweep must reach the expanded by-type branch.
     expect([...kinds.keys()].some((k) => k.endsWith('+expanded')), `${server}: sweep reached no expanded by-type row`).toBe(true);
+    expect(summonPowers, `${server}: the summon fixture reached no power carrying a summon`).toBeGreaterThan(20);
     expect(enginePetRows, `${server}: no engine row resolved from a pseudo-pet key — the merge is ungraded here`).toBeGreaterThan(0);
     expect(betaPetRows, `${server}: no beta row resolved from a pseudo-pet key — the merge is ungraded here`).toBeGreaterThan(0);
     expect(deltas).toEqual([]);

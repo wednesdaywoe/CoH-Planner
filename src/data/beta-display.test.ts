@@ -197,3 +197,22 @@ describe('BPORT3 — the summon slot crosses with its writer, or the pets go dar
     ]);
   });
 });
+
+describe('ENGLAG-1 — the roster of RegistryEffectsDisplay call sites', () => {
+  // The swap is only as wide as its call sites, and `powerProjectionParity`'s gate names them
+  // one by one — so it is blind to a FOURTH surface that ships on the bag path by never
+  // appearing in its list. This pins the roster; that gate grades the members.
+  //
+  // `CompareSlottingModal` is the reason the distinction is worth having. It sat outside the
+  // swap on the reading that `project_power` resolves the build's own slotting while the
+  // modal's subject is a hypothetical one — but PROD6D's `useHypotheticalCalculation` IS the
+  // hypothetical run, and the modal was already reading `enhancementBonuses` off that
+  // projection while resolving its rows from the stripped bag beside it.
+  it('is exactly the three surfaces the parity gate grades', () => {
+    expect(importersOf(FILES, 'RegistryEffectsDisplay')).toEqual([
+      'src/components/info/InfoPanel.tsx',
+      'src/components/info/PowerInfoTooltip.tsx',
+      'src/components/modals/CompareSlottingModal.tsx',
+    ]);
+  });
+});

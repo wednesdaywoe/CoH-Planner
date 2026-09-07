@@ -52,7 +52,7 @@ import {
 } from '@/utils/calculations';
 import { calculatePetDamage, calculateResolvedPseudoPetDamage, shouldApplyEnhancements, type PetDamageResult } from '@/utils/calculations/pet-damage';
 import { buildDisplayEffects, withPseudoPetEffects } from './buildDisplayEffects';
-import { formatPetEffectValue, petEffectLabel } from './petEffectDisplay';
+import { formatPetEffectValue, petEffectLabel, formatSummonDuration } from './petEffectDisplay';
 import { getPetEntity } from '@/data/pet-entities';
 import { resolveActiveUpgradeTiers, takenPowerNames } from '@/utils/calculations/pet-upgrades';
 import { resolveEffectivePower, effectiveGlobalAdjusters, isCasterHidden, currentToHitFraction } from './resolveEffectivePower';
@@ -483,7 +483,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
                 {(effects.summon.entityCount && effects.summon.entityCount > 1) ? ` x${effects.summon.entityCount}` : ''}
               </span>
               {effects.summon.duration && (
-                <span className="text-slate-300">({effects.summon.duration}s)</span>
+                <span className="text-slate-300">({formatSummonDuration(effects.summon.duration)})</span>
               )}
             </div>
           )}

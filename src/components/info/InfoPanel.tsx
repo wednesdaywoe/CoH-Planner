@@ -82,14 +82,9 @@ import {
   partitionPetEffects,
   petEffectColor,
   petEffectLabel,
+  formatSummonDuration,
+  PERMANENT_PSEUDOPET_DURATION,
 } from './petEffectDisplay';
-
-// Pseudo-pet summon durations at or above this are the data's "permanent"
-// sentinel (99999s) — a persistent attack pet (e.g. Voltaic Sentinel) with no
-// bounded lifespan in the data. For these the headline shows PER-ACTIVATION
-// damage instead of a meaningless 99999s lifetime total. Real damage patches
-// last seconds to a minute, well under this.
-const PERMANENT_PSEUDOPET_DURATION = 1000;
 
 export function InfoPanel() {
   const infoPanel = useUIStore((s) => s.infoPanel);
@@ -2158,15 +2153,6 @@ function PetAbilityRow({ ad }: { ad: PetAbilityDamage }) {
       {open && <PetAbilityDetails ability={ability} cycleTime={ad.cycleTime} damageByType={ad.damageByType} />}
     </div>
   );
-}
-
-/** A summon's lifetime. The data's "permanent" sentinel is a literal 99999s,
- *  which printed verbatim reads as a number somebody forgot to fix rather than
- *  as "this henchman stays until it dies" — the same sentinel the damage
- *  headline already special-cases (`PERMANENT_PSEUDOPET_DURATION`). */
-function formatSummonDuration(duration?: number): string {
-  if (!duration || duration >= PERMANENT_PSEUDOPET_DURATION) return 'permanent';
-  return `${duration}s`;
 }
 
 /** One titled block of the effects list — the pet's own stats, or what it

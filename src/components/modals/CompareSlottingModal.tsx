@@ -19,6 +19,7 @@ import { getBaselineHealth } from '@/utils/calculations/stats';
 import { useGlobalBonuses, useCharacterCalculation, useHypotheticalCalculation, convertToLegacyStats } from '@/hooks';
 import { convertGlobalBonusesToAspects, withStrengthBonuses, findSelectedPowerInBuild } from '@/components/info/powerDisplayUtils';
 import { buildDisplayEffects } from '@/components/info/buildDisplayEffects';
+import { magnitudesFromProjection } from '@/components/info/magnitudesFromProjection';
 import { STAT_DEFINITIONS } from '@/data/stat-definitions';
 import type { StatValue } from '@/data/stat-definitions';
 
@@ -317,6 +318,18 @@ export function CompareSlottingModal() {
     [activeProjection, activeCopy, computeBonuses]
   );
 
+  // The effect rows, taken from that same projection rather than resolved from the display bag
+  // (ENGLAG-1, carried here 2026-09-07). The engine seeds its rows from the power's ATOMS, so
+  // it resolves a power whose authored `effects` STRIP-1 removed; `buildDisplayEffects` alone
+  // mints only its own keys and this panel rendered almost nothing. The rows answer the
+  // hypothetical slotting because `activeProjection` IS the hypothetical run — the same one
+  // `activeEnhBonuses` and the dashboard deltas read. `undefined` until the engine has loaded,
+  // which is the window the bag path still covers.
+  const effectRows = useMemo(
+    () => (activeProjection ? magnitudesFromProjection(activeProjection.grantedMagnitudes) : undefined),
+    [activeProjection]
+  );
+
   const activeDamage = useMemo(
     () => computeDamage(activeEnhBonuses),
     [computeDamage, activeEnhBonuses]
@@ -567,6 +580,7 @@ export function CompareSlottingModal() {
               archetypeId={archetypeId ?? undefined}
               level={build.level}
               targetsAffected={power.targetsAffected}
+              rows={effectRows}
               categories={['execution', 'buff', 'debuff', 'control', 'protection', 'movement']}
               damage={activeDamage}
               duration={mergedEffects?.buffDuration as number | undefined}

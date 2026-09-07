@@ -7,11 +7,11 @@
  * single bag, and so the engine's `granted.rs` has one shape to mirror instead of three that
  * disagreed with each other.
  *
- * Everything here is a pure function of the power object — the four transforms PROD6C-3
- * enumerates as (2) the merged `stats`, (3) healing extracted from the damage array,
- * (4) `buffDuration` backfilled from a summon's duration, and (5) the flattened `movement`
- * object. Two further transforms live below it rather than inside it, because each runs on
- * the built bag: (6) per-target scaling, which reads UI state, and (7) the pseudo-pet merge.
+ * Everything here is a pure function of the power object — the transforms PROD6C-3 enumerates
+ * as (2) the merged `stats`, (3) healing extracted from the damage array and (5) the flattened
+ * `movement` object. Transform (4), `buffDuration` backfilled from a summon's duration, was
+ * REMOVED 2026-09-07 and is described below. Two further transforms live below it rather than
+ * inside it, because each runs on the built bag: (6) per-target scaling, which reads UI state, and (7) the pseudo-pet merge.
  * The one transform that stays at the call sites is the redirect / quick-snipe / conditional
  * merge that decides WHICH power this is.
  *
@@ -23,7 +23,15 @@
  *   `effects.arc` (`transformPoolPower` builds no `stats`), and the registry row is a
  *   `degrees` one — the tooltip read only `stats.arc` and so rendered a pool power's radian
  *   value into a degrees row (48 / 42 / 46 powers).
- * * `buffDuration` from a summon's duration was InfoPanel-only (297 / 273 / 280 powers).
+ * * `buffDuration` from a summon's duration was InfoPanel-only (297 / 273 / 280 powers). It is
+ *   gone (2026-09-07). Its guard — "only where the power states no duration of its own" — read
+ *   `effects.buffDuration`, which STRIP-1 removed from every power on every fork, so the guard
+ *   became universally true and the backfill fired on every summon power: measured at 110 / 111 /
+ *   120 / 119 powers per fork, and 100% of the bag's surviving `buffDuration` values. That put a
+ *   pet's lifespan into the slot that means the power's own effect clock, where it collided with
+ *   the engine's answer for the same key — the two are different quantities and the slot holds
+ *   one (PROD6B-BETA-PARITY class 2). The lifespan has its own home on all three surfaces, via
+ *   `formatSummonDuration`, which also states the 99999s "permanent" sentinel as words.
  *
  * The tooltip's six `flySpeed` / `runSpeed` / `jumpSpeed` / `jumpHeight` / `regeneration` /
  * `recovery` top-level mappings and its `effects.endurance` fallback are NOT carried over:
@@ -84,11 +92,6 @@ export function buildDisplayEffects(
   if (!effects.healing) {
     const healing = extractHealingFromDamage(damage);
     if (healing) bag.healing = healing;
-  }
-
-  // A summon with no duration effect of its own displays the pet's lifespan.
-  if (!effects.buffDuration && !effects.effectDuration && power.summon?.duration) {
-    bag.buffDuration = power.summon.duration;
   }
 
   // The nested movement object (Super Jump, Fly, Sprint) carries the registry's per-axis
