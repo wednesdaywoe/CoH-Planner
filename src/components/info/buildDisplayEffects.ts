@@ -43,6 +43,8 @@ import type { Power, PowerEffects } from '@/types';
 import { arcToDegrees } from '@/data/proc-data';
 import { extractHealingFromDamage } from '@/utils/calculations/healing';
 import { synthesizePseudoPetEffects } from '@/utils/calculations/pet-damage';
+import { carriesPerTarget, maxStackCap } from '@/data/core/atom-query';
+import { casterOccupiesATargetSlot } from '@/utils/calculations/character-totals';
 
 /** Toggle tick interval when the data omits one — end/s = endurance / activatePeriod. */
 const DEFAULT_ACTIVATE_PERIOD = 0.5;
@@ -125,6 +127,9 @@ export function buildDisplayEffects(
 // pair — the slider gate and the adjustment — as one step of `display_effects`.
 
 
+/** `maxTargets` sentinel for an unbounded AoE: no bound, so no axis for a slider to drag. */
+const UNBOUNDED_MAX_TARGETS = 255;
+
 /**
  * Check if a value (or by-type sub-values) has a perTarget field.
  */
@@ -142,54 +147,60 @@ export function hasPerTargetField(value: unknown): boolean {
 }
 
 /**
- * Data-driven detection: show stacking slider for either per-target AoE
- * scaling (perTarget metadata + maxTargets) or linear self-stacking
- * (`effects.maxStacks` set explicitly, e.g. Psychokinetic Barrier).
+ * The stacking slider a surface offers for this power, or `null` for one that offers none —
+ * `has_stacking_slider` / `adjust_display_bag` in the engine's `stacking.rs` are the twin.
+ *
+ * Two mechanics share the one control. An AoE power whose effects carry a per-foe increment
+ * slides on TARGETS HIT; a power whose atoms self-stack slides on the STACK COUNT. Per-target
+ * wins where a power has both (Soul Drain self-stacks on a double-cast and grows per foe, and
+ * the per-foe story is the dominant one for tooltip math), so the smaller stack cap cannot
+ * shrink the targets axis.
+ *
+ * **Both arms read the ATOMS.** They read the authored `effects` object until STACKINFO-1, and
+ * the function opened with `if (!power.effects) return null` — sound while that object was the
+ * display bag's source, and starvation the moment it was not. STRIP-1 emptied it: no power on
+ * any fork carries an authored `perTarget`, a `maxStacks` or a `stackInterval` any more, so this
+ * returned `null` for the entire corpus and every surface stopped offering the slider. It read
+ * as a corpus with no stacking powers rather than as a reader with no input, which is why the
+ * one gate over it went green having graded nothing (`powerProjectionParity`).
+ *
+ * The atom-native reading is WIDER than the bag's on the stack arm and that is the correction,
+ * not a side effect: a power states its own cap on its atoms, where the converter minted a
+ * `maxStacks` slot for only some of them. It is NARROWER on four powers, which is the other half
+ * of the same correction — ATOM-BAG-3's delay schedules, a `Replace` shield re-applied every few
+ * seconds that the bag recorded as a stack of 7. Those no longer offer a slider for a shield that
+ * never doubles, and the `Stacks (every Xs)` label that described their cadence went with them:
+ * its `stackInterval` came from the same writer, and no other power ever had one.
  *
  * `minStacks` is where the axis STARTS, and it is 0 for every case but one. A power whose
- * `targetsAffected` names the caster lands on him as well as on whoever else is in radius, so he
- * fills the first of its `maxTargets` seats for as long as it is running and the count cannot be
- * zero — Phalanx Fighting gives its 5% melee/ranged/AoE defence solo, and a slider reading "Off"
- * there described a state the power is never in (PERFOE-3). The engine floors the same count with
- * the same two terms (`casterOccupiesATargetSlot` / `caster_occupies_a_target_slot`); this is what
- * keeps the control honest about it.
+ * effects land on the caster as well as on whoever else is in radius fills the first of its
+ * `maxTargets` seats for as long as it is running, so the count cannot be zero — Phalanx Fighting
+ * gives its 5% melee/ranged/AoE defence solo, and a slider reading "Off" there described a state
+ * the power is never in (PERFOE-3). The floor is {@link casterOccupiesATargetSlot}, the same two
+ * terms the engine and the totals path floor the count with, rather than the `targetsAffected`
+ * half of it this function used to spell by hand.
  *
  * The stacks arm keeps 0: N there counts casts, and a click the build has not fired is off.
  */
 export function getStackingInfo(
   power: Power,
 ): { maxStacks: number; minStacks: number; label: string } | null {
-  if (!power.effects) return null;
-
-  // AoE per-target powers (Soul Drain, Eclipse, Power Sink, etc.) — when
-  // any effect carries a `perTarget` field, the slider's natural axis is
-  // "targets hit" with max from stats.maxTargets. Soul Drain in particular
-  // also has effects.maxStacks (self-stack on double-cast), but the
-  // per-target story is the dominant one for tooltip math, so check it
-  // first to prevent the smaller stack-2 cap from winning.
-  const hasPerTarget = Object.values(power.effects).some(v => hasPerTargetField(v));
-  if (hasPerTarget) {
+  // AoE per-target powers (Soul Drain, Eclipse, Power Sink, …) — the slider's natural axis is
+  // "targets hit", bounded by the power's own `maxTargets`. An absent or unbounded bound is no
+  // axis to drag, so it is no slider rather than a one-target one.
+  if (carriesPerTarget(power)) {
     const maxTargets = power.stats?.maxTargets;
-    if (maxTargets && maxTargets > 1 && maxTargets !== 255) {
-      const minStacks = power.targetsAffected?.includes('Self') ? 1 : 0;
+    if (maxTargets && maxTargets > 1 && maxTargets !== UNBOUNDED_MAX_TARGETS) {
+      const minStacks = casterOccupiesATargetSlot(power) ? 1 : 0;
       return { maxStacks: maxTargets, minStacks, label: 'Targets Hit' };
     }
   }
 
-  // Linear self-stacking — power declares maxStacks directly. Doesn't
-  // require perTarget metadata; the slider just multiplies scale of any
-  // effect listed in `effects.stacksLinear`. Falls through here when there
-  // is no per-target scaling (e.g. Siphon Speed's caster recharge buff).
-  if (power.effects.maxStacks) {
-    // Ramp-stacking powers (Spirit Ward → 1 stack per 3s within one cast)
-    // carry `stackInterval`; recast-stacking powers (Crab Spider Serum,
-    // Build Up, etc.) don't. Surface the cadence on the slider label only
-    // for the ramp case so we don't mislabel recast stacking as "every Xs".
-    const label = power.effects.stackInterval && power.effects.stackInterval > 0
-      ? `Stacks (every ${power.effects.stackInterval}s)`
-      : 'Stacks';
-    return { maxStacks: power.effects.maxStacks, minStacks: 0, label };
-  }
+  // Linear self-stacking — the power's atoms state a depth greater than one on an effect they
+  // land on the caster. Reached only where there is no per-target scaling, so the two never
+  // compound (Siphon Speed's caster recharge buff is the plain case).
+  const cap = maxStackCap(power);
+  if (cap !== undefined) return { maxStacks: cap, minStacks: 0, label: 'Stacks' };
 
   return null;
 }
@@ -288,6 +299,17 @@ function adjustEffectsForTargets(
  * The `targetsHit > 1` identity is the DISPLAY rule, and deliberately not the totals one — the
  * accumulator reads an absent count as zero foes and zeroes a `perTarget` buff (PROD6B-2d).
  * A display row is only ever grown here, never zeroed.
+ *
+ * **It currently transforms nothing, and that is stated rather than assumed.** Both of
+ * {@link adjustEffectsForTargets}'s inputs are authored — a `perTarget` on a bag VALUE, and the
+ * power's `stacksLinear` list — and STRIP-1 left neither in the corpus, so the copy it returns is
+ * always the bag it was given. Nothing user-visible depends on that any more: ENGLAG-1 re-pointed
+ * the rendered rows at the engine's projection and all three `RegistryEffectsDisplay` call sites
+ * pass `rows`, so this bag reaches the surface for its `durations` / `buffDuration` annotations
+ * alone, and the slider's whole effect runs through the engine. Kept, not deleted, because it is
+ * the shape `coh_math::stacking::adjust_display_bag` mirrors and because the day the beta bag
+ * grows an atom seed is the day it starts mattering again. `powerProjectionParity`'s targets-hit
+ * body reports its two counters every run instead of flooring them, so that day is visible.
  */
 export function withTargetsHit(power: Power, effects: PowerEffects, targetsHit: number): PowerEffects {
   if (!getStackingInfo(power) || targetsHit <= 1) return effects;

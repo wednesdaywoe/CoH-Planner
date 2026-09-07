@@ -181,14 +181,8 @@
     },
     {
       "path": "docs/DATA-GAP-REGISTER.md",
-      "status": "forked",
-      "sha256": {
-        "canonical": "7c1baa8145faeb0897d1a9c9d6c04b5cea82d8c28c85f552599f816a1fcf1234",
-        "beta": "4ed9208b0a77447bca3de4e35e956e7208bdc4392f1b0159cb9e710a7f53444d"
-      },
-      "reason": "canonical's register carries the STRIP-1 burn-down (KB-INFO row, lint trims, closure narratives) and the PERMA-2/PERMA-3/PERMA-4/PERMA-5 closures (PERMA-5 closed 2026-09-05, re-stamped there, taking the frontier to 0 open) which the beta's copy lacks, plus SYNTH-1, filed 2026-09-05 from the beta's own BPORT11 carry and open there (the frontier was 0 for the day between PERMA-5 and it); ABSORB-4's carried residual was re-measured the same way on 2026-09-05, against the beta's still-live bag, and BPORT11's own row is ticked here; BPORT8 ticked 2026-09-06 and ENGLAG-1 filed from it, taking the frontier to 2 open (ENGLAG-1 re-filed the same day once the atom seed, not the vendor lag, proved to be the defect, then CLOSED 2026-09-06 by the display swap with ENGLAG-2 filed as its residual, so the frontier stays at 2 open); beta's copy is the pre-migration register: a stale snapshot of canonical's own frontier (3 open, TSPY-11/STRIP-1/FORK-4), not an independent beta assessment. Carrying canonical's copy across would advertise `0 open` in the repo where this entry's own exit, the beta-side STRIP-1 port, is still unrun.",
-      "exit": "the converter mirror (FORK-3 sync:shared) after the STRIP-1 migration lands on the beta side.",
-      "gap": "STRIP-1"
+      "status": "identical",
+      "sha256": "1239bc0c506b67f416794b147dff64be69c17b9eee78fe068daf08eb7bd25d5e"
     },
     {
       "path": "scripts/README-bulk-import-mids.md",
@@ -327,14 +321,8 @@
     },
     {
       "path": "scripts/convert-accolades.cjs",
-      "status": "forked",
-      "sha256": {
-        "canonical": "5baa7af52a5252f155bb75322fec1e3a3acc5f8dc3887f11b9824bbfe1a2ac30",
-        "beta": "fe333313156c65ba3453ecd3922d85177f7f4fa31072f63852441349696cae3b"
-      },
-      "reason": "STRIP-1/ENT-22 migration changed canonical's converter (bag strip, pet-parameter hoist); beta's copy is pre-strip and stays until the converter mirror carries the migration across.",
-      "exit": "the converter mirror (FORK-3 sync:shared) after the STRIP-1 migration lands on the beta side.",
-      "gap": "STRIP-1"
+      "status": "identical",
+      "sha256": "5baa7af52a5252f155bb75322fec1e3a3acc5f8dc3887f11b9824bbfe1a2ac30"
     },
     {
       "path": "scripts/convert-all-powersets.cjs",
@@ -348,14 +336,8 @@
     },
     {
       "path": "scripts/convert-basic-inherents.cjs",
-      "status": "forked",
-      "sha256": {
-        "canonical": "d5ffd1486600822bde9f5670d7727baa57b10bdb75e4ed3ef4675e1cb2469b33",
-        "beta": "389e3d1abb54c24c13bacef75a41d321fad91883ff98b09ec564b9444292c1b3"
-      },
-      "reason": "STRIP-1/ENT-22 migration changed canonical's converter (bag strip, pet-parameter hoist); beta's copy is pre-strip and stays until the converter mirror carries the migration across.",
-      "exit": "the converter mirror (FORK-3 sync:shared) after the STRIP-1 migration lands on the beta side.",
-      "gap": "STRIP-1"
+      "status": "identical",
+      "sha256": "d5ffd1486600822bde9f5670d7727baa57b10bdb75e4ed3ef4675e1cb2469b33"
     },
     {
       "path": "scripts/convert-enhancement-curves.cjs",
@@ -364,14 +346,8 @@
     },
     {
       "path": "scripts/convert-epic-pools.cjs",
-      "status": "forked",
-      "sha256": {
-        "canonical": "6de0efbe3cae2861e4fd7c32840a99a713595824009ceac62909ba9bf17d8b5e",
-        "beta": "2fc1a2e92b35048e5e0274c9f59880a1a848d1eaa4ae879b8f0b9e650c9dc880"
-      },
-      "reason": "STRIP-1/ENT-22 migration changed canonical's converter (bag strip, pet-parameter hoist); beta's copy is pre-strip and stays until the converter mirror carries the migration across.",
-      "exit": "the converter mirror (FORK-3 sync:shared) after the STRIP-1 migration lands on the beta side.",
-      "gap": "STRIP-1"
+      "status": "identical",
+      "sha256": "6de0efbe3cae2861e4fd7c32840a99a713595824009ceac62909ba9bf17d8b5e"
     },
     {
       "path": "scripts/convert-incarnate-effects.cjs",
@@ -395,25 +371,13 @@
     },
     {
       "path": "scripts/convert-pool-powers.cjs",
-      "status": "forked",
-      "sha256": {
-        "canonical": "0cfcc009a4d6007dcd5fa51bc1ce0aa0596cdbd84add13c039eec7dfe7ebb91e",
-        "beta": "2aef6b2a8512dc7ea42a68c9f378c7f18820ce1fdae8e55ba2b428595db0b72b"
-      },
-      "reason": "The writer-side `effects` strip changed canonical's converter (it stops emitting the power-level bag and hands the projection to the two Thunderspy guards as a local); beta's copy is pre-strip and stays until the converter mirror carries the migration across. Same fork, same terms, as its two siblings above.",
-      "exit": "the converter mirror (FORK-3 sync:shared) after the STRIP-1 migration lands on the beta side.",
-      "gap": "STRIP-1"
+      "status": "identical",
+      "sha256": "0cfcc009a4d6007dcd5fa51bc1ce0aa0596cdbd84add13c039eec7dfe7ebb91e"
     },
     {
       "path": "scripts/convert-powerset.cjs",
-      "status": "forked",
-      "sha256": {
-        "canonical": "024ded8861eef200efdced51840a1bb0ef1a3cda8e1416e02ca84b9a6bfe4d0d",
-        "beta": "d632e330d0d2051629a46b4b80cfc326ca9fa91e05037b841937b06a8ce9236f"
-      },
-      "reason": "STRIP-1/ENT-22 migration changed canonical's converter (bag strip, pet-parameter hoist); beta's copy is pre-strip and stays until the converter mirror carries the migration across.",
-      "exit": "the converter mirror (FORK-3 sync:shared) after the STRIP-1 migration lands on the beta side.",
-      "gap": "STRIP-1"
+      "status": "identical",
+      "sha256": "024ded8861eef200efdced51840a1bb0ef1a3cda8e1416e02ca84b9a6bfe4d0d"
     },
     {
       "path": "scripts/convert-salvage.cjs",
@@ -437,25 +401,13 @@
     },
     {
       "path": "scripts/dsh6-collapse-detector.cjs",
-      "status": "forked",
-      "sha256": {
-        "canonical": "accf287e5e463f4f7e906c0b0a01c6359f64431f91396cb3887846b9255abc34",
-        "beta": "14d94396a8dae0388f3e0e1fb32d5dabb3a2e9542158454805aa93065b443321"
-      },
-      "reason": "STRIP-1/ENT-22 migration changed canonical's converter (bag strip, pet-parameter hoist); beta's copy is pre-strip and stays until the converter mirror carries the migration across.",
-      "exit": "the converter mirror (FORK-3 sync:shared) after the STRIP-1 migration lands on the beta side.",
-      "gap": "STRIP-1"
+      "status": "identical",
+      "sha256": "accf287e5e463f4f7e906c0b0a01c6359f64431f91396cb3887846b9255abc34"
     },
     {
       "path": "scripts/dsh6-collapse-worklist.json",
-      "status": "forked",
-      "sha256": {
-        "canonical": "499c5f93935b03400efc5e64eddd38335584e81faae7a6e85b7b424ba06f837c",
-        "beta": "7d7a7bb2589c9924186584dbce6037422c37c86bfba3af4a45456721a6e4431a"
-      },
-      "reason": "STRIP-1/ENT-22 migration changed canonical's converter (bag strip, pet-parameter hoist); beta's copy is pre-strip and stays until the converter mirror carries the migration across.",
-      "exit": "the converter mirror (FORK-3 sync:shared) after the STRIP-1 migration lands on the beta side.",
-      "gap": "STRIP-1"
+      "status": "identical",
+      "sha256": "499c5f93935b03400efc5e64eddd38335584e81faae7a6e85b7b424ba06f837c"
     },
     {
       "path": "scripts/dsh6-gate-allowlist.json",
@@ -535,14 +487,8 @@
     },
     {
       "path": "scripts/validate-converter-output.cjs",
-      "status": "forked",
-      "sha256": {
-        "canonical": "5e9d132caafda92e2a88a6dc7732f33ff9411fcf1cbfaee6c26d49006e8029c2",
-        "beta": "c048d77f1747cae261d45909d1617ebbaad05f76b48adc495585029d70162d42"
-      },
-      "reason": "STRIP-1/ENT-22 migration changed canonical's converter (bag strip, pet-parameter hoist); beta's copy is pre-strip and stays until the converter mirror carries the migration across.",
-      "exit": "the converter mirror (FORK-3 sync:shared) after the STRIP-1 migration lands on the beta side.",
-      "gap": "STRIP-1"
+      "status": "identical",
+      "sha256": "5e9d132caafda92e2a88a6dc7732f33ff9411fcf1cbfaee6c26d49006e8029c2"
     },
     {
       "path": "scripts/verify-sync.cjs",
@@ -552,7 +498,7 @@
     {
       "path": "src/data/core/atom-query.ts",
       "status": "identical",
-      "sha256": "c26848c67ba79e1da60880ce5b62820571f095e30bb06f649dd431776846f9d8"
+      "sha256": "dc5ac5f88219fa4cb83707c75470e29478ac7758dc57ea6f3cb86cfe39e74740"
     },
     {
       "path": "src/data/core/atomic-effect.ts",
@@ -596,14 +542,8 @@
     },
     {
       "path": "src/data/power-pools.ts",
-      "status": "forked",
-      "sha256": {
-        "canonical": "1b2f4b5f177a87d3bba4a83dcbbd0e861de54662960c1cbe6afdf38ba4a6be79",
-        "beta": "d991e6ef48454eef1614b5872c9fa7d4e563b4514910fb3341f5eb2e6c5882f2"
-      },
-      "reason": "The reader half of the same writer-side `effects` strip: canonical's pool transform makes the bag optional (`effects?`), destructures it through `legacy.effects ?? {}` so a bagless power cannot throw the way `transformEpicPower` did, and emits `effects` only when the legacy power actually carried one — because the display and toggle paths gate on `if (!power.effects)` and an all-undefined object is truthy. Beta's copy still types `effects` as required and destructures it unguarded, and stays that way until the mirror carries the migration across. Missed by a15949bc49, which declared its `scripts/` sibling `convert-pool-powers.cjs` and not this file; it departs at that same commit and matched at `85af0a1bca`.",
-      "exit": "the converter mirror (FORK-3 sync:shared) after the STRIP-1 migration lands on the beta side.",
-      "gap": "STRIP-1"
+      "status": "identical",
+      "sha256": "1b2f4b5f177a87d3bba4a83dcbbd0e861de54662960c1cbe6afdf38ba4a6be79"
     },
     {
       "path": "src/types/archetype.ts",

@@ -16,7 +16,25 @@
 import { describe, it, expect } from 'vitest';
 import { adjustForStackCap, casterOccupiesATargetSlot } from './character-totals';
 import { getStackingInfo } from '@/components/info/buildDisplayEffects';
+import { encodeAtom, type AtomicEffect } from '@/data/core/atomic-effect';
 import type { Power } from '@/types/power';
+
+/**
+ * The per-foe increment as an ATOM, which is where the slider reads it (STACKINFO-1).
+ *
+ * These fixtures used to state their `perTarget` in the `effects` object alone, which the slider
+ * read until STRIP-1 emptied that object corpus-wide and the reader went blind. `adjustForStackCap`
+ * below still takes a bag VALUE — it is handed one row at a time by the accumulator — so each
+ * power now states the increment in both places, exactly as a converted power does.
+ */
+function perFoeAtoms(increment: number): AtomicEffect[] {
+  return [encodeAtom({
+    effectType: 'Defense', subType: 'Melee', toWho: 'Self', aspect: 'Cur',
+    attribType: 'Magnitude', modifierTable: 'Melee_Buff_Def', scale: 0.5, magnitude: 0.5,
+    duration: 0, stacking: 'Replace', baseProbability: 1, pvMode: 'Any', resistible: true,
+    perTarget: increment,
+  } as AtomicEffect)] as unknown as AtomicEffect[];
+}
 
 /** Phalanx Fighting's shape, as the converter emits it. */
 const phalanx = {
@@ -27,6 +45,7 @@ const phalanx = {
   targetsAffected: ['Leaguemate', 'Self'],
   effectArea: 'AoE',
   stats: { maxTargets: 3 },
+  atoms: perFoeAtoms(0.3),
   effects: { defenseBuff: { melee: { scale: 0.5, table: 'Melee_Buff_Def', perTarget: 0.3 } } },
 };
 
@@ -39,6 +58,7 @@ const invincibility = {
   targetsAffected: ['Foe'],
   effectArea: 'AoE',
   stats: { maxTargets: 10 },
+  atoms: perFoeAtoms(0.1),
   effects: { defenseBuff: { melee: { scale: 0.6, table: 'Melee_Buff_Def', perTarget: 0.1 } } },
 };
 
@@ -52,6 +72,7 @@ const reactiveRegeneration = {
   targetsAffected: ['Self'],
   effectArea: 'SingleTarget',
   stats: {},
+  atoms: perFoeAtoms(0.25),
   effects: { regenBuff: { scale: 0.25, table: 'Melee_Ones', perTarget: 0.25 } },
 };
 
@@ -116,7 +137,16 @@ describe('getStackingInfo — where the slider starts', () => {
   });
 
   it('starts a stack count at zero', () => {
-    const buildUp = { effects: { maxStacks: 2 }, stats: {} };
+    // The depth is the ATOM's `stackCap` now, not a `maxStacks` slot: the converter minted that
+    // slot for only some of the powers whose atoms state a depth, and STRIP-1 took the rest.
+    const buildUp = {
+      stats: {},
+      atoms: [encodeAtom({
+        effectType: 'DamageBuff', toWho: 'Self', aspect: 'Str', attribType: 'Magnitude',
+        modifierTable: 'Melee_Ones', scale: 1, magnitude: 1, duration: 10,
+        stacking: 'Stack', stackCap: 2, baseProbability: 1, pvMode: 'Any', resistible: true,
+      } as AtomicEffect)],
+    };
     expect(getStackingInfo(buildUp as unknown as Power)).toMatchObject({ minStacks: 0, label: 'Stacks' });
   });
 });

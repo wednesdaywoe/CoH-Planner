@@ -2497,3 +2497,43 @@ export function stackCapOf(power: AtomSource, family: StackFamily): number | und
   }
   return cap;
 }
+
+/**
+ * The deepest stack any of the power's atoms reaches, or `undefined` when none of them
+ * self-stacks — the atom-native `effects.maxStacks`, and the twin of `coh_math::stacking::
+ * max_stack_cap`.
+ *
+ * Unfiltered by family, unlike {@link stackCapOf}: `maxStacks` was a power-wide claim, and the
+ * question a stacking SLIDER asks is the power-wide one — how deep can this power stack at all.
+ * The census behind the Rust twin held the reduction to the shipped slot at 92 / 142 / 134
+ * powers with zero disagreements.
+ *
+ * The powers it drops are the four ATOM-BAG-3 ones whose bag claimed a depth of 7 for a
+ * `Replace` shield re-applied on a schedule: a clock has no slot on the bag, so the converter
+ * recorded it as a stack and the slider offered seven positions for a shield that never doubles.
+ */
+export function maxStackCap(power: AtomSource): number | undefined {
+  let cap: number | undefined;
+  for (const a of atomsOf(power)) {
+    if (!selfStacks(a) || a.stackCap === undefined) continue;
+    if (cap === undefined || a.stackCap > cap) cap = a.stackCap;
+  }
+  return cap;
+}
+
+/**
+ * Does this power carry a per-foe increment at all — the whole-power question the stacking
+ * slider's AoE arm asks, and the twin of `coh_math::stacking::carries_per_target`.
+ *
+ * Asked of the ATOMS, which is where {@link AtomicEffect.perTarget} is stamped and where the
+ * display bag's own `perTarget` is minted from. It used to be asked of the authored `effects`
+ * object; STRIP-1 emptied that, so the question came back "no" for every power on every fork
+ * (STACKINFO-1).
+ *
+ * A zero increment is not one. The bag-side projection writes `perTarget: 0` onto a slot it
+ * rebuilt for another reason, so presence and a real per-foe axis are different questions — the
+ * corpus does not currently separate them, which is why the stricter test is the one to hold.
+ */
+export function carriesPerTarget(power: AtomSource): boolean {
+  return atomsOf(power).some((a) => a.perTarget !== undefined && a.perTarget !== 0);
+}

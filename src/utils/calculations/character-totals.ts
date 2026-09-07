@@ -347,8 +347,19 @@ const UNBOUNDED_MAX_TARGETS = 255;
  * spell it a second way are not powers and never reach this path.
  *
  * Absent reads false on both terms: no list is not a licence to credit the caster with a slot.
+ *
+ * The parameter is the three fields read, not a `PowerWithToggle`: the display's own slider asks
+ * the same question of a plain `Power` (`getStackingInfo`), whose `effects` is the WIRE shape and
+ * not the resolved one. Naming the reads is what lets one predicate answer both callers instead
+ * of the pair drifting the way the hand-spelled `targetsAffected` half already had.
  */
-export function casterOccupiesATargetSlot(power: PowerWithToggle): boolean {
+export function casterOccupiesATargetSlot(
+  power: {
+    targetsAffected?: readonly string[];
+    effectArea?: string;
+    stats?: { maxTargets?: number } | Record<string, unknown>;
+  },
+): boolean {
   if (!power.targetsAffected?.includes('Self')) return false;
   if (power.effectArea !== 'AoE' && power.effectArea !== 'Cone') return false;
   const maxTargets = power.stats?.maxTargets;

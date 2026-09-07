@@ -57,17 +57,9 @@ because it reads data trees the beta does not carry.
 
 ## Current frontier
 
-**3 open, of 250 entries.** Every other entry is fixed with a guard or adjudicated in writing
-with its census.
-
-- **TSPY-11** — the recharge fold double-counts a buff a power gives to both an ally and the
-  caster. Stat routing, below. Blocked with the absorb-fold residual on one shared census.
-- **STRIP-1** — the bag strip's residue is 15 red Rust tests and 54 red vitest tests, and the
-  canonical TS totals oracle now answers 0 for the families it never migrated. Pipeline +
-  provenance, below.
-- **FORK-4** — 165 test files share a path between the two repos and none is adjudicated; 16 are
-  live two-way forks. Pipeline + provenance, below. The tripwire on the agreeing pairs is landed;
-  what is open is the 54 that differ.
+**1 open, of 262 entries.** PROD6B-BETA-PARITY — class 1 closed 2026-09-07 (36 red -> 14) and
+   STACKINFO-1 with it (14 -> 10); what remains is the 990 real rows in three engine-right
+   families plus class 4's `MIRROR_BLIND` roster.
 
 **Carried residuals — named work inside closed entries.** Seven items were scoped out of a closure
 and recorded there rather than reopened. They are not `[ ]` rows: their hosts *are* closed with
@@ -75,8 +67,7 @@ guards, and nothing leaves this file as less.
 
 They are listed in the next section so a session sees them without reading four narratives first.
 
-The open rows and the seven residuals are downstream of a faithful parse, and the parse itself is
-still clean.
+The seven residuals are downstream of a faithful parse, and the parse itself is still clean.
 
 ---
 
@@ -97,12 +88,13 @@ measurement went, and where a closure for the residual belongs too.
   four forks; the chosen rule is written into the ABSORB-4 narrative with its divergence list; a
   standing guard pins the fold on that population; and the MaxHP-fraction half is either sourced
   from an atom or closed unmodelled with the absence pinned.
-  **Check** — none can be cut, and that is the finding. "Wrong on 10–15 either way" was measured
-  against the `effects` bag, retired 2026-08-28, so the comparison is not re-runnable as stated:
-  both folds survive (`foldResourceSum` at `src/data/core/atom-query.ts:1186`, `perTargetValueOf`
-  at `:341`) but the oracle they were graded against does not. Treat the figures as provenance,
-  not as measurement, and re-measure against the power's own atoms before quoting them.
-  **Note** — same census as TSPY-11. Do them together or the second re-derives the first.
+  **Check** — the window is open; BPORT7 re-ran the census (2026-09-05, committed script in the
+  beta repo): flat 153/171 reproduces; the stacking fold's 169/171 is scale-only (abs
+  convention), 112/171 pair / 132/171 full-total — the bag's maxStacks is template-scoped, not
+  stacking-keyed; fraction half 24/33, 9 probe-undefined thunderspy carriers. Divergence lists
+  by name in the narrative.
+  **Note** — was blocked on one corpus-wide fold census for both folds; TSPY-11's recharge census
+  landed 2026-08-31 ([stat-routing](gaps/stat-routing.md)), so the absorb fold is now its own item.
 
 - **Redirect-collected mez face** — host **VOCAB-1** ([stat-routing](gaps/stat-routing.md)).
   Defibrillate's sleep is authored `Foe` on its `Defibrillate_Debuff` child, but the face label
@@ -144,11 +136,11 @@ measurement went, and where a closure for the residual belongs too.
   `archetypeInherentPowerset` as an optional member.
   **Goal** — the beta's Dominator card reads its own export twin, or the beta is archived and the
   question is moot.
-  **Done when** — either `convert-inherents.cjs` stops being canonical-only and the beta's three
+  **Done when** — either `convert-inherents.cjs` stops being canonical-only and the beta's four
   datasets carry a generated inherent powerset, with this row's guard ported and green there; or
   RB4's handover lands and the beta stops being a surface users read.
   **Check** — `grep -n "enduranceGain: 100" ../CoH-Sidekick/src/data/datasets/*/archetypes.ts`.
-  Three hits today, one per fork. No hits means the port landed or the file went.
+  Four hits today, one per fork. No hits means the port landed or the file went.
 
 - **Always-on archetype inherents are unsourced in TS** — host **PARTSTAT-2**
   ([pipeline-provenance](gaps/pipeline-provenance.md)). `createArchetypeInherentPower` takes its
@@ -417,8 +409,9 @@ measurement went, and where a closure for the residual belongs too.
 
 ## Conditionals + gates
 
-[Full detail](gaps/conditionals-gates.md) — 22 of 22 closed
+[Full detail](gaps/conditionals-gates.md) — 23 of 23 closed
 
+- [x] **COND-14** — every conditional's atoms are `gated`, so the display seed's swap to the atom subset dropped the merged bag's conditional half: 18/38/44/22 controls per fork claimed a labelled effect and moved nothing a reader could see, while the gate that grades the claim compared the effective POWER and stayed green
 - [x] **EXPR-1** — the evaluator wasn't Kleene: an unvaluable term aborted the whole gate, so a redirect branch already definitively false (its mode off) still froze the form walk on its `distance` clause and Stun projected its base form while Power Boost was live; unknowns now ride the stack as a value and `&&`/`||` absorb them exactly where two-valued logic already answers — `false && x` is false for every x
 - [x] **COND-13** — the forks' Domination bonuses are sunk by the blanket `arch source> Class_` skip, and named from the powerset path
 - [x] **COND-8** — the export joins a `Requires` token array with spaces; a token containing a space cannot be recovered
@@ -462,26 +455,34 @@ measurement went, and where a closure for the residual belongs too.
 
 ## Stat routing + caps
 
-[Full detail](gaps/stat-routing.md) — 65 of 66 closed
+[Full detail](gaps/stat-routing.md) — 70 of 70 closed
 
-- [ ] **TSPY-11** — `recharge_buff_value` folds `Σ|scale|` with no recipient test, so a power
-  carrying both the ally copy and the caster's copy of one buff double-counts (Conduit of Pain
-  +100% for +50%; Thunderspy only — the other three forks carry the `Self` row alone). A
-  `reaches_caster` filter looks like the fix and mostly is not: it zeroes seven real ally buffs
-  whose rows are `Target`-only. So the fix is a fold rule, not a filter.
-  **Goal** — one fold rule for the family, chosen by census rather than by the one power that
-  exposed it, reading Conduit of Pain at +50% without moving the powers the fold already agrees
-  with.
-  **Done when** — every candidate fold (`Σ|scale|`, `sum_distinct_abs`, `perTargetValueOf`) is
-  graded corpus-wide on all four forks with its divergence list written down; the chosen rule is
-  stated in [stat-routing](gaps/stat-routing.md) with the population it moves; Conduit of Pain
-  reads +50% on both Thunderspy partitions; the agreeing population is byte-identical; and a
-  standing guard pins the fold against that population, not against Conduit of Pain.
-  **Check** — `python3 scripts/keys/tspy11-filter-cost.py`. Exit 1 names any power the filter would
-  NOT zero. It already exits 1: Speed Boost on Thunderspy survives (`targetsAffected` names Self,
-  its row is ungated, so `reaches_caster` keeps it) and Time Bomb carries no recharge-buff row on
-  any fork. Re-measure the cost of a filter before quoting it.
-  **Blocked with** — the absorb fold residual above wants the same census. One census, both rules.
+- [x] **PERMA-5** — closed 2026-09-05: the veto read the power's own `targetsAffected` leniently
+  — a `Target` atom reached the caster unless the list named a FOE — which inverts the one
+  direction a union is sound in, so every ally-only buff handed the caster the ALLY's clock. Now
+  one rule over both lists, is the caster named among the recipients, with an absent list keeping
+  the window. 47 rings lost over 22 (fork, power) pairs, 377 census rows, 113 adjudicated in
+  `perma_window_atom_parity`
+- [x] **PERMA-4** — closed 2026-09-05: the window's two blind faces both ask the atoms now — a
+  `Target` atom resolves against the `ownerTargets` stamp (and against `Self` in it, since a
+  stamped list names its recipients outright), and a self-directed debuff outside the mirror's
+  four penalty slots is routed by `caster_takes_penalty_at`. 8 rings gained, 4 lost, 16 rows
+  adjudicated in `perma_window_atom_parity`
+- [x] **PERMA-2** — closed 2026-09-04: `hasSelfStateToKeepUp` was ~30 `effects` slot tests, so it
+  answered false for every bagless power — the whole corpus after the writer-side strip. It now
+  derives one caster-side window from the atoms and agrees with
+  `coh_math::perma::is_perma_eligible` on 14,487 of 14,488 entries across four forks; the
+  hand-pinned +500% ceiling became the export's `rechargeCap`, and the five parked claims are back
+- [x] **PERMA-3** — closed 2026-09-04: the perma veto asked `targetType.starts_with("Foe")` — the
+  wrong field, and a prefix rather than `Power::affects_foe`'s vocabulary — so a control aimed at
+  `Any` and the teleports gave the caster a ring off the FOE's window; 12 shipped rings. Same
+  census: `SELF_BUFF_KEYS` held one of four `*Unenhanced` twins, orphaning IgnoreStrength buffs
+- [x] **TSPY-11** — closed 2026-08-31: `recharge_buff_value` folded `Σ|scale|` with no recipient
+  test, so a power carrying both the ally and caster copies of one buff double-counted (Conduit of
+  Pain +100% for +50%; Thunderspy only). The fold now dedups rows agreeing on scale/table/duration/
+  stacking/per-target and differing only in recipient. A `reaches_caster` filter was ruled out
+  (zeroes seven real ally buffs). Guarded by `recharge_fold_census.rs`, mutation-tested; narrative
+  in [stat-routing](gaps/stat-routing.md).
 
 - [x] **STACK-7** — the oracle read `stacksLinear`/`maxStacks`/`stackCaps` off the retired bag, so
   `adjustForStacking` multiplied by 1 where the engine stacks atom-natively and multiplies by 2
@@ -611,7 +612,7 @@ measurement went, and where a closure for the residual belongs too.
 
 ## Pipeline + provenance
 
-[Full detail](gaps/pipeline-provenance.md) — 46 of 48 closed
+[Full detail](gaps/pipeline-provenance.md) — 54 of 55 closed
 
 - [x] **MBDIMPORT-1** — Mids files accolades under `Temporary_Powers.Accolades.*` and the importer's
   blanket temp-power skip dropped every one of them upstream of the warning counters, so a user's
@@ -757,23 +758,12 @@ measurement went, and where a closure for the residual belongs too.
   control row was the argument against that — 0 drift in 58,445 machine-copied files beside 17 in
   49 hand-copied. `npm run sync:shared` now takes the `identical` set, refuses to overwrite a
   beta-authored edit, and re-adjudicates inside the copy
-- [ ] **FORK-4** — the shared surface has a peer nothing had ever measured: **165 `src/` test files
-  share a path between the two repos, 54 of them differ, and 0 appear in `sync-manifest.json`** —
-  not in `entries`, not in `canonicalOnly`, not in `betaOnly`. `verify-sync` discovers `src/` by
-  following require edges out of the converters, so a test file is undiscoverable rather than
-  overlooked. Graded by origination as FORK-1 graded `convert-powerset.cjs`, the surface forks BOTH
-  ways — 40 files hold beta-authored content canonical's history never had, 27 the reverse, 16
-  both — so FORK-3's mirror must stay off it. The 111 agreeing pairs now have their tripwire
-  (`scripts/verify-shared-tests.cjs` + a one-file digest, 0 new manifest rows); the differing set
-  does not.
-  **Goal** — the pairs that agree cannot diverge without something going red, and the 54 that
-  differ carry a written adjudication rather than an unread diff.
-  **Done when** — each differing file is `per-repo` with a reason, or reconciled, or named as
-  in-flight with the row it belongs to (STRIP-1 and ENT-22 own most of the canonical side); and
-  the manifest has NOT grown 165 rows to say so.
-  **Check** — `python3 scripts/keys/fork4-test-surface-direction.py` — exits 0 today on 40
-  beta-original files. It exits 1 when that reaches 0, which means the surface has gone one-way and
-  the "keep the mirror off it" claim above has expired and must be re-decided, not re-trusted.
+- [x] **FORK-4** — 169 shared `src/` test files, 0 manifest rows, adjudicated by nothing:
+  `verify-sync` discovers `src/` by require edges out of the converters, so a test file is
+  undiscoverable rather than overlooked, and the surface forks both ways. Tripwire on the agreeing
+  pairs, cluster adjudication on the rest — every shared path is `identical`, `departed` with a
+  reason, or in one of three fork classes with an exit, and the coverage invariant reds when a pair
+  joins already forked or leaves a cluster
 - [x] **FIXTURE-1** — the manually-emitted gate fixtures (procs, movement, set-bonus) drifted on
   sampling identity and labels only, no values; all three re-emitted, gates green, and the
   emitters now run in `npm run regen` so the drift class is closed
@@ -784,6 +774,10 @@ measurement went, and where a closure for the residual belongs too.
 - [x] **PERFOE-2** — the Execute_Power redirect branch stamped its per-foe half onto the emitted
   atoms by signature and its BASE half onto nothing, so 8 Homecoming Kinetics slot values stated a
   contribution the wire did not carry; the base arm now rides the same replay as `redirectBase`
+- [x] **PERFOE-3** — an absent targets-hit count read as ZERO targets everywhere, which is right
+  for a foe aura and wrong where the caster holds one of his own sphere's seats: Phalanx Fighting's
+  unconditional +5% defence was deleted by a slider nobody had touched, 22 powers over four forks;
+  the count now floors on `firstTargetExcluded`'s own two terms
 - [x] **OVERRIDE-3** — 30 hand-written override files restated their generated `effects` slot: 21 keys verbatim and 27 minus a mark the converter now writes, plus Entropy Shield's taunt, a hand pick between two real colliding rows; all retired and the gate's exclusion list with them
 - [x] **OVERRIDE-4** — the override layer stated identity and placement fields the export owns:
   92 `targetType` restatements, 22 re-cased `internalName` entries, and the Widow pair's swapped
@@ -808,25 +802,51 @@ measurement went, and where a closure for the residual belongs too.
   `effects` bag, so the strip emptied it (148 committed lines to 8); selection and payload now come
   from the resolve's own readers, a re-emit reproduces 148, and the new population is the old one
   minus 28 recipient-blind rows that all graded zero
-- [ ] **STRIP-1** — the bag strip's residue was never filed: **15 red Rust tests over 10 targets
-  and 54 red vitest tests over 18 files**, measured 2026-08-30 on all four forks (122→54; the
-  accolade, toggle, adaptation-stance and Thunderspy-vocab clusters are the delta). Every Rust
-  failure is a guard reporting its own vacuity, not a wrong number, and 48 base-bag reads survive
-  in 36 Rust files — 7 still grading the FROZEN corpus, 12 red, 10 GREEN over a field that is now
-  always absent. The TS half spends ~45 slots out of `character-totals.ts:1145`'s
-  `power.effects ?? {}`, and this repo's `src/` is the totals ORACLE.
-  **Goal** — every reader the strip starved is atom-native, retired with its claim restated on a
-  live source, or recorded as a stated skip carrying its measured population; no guard is green on
-  an empty one.
-  **Done when** — `cargo test --no-fail-fast` on both crates and `npm test` are green or every
-  remaining failure is a written adjudication naming its population; no LIVE reader calls
-  `extra.get("effects")` or `power.effects` (a unit fixture building its own bag may stay, named as
-  such); the TS totals path spends no bag slot; and each retired guard's claim is restated rather
-  than deleted.
-  **Check** — `grep -rlPz '\.extra\s*\.get\("effects"\)' --include=*.rs crates/ | tr '\0' '\n'
-  | grep -c .` — 36 today. It must span line breaks: a single-line grep reads 25 and misses three
-  of the red targets. A zero here while the tests are still red would mean readers were deleted
-  rather than migrated, which is the outcome this row exists to prevent.
+- [x] **STRIP-1** — bag-strip residue, both halves closed 2026-09-01. TS: **0 live bag slots / 0
+  spends** (114 → 0; 8 skips; 51 adjudicated; Experimental-Injection wrong-credit fix;
+  protTeleport stat retired by user decision). Rust: both crates green, no LIVE reader — all
+  25 multi-line `extra.get("effects")` readers named fixtures (7 frozen-parity, 7 dev
+  examples, 5 live-carrier guards, 2 restated pins, 4 fixtures: cfg-test, hand-built, 2
+  conditional reads). Census: gaps/pipeline-provenance.md STRIP-1
+- [x] **SYNTH-1** — STRIP-1 retired arms whose slot a synthetic stance still mints, so each read 0 in
+  silence. Closed 2026-09-06: added a `syntheticEffects(power)?.X` fallback to fifteen arms (+ the
+  `slow` map), 74/62/117/74 reachable contributions restored, verified byte-for-byte vs Rust, fixtures
+  unchanged. Guard: `src/utils/calculations/synth1-synthetic-seam.test.ts`; census:
+  `scripts/synth1-credit-census.ts`. Dormant mechanic-toggle protections adjudicated in
+  gaps/pipeline-provenance.md.
+- [x] **ENGLAG-1** — BPORT7 stripped the beta's bag without canonical's atom SEED, so
+  **2,675 / 2,199 / 2,234 / 2,733 powerset powers per fork rendered no effect row**. Closed by
+  re-pointing the display at the engine's projection, which seeds from the atoms: **10,934 /
+  9,016 / 8,957 / 11,659 rows recovered per fork**. Residual: ENGLAG-2.
+  verify: file:CoH-Sidekick/src/components/info/magnitudesFromProjection.ts
+  story: [pipeline-provenance.md](gaps/pipeline-provenance.md)
+- [x] **ENGLAG-2** — a mez row states its magnitude and not its duration; the `durations` map was in the bag STRIP-1 took and the engine row carried none. Closed 2026-09-06: `GrantedMagnitude` gained `duration: Option<f64>` (the atom's, `None` on a `MezDuration` row whose tier IS the seconds), the beta rows/wasm carry it, the render reads `group.item.duration` not `effects.durations`. Guard: `[ENGLAG-1 adapter]` census + `mez_row_duration`; 281 app tests green.
+- [x] **STACKINFO-1** — the targets-hit slider reached NO power on any fork, and its per-foe growth was dead in the engine beside it: both readers asked the AUTHORED bag what STRIP-1 had emptied. Closed 2026-09-07 — both arms read `per_target` / `stack_cap` now; 33/33/36/32 per-foe + 343/376/313/317 stack sliders back, engine rows up 46/38/29/46%. Guards mutation-checked.
+  verify: file:CoH-Sidekick/src/components/info/stackingSlider.test.ts
+  story: [pipeline-provenance.md](gaps/pipeline-provenance.md)
+- [ ] **PROD6B-BETA-PARITY** — the suite graded the engine against a resolver whose authored input
+  STRIP-1 removed. **Class 1 CLOSED 2026-09-07**: 20,613 of 21,603 hard rows were an unwitnessed
+  side, not a disagreement; they leave through a third `magnitudeDeltas` bucket, stated per body,
+  and the five bodies grading zero authored bags gained an engine-side magnitude floor rather than
+  being deleted or softened to accept. **36 red -> 14.** Two bodies were found returning green
+  having graded NOTHING on every fork — `grantsStrength` and `getStackingInfo` both read the
+  emptied bag; the first is re-pointed at the atoms, the second was STACKINFO-1, closed 2026-09-07
+  (14 -> 10). Left open: the 990 real rows (`buffDuration` 366, mez mag 48, `Power_Surge.hold` 5),
+  class 4's `MIRROR_BLIND` roster, and `supportModifierReach` / `adjuster-contribution`.
+  **Goal** — the suite green on the canonical-true rows, each remaining family settled by the side
+  the export supports.
+  **Done when** — the three families are adjudicated with the side the export supports and a guard
+  that pins it; class 4's roster is closed or restated; no arm accepts a row because the other side
+  lacks the key.
+  **Check** — `npx vitest run src/engine/powerProjectionParity.test.ts` in `../CoH-Sidekick`; 14
+  failures on committed HEAD. Falsified if a starved arm grades zero powers without saying so.
+  story: [pipeline-provenance.md](gaps/pipeline-provenance.md)
+- [x] **KB-INFO** — the `_Info` display-damage resolution's knockback half (Remote Bomb's
+  scale-4 PvE KB, the "not doubled" claim) had its ONLY home in the retired
+  `effects.knockback` slot; the strip deleted the bag and no atom carries a Knockback row
+  for the power, so the claim now grades an empty population. Restated as the measured
+  absence (guard: `redirect-info-damage.test.ts` asserts no `"knockback"`); narrative in
+  `docs/gaps/stat-routing.md`.
 
 - [x] **Advisory checks** — adjudicated binary-first; Mids retired as an authority
 

@@ -2185,6 +2185,8 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     const deltas: string[] = [];
     const adjudicated: string[] = [];
     let sliders = 0;
+    let perFoeSliders = 0;
+    let stackSliders = 0;
     let bagsChanged = 0;
     let betaMoved = 0;
     let engineMoved = 0;
@@ -2197,7 +2199,12 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
       const sliderMax = new Map<string, number>();
       for (const power of powers) {
         const info = getStackingInfo(power);
-        if (info) sliderMax.set(power.internalName, info.maxStacks);
+        if (!info) continue;
+        sliderMax.set(power.internalName, info.maxStacks);
+        // Counted per ARM. The stack arm is the dominant subpopulation by an order of magnitude,
+        // so a per-target arm that went blind again would leave `sliders` barely moved and every
+        // floor below still green — the shape that hid STACKINFO-1 in the first place.
+        if (info.label === 'Targets Hit') perFoeSliders += 1; else stackSliders += 1;
       }
       if (sliderMax.size === 0) continue;
       sliders += sliderMax.size;
@@ -2275,7 +2282,8 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
 
     // eslint-disable-next-line no-console
     console.warn(
-      `[PROD6C-3b targets-hit] ${server}: ${sliders} powers carry a stacking slider, ` +
+      `[PROD6C-3b targets-hit] ${server}: ${sliders} powers carry a stacking slider ` +
+        `(${perFoeSliders} per-foe, ${stackSliders} stack-count), ` +
         `${bagsChanged} display bags change under it, ${betaMoved} beta / ${engineMoved} engine rows move`,
     );
     if (adjudicated.length) {
@@ -2303,10 +2311,34 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
         `replacement is in coh_math's stacking.rs; the TS side has not been re-pointed at it.`,
     ).toBeGreaterThan(0);
     expect(
-      bagsChanged,
-      `${server}: ${sliders} powers carry a slider and not one display bag changes under it`,
+      perFoeSliders,
+      `${server}: not one slider is a per-foe one — every carrier found came through the stack ` +
+        `arm, so the AoE arm is reading something that is gone (it read \`effects[…].perTarget\` ` +
+        `until STACKINFO-1) and the powers that grow per foe without self-stacking are ungraded`,
     ).toBeGreaterThan(0);
-    expect(betaMoved, `${server}: the slider moved no beta row`).toBeGreaterThan(0);
+    expect(
+      stackSliders,
+      `${server}: not one slider is a stack-count one — the linear arm found no carrier`,
+    ).toBeGreaterThan(0);
+    // `bagsChanged` and `betaMoved` are REPORTED, not floored, and the reason is the same one
+    // that put the third bucket on `magnitudeDeltas`. Both grade the beta's own bag transform
+    // (`withTargetsHit` -> `adjustEffectsForTargets`), whose two inputs are a `perTarget` on a bag
+    // VALUE and the power's `stacksLinear` list — both authored, both emptied by STRIP-1. The beta
+    // never grew an atom seed for its display bag: ENGLAG-1 re-pointed the rendered rows at the
+    // engine projection instead, and all three `RegistryEffectsDisplay` call sites now pass
+    // `rows`, so the bag reaches the surface for its `durations` / `buffDuration` annotations
+    // alone. A floor here would demand movement from a path the swap retired.
+    //
+    // The live verdict is the engine's, below, because the slider's whole effect on what a user
+    // sees now runs `targetsHitValues` -> `characterStateAdapter` -> `granted_magnitudes` ->
+    // `effectRows`. Stating the skip rather than deleting the counters keeps the day the beta bag
+    // starts moving again visible.
+    // eslint-disable-next-line no-console
+    console.warn(
+      `[PROD6C-3b targets-hit] ${server}: the beta bag transform is unwitnessed — ${bagsChanged} ` +
+        `bags change and ${betaMoved} beta rows move, with no authored \`perTarget\` or ` +
+        `\`stacksLinear\` left in the corpus to drive either`,
+    );
     expect(engineMoved, `${server}: the slider moved no engine row`).toBeGreaterThan(0);
     // Anti-vacuity for the magnitude half. STRIP-1 left most of the corpus unable to answer, and
     // an arm that grades zero powers is green for the wrong reason — so the population the
