@@ -226,6 +226,10 @@ interface DisplayableEffect {
   quantity: MagnitudeQuantity;
   byTypeLabel?: string;
   expandedLabel?: string;
+  /** The effective duration in seconds. Set on a MAGNITUDE-valued engine mez row (ENGLAG-2);
+   *  absent on a `mez_duration` row (tier IS the seconds) and on any resolver-built row.
+   *  Rendered as `(8s)` beside the rank, replacing the pre-strip `durations`-map lookup. */
+  duration?: number;
   /** The mez FACE, when the row's producer already took that verdict. Set on an engine row,
    *  absent on a resolved one; see [`isProtectionMez`]. */
   mezFace?: 'protection' | 'self';
@@ -778,6 +782,7 @@ export function RegistryEffectsDisplay({
       byTypeLabel: row.byTypeLabel,
       expandedLabel: row.expandedLabel,
       mezFace: row.mezFace,
+      duration: row.duration,
       dominationBonus,
     });
   }
@@ -1074,7 +1079,7 @@ export function RegistryEffectsDisplay({
           );
         }
 
-        const { effect, tiers, quantity, byTypeLabel, expandedLabel } = group.item;
+        const { effect, tiers, quantity, byTypeLabel, expandedLabel, duration: rowDuration } = group.item;
         const { key, value: rawValue, config } = effect;
         const enhanceable = !!config.enhancementAspect;
         const hasEnh = Math.abs(tiers.enhanced - tiers.base) > 0.001;
@@ -1230,10 +1235,12 @@ export function RegistryEffectsDisplay({
 
           // Magnitude-valued mez, and the plain-number protection entries the `protection`
           // key expands to. The tiers are the RANK here, and the duration is the template's
-          // own — the bag records it under `durations` rather than on the value, because
-          // nothing scales it (MEZDUR-1). A `mez_magnitude` row is enhanceable on the same
-          // coupling a duration row is; an expanded protection number is not.
-          let mezDuration = durations?.[key];
+          // own — the display bag used to record it under `durations` (MEZDUR-1), but STRIP-1
+          // removed that and ENGLAG-2 moved the seconds onto the ENGINE row, which a
+          // `mez_magnitude` row carries (`GrantedMagnitude::duration` → `ResolvedMagnitude`).
+          // A `mez_magnitude` row is enhanceable on the same coupling a duration row is; an
+          // expanded protection number is not.
+          let mezDuration = rowDuration;
           if (mezDuration == null || mezDuration <= 0) mezDuration = undefined;
           const magEnhanceable = quantity.kind === 'mez_magnitude'
             && Math.abs(tiers.final - tiers.base) > 0.001;

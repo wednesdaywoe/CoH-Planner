@@ -103,6 +103,13 @@ export interface ResolvedMagnitude {
    * label and states it here rather than re-deriving a verdict the engine already took.
    */
   mezFace?: 'protection' | 'self';
+  /**
+   * The effective duration in seconds, surfaced only on a MAGNITUDE-valued mez row
+   * (ENGLAG-2). The engine row carries it for every quantity a `durations` record exists
+   * for; the tier on a `mez_duration` row already IS the seconds, so it stays unset there
+   * and the surface never prints one number twice under two headings.
+   */
+  duration?: number;
 }
 
 export interface ResolveMagnitudesParams {

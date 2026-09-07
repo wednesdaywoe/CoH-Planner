@@ -1257,7 +1257,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     await loadDataset(server);
     const handle = engineHandle(server);
     const deltas: string[] = [];
-    const census = { projected: 0, rows: 0, expanded: 0, faced: 0, qualified: 0, compared: 0, recovered: 0 };
+    const census = { projected: 0, rows: 0, expanded: 0, faced: 0, qualified: 0, compared: 0, recovered: 0, mezDur: 0, mezMagWithDur: 0, mezMagNoDur: 0 };
     const lost: string[] = [];
     const lostMinted: string[] = [];
 
@@ -1321,6 +1321,23 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
             if (row.quantity.kind !== engine.quantity.kind) deltas.push(`${where}: quantity ${row.quantity.kind} vs ${engine.quantity.kind}`);
             if (row.byTypeLabel !== (engine.byTypeLabel ?? undefined)) deltas.push(`${where}: byTypeLabel ${row.byTypeLabel} vs ${engine.byTypeLabel}`);
 
+            // ENGLAG-2 — the seconds travel on the row now, not in a `durations` map the bag
+            // no longer carries. A MAGNITUDE-valued mez
+            // row's tier is the rank, so it must carry its duration here (that is the half the
+            // tier cannot show); a DURATION-valued mez row's tier already IS the seconds, so
+            // it must NOT (the engine's `recorded_duration` returns `null` for it) — printing
+            // a second number beside a tier that is already that number is the MEZDUR-1
+            // double-state under a new field name. The adapter reads `row.duration`, never
+            // `effects.durations`, so the only injection point is the engine row this walks.
+            if (engine.quantity.kind === 'mez_duration') {
+              census.mezDur += 1;
+              if (row.duration != null) deltas.push(`${where}: duration ${row.duration} on a row whose tier is already seconds`);
+            } else if (engine.quantity.kind === 'mez_magnitude') {
+              const tree = atomsOf(power);
+              if (tree.length > 0 && row.duration != null) census.mezMagWithDur += 1;
+              if (row.duration !== (engine.duration ?? undefined)) deltas.push(`${where}: adapted duration ${row.duration} vs engine ${engine.duration}`);
+            }
+
             // …and the REGISTRY join, on the rows the resolver still produces: both sides look
             // the config up by effect key, so a row they share has to come out drawn the same.
             // Only what the registry owns — the engine's own values are graded above, and
@@ -1359,6 +1376,10 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     expect(census.faced, `${server}: no mez FACE — the face read is ungraded`).toBeGreaterThan(10);
     expect(census.qualified, `${server}: no row whose engine label differs from the registry's — the label carry is ungraded`).toBeGreaterThan(10);
     expect(census.compared, `${server}: no row cross-checked against the resolver`).toBeGreaterThan(500);
+    // ENGLAG-2: the duration floor. A magnitude-valued mez row must reach the gate CARRYING a
+    // non-null duration — otherwise the seconds half is gone again and this grades nothing.
+    // Set well under the corpus count so it is a collapse detector, not a pin.
+    expect(census.mezMagWithDur, `${server}: no magnitude-valued mez row carrying its duration`).toBeGreaterThan(30);
     expect(deltas.slice(0, 20), `${server}: ${deltas.length} adapter shape deltas`).toEqual([]);
     expect(
       census.recovered,

@@ -114,6 +114,10 @@ export function magnitudesFromProjection(rows: GrantedMagnitude[]): ResolvedMagn
       quantity: quantityOf(row),
       byTypeLabel: row.byTypeLabel ?? undefined,
       mezFace: mezFaceOf(row.label),
+      // The seconds only reach a row whose tier is not already them: a `mez_duration` row's
+      // tier IS the seconds, so the engine states `duration: null` there (recorded_duration)
+      // and the surface must not print the same number twice. ENGLAG-2.
+      duration: row.duration ?? undefined,
     });
   }
   return out;

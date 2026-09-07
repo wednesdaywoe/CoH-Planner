@@ -151,6 +151,10 @@ export interface EngineGrantedMagnitude {
   value: EngineThreeTier;
   quantity: EngineGrantedQuantity;
   by_type_label: string | null;
+  /** The effective duration in seconds, from `GrantedMagnitude::duration`. `null` on a
+   *  `mez_duration` row (its tier already IS the seconds) and on a row the display bag
+   *  records nothing for — see the engine's `recorded_duration`. ENGLAG-2. */
+  duration: number | null;
 }
 
 /** How a resolved damage component applies (engine `DamageApplication`) — serde's external
@@ -307,6 +311,8 @@ export interface GrantedMagnitude {
   value: ThreeTierValues;
   quantity: EngineGrantedQuantity;
   byTypeLabel: string | null;
+  /** The effective duration in seconds — see [`EngineGrantedMagnitude.duration`]. ENGLAG-2. */
+  duration: number | null;
 }
 
 /** The beta-facing per-power non-DPS projection — the engine's resolved values reshaped to the
@@ -798,6 +804,7 @@ const mapGrantedMagnitude = (m: EngineGrantedMagnitude): GrantedMagnitude => ({
   value: { base: m.value.base, enhanced: m.value.enhanced, final: m.value.final },
   quantity: m.quantity,
   byTypeLabel: m.by_type_label,
+  duration: m.duration ?? null,
 });
 
 /**
