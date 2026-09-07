@@ -57,10 +57,10 @@ because it reads data trees the beta does not carry.
 
 ## Current frontier
 
-**2 open, of 263 entries.** FORK-5 — 23 of 69 shared-test fork declarations claim the beta's copy
-   passes there and it does not; nothing re-measures the claim, and the beta's own suite is
-   179 red over 37 files. PROD6B-BETA-PARITY — class 1 and STACKINFO-1 closed 2026-09-07
-   (36 red -> 10); the 990 real rows and class 4's roster remain.
+**1 open, of 263 entries.** PROD6B-BETA-PARITY — class 1 and STACKINFO-1 closed 2026-09-07
+   (36 red -> 10); the 990 real rows and class 4's roster remain. FORK-5 closed the same day; the
+   beta's 179 red assertions are rostered per file, 34 of them to BPORT12/BPORT13 in
+   [strip1-beta-port](streams/strip1-beta-port.md).
 
 **Carried residuals — named work inside closed entries.** Seven items were scoped out of a closure
 and recorded there rather than reopened. They are not `[ ]` rows: their hosts *are* closed with
@@ -613,7 +613,7 @@ measurement went, and where a closure for the residual belongs too.
 
 ## Pipeline + provenance
 
-[Full detail](gaps/pipeline-provenance.md) — 54 of 56 closed
+[Full detail](gaps/pipeline-provenance.md) — 55 of 56 closed
 
 - [x] **MBDIMPORT-1** — Mids files accolades under `Temporary_Powers.Accolades.*` and the importer's
   blanket temp-power skip dropped every one of them upstream of the warning counters, so a user's
@@ -765,12 +765,12 @@ measurement went, and where a closure for the residual belongs too.
   pairs, cluster adjudication on the rest — every shared path is `identical`, `departed` with a
   reason, or in one of three fork classes with an exit, and the coverage invariant reds when a pair
   joins already forked or leaves a cluster
-- [ ] **FORK-5** — every shared-test fork declaration asserts a fact nothing re-measures, and 23 of the 69 are now false. Each says "the beta's copy passes there"; the digest was stamped at beta `634af5c608` (2026-09-05) and BPORT7 emptied the beta's bag the next day, so the beta's suite is 179 red over 37 files while canonical's is 199/199 green. `strip-lag-oracle`'s exit condition IS BPORT7 and it arrived uncollected. The gate's header states the blind spot ("each repo's own suite re-measures that every run. Nothing here re-runs them") — nobody was reading the beta's.
-  **Goal** — a declaration cannot assert a pass the trees have not been asked about.
-  **Done when** — every claim of the form "passes there" is either re-measured and true, or restated as what the tree says; the digest carries the measurement's head per repo and reds when either has moved past it; the 13 beta-only red files are rostered or retired.
-  **Check** — `npx vitest run --reporter=json` in `../CoH-Sidekick` against `scripts/shared-test-surface.json`; 23 declared paths red today. Falsified if the beta's suite is green, which would make the declarations true and the digest merely unverified.
-  verify: file:scripts/shared-test-surface.json
-  story: [pipeline-provenance.md](gaps/pipeline-provenance.md)
+- [x] **FORK-5** — every shared-test fork declaration rested on "the beta's copy passes there" and
+  nothing re-measured it: BPORT7 emptied the beta's bag the day after the digest was stamped, 23 of
+  69 declared paths were false the next morning, and the beta's own CI had been red for 30 runs
+  unread. The claim is a graded `evidence` field now, `measurements` carries a per-repo run whose
+  head expires it, all 37 red beta files are rostered to a gap, and canonical's CI runs the beta's
+  suite
 - [x] **FIXTURE-1** — the manually-emitted gate fixtures (procs, movement, set-bonus) drifted on
   sampling identity and labels only, no values; all three re-emitted, gates green, and the
   emitters now run in `npm run regen` so the drift class is closed
