@@ -845,8 +845,10 @@ measurement went, and where a closure for the residual belongs too.
   **Done when** — the three families are adjudicated with the side the export supports and a guard
   that pins it; class 4's roster is closed or restated; no arm accepts a row because the other side
   lacks the key.
-  **Check** — `npx vitest run src/engine/powerProjectionParity.test.ts` in `../CoH-Sidekick`; 14
-  failures on committed HEAD. Falsified if a starved arm grades zero powers without saying so.
+  **Check** — `npx vitest run src/engine/powerProjectionParity.test.ts` in `../CoH-Sidekick`; 10
+  failures on committed HEAD (measured 2026-09-07 — the 14 this key carried predated STACKINFO-1,
+  which the line above says took it to 10). Falsified if a starved arm grades zero powers without
+  saying so.
   story: [pipeline-provenance.md](gaps/pipeline-provenance.md)
 - [x] **KB-INFO** — the `_Info` display-damage resolution's knockback half (Remote Bomb's
   scale-4 PvE KB, the "not doubled" claim) had its ONLY home in the retired
