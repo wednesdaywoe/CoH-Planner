@@ -409,7 +409,7 @@ const FITNESS_POOL_BY_NAME = new Map(
 );
 
 /**
- * The export-derived calc payload (atom list + effects bag) for a Fitness
+ * The export-derived calc payload (atom list + execution stats) for a Fitness
  * inherent, read from the generated Fitness pool instead of a hand-transcribed
  * scale table. This is what makes Health/Stamina/Swift/Hurdle interpret the SAME
  * atomized data the Rust engine reads from the contract — most importantly
@@ -420,14 +420,16 @@ const FITNESS_POOL_BY_NAME = new Map(
  */
 function fitnessPoolCalcFields(
   internalName: string,
-): Pick<Power, 'atoms' | 'effects' | 'stats' | 'effectArea'> {
+): Pick<Power, 'atoms' | 'stats' | 'effectArea'> {
   const pool = FITNESS_POOL_BY_NAME.get(internalName);
   if (!pool) {
     throw new Error(`INHERENT_FITNESS_POWERS: no generated Fitness pool power named ${internalName}`);
   }
   return {
     atoms: pool.atoms as EncodedAtom[],
-    effects: pool.effects as unknown as Power['effects'],
+    // No `effects`: STRIP-1 took the bag off the pool converter's output, so all 83 generated pool
+    // powers carry zero `effects` keys and this read had been resolving to `undefined` through an
+    // `as unknown as` cast that hid it. Dropping the key is what the four already got at runtime.
     // The execution stats came with the bag until the pool converter minted them (atom-migration
     // job 2); lifting them here is what keeps these four out of the legacy shape.
     stats: pool.stats as Power['stats'],
@@ -438,7 +440,7 @@ function fitnessPoolCalcFields(
 
 /**
  * Inherent Fitness powers - all characters receive these at level 1.
- * Their calc payload (atoms + effects) is derived from the atomized Fitness
+ * Their calc payload (atoms + stats) is derived from the atomized Fitness
  * pool via `fitnessPoolCalcFields`; only the inherent-specific metadata
  * (availability, locked/slot rules, allowed enhancements, category) is authored
  * here.

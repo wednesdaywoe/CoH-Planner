@@ -539,11 +539,14 @@ function applyActivePowerBonuses(
 
     if (!power.effects) continue;
 
-    // The per-power `effects` deref used to back every `?? effects.slot` seam in this pass.
-    // One family still needs it — absorb, whose per-foe increment no reader returns; see the
-    // block below. Every other arm reads the atom-native readers, or the named synthetic
-    // channel ({@link syntheticEffects}) for a contribution the totals built for itself.
-    const effects = power.effects ?? ({} as ActivePowerEffect);
+    // The deref that used to back every `?? effects.slot` seam in this pass is gone: absorb was
+    // the last family still reading it and BPORT11's carry took it (BPORT7 A2). Every arm now
+    // reads the atom-native readers, or the named synthetic channel ({@link syntheticEffects})
+    // for a contribution the totals built for itself.
+    //
+    // The `continue` above outlived it and is now the whole of this oracle's post-strip
+    // behaviour — no power carries `effects`, so the pass skips every one and the parity it
+    // feeds diffs against nothing. Retiring that guard is BPORT13's remedy, not a typecheck fix.
     // BPORT11's stacking selector, for the families that have crossed. The atoms carry the
     // depth a family self-stacks to, so `stackCapOf` answers with one number what the retired
     // `stacksLinear` / `maxStacks` / `stackCaps` triple answered from three bag slots:
