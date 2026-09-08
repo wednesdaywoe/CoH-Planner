@@ -44,7 +44,7 @@ import { areIncarnatesSuppressed, INCARNATE_MIN_LEVEL } from '@/utils/calculatio
 import { getIncarnateTrees } from '@/data/incarnates';
 import { calculatePermaInfo, type PermaInfo } from '@/utils/calculations/perma';
 import { getRechargeBounds } from '@/data/at-tables';
-import { atomsOf, baseAtoms } from '@/data/core/atom-query';
+import { atomsOf, baseAtoms, mezSlotValue } from '@/data/core/atom-query';
 import { landsOnCaster } from '@/data/core/atomic-effect';
 import { calculateArcanaTime } from '@/utils/calculations/damage';
 import { calcThreeTier, convertGlobalBonusesToAspects, withStrengthBonuses, type ThreeTierValues } from '@/components/info/powerDisplayUtils';
@@ -531,6 +531,30 @@ const MIRROR_RECOVERED_WINDOWS: Record<string, Record<string, number>> = {
   brainstorm: { 'epic/electrical_mastery/EM_Pulse': 15 },
 };
 
+/**
+ * The keys where the beta's resolver answered from the summoned pet's underlay while the engine
+ * answered from the power's own atom, and the value each side recovered (2 dp).
+ *
+ * The five `Power_Surge.hold` rows were the last "value" family left in the magnitudes sweep, and
+ * were not a value dispute: the engine's `Hold Prot` 17.3 is the stalker's own `Held −50 @Cur`
+ * protection through `Melee_Res_Boolean`, the beta's `Hold` 22.35s is the crash pet's EM Pulse
+ * `Held +15 Duration` on foes through the pet class's `Ranged_Immobilize`. On the two forks that
+ * summon the pet separately the pseudo-pet merge lays the second under the first, and STRIP-1
+ * removed the first from the beta's bag, so the underlay was what the resolver saw. Homecoming
+ * and brainstorm inline the pet's templates into the power itself, so nothing is merged and the
+ * key is unwitnessed there — an empty roster on those forks is a reached population of zero
+ * merges, not an arm that stopped firing, and a pet the converter starts summoning separately
+ * on either fork lands here as a missing key rather than silently.
+ *
+ * Pinned by VALUE, the class 4 shape: a power the sweep stops reaching drops its tag, an own row
+ * the engine loses puts the pet's number where 17.3 is pinned, and a pet chain that resolves
+ * differently moves the underlay.
+ */
+const OWN_ROW_OVER_PET_UNDERLAY: Record<string, Record<string, { own: number; underlay: number }>> = {
+  rebirth: { 'stalker/Power_Surge.hold': { own: 17.3, underlay: 22.35 } },
+  thunderspy: { 'stalker/Power_Surge.hold': { own: 17.3, underlay: 22.35 } },
+};
+
 function permaDelta(
   engine: PermaInfo | null,
   beta: PermaInfo | null,
@@ -887,8 +911,32 @@ function byTypeFingerprint(label: string | null | undefined): string | null {
  *  cannot speak to because STRIP-1 left its bag holding only minted keys, which is most of the
  *  corpus and was previously counted as disagreement. `witnessed` says whether this power's beta
  *  side had any authored input at all, so a body can state the population it really graded
- *  instead of the population it walked. */
-type MagnitudeDiff = { real: string[]; adjudicated: string[]; unwitnessed: string[]; witnessed: boolean };
+ *  instead of the population it walked. `underlayOutranked` is the one adjudication that carries
+ *  a VALUE out: a key both sides resolved from different atoms — the power's own row on the
+ *  engine, the summoned pet's underlay on the beta — so the body can pin what the own row
+ *  recovered rather than accept a string. */
+type MagnitudeDiff = {
+  real: string[];
+  adjudicated: string[];
+  unwitnessed: string[];
+  witnessed: boolean;
+  underlayOutranked: { key: string; own: number; underlay: number }[];
+};
+
+/** The slots `mezSlotValue` reads — the beta's own atom-native reader for a power's OWN
+ *  control / protection row, which is the reader the display bag lost at STRIP-1. */
+type OwnMezSlot = Parameters<typeof mezSlotValue>[1];
+const OWN_MEZ_SLOTS: ReadonlySet<string> = new Set<OwnMezSlot>(['hold', 'stun', 'sleep', 'immobilize', 'confuse', 'fear']);
+
+/** What a `mag`-format row's quantity has to be, given the `attribType` the atom behind it
+ *  states — `classifyMagQuantity`'s table, read the other way round so the engine's row can be
+ *  graded from the ATOM rather than from the resolver that no longer sees it. */
+const MEZ_QUANTITY_OF_ATTRIB_TYPE: Record<string, string> = {
+  Duration: 'mez_duration',
+  Magnitude: 'mez_magnitude',
+  Expression: 'mez_expression',
+  Constant: 'mez_constant',
+};
 
 /** Running totals for one test body's magnitude half — how many powers it walked, how many of
  *  those the beta could witness, and the unwitnessed rows themselves.
@@ -977,10 +1025,12 @@ function magnitudeDeltas(
   betaRows: Map<string, ResolvedMagnitude>,
   betaEffects: Record<string, unknown> | undefined,
   engineEffects?: Record<string, unknown>,
+  ownPower?: Power | SelectedPower,
 ): MagnitudeDiff {
   const out: string[] = [];
   const adjudicated: string[] = [];
   const unwitnessed: string[] = [];
+  const underlayOutranked: MagnitudeDiff['underlayOutranked'] = [];
   const witnessed = bagCarriesAuthoredEffects(betaEffects);
   const engineByKey = new Map(engineRows.map((row) => [row.rowKey, row]));
   // Rows the engine typed off effect keys the beta's own bag lacks — the evidence an untyped
@@ -1040,6 +1090,38 @@ function magnitudeDeltas(
       }
       continue;
     }
+    // Two rows, two ATOMS. The pseudo-pet merge lays a summoned pet's control UNDER the power's
+    // own bag — `{ ...pseudo, ...effects }` here, `merged.insert(key, own)` in granted.rs — so a
+    // key the power's own atoms carry is answered by the power and never by the pet, on both
+    // sides, by the same declared order. STRIP-1 emptied the beta's own slot and the underlay
+    // showed through: the resolver was handed the pet's row (the merge stamps it `petClass`)
+    // for a key the engine resolves from the power's own atom. Power Surge is the corpus case:
+    // its own `Held −50 @Cur` on the caster is Hold PROTECTION, and its crash pet's EM Pulse
+    // `Held +15 Duration` on foes is applied control; the tiers, label and quantity differ
+    // because they describe different templates, not because either side misread one. The
+    // resolver did read the face it was given correctly — it was given the wrong atom.
+    //
+    // So the beta is not a witness for this key. The engine's row is graded from the ATOM
+    // instead: the own atom's `attribType` fixes the quantity the row must carry (the same
+    // table `classifyMagQuantity` reads), and the value is pinned by the body, not accepted.
+    const petUnderlay = typeof betaSlot === 'object' && betaSlot !== null && 'petClass' in betaSlot;
+    const ownSlot = ownPower !== undefined && OWN_MEZ_SLOTS.has(effectKey)
+      ? mezSlotValue(ownPower, effectKey as OwnMezSlot)
+      : undefined;
+    if (petUnderlay && ownSlot) {
+      const owedKind = MEZ_QUANTITY_OF_ATTRIB_TYPE[ownSlot.attribType] ?? 'mez_unstated';
+      if (engine.quantity.kind !== owedKind) {
+        out.push(`${powerName}.${key}.quantity: own atom is ${ownSlot.attribType}-typed, engine resolved ${engine.quantity.kind}`);
+      }
+      adjudicated.push(
+        `${key}: beta resolved the summoned pet's ${beta.expandedLabel ?? beta.config.label} underlay `
+        + `(${beta.quantity.kind} ${beta.tiers.base}) for a key the power's own atoms carry `
+        + `(${ownSlot.attribType} ${ownSlot.scale} × ${ownSlot.table}); the own row outranks the underlay `
+        + `in both merge orders — engine ${engine.label} ${engine.value.base}`,
+      );
+      underlayOutranked.push({ key, own: engine.value.base, underlay: beta.tiers.base });
+      continue;
+    }
     // PROD6C-3b's per-target SHAPE adjudication is gone (PROD6C-3j): the engine's converter now
     // exports the per-foe increment for a MaxHP-fraction absorb too, so the two shapes agree
     // under a dragged slider as they always did at one target. A row that grows on one side
@@ -1082,7 +1164,7 @@ function magnitudeDeltas(
       }
     }
   }
-  return { real: out, adjudicated, unwitnessed, witnessed };
+  return { real: out, adjudicated, unwitnessed, witnessed, underlayOutranked };
 }
 
 /** A bypass slice no Alpha authors — the whole bonus bypassing ED — for probing whether the split
@@ -1689,6 +1771,9 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     // Anti-vacuity for the summon fixture: the widening is only real while it keeps reaching
     // powers that summon. A chooser that stops finding them would leave every arm below green.
     let summonPowers = 0;
+    // The keys the beta answered from a pet's underlay where the engine answered from the
+    // power's own atom, with both values — graded against [`OWN_ROW_OVER_PET_UNDERLAY`].
+    const underlayOutranked: Record<string, { own: number; underlay: number }> = {};
 
     const engineBundle = bundlePowers(server);
     // Two fixtures per archetype. The first-set default is the 6B corpus; the second picks the
@@ -1729,11 +1814,18 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
           magnitudes,
           bag,
           enginePower ? displayBag(enginePower as unknown as Power, 0, shownPower(enginePower as unknown as Power, build, atId, rawGlobal)) : undefined,
+          power,
         ));
         deltas.push(...mags.real);
         adjudicated.push(
           ...mags.adjudicated.map((d) => `${atId}/${power.internalName}.${d}`),
         );
+        for (const row of mags.underlayOutranked) {
+          underlayOutranked[`${atId}/${power.internalName}.${row.key}`] = {
+            own: Number(row.own.toFixed(2)),
+            underlay: Number(row.underlay.toFixed(2)),
+          };
+        }
         rows += engine.grantedMagnitudes.length;
         const petKeys = pseudoPetKeys(power, shownPower(power, build, atId, rawGlobal));
         if (petKeys.size > 0) {
@@ -1773,6 +1865,8 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
       witness.witnessed,
       witnessLine(server, 'granted magnitudes match the beta resolver for every archetype', witness),
     ).toBeGreaterThan(0);
+    // The own-row-over-underlay keys, by value: see [`OWN_ROW_OVER_PET_UNDERLAY`].
+    expect(underlayOutranked, `${server}: own row vs pet underlay`).toEqual(OWN_ROW_OVER_PET_UNDERLAY[server] ?? {});
     expect(deltas).toEqual([]);
   }, 120000);
 

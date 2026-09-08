@@ -57,10 +57,11 @@ because it reads data trees the beta does not carry.
 
 ## Current frontier
 
-**1 open, of 263 entries.** PROD6B-BETA-PARITY — class 1, STACKINFO-1 and class 4 closed
-   2026-09-07 (36 red -> 6); the 990 real rows remain, in two magnitude bodies and four
-   combat-state ones. FORK-5 closed the same day; the beta's 179 red assertions are rostered per
-   file, 34 of them to BPORT12/BPORT13 in [strip1-beta-port](streams/strip1-beta-port.md).
+**1 open, of 263 entries.** PROD6B-BETA-PARITY — class 1, STACKINFO-1, class 4 and
+   `Power_Surge.hold` closed 2026-09-07 (36 red -> 4); the 985 real rows remain, in two magnitude
+   bodies and four combat-state ones. FORK-5 closed the same day; the beta's 179 red assertions
+   are rostered per file, 34 of them to BPORT12/BPORT13 in
+   [strip1-beta-port](streams/strip1-beta-port.md).
 
 **Carried residuals — named work inside closed entries.** Seven items were scoped out of a closure
 and recorded there rather than reopened. They are not `[ ]` rows: their hosts *are* closed with
@@ -832,22 +833,23 @@ measurement went, and where a closure for the residual belongs too.
   verify: file:CoH-Sidekick/src/components/info/stackingSlider.test.ts
   story: [pipeline-provenance.md](gaps/pipeline-provenance.md)
 - [ ] **PROD6B-BETA-PARITY** — the suite graded the engine against a resolver whose authored input
-  STRIP-1 removed. Three sub-classes closed 2026-09-07, **36 red -> 6**: class 1 (20,613 of 21,603
-  hard rows were an unwitnessed side, not a disagreement — a third bucket, and an engine-side
-  magnitude floor on the five bodies grading zero authored bags), STACKINFO-1 (`grantsStrength` and
-  `getStackingInfo` both returned green having graded NOTHING on every fork, reading the emptied
-  bag), and class 4 (the `MIRROR_BLIND` absence roster emptied at the BPORT8 re-vendor as it
-  predicted — re-pinned by the window each tag recovered, because an empty absence roster cannot be
-  told from an arm that stopped firing). Left open: the 990 real rows (`buffDuration` 366, mez mag
-  48, `Power_Surge.hold` 5), and `supportModifierReach` / `adjuster-contribution`.
+  STRIP-1 removed. Four sub-classes closed 2026-09-07, **36 red -> 4**: class 1 (20,613 of 21,603
+  hard rows were an unwitnessed side — a third bucket, plus an engine-side floor on the five
+  bodies grading zero authored bags), STACKINFO-1 (`grantsStrength` and `getStackingInfo` returned
+  green having graded NOTHING off the emptied bag), class 4 (the `MIRROR_BLIND` absence
+  roster emptied at the BPORT8 re-vendor — re-pinned by the window each tag recovered), and
+  `Power_Surge.hold` (two atoms on one key: the caster's own Held protection on the engine, the
+  crash pet's EM Pulse hold under the beta's emptied slot — adjudicated by the own atom's shape,
+  both values pinned). Left open: the 985 real rows (`buffDuration` 366, mez mag 48 `.mag` rows
+  plus tiers), and `supportModifierReach` / `adjuster-contribution`.
   **Goal** — the suite green on the canonical-true rows, each remaining family settled by the side
   the export supports.
-  **Done when** — the three families are adjudicated with the side the export supports and a guard
+  **Done when** — the two families are adjudicated with the side the export supports and a guard
   that pins it; no arm accepts a row because the other side lacks the key.
-  **Check** — `npx vitest run src/engine/powerProjectionParity.test.ts` in `../CoH-Sidekick`; 6
-  failures on committed HEAD (measured 2026-09-07 after class 4 — the 10 this key carried predated
-  it). Falsified if a starved arm grades zero powers without saying so, or if the six are not the
-  two magnitude bodies plus the four combat-state ones.
+  **Check** — `npx vitest run src/engine/powerProjectionParity.test.ts` in `../CoH-Sidekick`; 4
+  failures on committed HEAD (measured 2026-09-07 after `Power_Surge.hold` — the 6 this key
+  carried predated it). Falsified if a starved arm grades zero powers without saying so, or if
+  the four are not the four combat-state bodies.
   story: [pipeline-provenance.md](gaps/pipeline-provenance.md)
 - [x] **KB-INFO** — the `_Info` display-damage resolution's knockback half (Remote Bomb's
   scale-4 PvE KB, the "not doubled" claim) had its ONLY home in the retired
